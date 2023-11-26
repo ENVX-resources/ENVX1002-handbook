@@ -1,0 +1,35 @@
+project:
+  type: book
+
+book:
+  title: "ENVX2001 Lab Manual"
+  author:
+    - name: "Floris van Ogtrop"
+    - name: "Liana Pozza"
+    - name: "Aaron Greenville"
+    - name: "Januar Harianto"
+  date: "1/13/2024"
+  chapters:
+    - index.qmd
+    - part: "Module 1 Describing data"
+      chapters:
+        - 020-scientific_method.qmd
+    - part: "Module 2 Inference"
+      chapters:
+        - 030-ttest1.qmd
+        - 031-ttest2.qmd
+    - part: "Module 3 Modelling"
+      chapters:
+        - 040-describing_relationships.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+
