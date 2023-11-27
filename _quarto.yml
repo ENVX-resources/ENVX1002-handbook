@@ -2,25 +2,34 @@ project:
   type: book
 
 book:
-  title: "ENVX2001 Lab Manual"
+  title: "ENVX1002 Lab Manual"
   author:
     - name: "Floris van Ogtrop"
     - name: "Liana Pozza"
     - name: "Aaron Greenville"
     - name: "Januar Harianto"
-  date: "1/13/2024"
+  date: today
+  date-format: MMM YYYY
   chapters:
     - index.qmd
-    - part: "Module 1 Describing data"
+    - part: "Describing data"
       chapters:
         - 020-scientific_method.qmd
-    - part: "Module 2 Inference"
+        - 021-exploring_data.qmd
+        - 022-probability_distributions.qmd
+        - 023-sampling_distributions.qmd
+    - part: "Inference"
       chapters:
         - 030-ttest1.qmd
         - 031-ttest2.qmd
-    - part: "Module 3 Modelling"
+        - 032-nonparametric1.qmd
+        - 033-nonparametric2.qmd
+    - part: "Modelling"
       chapters:
         - 040-describing_relationships.qmd
+        - 041-linear_functions.qmd
+        - 042-linear_functions_multi.qmd
+        - 043-nonlinear.qmd
     - references.qmd
 
 bibliography: references.bib
@@ -30,6 +39,3 @@ format:
     theme: cosmo
   pdf:
     documentclass: scrreprt
-
-
-

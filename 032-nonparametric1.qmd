@@ -1,3 +1,3 @@
-# Describing relationships
+# Non-parametrics tests: part 1
 
 In summary, this book has no content whatsoever.

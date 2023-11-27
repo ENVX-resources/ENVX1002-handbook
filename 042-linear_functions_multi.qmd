@@ -1,3 +1,3 @@
-# Describing relationships
+# Linear functions -- multiple predictors
 
 In summary, this book has no content whatsoever.
