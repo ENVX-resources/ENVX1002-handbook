@@ -1,6 +1,23 @@
 # Preface {.unnumbered}
 
-This is a Quarto book.
+**Welcome to the ENVX1002 handbook.** This handbook is designed to be an *optional* companion to the lectures, labs and assessments for the course.
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
 
+## How to use this handbook
+
+Read this handbook before, or *after* each lecture to better understand certain concepts. You can also use this book as a reference when working on lab exercises and assessments.
+
+You may download a PDF copy of this handbook on the sidebar of the HTML version of this book. You may also download the source code for this book from the [GitHub repository][handbook].
+
+## Acknowledgements
+
+We would like to acknowledge the work of previous generations of teaching staff who created the bulk of the teaching material within this manual. In particular, the work of:
+
+- Assoc. Prof. Mick O’Neill
+- Ms. Kathryn Aufflick
+- Assoc. Prof. Peter Thomson
+- Prof. Thomas Bishop
+
+When you are ready, check the sidebar to get started.
+
+[handbook]: https://google.com
