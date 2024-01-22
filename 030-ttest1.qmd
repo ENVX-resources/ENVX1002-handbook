@@ -1,3 +1,3 @@
 # One-sample $t$-test
 
-In summary, this book has no content whatsoever.
+In this example, we will use the `t.test()` function to perform a one-sample $t$-test. The data set we will use is the `mtcars` data set, which contains information about 32 different cars. We will use the `mpg` variable, which is the miles per gallon for each car. We will test the hypothesis that the mean miles per gallon for all cars is 20.
