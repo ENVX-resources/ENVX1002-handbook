@@ -2,7 +2,7 @@ project:
   type: book
 
 book:
-  title: "ENVX1002 Lab Manual"
+  title: "ENVX1002 Handbook"
   author:
     - name: "Floris van Ogtrop"
     - name: "Liana Pozza"
@@ -37,5 +37,3 @@ bibliography: references.bib
 format:
   html:
     theme: cosmo
-  pdf:
-    documentclass: scrreprt
