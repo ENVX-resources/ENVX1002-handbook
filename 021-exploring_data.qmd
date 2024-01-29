@@ -10,33 +10,37 @@ These statistics are also sometimes referred to as measures of location.
 **ARITHMETIC MEAN**
 
 The most widely used measure of central tendency is the arithmetic mean or average. The population mean, $\mu$ (“mu”) is the sum of all the values of the variable under study divided by the total number of objects in the population, Each value is algebraically denoted by a $y$ with
-a subscript denotation $i$. E.g. a small theoretical population whose objects had values 1, 6, 4, 5, 6, 3, 8, 7 would be denoted $y_1 = 1, y_2 = 6, y_3 = 4, y_4 = 5, y_5 = 6, y_6 = 3, y_7 = 8, y_8 = 7$.
+a subscript denotation $i$. E.g. a small theoretical population whose objects had values 1, 6, 4, 5, 6, 3, 8, 7 would be denoted:
 
-**Noe**. Some texts will use $X$ instead of $x$ or $Y$ instead of $y$ as the symbol for a value.
+$$y_1 = 1,\ y_2 = 6,\ y_3 = 4,\ y_4 = 5,\ y_5 = 6,\ y_6 = 3,\ y_7 = 8,\ y_8 = 7$$
+
+::: {.callout-note}
+Some texts will use $X$ instead of $x$ or $Y$ instead of $y$ as the symbol for a value.
+:::
 
 We would denote the population size with a capital $N$. In our theoretical population $N = 8$.
 
-The **population mean** $\mu$ would be
+The **population mean**, $\mu$, would be:
 
-$\frac{1+6+4+5+6+3+8+7}{8}=5$
+$$\frac{1+6+4+5+6+3+8+7}{8}=5$$
 
 The algebraic shorthand formula for a population mean is
 
-$\mu = \frac{1}{N}\sum_{i=1}^{N} y_i$
+$$\mu = \frac{1}{N}\sum_{i=1}^{N} y_i$$
 
 The Greek letter $\Sigma$ (“sigma”) indicates summation, the subscript $i = 1$ means to start with the first observation, and the superscript $N$ means to continue until and including the $N$th observation.
 
 For the example above,
 
-$\sum_{i=2}^{5} y_i=y_2+y_3+y_4+y_5=6+4+5+6=21$
+$$\sum_{i=2}^{5} y_i=y_2+y_3+y_4+y_5=6+4+5+6=21$$
 
 To reduce the clutter, if the summation sign is not indexed, for example $y_i$, it is implied that the operation of addition begins with the first observation and continues through the last observation in a population, that is,
 
-$\sum_{i=1}^{N} y_i = \sum y_i$
+$$\sum_{i=1}^{N} y_i = \sum y_i$$
 
 The **sample mean** is defined by
 
-$\bar y = \frac{1}{n}\sum_{i=1}^{n} y_i$
+$$\bar y = \frac{1}{n}\sum_{i=1}^{n} y_i$$
 
 where $n$ is the sample size.
 
@@ -46,7 +50,7 @@ Again consider the small theoretical population $1, 6, 4, 5, 6, 3, 8, 7$. A samp
 
 Each sample mean $\bar y$ is an unbiased estimate of $m$ but depends on the values included in the sample and sample size for its actual value. We would expect the average of all possible $y$’s to be equal to the population parameter, $\mu$. This is, in fact, the definition of an unbiased estimator of the population mean.
 
-The R command is `mean()`.
+The R function is `mean()`.
 
 ```{r}
 y <- c(1, 6, 4, 5, 6, 3, 8, 7)
@@ -60,7 +64,7 @@ The Excel command is `=AVERAGE()`
 The median is the “middle” value of an ordered list of observations. The **population** median $M$ is the $\left( \frac{N+1}{2} \right)th$ sorted value, where $N$ is the population size. Note that this parameter is not a
 Greek letter and is seldom computed in practice. A **sample median** $\tilde y$ (read “y tilde”) is the statistic used to approximate or estimate the population median. $\tilde y$ is the $\left( \frac{n+1}{2} \right)th$ sorted value where n is the sample size.
 
-The R command is `median()`.
+The R function is `median()`.
 
 ```{r}
 y <- c(1, 6, 4, 5, 6, 3, 8, 7)
@@ -73,7 +77,7 @@ The Excel command is `=MEDIAN()`.
 
 The mode is the most frequently occurring value in a data set.
 
-There is no direct command in R, the following code is an example of how it can be calculated.
+There is no direct function for the mode in R, the following code is an example of how it can be calculated.
 
 ```{r}
 mode_function <- function(x) {
@@ -143,7 +147,7 @@ The simplest measure of dispersion or “spread” is the range – the differen
 
 The sample range is a crude and biased estimator of the population range as its dependent on the composition and size of the sample you’ve taken. [It’s unlikely that the sample will include the largest and smallest values from the population, so the sample range usually underestimates the population range and is, therefore, a *biased* estimator.]
 
-The R command is `max(y)-min(y)`
+The R function is `max(y)-min(y)`
 
 ```{r}
 y <- c(1, 6, 4, 5, 6, 3, 8, 7)
@@ -166,15 +170,15 @@ The example data below (the number of days pigs take to reach bacon weight) has 
 
 The lower quartile Q1 is the $\left( \frac{n+1}{4} \right)th$ sorted value = $\left( \frac{9+1}{4} \right)th = 2.5th$ sorted value.
 
-This means we need to obtain a *weighted* average of the 2nd and 3rd sorted value: $0.5 \times 100 + 0.5 \times 100 = 100 \text{ days}$
+This means we need to obtain a *weighted* average of the 2nd and 3rd sorted value: $$0.5 \times 100 + 0.5 \times 100 = 100 \text{ days}$$
 
 The upper quartile Q3 is the $\left( \frac{3(n+1)}{4} \right)th$ sorted value = $\left( \frac{3(9+1)}{4} \right)th = 7.5th$ sorted value.
 
-This means we need to obtain a *weighted* average of the 2nd and 3rd sorted value: $0.5 \times 110 + 0.5 \times 113 = 111.5 \text{ days}$
+This means we need to obtain a *weighted* average of the 2nd and 3rd sorted value: $$0.5 \times 110 + 0.5 \times 113 = 111.5 \text{ days}$$
 
 The inter quartile range = Upper Quartile - Lower Quartile
 
-$IQR = Q3-Q1=111.5-100=11.5 \text{ days}$
+$$IQR = Q3-Q1=111.5-100=11.5 \text{ days}$$
 
 So 50% of pigs reach bacon weight within a range of 11.5 days.
 
@@ -188,7 +192,9 @@ For more information see:
 y <- c(98, 100, 100, 103, 105, 107, 110, 113, 115)
 
 quantile(y, 0.75, type = 6) - quantile(y, 0.25, type = 6) ## Type 6
-quantile(y, 0.75) - quantile(y, 0.25) ## Default which we will generally use going forward
+
+## Default which we will generally use going forward
+quantile(y, 0.75) - quantile(y, 0.25) 
 ```
 
 **PERCENTILES**
@@ -200,7 +206,7 @@ of values about the mean or median, especially when the spread is asymmetrical.
 
 In general, we have $n$ observations, so the general formula for the sample variance is
 
-$s^2 = \frac{1}{n-1}\sum_{i=1}^{n} (y_i - \bar{y})^2$
+$$s^2 = \frac{1}{n-1}\sum_{i=1}^{n} (y_i - \bar{y})^2$$
 
 The units for the variance are always the units of the original measurement squared. If units of measurement were kg (e.g. body weight), then the variance would have units $kg^2$.
 
@@ -210,13 +216,13 @@ To have a measure of variability with the same units as the original measurement
 
 Sample standard deviation,
 
-$s = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n} (y_i - \bar{y})^2}$
+$$s = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n} (y_i - \bar{y})^2}$$
 
 **COEFFICIENT OF VARIATION**
 
 The coefficient of variation (CV) is used is used to aide in comparing the variability of two samples that have widely differing means. It is usually expressed as a percentage, and has no units.
 
-$CV = \frac{s}{\bar{y}} \times 100\%$
+$$CV = \frac{s}{\bar{y}} \times 100\%$$
 
 
 ## Graphical Summaries
@@ -226,9 +232,10 @@ $CV = \frac{s}{\bar{y}} \times 100\%$
 Frequency tabulations can be represented as a graph of frequency (raw or percentage) against the measurement variable. Discrete data are sometimes expressed as a bar graph where bars are spaced equidistantly along the horizontal axis. Figure 1.2 is a relative frequency histogram
 (also known as a percentage frequency histogram) of the sedge plant data. The data represents data from sedge plant counts in 800 1m x 1m quadrats Ideally this data set (since it is discrete) would be plotted as a bar graph.
 
-```{r, fig.cap ="Figure 1.2 Relative frequency histogram of sedge plant data."}
-require(tidyverse)
-require(ggplot2)
+```{r}
+#| fig.cap: "Figure 1.2 Relative frequency histogram of sedge plant data."
+#| message: false
+library(tidyverse)
 
 sedge <- read_csv("data/Sedge.csv", show_col_types = FALSE)
 
@@ -241,7 +248,8 @@ ggplot(sedge, aes(x = Plants)) +
 
 Continuous measurements are free to take any whole or fractional number within their range e.g. plant height, soil pH, concentration of nitrates in a water sample. Histograms (with bars touching each other) are the norm for continuous data.
 
-```{r, fig.cap ="Figure 1.3 Frequency histogram of creeping bentgrass data."}
+```{r}
+#| fig.cap: "Figure 1.3 Frequency histogram of creeping bentgrass data."
 
 bentgrass <- read_csv("data/Bentgrass.csv", show_col_types = FALSE)
 
@@ -277,7 +285,7 @@ Notes on boxplots:
 
 **GUIDELINES FOR MAKING A BOXPLOT**
 
-We will use the gravimetric water content of soil (%) from Method A in the irrigation data set to illustrate how a boxplot is constructed. In this example we have n = 10 observations. We can use the R command summary to calculate some of the important values in a boxplot such as Q1, Q2, and Median.
+We will use the gravimetric water content of soil (%) from Method A in the irrigation data set to illustrate how a boxplot is constructed. In this example we have n = 10 observations. We can use the R function, `summary()` to calculate some of the important values in a boxplot such as Q1, Q2, and Median.
 
 ```{r}
 soil_water <- data.frame(water_content = c(7.5, 9.0, 9.3, 10.4, 10.4, 10.6, 10.7, 11.6, 12.1, 12.8))
@@ -325,7 +333,7 @@ summary(bentgrass)
 ```
 
 Note that the mean and the median are similar (93.9, and 93.0 mm respectively). This is indicative of symmetric data.
-The boxplot and histogram below show that the data is symmetric about the mean. You will notice from the boxplot that there is one high value outlier indicated by the “x” at the right hand side of the graph. The “4” indicates that this is the 4th observation in the data set i.e. the value 135mm.
+The boxplot and histogram below show that the data is symmetric about the mean. You will notice from the boxplot that there is one high value outlier indicated by the "x" at the right hand side of the graph. The "4" indicates that this is the 4th observation in the data set i.e. the value 135 mm.
 
 ```{r, fig.cap="Figure 1.5 Boxplot (left) and histogram (right) of the creeping bentgrass data show symmetry."}
 library(patchwork)
