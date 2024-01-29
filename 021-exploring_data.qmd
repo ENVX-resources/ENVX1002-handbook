@@ -1,9 +1,9 @@
 # Exploratory Data Analysis EDA
 
-## 1.1 Numerical Summaries
+## Numerical Summaries
 The summary descriptive characteristics of a sample of objects, that is, a subset of the population, are called statistics. Sample statistics can have different values, depending on how the sample of the population was chosen. Statistics are denoted by various symbols, but (almost) never by Greek letters e.g. sample mean, $\bar y$ and sample standard deviation, $s$.
 
-### 1.1.1 Measures of Central Tendency
+### Measures of Central Tendency
 
 These statistics are also sometimes referred to as measures of location.
 
@@ -53,7 +53,6 @@ y <- c(1, 6, 4, 5, 6, 3, 8, 7)
 mean(y)
 ```
 
-
 The Excel command is `=AVERAGE()`
 
 **MEDIAN**
@@ -88,7 +87,7 @@ mode <- mode_function(y)
 print(mode)
 ```
 
-The Excel formula is =MODE( … ).
+The Excel command is `=MODE()`.
 
 **OVERVIEW OF MEASURES OF CENTRAL TENDENCY:**
 
@@ -98,8 +97,7 @@ The Excel formula is =MODE( … ).
 - The sample median expresses less information than the sample mean because it utilizes the ranks and not the actual values of each measurement.
 - The median, however, is resistant to the effects of outliers. Extreme values or outliers in a sample can drastically affect the sample mean, while having little effect on the median.
 
-
-## 1.1.2 Measures of Spread
+### Measures of Spread
 
 Measures of central tendency alone are not sufficient to fully describe a data set. The following figure illustrates 3 distributions that all have the same mean but different levels of dispersion or spread.
 
@@ -135,7 +133,6 @@ ggplot(normal_data, aes(x = x, y = y, color = curve)) +
                      labels = c("A: Least Spread", "B", "C: Most Spread")) +
   theme_minimal()
 ```
-
 
 In graph A, most of the values are concentrated around the mean. It has less dispersion (or spread of values) than the other distributions. Graph C has more dispersion than the others. Its data is more “spread” out.
 A measure of dispersion provides some indication of the amount of variation that the data exhibits.
@@ -183,6 +180,10 @@ So 50% of pigs reach bacon weight within a range of 11.5 days.
 
 The following is an example of calculations in R - note that we use the type 6 calculation and the default in R is type 7 which we generally use.
 
+For more information see:
+
+- Hyndman, R.J. and Fan, Y., 1996. Sample quantiles in statistical packages. The American Statistician, 50(4), pp.361-365.
+
 ```{r}
 y <- c(98, 100, 100, 103, 105, 107, 110, 113, 115)
 
@@ -190,20 +191,18 @@ quantile(y, 0.75, type = 6) - quantile(y, 0.25, type = 6) ## Type 6
 quantile(y, 0.75) - quantile(y, 0.25) ## Default which we will generally use going forward
 ```
 
-
 **PERCENTILES**
 
 The 5th and 95th percentiles cut off 5% of the most extreme values in the distribution of values for the sample. The 1st and 99th percentiles may be similarly defined. As with quartiles, a list of percentiles may be far more informative than the standard deviation for summarizing the spread
 of values about the mean or median, especially when the spread is asymmetrical.
 
-** VARIANCE**
+**VARIANCE**
 
 In general, we have $n$ observations, so the general formula for the sample variance is
 
 $s^2 = \frac{1}{n-1}\sum_{i=1}^{n} (y_i - \bar{y})^2$
 
 The units for the variance are always the units of the original measurement squared. If units of measurement were kg (e.g. body weight), then the variance would have units $kg^2$.
-
 
 **STANDARD DEVIATION**
 
@@ -213,7 +212,6 @@ Sample standard deviation,
 
 $s = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n} (y_i - \bar{y})^2}$
 
-
 **COEFFICIENT OF VARIATION**
 
 The coefficient of variation (CV) is used is used to aide in comparing the variability of two samples that have widely differing means. It is usually expressed as a percentage, and has no units.
@@ -221,13 +219,12 @@ The coefficient of variation (CV) is used is used to aide in comparing the varia
 $CV = \frac{s}{\bar{y}} \times 100\%$
 
 
-# 1.2 Graphical Summaries
+## Graphical Summaries
 
-## 1.2.1 Bar Graphs and Histograms
+### Bar Graphs and Histograms
 
 Frequency tabulations can be represented as a graph of frequency (raw or percentage) against the measurement variable. Discrete data are sometimes expressed as a bar graph where bars are spaced equidistantly along the horizontal axis. Figure 1.2 is a relative frequency histogram
 (also known as a percentage frequency histogram) of the sedge plant data. The data represents data from sedge plant counts in 800 1m x 1m quadrats Ideally this data set (since it is discrete) would be plotted as a bar graph.
-
 
 ```{r, fig.cap ="Figure 1.2 Relative frequency histogram of sedge plant data."}
 require(tidyverse)
@@ -258,8 +255,7 @@ A histogram can give nearly complete information about the distribution of data.
 
 A histogram needs a relatively large sample size for it to be informative (i.e. 30 or more data values).
 
-
-## 1.2.2 Boxplots
+### Boxplots
 
 Boxplots show the shape of the distribution of data very clearly and are also helpful in identifying any outlying (or extreme) values.
 
@@ -270,7 +266,6 @@ ggplot(bentgrass, aes(x = Root_length_mm)) +
   geom_boxplot() +
   xlab("Root length (mm)")
 ```
-
 
 Notes on boxplots:
 
@@ -290,20 +285,19 @@ soil_water <- data.frame(water_content = c(7.5, 9.0, 9.3, 10.4, 10.4, 10.6, 10.7
 summary(soil_water$water_content)
 ```
 
-
-Step 1: Determining the Box: 
+**Step 1:** Determining the Box: 
 
 - The quartiles (Q1: 1st Qu. & Q3: 3rd Qu.) then become the basis for the “box” 
 - The median is shown as a vertical line through the box.
 
-Step 2: Determining (potential) outliers
+**Step 2:** Determining (potential) outliers
 
 - Calculate IQR = Inter-quartile range = 11.375 - 9.575 = 1.8
 - Calculate Q1 - 1.5 x IQR = 9.225 - 1.5 x 1.8 = 6.875 Since there are no observations smaller than 6.875, there are no low-valued outliers.
 - Calculate Q3 + 1.5 x IQR = 11.375 + 1.5 x 1.8 = 14.075 Since there are no observations greater than 14.075, there are no high-valued outliers.
 - If any values were flagged to be (potential) outliers, they are plotted as individual points on the boxplot, usually as a "*" or $\bullet$.
 
-Step 3: Determining the “whisker” lengths
+**Step 3:** Determining the “whisker” lengths
 
 - Extend the whisker from the lower end of the box (Q1) to the smallest value that is not an outlier, i.e. to the smallest value greater then Q1 - 1.5 x IQR. That is, the whisker here will be extended down to the minimum value which is 7.5.
 - Extend the whisker from the upper end of the box (Q3) to the largest value that is not an outlier, i.e. to the greatest value smaller then Q3 + 1.5 x IQR. That is, the whisker here will be extended up to 12.8.
@@ -316,148 +310,107 @@ ggplot(soil_water, aes(x = water_content)) +
   xlab("gravimetric water content of soil (%)")
 ```
 
+## Shapes of Distributions
 
-
-# 1.3 Shapes of Distributions
-
-## 1.3.1 Symmetric
+### Symmetric
 
 This is a distribution such that the left hand side of the frequency polygon is a mirror image of the right hand side. For symmetrical distributions, the mean, median and mode all have the same value. Substantial differences in these three statistics could provide valuable information about the data set (as we’ll see in the sections on positively and negatively skewed distributions). Some examples of symmetric distributions appear below.
-5th
-6th
-10.4
-10.6
-0.5
-2nd
-3rd
-9.0
-9.3
-0.75
-8th
-9th
-11.6
-12.1
-0.25
-10
-Figure 1.4 Four examples of symmetric distributions.
+
+![Figure 1.4 Four examples of symmetric distributions.](images/symmetric.png)
+
 Example: Creeping bentgrass: root growth (mm)
-Summary statistics for Root
-Number of observations = 80
-Number of missing values = 0
-Mean = 93.86
-Median = 93.00
-Minimum = 65.00
-Maximum = 135.00
-Range = 70.00
-Lower quartile = 86.50
-Upper quartile = 102.00
-Standard deviation = 13.56
-Variance = 183.99
-Skewness = 0.08
-Kurtosis = 0.35
+
+```{r}
+summary(bentgrass)
+```
+
 Note that the mean and the median are similar (93.9, and 93.0 mm respectively). This is indicative of symmetric data.
 The boxplot and histogram below show that the data is symmetric about the mean. You will notice from the boxplot that there is one high value outlier indicated by the “x” at the right hand side of the graph. The “4” indicates that this is the 4th observation in the data set i.e. the value 135mm.
-11
-Figure 1.5 Boxplot (left) and histogram (right) of the creeping bentgrass data show symmetry.
-1.3.2 Positively Skewed
-For right-skewed distributions we find that the mode (if one exists) is always less than the
-median and the median is always less than the mean.
+
+```{r, fig.cap="Figure 1.5 Boxplot (left) and histogram (right) of the creeping bentgrass data show symmetry."}
+library(patchwork)
+p1 <- ggplot(bentgrass, aes(x = Root_length_mm)) +
+  geom_boxplot() +
+  xlab("Root length (mm)")
+p2 <- ggplot(bentgrass, aes(x = Root_length_mm)) +
+  geom_histogram(bins = 20) +
+  xlab("Root length (mm)")
+p1+p2
+```
+
+### Positively Skewed
+
+For right-skewed distributions we find that the mode (if one exists) is always less than the median and the median is always less than the mean.
+Example: As part of an evaluation of a clean-up of a contaminated site, 100 soil samples were taken randomly across an area and the level of 1,2,3,4 Tetrachlorobenzene was recorded in parts per billion (TcCB, ppb). 
+
+The following descriptive analysis was undertaken.
+
+```{r}
+tccb <- read_csv("data/TcCB.csv", show_col_types = FALSE)
+
+summary(tccb)
+```
+
+```{r, fig.cap="Figure 1.6 Boxplot (left) and histogram (right) of the TcCB data showing positive skewness."}
+p1 <- ggplot(tccb, aes(x = TcCB_ppb)) +
+  geom_boxplot() +
+  xlab("TcCB concentration (ppb)")
+p2 <- ggplot(tccb, aes(x = TcCB_ppb)) +
+  geom_histogram(bins = 20) +
+  xlab("TcCB concentration (ppb)")
+p1+p2
+```
+
+The distribution is highly positively skewed (right skewed): there are extreme outliers at high levels. This is also demonstrated by the mean (1.412 ppb) being substantially greater than the median (0.570 ppb).
+
+### Negatively Skewed
+
+For left-skewed distributions we find that the mode is greater than the median and the median is greater than the mean.
+
 Example:
-As part of an evaluation of a clean-up of a contaminated site, 100 soil samples were taken
-randomly across an area and the level of 1,2,3,4 Tetrachlorobenzene was recorded in parts per
-billion (TcCB, ppb). The following descriptive analysis was undertaken.
-Summary statistics for TcCB
-Number of observations = 100
-Number of missing values = 0
-Mean = 1.41
-Median = 0.57
-Minimum = 0.01
-Maximum = 26.60
-Range = 26.59
-Lower quartile = 0.23
-Upper quartile = 1.29
-Standard deviation = 3.10
-Variance = 9.60
-Skewness = 6.00
-Kurtosis = 43.12
-4
-80 90 100 110 120 130
-Root
-70
-Histogram for Root
-70
-20
-80
-0
-100
-5
-120
-10
-15
-90 110 130
-25
-12
-Figure 1.6 Boxplot (left) and histogram (right) of the TcCB data showing positive skewness.
-The distribution is highly positively skewed (right skewed): there are extreme outliers at high
-levels. This is also demonstrated by the mean (1.412 ppb) being substantially greater than the
-median (0.570 ppb).
-1.3.3 Negatively Skewed
-For left-skewed distributions we find that the mode is greater than the median and the median is
-greater than the mean.
-Example:
-Data from 50 river pollution monitoring sites were reviewed over a 28 day period, and the
-number of days (out of 28) that the pollution standard had been complied with was recorded.
-Summary statistics for Days
-Number of observations = 50
-Number of missing values = 0
-Mean = 25.18
-Median = 26.00
-Minimum = 19.00
-Maximum = 28.00
-Range = 9.00
-Lower quartile = 24.00
-Upper quartile = 26.00
-Standard deviation = 2.00
-Variance = 3.99
-Skewness = -1.20
-Kurtosis = 1.28
-Although it appears that the median has not been drawn into the boxplot below, it is just that the
-median is very close to Q3 (the right hand side of the box) and the poor resolution in the
-graphics has not been able to distinguish the two.
-99
-8084
-98
-92
-64
-27
-94
-79
-881042
-0 5 10 15 20 25
-TcCB
-Histogram for TcCB
-0 10 15 20 30
-80
-60
-40
-20
-25
-0
-5
-13
-Figure 1.7 Boxplot (left) and histogram (right) of the river pollution data showing negative
-skewness.
-The distribution is negatively skewed (left skewed): there are some outliers at low levels. This
-is also demonstrated by the mean (25.2 days) being marginally less than the median (26 days),
-although the effect is not very strong.
-1.3.4 Statistics of Shape
+- The age of onset of osteoarthritis was recorded in 13 dogs. 
+- The majority of the values cluster around the 10-13 age range, which represents the more common onset age for the chronic condition in older dogs.
+- There are also some lower values representing the less common earlier onset of the condition.
+
+```{r}
+arthritis <- read_csv("data/Arthritis.csv", show_col_types = FALSE)
+
+summary(arthritis)
+```
+
+```{r, fig.cap="Figure 1.7 Boxplot (left) and histogram (right) of the river pollution data showing negative skewness."}
+p1 <- ggplot(arthritis, aes(x = AgeAtOnset)) +
+  geom_boxplot() +
+  xlab("Age at onset (years)")
+p2 <- ggplot(arthritis, aes(x = AgeAtOnset)) +
+  geom_histogram(bins = 5) +
+  xlab("Age at onset (years)")
+p1+p2
+```
+
+The distribution is negatively skewed (left skewed): there are some outliers at low levels. This is also demonstrated by the mean (9.7 years) being marginally less than the median (11.1 years).
+
+### Statistics of Shape
+
 There are two statistics useful for describing shape.
- SKEWNESS
-Skewness is another name for asymmetry which means that one tail of the frequency
-distribution is drawn out more than the other. A skewness of zero implies a symmetrically
-shaped histogram, a negative value implies skewness to the left and a positive value implies
-skewness to the right.
- KURTOSIS
-Kurtosis is a measure of how “peaked” (leptokurtic) a frequency distribution is or how “flattened”
-(platykurtic) it is. A negative value indicates platykurtosis (or flatness), and a positive value
-indicates leptokurtosis (peakedness).
+
+**SKEWNESS**
+
+Skewness is another name for asymmetry which means that one tail of the frequency distribution is drawn out more than the other. A skewness of zero implies a symmetrically shaped histogram, a negative value implies skewness to the left and a positive value implies skewness to the right.
+
+```{r}
+library(moments)
+skewness(bentgrass)
+skewness(tccb)
+skewness(arthritis)
+```
+
+**KURTOSIS**
+
+Kurtosis is a measure of how “peaked” (leptokurtic) a frequency distribution is or how “flattened” (platykurtic) it is. A negative value indicates platykurtosis (or flatness), and a positive value indicates leptokurtosis (peakedness).
+
+```{r}
+kurtosis(bentgrass)
+kurtosis(tccb)
+kurtosis(arthritis)
+```
