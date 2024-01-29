@@ -1,0 +1,197 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ENVX1002 Handbook",
+    "section": "",
+    "text": "Preface\nWelcome to the ENVX1002 handbook. This handbook is designed to be an optional companion to the lectures, labs and assessments for the course.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use-this-handbook",
+    "href": "index.html#how-to-use-this-handbook",
+    "title": "ENVX1002 Handbook",
+    "section": "How to use this handbook",
+    "text": "How to use this handbook\nRead this handbook before, or after each lecture to better understand certain concepts. You can also use this book as a reference when working on lab exercises and assessments.\nYou may download a PDF copy of this handbook on the sidebar of the HTML version of this book. You may also download the source code for this book from the GitHub repository.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#acknowledgements",
+    "href": "index.html#acknowledgements",
+    "title": "ENVX1002 Handbook",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nWe would like to acknowledge the work of previous generations of teaching staff who created the bulk of the teaching material within this manual. In particular, the work of:\n\nAssoc. Prof. Mick O’Neill\nMs. Kathryn Aufflick\nAssoc. Prof. Peter Thomson\nProf. Thomas Bishop\n\nWhen you are ready, check the sidebar to get started.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "020-scientific_method.html",
+    "href": "020-scientific_method.html",
+    "title": "1  Intro & the scientific method",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "Describing data",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Intro & the scientific method</span>"
+    ]
+  },
+  {
+    "objectID": "021-exploring_data.html",
+    "href": "021-exploring_data.html",
+    "title": "2  Exploratory Data Analysis EDA",
+    "section": "",
+    "text": "2.1 Numerical Summaries\nThe summary descriptive characteristics of a sample of objects, that is, a subset of the population, are called statistics. Sample statistics can have different values, depending on how the sample of the population was chosen. Statistics are denoted by various symbols, but (almost) never by Greek letters e.g. sample mean, \\(\\bar y\\) and sample standard deviation, \\(s\\).",
+    "crumbs": [
+      "Describing data",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Exploratory Data Analysis EDA</span>"
+    ]
+  },
+  {
+    "objectID": "021-exploring_data.html#numerical-summaries",
+    "href": "021-exploring_data.html#numerical-summaries",
+    "title": "2  Exploratory Data Analysis EDA",
+    "section": "",
+    "text": "2.1.1 Measures of Central Tendency\nThese statistics are also sometimes referred to as measures of location.\nARITHMETIC MEAN\nThe most widely used measure of central tendency is the arithmetic mean or average. The population mean, \\(\\mu\\) (“mu”) is the sum of all the values of the variable under study divided by the total number of objects in the population, Each value is algebraically denoted by a \\(y\\) with a subscript denotation \\(i\\). E.g. a small theoretical population whose objects had values 1, 6, 4, 5, 6, 3, 8, 7 would be denoted:\n\\[y_1 = 1,\\ y_2 = 6,\\ y_3 = 4,\\ y_4 = 5,\\ y_5 = 6,\\ y_6 = 3,\\ y_7 = 8,\\ y_8 = 7\\]\n\n\n\n\n\n\nNote\n\n\n\nSome texts will use \\(X\\) instead of \\(x\\) or \\(Y\\) instead of \\(y\\) as the symbol for a value.\n\n\nWe would denote the population size with a capital \\(N\\). In our theoretical population \\(N = 8\\).\nThe population mean, \\(\\mu\\), would be:\n\\[\\frac{1+6+4+5+6+3+8+7}{8}=5\\]\nThe algebraic shorthand formula for a population mean is\n\\[\\mu = \\frac{1}{N}\\sum_{i=1}^{N} y_i\\]\nThe Greek letter \\(\\Sigma\\) (“sigma”) indicates summation, the subscript \\(i = 1\\) means to start with the first observation, and the superscript \\(N\\) means to continue until and including the \\(N\\)th observation.\nFor the example above,\n\\[\\sum_{i=2}^{5} y_i=y_2+y_3+y_4+y_5=6+4+5+6=21\\]\nTo reduce the clutter, if the summation sign is not indexed, for example \\(y_i\\), it is implied that the operation of addition begins with the first observation and continues through the last observation in a population, that is,\n\\[\\sum_{i=1}^{N} y_i = \\sum y_i\\]\nThe sample mean is defined by\n\\[\\bar y = \\frac{1}{n}\\sum_{i=1}^{n} y_i\\]\nwhere \\(n\\) is the sample size.\nThe symbol \\(\\bar y\\) (read “y bar”) indicates that the observations of a subset of size n from a population have been averaged. \\(y\\) is fundamentally different from \\(\\mu\\) because samples from a population can have different values for their sample mean, that is, they can vary from sample to sample within the population. The population mean, however, is constant for a given population.\nAgain consider the small theoretical population \\(1, 6, 4, 5, 6, 3, 8, 7\\). A sample size of 3 may consist of \\(5, 3, 4\\) with \\(\\bar y =6\\) OR it could be \\(1,3,5\\) with \\(\\bar y = 3\\)\nEach sample mean \\(\\bar y\\) is an unbiased estimate of \\(m\\) but depends on the values included in the sample and sample size for its actual value. We would expect the average of all possible \\(y\\)’s to be equal to the population parameter, \\(\\mu\\). This is, in fact, the definition of an unbiased estimator of the population mean.\nThe R function is mean().\n\ny &lt;- c(1, 6, 4, 5, 6, 3, 8, 7)\nmean(y)\n\n[1] 5\n\n\nThe Excel command is =AVERAGE()\nMEDIAN\nThe median is the “middle” value of an ordered list of observations. The population median \\(M\\) is the \\(\\left( \\frac{N+1}{2} \\right)th\\) sorted value, where \\(N\\) is the population size. Note that this parameter is not a Greek letter and is seldom computed in practice. A sample median \\(\\tilde y\\) (read “y tilde”) is the statistic used to approximate or estimate the population median. \\(\\tilde y\\) is the \\(\\left( \\frac{n+1}{2} \\right)th\\) sorted value where n is the sample size.\nThe R function is median().\n\ny &lt;- c(1, 6, 4, 5, 6, 3, 8, 7)\nmedian(y)\n\n[1] 5.5\n\n\nThe Excel command is =MEDIAN().\nMODE\nThe mode is the most frequently occurring value in a data set.\nThere is no direct function for the mode in R, the following code is an example of how it can be calculated.\n\nmode_function &lt;- function(x) {\n  uniqx &lt;- unique(x)\n  uniqx[which.max(tabulate(match(x, uniqx)))]\n}\n\n# Example usage\ny &lt;- c(1, 6, 4, 5, 6, 3, 8, 7)\nmode &lt;- mode_function(y)\nprint(mode)\n\n[1] 6\n\n\nThe Excel command is =MODE().\nOVERVIEW OF MEASURES OF CENTRAL TENDENCY:\n\nThe mean is a purposeful measure only for a quantitative variable, whether it is continuous (e.g. height) or discrete (e.g. number of nematodes).\nThe median can be calculated whenever a variable can be ranked (including when the variable is quantitative).\nThe mode can be calculated for categorical variables, as well as for quantitative and ranked variables.\nThe sample median expresses less information than the sample mean because it utilizes the ranks and not the actual values of each measurement.\nThe median, however, is resistant to the effects of outliers. Extreme values or outliers in a sample can drastically affect the sample mean, while having little effect on the median.\n\n\n\n2.1.2 Measures of Spread\nMeasures of central tendency alone are not sufficient to fully describe a data set. The following figure illustrates 3 distributions that all have the same mean but different levels of dispersion or spread.\n\nlibrary(ggplot2)\n\n# Define the data for the three normal distributions\nmean_value &lt;- 0\nstd_dev_A &lt;- 1   # Least spread\nstd_dev_B &lt;- 2\nstd_dev_C &lt;- 3   # Most spread\n\n# Create a data frame for plotting\nx_values &lt;- seq(-10, 10, length.out = 300)\nnormal_data &lt;- data.frame(\n  x = c(x_values, x_values, x_values),\n  y = c(dnorm(x_values, mean_value, std_dev_A), \n        dnorm(x_values, mean_value, std_dev_B), \n        dnorm(x_values, mean_value, std_dev_C)),\n  curve = factor(c(rep(\"A\", length(x_values)), \n                   rep(\"B\", length(x_values)), \n                   rep(\"C\", length(x_values)))\n  )\n)\n\n# Generate the plot\nggplot(normal_data, aes(x = x, y = y, color = curve)) +\n  geom_line() +\n  labs(title = \"Normal Distributions with Different Spreads\",\n       x = \"Value\",\n       y = \"Density\") +\n  scale_color_manual(values = c(\"red\", \"green\", \"blue\"),\n                     labels = c(\"A: Least Spread\", \"B\", \"C: Most Spread\")) +\n  theme_minimal()\n\n\n\n\nFigure 1.1 A, B & C are distributions with the same mean (zero) but varying standard deviations.\n\n\n\n\nIn graph A, most of the values are concentrated around the mean. It has less dispersion (or spread of values) than the other distributions. Graph C has more dispersion than the others. Its data is more “spread” out. A measure of dispersion provides some indication of the amount of variation that the data exhibits.\nRANGE\nThe simplest measure of dispersion or “spread” is the range – the difference between the largest and smallest observations in a group of data.\nThe sample range is a crude and biased estimator of the population range as its dependent on the composition and size of the sample you’ve taken. [It’s unlikely that the sample will include the largest and smallest values from the population, so the sample range usually underestimates the population range and is, therefore, a biased estimator.]\nThe R function is max(y)-min(y)\n\ny &lt;- c(1, 6, 4, 5, 6, 3, 8, 7)\nmax(y)-min(y)\n\n[1] 7\n\n\nThe Excel command is =MAX()-MIN()\nINTERQUARTILE RANGE\nRather than describe variability in terms of variation around the mean, we more directly quantify the “spread”. Just as the median divides the sample into two, the quartiles divide the sample into four groups:\n\n25% of observations \\(\\le\\) lower quartile (Q1)\n50% of observations \\(\\le\\) median (Q2)\n75% of observations \\(\\le\\) upper quartile (Q3)\n\nThe example data below (the number of days pigs take to reach bacon weight) has been sorted from lowest to highest.\n98 100 100 103 105 107 110 113 115\nThe lower quartile Q1 is the \\(\\left( \\frac{n+1}{4} \\right)th\\) sorted value = \\(\\left( \\frac{9+1}{4} \\right)th = 2.5th\\) sorted value.\nThis means we need to obtain a weighted average of the 2nd and 3rd sorted value: \\[0.5 \\times 100 + 0.5 \\times 100 = 100 \\text{ days}\\]\nThe upper quartile Q3 is the \\(\\left( \\frac{3(n+1)}{4} \\right)th\\) sorted value = \\(\\left( \\frac{3(9+1)}{4} \\right)th = 7.5th\\) sorted value.\nThis means we need to obtain a weighted average of the 2nd and 3rd sorted value: \\[0.5 \\times 110 + 0.5 \\times 113 = 111.5 \\text{ days}\\]\nThe inter quartile range = Upper Quartile - Lower Quartile\n\\[IQR = Q3-Q1=111.5-100=11.5 \\text{ days}\\]\nSo 50% of pigs reach bacon weight within a range of 11.5 days.\nThe following is an example of calculations in R - note that we use the type 6 calculation and the default in R is type 7 which we generally use.\nFor more information see:\n\nHyndman, R.J. and Fan, Y., 1996. Sample quantiles in statistical packages. The American Statistician, 50(4), pp.361-365.\n\n\ny &lt;- c(98, 100, 100, 103, 105, 107, 110, 113, 115)\n\nquantile(y, 0.75, type = 6) - quantile(y, 0.25, type = 6) ## Type 6\n\n 75% \n11.5 \n\n## Default which we will generally use going forward\nquantile(y, 0.75) - quantile(y, 0.25) \n\n75% \n 10 \n\n\nPERCENTILES\nThe 5th and 95th percentiles cut off 5% of the most extreme values in the distribution of values for the sample. The 1st and 99th percentiles may be similarly defined. As with quartiles, a list of percentiles may be far more informative than the standard deviation for summarizing the spread of values about the mean or median, especially when the spread is asymmetrical.\nVARIANCE\nIn general, we have \\(n\\) observations, so the general formula for the sample variance is\n\\[s^2 = \\frac{1}{n-1}\\sum_{i=1}^{n} (y_i - \\bar{y})^2\\]\nThe units for the variance are always the units of the original measurement squared. If units of measurement were kg (e.g. body weight), then the variance would have units \\(kg^2\\).\nSTANDARD DEVIATION\nTo have a measure of variability with the same units as the original measurement, we take the square root of the variance. This is the standard deviation of the observations (usual symbol is s).\nSample standard deviation,\n\\[s = \\sqrt{\\frac{1}{n-1}\\sum_{i=1}^{n} (y_i - \\bar{y})^2}\\]\nCOEFFICIENT OF VARIATION\nThe coefficient of variation (CV) is used is used to aide in comparing the variability of two samples that have widely differing means. It is usually expressed as a percentage, and has no units.\n\\[CV = \\frac{s}{\\bar{y}} \\times 100\\%\\]",
+    "crumbs": [
+      "Describing data",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Exploratory Data Analysis EDA</span>"
+    ]
+  },
+  {
+    "objectID": "021-exploring_data.html#graphical-summaries",
+    "href": "021-exploring_data.html#graphical-summaries",
+    "title": "2  Exploratory Data Analysis EDA",
+    "section": "2.2 Graphical Summaries",
+    "text": "2.2 Graphical Summaries\n\n2.2.1 Bar Graphs and Histograms\nFrequency tabulations can be represented as a graph of frequency (raw or percentage) against the measurement variable. Discrete data are sometimes expressed as a bar graph where bars are spaced equidistantly along the horizontal axis. Figure 1.2 is a relative frequency histogram (also known as a percentage frequency histogram) of the sedge plant data. The data represents data from sedge plant counts in 800 1m x 1m quadrats Ideally this data set (since it is discrete) would be plotted as a bar graph.\n\nlibrary(tidyverse)\n\nsedge &lt;- read_csv(\"data/Sedge.csv\", show_col_types = FALSE)\n\nggplot(sedge, aes(x = Plants)) +\n  geom_histogram(aes(y = after_stat(count)/sum(after_stat(count)) * 100), bins = 8) +\n  ylab(\"Percentage\") +\n  xlab(\"Number of plants per quadrat\")\n\n\n\n\nFigure 1.2 Relative frequency histogram of sedge plant data.\n\n\n\n\nContinuous measurements are free to take any whole or fractional number within their range e.g. plant height, soil pH, concentration of nitrates in a water sample. Histograms (with bars touching each other) are the norm for continuous data.\n\nbentgrass &lt;- read_csv(\"data/Bentgrass.csv\", show_col_types = FALSE)\n\nggplot(bentgrass, aes(x = Root_length_mm)) +\n  geom_histogram(bins = 20) +\n  xlab(\"Root length (mm)\")\n\n\n\n\nFigure 1.3 Frequency histogram of creeping bentgrass data.\n\n\n\n\nA histogram can give nearly complete information about the distribution of data. For example, from Figure 1.3 above (that shows a fairly symmetric distribution) we can estimate that the mean ≈ 95 mm (the centre of the data) and standard deviation ≈ 15 mm (since for symmetric distributions approximately 95% of data lies within 2 standard deviations either side of the mean i.e. a total of 4 standard deviations across 95% of the data values).\nA histogram needs a relatively large sample size for it to be informative (i.e. 30 or more data values).\n\n\n2.2.2 Boxplots\nBoxplots show the shape of the distribution of data very clearly and are also helpful in identifying any outlying (or extreme) values.\nExample 1 Creeping bentgrass turf was laid in an experiment to assess root growth. Eighty (80) “plugs” were randomly sampled 4 weeks after laying. Root growth was measured by averaging the length (mm) of the ten longest roots in each plug.\n\nggplot(bentgrass, aes(x = Root_length_mm)) +\n  geom_boxplot() +\n  xlab(\"Root length (mm)\")\n\n\n\n\n\n\n\n\nNotes on boxplots:\n\n50% of the data are contained within the box (inter quartile range).\nWhiskers are extended to a maximum of 1.5 x IQR\nAny data values beyond these maximum whisker lengths are plotted individually, usually by an asterisk or dot \\(\\Rightarrow\\) these may be outliers and distort the results of any further analysis\nA boxplot gives useful summary of the shape of the data distribution e.g. Is it symmetric or skewed? Are there any outliers?\nBoxplots do not need as many data values (as some other graphs such as histograms and dot plots) for them to be informative.\n\nGUIDELINES FOR MAKING A BOXPLOT\nWe will use the gravimetric water content of soil (%) from Method A in the irrigation data set to illustrate how a boxplot is constructed. In this example we have n = 10 observations. We can use the R function, summary() to calculate some of the important values in a boxplot such as Q1, Q2, and Median.\n\nsoil_water &lt;- data.frame(water_content = c(7.5, 9.0, 9.3, 10.4, 10.4, 10.6, 10.7, 11.6, 12.1, 12.8))\n\nsummary(soil_water$water_content)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  7.500   9.575  10.500  10.440  11.375  12.800 \n\n\nStep 1: Determining the Box:\n\nThe quartiles (Q1: 1st Qu. & Q3: 3rd Qu.) then become the basis for the “box”\nThe median is shown as a vertical line through the box.\n\nStep 2: Determining (potential) outliers\n\nCalculate IQR = Inter-quartile range = 11.375 - 9.575 = 1.8\nCalculate Q1 - 1.5 x IQR = 9.225 - 1.5 x 1.8 = 6.875 Since there are no observations smaller than 6.875, there are no low-valued outliers.\nCalculate Q3 + 1.5 x IQR = 11.375 + 1.5 x 1.8 = 14.075 Since there are no observations greater than 14.075, there are no high-valued outliers.\nIf any values were flagged to be (potential) outliers, they are plotted as individual points on the boxplot, usually as a “*” or \\(\\bullet\\).\n\nStep 3: Determining the “whisker” lengths\n\nExtend the whisker from the lower end of the box (Q1) to the smallest value that is not an outlier, i.e. to the smallest value greater then Q1 - 1.5 x IQR. That is, the whisker here will be extended down to the minimum value which is 7.5.\nExtend the whisker from the upper end of the box (Q3) to the largest value that is not an outlier, i.e. to the greatest value smaller then Q3 + 1.5 x IQR. That is, the whisker here will be extended up to 12.8.\n\nUsing these values, the following boxplot is obtained:\n\nggplot(soil_water, aes(x = water_content)) +\n  geom_boxplot() +\n  xlab(\"gravimetric water content of soil (%)\")",
+    "crumbs": [
+      "Describing data",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Exploratory Data Analysis EDA</span>"
+    ]
+  },
+  {
+    "objectID": "021-exploring_data.html#shapes-of-distributions",
+    "href": "021-exploring_data.html#shapes-of-distributions",
+    "title": "2  Exploratory Data Analysis EDA",
+    "section": "2.3 Shapes of Distributions",
+    "text": "2.3 Shapes of Distributions\n\n2.3.1 Symmetric\nThis is a distribution such that the left hand side of the frequency polygon is a mirror image of the right hand side. For symmetrical distributions, the mean, median and mode all have the same value. Substantial differences in these three statistics could provide valuable information about the data set (as we’ll see in the sections on positively and negatively skewed distributions). Some examples of symmetric distributions appear below.\n\n\n\nFigure 1.4 Four examples of symmetric distributions.\n\n\nExample: Creeping bentgrass: root growth (mm)\n\nsummary(bentgrass)\n\n Root_length_mm  \n Min.   : 65.00  \n 1st Qu.: 86.75  \n Median : 93.00  \n Mean   : 93.86  \n 3rd Qu.:102.00  \n Max.   :135.00  \n\n\nNote that the mean and the median are similar (93.9, and 93.0 mm respectively). This is indicative of symmetric data. The boxplot and histogram below show that the data is symmetric about the mean. You will notice from the boxplot that there is one high value outlier indicated by the “x” at the right hand side of the graph. The “4” indicates that this is the 4th observation in the data set i.e. the value 135 mm.\n\nlibrary(patchwork)\np1 &lt;- ggplot(bentgrass, aes(x = Root_length_mm)) +\n  geom_boxplot() +\n  xlab(\"Root length (mm)\")\np2 &lt;- ggplot(bentgrass, aes(x = Root_length_mm)) +\n  geom_histogram(bins = 20) +\n  xlab(\"Root length (mm)\")\np1+p2\n\n\n\n\nFigure 1.5 Boxplot (left) and histogram (right) of the creeping bentgrass data show symmetry.\n\n\n\n\n\n\n2.3.2 Positively Skewed\nFor right-skewed distributions we find that the mode (if one exists) is always less than the median and the median is always less than the mean. Example: As part of an evaluation of a clean-up of a contaminated site, 100 soil samples were taken randomly across an area and the level of 1,2,3,4 Tetrachlorobenzene was recorded in parts per billion (TcCB, ppb).\nThe following descriptive analysis was undertaken.\n\ntccb &lt;- read_csv(\"data/TcCB.csv\", show_col_types = FALSE)\n\nsummary(tccb)\n\n    TcCB_ppb     \n Min.   : 0.010  \n 1st Qu.: 0.235  \n Median : 0.570  \n Mean   : 1.412  \n 3rd Qu.: 1.292  \n Max.   :26.600  \n\n\n\np1 &lt;- ggplot(tccb, aes(x = TcCB_ppb)) +\n  geom_boxplot() +\n  xlab(\"TcCB concentration (ppb)\")\np2 &lt;- ggplot(tccb, aes(x = TcCB_ppb)) +\n  geom_histogram(bins = 20) +\n  xlab(\"TcCB concentration (ppb)\")\np1+p2\n\n\n\n\nFigure 1.6 Boxplot (left) and histogram (right) of the TcCB data showing positive skewness.\n\n\n\n\nThe distribution is highly positively skewed (right skewed): there are extreme outliers at high levels. This is also demonstrated by the mean (1.412 ppb) being substantially greater than the median (0.570 ppb).\n\n\n2.3.3 Negatively Skewed\nFor left-skewed distributions we find that the mode is greater than the median and the median is greater than the mean.\nExample: - The age of onset of osteoarthritis was recorded in 13 dogs. - The majority of the values cluster around the 10-13 age range, which represents the more common onset age for the chronic condition in older dogs. - There are also some lower values representing the less common earlier onset of the condition.\n\narthritis &lt;- read_csv(\"data/Arthritis.csv\", show_col_types = FALSE)\n\nsummary(arthritis)\n\n   AgeAtOnset    \n Min.   : 3.800  \n 1st Qu.: 7.225  \n Median :11.150  \n Mean   : 9.714  \n 3rd Qu.:12.000  \n Max.   :13.200  \n\n\n\np1 &lt;- ggplot(arthritis, aes(x = AgeAtOnset)) +\n  geom_boxplot() +\n  xlab(\"Age at onset (years)\")\np2 &lt;- ggplot(arthritis, aes(x = AgeAtOnset)) +\n  geom_histogram(bins = 5) +\n  xlab(\"Age at onset (years)\")\np1+p2\n\n\n\n\nFigure 1.7 Boxplot (left) and histogram (right) of the river pollution data showing negative skewness.\n\n\n\n\nThe distribution is negatively skewed (left skewed): there are some outliers at low levels. This is also demonstrated by the mean (9.7 years) being marginally less than the median (11.1 years).\n\n\n2.3.4 Statistics of Shape\nThere are two statistics useful for describing shape.\nSKEWNESS\nSkewness is another name for asymmetry which means that one tail of the frequency distribution is drawn out more than the other. A skewness of zero implies a symmetrically shaped histogram, a negative value implies skewness to the left and a positive value implies skewness to the right.\n\nlibrary(moments)\nskewness(bentgrass)\n\nRoot_length_mm \n    0.08475045 \n\nskewness(tccb)\n\nTcCB_ppb \n5.998866 \n\nskewness(arthritis)\n\nAgeAtOnset \n-0.8257301 \n\n\nKURTOSIS\nKurtosis is a measure of how “peaked” (leptokurtic) a frequency distribution is or how “flattened” (platykurtic) it is. A negative value indicates platykurtosis (or flatness), and a positive value indicates leptokurtosis (peakedness).\n\nkurtosis(bentgrass)\n\nRoot_length_mm \n      3.354701 \n\nkurtosis(tccb)\n\nTcCB_ppb \n46.11769 \n\nkurtosis(arthritis)\n\nAgeAtOnset \n  2.030982",
+    "crumbs": [
+      "Describing data",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Exploratory Data Analysis EDA</span>"
+    ]
+  },
+  {
+    "objectID": "022-probability_distributions.html",
+    "href": "022-probability_distributions.html",
+    "title": "3  Probability distributions",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "Describing data",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Probability distributions</span>"
+    ]
+  },
+  {
+    "objectID": "023-sampling_distributions.html",
+    "href": "023-sampling_distributions.html",
+    "title": "4  Sampling distributions",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "Describing data",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Sampling distributions</span>"
+    ]
+  },
+  {
+    "objectID": "030-ttest1.html",
+    "href": "030-ttest1.html",
+    "title": "5  One-sample \\(t\\)-test",
+    "section": "",
+    "text": "In this example, we will use the t.test() function to perform a one-sample \\(t\\)-test. The data set we will use is the mtcars data set, which contains information about 32 different cars. We will use the mpg variable, which is the miles per gallon for each car. We will test the hypothesis that the mean miles per gallon for all cars is 20.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>One-sample $t$-test</span>"
+    ]
+  },
+  {
+    "objectID": "031-ttest2.html",
+    "href": "031-ttest2.html",
+    "title": "6  Two-sample \\(t\\)-test",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Two-sample $t$-test</span>"
+    ]
+  },
+  {
+    "objectID": "032-nonparametric1.html",
+    "href": "032-nonparametric1.html",
+    "title": "7  Non-parametrics tests: part 1",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Non-parametrics tests: part 1</span>"
+    ]
+  },
+  {
+    "objectID": "033-nonparametric2.html",
+    "href": "033-nonparametric2.html",
+    "title": "8  # Non-parametrics tests: part 2",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Non-parametrics tests: part 2</span>"
+    ]
+  },
+  {
+    "objectID": "040-describing_relationships.html",
+    "href": "040-describing_relationships.html",
+    "title": "9  Describing relationships",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "Modelling",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Describing relationships</span>"
+    ]
+  },
+  {
+    "objectID": "041-linear_functions.html",
+    "href": "041-linear_functions.html",
+    "title": "10  Linear functions",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "Modelling",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Linear functions</span>"
+    ]
+  },
+  {
+    "objectID": "042-linear_functions_multi.html",
+    "href": "042-linear_functions_multi.html",
+    "title": "11  Linear functions – multiple predictors",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "Modelling",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Linear functions -- multiple predictors</span>"
+    ]
+  },
+  {
+    "objectID": "043-nonlinear.html",
+    "href": "043-nonlinear.html",
+    "title": "12  Non-linear functions",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "Modelling",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Non-linear functions</span>"
+    ]
+  }
+]
