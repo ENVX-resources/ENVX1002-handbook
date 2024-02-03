@@ -192,9 +192,4 @@ $f(z)=\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}z^2}$
 
 ### Calculating Probabilities for Standardised Normal Values
 
-To calculate probabilities in the standardised normal distribution, remember that the values given in the statistical table are cumulative probabilities - i.e. probabilities of values of z occurring below a particular value. For example, looking at the table we see the probability associated with a z value of 0 is 0.5000. This means that half the values are below 0 (i.e. 50%). Using  - if we want to know what the probability of obtaining a value
-greater than the point of interest, then we subtract probability of obtaining a value less than
-point of interest from 1 (the total area under the curve). To find the probability of a value
-occurring between two points, subtract the probability of being less than the lower value from
-the probability of being less than the upper value. The easiest way to understand this is to draw
-the curve showing the area required, as in the figures below.
+To calculate probabilities in the standardised normal distribution, remember that the values given in the statistical table are cumulative probabilities - i.e. probabilities of values of z occurring below a particular value. For example, looking at the table we see the probability associated with a z value of 0 is 0.5000. This means that half the values are below 0 (i.e. 50%). Using  - if we want to know what the probability of obtaining a value greater than the point of interest, then we subtract probability of obtaining a value less than point of interest from 1 (the total area under the curve). To find the probability of a value occurring between two points, subtract the probability of being less than the lower value from the probability of being less than the upper value. The easiest way to understand this is to draw the curve showing the area required, as in the figures below.
