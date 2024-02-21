@@ -240,11 +240,15 @@ ggplot(df, aes(x)) +
 ```
 
 
-(i)	
+(ii)	
 
-$P(Z < 1.85)$ where $Z \sim N(0, 1)$
+$P(Z > 1.85)$ where $Z \sim N(0, 1)$
 
-$P(Z < 1.85) = 0.9678$
+$1 - P(Z < 1.85) = 0.0322$
+
+```{r}
+1-pnorm(1.85)
+```
 
 ```{r}
 # Load the ggplot2 library
@@ -255,8 +259,8 @@ mean <- 0
 sd <- 1
 
 # Define the range for the shaded area
-lower_bound <- -4
-upper_bound <- 1.85
+lower_bound <- 1.85
+upper_bound <- 4
 
 # Create a data frame for the x values
 x_values <- seq(mean - 4*sd, mean + 4*sd, length.out = 1000)
@@ -270,3 +274,217 @@ ggplot(df, aes(x)) +
   labs(title = "PDF", x = "Value", y = "Density") +
   theme_minimal()
 ```
+
+(iii)	
+
+$P(–1 < Z < 2)$ where $Z \sim N(0, 1)$
+
+$P(Z < 2)  \approx  0.9772$ (from R)
+
+$P(Z< –1) \approx  0.1587$ (from R)
+
+$P(–1 < Z < 2) \approx  0.9772 – 0.1587 \approx  0.8185$
+
+```{r}
+pnorm(2)
+pnorm(-1)
+pnorm(2) - pnorm(-1)
+```
+
+```{r}
+# Load the ggplot2 library
+library(ggplot2)
+
+# Define the mean and standard deviation
+mean <- 0
+sd <- 1
+
+# Define the range for the shaded area
+lower_bound <- -1
+upper_bound <- 2
+
+# Create a data frame for the x values
+x_values <- seq(mean - 4*sd, mean + 4*sd, length.out = 1000)
+df <- data.frame(x = x_values)
+
+# Create the ggplot object
+ggplot(df, aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = mean, sd = sd), colour = "blue") +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = mean, sd = sd),
+            xlim = c(lower_bound, upper_bound), fill = "blue", alpha = 0.2) +
+  labs(title = "PDF", x = "Value", y = "Density") +
+  theme_minimal()
+```
+
+### Calculating Probabilities for Non-Standardised Normal Values
+
+Suppose that from long term studies, it is known that the gestation length of cattle (in days) is normally distributed with a mean of 285 days and a standard deviation of 10 days i.e. $y \sim N(285, 10^2)$. The following is a plot of the theoretical distribution (PDF).
+
+```{r}
+library(ggplot2)
+# Define the mean and standard deviation
+mean <- 285
+sd <- 10
+# Create a sequence of x values
+x_values <- seq(mean - 4*sd, mean + 4*sd, length.out = 1000)
+# Create a ggplot
+ggplot(data.frame(x_values), aes(x = x_values)) +
+  stat_function(fun = dnorm, args = list(mean = mean, sd = sd)) +
+  labs(title = "PDF", x = "Gestation Period (days)", y = "Density") +
+  theme_minimal()
+```
+
+Approximately 68% of data lie within $\pm 1 \sigma$ of $\mu$, i.e., $285 \pm 10 =$ $275$ to $295$ days. So if a pregnancy is selected at random, there is a probability of approximately 0.68 that it is between 275 days and 295 days in duration.
+
+Approximately 95% of data lie within $\pm 2 \sigma$ of $\mu$, i.e., $285 \pm 10 =$ $265$ to $305$  days. So if a pregnancy is selected at random, there is a probability of approximately 0.95 that it is between 265 and 305 days in duration.
+
+```{r}
+# Load the ggplot2 library
+library(ggplot2)
+
+# Define the mean and standard deviation
+mean <- 285
+sd <- 10
+
+# Define the range for the shaded area
+lower_bound <- 275
+upper_bound <- 295
+
+# Create a data frame for the x values
+x_values <- seq(mean - 4*sd, mean + 4*sd, length.out = 1000)
+df <- data.frame(x = x_values)
+
+# Create the ggplot object
+ggplot(df, aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = mean, sd = sd), colour = "blue") +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = mean, sd = sd),
+            xlim = c(lower_bound, upper_bound), fill = "blue", alpha = 0.2) +
+  labs(title = "PDF", x = "Value", y = "Density") +
+  theme_minimal()
+```
+
+```{r}
+# Load the ggplot2 library
+library(ggplot2)
+
+# Define the mean and standard deviation
+mean <- 285
+sd <- 10
+
+# Define the range for the shaded area
+lower_bound <- 265
+upper_bound <- 305
+
+# Create a data frame for the x values
+x_values <- seq(mean - 4*sd, mean + 4*sd, length.out = 1000)
+df <- data.frame(x = x_values)
+
+# Create the ggplot object
+ggplot(df, aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = mean, sd = sd), colour = "blue") +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = mean, sd = sd),
+            xlim = c(lower_bound, upper_bound), fill = "blue", alpha = 0.2) +
+  labs(title = "PDF", x = "Value", y = "Density") +
+  theme_minimal()
+```
+
+### Calculating Probabilities for Non-Standardised Normal Values
+
+**Examples**
+
+(i)
+
+Assume that cabbage yields are known to be normally distributed with a mean $\mu = 1.4$ kg / plant, and a standard deviation $\sigma = 0.2$ kg / plant.
+
+Find $P(Y < 1)$ where we assume that $Y \sim N(1.4, 0.2^2)$.
+
+```{r}
+pnorm(1, mean = 1.4, sd = 0.2)
+```
+
+(ii)
+
+Find the 5th and 95th percentile of cabbage yield Y, where we assume that $Y \sim N(1.4, 0.2^2)$.
+
+Now we are looking for the points on the x-axis given the probability (rather than finding a probability as we have to date).
+
+We can use the `qnorm` function to find the quantiles.
+
+```{r}
+qnorm(0.05, mean = 1.4, sd = 0.2) # 5th percentile
+```
+
+```{r}
+qnorm(0.95, mean = 1.4, sd = 0.2) # 95th percentile
+```
+
+### Exploring the Properties of the Normal Distribution - fun with Excel
+
+- There a many examples above of using ggplot to draw the normal distribution. However, you can also use Excel to draw the normal distribution. This is a useful skill to have as you can use Excel to draw the normal distribution for any mean and standard deviation, not just the standard normal distribution.
+- Plotting the standard normal density function in Excel
+- Recall that the probability density function (PDF) for the normal distribution is 
+
+$f(x) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}$
+
+- For the case of the standard normal distribution $Z \sim N(0,1)$ the formula becomes 
+
+$f(z) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}z^2}$
+
+- We will evaluate this function over the range -3 < Z < 3. That is, we will substitute various values of z (between -3 and +3 in steps of 0.1) into the formula above to obtain their corresponding probability densities.
+
+- Once we’ve obtained these probabilities we’ll plot them on the y-axis and the z values on the x-axis to create our own bell-shaped normal curve in Excel.
+
+**Instructions:**
+
+- In cells **A1:C1** type the following column headings: ‘z’; ‘PDF via formula’; ‘PDF via NORMDIST’.
+- In cells **A2:A62** create a column of z values than range from -3 to +3 in incremental steps of 0.1. Type -3 in **A2** and -2.9 in **A3**, highlight both cells and drag down with the black cross which should appear once you put the cursor near the bottom right hand corner. 
+
+Now we’re going to obtain the corresponding probabilities in 2 different ways – you should get exactly the same answers.
+
+- In cell **B2**, enter the formula for the standard normal distribution using a cell references for z. Pick up the + at the bottom right hand corner and drag the mouse (left hand button) to drag this formula down the column to obtain the rest of the answers. You don’t need to re-enter the formula in each row.
+ 
+- Some Excel functions for entering the formula are
+
+| Mathematical symbol/function | Excel function
+|:-----------------------------|:----------------
+| e2	                         | =EXP(2)
+| $\pi$	                       | =PI()
+| $\sqrt{4}$                   | =SQRT(4)
+| $2^2$                        | =2^2
+
+-	In cell **C2**, insert the Excel function **NORM.DIST** and fill in the arguments [Remember the standard normal density function has a mean of 0 and variance of 1]. There is another shortcut method to apply this formula for Z from -3 to +3 in one step. Point the mouse to the bottom right hand corner of **C2**; the mouse will change shape to +; then simply double click on the + and the formula will automatically be filled down to as many cells as are not empty alongside.
+-	Tidy up the formatting of your spreadsheet by centering columns and individual cells, and bolding important labels.
+-	Use the menus to plot the standard normal distribution, **Insert > Scatter > Scatter** with Smooth Lines.  The screenshot below should help you.
+
+![Excel](images/excel_norm.png)
+
+Consider how you might do the above exercise for a non-standard normal distribution...
+
+### Normality Tests
+
+Normality tests are the first introduction you’ll have to formal statistical hypothesis testing! 
+
+For every hypothesis test you (or the computer) need to perform the following steps (as a minimum):
+
+1.	Set null & alternate hypotheses;
+2.	Calculate test statistic;
+3.	Obtain P-value and or critical value;
+4.	Draw a conclusion about your null hypothesis from the P-value (or by comparing the test statistic with the critical value).
+
+We’ll expand these steps soon…
+
+There are quite a few normality tests that statisticians have developed over the years. We will focus on one of these. The Shapiro-Wilk test is a test of the null hypothesis that the data is normally distributed. The test statistic is calculated using the data and then using this test statistic, a probability value (P-value) is obtained. From the P-value we make a decision whether or not to reject the null hypothesis (i.e. whether or not to reject the normality assumption).
+
+We will be using tetrachlorobenzene levels (TcCB, ppb) in 100 soil samples as our example data set to show how R performs the test. We have seen previously that the distribution of this data is HIGHLY POSITIVELY skewed.
+
+```{r}
+# Load the data
+TcCB <- read.csv("data/TcCB.csv")
+
+# Perform the Shapiro-Wilk test
+shapiro.test(TcCB$TcCB)
+
+```
+
+The null hypothesis is that the data is normally distributed. The P-value is 0.0001, which is less than 0.05. Therefore, we reject the null hypothesis and conclude that the data is not normally distributed.
+

@@ -1,6 +1,7 @@
 # Exploratory Data Analysis EDA
 
 ## Numerical Summaries
+
 The summary descriptive characteristics of a sample of objects, that is, a subset of the population, are called statistics. Sample statistics can have different values, depending on how the sample of the population was chosen. Statistics are denoted by various symbols, but (almost) never by Greek letters e.g. sample mean, $\bar y$ and sample standard deviation, $s$.
 
 ### Measures of Central Tendency
