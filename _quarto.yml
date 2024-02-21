@@ -6,7 +6,6 @@ book:
   author:
     - name: "Floris van Ogtrop"
     - name: "Liana Pozza"
-    - name: "Aaron Greenville"
     - name: "Januar Harianto"
   date: today
   date-format: MMM YYYY
@@ -14,10 +13,9 @@ book:
     - index.qmd
     - part: "Describing data"
       chapters:
-        - 020-scientific_method.qmd
-        - 021-exploring_data.qmd
-        - 022-probability_distributions.qmd
-        - 023-sampling_distributions.qmd
+        - 020-exploring_data.qmd
+        - 021-probability_distributions.qmd
+        - 022-sampling_distributions.qmd
     - part: "Inference"
       chapters:
         - 030-ttest1.qmd
