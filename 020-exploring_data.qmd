@@ -1,6 +1,7 @@
 # Exploratory Data Analysis EDA
 
 ## Numerical Summaries
+
 The summary descriptive characteristics of a sample of objects, that is, a subset of the population, are called statistics. Sample statistics can have different values, depending on how the sample of the population was chosen. Statistics are denoted by various symbols, but (almost) never by Greek letters e.g. sample mean, $\bar y$ and sample standard deviation, $s$.
 
 ### Measures of Central Tendency
@@ -217,6 +218,22 @@ To have a measure of variability with the same units as the original measurement
 Sample standard deviation,
 
 $$s = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n} (y_i - \bar{y})^2}$$
+**DEGREES OF FREEDOM**
+
+The value n-1 in the above equations for variance and standard deviation is referred to as the degrees of freedom (df). Ashcroft & Pereira (2003) explain this concept in the following way.
+
+“The degrees of freedom in our analysis is the number of observations that are allowed to vary if our sample characteristic is to estimate precisely the population characteristic. For instance, when we are estimating just one population characteristic like the population variance and out sample size is n, the degrees of freedom is n-1 since control of just one observation (i.e. the rest are free to vary) is all that is required to make our sample variance exactly equal to the population variance.
+
+As an example, suppose we have a sample of 5 observations $(x_1, x_2, x_3, x_4, x_5; n=5)$ from a population whose mean is 6. Observe in the table below how control of the last observation can make our sample mean exactly equal to the population mean of 6 when the first 4 observations are free to change their values.
+
+| x1 | x2 | x3 | x4 | (Make x5) | Sample mean
+|:---|:---|:---|:---|:----------|:-----------
+| 2  | 4  | 7  | 8	| (9)       | 6
+| 4  | 6  | 5  | 7	| (8)       | 6
+| 3  | 7  | 4  | 9	| (7)       | 6
+
+
+Here we see that a group of 5 observations being used to estimate a single population characteristic has 4 degrees of freedom. In general, when k population characteristics are being estimated from n observations, the degrees of freedom of the analysis is n-k.”
 
 **COEFFICIENT OF VARIATION**
 
@@ -224,6 +241,55 @@ The coefficient of variation (CV) is used is used to aide in comparing the varia
 
 $$CV = \frac{s}{\bar{y}} \times 100\%$$
 
+## Tabular Summaries
+
+### Tables of means
+
+Tables are a way of organizing the data collected or providing a summary presentation of the data. The two most common types of tabular summaries you will encounter are tables of means and frequency tables.
+
+An example of a table of means is the following table that shows the mean number of sedge plants, Carex flacca, found in 800 sample quadrats in an ecological study of grasses. Each quadrat was randomly assigned to one of four treatments: control, low, medium, and high. The table shows the mean number of sedge plants found in each treatment. We will simulate the data for this example.
+
+```{r, message=FALSE}
+library(dplyr)
+library(kableExtra)
+
+set.seed(123) # For reproducibility
+
+# Simulate data
+quadrats <- data.frame(
+  Treatment = factor(rep(c("Control", "Low", "Medium", "High"), each = 200)),
+  SedgePlants = c(
+    rpois(200, lambda = 5),  # Assuming a Poisson distribution for count data 
+    rpois(200, lambda = 10),
+    rpois(200, lambda = 15),
+    rpois(200, lambda = 20)
+  )
+)
+
+quadrats <- quadrats %>%
+  group_by(Treatment) %>%
+  summarise(MeanSedgePlants = mean(SedgePlants))
+kable(quadrats)
+```
+
+### Frequency Tables
+
+An example of a tabular summary is the following table that shows the number of sedge plants, Carex flacca, found in 800 sample quadrats in an ecological study of grasses. Each quadra
+
+Sedge plant data sourced from Glover & Mitchell (2002)
+
+| Plants/quadrat $(y_i)$ |	Frequency $(f_i)$
+|:-----------------------|:-------------------
+| 0	                     | 268
+| 1	                     | 316
+| 2	                     | 135
+| 3	                     | 61
+| 4	                     | 15
+| 5	                     | 3
+| 6	                     | 1
+| 7	                     | 1
+
+This table can be further organized into a **relative frequency** $(f_i/n \times 100)$ table by expressing each row as a percentage of the total observation or into a **cumulative frequency** distribution by accumulating all observations up to and including each row i.e. $\Sigma^r_{i=1}f_i$ where $r$ is the row number. The cumulative frequency distribution could be further manipulated into a **relative cumulative frequency** distribution by expressing each row of the cumulative frequency distributions as a percentage of the total i.e.  $\Sigma^r_{i=1}f_i/n \times 100$
 
 ## Graphical Summaries
 
@@ -317,6 +383,10 @@ ggplot(soil_water, aes(x = water_content)) +
   geom_boxplot() +
   xlab("gravimetric water content of soil (%)")
 ```
+
+### Scatterplots
+
+Scatter plots are used to represent graphically the relationship between two variables. The extent and nature of the relationship between two (or more) variables is quantified through tools such as correlation and regression. This will be covered in later chapters.
 
 ## Shapes of Distributions
 
@@ -422,3 +492,38 @@ kurtosis(bentgrass)
 kurtosis(tccb)
 kurtosis(arthritis)
 ```
+
+**BIMODAL**
+
+Note: Bimodal distributions expected indicate a mixture of samples from two populations (e.g. weights of male and females). While the mode is not often used in biological research, reporting the number of modes, if more than one, can be informative.
+
+## Normality versus Non-Normality (in the Descriptive Statistics Context)
+
+### Normality
+
+Most natural groups of objects show variation. Humans differ in height, even if of the same sex, race and age. In many instances, measurements of similar objects vary about their mean according to a well-defined function, the normal or Gaussian distribution function.
+
+The normal distribution has the following characteristics:
+
+-	It is symmetric about its mean, median and mode. Hence a normal distribution has a skewness of zero.
+-	It is bell-shaped, with a kurtosis of zero (recall kurtosis is “flatness”).
+-	It is a continuous curve defined for values from minus infinity to plus infinity.
+-	It is completely defined by its mean and standard deviation. That is, if you know the mean and standard deviation of the normal curve, you can calculate its exact equation. 
+  - PDF for normal distribution:  $f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$
+-	95% of observations fall in the range defined by the mean plus or minus 1.96 standard deviations and 99% fall in the range defined by the mean plus or minus 2.58 standard deviations.
+
+**Summary statistics** for a sample drawn from a normally distributed population **would usually** include the range of values encountered, the arithmetic **mean**, the **standard deviation** and the **size of the sample** from which these statistics were calculated. All other information, including the frequency tabulation, the mode, median, percentiles, sample skewness and kurtosis would be superfluous.
+
+We will look at the normal distribution in detail later in this section.
+
+### Non-Normality
+
+For data that do not conform to the theoretical normal distribution, the situation is more complex. No longer will the mean and standard deviation suffice in order to reconstruct the frequency distribution of the raw data. No longer would we expect only 5% of values to lie outside the mean plus or minus 1.96 standard deviations. **A more detailed description of the characteristics of non-normal data is required**.
+
+Substantial differences between the model, median and arithmetic mean are apparent when a skewed distribution is considered. Clearly the three averages can have distinctly different values. Which is the most appropriate average? The mean is markedly affected by outlying observations whereas the median and mode are not.
+
+The difference between the mean and median has important practical consequences for analysis of data that contains aberrant outlying values (perhaps because of errors at the time of measurement or during transcription in preparing the data). Such errors, if they go unnoticed, can seriously affect an analysis.
+
+Most modern statistical packages perform various tests to determine if your data are likely to have been drawn from a normally distributed population. We’ll look at these later.
+ 
+
