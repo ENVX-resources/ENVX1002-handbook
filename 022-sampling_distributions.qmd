@@ -106,4 +106,73 @@ n <- 10
 
 Note that it is less likely for a mean of 10 observations to be this “far” from the population mean, compared with a single value.
 
+## The Central Limit Theorem
+
+The Central Limit Theorem states that if a sample of size n is drawn from a population with mean $\mu$ and variance $\sigma^2$, then the distribution of the sample mean, $\bar y$, tends to the normal distribution as $n$ increases, with mean $\mu$ and variance $\sigma^2/n$.
+
+ILLUSTRATION of the Central Limit Theorem using Weights of 144 carrots (grams) in an arbitrary order [p. 23 Mead et al. (1993)]
+
+1. Create a histogram of the individual weights (see below). Obviously the distribution is not normal.
+
+```{r}
+library(ggplot2)
+carrots <- read.csv("data/Carrot_weights.csv")
+
+mean(carrots$Weight_g)
+sd(carrots$Weight_g)
+
+ggplot(carrots, aes(x=Weight_g)) + 
+  geom_histogram(binwidth = 20, fill = "lightblue", color = "black") + 
+  theme_minimal()
+
+```
+
+2. For these individual observations, mean = 301.896g and standard deviation = 221.313g.
+
+3. Take 50 random samples each of 4 weights; then average each of these 50 samples. Generate another histogram of these means (where n = 4). How would you compare this to the histogram of the original weights?
+
+```{r}
+set.seed(1)
+n <- 4
+n_samples <- 50
+sample_means <- rep(NA, n_samples)
+for (i in 1:n_samples) {
+  sample_means[i] <- mean(sample(carrots$Weight_g, n))
+}
+
+mean(sample_means)
+sd(sample_means)
+
+ggplot() + 
+  geom_histogram(aes(x=sample_means), binwidth = 20, fill = "lightblue", color = "black") + 
+  theme_minimal()
+
+```
+
+For this column of means, the mean = 301.435g and the standard deviation = 104.506g. 
+
+**NOTE** The standard deviation here is actually the standard error (see earlier section in these notes).
+
+4. Repeat the process, but now with n = 16. How would you compare this to the histogram of the original weights?
+
+```{r}
+set.seed(1)
+n <- 16
+n_samples <- 50
+sample_means <- rep(NA, n_samples)
+for (i in 1:n_samples) {
+  sample_means[i] <- mean(sample(carrots$Weight_g, n))
+}
+
+mean(sample_means)
+sd(sample_means)
+
+ggplot() + 
+  geom_histogram(aes(x=sample_means), binwidth = 20, fill = "lightblue", color = "black") + 
+  theme_minimal()
+```
+
+For this column of means (where n = 16), the mean = 300.796g and the standard deviation = 43.709g.
+
+The means of our set of samples are of course not equal to the mean of the 144 individual observations but from our mathematical result that the variance of the distribution of means of sample of $n$ observations is $\sigma^2/n$, we would expect the variance of the three distributions to be $\sigma^2$, $\sigma^2/4$ and $\sigma^2/16$, so that the standard deviations should be $\sigma$, $\sigma/2$ and $\sigma/4$ respectively. Do our estimated values agree tolerably with this expectation?
 
