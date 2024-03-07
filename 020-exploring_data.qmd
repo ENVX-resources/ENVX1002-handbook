@@ -456,7 +456,7 @@ arthritis <- read_csv("data/Arthritis.csv", show_col_types = FALSE)
 summary(arthritis)
 ```
 
-```{r, fig.cap="Figure 1.7 Boxplot (left) and histogram (right) of the river pollution data showing negative skewness."}
+```{r, fig.cap="Figure 1.7 Boxplot (left) and histogram (right) of arthritis data showing negative skewness."}
 p1 <- ggplot(arthritis, aes(x = AgeAtOnset)) +
   geom_boxplot() +
   xlab("Age at onset (years)")

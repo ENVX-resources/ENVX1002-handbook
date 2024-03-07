@@ -11,6 +11,9 @@ book:
   date-format: MMM YYYY
   chapters:
     - index.qmd
+    - part: "Introduction"
+      chapters:
+        - 001-intro.qmd
     - part: "Describing data"
       chapters:
         - 020-exploring_data.qmd
