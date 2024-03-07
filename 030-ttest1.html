@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ENVX1002 Handbook - 4&nbsp; One-sample \(t\)-test</title>
+<title>ENVX1002 Handbook - 5&nbsp; One-sample \(t\)-test</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -110,7 +144,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./030-ttest1.html">Inference</a></li><li class="breadcrumb-item"><a href="./030-ttest1.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">One-sample <span class="math inline">\(t\)</span>-test</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./030-ttest1.html">Inference</a></li><li class="breadcrumb-item"><a href="./030-ttest1.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">One-sample <span class="math inline">\(t\)</span>-test</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -144,7 +178,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Describing data</span></a>
+ <span class="menu-text">Introduction</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -152,20 +186,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./020-exploring_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis EDA</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./021-probability_distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Probability distributions</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./022-sampling_distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sampling distributions</span></span></a>
+  <a href="./001-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
       </ul>
@@ -173,7 +195,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Inference</span></a>
+ <span class="menu-text">Describing data</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -181,26 +203,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./030-ttest1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">One-sample <span class="math inline">\(t\)</span>-test</span></span></a>
+  <a href="./020-exploring_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis EDA</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./031-ttest2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Two-sample <span class="math inline">\(t\)</span>-test</span></span></a>
+  <a href="./021-probability_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability distributions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./032-nonparametric1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Non-parametrics tests: part 1</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./033-nonparametric2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Non-parametrics tests: part 2</span></span></a>
+  <a href="./022-sampling_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Sampling distributions</span></span></a>
   </div>
 </li>
       </ul>
@@ -208,7 +224,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Modelling</span></a>
+ <span class="menu-text">Inference</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -216,26 +232,61 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./030-ttest1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">One-sample <span class="math inline">\(t\)</span>-test</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./031-ttest2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Two-sample <span class="math inline">\(t\)</span>-test</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./032-nonparametric1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Non-parametrics tests: part 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./033-nonparametric2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Non-parametrics tests: part 2</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Modelling</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./040-describing_relationships.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Describing relationships</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Describing relationships</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./041-linear_functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Linear functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear functions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./042-linear_functions_multi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear functions – multiple predictors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Linear functions – multiple predictors</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./043-nonlinear.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Non-linear functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Non-linear functions</span></span></a>
   </div>
 </li>
       </ul>
@@ -252,14 +303,31 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#confidence-intervals-for-mu" id="toc-confidence-intervals-for-mu" class="nav-link active" data-scroll-target="#confidence-intervals-for-mu"><span class="header-section-number">5.1</span> Confidence intervals for <span class="math inline">\(\mu\)</span></a></li>
+  <li><a href="#confidence-interval-for-mu-when-sigma-is-known-and-data-is-normally-distributed" id="toc-confidence-interval-for-mu-when-sigma-is-known-and-data-is-normally-distributed" class="nav-link" data-scroll-target="#confidence-interval-for-mu-when-sigma-is-known-and-data-is-normally-distributed"><span class="header-section-number">5.2</span> Confidence interval for <span class="math inline">\(\mu\)</span> (when <span class="math inline">\(\sigma\)</span> is known and data is normally distributed)</a></li>
+  <li><a href="#confidence-interval-for-mu-when-sigma-is-not-known-and-data-is-normally-distributed" id="toc-confidence-interval-for-mu-when-sigma-is-not-known-and-data-is-normally-distributed" class="nav-link" data-scroll-target="#confidence-interval-for-mu-when-sigma-is-not-known-and-data-is-normally-distributed"><span class="header-section-number">5.3</span> Confidence interval for <span class="math inline">\(\mu\)</span> (when <span class="math inline">\(\sigma\)</span> is <strong>NOT</strong> known and data is normally distributed)</a>
+  <ul class="collapse">
+  <li><a href="#students-t-distribution" id="toc-students-t-distribution" class="nav-link" data-scroll-target="#students-t-distribution"><span class="header-section-number">5.3.1</span> Student’s T Distribution</a></li>
+  <li><a href="#t-based-confidence-interval" id="toc-t-based-confidence-interval" class="nav-link" data-scroll-target="#t-based-confidence-interval"><span class="header-section-number">5.3.2</span> T-Based Confidence Interval</a></li>
+  </ul></li>
+  <li><a href="#what-is-meant-by-confidence-interval" id="toc-what-is-meant-by-confidence-interval" class="nav-link" data-scroll-target="#what-is-meant-by-confidence-interval"><span class="header-section-number">5.4</span> What is meant by confidence interval?</a></li>
+  <li><a href="#data-transformation-and-the-lognormal-distribution" id="toc-data-transformation-and-the-lognormal-distribution" class="nav-link" data-scroll-target="#data-transformation-and-the-lognormal-distribution"><span class="header-section-number">5.5</span> Data Transformation and the Lognormal Distribution</a>
+  <ul class="collapse">
+  <li><a href="#the-natural-log-log_e-transformation" id="toc-the-natural-log-log_e-transformation" class="nav-link" data-scroll-target="#the-natural-log-log_e-transformation"><span class="header-section-number">5.5.1</span> The Natural Log (<span class="math inline">\(\Log_e\)</span>) Transformation</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./030-ttest1.html">Inference</a></li><li class="breadcrumb-item"><a href="./030-ttest1.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">One-sample <span class="math inline">\(t\)</span>-test</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./030-ttest1.html">Inference</a></li><li class="breadcrumb-item"><a href="./030-ttest1.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">One-sample <span class="math inline">\(t\)</span>-test</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">One-sample <span class="math inline">\(t\)</span>-test</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">One-sample <span class="math inline">\(t\)</span>-test</span></h1>
 </div>
 
 
@@ -276,9 +344,449 @@ window.Quarto = {
 </header>
 
 
-<p>In this example, we will use the <code>t.test()</code> function to perform a one-sample <span class="math inline">\(t\)</span>-test. The data set we will use is the <code>mtcars</code> data set, which contains information about 32 different cars. We will use the <code>mpg</code> variable, which is the miles per gallon for each car. We will test the hypothesis that the mean miles per gallon for all cars is 20.</p>
+<section id="confidence-intervals-for-mu" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="confidence-intervals-for-mu"><span class="header-section-number">5.1</span> Confidence intervals for <span class="math inline">\(\mu\)</span></h2>
+<p>Confidence intervals (CI) are also known as “confidence limits”. Most commonly we generate a confidence interval (CI) for <span class="math inline">\(\mu\)</span> (the population mean) but you may also see CI’s for the population variance <span class="math inline">\(\sigma\)</span>, or for the population probability <span class="math inline">\(p\)</span> in literature.</p>
+<p>A confidence interval consists of two values (an upper and a lower limit). It is generally written as the two values separated by a comma within brackets e.g.&nbsp;(3.3, 4.1), with the lower value on the left, and the upper value on the right. We must specify a degree of likelihood or confidence that the population mean <span class="math inline">\(\mu\)</span> is located in this interval. To be more confident that the interval includes <span class="math inline">\(\mu\)</span>, the width of the interval must be increased e.g.&nbsp;99% CI. The most commonly chosen level or confidence is 95%, but you will also see 90% and 99% CI’s in literature.</p>
+</section>
+<section id="confidence-interval-for-mu-when-sigma-is-known-and-data-is-normally-distributed" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="confidence-interval-for-mu-when-sigma-is-known-and-data-is-normally-distributed"><span class="header-section-number">5.2</span> Confidence interval for <span class="math inline">\(\mu\)</span> (when <span class="math inline">\(\sigma\)</span> is known and data is normally distributed)</h2>
+<p>(From Glover &amp; Mitchell, 2002.) The sample mean <span class="math inline">\(\bar y\)</span> is an unbiased estimator of the population mean <span class="math inline">\(\mu\)</span>. <span class="math inline">\(\bar y\)</span>’s are not all the same due to sampling variability. Their scatter depends on both the variability of the y’s, measured by <span class="math inline">\(\sigma\)</span>, and the sample size <span class="math inline">\(n\)</span>. Recall that the standard error of the mean is <span class="math inline">\(\sqrt{\frac{\sigma^2}{n}}\)</span> and we also know that the random variable <span class="math inline">\(\frac{\bar y -\mu}{\sqrt{\frac{\sigma^2}{n}}}\)</span> is distributed as the standard normal or the Z distribution.</p>
+<p><strong>EXAMPLE</strong></p>
+<p>For the sampling distribution of this Z variable, consider what two values of capture the middle 95% of the distribution? That is, for <span class="math inline">\(P(a \le Z \le b) = 0.95\)</span>, what are a and b?</p>
+<ul>
+<li>If <span class="math inline">\(P(Z \le a) = 0.025\)</span>, then looking up 0.025 in R or the body of the standard normal table we find <span class="math inline">\(a \approx -1.960\)</span>.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.025</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.959964</code></pre>
+</div>
+</div>
+<ul>
+<li>If <span class="math inline">\(P(Z \le b) = 0.975\)</span> then looking up 0.975 in R or the body of the standard normal table we find <span class="math inline">\(b \approx 1.960\)</span>.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.725</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5977601</code></pre>
+</div>
+</div>
+<p>So <span class="math inline">\(P(-1.960 \le Z \le 1.960) = 0.95\)</span>, or the values ± 1.960 capture the middle 95% of the Z distribution.</p>
+<p>Therefore we capture the middle 95% of the <span class="math inline">\(\bar y\)</span>’s if</p>
+<p><span class="math inline">\(P\left(-1.960 \leq \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}} \leq 1.960\right) = 0.95\)</span></p>
+<p><span class="math inline">\(\leftrightarrow P\left(-1.960 \frac{\sigma}{\sqrt{n}} \leq \bar{X} - \mu \leq 1.960 \frac{\sigma}{\sqrt{n}}\right) = 0.95\)</span></p>
+<p><span class="math inline">\(\leftrightarrow P\left(\bar{X} -1.960 \frac{\sigma}{\sqrt{n}} \leq \mu \leq \bar{X} +1.960 \frac{\sigma}{\sqrt{n}}\right) = 0.95\)</span></p>
+<p><span class="math inline">\(\leftrightarrow P\left(\bar{X} -1.960 \frac{\sigma}{\sqrt{n}} \leq \mu \leq \bar{X} +1.960 \frac{\sigma}{\sqrt{n}}\right) = 0.95\)</span></p>
+<p>From the final equation above, we can say that the probability that the sample mean will differ by no more than 1.960 standard errors <span class="math inline">\(\sqrt{\frac{\sigma^2}{n}}\)</span> from the population mean <span class="math inline">\(\mu\)</span> is 0.95.</p>
+<p>More commonly the equation for a CI is given as</p>
+<p><span class="math inline">\(\text{95 % CI} = \bar{y} \pm z_{0.025} \times s.e.\)</span></p>
+<p>where <span class="math inline">\(z^{0.025}\)</span> is a critical value from the standard normal distribution (also known as the z distribution). 2.5% of data lies to the right of <span class="math inline">\(z^{0.025}\)</span>. Equivalently, 97.5% of data lies to the left of <span class="math inline">\(z^{0.025}\)</span>. To find this value, you would look up a cumulative probability of 0.975 in the standard normal table or use the formula =NORMINV(0.975,0,1) to find it in Excel. As we have seen above in R we can use the function qnorm(0.975)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.959964</code></pre>
+</div>
+</div>
+<p>For 90% or 99% confidence intervals, the only element of the CI formula that changes is the z critical value that is being used. So a <span class="math inline">\(\text{95 % CI} = \bar{y} \pm z_{0.05} \times s.e.\)</span> and a <span class="math inline">\(\text{99 % CI} = \bar{y} \pm z_{0.01} \times s.e.\)</span><br>
+### Interpreting the Confidence Interval for <span class="math inline">\(\mu\)</span></p>
+<p><span class="math inline">\(\bar y\)</span> is a random variable with a sampling distribution. Because there is an infinite number of values of <span class="math inline">\(\bar{y}\)</span>, there is an infinite number of intervals of the form <span class="math inline">\(\bar{y} \pm 1.96\frac{\sigma}{\sqrt{n}}\)</span>. The probability statement says that 95% of these intervals will actually include <span class="math inline">\(\mu\)</span> between the limits. For any one interval, <span class="math inline">\(\bar{y} \pm 1.96\frac{\sigma}{\sqrt{n}}\)</span>, we say that we are 95% confident that <span class="math inline">\(\mu\)</span> lies between these limits.</p>
+<p><strong>EXAMPLE</strong></p>
+<p>The following data shows the concentration of a toxic substance was measured in six ‘samples’ of effluent output. The readings were:</p>
+<p>0.48 0.25 0.29 0.51 0.49 0.40</p>
+<p>The mean for these six values is <span class="math inline">\(\bar y=0.403\)</span> <span class="math inline">\(\mu g/L\)</span>. Let’s assume that the concentration of this toxic substance follows a normal distribution and that <span class="math inline">\(\sigma = 0.1\)</span> <span class="math inline">\(\mu g/L\)</span>. These assumptions allow us to calculate a 95% z-based confidence interval:</p>
+<p><span class="math inline">\(\bar{y} \pm z^{0.025}\frac{\sigma}{\sqrt{n}}\)</span></p>
+<p>where <span class="math inline">\(z^{0.025} = 1.96\)</span> is the upper 2.5% point of the standard normal distribution.</p>
+<p>So the 95% CI for the current example is</p>
+<p><span class="math inline">\(0.403 \pm 1.96 \times \sqrt{\frac{0.1}{6}} = 0.403 \pm 0.080 = (0.323, 0.483)\)</span></p>
+<p>We can say that we are 95% confident that the (population) mean concentration is somewhere in the range 0.323 to 0.483 <span class="math inline">\(\mu g/L\)</span>, although the best single estimate is 0.403 <span class="math inline">\(\mu g/L\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.48</span>, <span class="fl">0.25</span>, <span class="fl">0.29</span>, <span class="fl">0.51</span>, <span class="fl">0.49</span>, <span class="fl">0.40</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">mean</span>(y)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> sigma<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>ci <span class="ot">&lt;-</span> mu <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span>z<span class="sc">*</span>se</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>ci</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3233181 0.4833485</code></pre>
+</div>
+</div>
+</section>
+<section id="confidence-interval-for-mu-when-sigma-is-not-known-and-data-is-normally-distributed" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="confidence-interval-for-mu-when-sigma-is-not-known-and-data-is-normally-distributed"><span class="header-section-number">5.3</span> Confidence interval for <span class="math inline">\(\mu\)</span> (when <span class="math inline">\(\sigma\)</span> is <strong>NOT</strong> known and data is normally distributed)</h2>
+<p>There are very few times in a real world situation when you would know <span class="math inline">\(\sigma\)</span> and not know <span class="math inline">\(\mu\)</span>, so a z-based CI is very rarely used in practice. The more likely real-world situation would be that we take a sample from a population with unknown shape, mean, and standard deviation. From this sample we calculate <span class="math inline">\(\bar y\)</span> and <span class="math inline">\(s\)</span>. By the Central Limit Theorem, we assume <span class="math inline">\(\bar y\)</span>’s sampling distribution is approximately normal. We can now use <span class="math inline">\(\frac{s}{\sqrt{n}}\)</span>, the <strong>sample standard error</strong>, as our estimate of <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span>, the <strong>population standard error</strong>. When <span class="math inline">\(\frac{s}{\sqrt{n}}\)</span> replaces <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span> in the formula <span class="math inline">\(\frac{\bar y - \mu }{\frac{\sigma}{\sqrt{n}}}\)</span>, we have <span class="math inline">\(\frac{\bar y - \mu }{\frac{s}{\sqrt{n}}}\)</span>.</p>
+<p>While the distribution of <span class="math inline">\(\frac{\bar y - \mu }{\frac{\sigma}{\sqrt{n}}}\)</span> is known to be the standard normal distribution or Z distribution, replacing <span class="math inline">\(\sigma\)</span> with <span class="math inline">\(s\)</span> will generate a different sampling distribution. This distribution is called the T distribution. (It is sometimes called the Student’s T distribution). A man named W.S. Gosset first published this sampling distribution in 1908.</p>
+<section id="students-t-distribution" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="students-t-distribution"><span class="header-section-number">5.3.1</span> Student’s T Distribution</h3>
+<p>The T-distribution has the following properties:</p>
+<ul>
+<li>It is bell-shaped, symmetrical about the mean, median and mode, which are all of equal value. [It is a little flatter than the normal distribution.]</li>
+<li>The area under the curve = 1, as is the case for all continuous probability distributions.</li>
+<li>The probability density function is defined by three parameters, the mean <span class="math inline">\(\mu\)</span>, the standard deviation <span class="math inline">\(\sigma\)</span> and the sample size <span class="math inline">\(n\)</span>. Note that the shape of the t distribution depends on the sample size, unlike that of the normal distribution (which only depends on <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>).</li>
+<li>The exact shape of the t distribution depends on the quantity called degrees of freedom, <span class="math inline">\(df\)</span>. The <span class="math inline">\(df = n – 1\)</span> for any t distribution.</li>
+<li>It approximates normality as <span class="math inline">\(n \rightarrow \infty\)</span>. The approximation is reasonably good for <span class="math inline">\(n &gt; 30\)</span> and can be regarded as exact for <span class="math inline">\(n &gt; 120\)</span>. You can see in Figure 5.1 (below) that for low sample sizes (and therefore small df) the T distribution is more spread out and flatter than the normal distribution. However, as the sample size (and df) increases the T curve becomes virtually indistinguishable from the Z e.g.&nbsp;T49 curve in Figure 8.1 where the degrees of freedom is 49.</li>
+</ul>
+<p>If you look at the “old school” t-tables, you will note that the T table is presented differently to the tables you have encountered before for the binomial, Poisson and normal distribution. Here the values in the body of the table are critical values from the T distribution rather than cumulative probabilities (as was the case for the tables for the other distributions). The same information is still available, just in a more restricted format.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tdist.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. Comparing the shapes of the Student’s T and the Z curves.</figcaption>
+</figure>
+</div>
+</section>
+<section id="t-based-confidence-interval" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="t-based-confidence-interval"><span class="header-section-number">5.3.2</span> T-Based Confidence Interval</h3>
+<p>The general formula for a CI for <span class="math inline">\(\mu\)</span> when <span class="math inline">\(\sigma\)</span> is not known is</p>
+<p><span class="math inline">\(\text{95 % CI} = \bar{y} \pm t^{\alpha/2}_{n-1} \times s.e.(\bar y)\)</span></p>
+<p>Here <span class="math inline">\(\alpha\)</span> is the level of significance (or the probability of being incorrect in our estimation that we are willing to bear). For a 95% confidence interval, the corresponding level of significance is 5% (usually expressed in decimal format as 0.05). Also <span class="math inline">\(n-1\)</span> is the degrees of freedom. For example, the critical value <span class="math inline">\(t^{\alpha/2}_{n-1}\)</span> (or more simply t^{0.025}_{24}) is equal to 2.064.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.063899</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.063899</code></pre>
+</div>
+</div>
+<p>Note that s.e., s.e.(<span class="math inline">\(\bar y\)</span>) and s.e.m. are all equivalent expressions for the standard error of the mean. You will see them used interchangeably among scientists and the literature they write. Remember that the s.e. in the more common case when <span class="math inline">\(\sigma\)</span> is unknown is calculated as <span class="math inline">\(\frac{s}{\sqrt(n)}\)</span>.</p>
+</section>
+</section>
+<section id="what-is-meant-by-confidence-interval" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="what-is-meant-by-confidence-interval"><span class="header-section-number">5.4</span> What is meant by confidence interval?</h2>
+<p>If an experiment were to be repeated many times, on average, 95% of all 95% confidence intervals would include the true mean, <span class="math inline">\(\mu\)</span>.</p>
+<p>The following graph shows 100 confidence intervals produced from computer simulated data. The simulated data are 100 studies, each containing n = 6 observations of a fictitious toxic substance concentration (<span class="math inline">\(\mu g/L\)</span>) assumed to be <span class="math inline">\(N(0.3, 0.1^2)\)</span>.</p>
+<p>For each computer generated “sample”, the sample mean <span class="math inline">\(\mu\)</span> and standard deviation (s) are calculated, then the 95% confidence interval calculated <span class="math inline">\(\bar{y} \pm t^{\alpha/2}_{n-1} \times \sqrt{s^2/n}\)</span> .</p>
+<p><img src="images/CI_sim.png" class="img-fluid" alt="Fig. Depiction of confidence intervals from each of 100 simulated samples."> Approximately 95% of these simulated samples have a confidence interval that includes the true value of 0.3 <span class="math inline">\(\mu g/L\)</span>. In the graph above, a confidence interval includes the true mean value of 0.3 if the vertical line (representing the width of the CI) crosses the horizontal line.</p>
+<p>However in practice, when we calculate a CI from a single sample of data, we do not know if it is a confidence that includes <span class="math inline">\(\mu\)</span>, but we are 95% confident that it does! 99% confidence intervals would be wider and more likely to include <span class="math inline">\(\mu\)</span>, so it seems more logical to opt for the widest confidence interval possible. However, as we will learn in the next Section, there are opposing errors that are introduced when we make <span class="math inline">\(\alpha\)</span> small i.e.&nbsp;when we make the CI wide.</p>
+</section>
+<section id="data-transformation-and-the-lognormal-distribution" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="data-transformation-and-the-lognormal-distribution"><span class="header-section-number">5.5</span> Data Transformation and the Lognormal Distribution</h2>
+<p>As you know, data are not always normally distributed. However, the most common statistical techniques assume normality of data. In situations where you wish to use one of these techniques (and the data are not normally distributed) a “transformation” is required.</p>
+<p>The most common transformation in environmental modelling is the logarithm (to base 10 or base e). Other common transformations include the square root and arcsine (or angular) transformations.</p>
+<p>The process of transformation is that each of the data values has the same mathematical function applied to them. For example,</p>
+<p>Square root: <span class="math inline">\(y`=\sqrt{y}\)</span> or <span class="math inline">\(y`=\sqrt{y+ \frac{1}{2}}\)</span></p>
+<p>Logarithmic: <span class="math inline">\(y`=\log_e y\)</span> or <span class="math inline">\(y`=\log_e (y+1)\)</span></p>
+<p>Arcsine (angular) for a percentage <span class="math inline">\(p(0 &lt;p &lt; 100)\)</span>:</p>
+<p><span class="math inline">\(x = (180/\pi) \times \arcsin(\sqrt{p/100})\)</span></p>
+<p>The log transformation is often used in growth studies involving a continuous variable such as length or weight. This transformation is also useful in ecological studies involving counts of individuals when the variance of the sample count data is larger than the mean. If the sample data contain the value zero, then a modification to the <span class="math inline">\(\log(x)\)</span> transformation is the <span class="math inline">\(\log (x+1)\)</span> transformation. This transformation eliminates the mathematical difficulty that the logarithm of 0 is undefined. The square root transformation is useful when the variance of the sample data is approximately equal to the sample mean. The arcsine transformation is appropriate for data which are expressed as proportions.</p>
+<p>After the data has been transformed, all subsequent analyses take place on the transformed scale. Results may be back-transformed to original scale.</p>
+<p>The following examples show how to select the optimum transformation of data.</p>
+<p><strong>Example 1:</strong> Number of blood cells observed in 400 areas on a microscope slide (haemocytometer) (Fisher, 1990 p56)</p>
+<table class="table">
+<colgroup>
+<col style="width: 39%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Number of blood cells:</th>
+<th style="text-align: left;">0</th>
+<th style="text-align: left;">1</th>
+<th style="text-align: left;">2</th>
+<th style="text-align: left;">3</th>
+<th style="text-align: left;">4</th>
+<th style="text-align: left;">5</th>
+<th style="text-align: left;">6</th>
+<th style="text-align: left;">7</th>
+<th style="text-align: left;">8</th>
+<th style="text-align: left;">9</th>
+<th style="text-align: left;">10</th>
+<th style="text-align: left;">11</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Frequency:</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">43</td>
+<td style="text-align: left;">53</td>
+<td style="text-align: left;">86</td>
+<td style="text-align: left;">70</td>
+<td style="text-align: left;">54</td>
+<td style="text-align: left;">37</td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Question:</strong> Can we assume this data follows a normal distribution?</p>
+<p>#q: use ggplot to draw histogram, boxplot and qqnormal plot of the data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>bcc_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/BloodCellCount.csv"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(BloodCellCount)) <span class="sc">+</span> </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">12</span>) <span class="sc">+</span> </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Histogram of blood cell counts"</span>, <span class="at">x=</span><span class="st">"Number of blood cells"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(BloodCellCount)) <span class="sc">+</span> </span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Boxplot of blood cell counts"</span>, <span class="at">x=</span><span class="st">"Number of blood cells"</span>, <span class="at">y=</span><span class="st">""</span>)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(<span class="at">sample=</span>BloodCellCount)) <span class="sc">+</span> </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> </span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"QQ plot of blood cells"</span>, <span class="at">x=</span><span class="st">"Theoretical quantiles"</span>, <span class="at">y=</span><span class="st">"Sample quantiles"</span>)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, p3, <span class="at">ncol=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="030-ttest1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(bcc_df<span class="sc">$</span>BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.529368</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(bcc_df<span class="sc">$</span>BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.292761</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(bcc_df<span class="sc">$</span>BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  bcc_df$BloodCellCount
+W = 0.96042, p-value = 6.607e-09</code></pre>
+</div>
+</div>
+<p>Observations:</p>
+<ul>
+<li>This is count data. From statistical theory, we don’t expect this data to follow a normal distribution (since it is discrete data, and the normal distribution is continuous).</li>
+<li>The histogram and boxplot show that the data has a long tail to the right (appears positively skewed).</li>
+<li>The skewness and kurtosis values differ from zero.</li>
+<li>The formal normality test indicates that the null hypothesis of the data following a normal distribution should be rejected.</li>
+</ul>
+<p>Conclusion:</p>
+<ul>
+<li>We cannot assume this data follows a normal distribution. Distribution is POSITIVELY skewed.</li>
+</ul>
+<p>Question: Is there any transformation we can perform (that is fit a mathematical function to the data) where the data (on the transformed scale) will approximately follow a normal distribution?</p>
+<p><em>A. Square Root Transformation</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>bcc_df<span class="sc">$</span>sqrt_BloodCellCount <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(bcc_df<span class="sc">$</span>BloodCellCount)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(sqrt_BloodCellCount)) <span class="sc">+</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">12</span>) <span class="sc">+</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Histogram of blood cell counts"</span>, <span class="at">x=</span><span class="st">"Transformed Number of blood cells"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(sqrt_BloodCellCount)) <span class="sc">+</span> </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Boxplot of blood cell counts"</span>, <span class="at">x=</span><span class="st">"Transformed Number of blood cells"</span>, <span class="at">y=</span><span class="st">""</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(<span class="at">sample=</span>sqrt_BloodCellCount)) <span class="sc">+</span> </span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> </span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"QQ plot of blood cells"</span>, <span class="at">x=</span><span class="st">"Theoretical quantiles"</span>, <span class="at">y=</span><span class="st">"Sample quantiles"</span>)</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, p3, <span class="at">ncol=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="030-ttest1_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(bcc_df<span class="sc">$</span>sqrt_BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.1373212</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(bcc_df<span class="sc">$</span>sqrt_BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.854581</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(bcc_df<span class="sc">$</span>sqrt_BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  bcc_df$sqrt_BloodCellCount
+W = 0.97117, p-value = 4.13e-07</code></pre>
+</div>
+</div>
+<p>In spite of the fact that the Shapiro Wilks test shows this distribution is significantly different to normal the normal probability plot shows a sufficiently linear match and the histogram appears symmetric. The distribution is symmetric, transformation successful.The test is significant, but the Q-Q plot and histogram look good. The skewness and kurtosis values are close to zero.</p>
+<p><strong>Note:</strong> The Shapiro Wilks Test is very sensitive to large sample sizes, i.e.&nbsp;n &gt; 50. In this case we use the Q-Q plot and histogram to assess normality.</p>
+<p><em>A. Log Transformation</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>bcc_df<span class="sc">$</span>log_BloodCellCount <span class="ot">&lt;-</span> <span class="fu">log</span>(bcc_df<span class="sc">$</span>BloodCellCount)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(log_BloodCellCount)) <span class="sc">+</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">12</span>) <span class="sc">+</span> </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Histogram of blood cell counts"</span>, <span class="at">x=</span><span class="st">"Transformed Number of blood cells"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(log_BloodCellCount)) <span class="sc">+</span> </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Boxplot of blood cell counts"</span>, <span class="at">x=</span><span class="st">"Transformed Number of blood cells"</span>, <span class="at">y=</span><span class="st">""</span>)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(<span class="at">sample=</span>log_BloodCellCount)) <span class="sc">+</span> </span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> </span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"QQ plot of blood cells"</span>, <span class="at">x=</span><span class="st">"Theoretical quantiles"</span>, <span class="at">y=</span><span class="st">"Sample quantiles"</span>)</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, p3, <span class="at">ncol=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="030-ttest1_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(bcc_df<span class="sc">$</span>log_BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.8655114</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(bcc_df<span class="sc">$</span>log_BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.684001</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(bcc_df<span class="sc">$</span>log_BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  bcc_df$log_BloodCellCount
+W = 0.92515, p-value = 3.025e-13</code></pre>
+</div>
+</div>
+<p>Transformation is <strong>TOO STRONG</strong> - outlier(s) on left hand tail.</p>
+<p><strong>Example 2:</strong> Tetrachlorobenzene levels (TcCB, ppb) in 100 soil samples</p>
+<p>Note: We have seen previously that the distribution of this data is HIGHLY POSITIVELY skewed. Data is stored in the file TcCB.csv.</p>
+<p><em>A. Square root transformation</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>tccb_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/TcCB.csv"</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>tccb_df<span class="sc">$</span>sqrt_TcCB_ppb <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(tccb_df<span class="sc">$</span>TcCB_ppb)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tccb_df, <span class="fu">aes</span>(sqrt_TcCB_ppb)) <span class="sc">+</span> </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">12</span>) <span class="sc">+</span> </span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Histogram of TcCB concentration (ppb)"</span>, <span class="at">x=</span><span class="st">"Transformed TcCB"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tccb_df, <span class="fu">aes</span>(sqrt_TcCB_ppb)) <span class="sc">+</span> </span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Boxplot of TcCB concentration (ppb)"</span>, <span class="at">x=</span><span class="st">"Transformed TcCB"</span>, <span class="at">y=</span><span class="st">""</span>)</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tccb_df, <span class="fu">aes</span>(<span class="at">sample=</span>sqrt_TcCB_ppb)) <span class="sc">+</span> </span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> </span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"QQ plot of TcCB concentration (ppb)"</span>, <span class="at">x=</span><span class="st">"Theoretical quantiles"</span>, <span class="at">y=</span><span class="st">"Sample quantiles"</span>)</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, p3, <span class="at">ncol=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="030-ttest1_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(tccb_df<span class="sc">$</span>sqrt_TcCB_ppb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.691321</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(tccb_df<span class="sc">$</span>sqrt_TcCB_ppb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13.53575</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(tccb_df<span class="sc">$</span>sqrt_TcCB_ppb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  tccb_df$sqrt_TcCB_ppb
+W = 0.76119, p-value = 1.869e-11</code></pre>
+</div>
+</div>
+<p>Transformation not powerful enough - still Positively Skewed</p>
+<p><em>A. Log transformation</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>tccb_df<span class="sc">$</span>log_TcCB_ppb <span class="ot">&lt;-</span> <span class="fu">log</span>(tccb_df<span class="sc">$</span>TcCB_ppb)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tccb_df, <span class="fu">aes</span>(log_TcCB_ppb)) <span class="sc">+</span> </span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">12</span>) <span class="sc">+</span> </span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Histogram of TcCB concentration (ppb)"</span>, <span class="at">x=</span><span class="st">"Transformed TcCB"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tccb_df, <span class="fu">aes</span>(log_TcCB_ppb)) <span class="sc">+</span> </span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Boxplot of TcCB concentration (ppb)"</span>, <span class="at">x=</span><span class="st">"Transformed TcCB"</span>, <span class="at">y=</span><span class="st">""</span>)</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tccb_df, <span class="fu">aes</span>(<span class="at">sample=</span>log_TcCB_ppb)) <span class="sc">+</span> </span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> </span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"QQ plot of TcCB concentration (ppb)"</span>, <span class="at">x=</span><span class="st">"Theoretical quantiles"</span>, <span class="at">y=</span><span class="st">"Sample quantiles"</span>)</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, p3, <span class="at">ncol=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="030-ttest1_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(tccb_df<span class="sc">$</span>log_TcCB_ppb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.02521078</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(tccb_df<span class="sc">$</span>log_TcCB_ppb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.449717</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(tccb_df<span class="sc">$</span>log_TcCB_ppb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  tccb_df$log_TcCB_ppb
+W = 0.99555, p-value = 0.9868</code></pre>
+</div>
+</div>
+<p>Transformation successful - symmetric distribution</p>
+<section id="the-natural-log-log_e-transformation" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="the-natural-log-log_e-transformation"><span class="header-section-number">5.5.1</span> The Natural Log (<span class="math inline">\(\Log_e\)</span>) Transformation</h3>
+<p>Continuing on from Example 2 where the transformation chosen is <span class="math inline">\(log_e\)</span>, we see that the normal probability plot is approximately linear and all test statistics (for the normality tests) are lower than their corresponding critical values, so we can assume the log-transformed data are normally distributed. (Or equivalently that the original data are log-normally distributed.)</p>
+<p>On the log scale, the mean is –0.598. So the back-transformed mean is <span class="math inline">\(e^{–0.598} = 0.550\)</span> ppb.</p>
+<p>When a log-transformation is used, the back-transformed mean is known as the geometric mean (as opposed to the ordinary arithmetic mean). This measure is commonly used in describing environmental data, as in many cases data are highly positively skewed. Like the median, the geometric mean is less sensitive (or more robust) to these outlying values.</p>
+<p>Note that the geometric mean is usually defined as</p>
+<p><span class="math inline">\(GM = \left( y_1 \times y_2 \times \ldots \times y_n \right)^{\frac{1}{n}} = \left( \prod_{i=1}^{n} y_i \right)^{\frac{1}{n}}\)</span></p>
+<p>which is the same as <span class="math inline">\(\exp(\bar {y`})\)</span> where <span class="math inline">\(\bar{y}^{\prime} = \frac{1}{n} \sum_{i=1}^{n} y_i^{\prime}\)</span> and <span class="math inline">\(y_i^{\prime} = \log y_i\)</span>.</p>
+<p>This can be shown for a simple case involving n = 3 observations:</p>
+<p><span class="math inline">\(\exp(\bar {y^{\prime}}) = \exp\left[\frac{1}{3}(y^{\prime}_1 + y^{\prime}_2 + y^{\prime}_3)\right]\)</span></p>
+<p><span class="math inline">\(\exp\left[\frac{1}{3}(\log y_1 + \log y_2 + \log y_3)\right]\)</span> <span class="math inline">\(y^{\prime}_i = \log y_i\)</span></p>
+<p><span class="math inline">\(\left[\exp(\log y_1 + \log y_2 + \log y_3)\right]^{\frac{1}{3}}\)</span> <span class="math inline">\(e^{ab}=(e^a)^b = (e^b)^a\)</span></p>
+<p><span class="math inline">\(\left[\exp(\log y_1) \times \exp(\log y_2) \times \exp(\log y_3)\right]^{\frac{1}{3}}\)</span> <span class="math inline">\(e^{a+b} = e^a \times e^b\)</span></p>
+<p><span class="math inline">\(\left[y_1 \times y_2 \times y_3\right]^{\frac{1}{3}} = \sqrt[3]{y_1 \times y_2 \times y_3}\)</span> <span class="math inline">\(e^{\log a} = a\)</span> <span class="math inline">\(= GM\)</span></p>
+<p>Just as the geometric mean is calculated as <span class="math inline">\(\exp(\bar {y^{\prime}})\)</span>, some books refer to <span class="math inline">\(exp(s^{\prime})\)</span> as the geometric standard deviation, where <span class="math inline">\(s^{\prime}\)</span> is the standard deviation of the <span class="math inline">\(y_i^{\prime} = \log y_i\)</span>. However, this is not a very useful concept, so it won’t be used here.</p>
+<p>Since we have concluded log TcCB has a normal distribution, then TcCB has a lognormal distribution. If a variable log y = y has a normal N(,2) distribution, then the original variable has a lognormal distribution with parameters  and 2, y ~ LN(,2). Note that  and 2 are the parameters for the log variable. It can be shown (no proof here) the mean and variance for the lognormal LN(,2). distribution are Mean<br>
+Variance</p>
+<p>We can illustrate these relationships by using the parameter estimates and from the log TcCB data to produce the following fitted normal distributions and lognormal distributions are obtained:</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -693,12 +1201,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./022-sampling_distributions.html" class="pagination-link" aria-label="Sampling distributions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sampling distributions</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Sampling distributions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./031-ttest2.html" class="pagination-link" aria-label="Two-sample $t$-test">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Two-sample <span class="math inline">\(t\)</span>-test</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Two-sample <span class="math inline">\(t\)</span>-test</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

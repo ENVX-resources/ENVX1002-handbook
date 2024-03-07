@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ENVX1002 Handbook - 7&nbsp; Non-parametrics tests: part 1</title>
+<title>ENVX1002 Handbook - 1&nbsp; Introduction</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./033-nonparametric2.html" rel="next">
-<link href="./031-ttest2.html" rel="prev">
+<link href="./020-exploring_data.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -110,7 +110,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./030-ttest1.html">Inference</a></li><li class="breadcrumb-item"><a href="./032-nonparametric1.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Non-parametrics tests: part 1</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./001-intro.html">Introduction</a></li><li class="breadcrumb-item"><a href="./001-intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -152,7 +152,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./001-intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./001-intro.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
@@ -210,7 +210,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./032-nonparametric1.html" class="sidebar-item-text sidebar-link active">
+  <a href="./032-nonparametric1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Non-parametrics tests: part 1</span></span></a>
   </div>
 </li>
@@ -269,14 +269,36 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#what-is-envx" id="toc-what-is-envx" class="nav-link active" data-scroll-target="#what-is-envx"><span class="header-section-number">1.1</span> What is ENVX?</a></li>
+  <li><a href="#introduction-to-research" id="toc-introduction-to-research" class="nav-link" data-scroll-target="#introduction-to-research"><span class="header-section-number">1.2</span> Introduction to Research</a>
+  <ul class="collapse">
+  <li><a href="#the-use-of-statistics-in-research" id="toc-the-use-of-statistics-in-research" class="nav-link" data-scroll-target="#the-use-of-statistics-in-research"><span class="header-section-number">1.2.1</span> The Use of Statistics in Research</a></li>
+  </ul></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">1.3</span> Data</a>
+  <ul class="collapse">
+  <li><a href="#observations-samples-and-populations" id="toc-observations-samples-and-populations" class="nav-link" data-scroll-target="#observations-samples-and-populations"><span class="header-section-number">1.3.1</span> Observations, samples and populations</a></li>
+  <li><a href="#variables-types-of-data" id="toc-variables-types-of-data" class="nav-link" data-scroll-target="#variables-types-of-data"><span class="header-section-number">1.3.2</span> Variables (types of data)</a></li>
+  <li><a href="#relationships-between-variables" id="toc-relationships-between-variables" class="nav-link" data-scroll-target="#relationships-between-variables"><span class="header-section-number">1.3.3</span> Relationships between variables</a></li>
+  <li><a href="#biological-and-environmental-variability" id="toc-biological-and-environmental-variability" class="nav-link" data-scroll-target="#biological-and-environmental-variability"><span class="header-section-number">1.3.4</span> Biological and Environmental Variability</a></li>
+  </ul></li>
+  <li><a href="#statistical-distributions" id="toc-statistical-distributions" class="nav-link" data-scroll-target="#statistical-distributions"><span class="header-section-number">1.4</span> Statistical distributions</a></li>
+  <li><a href="#sampling" id="toc-sampling" class="nav-link" data-scroll-target="#sampling"><span class="header-section-number">1.5</span> Sampling</a></li>
+  <li><a href="#hypotheses" id="toc-hypotheses" class="nav-link" data-scroll-target="#hypotheses"><span class="header-section-number">1.6</span> Hypotheses</a></li>
+  <li><a href="#statistical-tests" id="toc-statistical-tests" class="nav-link" data-scroll-target="#statistical-tests"><span class="header-section-number">1.7</span> Statistical tests</a></li>
+  <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software"><span class="header-section-number">1.8</span> Software</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./030-ttest1.html">Inference</a></li><li class="breadcrumb-item"><a href="./032-nonparametric1.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Non-parametrics tests: part 1</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./001-intro.html">Introduction</a></li><li class="breadcrumb-item"><a href="./001-intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Non-parametrics tests: part 1</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
 </div>
 
 
@@ -293,9 +315,114 @@ window.Quarto = {
 </header>
 
 
-<p>In summary, this book has no content whatsoever.</p>
+<section id="what-is-envx" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="what-is-envx"><span class="header-section-number">1.1</span> What is ENVX?</h2>
+<p>A practical definition of ENVX is “The use of statistical and computing methods to answer quantitative biological questions.”</p>
+<p>It sits at the interface of applied statistics, data science and life and environmental sciences. It is a field that is growing rapidly in importance as the amount of data being collected in the biological and environmental sciences increases.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images\venn.png" class="img-fluid figure-img"></p>
+<figcaption>ENVX is at the interface of applied statistics, data science and life and environmental science</figcaption>
+</figure>
+</div>
+</section>
+<section id="introduction-to-research" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="introduction-to-research"><span class="header-section-number">1.2</span> Introduction to Research</h2>
+<p>You will soon learn that the University of Sydney has a great tradition in research (with many of our efforts earning international recognition). Your teachers will include some experiences of or findings from their research in their classes, and you will have an opportunity to participate in research projects throughout your degree. ENVX comprises of three vertically integrated units designed to equip you to confidently approach the design and data analysis aspects of your research. The diagram below shows one view of the process of research (or experimentation).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images\research_cycle.png" class="img-fluid figure-img"></p>
+<figcaption>The research process</figcaption>
+</figure>
+</div>
+<section id="the-use-of-statistics-in-research" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="the-use-of-statistics-in-research"><span class="header-section-number">1.2.1</span> The Use of Statistics in Research</h3>
+<p>Statistics provides us with an avenue for exploring and reporting the findings of the research. In terms of reporting, it allows us to give a measure (generally a probability) of the extent to which our conclusion could be wrong. Statistics is a means of informing the decision-making process.</p>
+</section>
+</section>
+<section id="data" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="data"><span class="header-section-number">1.3</span> Data</h2>
+<p>Data is the information we collect on the subjects, factors and variables we are interested in studying. Data may be textual (i.e.&nbsp;words) or numerical.</p>
+<section id="observations-samples-and-populations" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="observations-samples-and-populations"><span class="header-section-number">1.3.1</span> Observations, samples and populations</h3>
+<p>Populations may be real and therefore able to be listed e.g.&nbsp;all veterinarian practices in the Sydney region. They may be hypothetical and unable to all be listed e.g.&nbsp;all dogs possible that could have a particular treatment applied to them.</p>
+<p>Each sampling unit (or observation) in the population (e.g.&nbsp;plot of land, animal, etc.) has a value y (e.g.&nbsp;nematode count, gestational length): <span class="math inline">\(y_1,y_2,y_3,...y_N\)</span>. Typically the population size (N) is very large - even infinite! The population can be described by population parameters e.g.&nbsp;population mean = <span class="math inline">\(\mu\)</span>, population variance = <span class="math inline">\(\sigma^2\)</span>. These are generally characters from the Greek alphabet. Since populations are large, we usually cannot determine these values exactly.</p>
+<p>Often we wish to make generalisations about populations that are too large or too difficult to survey completely. In these cases we sample the population and use characteristics of the sample to extrapolate to characteristics of the larger population. We can define a sample (of size n) as drawn from population “at random”. We call each piece of information recorded about a sampling unit or subject (e.g.&nbsp;plant, person, animal, 1x1m plot of land) an observation.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images\random_sample.png" class="img-fluid figure-img"></p>
+<figcaption>n = 20 units (v) sampled at random from population of N = 1,000 (O)</figcaption>
+</figure>
+</div>
+<p>The sample is taken to be representative of the population – but there are <strong>no guarantees</strong>! It is easier/quicker/cheaper to take a sample than study the entire population (since n &lt;&lt; N). The results obtained from the sample not important in themselves - the importance is in how it can be used to estimate population parameters i.e.&nbsp;<span class="math inline">\(\bar{y}\)</span> estimates <span class="math inline">\(\mu\)</span>; <span class="math inline">\(s^2\)</span> estimates <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>Example: For a sample of <span class="math inline">\(n = 10\)</span> cows, gestation length in cattle was measured in days. The sample mean <span class="math inline">\(\bar{y} = 345\)</span> days <em>estimates</em> the population mean <span class="math inline">\(\mu = ???\)</span> days. The sample standard deviation <span class="math inline">\(s = 10\)</span> days estimates population standard deviation <span class="math inline">\(\sigma = ???\)</span> days.</p>
+</section>
+<section id="variables-types-of-data" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="variables-types-of-data"><span class="header-section-number">1.3.2</span> Variables (types of data)</h3>
+<p>The table below shows fresh weights of cabbages that were included in a field trial that was investigating the effects of irrigation frequency and plant spacing on cabbage yields. This fresh weight measurement is on a continuous scale.</p>
+<p>Generally in an experiment, several different characteristics of the subjects are measured/recorded. We may score the level of insect damage to leaves of the plant on a scale of 0 to 3 (0 = no damage, 1 = slight damage, 2 = moderate damage, 3 = heavy damage). This is a discrete categorical scale as only certain values on the scale are defined, but it is also an ordered scale. If we had difficulty deciding how to categorize plants using this scale, we might choose to classify plants as either damaged or not damaged, which is a binary measurement scale.</p>
+<p>Already you can begin to see that from just one fairly simple field trial quite a lot of data can be generated, also data of differing properties/types.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images\table1.png" class="img-fluid figure-img"></p>
+<figcaption>Yields of cabbage (mean fresh weight per head in kg) for 24 plots (Source: Mead, Curnow &amp; Hasted (2003)).</figcaption>
+</figure>
+</div>
+<p>Data may also be classified as either <strong>quantitative</strong> (e.g.&nbsp;root length) or <strong>qualitative</strong> (e.g.&nbsp;plant species). Quantitative observations are based on some sort of measurement e.g.&nbsp;length, weight, temperature, pH. Qualitative observations are based on categories reflecting a quality or characteristic of the observed event e.g.&nbsp;male vs.&nbsp;female, diseased vs.&nbsp;healthy, mutant vs.&nbsp;wild type.</p>
+<p>The most common types of variables are:</p>
+<ol type="1">
+<li>Continuous (and interval) data can assume any value in some (possible unbounded) interval of real numbers. Examples are length, weight, temperature, volume, height.</li>
+<li>Discrete variables assume only isolated values. E.g. trees per hectare, items per quadrat, number of diseased plants in a section of a glasshouse. They arise from counting – usually either the number of successes in n trials (binary data) OR the number of occurrences of the event in an interval of time or space (count data).</li>
+<li>Categorical variables
+<ol type="i">
+<li>Binary variables (listed above as discrete variables) may also be thought of as categorical variables since the subject falls into either of 2 mutually exclusive categories (yes/no, alive/dead, diseased/not diseased etc.).</li>
+<li>Ordinal variables are not measured but nevertheless have a natural ordering. E.g. candidates for political office can be ranked by individual voters. The rank values have no inherent meaning outside the “order” that they provide. That is, a candidate ranked 2 is not twice as preferable as the person ranked 1. (Compare this with measurement variables where a plant 2 feet tall is twice as tall as a plant1 foot tall. With measurement variables such ratios are meaningful, while with ordinal variables they are not.)</li>
+<li>Nominal data is qualitative data. Some examples are species, gender, genotype, phenotype, healthy/diseased. Unlike ranked data, there is no “natural” ordering that can be assigned to these categories.</li>
+</ol></li>
+</ol>
+<p>Note that some applied statistics texts will define the types of data slightly differently to that shown above.</p>
+<p>In this unit of study most emphasis will be on the analysis of continuous measurement variables. However a few basic analyses for discrete and categorical variables will be covered.</p>
+<p>Recognising the type of data we have measured is REALLY important as it helps to determine the choice of analysis (and even the descriptive statistics we undertake e.g.&nbsp;the mean of a score doesn’t make sense, but the median is a good alternative measure of central tendency).</p>
+</section>
+<section id="relationships-between-variables" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="relationships-between-variables"><span class="header-section-number">1.3.3</span> Relationships between variables</h3>
+<p>Sometimes you will want to explore the relationship between two (or more) variables that you have measured in your research. You will explore the strength of the relationship and the nature of it (e.g.&nbsp;linear, exponential etc.).</p>
+<p>In the most simple case, we examine the amount of variability in one variable (Y, the dependent variable) that is explained by changes in another variable (X, the independent variable). Often the X variable is called the predictor and the Y variable the response.</p>
+</section>
+<section id="biological-and-environmental-variability" class="level3" data-number="1.3.4">
+<h3 data-number="1.3.4" class="anchored" data-anchor-id="biological-and-environmental-variability"><span class="header-section-number">1.3.4</span> Biological and Environmental Variability</h3>
+<p>Variation is the norm. It occurs in both observational studies as well as designed experiments. For example, river flow varies from sampling time to sampling time and from sampling location to sampling location. Also, levels of soil contamination on a site vary from site to site.</p>
+<p>This type of variation distinguishes the biological and environmental sciences from the physical sciences, which shows relatively little variability:</p>
+<ul>
+<li>Dropping a ball from a certain height: the time to reach the ground is (nearly) identical each time;</li>
+<li>Amount of a chemical product produced when reagents are mixed are (nearly) identical and predictable.</li>
+</ul>
+<p>Biological data is far more variable due to environmental and genetic effects. To interpret biological data, we need to control variation by an appropriate experimental design, and adjust for variation by means of statistical analyses.</p>
+</section>
+</section>
+<section id="statistical-distributions" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="statistical-distributions"><span class="header-section-number">1.4</span> Statistical distributions</h2>
+<p>We use statistical distributions to determine the probability of occurrence of our particular sets of observations. A statistical distribution is a representation (using either mathematical formula or a table) of all possible outcomes of a given event. The most well-known distribution is the normal (or Gaussian) distribution for which the probability distribution function is the familiar bell-shaped curve.</p>
+</section>
+<section id="sampling" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="sampling"><span class="header-section-number">1.5</span> Sampling</h2>
+<p>The aim of sampling is to gain a representative picture of the population. There are various methods and strategies for doing this. Experimental groups/samples must be constructed without bias and must be large enough to give the researcher an acceptable level of confidence in the results.</p>
+</section>
+<section id="hypotheses" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="hypotheses"><span class="header-section-number">1.6</span> Hypotheses</h2>
+<p>A hypothesis is a tentative explanation for the initial or ad hoc observations made. It suggests a cause and effect or associative relationship that is testable, e.g.&nbsp;yield response to nitrogen (N) fertilizer. The purpose and design of an experiment is to test the hypothesis.</p>
+</section>
+<section id="statistical-tests" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="statistical-tests"><span class="header-section-number">1.7</span> Statistical tests</h2>
+<p>We decide whether or not a research outcome if significant by conducting a statistical test. Firstly we set arbitrary critical thresholds of probability (P-values). The occurrence of an event whose estimated probability is less than a critical threshold is regarded as a statistically significant outcome. The usual significance level chosen is P&lt;0.05. You will also see P&lt;0.01 and P&lt;0.001 used in research literature. Which statistical test you use (there are many!) depends on the type of data you have collected and the question you wish to ask.</p>
+</section>
+<section id="software" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="software"><span class="header-section-number">1.8</span> Software</h2>
+<p>In this unit of study, we will focus on the use of one statistical package called R. It has been designed specifically for statistical analysis and is freely available. It is a powerful tool for data analysis and is widely used in the biological and environmental sciences.</p>
+<p>You will also learn to use Microsoft Excel to organize and summarise your data. In the next section some of the basic features of Excel are presented. See computer lab 1.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -709,13 +836,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./031-ttest2.html" class="pagination-link" aria-label="Two-sample $t$-test">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Two-sample <span class="math inline">\(t\)</span>-test</span></span>
+      <a href="./index.html" class="pagination-link" aria-label="Preface">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./033-nonparametric2.html" class="pagination-link" aria-label="Non-parametrics tests: part 2">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Non-parametrics tests: part 2</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./020-exploring_data.html" class="pagination-link" aria-label="Exploratory Data Analysis EDA">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis EDA</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
