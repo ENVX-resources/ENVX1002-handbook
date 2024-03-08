@@ -342,7 +342,73 @@
     "href": "031-ttest2.html",
     "title": "6  Two-sample \\(t\\)-test",
     "section": "",
-    "text": "In summary, this book has no content whatsoever.",
+    "text": "6.1 Assumptions\nThe two-sample \\(t\\)-test assumes that the data are :\nIdeally these assumptions should be tested before you carry about the two-sample \\(t\\)-test.",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Two-sample $t$-test</span>"
+    ]
+  },
+  {
+    "objectID": "031-ttest2.html#assumptions",
+    "href": "031-ttest2.html#assumptions",
+    "title": "6  Two-sample \\(t\\)-test",
+    "section": "",
+    "text": "Continuous,\nat least approximately normally distributed, and\nthe variances of the two sets are homogeneous (i.e. the same).",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Two-sample $t$-test</span>"
+    ]
+  },
+  {
+    "objectID": "031-ttest2.html#what-if-assumptions-are-not-met",
+    "href": "031-ttest2.html#what-if-assumptions-are-not-met",
+    "title": "6  Two-sample \\(t\\)-test",
+    "section": "6.2 What if assumptions are not met?",
+    "text": "6.2 What if assumptions are not met?\nIf the data do not meet either of these assumptions, then you may choose an appropriate transformation or look for another technique to use e.g. a non-parametric method (see non-parametric sections of this book).\nIf the variances cannot be assumed to be equal (but the data are normally distributed), there is a way of adjusting the two-sample \\(t\\)-test to compensate for this – it’s called the Satterthwaite’s approximation – more on this later!",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Two-sample $t$-test</span>"
+    ]
+  },
+  {
+    "objectID": "031-ttest2.html#three-variants-of-the-two-sample-t-test",
+    "href": "031-ttest2.html#three-variants-of-the-two-sample-t-test",
+    "title": "6  Two-sample \\(t\\)-test",
+    "section": "6.3 Three Variants of the Two-Sample \\(t\\)-test",
+    "text": "6.3 Three Variants of the Two-Sample \\(t\\)-test\nThere are 3 different ways in which a two-sample \\(t\\)-test can be used. They ALL assume that the data is approximately normally distributed.\n\nIndependent samples, equal variance - run a two-sample \\(t\\)-test assuming equal variances.\nIndependent samples, unequal variance - run a two-sample \\(t\\)-test assuming unequal variances.\nPaired samples - run a paired \\(t\\)-test.\n\nIn choosing which variant of the \\(t\\)-test is applicable in your situation, you first need to decide whether your two samples are paired or unpaired (independent).",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Two-sample $t$-test</span>"
+    ]
+  },
+  {
+    "objectID": "031-ttest2.html#paired-data",
+    "href": "031-ttest2.html#paired-data",
+    "title": "6  Two-sample \\(t\\)-test",
+    "section": "6.4 Paired Data",
+    "text": "6.4 Paired Data\nPaired samples arise when we measure pairs of similar experimental units. In this pair of experimental units, one unit receives Treatment 1 and the other receives Treatment 2.\nIn some cases, treatments are applied to the same experimental unit e.g. one half of a piece of fruit receives Trt 1 and the other half Trt 2; two plants of different varieties are grown in the same pot (here variety is the treatment).\nIn recognising this pairing in our analysis we are taking into account the fact that biological variation between pairs is likely to be larger than within pairs. This way, we get a clearer picture of the difference that is due to the treatment factor.\n\n6.4.1 Examples of paired data\n\nObservations at two times on the same experimental unit\n\nBefore and after readings of particle matter in the air on 3 sites near a new power station (before the station was built, and after it became operational). (Dytham 2003, 80)\nMeasurements of water flow on two consecutive days at 6 sites along a river. (Dytham 2003, 83)\n\nObservations on 2 halves/parts of the same experimental unit\n\nOne half of each (uncut) grapefruit was exposed to sunlight, and the other half was shaded (McConway et al 1999, p. 198).\nA standard (recommended) variety of wheat is compared with a new variety via 2 similar plots on each of 8 farms (Clewer and Scarisbrick 2001, p. 46).",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Two-sample $t$-test</span>"
+    ]
+  },
+  {
+    "objectID": "031-ttest2.html#two-sample-t-test-for-independent-samples",
+    "href": "031-ttest2.html#two-sample-t-test-for-independent-samples",
+    "title": "6  Two-sample \\(t\\)-test",
+    "section": "6.5 Two-Sample t-Test for Independent Samples",
+    "text": "6.5 Two-Sample t-Test for Independent Samples\nProcedure for the test:\n\nSet up the null and alternate hypotheses\nDecide on the level of significance, 5%, 1%, 0.01% etc.\nCheck the assumptions of normality and equal variance. We use an F-test to formally test for equality of variance.\nCalculate the test statistic \\[t = \\frac{\\bar{y}_1 - \\bar{y}_2}{SED}\\] where \\(\\bar{x}_1\\) and \\(\\bar{x}_2\\) are the sample means, and \\(SED\\) is the standard error of the difference between the means.\nCalculate the degrees of freedom (df).\nFind the P-value in printed statistical tables or via GenStat or Excel.\nMake a statistical conclusion by comparing this P-value to your chosen level of significance (if P &lt;α, then reject null hypothesis).\nCalculate the confidence interval.\nInterpret your results biologically.\n\n\n\n\n\n\n\nCalculating the test statistic\n\n\n\nWhen calculating the test statistic, use \\(y_1\\) as the larger mean. This will give a positive value for \\(t\\).",
+    "crumbs": [
+      "Inference",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Two-sample $t$-test</span>"
+    ]
+  },
+  {
+    "objectID": "031-ttest2.html#confidence-interval-for-mu_1---mu_2-independent-samples",
+    "href": "031-ttest2.html#confidence-interval-for-mu_1---mu_2-independent-samples",
+    "title": "6  Two-sample \\(t\\)-test",
+    "section": "6.6 Confidence Interval for \\(\\mu_1 - \\mu_2\\) (Independent Samples)",
+    "text": "6.6 Confidence Interval for \\(\\mu_1 - \\mu_2\\) (Independent Samples)\nA two-sample t-test shows whether there is evidence of a difference in population means. The magnitude of this difference can be estimated with a confidence interval.\nA 95% confidence interval for the true difference \\(\\mu_1 - \\mu_2\\) is given by \\[\\bar{y}_1 - \\bar{y}_2 \\pm t^{\\alpha/2}_{df} \\times SED\\]\nwhere \\(\\bar{y}_1 - \\bar{y}_2\\) is the difference between the sample means, \\(t^{\\alpha/2}_{df}\\) is the critical value from the t-distribution for the chosen level of significance and degrees of freedom, and \\(SED\\) is the standard error of the difference between the means.\nThe df and SED need to take into account whether or not you are assuming equal variances.\n6.6 SED and df for Independent Samples with EQUAL Variances\n6.7 SED and df for Independent Samples with UNequal Variances\nWhat do you do if when you’re checking your assumptions for a two- sample t-test you find… Normality  Equality of variance \nYou can go ahead with a modified t-test or you can choose a different test.\nThis modified t-test used in the case of unequal variances is often called Satterthwaite’s approximate t-test.\n6.7.1 Satterthwaite’s Approximate t-Test\nThe null and alternate hypotheses remain the same, i.e. H0: μ1 = μ2 or H0: μ1 - μ2 = 0\nThe formula for the test statistic, t, in Satterthwaite’s approximate test is a little different to that for the t-test with equal variances. The s.e.d. changes because we can no longer use a pooled estimate of the variance (since the variances cannot be assumed equal).\nA correction for unequal variance is made to the degrees of freedom.\nThen proceed as usual through the rest of the test - i.e. find the P-value; draw a statistical conclusion about your hypothesis; interpret your results biologically.\n6.8 F-Test for Equality of Variances\nOne of the conditions for the independent sample t-test to be valid is that the population variances σ12 and σ22 are equal.\nTo test the null hypothesis that σ12 = σ22 divide the larger s2 value by the smaller s2 to obtain the variance ratio, v.r.:\nTo undertake this two-tailed test at the 5% level you need to carry out the one-tailed test at the 2.5% level. You can use the 2.5% F table of critical values, or you can use GenStat via the menus Data&gt;Probability Calculations… to find the P-value.\nIf you use the printed statistical table, you will need to compare the critical value you find there with the variance ratio you calculated. If the calculated variance ratio &gt; critical value, reject H0 and conclude that the variances are significantly different.\n6.9 Example: Two-Sample t-Test\nWeights of two breeds of cattle are to be compared: 15 cattle from Breed 1 and 12 cattle from Breed 2 were randomly sampled. Their recorded weights (kg) are shown.\nBreed 1 Breed 2 148.1 187.6 146.2 180.3 152.8 198.6 135.3 190.7 151.2 196.3 146.3 203.8 163.5 190.2 146.6 201.0 162.4 194.7 140.2 221.1 159.4 186.7 181.8 203.1 165.1\n165.0\n141.6\nThe following descriptive statistics are obtained from these data.\nBreed 1 Breed2\nSample mean (kg) 153.700 196.175 Sample s.d. (kg) 12.301 10.616\nIs there any systematic difference in their weights? The question, “Is there any systematic difference in their weights?”, is asking whether or not there is any significant difference between the 2 samples – and in effect if there is any significant difference between the 2 breeds because the factor that distinguishes the 2 samples is breed.\nWe could answer this question by testing whether or not the population mean weights for the 2 breeds can be assumed to be equal:\nH0: μbreed 1 = μBreed 2 versus H1: μBreed 1 ≠ μBreed 2\nTo test this particular hypothesis about the equality of the means (as an avenue for answering our broader question), we would use a two-sample t-test.\nHowever, it is REALLY important to remember that there are other tests and hypotheses that we could use to answer our broader question (about whether or not there is any statistical difference between the weights of the 2 breeds). We’ll consider some non-parametric alternatives in Biometry 2.\nTo proceed with a two-sample t-test, there are 2 assumptions that we need to check: • Normality of Breed 1 data and normality of Breed 2 data • Equality of variances of the 2 samples\nBoth of these checks are hypothesis tests in their own right and contain the usual elements of a hypothesis test i.e. null & alternate hypothesis; test statistic; df; P-value or critical value; conclusion.\nTesting the Assumption of Normality If you are doing the test by hand, you would need to assume that the data are normally distributed (and hope this is true). At least the data in this example is continuous… which is one small step towards normality.\nTesting the Assumption of Equality of Variance H0: σ2Breed 1 = σ2Breed 2 versus H1: σ2Breed 1 ≠ σ2Breed 2\nTest statistic:\nThere are 2 degrees of freedom to calculate for an F test. They are called the numerator df, 1 and the denominator df, 2. (Remember from school days, numerator is the top half of a fraction, denominator is the bottom half of a fraction.) The  that looks like a curly ‘v’ is the Greek letter ‘nu’.\nFor an F test used to test equality of variance, df are: 1 = n1 – 1, 2 = n2 – 1.\nHere, 1 = nBreed 1 -1 = 15 - 1 = 14 and 2 = nBreed 2 - 1 = 12 – 1 = 11.\nUsing the 2.5% F table, we can compare (at the upper tail) the Fcritical and Fobserved values. If Fobs &gt; Fcrit, we reject H0 and conclude that the variances of the 2 samples are NOT equal.\nFrom these tables, it is not possible to find exactly, so we will make do with the closest possible value .\nWe find Fcrit ≈ 3.33 and Fobs = 1.34. Since Fcrit &gt; Fobs ,we CAN assume that the variances are equal.\nSo… assuming normality and equal variances, we can complete a “pooled” two-sample t-test where\nTesting the null hypothesis that H0: μBreed 1 = μBreed 2, we find that there is a significant difference in the mean weights of the two breeds of cattle (T = 9.46, df = 25, P &lt; 0.001). The mean weight of Breed 2 is significantly higher and we are 95% confident that the mean weight for Breed 2 is between 33.2 and 51.7 kg higher than the mean weight for Breed 1.\nThis last piece of information, “we are 95% confident that the mean weight for Breed 2 is between 33.2 and 51.7 kg higher than the mean weight for Breed 1”, is obtained from the 95% confidence interval for the true difference (μ1 – μ2).\nNB. Recall that a 95% confidence interval for the true difference (μ1 – μ2) is .\n6.10 Paired t-Test\nWe can re-write the generic null hypothesis for a two-sample test of means, H0: μ1 = μ2 as… H0: μ1 – μ2 = 0, or H0: μd = 0.\nThe paired t-test is actually a one-sample t-test of the differences between pairs of observations (from 2 different samples).\nAssumption: • Data is approximately normally distributed.\nSince we are doing a one-sample t-test on the differences then the assumption of equal variances is not relevant. Firstly, create a single column of data to use in the t test. Each value in the column corresponds to the difference between the 2 values for a particular matched pair.\nFarm Yield Variety A (kg) Yield Variety B (kg) Difference 1 17.8 14.7 3.1 2 18.5 15.2 3.3 3 12.2 12.9 -0.7 4 19.7 18.3 1.4 5 10.8 10.1 0.7 6 11.9 12.2 -0.3 7 15.6 13.5 2.1 8 12.5 9.9 2.6\nThe difference for Farm 1 = 17.8 – 14.7 = 3.1.\nData Source: Clewer and Scarisbrick (2001, 46)\nSecondly, find some summary statistics of the differences so you can complete the t test:\nNo. of values, n = 8        Sum = 12.2          Mean = 1.525\nVariance = 2.299            Std Dev = 1.516\nand df = n -1, where d is usually 0.\n6.11 Confidence Interval for 1 – 2 (Paired Samples)\nA 95% confidence interval for the mean difference is",
     "crumbs": [
       "Inference",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Two-sample $t$-test</span>"
@@ -351,67 +417,56 @@
   {
     "objectID": "032-nonparametric1.html",
     "href": "032-nonparametric1.html",
-    "title": "7  Non-parametrics tests: part 1",
+    "title": "7  Chi-squared tests",
     "section": "",
-    "text": "In summary, this book has no content whatsoever.",
+    "text": "The chi-squared distribution (where chi is pronounced ‘ky’) is a very widely used distribution in statistics. Its symbol is 2. It has MANY applications. Here we will consider only two of these applications – tests of agreement with expected outcomes, and contingency tables.\n7.1 Notes on the 2 Distribution\nThe density function for a 2 distribution is positively skewed, that is, it has a long tail to the right. The typical shape of the 2 density function is that shown for the 4 df case in Figure 7.1 below. When df is very low e.g. 1 or 2, the curve changes shape dramatically. When df are very large (say greater than 100), the 2 distribution approaches the shape (and properties) of a normal distribution.\nFigure 7.1 The shape of the 2 density function for various degrees of freedom.\nThe mean and variance of a 2 variable are simple functions of the degrees of freedom of the distribution. If we express the general degrees of freedom as  (Greek n), then\nMean of   variable =   (i.e. mean = df)\nVariance of   variable = 2 (i.e. variance = twice the df)\nCritical values of a 2 distribution are given in the 2 probability table that appears as Appendix A.5.\n7.2 Testing Agreement of Frequency Data with Expectation Models\n7.2.1 Steps in Chi-Squared Tests of Agreement\nThe process for performing a goodness of fit test is the similar to that of the other hypothesis tests you have encountered thus far, that is,\n\nChoose an appropriate hypothesis test for the type of data you have, and the type of question you’re asking.\nChoose the level of significance for the test.\nWrite null and alternate hypotheses. Here (as for normality tests) the null hypothesis is always that the data can be assumed to follow the distribution under consideration.\nCalculate the expected values. To do this, we assume that the null hypothesis is true and generate the expected values accordingly\nCheck the assumptions or requirements of the test. For observed versus expected chi square goodness of fit tests, the requirements of the test are that a) no cell should have an expected value of less than 1 and b) no more than 20% of cells should have expected values less than 5. To overcome either of these problems, we tend to collapse cells together before calculating the test statistic – however there are alternative tests designed to accommodate these situations.\nCalculate the test statistic and degrees of freedom.\nObtain the P-value.\nDraw a statistical conclusion, and use this to generate a biological conclusion.\n\n7.2.2 Examples: Testing Whether Outcomes are Equally Probable\nEXAMPLE 1\nSometimes the simplest form of hypothesis is that different outcomes are equally probable. For example, we expect that when a “fair” coin is tossed that the heads and tails outcomes are equally probable. However, we would see different results if the coin is biased and we can conduct a formal hypothesis test to see whether the outcomes are deviating significantly from our expectation of a “fair” coin.\nEXAMPLE 2 (from Mead et al, 2003)\nSuppose that 40 testers were asked to compare four different cheeses produced by different procedures and identified only by the letters A, B, C, D. Assume that each tester makes one choice and the preferences were as follows.\nCheese First preference A 5 B 7 C 18 D 10 Total 40\nWe might suspect that this shows an overall preference for C. To test the simple model that testers are equally likely to prefer A, B, C, or D, we would calculate the expected frequency for each cheese to be preferred as the total number of testers divided by 4 = 40/4 = 10. Then we calculate:\n =  =9.80.\nThis time we have four frequencies with one overall restriction that they total 40, and so there are 3 df. The 5% point of the distribution on 3df is 7.82, so the unevenness of the preferences is significant (given that the value of 9.80 is greater than the value of 7.82. The evidence suggests that the model of equally likely choices is incorrect. [Equivalently, we could produce a chi-squared probability via =CHISQ.DIST.RT(9.80,3) in Excel which returns P = 0.0203. We reject H0 since P &lt; 0.05.)\nTo assess the extent to which it is the preference for cheese C that contradicts the model, we might decide to do a further test to compare whether the preference for C only is different to the preference for all the other cheeses. In a model of likely choices, our expected values are C = 10 and all other = 30. We observed C = 18, and all other = 22. You can proceed with the test as per above starting with\n =  =…      etc.\n7.2.3 Example: Testing Whether Outcomes are in Expected Proportions (from Mead et al, 2003)\nA total of 560 primula plants were classified by the type of leaf (flat or crimped) and the type of eye (normal or Primrose Queen).\nThe figures obtained for the primula plants follow. Normal eye Primrose Queen eye Total Flat leaves 328 122 450 Crimped leaves 77 33 110 Total 405 155 560\nOn the hypothesis of a Mendelian 3:1 ratio, we would expect, for each characteristic, ¾ of the total 560 observation in the first class of the characteristic and the remaining ¼ in the second class. Further, this model predicts that ¾ of the flat-leaved plants should have normal eyes, resulting in ¾ × ¾ of all the plants or 9/16 with flat leaves and normal eyes; the remaining ¼ of the flat-leaved plants, which is ¼ × ¾ or 3/16, should have Primrose Queen eyes. Similarly, 3/16 of the plants should have crimped leaves and normal eyes; and 1/16 crimped leaves and Primrose Queen eyes.\nThe calculation of these expected or predicted proportions is shown below.\nNormal eye  Primrose Queen eye\nFlat leaves ¾ × ¾ = 9/16 ¼ × ¾ = 3/16 Crimped leaves ¾ × ¼ = 3/16 ¼ × ¼ = 1/16\nHence, the hypothesis predicts ratios of 9:3:3:1 for the four classes (flat normal: flat Primrose Queen: crimped normal: crimped Primrose Queen). The expected frequencies are calculated as 9/16, 3/16, 3/16, and 1/16 of 560, producing 315, 105, 105, and 35.\nThe observed and expected frequencies are summarized in the table below.\nNormal eye  Primrose Queen eye\nFlat leaves 328 (315) 122 (105) Crimped leaves 77 (105) 33 (35)\n    =  \n    = 0.54 + 2.75 + 7.47 + 0.11 = 10.77. \nWe compare 10.77 with the 5% point of the distribution on 3df (7.82). We conclude that the 9:3:3:1 model is not acceptable.\nSee pp. 332-333 of Mead et al, 2003 for what to do next… after rejecting the model.\n7.3 Contingency Tables\n7.3.1 Example: (2 x 2) Contingency Table\nConsider an experiment in which two surgical procedures are to be compared by observing the recovery rates of animals receiving either Procedure 1 or Procedure 2. Twenty animals were randomly allocated to receive Procedure 1 and twenty animals to receive Procedure 2.\nRecovered   \nYes No  Total\nProcedure 1 14 6 20 Procedure 2 8 12 20 Total 22 18 40\nThis is one form of a 22 contingency table, since there are two rows and two columns (ignoring the totals). It appears that Procedure 1 leads to a higher recovery rate. Is this due to chance?\nSolution: We will perform a statistical hypothesis test:\nH0: There is no difference in the true recovery rates for animals on either procedure H1: The recovery rates do differ.\nIn terms of parameters, let p1 be the probability that an animal recovers under Procedure 1, and p2 the probability that an animal recovers under Procedure 2. Then the hypotheses are equivalent to\nH0: p1 = p2\nH1: p1 ≠ p2\nEstimates of individual recovery rates are = 14/20 = 0.7 and = 8/20 = 0.4. Is this difference due to chance?\nIf H0 is true, there is a common recovery rate (which we label p). Assuming H0 is true, the best estimate of p is\n  =  .\nSo the expected frequency (under H0) of recoveries for Procedure 1 would be 20 22/40 = 20 0.55 = 11 animals. In general this can be written as:\nSo the expected frequencies for the cells in the table are:\n  Expected frequencies are written on the contingency table in parentheses, allowing comparisons with observed frequencies:\nRecovered   \nYes No  Total\nProcedure 1 14 (11) 6 (9) 20 Procedure 2 8 (11) 12 (9) 20 Total 22 18 40\nThe table shows observed (and expected) frequencies. The 2 test statistic is then calculated using:\nLarge values of 2 indicate discrepancies between observed and expected frequencies, i.e. large values indicate that H0 should be rejected in favour of H1.\nThe df of this 2 test is 1 for a 22 contingency table. In general,\nIf H0 is true, the observed 2 is just one observation from a 2 distribution with 1 df:\nSince , there is (just) not sufficient evidence to reject H0. Thus, while Procedure 1 has a higher recovery rate, it just fails to reach statistical significance. At this stage, the difference in individual recovery rates appears to be chance. Increasing the numbers of animals in a new experiment will determine the question with higher precision.\n  7.3.2 Example: (4 x 3) Contingency Table\nThe second example is a 43 contingency table. Three vaccines for a disease were compared with a control. The number of animals with no, mild, and severe infection was recorded after 24 months. Data were recorded in the following table:\n    Disease Status      \nVaccine No Mild Severe Total Control 100 (137.3) 71 (42.6) 29 (20.1) 200 A 146 (133.9) 32 (41.6) 17 (19.6) 195 B 149 (132.5) 28 (41.2) 16 (19.3) 193 C 146 (137.3) 37 (42.6) 17 (20.1) 200 Total 541 168 79 788\nThe table shows observed (and expected) frequencies.\nWe test H0 that there is no association between disease status and vaccination given, i.e. all vaccinations have equal effectiveness.\nAssuming H0 is true, the expected frequencies are calculated as follows:\ne.g. Expected frequency for an animal in the Control, No disease group:\n.\nAs before, the test statistic is and this will have (4-1)(3-1) = 6 df.\nThis is how to do the test in the Stats menu in GenStat:\nStats &gt; Statistical Tests &gt; Contingency Tables…\nGenStat requires the data to be set up as a 43 Table type of spreadsheet (as opposed to a Variate or Matrix). It then reports the X2 test statistic and P-Value by selecting the Pearson method.\nPearson chi-squared value is 45.22 with 6 df.\nProbability level (under null hypothesis) p &lt; 0.001\nThe other available method is known as the maximum likelihood (ML) method. The two answers are usually very similar:\nLikelihood chi-squared value is 43.34 with 6 df.\nProbability level (under null hypothesis) p &lt; 0.001   The ML 2 is calculated as follows:\nThe degrees of freedom are (r – 1)(c – 1) as before, where r and c are the numbers of rows and columns respectively.\nIn general, the 2 approximation should only be used if the sample size is relatively large. As a general rule, there should be few expected frequencies below 5 and none below 1.0. Most packages will print out a warning when this occurs. Some situations allow exact probabilities to be calculated, but we will not pursue that in this course.\nAn example of low numbers would be the following, (these are basically 1/10th the numbers in the previous example):\nDisease Status  \nVaccine No Mild Severe Total Control 10 7 3 20 A 15 3 2 20 B 15 3 2 20 C 15 4 2 21 Total 55 17 9 81",
     "crumbs": [
       "Inference",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Non-parametrics tests: part 1</span>"
-    ]
-  },
-  {
-    "objectID": "033-nonparametric2.html",
-    "href": "033-nonparametric2.html",
-    "title": "8  # Non-parametrics tests: part 2",
-    "section": "",
-    "text": "In summary, this book has no content whatsoever.",
-    "crumbs": [
-      "Inference",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Non-parametrics tests: part 2</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Chi-squared tests</span>"
     ]
   },
   {
     "objectID": "040-describing_relationships.html",
     "href": "040-describing_relationships.html",
-    "title": "9  Describing relationships",
+    "title": "8  Describing relationships",
     "section": "",
     "text": "In summary, this book has no content whatsoever.",
     "crumbs": [
       "Modelling",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Describing relationships</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Describing relationships</span>"
     ]
   },
   {
     "objectID": "041-linear_functions.html",
     "href": "041-linear_functions.html",
-    "title": "10  Linear functions",
+    "title": "9  Linear functions",
     "section": "",
     "text": "In summary, this book has no content whatsoever.",
     "crumbs": [
       "Modelling",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Linear functions</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Linear functions</span>"
     ]
   },
   {
     "objectID": "042-linear_functions_multi.html",
     "href": "042-linear_functions_multi.html",
-    "title": "11  Linear functions – multiple predictors",
+    "title": "10  Linear functions – multiple predictors",
     "section": "",
     "text": "In summary, this book has no content whatsoever.",
     "crumbs": [
       "Modelling",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Linear functions -- multiple predictors</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Linear functions -- multiple predictors</span>"
     ]
   },
   {
     "objectID": "043-nonlinear.html",
     "href": "043-nonlinear.html",
-    "title": "12  Non-linear functions",
+    "title": "11  Non-linear functions",
     "section": "",
     "text": "In summary, this book has no content whatsoever.",
     "crumbs": [
       "Modelling",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Non-linear functions</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Non-linear functions</span>"
     ]
   }
 ]

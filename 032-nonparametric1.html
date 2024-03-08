@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ENVX1002 Handbook - 7&nbsp; Non-parametrics tests: part 1</title>
+<title>ENVX1002 Handbook - 7&nbsp; Chi-squared tests</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./033-nonparametric2.html" rel="next">
+<link href="./040-describing_relationships.html" rel="next">
 <link href="./031-ttest2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -110,7 +110,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./030-ttest1.html">Inference</a></li><li class="breadcrumb-item"><a href="./032-nonparametric1.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Non-parametrics tests: part 1</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./030-ttest1.html">Inference</a></li><li class="breadcrumb-item"><a href="./032-nonparametric1.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chi-squared tests</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -211,13 +211,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./032-nonparametric1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Non-parametrics tests: part 1</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./033-nonparametric2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Non-parametrics tests: part 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chi-squared tests</span></span></a>
   </div>
 </li>
       </ul>
@@ -234,25 +228,25 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./040-describing_relationships.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Describing relationships</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Describing relationships</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./041-linear_functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Linear functions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./042-linear_functions_multi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Linear functions – multiple predictors</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear functions – multiple predictors</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./043-nonlinear.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Non-linear functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Non-linear functions</span></span></a>
   </div>
 </li>
       </ul>
@@ -274,9 +268,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./030-ttest1.html">Inference</a></li><li class="breadcrumb-item"><a href="./032-nonparametric1.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Non-parametrics tests: part 1</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./030-ttest1.html">Inference</a></li><li class="breadcrumb-item"><a href="./032-nonparametric1.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chi-squared tests</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Non-parametrics tests: part 1</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chi-squared tests</span></h1>
 </div>
 
 
@@ -293,7 +287,103 @@ window.Quarto = {
 </header>
 
 
-<p>In summary, this book has no content whatsoever.</p>
+<p>The chi-squared distribution (where chi is pronounced ‘ky’) is a very widely used distribution in statistics. Its symbol is 2. It has MANY applications. Here we will consider only two of these applications – tests of agreement with expected outcomes, and contingency tables.</p>
+<p>7.1 Notes on the 2 Distribution</p>
+<p>The density function for a 2 distribution is positively skewed, that is, it has a long tail to the right. The typical shape of the 2 density function is that shown for the 4 df case in Figure 7.1 below. When df is very low e.g.&nbsp;1 or 2, the curve changes shape dramatically. When df are very large (say greater than 100), the 2 distribution approaches the shape (and properties) of a normal distribution.</p>
+<p>Figure 7.1 The shape of the 2 density function for various degrees of freedom.</p>
+<p>The mean and variance of a 2 variable are simple functions of the degrees of freedom of the distribution. If we express the general degrees of freedom as  (Greek n), then</p>
+<pre><code>Mean of   variable =   (i.e. mean = df)
+Variance of   variable = 2 (i.e. variance = twice the df)</code></pre>
+<p>Critical values of a 2 distribution are given in the 2 probability table that appears as Appendix A.5.</p>
+<p>7.2 Testing Agreement of Frequency Data with Expectation Models</p>
+<p>7.2.1 Steps in Chi-Squared Tests of Agreement</p>
+<p>The process for performing a goodness of fit test is the similar to that of the other hypothesis tests you have encountered thus far, that is,</p>
+<ol type="1">
+<li><p>Choose an appropriate hypothesis test for the type of data you have, and the type of question you’re asking.</p></li>
+<li><p>Choose the level of significance for the test.</p></li>
+<li><p>Write null and alternate hypotheses. Here (as for normality tests) the null hypothesis is always that the data can be assumed to follow the distribution under consideration.</p></li>
+<li><p>Calculate the expected values. To do this, we assume that the null hypothesis is true and generate the expected values accordingly</p></li>
+<li><p>Check the assumptions or requirements of the test. For observed versus expected chi square goodness of fit tests, the requirements of the test are that a) no cell should have an expected value of less than 1 and b) no more than 20% of cells should have expected values less than 5. To overcome either of these problems, we tend to collapse cells together before calculating the test statistic – however there are alternative tests designed to accommodate these situations.</p></li>
+<li><p>Calculate the test statistic and degrees of freedom.</p></li>
+<li><p>Obtain the P-value.</p></li>
+<li><p>Draw a statistical conclusion, and use this to generate a biological conclusion.</p></li>
+</ol>
+<p>7.2.2 Examples: Testing Whether Outcomes are Equally Probable</p>
+<p>EXAMPLE 1</p>
+<p>Sometimes the simplest form of hypothesis is that different outcomes are equally probable. For example, we expect that when a “fair” coin is tossed that the heads and tails outcomes are equally probable. However, we would see different results if the coin is biased and we can conduct a formal hypothesis test to see whether the outcomes are deviating significantly from our expectation of a “fair” coin.</p>
+<p>EXAMPLE 2 (from Mead et al, 2003)</p>
+<p>Suppose that 40 testers were asked to compare four different cheeses produced by different procedures and identified only by the letters A, B, C, D. Assume that each tester makes one choice and the preferences were as follows.</p>
+<p>Cheese First preference A 5 B 7 C 18 D 10 Total 40</p>
+<p>We might suspect that this shows an overall preference for C. To test the simple model that testers are equally likely to prefer A, B, C, or D, we would calculate the expected frequency for each cheese to be preferred as the total number of testers divided by 4 = 40/4 = 10. Then we calculate:</p>
+<pre><code> =  =9.80.</code></pre>
+<p>This time we have four frequencies with one overall restriction that they total 40, and so there are 3 df. The 5% point of the distribution on 3df is 7.82, so the unevenness of the preferences is significant (given that the value of 9.80 is greater than the value of 7.82. The evidence suggests that the model of equally likely choices is incorrect. [Equivalently, we could produce a chi-squared probability via =CHISQ.DIST.RT(9.80,3) in Excel which returns P = 0.0203. We reject H0 since P &lt; 0.05.)</p>
+<p>To assess the extent to which it is the preference for cheese C that contradicts the model, we might decide to do a further test to compare whether the preference for C only is different to the preference for all the other cheeses. In a model of likely choices, our expected values are C = 10 and all other = 30. We observed C = 18, and all other = 22. You can proceed with the test as per above starting with</p>
+<pre><code> =  =…      etc.</code></pre>
+<p>7.2.3 Example: Testing Whether Outcomes are in Expected Proportions (from Mead et al, 2003)</p>
+<p>A total of 560 primula plants were classified by the type of leaf (flat or crimped) and the type of eye (normal or Primrose Queen).</p>
+<p>The figures obtained for the primula plants follow. Normal eye Primrose Queen eye Total Flat leaves 328 122 450 Crimped leaves 77 33 110 Total 405 155 560</p>
+<p>On the hypothesis of a Mendelian 3:1 ratio, we would expect, for each characteristic, ¾ of the total 560 observation in the first class of the characteristic and the remaining ¼ in the second class. Further, this model predicts that ¾ of the flat-leaved plants should have normal eyes, resulting in ¾ × ¾ of all the plants or 9/16 with flat leaves and normal eyes; the remaining ¼ of the flat-leaved plants, which is ¼ × ¾ or 3/16, should have Primrose Queen eyes. Similarly, 3/16 of the plants should have crimped leaves and normal eyes; and 1/16 crimped leaves and Primrose Queen eyes.</p>
+<p>The calculation of these expected or predicted proportions is shown below.</p>
+<pre><code>Normal eye  Primrose Queen eye</code></pre>
+<p>Flat leaves ¾ × ¾ = 9/16 ¼ × ¾ = 3/16 Crimped leaves ¾ × ¼ = 3/16 ¼ × ¼ = 1/16</p>
+<p>Hence, the hypothesis predicts ratios of 9:3:3:1 for the four classes (flat normal: flat Primrose Queen: crimped normal: crimped Primrose Queen). The expected frequencies are calculated as 9/16, 3/16, 3/16, and 1/16 of 560, producing 315, 105, 105, and 35.</p>
+<p>The observed and expected frequencies are summarized in the table below.</p>
+<pre><code>Normal eye  Primrose Queen eye</code></pre>
+<p>Flat leaves 328 (315) 122 (105) Crimped leaves 77 (105) 33 (35)</p>
+<pre><code>    =  
+    = 0.54 + 2.75 + 7.47 + 0.11 = 10.77. </code></pre>
+<p>We compare 10.77 with the 5% point of the distribution on 3df (7.82). We conclude that the 9:3:3:1 model is not acceptable.</p>
+<p>See pp.&nbsp;332-333 of Mead et al, 2003 for what to do next… after rejecting the model.</p>
+<p>7.3 Contingency Tables</p>
+<p>7.3.1 Example: (2 x 2) Contingency Table</p>
+<p>Consider an experiment in which two surgical procedures are to be compared by observing the recovery rates of animals receiving either Procedure 1 or Procedure 2. Twenty animals were randomly allocated to receive Procedure 1 and twenty animals to receive Procedure 2.</p>
+<pre><code>Recovered   
+Yes No  Total</code></pre>
+<p>Procedure 1 14 6 20 Procedure 2 8 12 20 Total 22 18 40</p>
+<p>This is one form of a 22 contingency table, since there are two rows and two columns (ignoring the totals). It appears that Procedure 1 leads to a higher recovery rate. Is this due to chance?</p>
+<p>Solution: We will perform a statistical hypothesis test:</p>
+<p>H0: There is no difference in the true recovery rates for animals on either procedure H1: The recovery rates do differ.</p>
+<p>In terms of parameters, let p1 be the probability that an animal recovers under Procedure 1, and p2 the probability that an animal recovers under Procedure 2. Then the hypotheses are equivalent to</p>
+<pre><code>H0: p1 = p2
+H1: p1 ≠ p2</code></pre>
+<p>Estimates of individual recovery rates are = 14/20 = 0.7 and = 8/20 = 0.4. Is this difference due to chance?</p>
+<p>If H0 is true, there is a common recovery rate (which we label p). Assuming H0 is true, the best estimate of p is</p>
+<pre><code>  =  .</code></pre>
+<p>So the expected frequency (under H0) of recoveries for Procedure 1 would be 20 22/40 = 20 0.55 = 11 animals. In general this can be written as:</p>
+<p>So the expected frequencies for the cells in the table are:</p>
+<p>  Expected frequencies are written on the contingency table in parentheses, allowing comparisons with observed frequencies:</p>
+<pre><code>Recovered   
+Yes No  Total</code></pre>
+<p>Procedure 1 14 (11) 6 (9) 20 Procedure 2 8 (11) 12 (9) 20 Total 22 18 40</p>
+<p>The table shows observed (and expected) frequencies. The 2 test statistic is then calculated using:</p>
+<p>Large values of 2 indicate discrepancies between observed and expected frequencies, i.e.&nbsp;large values indicate that H0 should be rejected in favour of H1.</p>
+<p>The df of this 2 test is 1 for a 22 contingency table. In general,</p>
+<p>If H0 is true, the observed 2 is just one observation from a 2 distribution with 1 df:</p>
+<p>Since , there is (just) not sufficient evidence to reject H0. Thus, while Procedure 1 has a higher recovery rate, it just fails to reach statistical significance. At this stage, the difference in individual recovery rates appears to be chance. Increasing the numbers of animals in a new experiment will determine the question with higher precision.</p>
+<p>  7.3.2 Example: (4 x 3) Contingency Table</p>
+<p>The second example is a 43 contingency table. Three vaccines for a disease were compared with a control. The number of animals with no, mild, and severe infection was recorded after 24 months. Data were recorded in the following table:</p>
+<pre><code>    Disease Status      </code></pre>
+<p>Vaccine No Mild Severe Total Control 100 (137.3) 71 (42.6) 29 (20.1) 200 A 146 (133.9) 32 (41.6) 17 (19.6) 195 B 149 (132.5) 28 (41.2) 16 (19.3) 193 C 146 (137.3) 37 (42.6) 17 (20.1) 200 Total 541 168 79 788</p>
+<p>The table shows observed (and expected) frequencies.</p>
+<p>We test H0 that there is no association between disease status and vaccination given, i.e.&nbsp;all vaccinations have equal effectiveness.</p>
+<p>Assuming H0 is true, the expected frequencies are calculated as follows:</p>
+<p>e.g.&nbsp;Expected frequency for an animal in the Control, No disease group:</p>
+<p>.</p>
+<p>As before, the test statistic is and this will have (4-1)(3-1) = 6 df.</p>
+<p>This is how to do the test in the Stats menu in GenStat:</p>
+<pre><code>Stats &gt; Statistical Tests &gt; Contingency Tables…</code></pre>
+<p>GenStat requires the data to be set up as a 43 Table type of spreadsheet (as opposed to a Variate or Matrix). It then reports the X2 test statistic and P-Value by selecting the Pearson method.</p>
+<p>Pearson chi-squared value is 45.22 with 6 df.</p>
+<p>Probability level (under null hypothesis) p &lt; 0.001</p>
+<p>The other available method is known as the maximum likelihood (ML) method. The two answers are usually very similar:</p>
+<p>Likelihood chi-squared value is 43.34 with 6 df.</p>
+<p>Probability level (under null hypothesis) p &lt; 0.001   The ML 2 is calculated as follows:</p>
+<p>The degrees of freedom are (r – 1)(c – 1) as before, where r and c are the numbers of rows and columns respectively.</p>
+<p>In general, the 2 approximation should only be used if the sample size is relatively large. As a general rule, there should be few expected frequencies below 5 and none below 1.0. Most packages will print out a warning when this occurs. Some situations allow exact probabilities to be calculated, but we will not pursue that in this course.</p>
+<p>An example of low numbers would be the following, (these are basically 1/10th the numbers in the previous example):</p>
+<pre><code>Disease Status  </code></pre>
+<p>Vaccine No Mild Severe Total Control 10 7 3 20 A 15 3 2 20 B 15 3 2 20 C 15 4 2 21 Total 55 17 9 81</p>
+<p> </p>
 
 
 
@@ -714,8 +804,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./033-nonparametric2.html" class="pagination-link" aria-label="Non-parametrics tests: part 2">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Non-parametrics tests: part 2</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./040-describing_relationships.html" class="pagination-link" aria-label="Describing relationships">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Describing relationships</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
