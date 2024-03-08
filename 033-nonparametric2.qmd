@@ -1,3 +1,0 @@
-# # Non-parametrics tests: part 2
-
-In summary, this book has no content whatsoever.

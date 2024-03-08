@@ -24,7 +24,6 @@ book:
         - 030-ttest1.qmd
         - 031-ttest2.qmd
         - 032-nonparametric1.qmd
-        - 033-nonparametric2.qmd
     - part: "Modelling"
       chapters:
         - 040-describing_relationships.qmd
