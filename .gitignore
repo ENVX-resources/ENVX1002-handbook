@@ -42,6 +42,7 @@ _book/
 *.toc
 *.aux
 *.log
+*_files/
 
 # R Environment Variables
 .Renviron
