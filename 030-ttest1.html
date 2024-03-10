@@ -313,6 +313,25 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#the-natural-log-log_e-transformation" id="toc-the-natural-log-log_e-transformation" class="nav-link" data-scroll-target="#the-natural-log-log_e-transformation"><span class="header-section-number">5.5.1</span> The Natural Log (<span class="math inline">\(\Log_e\)</span>) Transformation</a></li>
   </ul></li>
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing"><span class="header-section-number">5.6</span> Hypothesis testing</a>
+  <ul class="collapse">
+  <li><a href="#steps-in-hypothesis-testing-via-a-test-statistic" id="toc-steps-in-hypothesis-testing-via-a-test-statistic" class="nav-link" data-scroll-target="#steps-in-hypothesis-testing-via-a-test-statistic"><span class="header-section-number">5.6.1</span> Steps in Hypothesis Testing (via a Test Statistic)</a></li>
+  <li><a href="#one-tailed-and-two-tailed-tests" id="toc-one-tailed-and-two-tailed-tests" class="nav-link" data-scroll-target="#one-tailed-and-two-tailed-tests"><span class="header-section-number">5.6.2</span> One-Tailed and Two-Tailed Tests</a></li>
+  <li><a href="#type-i-and-type-ii-errors" id="toc-type-i-and-type-ii-errors" class="nav-link" data-scroll-target="#type-i-and-type-ii-errors"><span class="header-section-number">5.6.3</span> Type I and Type II Errors</a></li>
+  <li><a href="#power-of-the-test" id="toc-power-of-the-test" class="nav-link" data-scroll-target="#power-of-the-test"><span class="header-section-number">5.6.4</span> Power of the Test</a></li>
+  </ul></li>
+  <li><a href="#one-sample-z-tests" id="toc-one-sample-z-tests" class="nav-link" data-scroll-target="#one-sample-z-tests"><span class="header-section-number">5.7</span> One-Sample z-Tests</a>
+  <ul class="collapse">
+  <li><a href="#introductory-example" id="toc-introductory-example" class="nav-link" data-scroll-target="#introductory-example"><span class="header-section-number">5.7.1</span> Introductory Example</a></li>
+  </ul></li>
+  <li><a href="#general-notes-on-hypothesis-testing" id="toc-general-notes-on-hypothesis-testing" class="nav-link" data-scroll-target="#general-notes-on-hypothesis-testing"><span class="header-section-number">5.8</span> General Notes on Hypothesis Testing</a></li>
+  <li><a href="#one-sample-t-tests" id="toc-one-sample-t-tests" class="nav-link" data-scroll-target="#one-sample-t-tests"><span class="header-section-number">5.9</span> One-Sample t-Tests</a>
+  <ul class="collapse">
+  <li><a href="#introductory-example-1" id="toc-introductory-example-1" class="nav-link" data-scroll-target="#introductory-example-1"><span class="header-section-number">5.9.1</span> Introductory Example</a></li>
+  <li><a href="#general-notes-on-the-t-distribution" id="toc-general-notes-on-the-t-distribution" class="nav-link" data-scroll-target="#general-notes-on-the-t-distribution"><span class="header-section-number">5.9.2</span> General Notes on the T Distribution</a></li>
+  </ul></li>
+  <li><a href="#steps-in-hypothesis-testing-via-a-confidence-interval" id="toc-steps-in-hypothesis-testing-via-a-confidence-interval" class="nav-link" data-scroll-target="#steps-in-hypothesis-testing-via-a-confidence-interval"><span class="header-section-number">5.10</span> Steps in Hypothesis Testing (via a Confidence Interval)</a></li>
+  <li><a href="#one-sample-t-test-with-data-transformation" id="toc-one-sample-t-test-with-data-transformation" class="nav-link" data-scroll-target="#one-sample-t-test-with-data-transformation"><span class="header-section-number">5.11</span> One-Sample t-Test with Data Transformation</a></li>
   </ul>
 </nav>
     </div>
@@ -774,12 +793,419 @@ W = 0.99555, p-value = 0.9868</code></pre>
 <p><span class="math inline">\(\left[\exp(\log y_1) \times \exp(\log y_2) \times \exp(\log y_3)\right]^{\frac{1}{3}}\)</span> <span class="math inline">\(e^{a+b} = e^a \times e^b\)</span></p>
 <p><span class="math inline">\(\left[y_1 \times y_2 \times y_3\right]^{\frac{1}{3}} = \sqrt[3]{y_1 \times y_2 \times y_3}\)</span> <span class="math inline">\(e^{\log a} = a\)</span> <span class="math inline">\(= GM\)</span></p>
 <p>Just as the geometric mean is calculated as <span class="math inline">\(\exp(\bar {y^{\prime}})\)</span>, some books refer to <span class="math inline">\(exp(s^{\prime})\)</span> as the geometric standard deviation, where <span class="math inline">\(s^{\prime}\)</span> is the standard deviation of the <span class="math inline">\(y_i^{\prime} = \log y_i\)</span>. However, this is not a very useful concept, so it won’t be used here.</p>
-<p>Since we have concluded log TcCB has a normal distribution, then TcCB has a lognormal distribution. If a variable log y = y has a normal N(,2) distribution, then the original variable has a lognormal distribution with parameters  and 2, y ~ LN(,2). Note that  and 2 are the parameters for the log variable. It can be shown (no proof here) the mean and variance for the lognormal LN(,2). distribution are Mean<br>
-Variance</p>
-<p>We can illustrate these relationships by using the parameter estimates and from the log TcCB data to produce the following fitted normal distributions and lognormal distributions are obtained:</p>
-
-
+<p>Since we have concluded log TcCB has a normal distribution, then TcCB has a <strong>lognormal distribution</strong>. If a variable log <span class="math inline">\(y = y{\prime}\)</span> has a normal <span class="math inline">\(N(\mu,\sigma^2)\)</span> distribution, then the original variable has a lognormal distribution with parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span>, <span class="math inline">\(y \sim LN(\mu,\sigma^2)\)</span>. Note that <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> are the parameters for the log variable. It can be shown (no proof here) the mean and variance for the lognormal <span class="math inline">\(y \sim LN(\mu,\sigma^2)\)</span>. distribution are</p>
+<ul>
+<li>Mean = <span class="math inline">\(exp(\mu+1/2\sigma^2)\)</span></li>
+<li>Variance = <span class="math inline">\(exp(2\mu+\sigma^2)[exp(\sigma^2)-1]\)</span></li>
+</ul>
+<p>We can illustrate these relationships by using the parameter estimates <span class="math inline">\(\hat \mu=-0.598\)</span> and <span class="math inline">\(\hat \sigma=1.362\)</span> from the log TcCB data to produce the following fitted normal distributions and lognormal distributions are obtained:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lognormal.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. Normal and Log Normal distributions for TcCB data</figcaption>
+</figure>
+</div>
+<p>Also, using these parameter estimates, the mean and variance of the lognormal distribution are</p>
+<ul>
+<li>Mean = <span class="math inline">\(exp(-0.598+1/2\times 1.362^2)=1.390\)</span> ppb</li>
+<li>Variance = <span class="math inline">\(exp(2\times -0.598+1.362^2)[exp(1.362^2)-1]=10.442\)</span> ppb</li>
+<li>Std. Dev = <span class="math inline">\(\sqrt{\text{variance}} = \sqrt{10.422} = 3.228\)</span> ppb,</li>
+</ul>
+<p>where -0.598 is the average of the logged data and 1.363 is the standard deviation of the logged data.</p>
+<p>Note the similarity of these to the sample mean (1.412) and sample standard deviation (3.098) of the raw TcCB data.</p>
 </section>
+</section>
+<section id="hypothesis-testing" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="hypothesis-testing"><span class="header-section-number">5.6</span> Hypothesis testing</h2>
+<p>Sometimes research questions are framed not as “What is a plausible range of values for such and such a parameter?” but rather “Are the data consistent with this particular value for the parameter?”. A hypothesis test is a test of such a hypothesised value. For example, we may simply wish to test whether the population mean yield of wheat in a particular region is 2 tons per hectare or not.</p>
+<p>Statistical hypothesis tests are based on research questions and hypotheses. Some examples of research questions are:</p>
+<ul>
+<li>Does an increased use of fertilisers of farms in a catchment area result in increased river pollution?</li>
+<li>How do different crop residue management systems affect the “health” of the soil?</li>
+<li>What effect will selective logging have on wildlife populations?</li>
+</ul>
+<p>The diagram below also appears in Section 1. Here we see where statistical hypothesis testing fits into the research process at the point of <strong>statistical analysis</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/research_cycle.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. The research process</figcaption>
+</figure>
+</div>
+<section id="steps-in-hypothesis-testing-via-a-test-statistic" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="steps-in-hypothesis-testing-via-a-test-statistic"><span class="header-section-number">5.6.1</span> Steps in Hypothesis Testing (via a Test Statistic)</h3>
+<ol type="1">
+<li>Choose the level of significance, <span class="math inline">\(\alpha\)</span> (most commonly <span class="math inline">\(\alpha= 0.05\)</span>, but you will also see 0.01 and 0.10 mentioned regularly)</li>
+<li>Write the null and alternate hypotheses</li>
+<li>Check if the assumptions of the test hold (if they don’t - choose an appropriate transformation or choose another test!)</li>
+<li>Calculate the test statistic (&amp; degrees of freedom if applicable)</li>
+<li><ol type="a">
+<li>Obtain a P-value <strong>OR</strong></li>
+<li>Obtain critical values</li>
+</ol></li>
+<li>Make a statistical conclusion by
+<ol type="a">
+<li>Comparing this P-value to your chosen level of significance (if <span class="math inline">\(P &lt; \alpha\)</span>, then reject null hypothesis) <strong>OR</strong></li>
+<li>Seeing if the test statistic lies with the rejection region</li>
+</ol></li>
+<li>Write a biological conclusion</li>
+</ol>
+</section>
+<section id="one-tailed-and-two-tailed-tests" class="level3" data-number="5.6.2">
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="one-tailed-and-two-tailed-tests"><span class="header-section-number">5.6.2</span> One-Tailed and Two-Tailed Tests</h3>
+<p>Hypothesis tests about the population mean can take one of the three forms:</p>
+<ol type="a">
+<li><span class="math inline">\(H_0: \mu = c\)</span> or <span class="math inline">\(H_1: \ne c\)</span><br>
+</li>
+<li><span class="math inline">\(H_0: \mu \ge c\)</span> or <span class="math inline">\(H_1: \mu &lt; c\)</span><br>
+</li>
+<li><span class="math inline">\(H_0: \mu \le c\)</span> or <span class="math inline">\(H_1: \mu &gt; c\)</span></li>
+</ol>
+<p>where <span class="math inline">\(c\)</span> is a real number chosen before the data are gathered. Each <span class="math inline">\(H_0\)</span> above is tested with a test statistic, and the decision about <span class="math inline">\(H_0\)</span> is based on how far this test statistics deviates from expectation under a true <span class="math inline">\(H_0\)</span>. If the test statistic exceeds the critical value(s), <span class="math inline">\(H_0\)</span> is rejected. Alternatively, if the <span class="math inline">\(P\)</span> value for the test statistic is smaller than the predetermined alpha level, <span class="math inline">\(H_0\)</span> is rejected.</p>
+<p>For any particular experiment only one of the sets of hypotheses is appropriate and can be tested. <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span> are predictions that follow naturally from the question posed and the result anticipated by the researcher. Also, hypotheses contain only parameters (Greek letters) and claimed values, never numbers that come from the sample itself. <span class="math inline">\(H_0\)</span> always contains the equal sign and is the hypothesis that is examined by the test statistic.</p>
+<p>Generally a) is the form of hypothesis test that we employ. Options b) or c) are used occasionally when we have evidence (quite independent of the data we have collected) to believe that the difference of the hypothesized value from the true population mean, if any, is in one direction only. Note that a one tailed test is NOT appropriate simply because the difference between the samples is clearly in one direction or the other.</p>
+</section>
+<section id="type-i-and-type-ii-errors" class="level3" data-number="5.6.3">
+<h3 data-number="5.6.3" class="anchored" data-anchor-id="type-i-and-type-ii-errors"><span class="header-section-number">5.6.3</span> Type I and Type II Errors</h3>
+<p>A Type I error (false positive) is made when we reject the null hypothesis when it is true. We might for example declare that a population mean is different from hypothesized value when, in fact, they are not. Equally we may err in the other direction, that is, we may accept a null hypothesis when it is false. We might, for example, fail to detect a difference between the population mean and a hypothesized value. In doing so, we make a Type II error (false negative). The definitions of each of these two errors is summarised in the table below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/error.png" class="img-fluid figure-img"></p>
+<figcaption>Fig. Type I and Type II Error</figcaption>
+</figure>
+</div>
+<p>Because , the level of significance, is chosen by the experimenter, it is under the control of the experimenter and it is known. When you reject and <span class="math inline">\(H_0\)</span>, therefore, you know the probability of an error (Type I). If you accept an <span class="math inline">\(H_0\)</span> it is much more difficult to ascertain the probability of an error (Type II). This is because Type II errors depend on many factors, some of which may be unknown to the experimenter. So the rejection of <span class="math inline">\(H_0\)</span> leads to the more satisfying situation because the probability of a mistake is easily quantifiable.</p>
+<p>You may think that if the level of significance is the probability of a Type I error and is under our control, why not make the level of significance (<span class="math inline">\(\alpha\)</span> level) very small to eliminate or reduce Type I errors? Why not use 1 in 100 or 1 in 1000? Sometimes we may wish to do that (e.g.&nbsp;in human medical trials), but reduction of the <span class="math inline">\(\alpha\)</span> level (Type I error) always increases the probability of a Type II error.</p>
+<p>You can read more about this in Chapter 5 of Glover &amp; Mitchell (2008) or Chapter 5 of Clewer &amp; Scarisbrick (2013).</p>
+<p><em>Glover, T. and Mitchell, K., 2008. An introduction to biostatistics. Waveland Press.</em></p>
+<p><em>Clewer, A.G. and Scarisbrick, D.H., 2013. Practical statistics and experimental design for plant and crop science. John Wiley &amp; Sons.</em></p>
+</section>
+<section id="power-of-the-test" class="level3" data-number="5.6.4">
+<h3 data-number="5.6.4" class="anchored" data-anchor-id="power-of-the-test"><span class="header-section-number">5.6.4</span> Power of the Test</h3>
+<p>Ideally, a test of significance should reject the null hypothesis when it is false. Power is the probability of rejecting <span class="math inline">\(H_0\)</span> when <span class="math inline">\(H_0\)</span> is false, <span class="math inline">\(1-\beta\)</span>. A test becomes more powerful as the available data increases.</p>
+<p>You’ll do more on this topic (including planning experiments and interpreting statistical differences in light of biological importance NEXT YEAR).</p>
+</section>
+</section>
+<section id="one-sample-z-tests" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="one-sample-z-tests"><span class="header-section-number">5.7</span> One-Sample z-Tests</h2>
+<section id="introductory-example" class="level3" data-number="5.7.1">
+<h3 data-number="5.7.1" class="anchored" data-anchor-id="introductory-example"><span class="header-section-number">5.7.1</span> Introductory Example</h3>
+<p>The liquid effluent from a chemical manufacturing plant is to be evaluated. The plant operators claim the mean concentration of a specific toxic substance is 0.3 <span class="math inline">\(\mu g/l\)</span>.</p>
+<p>Let y = toxic substance concentration (<span class="math inline">\(\mu g/l\)</span>). Assume data are normally distributed: <span class="math inline">\(y \sim N(\mu, \sigma^2)\)</span>. Suppose (for the time being) we have prior information on the variability of similar operating plants, and can assume that <span class="math inline">\(\sigma = 0.1\)</span> <span class="math inline">\(\mu g/l\)</span>. Assume that the claim is true, i.e.&nbsp;(population) mean is <span class="math inline">\(\mu g/l\)</span>.</p>
+<p><strong>Scenario A</strong></p>
+<p>To test this claim, a single sample of effluent discharge was taken and found to be 0.4 <span class="math inline">\(\mu g/l\)</span>. Does the data support their claim?</p>
+<p>We want to see how likely it is to get an observation of 0.4 <span class="math inline">\(\mu g/l\)</span>, or something even more extreme. By more extreme, we mean &gt; 0.4 <span class="math inline">\(\mu g/l\)</span>, or &lt; 0.2 <span class="math inline">\(\mu g/l\)</span> (i.e.&nbsp;more than 0.1 <span class="math inline">\(\mu g/l\)</span> away from <span class="math inline">\(\mu = 0.3\)</span>, in either direction). This probability is represented in the sketch below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="fl">0.3</span><span class="dv">-4</span><span class="sc">*</span><span class="fl">0.1</span>, <span class="fl">0.3</span><span class="sc">+</span><span class="dv">4</span><span class="sc">*</span><span class="fl">0.1</span>)), <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">0.3</span>, <span class="at">sd =</span> <span class="fl">0.1</span>), <span class="at">geom =</span> <span class="st">"area"</span>, <span class="at">fill =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">0.3</span>, <span class="at">sd=</span><span class="fl">0.1</span>), </span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.3</span><span class="dv">-4</span><span class="sc">*</span><span class="fl">0.1</span>, <span class="fl">0.2</span>), <span class="at">geom =</span> <span class="st">"area"</span>, </span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">0.3</span>, <span class="at">sd=</span><span class="fl">0.1</span>), </span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.3</span><span class="sc">+</span><span class="dv">4</span><span class="sc">*</span><span class="fl">0.1</span>, <span class="fl">0.4</span>), <span class="at">geom =</span> <span class="st">"area"</span>, </span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"x"</span>) <span class="sc">+</span></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="fu">expression</span>(<span class="fu">N</span>(<span class="fl">0.3</span>,<span class="fl">0.1</span><span class="sc">^</span><span class="dv">2</span>)<span class="sc">~</span>pdf)) <span class="sc">+</span></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="030-ttest1_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>So the probability of this event is</p>
+<p><span class="math inline">\(P(Y&lt;0.2 \text{ or } Y&gt;0.4)\)</span> <span class="math inline">\(=\left( Z&lt;\frac{0.2-0.3}{0.1} \text{ or } Z&gt;\frac{0.4-0.3}{0.1} \right)\)</span> <span class="math inline">\(=P(Z&lt;-1 \text{ or } Z&gt;1)\)</span> <span class="math inline">\(=2 \times P(Z&lt;-1)\)</span> <span class="math inline">\(=2 \times 0.1587 = 0.3174\)</span></p>
+<p>This is a large probability (<span class="math inline">\(\approx\)</span> 1 in 3), so obtaining a value of 0.4 <span class="math inline">\(\mu g/l\)</span> is not inconsistent with <span class="math inline">\(\mu = 0.3\)</span> <span class="math inline">\(\mu g/l\)</span>. There is no reason to reject the hypothesis that the (population) mean is <span class="math inline">\(\mu = 0.3\)</span> <span class="math inline">\(\mu g/l\)</span>.</p>
+<p><em>Scenario B</em></p>
+<p>Suppose now that the toxic substance concentration was 0.5 <span class="math inline">\(\mu g/l\)</span>. What is the conclusion now?</p>
+<p>We now need the probability of &gt; 0.5 <span class="math inline">\(\mu g/l\)</span>, or &lt; 0.1 <span class="math inline">\(\mu g/l\)</span>. This is represented in the sketch below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="fl">0.3</span><span class="dv">-4</span><span class="sc">*</span><span class="fl">0.1</span>, <span class="fl">0.3</span><span class="sc">+</span><span class="dv">4</span><span class="sc">*</span><span class="fl">0.1</span>)), <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">0.3</span>, <span class="at">sd =</span> <span class="fl">0.1</span>), <span class="at">geom =</span> <span class="st">"area"</span>, <span class="at">fill =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">0.3</span>, <span class="at">sd=</span><span class="fl">0.1</span>), </span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.3</span><span class="dv">-4</span><span class="sc">*</span><span class="fl">0.1</span>, <span class="fl">0.1</span>), <span class="at">geom =</span> <span class="st">"area"</span>, </span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">0.3</span>, <span class="at">sd=</span><span class="fl">0.1</span>), </span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.3</span><span class="sc">+</span><span class="dv">4</span><span class="sc">*</span><span class="fl">0.1</span>, <span class="fl">0.5</span>), <span class="at">geom =</span> <span class="st">"area"</span>, </span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"x"</span>) <span class="sc">+</span></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="fu">expression</span>(<span class="fu">N</span>(<span class="fl">0.3</span>,<span class="fl">0.1</span><span class="sc">^</span><span class="dv">2</span>)<span class="sc">~</span>pdf)) <span class="sc">+</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="030-ttest1_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>So the probability of this event is</p>
+<p><span class="math inline">\(P(Y&lt;0.1 \text{ or } Y&gt;0.5)\)</span> <span class="math inline">\(=\left( Z&lt;\frac{0.1-0.3}{0.1} \text{ or } Z&gt;\frac{0.5-0.3}{0.1} \right)\)</span> <span class="math inline">\(=P(Z&lt;-2 \text{ or } Z&gt;2)\)</span> <span class="math inline">\(=2 \times P(Z&lt;-2)\)</span> <span class="math inline">\(=2 \times 0.0228 = 0.0456\)</span></p>
+<p>This is small (less than 1 in 20), so obtaining a concentration of 0.5 <span class="math inline">\(\mu g/l\)</span> is unlikely, if <span class="math inline">\(\mu = 0.3\)</span> <span class="math inline">\(\mu g/l\)</span>.</p>
+<p>So we reject the hypothesis that <span class="math inline">\(\mu = 0.5\)</span> <span class="math inline">\(\mu g/l\)</span> and conclude that the (population) mean is significantly higher than 0.3 <span class="math inline">\(\mu g/l\)</span>.</p>
+<p>HOWEVER, in reality you would <strong>NOT</strong> make a recommendation based on this conclusion as it is based on a single value! You want to base your decision on a much larger sample.</p>
+<p><em>Scenario C</em></p>
+<p>Continuing the liquid effluent example, recall the plant operators claim the mean concentration of a specific toxic substance is 0.3 <span class="math inline">\(\mu g/l\)</span>. Now let’s say that to test this claim, six effluent discharge samples were taken at randomly chosen times and the resultant readings were 0.48 0.25 0.29 0.51 0.49 0.40. Does the data support their claim?</p>
+<p>Let y = toxic substance concentration (<span class="math inline">\(\mu g/l\)</span>). Assume data are normally distributed: <span class="math inline">\(y \sim N(\mu, \sigma^2)\)</span>. Suppose (for the time being) we have prior information on the variability of similar operating plants, and can assume that <span class="math inline">\(\sigma = 0.1\)</span> <span class="math inline">\(\mu g/l\)</span>. As we know the population standard deviation, <span class="math inline">\(\sigma\)</span>, we will use a z-test.</p>
+<p>Null hypothesis: <span class="math inline">\(H_0: \mu = 0.3\)</span> <span class="math inline">\(\mu g/l\)</span> Alternate hypothesis: <span class="math inline">\(H_1: \mu \ne 0.3\)</span> <span class="math inline">\(\mu g/l\)</span> where <span class="math inline">\(\mu\)</span> = mean toxic substance concentration</p>
+<p><span class="math inline">\(z=\frac{\bar{y}-\mu}{\sqrt{\sigma^2/n}}=\frac{\bar{y}-\mu}{se(\bar{y})}\)</span></p>
+<pre><code>Test Statistic,  </code></pre>
+<p><span class="math inline">\(z=\frac{0.403-0.3}{\sqrt{0.1^2/6}}=2.53\)</span></p>
+<p>Assuming that the null hypothesis is true (that <span class="math inline">\(\mu = 0.3\)</span> <span class="math inline">\(\mu g/l\)</span>), then z = 2.53 is an observation from a standard normal distribution.</p>
+<p>We now calculate the probability of obtaining this z-value, or something more extreme. This is the P value of the test:</p>
+<p><span class="math inline">\(P=P(\bar{y} \le 0.197 \text{ or } \bar{y} \ge 0.403)\)</span><br>
+<span class="math inline">\(=P(Z \le -2.53 \text{ or } Z \ge 2.53)\)</span> <span class="math inline">\(=2 \times P(Z \le -2.53)\)</span> <span class="math inline">\(=2 \times 0.0057=0.011\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">2.53</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.01140625</code></pre>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/zvals.png" class="img-fluid figure-img"></p>
+<figcaption>plot of <span class="math inline">\(P(\bar{y} \le 0.197 \text{ or } \bar{y} \ge 0.403)\)</span> and <span class="math inline">\(P(Z \le -2.53 \text{ or } \bar{y} \ge 2.53)\)</span></figcaption>
+</figure>
+</div>
+<p>If <span class="math inline">\(H_0\)</span> is true, there is only a 1.1% chance of obtaining this value of or something more extreme. This is unlikely, so we <strong>reject the null hypothesis</strong>. Hence we conclude that the toxic substance concentration in the effluent has a mean <strong>significantly greater</strong> than 0.3 <span class="math inline">\(\mu g/l\)</span>.</p>
+</section>
+</section>
+<section id="general-notes-on-hypothesis-testing" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="general-notes-on-hypothesis-testing"><span class="header-section-number">5.8</span> General Notes on Hypothesis Testing</h2>
+<p>Often researchers choose their level of significance (<span class="math inline">\(\alpha\)</span>) as 0.05. In that case…</p>
+<ul>
+<li>If <span class="math inline">\(P&lt;0.05\)</span> (less than 1 in 20) <span class="math inline">\(\Rightarrow\)</span> reject <span class="math inline">\(H_0\)</span></li>
+<li>If <span class="math inline">\(P&lt;0.05\)</span> (more than 1 in 20) <span class="math inline">\(\Rightarrow\)</span> retain <span class="math inline">\(H_0\)</span></li>
+</ul>
+<p>If <span class="math inline">\(H_0\)</span> is retained, this does not necessarily mean that <span class="math inline">\(H_0\)</span> is true; the sample may be too small to detect a difference.</p>
+<p>Even though <span class="math inline">\(H_0\)</span> might be rejected, there is a small chance that this will be in error. If you use a 5% cut off rule, 5% of your conclusions will be wrong when <span class="math inline">\(H_0\)</span> is true!</p>
+</section>
+<section id="one-sample-t-tests" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="one-sample-t-tests"><span class="header-section-number">5.9</span> One-Sample t-Tests</h2>
+<section id="introductory-example-1" class="level3" data-number="5.9.1">
+<h3 data-number="5.9.1" class="anchored" data-anchor-id="introductory-example-1"><span class="header-section-number">5.9.1</span> Introductory Example</h3>
+<p>For the toxic substance concentration in effluent example (with the 6 readings), now we will not make any assumption about the variability (i.e.&nbsp;we assume we don’t know sigma). How would the analysis change?</p>
+<p>As before the null and alternate hypotheses are, <span class="math inline">\(H_0: \mu = 0.3\)</span> <span class="math inline">\(\mu g/l\)</span> vs.&nbsp;<span class="math inline">\(H_1: \mu \ne 0.3\)</span> <span class="math inline">\(\mu g/l\)</span>. From the data we calculate the sample mean and sample standard deviation to use in the construction of the test statistic, t. Here, <span class="math inline">\(\mu=0.403\)</span> <span class="math inline">\(\mu g/l\)</span> and <span class="math inline">\(s = 0.111\)</span> <span class="math inline">\(\mu g/l\)</span>.</p>
+<p>The test statistic, t, is calculated using the following formula:</p>
+<p><span class="math inline">\(t=\frac{\bar{y}-\mu}{\sqrt{s^2/n}}=\frac{\bar{y}-\mu}{se(\bar{y})}\)</span></p>
+<p>and the associated degrees of freedom as follows: degrees of freedom, <span class="math inline">\(df = n-1\)</span>.</p>
+<p>So in the current example,</p>
+<p><span class="math inline">\(t=\frac{0.403-0.3}{\sqrt{0.111^2/6}}=2.29\)</span> and <span class="math inline">\(df=6-1=5\)</span></p>
+<p>Assuming that the null hypothesis is true (that <span class="math inline">\(\mu = 0.3\)</span> <span class="math inline">\(\mu g/l\)</span>), then t = 2.29 is now an observation from a t distribution with <span class="math inline">\(n - 1 = 5\)</span> degrees of freedom.</p>
+<p>The P-value for this t-test is</p>
+<p><span class="math inline">\(P=P(\bar{y} \le 0.197 \text{ or } \bar{y} \ge 0.403)\)</span><br>
+<span class="math inline">\(=P(T_5 \le -2.29 \text{ or } T_5 \ge 2.29)\)</span> <span class="math inline">\(=2 \times P(T_5 \le -2.29)\)</span> <span class="math inline">\(=2 \times 0.035=0.071\)</span></p>
+<p>We can look -2.29 up in the “old school” t-tables or we can use the <code>pt</code> function in R to calculate P.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">pt</span>(<span class="sc">-</span><span class="fl">2.29</span>,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.07064936</code></pre>
+</div>
+</div>
+<p>This time, the P-value is greater than 0.05, so we cannot reject <span class="math inline">\(H_0\)</span>. We can say that the data are consistent with the mean concentration of the toxic substance being 0.3 <span class="math inline">\(\mu g/l\)</span>.</p>
+<p>Rather than calculate the probabilities by hand, we can use R’s <code>t.test</code> command to run the test:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>toxic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.48</span>, <span class="fl">0.25</span>, <span class="fl">0.29</span>, <span class="fl">0.51</span>, <span class="fl">0.49</span>, <span class="fl">0.40</span>)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(toxic, <span class="at">mu =</span> <span class="fl">0.3</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  toxic
+t = 2.2891, df = 5, p-value = 0.07073
+alternative hypothesis: true mean is not equal to 0.3
+95 percent confidence interval:
+ 0.2872928 0.5193739
+sample estimates:
+mean of x 
+0.4033333 </code></pre>
+</div>
+</div>
+<p>From the output we can see that we can see that</p>
+<p>t = 2.2891; df = 5; p-value = 0.07073</p>
+<p>Our conclusion is as above.</p>
+</section>
+<section id="general-notes-on-the-t-distribution" class="level3" data-number="5.9.2">
+<h3 data-number="5.9.2" class="anchored" data-anchor-id="general-notes-on-the-t-distribution"><span class="header-section-number">5.9.2</span> General Notes on the T Distribution</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tdist_1.png" class="img-fluid figure-img"></p>
+<figcaption>t distribution versus z distribution</figcaption>
+</figure>
+</div>
+<p>The t distribution has “heavier” tails than the normal distribution.</p>
+<p>As degrees of freedom <span class="math inline">\(\uparrow\)</span>, t <span class="math inline">\(\rightarrow\)</span> normal distribution.</p>
+<p>The P-value for the t-test is larger than that for the z-test <span class="math inline">\(\therefore\)</span> the t-test is not as powerful. This is because some information must be used to estimate <span class="math inline">\(\sigma\)</span>.</p>
+</section>
+</section>
+<section id="steps-in-hypothesis-testing-via-a-confidence-interval" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="steps-in-hypothesis-testing-via-a-confidence-interval"><span class="header-section-number">5.10</span> Steps in Hypothesis Testing (via a Confidence Interval)</h2>
+<p>Hypothesis testing via a t-based confidence interval is an alternative to conducting a one-sample t-test (via test statistic, df, and P-value). The same assumptions apply as for a t-test.</p>
+<ol type="1">
+<li>Write the null and alternate hypotheses.</li>
+<li>Check if the assumptions of the test hold.</li>
+<li>Calculate the confidence interval.</li>
+<li>Check whether the hypothesised value / mean lies within the confidence interval.</li>
+<li>Make a statistical conclusion. (If the hypothesized value / mean does not lie within the confidence interval, reject the null hypothesis.)</li>
+<li>Write a biological conclusion.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>toxic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.48</span>, <span class="fl">0.25</span>, <span class="fl">0.29</span>, <span class="fl">0.51</span>, <span class="fl">0.49</span>, <span class="fl">0.40</span>)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(toxic, <span class="at">mu =</span> <span class="fl">0.3</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  toxic
+t = 2.2891, df = 5, p-value = 0.07073
+alternative hypothesis: true mean is not equal to 0.3
+95 percent confidence interval:
+ 0.2872928 0.5193739
+sample estimates:
+mean of x 
+0.4033333 </code></pre>
+</div>
+</div>
+<p>We can see that the 95% confidence intervals are also provided in the R output above and that our hypothesised mean of 0.3 <span class="math inline">\(\mu g/l\)</span> is contained within (between) the CI’s.</p>
+<p>We conclude that the true mean toxic substance concentration does not differ significantly from 0.3 <span class="math inline">\(\mu g/l\)</span>, and that we are 95% confident that this unknown true mean value lies within the range 0.2873 to 0.5194 <span class="math inline">\(\mu g/l\)</span>.</p>
+<p>Performing a hypothesis test using a 95% confidence interval is equivalent to performing a t-test with a 5% level of significance – the conclusions drawn will be the same. Similarly the conclusions from a 90% CI and a t-test with <span class="math inline">\(\mu = 0.10\)</span> will be the same. Some journals prefer us to report the CI’s as they are more informative than the p-value alone. For example, the width of the CI’s says something about the precision of the estimate.</p>
+</section>
+<section id="one-sample-t-test-with-data-transformation" class="level2" data-number="5.11">
+<h2 data-number="5.11" class="anchored" data-anchor-id="one-sample-t-test-with-data-transformation"><span class="header-section-number">5.11</span> One-Sample t-Test with Data Transformation</h2>
+<p><strong>Example</strong></p>
+<p>There is evidence that total nitrogen levels in the river – like many other environmental quality data – are lognormally distributed. Consequently, it is more convenient to work on the logarithmic scale. For example,</p>
+<pre><code>TN = log10[total nitrogen concentration]</code></pre>
+<p>where the nitrogen concentration is measured in <span class="math inline">\(\mu g/l\)</span>. (Often scientists will find it more convenient to use the <span class="math inline">\(\log_{10}\)</span> scale rather than <span class="math inline">\(\log_e\)</span>, but this is of no real consequence).</p>
+<p>Data from 29 observations of Total Nitrogen levels in the Nepean River @ Wallacia downloaded using Water NSW water insights API and can be found in the data set <code>TN_Wallacia.csv</code>. We are interested to test whether total nitrogen concentration differs significantly from the preferred water quality target of 500 ppb (note that ppm and <span class="math inline">\(\mu g/l\)</span> are equivalent). Nitrogen content would ideally be equal to or less than this target to reduce the risk of significant eutrophication.</p>
+<p>Be sure to include the following elements in your statistical test:</p>
+<ul>
+<li>null and alternate hypotheses;</li>
+<li>consideration of the analysis assumptions;</li>
+<li>mean and confidence interval on the original measurement scale;</li>
+<li>biological conclusion of the test output including the confidence interval.</li>
+</ul>
+<p><strong>Solution</strong></p>
+<p>We wish to perform a one-sample t-test to test the null hypothesis <span class="math inline">\(H_0: \mu = 500\)</span> <span class="math inline">\(\mu g/l\)</span>. However to do this we need to be able to assume the data follows a normal distribution. A quick summary of the raw data shows that the data is skewed to the right (see boxplot below, also the mean of 855.9 <span class="math inline">\(\mu g/l\)</span> is greater than the median of 800 <span class="math inline">\(\mu g/l\)</span>) and we also see the typical “smiley” shape of the points on the qq normal plot. We also find that the skewness value of 1.10 is positive and greater than one. The Shapiro-Wilks normality test indicates non-normality at the 5% significance level (as the p-value &lt; 0.05).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>tn <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/TN_Wallacia.csv"</span>)</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tn<span class="sc">$</span>TN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  310.0   610.0   800.0   855.9  1020.0  2130.0 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(tn<span class="sc">$</span>TN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.078249</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(tn<span class="sc">$</span>TN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  tn$TN
+W = 0.92582, p-value = 0.04293</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tn, <span class="fu">aes</span>(<span class="at">sample =</span> TN)) <span class="sc">+</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> <span class="co"># This adds the QQ plot points</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span> <span class="co"># This adds the QQ line</span></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Normal Q-Q Plot"</span>) <span class="sc">+</span></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="030-ttest1_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tn, <span class="fu">aes</span>(<span class="at">x=</span>TN)) <span class="sc">+</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="030-ttest1_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Transform data</strong></p>
+<p>A log (base 10) transformation on the raw data was performed as suggested.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>tn<span class="sc">$</span>log10_TN <span class="ot">&lt;-</span> <span class="fu">log10</span>(tn<span class="sc">$</span>TN)</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(tn<span class="sc">$</span>log10_TN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.886528</code></pre>
+</div>
+</div>
+<p>We can use the mean of this transformed data i.e.&nbsp;the mean transformed TN value (= 2.886528) to find the estimated geometric mean (GM) of the phosphorus levels. The <span class="math inline">\(GM = 10^2.886528 = 770.066\)</span> <span class="math inline">\(\mu g/l\)</span>. This is an indication of a typical phosphorus reading. Note how this is lower than the arithmetic mean.</p>
+<p><strong>Recall</strong> from earlier that when a log-transformation is used, the back-transformed mean is known as the geometric mean (as opposed to the ordinary arithmetic mean). This measure is commonly used in describing environmental data, as in many cases data are highly positively skewed. Like the median, the geometric mean is less sensitive (or more robust) to these outlying values.</p>
+<p>Again before proceeding with the t-test or obtaining a t-based CI, we need to perform a normal probability test on the log-transformed values, TP to test whether these log values can be assumed to follow a normal distribution.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tn, <span class="fu">aes</span>(<span class="at">sample =</span> log10_TN)) <span class="sc">+</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> <span class="co"># This adds the QQ plot points</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span> <span class="co"># This adds the QQ line</span></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Normal Q-Q Plot"</span>) <span class="sc">+</span></span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="030-ttest1_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(tn<span class="sc">$</span>log10_TN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  tn$log10_TN
+W = 0.97279, p-value = 0.6375</code></pre>
+</div>
+</div>
+<p>Based on the qq-normal plot and the Shapiro Wilks test (p&gt;0.05), we can assume that the transformation has been successful.</p>
+<p>We perform the t test on the log scale (using the newly generated data) where our null and alternate hypotheses are in effect:</p>
+<ul>
+<li><span class="math inline">\(H_0: \mu_A = log_{10} 500\)</span> <span class="math inline">\(mg/l\)</span></li>
+<li><span class="math inline">\(H_1: \mu_A \ne log_{10} 500\)</span> <span class="math inline">\(mg/l\)</span></li>
+</ul>
+<p>where <span class="math inline">\(\mu_A\)</span> is the population arithmetic mean.</p>
+<p>Hence the test statistic will be</p>
+<p><span class="math inline">\(t=\frac{\bar{y} \text{ (of log10 data)}-\log_{10}(500)}{s \text{ (of log10 data)}/\sqrt{n}}\)</span> and <span class="math inline">\(df = n-1\)</span>.</p>
+<p>Let’s test this in R</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(tn<span class="sc">$</span>log10_TN, <span class="at">mu =</span> <span class="fu">log10</span>(<span class="dv">500</span>), <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  tn$log10_TN
+t = 4.8768, df = 28, p-value = 3.884e-05
+alternative hypothesis: true mean is not equal to 2.69897
+95 percent confidence interval:
+ 2.807748 2.965309
+sample estimates:
+mean of x 
+ 2.886528 </code></pre>
+</div>
+</div>
+<p>The P-value of &lt;0.001 indicates that we should reject <span class="math inline">\(H_0\)</span>. R also produces the CI (2.807748, 2.965309) with its t-test output. Confirming the rejection of <span class="math inline">\(H_0\)</span> is the fact that the test mean of 2.69897 (<span class="math inline">\(log_{10}500\)</span>) lies outside (and below) these confidence limits. Therefore we can conclude that the (population) geometric mean phosphorus concentration is significantly higher than 500 <span class="math inline">\(\mu g/l\)</span> and is therefore exceeding the water quality target.</p>
+<p>To obtain the 95% confidence interval for the geometric mean, we need to back transform both limits of the CI given by R (above) which are on the <span class="math inline">\(\log_{10}\)</span> scale. The 95% CI for the mean TN is 2.807748 to 2.965309. So the 95% CI for the geometric mean phosphorus level is <span class="math inline">\(10^{2.807748}\)</span> to <span class="math inline">\(10^{2.965309}\)</span>.</p>
+<p>So the 95% CI for the geometric mean phosphorus level is 642.31 to 923.23 <span class="math inline">\(\mu g/l\)</span>. The best estimate of the true geometric mean is 770.066 <span class="math inline">\(\mu g/l\)</span>. However, the true value may be in the range 642.31 to 923.23 <span class="math inline">\(\mu g/l\)</span> with 95% certainty.</p>
+
+
 </section>
 
 </main> <!-- /main -->
