@@ -332,7 +332,7 @@ shapiro.test(tccb_df$log_TcCB_ppb)
 ```
 Transformation successful - symmetric distribution
 
-### The Natural Log ($\Log_e$) Transformation
+### The Natural Log ($\log_e$) Transformation
 
 Continuing on from Example 2 where the transformation chosen is $log_e$, we see that the normal probability plot is approximately linear and all test statistics (for the normality tests) are lower than their corresponding critical values, so we can assume the log-transformed data are normally distributed. (Or equivalently that the original data are log-normally distributed.)
 
