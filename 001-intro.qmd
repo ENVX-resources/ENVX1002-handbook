@@ -6,7 +6,7 @@ A practical definition of ENVX is “The use of statistical and computing method
 
 It sits at the interface of applied statistics, data science and life and environmental sciences. It is a field that is growing rapidly in importance as the amount of data being collected in the biological and environmental sciences increases.
 
-![ENVX is at the interface of applied statistics, data science and life and environmental science](images\venn.png)
+![ENVX is at the interface of applied statistics, data science and life and environmental science](images/venn.png)
 
 
 
@@ -16,7 +16,7 @@ You will soon learn that the University of Sydney has a great tradition in resea
 ENVX comprises of three vertically integrated units designed to equip you to confidently approach the design and data analysis aspects of your research. The diagram below shows one view of the process of research (or experimentation).
 
 
-![The research process](images\research_cycle.png)
+![The research process](images/research_cycle.png)
 
 ### The Use of Statistics in Research
 
@@ -34,7 +34,7 @@ Each sampling unit (or observation) in the population (e.g. plot of land, animal
 
 Often we wish to make generalisations about populations that are too large or too difficult to survey completely. In these cases we sample the population and use characteristics of the sample to extrapolate to characteristics of the larger population. We can define a sample (of size n) as drawn from population “at random”. We call each piece of information recorded about a sampling unit or subject (e.g. plant, person, animal, 1x1m plot of land) an observation.
 
-![n = 20 units (v) sampled at random from population of N = 1,000 (O)](images\random_sample.png)
+![n = 20 units (v) sampled at random from population of N = 1,000 (O)](images/random_sample.png)
 
 The sample is taken to be representative of the population – but there are **no guarantees**! It is easier/quicker/cheaper to take a sample than study the entire population (since n << N). The results obtained from the sample not important in themselves - the importance is in how it can be used to estimate population parameters i.e. $\bar{y}$ estimates $\mu$; $s^2$ estimates $\sigma^2$.
 
@@ -48,7 +48,7 @@ Generally in an experiment, several different characteristics of the subjects ar
 
 Already you can begin to see that from just one fairly simple field trial quite a lot of data can be generated, also data of differing properties/types.
 
-![Yields of cabbage (mean fresh weight per head in kg) for 24 plots (Source: Mead, Curnow & Hasted (2003)).](images\table1.png)
+![Yields of cabbage (mean fresh weight per head in kg) for 24 plots (Source: Mead, Curnow & Hasted (2003)).](images/table1.png)
 
 Data may also be classified as either **quantitative** (e.g. root length) or **qualitative** (e.g. plant species). Quantitative observations are based on some sort of measurement e.g. length, weight, temperature, pH. Qualitative observations are based on categories reflecting a quality or characteristic of the observed event e.g. male vs. female, diseased vs. healthy, mutant vs. wild type.
 
