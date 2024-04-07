@@ -20,4 +20,4 @@ We would like to acknowledge the work of previous generations of teaching staff 
 
 When you are ready, check the sidebar to get started.
 
-[handbook]: https://google.com
+[handbook]: https://github.com/ENVX-resources/ENVX1002-manual
