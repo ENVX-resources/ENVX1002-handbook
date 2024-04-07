@@ -85,30 +85,22 @@ where $\bar{y}_1 - \bar{y}_2$ is the difference between the sample means, $t^{\a
 The df and SED need to take into account whether or not you are assuming equal variances.
 
 
-6.6	SED and df for Independent Samples with EQUAL Variances
-
- 
+## SED and df for Independent Samples with EQUAL Variances
 
 
+## SED and df for Independent Samples with UNequal Variances
 
-6.7	SED and df for Independent Samples with UNequal Variances
-
-What do you do if when you’re checking your assumptions for a two- sample t-test you find…
-	Normality   
-	Equality of variance   
-
-You can go ahead with a modified t-test or you can choose a different test.
+What do you do if when you’re checking your assumptions for a two- sample t-test you find that the variances are not equal? You can go ahead with a modified t-test or you can choose a different test.
 
 This modified t-test used in the case of unequal variances is often called Satterthwaite’s approximate t-test. 
 
 
 
-6.7.1	Satterthwaite’s Approximate t-Test
+### Satterthwaite’s Approximate t-Test
 
-The null and alternate hypotheses remain the same,
-i.e.	H0: μ1 = μ2		or      H0: μ1 - μ2 = 0
+The null and alternate hypotheses remain the same i.e.	$$H_0: \mu1 = \mu2$$	or $$H_0: \mu1 - \mu2 = 0$$
 
-The formula for the test statistic, t, in Satterthwaite’s approximate test is a little different to that for the t-test with equal variances. The s.e.d. changes because we can no longer use a pooled estimate of the variance (since the variances cannot be assumed equal).
+The formula for the test statistic, $t$, in Satterthwaite’s approximate test is a little different to that for the t-test with equal variances. The s.e.d. changes because we can no longer use a pooled estimate of the variance (since the variances cannot be assumed equal).
 
  
 A correction for unequal variance is made to the degrees of freedom.
@@ -118,7 +110,7 @@ Then proceed as usual through the rest of the test -  i.e. find the P-value; dra
 
 
 
-6.8	F-Test for Equality of Variances
+##	F-Test for Equality of Variances
 
 One of the conditions for the independent sample t-test to be valid is that the population variances σ12 and σ22 are equal.
 
@@ -132,7 +124,7 @@ If you use the printed statistical table, you will need to compare the critical 
 
 
 
-6.9	Example: Two-Sample t-Test
+##	Example: Two-Sample t-Test
 
 Weights of two breeds of cattle are to be compared: 15 cattle from Breed 1 and 12 cattle from Breed 2 were randomly sampled. Their recorded weights (kg) are shown. 
 
