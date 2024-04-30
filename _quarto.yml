@@ -1,39 +1,28 @@
 project:
-  type: book
+  type: website
 
-book:
+website:
   title: "ENVX1002 Handbook"
-  author:
-    - name: "Floris van Ogtrop"
-    - name: "Liana Pozza"
-    - name: "Januar Harianto"
-  date: today
-  date-format: MMM YYYY
-  chapters:
-    - index.qmd
-    - part: "Introduction"
-      chapters:
-        - 001-intro.qmd
-    - part: "Describing data"
-      chapters:
-        - 020-exploring_data.qmd
-        - 021-probability_distributions.qmd
-        - 022-sampling_distributions.qmd
-    - part: "Inference"
-      chapters:
-        - 030-ttest1.qmd
-        - 031-ttest2.qmd
-        - 032-nonparametric1.qmd
-    - part: "Modelling"
-      chapters:
-        - 040-describing_relationships.qmd
-        - 041-linear_functions.qmd
-        - 042-linear_functions_multi.qmd
-        - 043-nonlinear.qmd
-    - references.qmd
-
-bibliography: references.bib
+  page-navigation: true
+  navbar:
+    tools:
+      - icon: github
+        text: Source Code
+        href:  "#"
+  sidebar: 
+    style: docked
+    contents: auto
 
 format:
   html:
-    theme: cosmo
+    grid: 
+      sidebar-width: 350px
+    highlight-style: a11y
+    theme:
+      light: cosmo
+      dark: solar
+    css: styles.css
+    toc: true
+
+execute:
+  freeze: auto
