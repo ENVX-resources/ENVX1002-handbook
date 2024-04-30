@@ -3,7 +3,7 @@
 
 # Output files
 _book/
-.DS_Store
+_site/
 
 # History files
 .Rhistory
@@ -46,3 +46,6 @@ _book/
 
 # R Environment Variables
 .Renviron
+
+# macOS
+.DS_Store
