@@ -17,6 +17,8 @@ website:
         contents: module-1/*
       - section: "**MODULE 2**"
         contents: module-2/*
+      - section: "**MODULE 3**"
+        contents: module-3/*
 
 format:
   html:
