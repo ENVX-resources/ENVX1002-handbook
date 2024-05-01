@@ -15,7 +15,8 @@ website:
       - 001-intro.qmd
       - section: "**MODULE 1**"
         contents: module-1/*
-
+      - section: "**MODULE 2**"
+        contents: module-2/*
 
 format:
   html:
