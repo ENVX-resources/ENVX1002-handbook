@@ -12,6 +12,7 @@ website:
   sidebar: 
     style: docked
     contents:
+      - index.qmd
       - 001-intro.qmd
       - section: "**MODULE 1**"
         contents: module-1/*
