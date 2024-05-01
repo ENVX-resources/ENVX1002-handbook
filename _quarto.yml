@@ -11,7 +11,11 @@ website:
         href:  "#"
   sidebar: 
     style: docked
-    contents: auto
+    contents:
+      - 001-intro.qmd
+      - section: "**MODULE 1**"
+        contents: module-1/*
+
 
 format:
   html:

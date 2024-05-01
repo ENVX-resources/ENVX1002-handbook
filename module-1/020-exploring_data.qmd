@@ -303,7 +303,7 @@ Frequency tabulations can be represented as a graph of frequency (raw or percent
 #| message: false
 library(tidyverse)
 
-sedge <- read_csv("data/Sedge.csv", show_col_types = FALSE)
+sedge <- read_csv("Sedge.csv", show_col_types = FALSE)
 
 ggplot(sedge, aes(x = Plants)) +
   geom_histogram(aes(y = after_stat(count)/sum(after_stat(count)) * 100), bins = 8) +
@@ -317,7 +317,7 @@ Continuous measurements are free to take any whole or fractional number within t
 ```{r}
 #| fig.cap: "Figure 1.3 Frequency histogram of creeping bentgrass data."
 
-bentgrass <- read_csv("data/Bentgrass.csv", show_col_types = FALSE)
+bentgrass <- read_csv("Bentgrass.csv", show_col_types = FALSE)
 
 ggplot(bentgrass, aes(x = Root_length_mm)) +
   geom_histogram(bins = 20) +
@@ -394,7 +394,7 @@ Scatter plots are used to represent graphically the relationship between two var
 
 This is a distribution such that the left hand side of the frequency polygon is a mirror image of the right hand side. For symmetrical distributions, the mean, median and mode all have the same value. Substantial differences in these three statistics could provide valuable information about the data set (as we’ll see in the sections on positively and negatively skewed distributions). Some examples of symmetric distributions appear below.
 
-![Figure 1.4 Four examples of symmetric distributions.](images/symmetric.png)
+![Figure 1.4 Four examples of symmetric distributions.](../images/symmetric.png)
 
 Example: Creeping bentgrass: root growth (mm)
 
@@ -424,7 +424,7 @@ Example: As part of an evaluation of a clean-up of a contaminated site, 100 soil
 The following descriptive analysis was undertaken.
 
 ```{r}
-tccb <- read_csv("data/TcCB.csv", show_col_types = FALSE)
+tccb <- read_csv("TcCB.csv", show_col_types = FALSE)
 
 summary(tccb)
 ```
@@ -451,7 +451,7 @@ Example:
 - There are also some lower values representing the less common earlier onset of the condition.
 
 ```{r}
-arthritis <- read_csv("data/Arthritis.csv", show_col_types = FALSE)
+arthritis <- read_csv("Arthritis.csv", show_col_types = FALSE)
 
 summary(arthritis)
 ```

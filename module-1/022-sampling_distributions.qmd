@@ -15,7 +15,7 @@ Properties we would expect the distribution of the sample mean to have:
 
 Table Average weekly milk yields (in gallons) of a herd of 100 cows [p. 10 Mead et al. (1993)]
 
-![](images/milk.png)
+![](../images/milk.png)
 *A result (without mathematical proof)…*
 
 If a variable y is distributed with mean $\mu$ and variance $\sigma^2$, then the variable $\bar y$  which is the mean of a sample of $n$ observations of $y$, is distributed with mean $\mu$ and variance $sigma^2/n$. The variance of the distribution of the sample mean is, as expected, less than the variance of an individual observation. 
@@ -68,7 +68,7 @@ Example:
 - Based on samples of size n = 10, $\bar y \sim N(300, 50^2 / 10)$,
 i.e.  $\bar y \sim N(300, 15.82)$.
 
-![](images/root.png)
+![](../images/root.png)
 Two other mathematical results concerning the distribution of the sample mean emphasize the importance of the normal distribution:
 
 1. If the distribution of the original observation, $y$, is normal, then the distribution of the sample mean, $\bar y$, is also normal.
@@ -116,7 +116,7 @@ ILLUSTRATION of the Central Limit Theorem using Weights of 144 carrots (grams) i
 
 ```{r}
 library(ggplot2)
-carrots <- read.csv("data/Carrot_weights.csv")
+carrots <- read.csv("Carrot_weights.csv")
 
 mean(carrots$Weight_g)
 sd(carrots$Weight_g)
