@@ -5,6 +5,8 @@ website:
   title: "ENVX1002 Handbook"
   page-navigation: true
   navbar:
+    pinned: true
+    background: "#FFD29D"
     tools:
       - icon: github
         text: Source Code
