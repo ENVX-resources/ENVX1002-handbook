@@ -22,6 +22,8 @@ website:
         contents: module-2/*
       - section: "**MODULE 3**"
         contents: module-3/*
+      - section: "**LABS**"
+        contents: labs/*
 
 format:
   html:
