@@ -15,7 +15,7 @@ website:
     style: docked
     contents:
       - index.qmd
-      - 001-intro.qmd
+      - introduction.qmd
       - section: "**MODULE 1**"
         contents: module-1/*
       - section: "**MODULE 2**"
@@ -27,6 +27,7 @@ website:
 
 format:
   html:
+    subtitle: ENVX1002 Introduction to Statistical Methods
     grid: 
       sidebar-width: 350px
     highlight-style: a11y
