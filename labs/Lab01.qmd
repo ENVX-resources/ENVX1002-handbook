@@ -1,5 +1,5 @@
 ---
-title: Lab 01 - Exploratory Data analysis
+title: Lab 01 - Introduction
 ---
 
 # Getting started: Excel and R
