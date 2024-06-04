@@ -1,4 +1,6 @@
-# Preface {.unnumbered}
+---
+title: Preface 
+---
 
 **Welcome to the ENVX1002 handbook.** This handbook is designed to be an *optional* companion to the lectures, labs and assessments for the course.
 
