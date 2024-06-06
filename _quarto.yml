@@ -3,10 +3,8 @@ project:
 
 website:
   title: "ENVX1002 Handbook"
-  page-navigation: true
+  page-navigation: false
   navbar:
-    pinned: true
-    background: "#FFD29D"
     tools:
       - icon: github
         text: Source Code
@@ -14,20 +12,16 @@ website:
   sidebar: 
     style: docked
     contents:
-      - index.qmd
-      - introduction.qmd
+      - 001-intro.qmd
       - section: "**MODULE 1**"
-        contents: module-1/*
+        contents: module01/*
       - section: "**MODULE 2**"
-        contents: module-2/*
+        contents: module02/*
       - section: "**MODULE 3**"
-        contents: module-3/*
-      - section: "**LABS**"
-        contents: labs/*
+        contents: module03/*
 
 format:
   html:
-    subtitle: ENVX1002 Introduction to Statistical Methods
     grid: 
       sidebar-width: 350px
     highlight-style: a11y
@@ -39,3 +33,8 @@ format:
 
 execute:
   freeze: auto
+
+profile:
+  default: 
+    # - exercise
+    - solution
