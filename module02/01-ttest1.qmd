@@ -170,7 +170,7 @@ The following examples show how to select the optimum transformation of data.
 library(ggplot2)
 library(gridExtra)
 
-bcc_df <- read.csv("data/BloodCellCount.csv")
+bcc_df <- read.csv("BloodCellCount.csv")
 p1 <- ggplot(bcc_df, aes(BloodCellCount)) + 
   geom_histogram(bins = 12) + 
   labs(title="Histogram of blood cell counts", x="Number of blood cells", y="Frequency")
@@ -277,7 +277,7 @@ Note: We have seen previously that the distribution of this data is HIGHLY POSIT
 *A.	Square root transformation*
 
 ```{r}
-tccb_df <- read.csv("data/TcCB.csv")
+tccb_df <- read.csv("TcCB.csv")
 tccb_df$sqrt_TcCB_ppb <- sqrt(tccb_df$TcCB_ppb)
 p1 <- ggplot(tccb_df, aes(sqrt_TcCB_ppb)) + 
   geom_histogram(bins = 12) + 
@@ -665,7 +665,7 @@ Be sure to include the following elements in your statistical test:
 We wish to perform a one-sample t-test to test the null hypothesis $H_0: \mu = 500$ $\mu g/l$. However to do this we need to be able to assume the data follows a normal distribution. A quick summary of the raw data shows that the data is skewed to the right (see boxplot below, also the mean of 855.9 $\mu g/l$ is greater than the median of 800 $\mu g/l$) and we also see the typical "smiley" shape of the points on the qq normal plot. We also find that the skewness value of 1.10 is positive and greater than one. The Shapiro-Wilks normality test indicates non-normality at the 5% significance level (as the p-value < 0.05).
 
 ```{r}
-tn <- read.csv("data/TN_Wallacia.csv")
+tn <- read.csv("TN_Wallacia.csv")
 summary(tn$TN)
 ```
 
