@@ -36,5 +36,5 @@ execute:
 
 profile:
   default: 
-    # - exercise
-    - solution
+    - exercise
+    # - solution
