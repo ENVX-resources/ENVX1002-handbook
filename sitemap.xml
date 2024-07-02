@@ -1,75 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module02/02-ttest2.html</loc>
-    <lastmod>2024-07-02T02:01:55.936Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module02/01-ttest1.html</loc>
-    <lastmod>2024-07-02T02:01:32.044Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module03/040-describing_relationships.html</loc>
-    <lastmod>2024-02-21T12:08:09.144Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module03/043-nonlinear.html</loc>
-    <lastmod>2024-02-21T12:08:09.145Z</lastmod>
+    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module01/Lab04.html</loc>
+    <lastmod>2024-07-02T02:02:47.766Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-manual/module01/01-exploring_data.html</loc>
-    <lastmod>2024-06-22T14:54:01.206Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module01/Lab05.html</loc>
-    <lastmod>2024-06-27T09:40:12.405Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module01/Lab04.html</loc>
-    <lastmod>2024-06-27T08:04:35.988Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module01/Lab03.html</loc>
-    <lastmod>2024-06-27T08:03:30.851Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ENVX-resources.github.io/ENVX1002-manual/index.html</loc>
-    <lastmod>2024-07-02T01:59:11.613Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ENVX-resources.github.io/ENVX1002-manual/001-intro.html</loc>
-    <lastmod>2024-04-07T11:30:45.662Z</lastmod>
+    <lastmod>2024-07-02T02:02:47.766Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-manual/module01/Lab02.html</loc>
-    <lastmod>2024-06-27T07:55:49.720Z</lastmod>
+    <lastmod>2024-07-02T02:02:47.766Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-manual/module01/Lab01.html</loc>
-    <lastmod>2024-06-27T07:55:42.126Z</lastmod>
+    <lastmod>2024-07-02T02:02:47.766Z</lastmod>
   </url>
   <url>
-    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module01/02-probability_distributions.html</loc>
-    <lastmod>2024-06-22T14:34:17.620Z</lastmod>
+    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module03/040-describing_relationships.html</loc>
+    <lastmod>2024-07-02T02:02:47.810Z</lastmod>
   </url>
   <url>
-    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module01/03-sampling_distributions.html</loc>
-    <lastmod>2024-06-22T14:34:20.621Z</lastmod>
+    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module03/043-nonlinear.html</loc>
+    <lastmod>2024-07-02T02:02:47.810Z</lastmod>
   </url>
   <url>
-    <loc>https://ENVX-resources.github.io/ENVX1002-manual/references.html</loc>
-    <lastmod>2024-02-21T12:08:09.152Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module03/042-linear_functions_multi.html</loc>
-    <lastmod>2024-02-21T12:08:09.145Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module03/041-linear_functions.html</loc>
-    <lastmod>2024-02-21T12:08:09.144Z</lastmod>
+    <loc>https://ENVX-resources.github.io/ENVX1002-manual/index.html</loc>
+    <lastmod>2024-07-02T02:02:47.766Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-manual/module02/03-nonparametric1.html</loc>
-    <lastmod>2024-07-02T01:59:16.643Z</lastmod>
+    <lastmod>2024-07-02T02:02:47.810Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module02/01-ttest1.html</loc>
+    <lastmod>2024-07-02T02:02:47.810Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ENVX-resources.github.io/ENVX1002-manual/001-intro.html</loc>
+    <lastmod>2024-07-02T02:02:47.742Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module02/02-ttest2.html</loc>
+    <lastmod>2024-07-02T02:02:47.810Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ENVX-resources.github.io/ENVX1002-manual/references.html</loc>
+    <lastmod>2024-07-02T02:02:47.810Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module03/042-linear_functions_multi.html</loc>
+    <lastmod>2024-07-02T02:02:47.810Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module03/041-linear_functions.html</loc>
+    <lastmod>2024-07-02T02:02:47.810Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module01/Lab03.html</loc>
+    <lastmod>2024-07-02T02:02:47.766Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module01/02-probability_distributions.html</loc>
+    <lastmod>2024-07-02T02:02:47.766Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module01/03-sampling_distributions.html</loc>
+    <lastmod>2024-07-02T02:02:47.766Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ENVX-resources.github.io/ENVX1002-manual/module01/Lab05.html</loc>
+    <lastmod>2024-07-02T02:02:47.766Z</lastmod>
   </url>
 </urlset>
