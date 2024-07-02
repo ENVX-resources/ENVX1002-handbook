@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.52">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ENVX1002 Handbook - 6&nbsp; Two-sample \(t\)-test</title>
+<title>Two-sample t-test – ENVX1002 Handbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,30 +23,30 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./032-nonparametric1.html" rel="next">
-<link href="./030-ttest1.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -69,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -99,164 +99,140 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ENVX1002 Handbook</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+    <a href="../#" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./030-ttest1.html">Inference</a></li><li class="breadcrumb-item"><a href="./031-ttest2.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Two-sample <span class="math inline">\(t\)</span>-test</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module03/030-ttest1.html"><strong>MODULE 3</strong></a></li><li class="breadcrumb-item"><a href="../module03/031-ttest2.html">Two-sample <span class="math inline">\(t\)</span>-test</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
     </div>
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">ENVX1002 Handbook</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
-  </div>
-</li>
+ <span class="menu-text">001-intro.qmd</span>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Introduction</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>MODULE 1</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./001-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  <a href="../module01/020-exploring_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory Data Analysis EDA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../module01/021-probability_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Probability distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../module01/022-sampling_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sampling distributions</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Describing data</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>MODULE 2</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./020-exploring_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis EDA</span></span></a>
+  <a href="../module02/040-describing_relationships.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Describing relationships</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./021-probability_distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability distributions</span></span></a>
+  <a href="../module02/041-linear_functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./022-sampling_distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Sampling distributions</span></span></a>
+  <a href="../module02/042-linear_functions_multi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear functions – multiple predictors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../module02/043-nonlinear.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Non-linear functions</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Inference</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>MODULE 3</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./030-ttest1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">One-sample <span class="math inline">\(t\)</span>-test</span></span></a>
+  <a href="../module03/030-ttest1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">One-sample <span class="math inline">\(t\)</span>-test</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./031-ttest2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Two-sample <span class="math inline">\(t\)</span>-test</span></span></a>
+  <a href="../module03/031-ttest2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Two-sample <span class="math inline">\(t\)</span>-test</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./032-nonparametric1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chi-squared tests</span></span></a>
+  <a href="../module03/032-nonparametric1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chi-squared tests</span></a>
   </div>
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Modelling</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./040-describing_relationships.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Describing relationships</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./041-linear_functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Linear functions</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./042-linear_functions_multi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear functions – multiple predictors</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./043-nonlinear.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Non-linear functions</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -264,34 +240,34 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#assumptions" id="toc-assumptions" class="nav-link active" data-scroll-target="#assumptions"><span class="header-section-number">6.1</span> Assumptions</a></li>
-  <li><a href="#what-if-assumptions-are-not-met" id="toc-what-if-assumptions-are-not-met" class="nav-link" data-scroll-target="#what-if-assumptions-are-not-met"><span class="header-section-number">6.2</span> What if assumptions are not met?</a></li>
-  <li><a href="#three-variants-of-the-two-sample-t-test" id="toc-three-variants-of-the-two-sample-t-test" class="nav-link" data-scroll-target="#three-variants-of-the-two-sample-t-test"><span class="header-section-number">6.3</span> Three Variants of the Two-Sample <span class="math inline">\(t\)</span>-test</a></li>
-  <li><a href="#paired-data" id="toc-paired-data" class="nav-link" data-scroll-target="#paired-data"><span class="header-section-number">6.4</span> Paired Data</a>
+  <li><a href="#assumptions" id="toc-assumptions" class="nav-link active" data-scroll-target="#assumptions">Assumptions</a></li>
+  <li><a href="#what-if-assumptions-are-not-met" id="toc-what-if-assumptions-are-not-met" class="nav-link" data-scroll-target="#what-if-assumptions-are-not-met">What if assumptions are not met?</a></li>
+  <li><a href="#three-variants-of-the-two-sample-t-test" id="toc-three-variants-of-the-two-sample-t-test" class="nav-link" data-scroll-target="#three-variants-of-the-two-sample-t-test">Three Variants of the Two-Sample <span class="math inline">\(t\)</span>-test</a></li>
+  <li><a href="#paired-data" id="toc-paired-data" class="nav-link" data-scroll-target="#paired-data">Paired Data</a>
   <ul class="collapse">
-  <li><a href="#examples-of-paired-data" id="toc-examples-of-paired-data" class="nav-link" data-scroll-target="#examples-of-paired-data"><span class="header-section-number">6.4.1</span> Examples of paired data</a></li>
+  <li><a href="#examples-of-paired-data" id="toc-examples-of-paired-data" class="nav-link" data-scroll-target="#examples-of-paired-data">Examples of paired data</a></li>
   </ul></li>
-  <li><a href="#two-sample-t-test-for-independent-samples" id="toc-two-sample-t-test-for-independent-samples" class="nav-link" data-scroll-target="#two-sample-t-test-for-independent-samples"><span class="header-section-number">6.5</span> Two-Sample t-Test for Independent Samples</a></li>
-  <li><a href="#confidence-interval-for-mu_1---mu_2-independent-samples" id="toc-confidence-interval-for-mu_1---mu_2-independent-samples" class="nav-link" data-scroll-target="#confidence-interval-for-mu_1---mu_2-independent-samples"><span class="header-section-number">6.6</span> Confidence Interval for <span class="math inline">\(\mu_1 - \mu_2\)</span> (Independent Samples)</a></li>
-  <li><a href="#sed-and-df-for-independent-samples-with-equal-variances" id="toc-sed-and-df-for-independent-samples-with-equal-variances" class="nav-link" data-scroll-target="#sed-and-df-for-independent-samples-with-equal-variances"><span class="header-section-number">6.7</span> SED and df for Independent Samples with EQUAL Variances</a></li>
-  <li><a href="#sed-and-df-for-independent-samples-with-unequal-variances" id="toc-sed-and-df-for-independent-samples-with-unequal-variances" class="nav-link" data-scroll-target="#sed-and-df-for-independent-samples-with-unequal-variances"><span class="header-section-number">6.8</span> SED and df for Independent Samples with UNequal Variances</a>
+  <li><a href="#two-sample-t-test-for-independent-samples" id="toc-two-sample-t-test-for-independent-samples" class="nav-link" data-scroll-target="#two-sample-t-test-for-independent-samples">Two-Sample t-Test for Independent Samples</a></li>
+  <li><a href="#confidence-interval-for-mu_1---mu_2-independent-samples" id="toc-confidence-interval-for-mu_1---mu_2-independent-samples" class="nav-link" data-scroll-target="#confidence-interval-for-mu_1---mu_2-independent-samples">Confidence Interval for <span class="math inline">\(\mu_1 - \mu_2\)</span> (Independent Samples)</a></li>
+  <li><a href="#sed-and-df-for-independent-samples-with-equal-variances" id="toc-sed-and-df-for-independent-samples-with-equal-variances" class="nav-link" data-scroll-target="#sed-and-df-for-independent-samples-with-equal-variances">SED and df for Independent Samples with EQUAL Variances</a></li>
+  <li><a href="#sed-and-df-for-independent-samples-with-unequal-variances" id="toc-sed-and-df-for-independent-samples-with-unequal-variances" class="nav-link" data-scroll-target="#sed-and-df-for-independent-samples-with-unequal-variances">SED and df for Independent Samples with UNequal Variances</a>
   <ul class="collapse">
-  <li><a href="#satterthwaites-approximate-t-test" id="toc-satterthwaites-approximate-t-test" class="nav-link" data-scroll-target="#satterthwaites-approximate-t-test"><span class="header-section-number">6.8.1</span> Satterthwaite’s Approximate t-Test</a></li>
+  <li><a href="#satterthwaites-approximate-t-test" id="toc-satterthwaites-approximate-t-test" class="nav-link" data-scroll-target="#satterthwaites-approximate-t-test">Satterthwaite’s Approximate t-Test</a></li>
   </ul></li>
-  <li><a href="#f-test-for-equality-of-variances" id="toc-f-test-for-equality-of-variances" class="nav-link" data-scroll-target="#f-test-for-equality-of-variances"><span class="header-section-number">6.9</span> F-Test for Equality of Variances</a></li>
-  <li><a href="#example-two-sample-t-test" id="toc-example-two-sample-t-test" class="nav-link" data-scroll-target="#example-two-sample-t-test"><span class="header-section-number">6.10</span> Example: Two-Sample t-Test</a></li>
+  <li><a href="#f-test-for-equality-of-variances" id="toc-f-test-for-equality-of-variances" class="nav-link" data-scroll-target="#f-test-for-equality-of-variances">F-Test for Equality of Variances</a></li>
+  <li><a href="#example-two-sample-t-test" id="toc-example-two-sample-t-test" class="nav-link" data-scroll-target="#example-two-sample-t-test">Example: Two-Sample t-Test</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./030-ttest1.html">Inference</a></li><li class="breadcrumb-item"><a href="./031-ttest2.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Two-sample <span class="math inline">\(t\)</span>-test</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module03/030-ttest1.html"><strong>MODULE 3</strong></a></li><li class="breadcrumb-item"><a href="../module03/031-ttest2.html">Two-sample <span class="math inline">\(t\)</span>-test</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Two-sample <span class="math inline">\(t\)</span>-test</span></h1>
+<h1 class="title">Two-sample <span class="math inline">\(t\)</span>-test</h1>
 </div>
 
 
@@ -313,8 +289,8 @@ window.Quarto = {
 <p><span class="math display">\[H_0: \mu_1 = \mu_2\]</span></p>
 <p>where <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span> are the means of the two populations. The alternative hypothesis is that the two means are different, i.e.</p>
 <p><span class="math display">\[H_1: \mu_1 \neq \mu_2\]</span></p>
-<section id="assumptions" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="assumptions"><span class="header-section-number">6.1</span> Assumptions</h2>
+<section id="assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="assumptions">Assumptions</h2>
 <p>The two-sample <span class="math inline">\(t\)</span>-test assumes that the data are :</p>
 <ol type="1">
 <li>Continuous,</li>
@@ -323,13 +299,13 @@ window.Quarto = {
 </ol>
 <p>Ideally these assumptions should be tested before you carry about the two-sample <span class="math inline">\(t\)</span>-test.</p>
 </section>
-<section id="what-if-assumptions-are-not-met" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="what-if-assumptions-are-not-met"><span class="header-section-number">6.2</span> What if assumptions are not met?</h2>
+<section id="what-if-assumptions-are-not-met" class="level2">
+<h2 class="anchored" data-anchor-id="what-if-assumptions-are-not-met">What if assumptions are not met?</h2>
 <p>If the data do not meet either of these assumptions, then you may choose an appropriate <em>transformation</em> or look for another technique to use e.g.&nbsp;a non-parametric method (see non-parametric sections of this book).</p>
 <p>If the variances cannot be assumed to be equal (but the data are normally distributed), there is a way of adjusting the two-sample <span class="math inline">\(t\)</span>-test to compensate for this – it’s called the Satterthwaite’s approximation – more on this later!</p>
 </section>
-<section id="three-variants-of-the-two-sample-t-test" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="three-variants-of-the-two-sample-t-test"><span class="header-section-number">6.3</span> Three Variants of the Two-Sample <span class="math inline">\(t\)</span>-test</h2>
+<section id="three-variants-of-the-two-sample-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="three-variants-of-the-two-sample-t-test">Three Variants of the Two-Sample <span class="math inline">\(t\)</span>-test</h2>
 <p>There are 3 different ways in which a two-sample <span class="math inline">\(t\)</span>-test can be used. They ALL assume that the data is approximately normally distributed.</p>
 <ol type="1">
 <li><strong>Independent samples, equal variance</strong> - run a two-sample <span class="math inline">\(t\)</span>-test assuming equal variances.</li>
@@ -338,13 +314,13 @@ window.Quarto = {
 </ol>
 <p>In choosing which variant of the <span class="math inline">\(t\)</span>-test is applicable in your situation, you first need to decide whether your two samples are paired or unpaired (independent).</p>
 </section>
-<section id="paired-data" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="paired-data"><span class="header-section-number">6.4</span> Paired Data</h2>
+<section id="paired-data" class="level2">
+<h2 class="anchored" data-anchor-id="paired-data">Paired Data</h2>
 <p>Paired samples arise when we measure pairs of similar experimental units. In this pair of experimental units, one unit receives Treatment 1 and the other receives Treatment 2.</p>
 <p>In some cases, treatments are applied to the same experimental unit e.g.&nbsp;one half of a piece of fruit receives Trt 1 and the other half Trt 2; two plants of different varieties are grown in the same pot (here variety is the treatment).</p>
 <p>In recognising this pairing in our analysis we are taking into account the fact that biological variation between pairs is likely to be larger than within pairs. This way, we get a clearer picture of the difference that is due to the treatment factor.</p>
-<section id="examples-of-paired-data" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="examples-of-paired-data"><span class="header-section-number">6.4.1</span> Examples of paired data</h3>
+<section id="examples-of-paired-data" class="level3">
+<h3 class="anchored" data-anchor-id="examples-of-paired-data">Examples of paired data</h3>
 <ol type="1">
 <li>Observations at two times on the same experimental unit
 <ul>
@@ -359,8 +335,8 @@ window.Quarto = {
 </ol>
 </section>
 </section>
-<section id="two-sample-t-test-for-independent-samples" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="two-sample-t-test-for-independent-samples"><span class="header-section-number">6.5</span> Two-Sample t-Test for Independent Samples</h2>
+<section id="two-sample-t-test-for-independent-samples" class="level2">
+<h2 class="anchored" data-anchor-id="two-sample-t-test-for-independent-samples">Two-Sample t-Test for Independent Samples</h2>
 <p>Procedure for the test:</p>
 <ol type="1">
 <li>Set up the null and alternate hypotheses</li>
@@ -387,37 +363,37 @@ Calculating the test statistic
 </div>
 </div>
 </section>
-<section id="confidence-interval-for-mu_1---mu_2-independent-samples" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="confidence-interval-for-mu_1---mu_2-independent-samples"><span class="header-section-number">6.6</span> Confidence Interval for <span class="math inline">\(\mu_1 - \mu_2\)</span> (Independent Samples)</h2>
+<section id="confidence-interval-for-mu_1---mu_2-independent-samples" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-interval-for-mu_1---mu_2-independent-samples">Confidence Interval for <span class="math inline">\(\mu_1 - \mu_2\)</span> (Independent Samples)</h2>
 <p>A two-sample t-test shows whether there is evidence of a difference in population means. The magnitude of this difference can be estimated with a confidence interval.</p>
 <p>A 95% confidence interval for the true difference <span class="math inline">\(\mu_1 - \mu_2\)</span> is given by <span class="math display">\[\bar{y}_1 - \bar{y}_2 \pm t^{\alpha/2}_{df} \times SED\]</span></p>
 <p>where <span class="math inline">\(\bar{y}_1 - \bar{y}_2\)</span> is the difference between the sample means, <span class="math inline">\(t^{\alpha/2}_{df}\)</span> is the critical value from the t-distribution for the chosen level of significance and degrees of freedom, and <span class="math inline">\(SED\)</span> is the standard error of the difference between the means.</p>
 <p>The df and SED need to take into account whether or not you are assuming equal variances.</p>
 </section>
-<section id="sed-and-df-for-independent-samples-with-equal-variances" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="sed-and-df-for-independent-samples-with-equal-variances"><span class="header-section-number">6.7</span> SED and df for Independent Samples with EQUAL Variances</h2>
+<section id="sed-and-df-for-independent-samples-with-equal-variances" class="level2">
+<h2 class="anchored" data-anchor-id="sed-and-df-for-independent-samples-with-equal-variances">SED and df for Independent Samples with EQUAL Variances</h2>
 </section>
-<section id="sed-and-df-for-independent-samples-with-unequal-variances" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="sed-and-df-for-independent-samples-with-unequal-variances"><span class="header-section-number">6.8</span> SED and df for Independent Samples with UNequal Variances</h2>
+<section id="sed-and-df-for-independent-samples-with-unequal-variances" class="level2">
+<h2 class="anchored" data-anchor-id="sed-and-df-for-independent-samples-with-unequal-variances">SED and df for Independent Samples with UNequal Variances</h2>
 <p>What do you do if when you’re checking your assumptions for a two- sample t-test you find that the variances are not equal? You can go ahead with a modified t-test or you can choose a different test.</p>
 <p>This modified t-test used in the case of unequal variances is often called Satterthwaite’s approximate t-test.</p>
-<section id="satterthwaites-approximate-t-test" class="level3" data-number="6.8.1">
-<h3 data-number="6.8.1" class="anchored" data-anchor-id="satterthwaites-approximate-t-test"><span class="header-section-number">6.8.1</span> Satterthwaite’s Approximate t-Test</h3>
+<section id="satterthwaites-approximate-t-test" class="level3">
+<h3 class="anchored" data-anchor-id="satterthwaites-approximate-t-test">Satterthwaite’s Approximate t-Test</h3>
 <p>The null and alternate hypotheses remain the same i.e.&nbsp;<span class="math display">\[H_0: \mu1 = \mu2\]</span> or <span class="math display">\[H_0: \mu1 - \mu2 = 0\]</span></p>
 <p>The formula for the test statistic, <span class="math inline">\(t\)</span>, in Satterthwaite’s approximate test is a little different to that for the t-test with equal variances. The s.e.d. changes because we can no longer use a pooled estimate of the variance (since the variances cannot be assumed equal).</p>
 <p>A correction for unequal variance is made to the degrees of freedom.</p>
 <p>Then proceed as usual through the rest of the test - i.e.&nbsp;find the P-value; draw a statistical conclusion about your hypothesis; interpret your results biologically.</p>
 </section>
 </section>
-<section id="f-test-for-equality-of-variances" class="level2" data-number="6.9">
-<h2 data-number="6.9" class="anchored" data-anchor-id="f-test-for-equality-of-variances"><span class="header-section-number">6.9</span> F-Test for Equality of Variances</h2>
+<section id="f-test-for-equality-of-variances" class="level2">
+<h2 class="anchored" data-anchor-id="f-test-for-equality-of-variances">F-Test for Equality of Variances</h2>
 <p>One of the conditions for the independent sample t-test to be valid is that the population variances σ12 and σ22 are equal.</p>
 <p>To test the null hypothesis that σ12 = σ22 divide the larger s2 value by the smaller s2 to obtain the variance ratio, v.r.:</p>
 <p>To undertake this two-tailed test at the 5% level you need to carry out the one-tailed test at the 2.5% level. You can use the 2.5% F table of critical values, or you can use GenStat via the menus Data&gt;Probability Calculations… to find the P-value.</p>
 <p>If you use the printed statistical table, you will need to compare the critical value you find there with the variance ratio you calculated. If the calculated variance ratio &gt; critical value, reject H0 and conclude that the variances are significantly different.</p>
 </section>
-<section id="example-two-sample-t-test" class="level2" data-number="6.10">
-<h2 data-number="6.10" class="anchored" data-anchor-id="example-two-sample-t-test"><span class="header-section-number">6.10</span> Example: Two-Sample t-Test</h2>
+<section id="example-two-sample-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="example-two-sample-t-test">Example: Two-Sample t-Test</h2>
 <p>Weights of two breeds of cattle are to be compared: 15 cattle from Breed 1 and 12 cattle from Breed 2 were randomly sampled. Their recorded weights (kg) are shown.</p>
 <p>Breed 1 Breed 2 148.1 187.6 146.2 180.3 152.8 198.6 135.3 190.7 151.2 196.3 146.3 203.8 163.5 190.2 146.6 201.0 162.4 194.7 140.2 221.1 159.4 186.7 181.8 203.1 165.1<br>
 165.0<br>
@@ -484,6 +460,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -499,18 +619,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -542,15 +651,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ENVX-resources\.github\.io\/ENVX1002-manual\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -873,18 +1004,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./030-ttest1.html" class="pagination-link" aria-label="One-sample $t$-test">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">One-sample <span class="math inline">\(t\)</span>-test</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./032-nonparametric1.html" class="pagination-link" aria-label="Chi-squared tests">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chi-squared tests</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 

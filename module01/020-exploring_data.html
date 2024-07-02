@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.52">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ENVX1002 Handbook - 2&nbsp; Exploratory Data Analysis EDA</title>
+<title>exploring_data – ENVX1002 Handbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -57,30 +57,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./021-probability_distributions.html" rel="next">
-<link href="./001-intro.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -103,7 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -133,164 +133,140 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ENVX1002 Handbook</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+    <a href="../#" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./020-exploring_data.html">Describing data</a></li><li class="breadcrumb-item"><a href="./020-exploring_data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis EDA</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module01/020-exploring_data.html"><strong>MODULE 1</strong></a></li><li class="breadcrumb-item"><a href="../module01/020-exploring_data.html">Exploratory Data Analysis EDA</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
     </div>
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">ENVX1002 Handbook</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
-  </div>
-</li>
+ <span class="menu-text">001-intro.qmd</span>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Introduction</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>MODULE 1</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./001-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  <a href="../module01/020-exploring_data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Exploratory Data Analysis EDA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../module01/021-probability_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Probability distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../module01/022-sampling_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sampling distributions</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Describing data</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>MODULE 2</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./020-exploring_data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis EDA</span></span></a>
+  <a href="../module02/040-describing_relationships.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Describing relationships</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./021-probability_distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability distributions</span></span></a>
+  <a href="../module02/041-linear_functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./022-sampling_distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Sampling distributions</span></span></a>
+  <a href="../module02/042-linear_functions_multi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear functions – multiple predictors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../module02/043-nonlinear.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Non-linear functions</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Inference</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>MODULE 3</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./030-ttest1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">One-sample <span class="math inline">\(t\)</span>-test</span></span></a>
+  <a href="../module03/030-ttest1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">One-sample <span class="math inline">\(t\)</span>-test</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./031-ttest2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Two-sample <span class="math inline">\(t\)</span>-test</span></span></a>
+  <a href="../module03/031-ttest2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Two-sample <span class="math inline">\(t\)</span>-test</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./032-nonparametric1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chi-squared tests</span></span></a>
+  <a href="../module03/032-nonparametric1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chi-squared tests</span></a>
   </div>
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Modelling</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./040-describing_relationships.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Describing relationships</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./041-linear_functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Linear functions</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./042-linear_functions_multi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear functions – multiple predictors</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./043-nonlinear.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Non-linear functions</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -298,36 +274,39 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#numerical-summaries" id="toc-numerical-summaries" class="nav-link active" data-scroll-target="#numerical-summaries"><span class="header-section-number">2.1</span> Numerical Summaries</a>
+  <li><a href="#exploratory-data-analysis-eda" id="toc-exploratory-data-analysis-eda" class="nav-link active" data-scroll-target="#exploratory-data-analysis-eda">Exploratory Data Analysis EDA</a>
   <ul class="collapse">
-  <li><a href="#measures-of-central-tendency" id="toc-measures-of-central-tendency" class="nav-link" data-scroll-target="#measures-of-central-tendency"><span class="header-section-number">2.1.1</span> Measures of Central Tendency</a></li>
-  <li><a href="#measures-of-spread" id="toc-measures-of-spread" class="nav-link" data-scroll-target="#measures-of-spread"><span class="header-section-number">2.1.2</span> Measures of Spread</a></li>
+  <li><a href="#numerical-summaries" id="toc-numerical-summaries" class="nav-link" data-scroll-target="#numerical-summaries">Numerical Summaries</a>
+  <ul class="collapse">
+  <li><a href="#measures-of-central-tendency" id="toc-measures-of-central-tendency" class="nav-link" data-scroll-target="#measures-of-central-tendency">Measures of Central Tendency</a></li>
+  <li><a href="#measures-of-spread" id="toc-measures-of-spread" class="nav-link" data-scroll-target="#measures-of-spread">Measures of Spread</a></li>
   </ul></li>
-  <li><a href="#tabular-summaries" id="toc-tabular-summaries" class="nav-link" data-scroll-target="#tabular-summaries"><span class="header-section-number">2.2</span> Tabular Summaries</a>
+  <li><a href="#tabular-summaries" id="toc-tabular-summaries" class="nav-link" data-scroll-target="#tabular-summaries">Tabular Summaries</a>
   <ul class="collapse">
-  <li><a href="#tables-of-means" id="toc-tables-of-means" class="nav-link" data-scroll-target="#tables-of-means"><span class="header-section-number">2.2.1</span> Tables of means</a></li>
-  <li><a href="#frequency-tables" id="toc-frequency-tables" class="nav-link" data-scroll-target="#frequency-tables"><span class="header-section-number">2.2.2</span> Frequency Tables</a></li>
+  <li><a href="#tables-of-means" id="toc-tables-of-means" class="nav-link" data-scroll-target="#tables-of-means">Tables of means</a></li>
+  <li><a href="#frequency-tables" id="toc-frequency-tables" class="nav-link" data-scroll-target="#frequency-tables">Frequency Tables</a></li>
   </ul></li>
-  <li><a href="#graphical-summaries" id="toc-graphical-summaries" class="nav-link" data-scroll-target="#graphical-summaries"><span class="header-section-number">2.3</span> Graphical Summaries</a>
+  <li><a href="#graphical-summaries" id="toc-graphical-summaries" class="nav-link" data-scroll-target="#graphical-summaries">Graphical Summaries</a>
   <ul class="collapse">
-  <li><a href="#bar-graphs-and-histograms" id="toc-bar-graphs-and-histograms" class="nav-link" data-scroll-target="#bar-graphs-and-histograms"><span class="header-section-number">2.3.1</span> Bar Graphs and Histograms</a></li>
-  <li><a href="#boxplots" id="toc-boxplots" class="nav-link" data-scroll-target="#boxplots"><span class="header-section-number">2.3.2</span> Boxplots</a></li>
-  <li><a href="#scatterplots" id="toc-scatterplots" class="nav-link" data-scroll-target="#scatterplots"><span class="header-section-number">2.3.3</span> Scatterplots</a></li>
+  <li><a href="#bar-graphs-and-histograms" id="toc-bar-graphs-and-histograms" class="nav-link" data-scroll-target="#bar-graphs-and-histograms">Bar Graphs and Histograms</a></li>
+  <li><a href="#boxplots" id="toc-boxplots" class="nav-link" data-scroll-target="#boxplots">Boxplots</a></li>
+  <li><a href="#scatterplots" id="toc-scatterplots" class="nav-link" data-scroll-target="#scatterplots">Scatterplots</a></li>
   </ul></li>
-  <li><a href="#shapes-of-distributions" id="toc-shapes-of-distributions" class="nav-link" data-scroll-target="#shapes-of-distributions"><span class="header-section-number">2.4</span> Shapes of Distributions</a>
+  <li><a href="#shapes-of-distributions" id="toc-shapes-of-distributions" class="nav-link" data-scroll-target="#shapes-of-distributions">Shapes of Distributions</a>
   <ul class="collapse">
-  <li><a href="#symmetric" id="toc-symmetric" class="nav-link" data-scroll-target="#symmetric"><span class="header-section-number">2.4.1</span> Symmetric</a></li>
-  <li><a href="#positively-skewed" id="toc-positively-skewed" class="nav-link" data-scroll-target="#positively-skewed"><span class="header-section-number">2.4.2</span> Positively Skewed</a></li>
-  <li><a href="#negatively-skewed" id="toc-negatively-skewed" class="nav-link" data-scroll-target="#negatively-skewed"><span class="header-section-number">2.4.3</span> Negatively Skewed</a></li>
-  <li><a href="#statistics-of-shape" id="toc-statistics-of-shape" class="nav-link" data-scroll-target="#statistics-of-shape"><span class="header-section-number">2.4.4</span> Statistics of Shape</a></li>
+  <li><a href="#symmetric" id="toc-symmetric" class="nav-link" data-scroll-target="#symmetric">Symmetric</a></li>
+  <li><a href="#positively-skewed" id="toc-positively-skewed" class="nav-link" data-scroll-target="#positively-skewed">Positively Skewed</a></li>
+  <li><a href="#negatively-skewed" id="toc-negatively-skewed" class="nav-link" data-scroll-target="#negatively-skewed">Negatively Skewed</a></li>
+  <li><a href="#statistics-of-shape" id="toc-statistics-of-shape" class="nav-link" data-scroll-target="#statistics-of-shape">Statistics of Shape</a></li>
   </ul></li>
-  <li><a href="#normality-versus-non-normality-in-the-descriptive-statistics-context" id="toc-normality-versus-non-normality-in-the-descriptive-statistics-context" class="nav-link" data-scroll-target="#normality-versus-non-normality-in-the-descriptive-statistics-context"><span class="header-section-number">2.5</span> Normality versus Non-Normality (in the Descriptive Statistics Context)</a>
+  <li><a href="#normality-versus-non-normality-in-the-descriptive-statistics-context" id="toc-normality-versus-non-normality-in-the-descriptive-statistics-context" class="nav-link" data-scroll-target="#normality-versus-non-normality-in-the-descriptive-statistics-context">Normality versus Non-Normality (in the Descriptive Statistics Context)</a>
   <ul class="collapse">
-  <li><a href="#normality" id="toc-normality" class="nav-link" data-scroll-target="#normality"><span class="header-section-number">2.5.1</span> Normality</a></li>
-  <li><a href="#non-normality" id="toc-non-normality" class="nav-link" data-scroll-target="#non-normality"><span class="header-section-number">2.5.2</span> Non-Normality</a></li>
+  <li><a href="#normality" id="toc-normality" class="nav-link" data-scroll-target="#normality">Normality</a></li>
+  <li><a href="#non-normality" id="toc-non-normality" class="nav-link" data-scroll-target="#non-normality">Non-Normality</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -335,30 +314,16 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./020-exploring_data.html">Describing data</a></li><li class="breadcrumb-item"><a href="./020-exploring_data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis EDA</span></a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis EDA</span></h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="numerical-summaries" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="numerical-summaries"><span class="header-section-number">2.1</span> Numerical Summaries</h2>
+<section id="exploratory-data-analysis-eda" class="level1">
+<h1>Exploratory Data Analysis EDA</h1>
+<section id="numerical-summaries" class="level2">
+<h2 class="anchored" data-anchor-id="numerical-summaries">Numerical Summaries</h2>
 <p>The summary descriptive characteristics of a sample of objects, that is, a subset of the population, are called statistics. Sample statistics can have different values, depending on how the sample of the population was chosen. Statistics are denoted by various symbols, but (almost) never by Greek letters e.g.&nbsp;sample mean, <span class="math inline">\(\bar y\)</span> and sample standard deviation, <span class="math inline">\(s\)</span>.</p>
-<section id="measures-of-central-tendency" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="measures-of-central-tendency"><span class="header-section-number">2.1.1</span> Measures of Central Tendency</h3>
+<section id="measures-of-central-tendency" class="level3">
+<h3 class="anchored" data-anchor-id="measures-of-central-tendency">Measures of Central Tendency</h3>
 <p>These statistics are also sometimes referred to as measures of location.</p>
 <p><strong>ARITHMETIC MEAN</strong></p>
 <p>The most widely used measure of central tendency is the arithmetic mean or average. The population mean, <span class="math inline">\(\mu\)</span> (“mu”) is the sum of all the values of the variable under study divided by the total number of objects in the population, Each value is algebraically denoted by a <span class="math inline">\(y\)</span> with a subscript denotation <span class="math inline">\(i\)</span>. E.g. a small theoretical population whose objects had values 1, 6, 4, 5, 6, 3, 8, 7 would be denoted:</p>
@@ -439,8 +404,8 @@ Note
 <li>The median, however, is resistant to the effects of outliers. Extreme values or outliers in a sample can drastically affect the sample mean, while having little effect on the median.</li>
 </ul>
 </section>
-<section id="measures-of-spread" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="measures-of-spread"><span class="header-section-number">2.1.2</span> Measures of Spread</h3>
+<section id="measures-of-spread" class="level3">
+<h3 class="anchored" data-anchor-id="measures-of-spread">Measures of Spread</h3>
 <p>Measures of central tendency alone are not sufficient to fully describe a data set. The following figure illustrates 3 distributions that all have the same mean but different levels of dispersion or spread.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -544,7 +509,7 @@ Note
 <p>The value n-1 in the above equations for variance and standard deviation is referred to as the degrees of freedom (df). Ashcroft &amp; Pereira (2003) explain this concept in the following way.</p>
 <p>“The degrees of freedom in our analysis is the number of observations that are allowed to vary if our sample characteristic is to estimate precisely the population characteristic. For instance, when we are estimating just one population characteristic like the population variance and out sample size is n, the degrees of freedom is n-1 since control of just one observation (i.e.&nbsp;the rest are free to vary) is all that is required to make our sample variance exactly equal to the population variance.</p>
 <p>As an example, suppose we have a sample of 5 observations <span class="math inline">\((x_1, x_2, x_3, x_4, x_5; n=5)\)</span> from a population whose mean is 6. Observe in the table below how control of the last observation can make our sample mean exactly equal to the population mean of 6 when the first 4 observations are free to change their values.</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">x1</th>
@@ -588,10 +553,10 @@ Note
 <p><span class="math display">\[CV = \frac{s}{\bar{y}} \times 100\%\]</span></p>
 </section>
 </section>
-<section id="tabular-summaries" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="tabular-summaries"><span class="header-section-number">2.2</span> Tabular Summaries</h2>
-<section id="tables-of-means" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="tables-of-means"><span class="header-section-number">2.2.1</span> Tables of means</h3>
+<section id="tabular-summaries" class="level2">
+<h2 class="anchored" data-anchor-id="tabular-summaries">Tabular Summaries</h2>
+<section id="tables-of-means" class="level3">
+<h3 class="anchored" data-anchor-id="tables-of-means">Tables of means</h3>
 <p>Tables are a way of organizing the data collected or providing a summary presentation of the data. The two most common types of tabular summaries you will encounter are tables of means and frequency tables.</p>
 <p>An example of a table of means is the following table that shows the mean number of sedge plants, Carex flacca, found in 800 sample quadrats in an ecological study of grasses. Each quadrat was randomly assigned to one of four treatments: control, low, medium, and high. The table shows the mean number of sedge plants found in each treatment. We will simulate the data for this example.</p>
 <div class="cell">
@@ -616,7 +581,7 @@ Note
 <span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">MeanSedgePlants =</span> <span class="fu">mean</span>(SedgePlants))</span>
 <span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(quadrats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Treatment</th>
@@ -645,11 +610,11 @@ Note
 </div>
 </div>
 </section>
-<section id="frequency-tables" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="frequency-tables"><span class="header-section-number">2.2.2</span> Frequency Tables</h3>
+<section id="frequency-tables" class="level3">
+<h3 class="anchored" data-anchor-id="frequency-tables">Frequency Tables</h3>
 <p>An example of a tabular summary is the following table that shows the number of sedge plants, Carex flacca, found in 800 sample quadrats in an ecological study of grasses. Each quadra</p>
 <p>Sedge plant data sourced from Glover &amp; Mitchell (2002)</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Plants/quadrat <span class="math inline">\((y_i)\)</span></th>
@@ -694,15 +659,15 @@ Note
 <p>This table can be further organized into a <strong>relative frequency</strong> <span class="math inline">\((f_i/n \times 100)\)</span> table by expressing each row as a percentage of the total observation or into a <strong>cumulative frequency</strong> distribution by accumulating all observations up to and including each row i.e.&nbsp;<span class="math inline">\(\Sigma^r_{i=1}f_i\)</span> where <span class="math inline">\(r\)</span> is the row number. The cumulative frequency distribution could be further manipulated into a <strong>relative cumulative frequency</strong> distribution by expressing each row of the cumulative frequency distributions as a percentage of the total i.e.&nbsp;<span class="math inline">\(\Sigma^r_{i=1}f_i/n \times 100\)</span></p>
 </section>
 </section>
-<section id="graphical-summaries" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="graphical-summaries"><span class="header-section-number">2.3</span> Graphical Summaries</h2>
-<section id="bar-graphs-and-histograms" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="bar-graphs-and-histograms"><span class="header-section-number">2.3.1</span> Bar Graphs and Histograms</h3>
+<section id="graphical-summaries" class="level2">
+<h2 class="anchored" data-anchor-id="graphical-summaries">Graphical Summaries</h2>
+<section id="bar-graphs-and-histograms" class="level3">
+<h3 class="anchored" data-anchor-id="bar-graphs-and-histograms">Bar Graphs and Histograms</h3>
 <p>Frequency tabulations can be represented as a graph of frequency (raw or percentage) against the measurement variable. Discrete data are sometimes expressed as a bar graph where bars are spaced equidistantly along the horizontal axis. Figure 1.2 is a relative frequency histogram (also known as a percentage frequency histogram) of the sedge plant data. The data represents data from sedge plant counts in 800 1m x 1m quadrats Ideally this data set (since it is discrete) would be plotted as a bar graph.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>sedge <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Sedge.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>sedge <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Sedge.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sedge, <span class="fu">aes</span>(<span class="at">x =</span> Plants)) <span class="sc">+</span></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(count)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">after_stat</span>(count)) <span class="sc">*</span> <span class="dv">100</span>), <span class="at">bins =</span> <span class="dv">8</span>) <span class="sc">+</span></span>
@@ -719,7 +684,7 @@ Note
 </div>
 <p>Continuous measurements are free to take any whole or fractional number within their range e.g.&nbsp;plant height, soil pH, concentration of nitrates in a water sample. Histograms (with bars touching each other) are the norm for continuous data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>bentgrass <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Bentgrass.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>bentgrass <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Bentgrass.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bentgrass, <span class="fu">aes</span>(<span class="at">x =</span> Root_length_mm)) <span class="sc">+</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
@@ -736,8 +701,8 @@ Note
 <p>A histogram can give nearly complete information about the distribution of data. For example, from Figure 1.3 above (that shows a fairly symmetric distribution) we can estimate that the mean ≈ 95 mm (the centre of the data) and standard deviation ≈ 15 mm (since for symmetric distributions approximately 95% of data lies within 2 standard deviations either side of the mean i.e.&nbsp;a total of 4 standard deviations across 95% of the data values).</p>
 <p>A histogram needs a relatively large sample size for it to be informative (i.e.&nbsp;30 or more data values).</p>
 </section>
-<section id="boxplots" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="boxplots"><span class="header-section-number">2.3.2</span> Boxplots</h3>
+<section id="boxplots" class="level3">
+<h3 class="anchored" data-anchor-id="boxplots">Boxplots</h3>
 <p>Boxplots show the shape of the distribution of data very clearly and are also helpful in identifying any outlying (or extreme) values.</p>
 <p>Example 1 Creeping bentgrass turf was laid in an experiment to assess root growth. Eighty (80) “plugs” were randomly sampled 4 weeks after laying. Root growth was measured by averaging the length (mm) of the ten longest roots in each plug.</p>
 <div class="cell">
@@ -802,19 +767,19 @@ Note
 </div>
 </div>
 </section>
-<section id="scatterplots" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="scatterplots"><span class="header-section-number">2.3.3</span> Scatterplots</h3>
+<section id="scatterplots" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplots">Scatterplots</h3>
 <p>Scatter plots are used to represent graphically the relationship between two variables. The extent and nature of the relationship between two (or more) variables is quantified through tools such as correlation and regression. This will be covered in later chapters.</p>
 </section>
 </section>
-<section id="shapes-of-distributions" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="shapes-of-distributions"><span class="header-section-number">2.4</span> Shapes of Distributions</h2>
-<section id="symmetric" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="symmetric"><span class="header-section-number">2.4.1</span> Symmetric</h3>
+<section id="shapes-of-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="shapes-of-distributions">Shapes of Distributions</h2>
+<section id="symmetric" class="level3">
+<h3 class="anchored" data-anchor-id="symmetric">Symmetric</h3>
 <p>This is a distribution such that the left hand side of the frequency polygon is a mirror image of the right hand side. For symmetrical distributions, the mean, median and mode all have the same value. Substantial differences in these three statistics could provide valuable information about the data set (as we’ll see in the sections on positively and negatively skewed distributions). Some examples of symmetric distributions appear below.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/symmetric.png" class="img-fluid figure-img"></p>
+<p><img src="../images/symmetric.png" class="img-fluid figure-img"></p>
 <figcaption>Figure 1.4 Four examples of symmetric distributions.</figcaption>
 </figure>
 </div>
@@ -851,12 +816,12 @@ Note
 </div>
 </div>
 </section>
-<section id="positively-skewed" class="level3" data-number="2.4.2">
-<h3 data-number="2.4.2" class="anchored" data-anchor-id="positively-skewed"><span class="header-section-number">2.4.2</span> Positively Skewed</h3>
+<section id="positively-skewed" class="level3">
+<h3 class="anchored" data-anchor-id="positively-skewed">Positively Skewed</h3>
 <p>For right-skewed distributions we find that the mode (if one exists) is always less than the median and the median is always less than the mean. Example: As part of an evaluation of a clean-up of a contaminated site, 100 soil samples were taken randomly across an area and the level of 1,2,3,4 Tetrachlorobenzene was recorded in parts per billion (TcCB, ppb).</p>
 <p>The following descriptive analysis was undertaken.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>tccb <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/TcCB.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>tccb <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"TcCB.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tccb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -888,12 +853,12 @@ Note
 </div>
 <p>The distribution is highly positively skewed (right skewed): there are extreme outliers at high levels. This is also demonstrated by the mean (1.412 ppb) being substantially greater than the median (0.570 ppb).</p>
 </section>
-<section id="negatively-skewed" class="level3" data-number="2.4.3">
-<h3 data-number="2.4.3" class="anchored" data-anchor-id="negatively-skewed"><span class="header-section-number">2.4.3</span> Negatively Skewed</h3>
+<section id="negatively-skewed" class="level3">
+<h3 class="anchored" data-anchor-id="negatively-skewed">Negatively Skewed</h3>
 <p>For left-skewed distributions we find that the mode is greater than the median and the median is greater than the mean.</p>
 <p>Example: - The age of onset of osteoarthritis was recorded in 13 dogs. - The majority of the values cluster around the 10-13 age range, which represents the more common onset age for the chronic condition in older dogs. - There are also some lower values representing the less common earlier onset of the condition.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>arthritis <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Arthritis.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>arthritis <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Arthritis.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(arthritis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -925,8 +890,8 @@ Note
 </div>
 <p>The distribution is negatively skewed (left skewed): there are some outliers at low levels. This is also demonstrated by the mean (9.7 years) being marginally less than the median (11.1 years).</p>
 </section>
-<section id="statistics-of-shape" class="level3" data-number="2.4.4">
-<h3 data-number="2.4.4" class="anchored" data-anchor-id="statistics-of-shape"><span class="header-section-number">2.4.4</span> Statistics of Shape</h3>
+<section id="statistics-of-shape" class="level3">
+<h3 class="anchored" data-anchor-id="statistics-of-shape">Statistics of Shape</h3>
 <p>There are two statistics useful for describing shape.</p>
 <p><strong>SKEWNESS</strong></p>
 <p>Skewness is another name for asymmetry which means that one tail of the frequency distribution is drawn out more than the other. A skewness of zero implies a symmetrically shaped histogram, a negative value implies skewness to the left and a positive value implies skewness to the right.</p>
@@ -971,10 +936,10 @@ Note
 <p>Note: Bimodal distributions expected indicate a mixture of samples from two populations (e.g.&nbsp;weights of male and females). While the mode is not often used in biological research, reporting the number of modes, if more than one, can be informative.</p>
 </section>
 </section>
-<section id="normality-versus-non-normality-in-the-descriptive-statistics-context" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="normality-versus-non-normality-in-the-descriptive-statistics-context"><span class="header-section-number">2.5</span> Normality versus Non-Normality (in the Descriptive Statistics Context)</h2>
-<section id="normality" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="normality"><span class="header-section-number">2.5.1</span> Normality</h3>
+<section id="normality-versus-non-normality-in-the-descriptive-statistics-context" class="level2">
+<h2 class="anchored" data-anchor-id="normality-versus-non-normality-in-the-descriptive-statistics-context">Normality versus Non-Normality (in the Descriptive Statistics Context)</h2>
+<section id="normality" class="level3">
+<h3 class="anchored" data-anchor-id="normality">Normality</h3>
 <p>Most natural groups of objects show variation. Humans differ in height, even if of the same sex, race and age. In many instances, measurements of similar objects vary about their mean according to a well-defined function, the normal or Gaussian distribution function.</p>
 <p>The normal distribution has the following characteristics:</p>
 <ul>
@@ -988,14 +953,15 @@ Note
 <p><strong>Summary statistics</strong> for a sample drawn from a normally distributed population <strong>would usually</strong> include the range of values encountered, the arithmetic <strong>mean</strong>, the <strong>standard deviation</strong> and the <strong>size of the sample</strong> from which these statistics were calculated. All other information, including the frequency tabulation, the mode, median, percentiles, sample skewness and kurtosis would be superfluous.</p>
 <p>We will look at the normal distribution in detail later in this section.</p>
 </section>
-<section id="non-normality" class="level3" data-number="2.5.2">
-<h3 data-number="2.5.2" class="anchored" data-anchor-id="non-normality"><span class="header-section-number">2.5.2</span> Non-Normality</h3>
+<section id="non-normality" class="level3">
+<h3 class="anchored" data-anchor-id="non-normality">Non-Normality</h3>
 <p>For data that do not conform to the theoretical normal distribution, the situation is more complex. No longer will the mean and standard deviation suffice in order to reconstruct the frequency distribution of the raw data. No longer would we expect only 5% of values to lie outside the mean plus or minus 1.96 standard deviations. <strong>A more detailed description of the characteristics of non-normal data is required</strong>.</p>
 <p>Substantial differences between the model, median and arithmetic mean are apparent when a skewed distribution is considered. Clearly the three averages can have distinctly different values. Which is the most appropriate average? The mean is markedly affected by outlying observations whereas the median and mode are not.</p>
 <p>The difference between the mean and median has important practical consequences for analysis of data that contains aberrant outlying values (perhaps because of errors at the time of measurement or during transcription in preparing the data). Such errors, if they go unnoticed, can seriously affect an analysis.</p>
 <p>Most modern statistical packages perform various tests to determine if your data are likely to have been drawn from a normally distributed population. We’ll look at these later.</p>
 
 
+</section>
 </section>
 </section>
 
@@ -1020,6 +986,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1035,18 +1145,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1078,15 +1177,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ENVX-resources\.github\.io\/ENVX1002-manual\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -1409,18 +1530,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./001-intro.html" class="pagination-link" aria-label="Introduction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./021-probability_distributions.html" class="pagination-link" aria-label="Probability distributions">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability distributions</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 
