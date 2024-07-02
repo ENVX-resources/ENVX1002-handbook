@@ -102,7 +102,7 @@ The T-distribution has the following properties:
 
 If you look at the "old school" t-tables, you will note that the T table is presented differently to the tables you have encountered before for the binomial, Poisson and normal distribution. Here the values in the body of the table are critical values from the T distribution rather than cumulative probabilities (as was the case for the tables for the other distributions). The same information is still available, just in a more restricted format.
 
-![Fig. Comparing the shapes of the Student’s T and the Z curves.](../images/tdist.png)
+![Fig. Comparing the shapes of the Student’s T and the Z curves.](images/tdist.png)
 
 ### T-Based Confidence Interval
 
@@ -127,7 +127,7 @@ The following graph shows 100 confidence intervals produced from computer simula
 
 For each computer generated “sample”, the sample mean $\mu$ and standard deviation (s) are calculated, then the 95% confidence interval calculated $\bar{y} \pm t^{\alpha/2}_{n-1} \times \sqrt{s^2/n}$ .
 
-![Fig. Depiction of confidence intervals from each of 100 simulated samples.](../images/CI_sim.png)
+![Fig. Depiction of confidence intervals from each of 100 simulated samples.](images/CI_sim.png)
 Approximately 95% of these simulated samples have a confidence interval that includes the true value of 0.3 $\mu g/L$. In the graph above, a confidence interval includes the true mean value of 0.3 if the vertical line (representing the width of the CI) crosses the horizontal line.
 
 However in practice, when we calculate a CI from a single sample of data, we do not know if it is a confidence that includes $\mu$, but we are 95% confident that it does! 99% confidence intervals would be wider and more likely to include $\mu$, so it seems more logical to opt for the widest confidence interval possible. However, as we will learn in the next Section, there are opposing errors that are introduced when we make $\alpha$ small i.e. when we make the CI wide.
@@ -170,7 +170,7 @@ The following examples show how to select the optimum transformation of data.
 library(ggplot2)
 library(gridExtra)
 
-bcc_df <- read.csv("BloodCellCount.csv")
+bcc_df <- read.csv("data/BloodCellCount.csv")
 p1 <- ggplot(bcc_df, aes(BloodCellCount)) + 
   geom_histogram(bins = 12) + 
   labs(title="Histogram of blood cell counts", x="Number of blood cells", y="Frequency")
@@ -277,7 +277,7 @@ Note: We have seen previously that the distribution of this data is HIGHLY POSIT
 *A.	Square root transformation*
 
 ```{r}
-tccb_df <- read.csv("TcCB.csv")
+tccb_df <- read.csv("data/TcCB.csv")
 tccb_df$sqrt_TcCB_ppb <- sqrt(tccb_df$TcCB_ppb)
 p1 <- ggplot(tccb_df, aes(sqrt_TcCB_ppb)) + 
   geom_histogram(bins = 12) + 
@@ -368,7 +368,7 @@ Since we have concluded log TcCB has a normal distribution, then TcCB has a **lo
 
 We can illustrate these relationships by using the parameter estimates $\hat \mu=-0.598$ and $\hat \sigma=1.362$ from the log TcCB data to produce the following fitted normal distributions and lognormal distributions are obtained:
 
-![Fig. Normal and Log Normal distributions for TcCB data](../images/lognormal.png)
+![Fig. Normal and Log Normal distributions for TcCB data](images/lognormal.png)
 
 Also, using these parameter estimates, the mean and variance of the lognormal distribution are
 
@@ -392,7 +392,7 @@ Statistical hypothesis tests are based on research questions and hypotheses. Som
 
 The diagram below also appears in Section 1. Here we see where statistical hypothesis testing fits into the research process at the point of **statistical analysis**. 
 
-![Fig. The research process](../images/research_cycle.png)
+![Fig. The research process](images/research_cycle.png)
 
 ### Steps in Hypothesis Testing (via a Test Statistic)
 
@@ -427,7 +427,7 @@ Generally a) is the form of hypothesis test that we employ. Options b) or c) are
 
 A Type I error (false positive) is made when we reject the null hypothesis when it is true. We might for example declare that a population mean is different from hypothesized value when, in fact, they are not. Equally we may err in the other direction, that is, we may accept a null hypothesis when it is false. We might, for example, fail to detect a difference between the population mean and a hypothesized value. In doing so, we make a Type II error (false negative). The definitions of each of these two errors is summarised in the table below.
 
-![Fig. Type I and Type II Error](../images/error.png)
+![Fig. Type I and Type II Error](images/error.png)
 
 Because , the level of significance, is chosen by the experimenter, it is under the control of the experimenter and it is known. When you reject and $H_0$, therefore, you know the probability of an error (Type I). If you accept an $H_0$ it is much more difficult to ascertain the probability of an error (Type II). This is because Type II errors depend on many factors, some of which may be unknown to the experimenter. So the rejection of $H_0$ leads to the more satisfying situation because the probability of a mistake is easily quantifiable. 
 
@@ -547,7 +547,7 @@ $=2 \times 0.0057=0.011$
 ```{r}
 2*pnorm(-2.53)
 ```
-![plot of $P(\bar{y} \le 0.197 \text{ or } \bar{y} \ge 0.403)$ and $P(Z \le -2.53 \text{ or } \bar{y} \ge 2.53)$](../images/zvals.png)
+![plot of $P(\bar{y} \le 0.197 \text{ or } \bar{y} \ge 0.403)$ and $P(Z \le -2.53 \text{ or } \bar{y} \ge 2.53)$](images/zvals.png)
 
 If $H_0$ is true, there is only a 1.1% chance of obtaining this value of   or something more extreme. This is unlikely, so we **reject the null hypothesis**. Hence we conclude that the toxic substance concentration in the effluent has a mean **significantly greater** than 0.3 $\mu g/l$.
 
@@ -611,7 +611,7 @@ Our conclusion is as above.
 
 ### General Notes on the T Distribution
 
-![t distribution versus z distribution](../images/tdist_1.png)
+![t distribution versus z distribution](images/tdist_1.png)
 
 The t distribution has “heavier” tails than the normal distribution.
 
@@ -665,7 +665,7 @@ Be sure to include the following elements in your statistical test:
 We wish to perform a one-sample t-test to test the null hypothesis $H_0: \mu = 500$ $\mu g/l$. However to do this we need to be able to assume the data follows a normal distribution. A quick summary of the raw data shows that the data is skewed to the right (see boxplot below, also the mean of 855.9 $\mu g/l$ is greater than the median of 800 $\mu g/l$) and we also see the typical "smiley" shape of the points on the qq normal plot. We also find that the skewness value of 1.10 is positive and greater than one. The Shapiro-Wilks normality test indicates non-normality at the 5% significance level (as the p-value < 0.05).
 
 ```{r}
-tn <- read.csv("TN_Wallacia.csv")
+tn <- read.csv("data/TN_Wallacia.csv")
 summary(tn$TN)
 ```
 

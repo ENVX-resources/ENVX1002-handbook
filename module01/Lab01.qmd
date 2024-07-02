@@ -1,5 +1,10 @@
 ---
-title: Lab 01 - Introduction
+title: Lab 01
+subtitle: ENVX1002
+description: The University of Sydney
+date: today
+date-format: "[Semester 1,] YYYY"
+embed-resources: true
 ---
 
 # Getting started: Excel and R
@@ -30,9 +35,8 @@ Make sure you have access to:
 
 At the beginning of the next few weeks we will be doing some short activities before getting into the stats to help you foster a sense of belonging, learn more about your peers, and help better prepare you for your studies. This week we will start with a simple introduction, but before we do this, we would like to acknowledge those who were here before us:
 
-<center>
-*We would like to acknowledge and pay respect to the traditional owners of the land on which we meet; the Gadigal people of the Eora Nation. It is upon their ancestral lands that the University of Sydney is built. As we share our own knowledge, teaching, learning and research practices within this university may we also pay respect to the knowledge embedded forever within the Aboriginal Custodianship of Country.*
-</center>
+
+> *We would like to acknowledge and pay respect to the traditional owners of the land on which we meet; the Gadigal people of the Eora Nation. It is upon their ancestral lands that the University of Sydney is built. As we share our own knowledge, teaching, learning and research practices within this university may we also pay respect to the knowledge embedded forever within the Aboriginal Custodianship of Country.*
 
 To learn more about why we do Acknowledgement of Country, and the difference to Welcome to Country, see the following page: [Welcome and Acknowledgement](https://www.sydney.edu.au/about-us/vision-and-values/our-aboriginal-and-torres-strait-islander-community/kinship-module/learning-module/welcome-and-acknowledgement.html).
 

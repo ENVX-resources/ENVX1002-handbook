@@ -167,7 +167,7 @@ ggplot(df, aes(x = x, y = y, color = Distribution)) +
 
 We began speaking about the normal distribution in Section 2.5.1. Recall that it is also sometimes referred to as the Gaussian distribution (named after a man who contributed significantly to this area of mathematics). This is the “bell-shaped” distribution commonly observed in histograms of biological and environmental data e.g. height, weight, gestation lengths, etc. It is central to most statistical theory.
 
-![Figure 3.3. The normal distribution](../images/normal.png)
+![Figure 3.3. The normal distribution](images/normal.png)
 The centre of the curve is located at μ and σ indicates the spread or width of the curve. For all distributions, a type of shorthand has been introduced to denote the name of the distribution that a particular variable, $y$, follows. For example, you should read the abbreviation $y \sim N(\mu,\sigma^2)$ as ‘the variable $y$ is normally distributed with mean $\mu$ and variance $\sigma^2$.
 
 As we will discover later, for data that follows a normal distribution we expect that 95% of observations fall in the range defined by the mean plus or minus 1.96 standard deviations and
@@ -199,7 +199,7 @@ pnorm(0)
 ```
 
 
-![Standardized Normal Values](../images/z_dist.png)
+![Standardized Normal Values](images/z_dist.png)
 
 **Examples**
 
@@ -456,7 +456,7 @@ Now we’re going to obtain the corresponding probabilities in 2 different ways 
 -	Tidy up the formatting of your spreadsheet by centering columns and individual cells, and bolding important labels.
 -	Use the menus to plot the standard normal distribution, **Insert > Scatter > Scatter** with Smooth Lines.  The screenshot below should help you.
 
-![Excel](../images/excel_norm.png)
+![Excel](images/excel_norm.png)
 
 Consider how you might do the above exercise for a non-standard normal distribution...
 
@@ -479,7 +479,7 @@ We will be using tetrachlorobenzene levels (TcCB, ppb) in 100 soil samples as ou
 
 ```{r}
 # Load the data
-TcCB <- read.csv("TcCB.csv")
+TcCB <- read.csv("data/TcCB.csv")
 
 # Perform the Shapiro-Wilk test
 shapiro.test(TcCB$TcCB)
