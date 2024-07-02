@@ -1,15 +1,19 @@
 ---
-title: Preface 
+title: "ENVX1002 Handbook"
+author:
+  - name: "Floris van Ogtrop"
+  - name: "Liana Pozza"
+  - name: "Januar Harianto"
+date: today
+date-format: YYYY
+
 ---
 
-**Welcome to the ENVX1002 handbook.** This handbook is designed to be an *optional* companion to the lectures, labs and assessments for the course.
-
+**Welcome to the ENVX1002 lab handbook.** This handbook is designed to be an *optional* companion to the lectures, labs and assessments for the course.
 
 ## How to use this handbook
 
-Read this handbook before, or *after* each lecture to better understand certain concepts. You can also use this book as a reference when working on lab exercises and assessments.
-
-You may download a PDF copy of this handbook on the sidebar of the HTML version of this book. You may also download the source code for this book from the [GitHub repository][handbook].
+Read this handbook before, or *after* each lecture to better understand certain concepts. Lab exercises are also included in this handbook, which you can use to prepare for the lab sessions.
 
 ## Acknowledgements
 
@@ -21,5 +25,3 @@ We would like to acknowledge the work of previous generations of teaching staff 
 - Prof. Thomas Bishop
 
 When you are ready, check the sidebar to get started.
-
-[handbook]: https://github.com/ENVX-resources/ENVX1002-manual
