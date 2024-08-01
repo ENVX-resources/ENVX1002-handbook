@@ -1,5 +1,5 @@
 ---
-title: Lab 05
+title: Lab 05 -- Hypothesis Testing
 subtitle: "ENVX1002"
 description: The University of Sydney
 date: today

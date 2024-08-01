@@ -1,0 +1,261 @@
+---
+title: Lab 07 -- Chi-squared test
+embed-resources: true
+---
+
+
+::: callout-tip
+## Learning Outcomes
+
+- Learn to use R to calculate a chi-squared test for:
+  - Test of proportions
+  - Test of independence
+- Learn how to interpret statistical output.
+:::
+
+## Before we begin
+
+Create your Quarto document and save it as `Lab-07.qmd` or similar. There are no data files to download for this lab.
+
+
+## Quick introduction
+The chi-square test is used to compare the *observed* distribution to an *expected* distribution, in a situation where we have **two or more categories** in a discrete data. In other words, it compares multiple observed proportions to expected probabilities.
+
+The formula is:
+
+$$\chi^2 = \sum_{i=1}^{k}\frac{(O_i - E_i)^2}{E_i}$$
+
+where $O_i$ is the observed frequency, $E_i$ is the expected frequency for each categorym and $k$ is the number of categories.
+
+For more information about the technique, consult your lecture slides and tutorial 7.
+
+## Exercise 1: wild tulips (walk-through)
+
+
+### Background
+
+Suppose we collected wild tulips and found that 81 were red, 50 were yellow and 27 were white. Are these colours equally common?
+
+**If these colours were equally distributed, the expected proportion would be 1/3 for each of the colour.** Therefore, we want to test if the observed proportions are significantly different from the expected proportions.
+
+The data is below.
+```{r}
+tulip <- c(81, 50, 27)
+```
+
+### Instructions
+Utilise the **HATPC** process and test the hypothesis that the proportion of flower colours of tulips are equally common, assuming that the samples are independent. We can explore the data as we check the assumptions of the test.
+
+::: column-margin
+HATPC:
+
+- Hypothesis
+- Assumptions
+- Test (statistic)
+- P-value
+- Conclusion
+:::
+
+::: callout-note
+## Level of significance
+**The level of significance is usually set at 0.05.** This value is generally accepted in the scientific community and is also linked to Type 2 errors, where choosing a lower significance increases the likelihood of failing to reject the null hypothesis when it is false.
+:::
+
+### Hypotheses
+What are the null hypothesis and alternative hypotheses? 
+
+<details>
+<summary>Click here to view answer</summary>
+- H~0~: There is no significant difference between the observed and the expected proportions of flower colours.  
+- H~1~: There is a significant difference between the observed and the expected proportions of flower colours.    
+</details>
+
+### Assumptions
+
+Recall that the assumptions of the $\chi^2$ test are:
+
+1. No cell has expected frequencies less than 1
+2. No more than 20% of cells have expected frequencies less than 5
+
+::: callout-note
+In the case that the above assumptions are violated then the probability of a type 1 error occurring (rejecting the null hypothesis when it is true, i.e. false positive) increases.
+:::
+
+To calculate expected frequencies, we first calculate the total number of tulips and then divide by the number of categories.
+
+```{r}
+expected <- rep(sum(tulip) * 1 / 3, 3)
+expected
+
+```
+
+Does the data satisfy the assumptions of a $\chi^2$ test? 
+
+<details>
+<summary>Click here to view answer</summary>
+Yes, as expected frequencies > 5.  
+</details>
+
+
+### Test statistic
+
+
+The ```chisq.test()``` function in R is used  to calculate the chi-squared test.
+
+```{r}
+
+res <- chisq.test(tulip, p = c(1 / 3, 1 / 3, 1 / 3))
+res
+
+```
+
+Note that we coud check our assumptions post-analysis by checking the expected frequencies stored in the `expected` object of the output:
+```{r}
+res$expected
+```
+
+
+### P-value
+
+Write down how you should report the critical value, p-value and df in a scientific paper?  
+
+<details>
+<summary>Click here to view answer</summary>
+$\chi^2 = 27.9, d.f. =2, p < 0.01$
+</details>
+
+
+### Conclusions
+
+Based on the p-value, do we accept or reject the null hypothesis?  
+
+
+<details>
+<summary>Click here to view answer</summary>
+We reject the null hypothesis as the p-value is less than 0.05.
+</details>
+
+
+Now write a scientific (biological) conclusion based on the outcome.
+
+<details>
+<summary>Click here to view answer</summary>
+There is a significant difference in the proportion of flower colours of tulips ($\chi^2 = 27.9, d.f. =2, p < 0.01$).  
+</details>
+
+
+
+## Exercise 2: hermit crabs
+### Background
+
+In a study of hermit crab behaviour at Point Lookout, North Stradbroke Island, a random sample of 3 types of gastropod shells was collected. Each shell was then scored as being either occupied by a hermit crab or empty. Do hermit crabs prefer a certain shell?
+
+|Shell species | Occupied| Empty|
+|--------------|---------|------|
+|Austrochochlea|       47|    42|
+|Bembicium     |       10|    41|
+|Cirithid      |      125|    49|
+
+The data is stored in a `table` object in R below. Note that it is different from a `data.frame` object. You can verify this by using the `str()` or `class()` functions.
+
+```{r}
+crabs <- as.table(
+    rbind(
+        Aus = c(47, 42),
+        Bem = c(10, 41),
+        Cir = c(125, 49)
+    )
+)
+
+colnames(crabs) <- c("Occupied", "Empty")
+str(crabs)
+crabs
+```
+
+
+#### Data exploration
+
+Since we have a multi-dimensional dataset, we can try to plot the data to visualise it.
+
+A mosaic plot is a graphical representation of the data in a two-way contingency table. It is a way of visualising the relationship between two categorical variables.
+
+Try the code below. Can you interpret the plot?
+
+
+
+```{r}
+# mosaic plot of crabs
+mosaicplot(crabs, main = "Hermit crabs and shell species")
+```
+
+<details>
+<summary>Click here to view interpretation</summary>
+The plot shows that the distribution of hermit crabs in the different shell species is not equal. The majority of hermit crabs are found in the *Cirithid* shell species, followed by *Austrochochlea* and *Bembicium*. This can be observed by the **width** of the boxes in the plot.
+
+There are also differences in the number of empty shells in the different shell species. The *Bembicium* shell species has the highest number of empty shells, followed by *Austrochochlea* and *Cirithid*. This can be observed by the **height** of the boxes in the plot.
+
+</details>
+
+
+### HATPC
+
+Now it is your turn to test the hypothesis that the three shell species are equally preferred by hermit crabs. Follow the HATPC process with the following questions in mind (but you don't have to answer them individually):
+
+1. What are the null hypothesis and alternative hypotheses?
+2. Does the data satisfy the assumptions of a $\chi^2$ test?
+3. How should you report the critical value, p-value and df in a scientific paper?
+4. Based on the p-value, do we accept or reject the null hypothesis?
+5. Write a scientific (biological) conclusion based on the outcome.
+
+Use the markdown structure below to answer the questions (if you wish):
+
+```md
+## Exercise 2: hermit crabs
+### Hypothesis
+### Assumptions
+### Test statistic
+### P-value
+### Conclusions
+
+```
+
+Take your time, and when you are ready, check your answers with your demonstrators.
+
+
+
+::: {.content-visible when-profile="solution"}
+## Answer to Exercise 2 {style="color:green;"}
+
+### Hypothesis {style="color:green;"}
+
+**H~0~**: There is no significant difference between the observed and the expected use of different shell species by hermit crabs.  
+
+**H~1~**: There is a significant difference between the observed and the expected use of different shell species by hermit crabs.   
+
+### Assumptions {style="color:green;"}
+
+To check whether the expected frequencies are greater than 5, we can either perform the calculation manually or check the output of the `chisq.test()` function.
+
+```{r}
+fit <- chisq.test(crabs)
+fit$expected
+```
+
+From the output, we can see that all expected frequencies are greater than 5. The other assumption where no cell has expected frequencies less than 1 is also satisfied.
+
+### Test statistic
+
+If you have not already done so, perform the chi-squared test using the `chisq.test()` function in R.
+
+```{r}
+fit <- chisq.test(crabs)
+fit
+```
+
+We reject the null hypothesis as the p-value is less than 0.05 and conclude that there is a significant difference between the observed and the expected use of different shell species by hermit crabs ($\chi^2 = 45.5, d.f. = 2, p < 0.01$).
+:::
+
+## Done!
+
+This is the end of the lab. Remember to save your work, render your document and ask your demonstrators for feedback if you are unsure about your answers.
+

@@ -1,0 +1,6 @@
+---
+title: Lab 08 -- 🚫 No exercises
+embed-resources: true
+---
+
+There are no exercises this week to make room for the evaluation task.

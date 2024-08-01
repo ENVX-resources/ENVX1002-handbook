@@ -1,5 +1,5 @@
 ---
-title: Lab 02
+title: Lab 02 -- Quarto
 subtitle: ENVX1002
 description: The University of Sydney
 date: today

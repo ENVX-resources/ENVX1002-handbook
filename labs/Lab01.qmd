@@ -1,9 +1,5 @@
 ---
-title: Lab 01
-subtitle: ENVX1002
-description: The University of Sydney
-date: today
-date-format: "[Semester 1,] YYYY"
+title: Lab 01 -- Introduction
 embed-resources: true
 ---
 
@@ -27,9 +23,9 @@ Make sure you have access to:
 - R and RStudio
 - The data set and code file for this computer lab:
 
-  - Github: [download Lead_content.csv file](./data/Lead_content.csv)
+  <!-- - Github: [download Lead_content.csv file](./data/Lead_content.csv)
   - Canvas: [download Lead_content.csv file](https://canvas.sydney.edu.au/courses/55713/pages/week-1-computer-lab-introduction-and-the-scientific-method?module_item_id=2156201)
-  - Canvas: [download Code_Topic1.R file](https://canvas.sydney.edu.au/courses/55713/pages/week-1-computer-lab-introduction-and-the-scientific-method?module_item_id=2156201)
+  - Canvas: [download Code_Topic1.R file](https://canvas.sydney.edu.au/courses/55713/pages/week-1-computer-lab-introduction-and-the-scientific-method?module_item_id=2156201) -->
 
 ## Settling in
 
