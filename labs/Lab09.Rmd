@@ -1,0 +1,374 @@
+---
+title: "ENVX1002 Practical Topic 9 - Describing relationships"
+output:
+  html_document:
+    #theme: lumen
+    highlight: tango
+    toc: true
+    toc_depth: 4
+    toc_float:
+      collapsed: false
+    #code_folding: hide 
+    df_print: paged
+  pdf_document:
+      fig_width: 7
+      fig_height: 6
+      fig_caption: true
+geometry: margin=2cm
+---
+
+```{r setup, warning=F, message=F, echo=F}
+library(knitr)
+library(kableExtra)
+```
+
+<br>
+
+<div class="pad-box-mini" style="border: 2px solid grey; padding-left:10px;">
+
+### Objectives
+
+* Calculate and interpret Correlation Coefficients in Excel and R
+* Produce scatterplots in Excel and R
+* Compare numerical and analytical model fitting methods in Excel
+* Fit simple linear models and obtain associated model summaries in R
+* Overlay fitted models onto scatterplots in R
+
+**DATA:	ENVX1002_practical_data_Regression.xlsx**
+
+</div>
+
+<br>
+
+## Exercise 1: Linear Modelling in Excel
+
+This exercise focusses on fitting the model parameters and demonstrating two ways a model can be fitted - numerical or analytical; 
+
+* Analytical: equation(s) are used directly to find solution, e.g. estimate parameters that minimise residual sum of squares
+
+* Numerical: computer uses “random guesses” to find set of parameters to that minimises objective function, in this case
+residual sum of squares
+
+We mostly use R for modelling, but R does everything automatically. It is important to know what is going on 'behind the scenes', which is why we are starting in Excel. Similar to the tutorial, you will be calculating each component of the model parameter step by step in the exercises that follow. 
+
+<br>
+
+### 1.1 Horses
+
+This is our example of Analytical fitting method. 
+
+The number of horses on Canadian farms appeared to decrease after the war:
+
+```{r, echo = FALSE}
+year <- c(1944,1945,1946,1947,1948)
+horse <- c(28,26,22,20,19)
+
+horse_year <- rbind(year, horse)
+horse_year %>%
+  kable() %>%
+  kable_styling("bordered")
+```
+
+a) To see whether this is likely to be true, fit a model to the above data 'by hand' in Excel. To aid the calculation it is recommended to fill out the Excel table provided ENVX1002_practical_data_Regression.xlsx, you can find it in the spreadsheet labelled *Horses*.  
+
+The table we have provided in Excel has broken the regression parameter equations (b0, b1) into smaller components so you can understand the underlying mechanisms and where these values come from. 
+
+b) Plot the two variables in Excel and fit a line. You can fit a number of models in Excel simply by right clicking on the scatter of points clicking **Add Trendline ...**.  Within the add Tendline window (see screenshot below), a number of options are given, here we want **Linear** and we want to tick **display the Equation** and **Display r-squared on the chart**.  
+
+<br>
+
+![Screenshot: Format Trendline](img/format_trendline.png)
+
+<br>
+
+The R-squared value is a measure of how well the model fits the data where 1.0 is a perfect fit; we will discuss this more in Week 10.  The values which appear in the model equation should be the same as those obtained in your earlier calculations.  
+
+c) Although it is important for the model equation, do you think the intercept provides a realistic value in this particular case? What does it mean?
+
+d) Calculate the correlation coefficient using the **=CORREL** function in Excel. Type **=CORREL(** and highlight the **Year** column, and then after a comma highlight the **Horses** column and close the brackets. 
+
+e) If the relationship was non-linear would this would be a good statistic to use to describe the relationship between horse and years? Explain your answer. 
+
+```{asis, echo = F}
+**ANSWER**
+  
+a) b0 = 4693.4
+   b1 = -2.40
+   SSxy = -24
+   SSxx = 10
+   mean(x) = 1946
+   mean(y) = 23
+   
+b) Should be a nice plot in excel, equations should match your calculated b0 and b1
+
+c) The intercept is 4693, suggesting at the year zero, Canadian farms had 4693 horses.  Other than to obtain an intercept, it does not make sense to extrapolate beyond the years we have data for. 
+
+d) r = -0.979795897, meaning there is a strong relationship in the negative direction; i.e. as the years increase, the number of horses have decreased. 
+
+e) The Pearson correlation coefficient is only useful for describing linear relationships. Based on the limited sample size we have, the scatterplot looks like a linear relationship, and so it would be ok to use the correlation coefficient in this case. 
+
+```
+
+
+<br>
+
+### 1.2 Fertiliser data
+
+This is our example of numerical fitting of a model. 
+
+Figure 1 shows a plot of yield against fertiliser where a linear model is fitted through the scatterplot of raw observations.  Intuitively you would draw this as a line that comes as close to possible to all observations which you may have come across as a ‘line of best fit’.  In this exercise we will explore how models can be fitted automatically based on least-squares estimation.
+
+<br>
+
+![Figure 1: Plot of Yield-response to fertiliser](img/Practical_Topic9_yieldfert.jpg)
+
+<br> 
+
+In Figure 1 you will notice that the line does not fit the data perfectly which is typical of biological and environmental data.  A measure of how far the model is from the data is the residual.
+
+
+\begin{equation} 
+residual = y_i - \hat{y}_1 
+\label{1}
+\end{equation}
+
+Where $y_i$ is the observed value for the ith observation and $\hat{y}_1$ is the predicted value for the *i*th observation.  In this case the predicted value is based on the linear model.
+
+If we add up the square of the residuals for the n observations we get something called the Residual Sum of Squares ($SS_{res}$):
+
+\begin{equation}
+SS_{res} =\sum_{i = 1}^{n} (y - \hat{y})^2 \label{2} 
+\end{equation}
+
+The best fitting model will have the smallest RSS.  The general method is called least-squared estimation.  We will now use Excel to find the optimal model.
+
+Enter values of 2 for the y-intercept ($b_0$) and 3 for the slope ($b_1$) in cells H2:H3.  These are the initial guess values.  
+
+b)	Now use these parameter values to create predictions for each value of fertiliser in the Predicted column. 
+
+Make sure that rather than writing in the value '2' and '3' for your predicted column, you refer to cells H2 and H3 (write as $H$2 and $H$3, see screenshot below).  Once you have completed the equation, you can apply the equation to the other rows by clicking on the small box at the bottom right corner of the cell and drag it down the rows.   Writing dollar signs into your references to H2 and H3 prevents your equation from moving down the row column. 
+
+<br>
+
+![Screenshot of Predicted column input](img/pred_eqtn.png)
+
+<br>
+
+c)	Use this information to calculate (i) residuals (ii) residuals^2^ (iii) RSS.
+
+d)	Create a plot similar to Figure 1 where the observations are plotted as symbols and the model predictions are a line.  You should have your spreadsheet set up so that if you change the values of the parameters the plotted line changes as well.  Try to fit the line manually.  This can be difficult, especially for non-linear models.
+
+e)	Follow instructions provided in the Tutorial, or in the file [How to install Solver](https://canvas.sydney.edu.au/files/23533099/download?download_frd=1) to ensure you have Solver ready to use in Excel. 
+
+Once you have added Solver, click on the tab **Data >> Solver**, and you will see the following (see screenshot below). For **Set Objective**, you need to select the cell where your RSS value has been calculated. We wish to minimize this so we click on Min, and we do this by Changing Cells where the parameters of the model are found, in this case the y-intercept and slope. Before clicking **Solve**, make sure you can see your calculated values so you can see how your how it all changes.  
+
+<br>
+
+![Screenshot of solver with input values](img/solver.png)
+
+<br>
+
+When ready, click on **Solve** and it should find a solution for the minimum RSS.  Solver uses an iterative procedure to find the minimum RSS which means it successively guesses values until it finds the optimal value.  This is a numerical solution to the problem of model fitting.  
+
+Your 'SOLVED' parameters should be the same as what appears in your trendline equation. 
+
+
+<br>
+
+## Exercise 2: Fitting a model in R
+
+Now we have a deeper understanding of what is going on behind the scenes, we can fit linear models in R. 
+
+Before you begin, ensure you have a project set up in your desired folder. Then open up a fresh R markdown and save the file within this folder.
+
+Don't forget to save as you go!
+
+<br>
+
+### 2.1 Have a go - Fertiliser data
+
+You will use the fertiliser data to fit a linear model in R. As we covered fitting linear models in the Tutorial, it is now your turn to have a go at fitting the models (with some hints along the way). 
+
+a) Read the following code into R:
+
+```{r}
+# add the data to R Studio
+fert <- c(0,1,2,3,4,5)
+yield <- c(2,13,19,18,25,33)
+```
+
+
+b) To visually identify any trends or relationships, create a scatterplot of fertiliser vs yield. From the scatterplot you see, are there any relationships or trends evident?
+
+```{asis, echo=F}
+**ANSWER**
+  
+```
+```{r eval=F, echo=F}
+# Create a scatterplot
+plot(fert, yield)
+```
+
+
+c) To numerically determine whether there is a relationship, calculate the correlation coefficient. (assume data is normally distributed). Does the correlation coefficient indicate a relationship between fertiliser and yield?
+
+```{asis, echo = F}
+**ANSWER**
+```
+```{r , echo = F, eval = F}
+# To calculate the correlation coefficient:
+cor(fert, yield)
+```
+
+
+```{asis, echo = F}
+**ANSWER**
+  
+b) The points in the scatterplot are showing a linear trend, increasing towards the top-right corner of the plot area.
+
+c) The correlation coefficient is 0.964, indicating there is a strong relationship in the positive direction; i.e. as more fertiliser is applied, the yield increases. 
+```
+
+
+d) You can now fit the model in R using the `lm()` function. Remember to tell R the name of the object you want to store it as (in this case, `model.lm <-`), then state the name of the function. The arguments within the function (i.e. between the brackets) will be `yield ~ fert`, with `yield` being the response variable and `fert` being the predictor. 
+
+```{r}
+# Run your model
+## yield = response variable (x)
+## fert = predictor variable (y)
+model.lm <- lm(yield~fert)
+
+# Obtain model summary - In here you can obtain the model parameters
+# Look for Intercept Estimate and fert Estimate
+summary(model.lm)
+```
+
+e) In the model output obtained from `summary(model.lm)` the model parameters will be listed under 'Estimate' for the intercept and 'fert'. Compare these values to what you have calculated in Excel. 
+
+f) Based on this output, what would the model equation be? Does it match your findings in Excel?
+
+```{asis, echo = F}
+**ANSWER**
+  
+e) Intercept = 4.7619 = $b_0$
+   fert = 5.4286 = $b_1$
+   These coefficients should be the same as those calculated in Excel. 
+    
+f)  Substituting in parameters from R output: 
+
+$$
+Yield = 4.7619 + 5.4286fert
+$$
+
+This should be the same as the equation obtained in Excel
+```
+
+g) You can now fit your model to the scatterplot you created previously using the `abline()` function. Make sure you run the plot function and the abline function in one go. If the lines are run separately, an error may appear saying "plot.new hasn't been called yet"; this is because the abline function requires a current plot on which it can overlay the line. 
+
+Also remember, when presenting plots (e.g. in a report), they should be able to stand alone and be self-explanatory. We therefore need to make sure there are clear axis labels. This can be done using 'xlab' and 'ylab' arguments. 
+
+```{r}
+# Add the linear model to your scatterplot
+plot(fert, yield, xlab = "fertiliser applied", ylab = "Yield")
+abline(model.lm, col = "red")
+```
+
+<br>
+
+### 2.2 ABARES data 
+
+In this final example we will be using a dataset obtained from the Australian Bureau of Agricultural and Resource Economics and Sciences  ([ABARES](https://www.agriculture.gov.au/abares)). The dataset provides a measure of productivity growth (TFP; Total Factor Productivity) in the Australian dairy industry from the years 1978 to 2018.    
+
+More information about the ABARES dataset and productivity can be found [here](https://www.agriculture.gov.au/abares/research-topics/productivity/agricultural-productivity-estimates#dairy ).
+
+a) Read in the data from the Excel file for today's practical. 
+
+Because we have such a large dataset this time, it is better to read the data straight from Excel than read in each individual value. Reading straight from the source file in Excel saves time and reduces chance of input error. 
+
+```{r}
+library(readxl)
+
+ABARES <- read_excel("ENVX1002_practical_data_Regression.xlsx", sheet = "ABARES")
+
+```
+
+b) Create a scatterplot of `Year` against `TFP`. Dont forget the format will be different now - instead of only mentioning the object name, e.g. plot(yield, fert), you will need to refer to the specific columns within the ABARES dataset. (i.e. ABARES$Year).
+
+```{asis, echo = F}
+**ANSWER**
+```
+```{r , echo = F, eval = F}
+plot(ABARES$Year, ABARES$TFP)
+```
+
+c) Can you see a trend between TFP and Year? Or are the points evenly scattered?
+
+```{asis, echo = F}
+**ANSWER**
+  
+c) There seems to be an overall positive trend in the plot
+```
+
+d) Calculate the correlation coefficient between these two variables. Is there a strong relationship?
+
+```{asis, echo = F}
+**ANSWER**
+  
+d) The correlation coefficient is 0.917, indicating a strong relationship in the positive direction. This means there has been positive growth in the dairy industry over time.   
+```
+```{r, echo = F, eval = F}
+cor(ABARES$Year, ABARES$TFP)
+```
+
+e) Fit a model to your data and obtain the model summary. Year will be our predictor and TFP will be our response variable. What are the model parameters (i.e. $b_0$ and $b_1$)?
+
+```{asis, echo = F}
+**ANSWER**
+  
+e) Based on the model summary output, our parameters are:    
+
+$b_0$ = -2998.0129
+$b_1$ = 1.5632
+
+```
+```{r , echo = F, eval = F}
+abares.lm <- lm(ABARES$TFP ~ ABARES$Year)
+
+# Alternative structure: abares.lm <- lm(TFP ~ Year data = ABARES)
+
+summary(abares.lm)
+
+```
+
+f) What would the equation for this model be?
+
+```{asis, echo = F}
+**ANSWER**
+  
+f) Use the coefficients from above and substitute into lm equation:    
+
+$$
+TFI = -2998.0 + 1.5632Year
+$$  
+
+```
+
+g) Overlay your model onto the scatterplot you produced earlier. When plotting make sure you refer to the column names as you did for the model (e.g. ABARES$Year).
+
+```{asis, echo = F}
+**ANSWER**
+```
+```{r, echo = F, eval = F} 
+
+plot(ABARES$Year, ABARES$TFP, xlab = "Year", ylab = "Total factor productivity of Dairy (TFP)")
+abline(abares.lm, col = "red")
+```
+
+<br>
+
+That's it! Great work today. Next week: interpreting linear models!
+
+<br>
+<br>
+<!--The code below reduces white space at the end of the output doc-->
+<div class="tocify-extend-page" data-unique="tocify-extend-page" style="height: 0;"></div>
