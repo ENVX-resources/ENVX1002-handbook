@@ -1,20 +1,6 @@
 ---
 title: "ENVX1002 Practical Topic 9 - Describing relationships"
-output:
-  html_document:
-    #theme: lumen
-    highlight: tango
-    toc: true
-    toc_depth: 4
-    toc_float:
-      collapsed: false
-    #code_folding: hide 
-    df_print: paged
-  pdf_document:
-      fig_width: 7
-      fig_height: 6
-      fig_caption: true
-geometry: margin=2cm
+embed-resources: true
 ---
 
 ```{r setup, warning=F, message=F, echo=F}
@@ -77,7 +63,7 @@ b) Plot the two variables in Excel and fit a line. You can fit a number of model
 
 <br>
 
-![Screenshot: Format Trendline](img/format_trendline.png)
+![Screenshot: Format Trendline](images/format_trendline.png)
 
 <br>
 
@@ -120,7 +106,7 @@ Figure 1 shows a plot of yield against fertiliser where a linear model is fitted
 
 <br>
 
-![Figure 1: Plot of Yield-response to fertiliser](img/Practical_Topic9_yieldfert.jpg)
+![Figure 1: Plot of Yield-response to fertiliser](images/Practical_Topic9_yieldfert.jpg)
 
 <br> 
 
@@ -150,7 +136,7 @@ Make sure that rather than writing in the value '2' and '3' for your predicted c
 
 <br>
 
-![Screenshot of Predicted column input](img/pred_eqtn.png)
+![Screenshot of Predicted column input](images/pred_eqtn.png)
 
 <br>
 
@@ -164,7 +150,7 @@ Once you have added Solver, click on the tab **Data >> Solver**, and you will se
 
 <br>
 
-![Screenshot of solver with input values](img/solver.png)
+![Screenshot of solver with input values](images/solver.png)
 
 <br>
 
@@ -288,7 +274,7 @@ Because we have such a large dataset this time, it is better to read the data st
 ```{r}
 library(readxl)
 
-ABARES <- read_excel("ENVX1002_practical_data_Regression.xlsx", sheet = "ABARES")
+ABARES <- read_excel("data/ENVX1002_practical_data_Regression.xlsx", sheet = "ABARES")
 
 ```
 
