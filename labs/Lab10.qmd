@@ -1,0 +1,502 @@
+---
+title: "ENVX1002 Practical Topic 10 - Linear Functions"
+output:
+  pdf_document:
+      fig_width: 7
+      fig_height: 6
+      fig_caption: true
+  html_document:
+    #theme: lumen
+    highlight: tango
+    toc: true
+    toc_depth: 4
+    toc_float:
+      collapsed: true
+    #code_folding: hide 
+    df_print: paged
+geometry: margin=2cm
+---
+
+```{r setup, warning=F, message=F, echo=F}
+library(knitr)
+library(kableExtra)
+```
+
+<br>
+
+<div class="pad-box-mini" style="border: 2px solid grey; padding-left:10px;">
+
+### Objectives
+
+* Fit simple linear models and obtain associated model summaries in R
+* Overlay fitted models onto scatterplots in R
+* Undertake hypothesis testing to determine if slope $\neq$ 0
+* Check assumptions are met prior to assessing model output
+* Assess model summary in terms of fit and P-values
+
+**DATA:	ENVX1002_wk10_practical_data_Regression.xlsx**
+
+</div>
+
+<br>
+
+Last week you fitted models in R, now it is time to understand what the output means. 
+
+Before you begin, ensure you have a project set up in your desired folder. Then open up a fresh R markdown and save the file within this folder.
+
+Don't forget to save as you go!
+
+<br>
+
+## Exercise 1: Walkthrough - Fertiliser
+
+Like last week, we will start off our R modelling journey by fitting a model to the fertiliser data.
+
+a) Read the following code into R:
+
+```{r}
+# add the data to R Studio
+fert<-c(0,1,2,3,4,5)
+yield<-c(2,13,19,18,25,33)
+```
+
+### 1.1 Scatterplot and correlation
+
+To visually identify any trends or relationships, last week we created a scatterplot of the data. This is helps us visually understand our points so we know what we might expect from the model, and possibly identify if the relationship is looking non-linear. 
+
+```{r}
+# Create a scatterplot
+plot(fert, yield)
+```
+
+Remembering back to last week, we then calculated the correlation coefficient to numerically determine whether there was a relationship between fertiliser and yield. 
+
+Using the code below, we found there was quite a strong relationship between fertiliser and yield (`r round(cor(fert, yield), 3)`): 
+
+```{r}
+# Correlation coefficient
+cor(fert, yield)
+```
+
+### 1.2 State hypotheses
+
+Remembering back to the lecture and tutorial, the general equations for our hypotheses are:
+
+$$
+H_0 : \beta_1 = 0
+$$
+
+$$
+H_1 : \beta_1 \neq 0
+$$
+
+In the context of our data, the hypotheses would be:
+
+$H_0$: Slope = 0; fertiliser is not a significant predictor of yield. 
+
+$H_1$: Slope $\neq$ 0; fertiliser is a significant predictor of yield. 
+
+If P > 0.05, we fail to reject the null hypothesis that the true slope ($\beta_1$) is equal to 0. If this is the case, it means our model does not predict better than the mean of our observations, and so there is no advantage to using our model over the mean of y ($\bar{y}$). 
+
+If we find there is a high probability of the slope not being equal to 0 (P < 0.05), we can reject the null hypothesis and conclude our model is better at predicting than the mean of our observations.
+
+Now we understand what we are testing for, we can fit the model. 
+
+### 1.3 Fit the model
+
+After checking the correlations and scatterplot, we need to fit the model using the `lm()` function. Remember to tell R the name of the object you want to store it as (in this case, `model.lm <-`), then state the name of the function. The arguments within the function (i.e. between the brackets) will be `yield ~ fert`, with `yield` being the response variable and `fert` being the predictor. 
+
+```{r}
+# Run your model
+## yield = response variable (x)
+## fert = predictor variable (y)
+model.lm<-lm(yield~fert)
+```
+
+### 1.4 Check assumptions
+
+This time, before obtaining our model summary, we need to check our assumptions.
+
+Smaller sample size (n = 6) makes it harder to check whether the assumptions have been met, but we will still run through the check.  
+
+Looking at each plot, we can see that the residual plots don't look the best; 
+
+* Residuals vs fitted: Will tell us if the relationship is linear. We are looking for an even scatter around the mean, and red line should be reasonably straight. In this case the red line is not too straight, but the scatter seems even.
+
+* Normal Q-Q: If the residuals are normally distributed, most of the points should lie along the dotted line. Our points follow the line, but do not lie on it.
+
+* Scale-Location: This is for testing whether the variance is equal in the residuals at each value of x. If the variance is equal, then we would expect to see an even scatter and no fanning. In this case, there is no fanning. 
+
+* Residuals vs Leverage: This will help us identify whether there are any single points influencing the slope or intercept of the model. We can see in the output plot there is a point sitting in the bottom-right corner, outside the dotted line, indicating that it may be having an influence on the model.
+
+These plots are only useful as an example of how to obtain and interpret output. If we wanted to obtain a more reliable check of our assumptions (and a more reliable model), we would need a larger sample size (n > 10).
+
+```{r}
+# Check your assumptions!!
+par(mfrow=c(2,2)) # sets plots to show as 2x2 grid
+plot(model.lm)
+```
+
+In this case, we will assume the assumptions have been met and continue to assess the model output. 
+
+### 1.5 Model output 
+
+Use the `summary()` function to obtain output for your model: 
+
+```{r}
+# Obtain model summary
+summary(model.lm)
+```
+
+In the model output obtained from `summary(model.lm)` the model parameters will be listed under 'Estimate' for the intercept and 'fert'. Last week we concluded the equation to be: 
+
+$$
+Yield = 4.7619 + 5.4286*fert
+$$
+
+Furthermore, from our model estimate, we can say that as fertiliser increases by 1, yield will increase by 5.4286.
+
+
+### 1.6 Is the model useful?
+
+When looking at the model summary output, we obtain the p-value from the coefficients table. We are interested in the P-value for `fert` and not the intercept. 
+
+The significance of the intercept P-value depends on our scientific question. We only really look at our intercept P-value when we want to extrapolate our line to the intercept, and know if the intercept is equal to zero ($H_0$) or not ($H_1$). This depends on your dataset and whether it makes sense to do so. 
+
+Also notice how the p-values for the F-test at the bottom of the summary output, and the t-test p-values we are using are the same. The F-test gives us an idea whether our overall model is significant and in this case, as we are only using a single predictor, the P-values will be the same. 
+
+Therefore we can say the following: 
+
+Observing the model output, we can see that the P-value for fert is significant (P = 0.00196) and we can say that as P < 0.05, we reject the null hypothesis. We can conclude our slope is not 0 and our model is a better way to predict yield than the mean of our observations.
+
+
+### 1.7 How good is the model?
+
+To assess how well the model fits the data, we need to look at the Residual standard error (3.147) and the r-squared value (0.9287). 
+
+* We can say that our residual standard error is relatively low in terms of our response variable.   
+
+* Our r-squared indicates that fertiliser accounts for 92.9% of variation in yield. That's pretty good!
+
+Note how Multiple R-squared and Adjusted R-squared are similar. For simple linear models we can opt for the multiple r-squared, but when using multiple predictors we need to use adjusted r-squared. 
+
+Finally, to visually present our results, we can provide a scatterplot with the model overlaid.
+```{r}
+# Add the linear model to your scatterplot
+plot(fert, yield, xlab = "fertiliser applied", ylab = "Yield")
+abline(model.lm, col = "red")
+```
+
+
+### 1.8 Our conclusions
+
+Now we can put our interpretations together to form the conclusion: 
+
+Observing the model output, we can see that the P-value for fert is significant (P = 0.00196) and we can say that as P < 0.05, we reject the null hypothesis. We can conclude our slope is not 0 and our model is a better way to predict yield than the mean of our observations.
+
+We can therefore conclude that fertiliser is a significant predictor of crop yield as the slope is not equal to zero (P < 0.05), and it accounts for 92.9% of the variation in yield. 
+
+
+<br>
+
+## Exercise 2: Toxicity in peanuts
+
+Data:  *Peanuts* spreadsheet
+
+The data comprise of, for 34 batches, the average level of the fungal contaminant aflatoxin in a sample of 120 pounds of peanuts and the percentage of non-contaminated peanuts in the whole batch. 
+
+The data were collected with the aim of being able to predict the percentage of non-contaminated peanuts (`Peanuts$percent`) from the aflatoxin level (`Peanuts$toxin`) in a sample. We will now investigate whether this is the case. 
+
+First thing's first! Let's read in the data using `read_xlsx` command:
+
+```{r LoadPeanutData}
+library(readxl)
+Peanuts <- read_xlsx("ENVX1002_wk10_practical_data_Regression.xlsx", "Peanuts")
+head(Peanuts)
+```
+<br>
+
+### 2.1 Scatter plot
+
+Make a scatter plot (using `plot(Peanuts$Toxin,Peanuts$Percent)`) of the data. 
+
+a) Describe the relationship between the two variables. 
+
+b) Would you say that the percentage of non-contaminated peanuts in a batch could be predicted accurately from the level of aflatoxin in a sample via a linear relationship?
+
+```{r scatterplot, echo=T, eval=T}
+plot(Percent~Toxin, data = Peanuts)
+```
+
+```{asis, echo = T}
+**ANSWER**
+  
+**a)** There seems to be a strong, negative relationship between Percent and Toxin
+
+**b)** The relationship on the plot does seem to follow a straight line and so we can say that percentage of non-contaminated peanuts in a batch could be predicted from the level of aflatoxin in a sample via a linear relationship.
+```
+
+### 2.2 State Hypotheses
+
+a) What are the hypotheses we are testing? State them as the formulae and in the context of the study. 
+
+```{asis, echo = T}
+**ANSWER**
+  
+**a)** 
+As above, the aim is to test whether it is possible to predict the percentage of non-contaminated peanuts from the aflatoxin level in a sample.
+
+$$
+H_0 : \beta_1 = 0
+$$
+
+$$
+H_1 : \beta_1 \neq 0
+$$
+  
+$H_0$: Aflatoxin level is not a significant predictor of the percentage of non-contaminated peanuts and we are better off using the mean value. 
+
+$H_1$: Aflatoxin level is a significant predictor of the percentage of non-contaminated peanuts.
+
+```
+
+### 2.3 Fit a linear model
+
+Use fit a linear model (`lm()`) to the Peanut data. 
+
+```{r lmPeanuts, eval=T, echo=T}
+# fit a linear model using lm()
+mod <- lm(Percent~Toxin, data=Peanuts)
+```
+<br>
+
+### 2.4 Check assumptions
+
+a) Inspect and comment on the residual plots- have the assumptions been met? 
+
+```{r ResidualPlots, echo = T, eval = T}
+par(mfrow=c(2,2))
+plot(mod)
+```
+
+```{asis, echo = T}
+**ANSWER**
+  
+**a)** There seems to be no problem with the residual plots, the data are normally distributed and there is no indication of fanning (increasing variance) in the residuals.
+```
+<br>
+
+### 2.5 Observe model output
+
+Once you are certain the assumptions are met, you can proceed to look at the regression output. 
+
+a) Comment on the overall fit of the regression, i.e. Is the model fit good? Is the model significant, and how much variation in percentage of non-contaminated peanuts does aflatoxin level account for? 
+
+```{r lmPeanuts_summary, eval=T, echo=T}
+# fit a linear model using lm()
+summary(mod)
+```
+
+```{asis, echo = T}
+**ANSWER**
+  
+**a)** The overall fit is good, with 83% of the variation explained. The model is significant with a p-value for $b_1$ < 0.05 therefore indicating that the slope is significantly different from 0 and negative in this case (-0.0029).
+```
+
+b) Is toxin a significant predictor of percentage non-contaminated peanuts? If so, how can we tell? 
+
+```{asis, echo = T}
+**Answer**
+  
+**b)** yes, as the p-value = 8.54e-14, which is much smaller than 0.05
+```
+
+c) Interpret the slope parameter in terms of quantifying the relationship between toxin and percent.  
+
+```{asis, echo = T}
+**Answer** 
+  
+**c)** An increase in toxin by 1 results in a decrease of 0.0029% of uncontaminated peanuts.
+```
+<br>
+
+## Exercise 3: Dippers
+
+Data:  *Dippers* spreadsheet
+
+The file, Breeding density of dippers, gives data from a biological survey which examined the nature of the variables thought to influence the breeding of British dippers. 
+
+Dippers are thrush-sized birds living mainly in the upper reaches of rivers, which feed on benthic invertebrates by probing the river beds with their beaks. 
+
+Twenty-two sites were included in the survey. For the purpose of fitting a simple linear model, the dataset has been reduced to two variables: 
+
+* The number of breeding pairs of Dippers per 10 km of river 
+* The numbers of caddis fly larvae (Log(Number+1) transformed)
+
+Now it is your turn to work through the steps as above. Does the number of caddis fly larvae influence the number of breeding pairs of Dippers?
+
+a) Read in the data from today's Excel sheet, the corresponding sheet name is "Dippers"
+
+```{asis, echo = T}
+**ANSWER**
+  
+**a)** Use the following code:
+
+```
+```{r, echo = T, eval = T}
+library(readxl, quietly = TRUE)
+Dippers <- read_xlsx("ENVX1002_wk10_practical_data_Regression.xlsx"
+                     ,"Dippers")
+```
+
+b) Obtain a scatterplot, are there signs of a relationship between breeding pair density and caddis fly larvae?
+ 
+```{asis, echo = T}
+**ANSWER**
+  
+**b)** Looking at the scatterplot there seems to be a weak positive relationship. We can follow this up using correlation, which indicates there is a moderate positive relationship of 0.613 between breeding pair density along the study area.  
+
+```
+```{r, echo = T, eval = T}
+plot(Dippers$LogCadd,Dippers$Br_Dens)
+
+cor(Dippers$LogCadd,Dippers$Br_Dens)
+```
+
+c) What are the hypotheses we are testing? State them as the formulae and in the context of the study. 
+
+```{asis, echo = T}
+**ANSWER**
+  
+**c)** 
+As above, the aim is to test whether the number of caddis fly larvae influence the number of breeding pairs of Dippers
+
+$$
+H_0 : \beta_1 = 0
+$$
+
+$$
+H_1 : \beta_1 \neq 0
+$$
+  
+$H_0$: The number of caddis fly larvae is not significant predictor of dipper breeding pair density. OR could say: There is insufficient evidence to suggest the number of caddis fly larvae influence the number of breeding pairs of Dippers. 
+
+$H_1$: The number of caddis fly larvae is a significant predictor of number of dipper breeding pair density. OR could say: The number of caddis fly larvae has an influence upon the number of breeding pairs of dippers. 
+
+```
+
+d) Let's investigate further. Run the model, but before looking at our model output, are the assumptions ok?
+
+```{asis, echo = T}
+**ANSWER**
+  
+**d)** Assumptions look ok:
+  
+  * Residuals vs fitted: Points evenly scattered around mean
+  * Normal Q-Q: Points follow line
+  * Scale-Location: Points evenly scattered, no fanning. 
+  * Residuals vs Leverage: No points occurring at top right or bottom right corners outside the dotted red lines. A couple of points are close, but not outside, so all is good. 
+
+We can continue to interpreting the output!
+
+```
+```{r , echo = T, eval = T}
+# Run model
+dipper.lm <- lm(Br_Dens ~ LogCadd, data=Dippers)
+
+# Check assumptions
+par(mfrow = c(2,2))
+plot(dipper.lm)
+
+```
+
+e) Once you are happy assumptions are good, you can use `summary()` to interpret the model output. 
+
+```{asis, echo = T}
+**ANSWER**
+
+```
+```{r , echo = T, eval = T}
+summary(dipper.lm)
+
+```
+
+f) What is the equation for our model, incorporating our coefficients?
+
+```{asis, echo = T}
+**ANSWER**
+  
+**f)** Br_Dens = 0.6295 + 0.9783*LogCadd
+
+```
+
+g) Based on the F-statistic output, is the model significant? How can we tell? Is it different to the significance of LogCadd?
+
+```{asis, echo = T}
+**ANSWER**
+  
+**g)** The F-test statistic tells us whether our overall model is significant, which in this case it is (P = 0.002). In the case of simple linear models (with only 1 predictor variable), the hypothesis for the F-statistic will be the same as the hypothesis for the slope of our single predictor. Therefore we expect the P-values to be the same. 
+```
+
+h) Is LogCadd a significant predictor of Dipper breeding pair density? How can we tell?
+
+```{asis, echo = T}
+**ANSWER**
+  
+**h)** The P-value for LogCadd is less than 0.05 (P = 0.0024), and so we reject the null hypothesis that the slope is equal to zero.  We can therefore say LogCadd a significant predictor of Dipper breeding pair density. 
+```
+
+i) How good is the fit of our model?
+
+```{asis, echo = T}
+**ANSWER**
+  
+**i)** Not too good. Our residual standard is (Residual SE = 1.204) and the r^2^ is closer to 0 than 1 (r^2^ = 0.375). 
+
+Our residual SE is a low value, but relative to the range of Br_Dens (min = 2.9, max = 8.4), it is not too good. 
+
+We can also back this up with a scatterplot and our model overlaid, notice how the points of the scatterplot follow the line somewhat, but not as tightly as we saw in the Peanuts data. 
+
+```
+```{r echo = T, eval = T}
+plot(Dippers$LogCadd,Dippers$Br_Dens)
+abline(dipper.lm)
+```
+
+
+
+
+j) What conclusions can we make from this model output?
+
+```{asis, echo = T}
+**ANSWER**
+  
+**j)** Although the number of caddis fly larvae (LogCadd) is a significant predictor of Dipper breeding pair density (P < 0.05), it only accounts for 37.5% of variation in breeding pair density. 
+
+Back to the original question: Does the number of caddis fly larvae influence the number of breeding pairs of Dippers?
+Yes, but based on our findings, this relationship is not very strong. 
+
+```
+
+k) A final thought; Does our result make sense within the context? i.e. why might the Dipper breeding pair density be related to LogCadd?
+
+```{asis, echo = T}
+**ANSWER**
+  
+**k)** Our findings make sense that there is a relationship between caddis fly larvae and Dipper breeding density, as Dippers feed on benthic invertebrates such as caddis fly larvae. 
+
+Why there is such a weak relationship may be because the caddis fly larvae is likely not to be the only type of invertebrate the Dippers eat, or perhaps the Dippers have a preference. 
+
+There are also other factors in play, but we would have to build some knowledge in this area through research. 
+
+```
+
+
+<br> 
+
+Great work fitting simple linear models! Next week we step it up with *multiple* linear regression. 
+
+<br>
+<br>
+<!--The code below reduces white space at the end of the output doc-->
+<div class="tocify-extend-page" data-unique="tocify-extend-page" style="height: 0;"></div>
