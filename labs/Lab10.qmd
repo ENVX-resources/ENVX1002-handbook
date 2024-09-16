@@ -1,20 +1,6 @@
 ---
 title: "ENVX1002 Practical Topic 10 - Linear Functions"
-output:
-  pdf_document:
-      fig_width: 7
-      fig_height: 6
-      fig_caption: true
-  html_document:
-    #theme: lumen
-    highlight: tango
-    toc: true
-    toc_depth: 4
-    toc_float:
-      collapsed: true
-    #code_folding: hide 
-    df_print: paged
-geometry: margin=2cm
+embed-resources: true
 ---
 
 ```{r setup, warning=F, message=F, echo=F}
