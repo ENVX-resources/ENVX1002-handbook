@@ -197,7 +197,7 @@ First thing's first! Let's read in the data using `read_xlsx` command:
 
 ```{r LoadPeanutData}
 library(readxl)
-Peanuts <- read_xlsx("ENVX1002_wk10_practical_data_Regression.xlsx", "Peanuts")
+Peanuts <- read_xlsx("data/ENVX1002_wk10_practical_data_Regression.xlsx", "Peanuts")
 head(Peanuts)
 ```
 <br>
@@ -331,7 +331,7 @@ a) Read in the data from today's Excel sheet, the corresponding sheet name is "D
 ```
 ```{r, echo = T, eval = T}
 library(readxl, quietly = TRUE)
-Dippers <- read_xlsx("ENVX1002_wk10_practical_data_Regression.xlsx"
+Dippers <- read_xlsx("data/ENVX1002_wk10_practical_data_Regression.xlsx"
                      ,"Dippers")
 ```
 
