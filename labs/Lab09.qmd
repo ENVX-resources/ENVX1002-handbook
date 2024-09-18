@@ -45,7 +45,7 @@ This is our example of Analytical fitting method.
 
 The number of horses on Canadian farms appeared to decrease after the war:
 
-```{r, echo = FALSE}
+```{r do_not_show, echo=FALSE}
 year <- c(1944,1945,1946,1947,1948)
 horse <- c(28,26,22,20,19)
 
@@ -75,7 +75,7 @@ d) Calculate the correlation coefficient using the **=CORREL** function in Excel
 
 e) If the relationship was non-linear would this would be a good statistic to use to describe the relationship between horse and years? Explain your answer. 
 
-```{asis, echo = F}
+```{asis, echo = T}
 **ANSWER**
   
 a) b0 = 4693.4
@@ -186,11 +186,7 @@ yield <- c(2,13,19,18,25,33)
 
 b) To visually identify any trends or relationships, create a scatterplot of fertiliser vs yield. From the scatterplot you see, are there any relationships or trends evident?
 
-```{asis, echo=F}
-**ANSWER**
-  
-```
-```{r eval=F, echo=F}
+```{r eval = T, echo = T}
 # Create a scatterplot
 plot(fert, yield)
 ```
@@ -198,16 +194,13 @@ plot(fert, yield)
 
 c) To numerically determine whether there is a relationship, calculate the correlation coefficient. (assume data is normally distributed). Does the correlation coefficient indicate a relationship between fertiliser and yield?
 
-```{asis, echo = F}
-**ANSWER**
-```
-```{r , echo = F, eval = F}
+```{r , echo = T, eval = T}
 # To calculate the correlation coefficient:
 cor(fert, yield)
 ```
 
 
-```{asis, echo = F}
+```{asis, echo = T}
 **ANSWER**
   
 b) The points in the scatterplot are showing a linear trend, increasing towards the top-right corner of the plot area.
@@ -233,7 +226,7 @@ e) In the model output obtained from `summary(model.lm)` the model parameters wi
 
 f) Based on this output, what would the model equation be? Does it match your findings in Excel?
 
-```{asis, echo = F}
+```{asis, echo = T}
 **ANSWER**
   
 e) Intercept = 4.7619 = $b_0$
@@ -280,16 +273,16 @@ ABARES <- read_excel("data/ENVX1002_practical_data_Regression.xlsx", sheet = "AB
 
 b) Create a scatterplot of `Year` against `TFP`. Dont forget the format will be different now - instead of only mentioning the object name, e.g. plot(yield, fert), you will need to refer to the specific columns within the ABARES dataset. (i.e. ABARES$Year).
 
-```{asis, echo = F}
+```{asis, echo = T}
 **ANSWER**
 ```
-```{r , echo = F, eval = F}
+```{r , echo = T, eval = T}
 plot(ABARES$Year, ABARES$TFP)
 ```
 
 c) Can you see a trend between TFP and Year? Or are the points evenly scattered?
 
-```{asis, echo = F}
+```{asis, echo = T}
 **ANSWER**
   
 c) There seems to be an overall positive trend in the plot
@@ -297,18 +290,18 @@ c) There seems to be an overall positive trend in the plot
 
 d) Calculate the correlation coefficient between these two variables. Is there a strong relationship?
 
-```{asis, echo = F}
+```{asis, echo = T}
 **ANSWER**
   
 d) The correlation coefficient is 0.917, indicating a strong relationship in the positive direction. This means there has been positive growth in the dairy industry over time.   
 ```
-```{r, echo = F, eval = F}
+```{r, echo = T, eval = T}
 cor(ABARES$Year, ABARES$TFP)
 ```
 
 e) Fit a model to your data and obtain the model summary. Year will be our predictor and TFP will be our response variable. What are the model parameters (i.e. $b_0$ and $b_1$)?
 
-```{asis, echo = F}
+```{asis, echo = T}
 **ANSWER**
   
 e) Based on the model summary output, our parameters are:    
@@ -317,7 +310,7 @@ $b_0$ = -2998.0129
 $b_1$ = 1.5632
 
 ```
-```{r , echo = F, eval = F}
+```{r , echo = T, eval = T}
 abares.lm <- lm(ABARES$TFP ~ ABARES$Year)
 
 # Alternative structure: abares.lm <- lm(TFP ~ Year data = ABARES)
@@ -328,7 +321,7 @@ summary(abares.lm)
 
 f) What would the equation for this model be?
 
-```{asis, echo = F}
+```{asis, echo = T}
 **ANSWER**
   
 f) Use the coefficients from above and substitute into lm equation:    
@@ -341,10 +334,10 @@ $$
 
 g) Overlay your model onto the scatterplot you produced earlier. When plotting make sure you refer to the column names as you did for the model (e.g. ABARES$Year).
 
-```{asis, echo = F}
+```{asis, echo = T}
 **ANSWER**
 ```
-```{r, echo = F, eval = F} 
+```{r, echo = T, eval = T} 
 
 plot(ABARES$Year, ABARES$TFP, xlab = "Year", ylab = "Total factor productivity of Dairy (TFP)")
 abline(abares.lm, col = "red")
