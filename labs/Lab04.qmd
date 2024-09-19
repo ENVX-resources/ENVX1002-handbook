@@ -1,9 +1,6 @@
 ---
 title: Lab 04 -- Sampling distributions
-subtitle: "ENVX1002"
-description: The University of Sydney
-date: today
-date-format: "[Semester 1,] YYYY"
+embed-resources: true
 ---
 
 # Facing challenges
