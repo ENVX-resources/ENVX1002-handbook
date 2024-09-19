@@ -54,7 +54,7 @@ Aim of our investigation: Understand the relationship between Organic and Inorga
 
 ```{r LoadData, echo=T}
 library(readxl)
-Corn <- read_xlsx("ENVX1002_practical_wk11_data_Regression.xlsx", "Corn")
+Corn <- read_xlsx("data/ENVX1002_practical_wk11_data_Regression.xlsx", "Corn")
 head(Corn)
 ```
 
@@ -343,7 +343,7 @@ The dataset contains the following variables:
 
 First thing to do, is read in the data. This time we will be using the *Microbes* spreadsheet: 
 ```{r, echo=T}
-mic <- read_xlsx("ENVX1002_practical_wk11_data_Regression.xlsx", "Microbes")
+mic <- read_xlsx("data/ENVX1002_practical_wk11_data_Regression.xlsx", "Microbes")
 
 # Check the structure
 str(mic)
@@ -590,7 +590,7 @@ a) Read in the data from today's Excel sheet, the corresponding sheet name is "D
 ```
 ```{r, eval=T}
 library(readxl, quietly = TRUE)
-Dippers <- read_xlsx("ENVX1002_practical_wk11_data_Regression.xlsx"
+Dippers <- read_xlsx("data/ENVX1002_practical_wk11_data_Regression.xlsx"
                      ,"Dippers")
 ```
 
