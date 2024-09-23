@@ -1,0 +1,39 @@
+title: soles assignment template
+author: Januar
+version: 1.1.2
+quarto-required: ">=1.4.0"
+contributes:
+  formats:
+    html:
+      theme:
+        light: zephyr
+      linkcolor: "#e64626"
+      html-math-method: katex
+      code-overflow: wrap
+      code-block-border-left: "#e64626" # "#e64626"
+      code-block-bg: "#FFFFFF"
+      code-summary: "Show the code"
+      fontsize: 11pt
+      toc: true
+      toc-location: left
+      fig-cap-location: margin
+      css: assets/styles.css
+    pdf:
+      pdf-engine: xelatex # lualatex pdflatex lualatex
+      # pdf-engine-opt: -xelatex  # use with latexmk only
+      include-in-header:
+        - soles-pdf.tex
+      include-before-body:
+        - text: |
+            \pagestyle{usyd}
+      code-block-bg: "#F1F1F1"
+      code-block-border-left: "#e64626"
+      toc: false
+      fontsize: 10pt
+      monofont: Source Code Pro
+      monofontoptions: "Scale=0.75"
+      linestretch: 1.2
+    typst:
+      template-partials:
+        - typst-template.typ
+        - typst-show.typ
