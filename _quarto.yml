@@ -13,6 +13,7 @@ website:
     style: docked
     contents:
       - 001-intro.qmd
+      - "---"
       - section: "**🛟 R Guide**"
         contents: "R Guide/*"
       - "---"
