@@ -13,13 +13,17 @@ website:
     style: docked
     contents:
       - 001-intro.qmd
-      - section: "**MODULE 1**"
+      - section: "**🛟 R Guide**"
+        contents: "R Guide/*"
+      - "---"
+      - section: "**📕 Module 1**"
         contents: module01/*
-      - section: "**MODULE 2**"
+      - section: "**📗 Module 2**"
         contents: module02/*
-      - section: "**MODULE 3**"
+      - section: "**📘 Module 3**"
         contents: module03/*
-      - section: "**LABS**"
+      - "---"
+      - section: "**🖥️ Computer labs**"
         contents: labs/*
 
 format:
