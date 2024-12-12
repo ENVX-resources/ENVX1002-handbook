@@ -1,9 +1,5 @@
 ---
 title: "ENVX1002 Handbook"
-author:
-  - name: "Floris van Ogtrop"
-  - name: "Liana Pozza"
-  - name: "Januar Harianto"
 date: today
 date-format: YYYY
 
