@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ENVX1002 Practical Topic 12 - Non-linear models – ENVX1002 Handbook</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-3e476e15ae565c222d94875412ae43a1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d3043699f4f525e226433170f63674df.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e421caac441fecc3c6616e61b4184c10.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-4ed7b29464c3cf78340236940c406663.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ENVX1002 Handbook</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+    <a href="../#" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/Lab01.html"><strong>🖥️ Computer labs</strong></a></li><li class="breadcrumb-item"><a href="../labs/Lab12.html">ENVX1002 Practical Topic 12 - Non-linear models</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../001-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>🛟 R Guide</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R Guide/01-getting-started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting started</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R Guide/04-install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installing R and RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R Guide/06-rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using RStudio effectively</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R Guide/08-quarto-r-markdown.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Writing in markdown</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../R Guide/10-copilot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GitHub Copilot and RStudio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>📕 Module 1</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../module01/01-exploring_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory Data Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../module01/02-probability_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Probability distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../module01/03-sampling_distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sampling distributions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>📗 Module 2</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../module02/01-ttest1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">One-sample <span class="math inline">\(t\)</span>-test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../module02/02-ttest2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Two-sample <span class="math inline">\(t\)</span>-test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../module02/03-nonparametric1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chi-squared tests</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>📘 Module 3</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../module03/040-describing_relationships.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Describing relationships</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../module03/041-linear_functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../module03/042-linear_functions_multi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear functions – multiple predictors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../module03/043-nonlinear.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Non-linear functions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>🖥️ Computer labs</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 01 – Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 02 – Quarto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 03 – Probability distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 04 – Sampling distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 05 – Hypothesis Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 06 – Two-sample <em>t</em>-test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 07 – Chi-squared test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 08 – 🚫 No exercises</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ENVX1002 Practical Topic 9 - Describing relationships</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ENVX1002 Practical Topic 10 - Linear Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ENVX1002 Practical Topic 11 - Multiple Linear Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/Lab12.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">ENVX1002 Practical Topic 12 - Non-linear models</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives</a></li>
+  <li><a href="#polynomials" id="toc-polynomials" class="nav-link" data-scroll-target="#polynomials">Polynomials</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-interpreting-polynomials" id="toc-exercise-1-interpreting-polynomials" class="nav-link" data-scroll-target="#exercise-1-interpreting-polynomials">Exercise 1: Interpreting polynomials</a></li>
+  <li><a href="#exercise-2-fitting-polynomials-in-r" id="toc-exercise-2-fitting-polynomials-in-r" class="nav-link" data-scroll-target="#exercise-2-fitting-polynomials-in-r">Exercise 2: Fitting polynomials in R</a></li>
+  </ul></li>
+  <li><a href="#exponential-function" id="toc-exponential-function" class="nav-link" data-scroll-target="#exponential-function">Exponential function</a>
+  <ul class="collapse">
+  <li><a href="#exercise-3-initial-estimates-for-exponential-growth-function" id="toc-exercise-3-initial-estimates-for-exponential-growth-function" class="nav-link" data-scroll-target="#exercise-3-initial-estimates-for-exponential-growth-function">Exercise 3: Initial estimates for exponential growth function</a></li>
+  <li><a href="#exercise-4-exponential-growth-models" id="toc-exercise-4-exponential-growth-models" class="nav-link" data-scroll-target="#exercise-4-exponential-growth-models">Exercise 4 : Exponential growth models</a></li>
+  </ul></li>
+  <li><a href="#logistic-function" id="toc-logistic-function" class="nav-link" data-scroll-target="#logistic-function">Logistic function</a>
+  <ul class="collapse">
+  <li><a href="#exercise-5-logistic-models" id="toc-exercise-5-logistic-models" class="nav-link" data-scroll-target="#exercise-5-logistic-models">Exercise 5: Logistic models</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/Lab01.html"><strong>🖥️ Computer labs</strong></a></li><li class="breadcrumb-item"><a href="../labs/Lab12.html">ENVX1002 Practical Topic 12 - Non-linear models</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">ENVX1002 Practical Topic 12 - Non-linear models</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><br></p>
+<section id="objectives" class="level3 pad-box-mini" style="border: 2px solid grey; padding-left:10px;">
+<h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
+<ul>
+<li>Calculate “by hand” the initial estimates of the parameters of a non-linear model</li>
+<li>Interpret tables of regression coefficients for polynomials to perform hypothesis testing</li>
+<li>Fit polynomials and non-linear models to data using least-squares fitting using the SOLVER add-in in Excel</li>
+<li>Fit polynomials and non-linear models to data in R, and interpret the outputs</li>
+</ul>
+<p><strong>Related Excel: ENVX1002_wk12_practical_data_Regression.xlsx</strong></p>
+</section>
+<p><br></p>
+<p>Over the past few weeks you have explored linear models and how to interpret model summary output. Again we have stepped up the complexity, now venturing into the world of non-linear models.</p>
+<p>This practical focusses on fitting non-linear models to data with an emphasis on 3 important classes of functions that all budding biologists and environmental scientists should know</p>
+<ul>
+<li>polynomials,</li>
+<li>exponential models, and</li>
+<li>logistic models.</li>
+</ul>
+<p><strong>A question before we begin:</strong></p>
+<p>What are some advantages and disadvantages of non-linear models as compared to polynomials?</p>
+<div class="cell">
+<p><strong>ANSWER</strong></p>
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 60%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Polynomials</th>
+<th>Non-linear models(exponential/logistic)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Parameters hard to interpret</td>
+<td>Parameters interpretable in terms of biological and environmental processes</td>
+</tr>
+<tr class="even">
+<td>Can be fitted with analytical or numerical methods</td>
+<td>Fitting parameters can be difficult as use numerical methods which rely on good initial estimates of parameters</td>
+</tr>
+<tr class="odd">
+<td>Hypothesis testing and estimating r<sup>2</sup> straightforward</td>
+<td>Hypothesis testing and estimating r<sup>2</sup> is a bit more difficult – not absence of r<sup>2</sup> in R output</td>
+</tr>
+<tr class="even">
+<td>Difficult to model horizontal asymptotes</td>
+<td>Can accommodate horizontal asymptotes</td>
+</tr>
+<tr class="odd">
+<td>Only polynomials of even order restricted to positive values</td>
+<td>Constrained to positive values</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
+<section id="polynomials" class="level2">
+<h2 class="anchored" data-anchor-id="polynomials">Polynomials</h2>
+<div class="pad-box-mini" style="background-color: #f2f2f2; padding:10px;">
+<p><strong>Quadratic</strong></p>
+<p><span class="math inline">\(y = \beta_0 + \beta_1 x + \beta_2 x^2\)</span></p>
+<p>where the parameters are the y-intercept (<em>b<sub>0</sub></em>), the linear component (<em>b<sub>1</sub></em>) and the quadratic component (<em>b<sub>2</sub></em>).</p>
+<p>If <em>b<sub>2</sub></em> is negative then the shape of the function is convex upwards, i.e.&nbsp;<em>y</em> increases with <em>x</em> until reaches a peak and then <em>y</em> decreases.</p>
+<p>It is easy to understand so it has been commonly used for modelling the response of yield to inputs such as fertiliser, seeding rates. This is despite much criticism for being unrealistic.</p>
+<p>Limitations:</p>
+<ol type="i">
+<li><p>rate of increase to peak is same as rate of decrease past peak</p></li>
+<li><p>does not level off as <em>x</em> becomes small or very large, <em>y</em> just keeps increasing or decreasing.</p></li>
+</ol>
+<p><strong>Cubic</strong></p>
+<p><span class="math inline">\(y = \beta_0 + \beta_1 x + \beta_2 x^2 + \beta_3 x^3\)</span></p>
+<p>Compared to the quadratic model which has 1 turning point, a cubic model has 2 turning points.</p>
+</div>
+<p><br></p>
+<section id="exercise-1-interpreting-polynomials" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-interpreting-polynomials">Exercise 1: Interpreting polynomials</h3>
+<p>A study was performed to examine the soil properties that control the within-field variation in crop yield. The focus of this question is on soil pH which among other things controls the availability of nutrients to plants.</p>
+<p>This exercise does not require you to read in any data, but rather focus on interpreting the model output and comparing the models.</p>
+<p>The figure below shows the raw observations of yield plotted against pH with three models fitted; a linear model, quadratic polynomial and a cubic polynomial.</p>
+<ol type="a">
+<li>which line corresponds to which model?</li>
+</ol>
+<p><br></p>
+<div class="cell">
+<p><strong>ANSWER</strong></p>
+<p><strong>a)</strong></p>
+<ul>
+<li>The blue line is the linear model – it is straight.</li>
+</ul>
+<p>Note: If the quadratic or higher order terms are very small for some values of the predictor the line could also appear to be straight.</p>
+<ul>
+<li><p>The red line is the quadratic, it has one turning point (~pH = 7.4) where the slope of the line = 0.</p></li>
+<li><p>The black line is the cubic, it has two turning points, one is around pH ~ 7.5, the other is not on the range of the plot but you can see that the curve is changing direction and bending up at a pH of ~ 6.8, as it transitions from concave down to concave up as values get smaller. This is useful as it allows for a gentler increase in the slope of the fitted line at smaller values of pH.</p></li>
+</ul>
+</div>
+<ol start="2" type="a">
+<li>based on the output from the 3 models below, which model fits the data best? Note: no hypothesis testing yet, just how well the model fits the data (r<sup>2</sup>).</li>
+</ol>
+<ol type="1">
+<li>Linear model:</li>
+</ol>
+<ol start="2" type="1">
+<li>Quadratic model:</li>
+</ol>
+<ol start="3" type="1">
+<li>Cubic model:</li>
+</ol>
+<div class="cell">
+<p><strong>ANSWER</strong></p>
+<p><strong>b)</strong> The r<sup>2</sup> assesses how well the model fits the data. The best model based on this metric is the cubic polynomial (r<sup>2</sup> = 0.255), then the quadratic polynomial (r<sup>2</sup> = 0.231) and finally the linear model (r<sup>2</sup> = 0.00016).</p>
+<p>It should be noted that this does not consider the model complexity (i.e.&nbsp;aiming for the most parsimonious model - the one with least predictors). For example, is the extra complexity of the cubic polynomial worth an increase in r<sup>2</sup> of 0.024? Formal hypothesis testing can address this question.</p>
+</div>
+<p><br></p>
+<ol start="3" type="a">
+<li>Use the R output to perform hypothesis testing to find the best model. Write out the hypotheses you are testing.</li>
+</ol>
+<div class="cell">
+<p><strong>ANSWER</strong></p>
+<p><strong>c)</strong> The general approach is to start with the most complex model and work backwards to the simplest model.</p>
+<p>First we examine the cubic polynomial and more specifically the cubic term (the most complex term) where the hypotheses we are testing are:</p>
+<p>H<sub>0</sub>: <span class="math inline">\(\beta_3 = 0\)</span>,</p>
+<p>H<sub>1</sub>: <span class="math inline">\(\beta_3 \neq 0\)</span></p>
+<p>The line of R output that addresses this is the 4th line of the coefficients table (i.e.&nbsp;highest order):</p>
+</div>
+<div class="cell">
+<p>The P-value is &gt; 0.05 so we fail to reject the null hypothesis. This means we should remove the cubic term.</p>
+<p>Note that the estimates of the quadratic and linear terms are conditional on the cubic term also being in the model so will change if we fit a quadratic polynomial (see the R output).</p>
+<p>Next we consider the quadratic polynomial model:</p>
+<p>H<sub>0</sub>: <span class="math inline">\(\beta_2 = 0\)</span>,</p>
+<p>H<sub>1</sub>: <span class="math inline">\(\beta_2 \neq 0\)</span></p>
+<p>The line of R output that addresses this is the 3rd line of the coefficients table (i.e.&nbsp;highest order):</p>
+</div>
+<div class="cell">
+<p>The P-value is &lt; 0.05 so we reject the null hypothesis and would keep the quadratic term in the model. The best model to use is the quadratic polynomial.</p>
+<p>Note that the linear term is also significant but even if it were not, we would keep it in the model as in most situations it is hard to justify a situation where a biological or environmental process could be modelled by a quadratic term alone.</p>
+<p>In summary for polynomials we only test the highest order term in each polynomial in deciding whether to keep use the polynomial at all.</p>
+</div>
+<p><br></p>
+</section>
+<section id="exercise-2-fitting-polynomials-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-fitting-polynomials-in-r">Exercise 2: Fitting polynomials in R</h3>
+<p>This exercise will use real data from a yield-fertiliser trial in Bedfordshire, United Kingdom.</p>
+<p>First thing we can do is fit a linear model to the fertiliser data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create fertiliser and yield objects</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>fert<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">170</span>,<span class="dv">225</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>yield<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">3.32</span>,<span class="fl">5.23</span>,<span class="fl">5.41</span>,<span class="fl">5.02</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fits a linear model and saves it to an object called lin.mod </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>lin.mod<span class="ot">&lt;-</span><span class="fu">lm</span>(yield<span class="sc">~</span>fert)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarises key features of model</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lin.mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = yield ~ fert)
+
+Residuals:
+      1       2       3       4 
+-0.4469  0.6727  0.2995 -0.5252 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept) 3.766929   0.634765   5.934   0.0272 *
+fert        0.007904   0.004243   1.863   0.2035  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.7134 on 2 degrees of freedom
+Multiple R-squared:  0.6344,    Adjusted R-squared:  0.4515 
+F-statistic:  3.47 on 1 and 2 DF,  p-value: 0.2035</code></pre>
+</div>
+</div>
+<ol type="a">
+<li>What is the model fit like in this model?</li>
+</ol>
+<div class="cell">
+<p><strong>ANSWER</strong></p>
+<p><strong>a)</strong> Our model fit is ok, with r<sup>2</sup> of 0.6344</p>
+</div>
+<p>Fit and plot a quadratic polynomial in R. In R a quadratic polynomial can be fitted using the following lines of code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new variable which is the square of the fertilizer rates</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>fert2<span class="ot">&lt;-</span>fert<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># fit the quadratic model incorporating fert2</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>quad.mod<span class="ot">&lt;-</span><span class="fu">lm</span>(yield<span class="sc">~</span>fert<span class="sc">+</span>fert2)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(quad.mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = yield ~ fert + fert2)
+
+Residuals:
+        1         2         3         4 
+-0.005611  0.024528 -0.032791  0.013874 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)  3.326e+00  4.324e-02   76.92  0.00828 **
+fert         2.786e-02  9.014e-04   30.91  0.02059 * 
+fert2       -9.064e-05  3.921e-06  -23.12  0.02752 * 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.0436 on 1 degrees of freedom
+Multiple R-squared:  0.9993,    Adjusted R-squared:  0.998 
+F-statistic: 731.7 on 2 and 1 DF,  p-value: 0.02613</code></pre>
+</div>
+</div>
+<ol start="2" type="a">
+<li>What is the fit like for our quadratic model? is it better than our linear model?</li>
+</ol>
+<div class="cell">
+<p><strong>ANSWER</strong></p>
+<p><strong>b)</strong> Our model fit even better, with r<sup>2</sup> of 0.9993</p>
+</div>
+<p>In Excel it is easy to fit a line, by creating a scatterplot, then <strong>add Trendline…</strong> and selecting <strong>Polynomial</strong> (2nd order).</p>
+<p>To fit our polynomial line in R, we need to obtain model predictions first.</p>
+<p>To plot model predictions you first need to predict at fine intervals of the predictor to make a continuous plot that is not jagged or stepped. To create a new prediction dataset you can use the following code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creates a sequence of numbers from 0 to 225 going up in increments of 1</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>new.fert<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">225</span>,<span class="dv">1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can use our model to predict at the values in the new prediction dataset, in this case <code>new.fert</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>new.pred<span class="ot">&lt;-</span><span class="fu">predict</span>(quad.mod,<span class="fu">list</span>(<span class="at">fert=</span>new.fert,<span class="at">fert2=</span>new.fert<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The general form of the <code>predict</code> function is <code>predict(model object, list object)</code>.</p>
+<p>The list object tells R what object contains the data we will use to predict. For example in our case the model was built on fert and fert2 so we have to tell the predict function what object contains the new values for each of these, in our case new.fert.</p>
+<p>Now we plot the raw observation as points and add an overlay of the model fit as lines:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fert,yield,<span class="at">xlab=</span><span class="st">'Fertilizer'</span>, <span class="at">ylab=</span><span class="st">'Yield'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(new.fert,new.pred) <span class="co">#Adds lines to original plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+</section>
+</section>
+<section id="exponential-function" class="level2">
+<h2 class="anchored" data-anchor-id="exponential-function">Exponential function</h2>
+<div class="pad-box-mini" style="background-color: #f2f2f2; padding:10px;">
+<p><span class="math inline">\(y=y_0e^{kx}\)</span></p>
+<p>where the parameters are <em>y<sub>0</sub></em> which is the multiplier which expresses the starting or final value, and <em>k</em> which is negative for exponential decay and positive for the exponential growth.</p>
+<p>The half life (for decay) or doubling time (for growth) can be calculated as</p>
+<p><span class="math inline">\(\frac{log_e 2}{k}\)</span></p>
+<p>Limitations:</p>
+<ol type="i">
+<li><p>harder to fit than polynomials</p></li>
+<li><p>exponential growth has no horizontal asymptote; keeps going up.</p></li>
+</ol>
+</div>
+<p><br></p>
+<section id="exercise-3-initial-estimates-for-exponential-growth-function" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-initial-estimates-for-exponential-growth-function">Exercise 3: Initial estimates for exponential growth function</h3>
+<p>In this exercise we will find initial estimates of the parameters of an exponential growth model by visual assessment of plots of the data and/or rough calculations. The initial estimates of the parameters are needed as starting points for the iterative fitting methods we will use in the practicals, e.g.&nbsp;SOLVER in Excel and the <code>nls()</code> function in R.</p>
+<p>The plot and table below presents the population of the world from 1650-1965.</p>
+<p>We wish to model the data with an exponential growth function of the form;</p>
+<p><span class="math inline">\(y=y_0e^{kx}\)</span></p>
+<p>where</p>
+<ul>
+<li><p><em>y</em> is the population in the year <em>x</em>,</p></li>
+<li><p>y<sub>0</sub> is the population in 1650 and</p></li>
+<li><p><em>k</em> is the rate constant.</p></li>
+</ul>
+<p><br></p>
+<ol type="a">
+<li>Provide an initial estimate of y<sub>0</sub>.</li>
+</ol>
+<div class="cell">
+<p><strong>ANSWER</strong></p>
+<p><strong>a)</strong> Use the first measurement, in 1650 the world population was 0.5 billion.</p>
+</div>
+<p>The parameter <em>k</em> can be estimated from a linear model fitted to log<sub>e</sub> population against year.</p>
+<p>Rather than formally fitting a linear model you could estimate the slope approximately by using the smallest and largest value to estimate the slope and therefore <em>k</em>.</p>
+<ol start="2" type="a">
+<li>Use this approach to estimate k.</li>
+</ol>
+<p>Hint: <span class="math display">\[
+slope = k = \frac{log_e y_{max} - log_e y_{min}}{x_{max} - x_{min}}
+\]</span></p>
+<div class="cell">
+<p><strong>ANSWER</strong></p>
+<p><strong>b)</strong> The smallest value is 0.5 in 1650 and the largest value is 3 billion in 1960.</p>
+<p>We log<sub>e</sub> the population values and calculate the slope of the line between the 2 observations. The slope is an estimate of k:</p>
+<p><span class="math display">\[
+slope = k = \frac{log_e 3 - log_e 0.5}{1960-1650} = \frac{1.792}{310}  = 0.00577987
+\]</span></p>
+</div>
+<ol start="3" type="a">
+<li>For an exponential growth model the doubling time of a population can be estimated by log<sub>e</sub>2 /k.</li>
+</ol>
+<p>Examine the graph and/or table to estimate the doubling time and use this to estimate <em>k</em>. You will have to make <em>k</em> the subject in the equation for estimating the doubling time.</p>
+<div class="cell">
+<p><strong>ANSWER</strong></p>
+<p><strong>c)</strong> The smallest value is 0.5 in 1650 and the year it has doubled (1 billion) is in 1804.</p>
+<p>Using the difference between the two years, we can solve for <em>k</em> :</p>
+<p>1804-1650 = 154</p>
+<p><span class="math inline">\(154 = \frac{log_e 2}{k}\)</span> ; multiply both sides by <em>k</em></p>
+<p><span class="math inline">\(154k = log_e 2\)</span> ; divide both sides by 154</p>
+<p><span class="math inline">\(k = \frac{log_e 2}{154} = 0.004501\)</span></p>
+<p>Alternatively, you can also use the slope calculation to obtain <em>k</em> for the doubling time:</p>
+<p><span class="math display">\[
+slope = k = \frac{log_e 1 - log_e 0.5}{1804-1650} = \frac{0.693}{154}  = 0.004501
+\]</span></p>
+</div>
+<ol start="4" type="a">
+<li>How similar were the estimates of <em>k</em>?</li>
+</ol>
+<div class="cell">
+<p><strong>ANSWER</strong></p>
+<p><strong>d)</strong> Both estimates are of a similar magnitude. It should be noted that the estimate of the slope (b) is an approximation. If we formally estimate the slope (<code>lm(log(pop)~year</code>) the value is 0.005835.</p>
+</div>
+<p><br></p>
+</section>
+<section id="exercise-4-exponential-growth-models" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-4-exponential-growth-models">Exercise 4 : Exponential growth models</h3>
+<p>This data is from Jenkins &amp; Adams (2010) who studied soil respiration rates against temperature for different vegetation communities in the Snowy Mountains. They fitted an exponential growth model to the data.</p>
+<p>The purpose of this exercise is to illustrate the dangers of using Excel’s in-built functions for statistics more complex than calculating means and fitting simple models.</p>
+<p>Plot the data in Excel and using the <strong>Add Trendline…</strong> option. Make sure tick the option for displaying the equation in the graph.</p>
+<ol type="a">
+<li>The researchers performed the experiment up to a temperature of 40 degrees C, would you expect exponential growth in the respiration rate to continue if high temperatures were considered? Is there a better model?</li>
+</ol>
+<div class="cell">
+<p><strong>ANSWER</strong></p>
+<p><strong>a)</strong> Eventually it would get too hot and the microbes which cause soil respiration would start to “die” or the community structure would change.</p>
+<p>Some sort of horizontal asymptote could be reached, which could be modelled by a logistic model, or a decline is needed after a peak; there are non-linear models that accommodate such data that follows such a pattern.</p>
+</div>
+<p>Now fit the same model in R using the nls function. Code to get you started is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>temp<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">25</span>,<span class="dv">30</span>,<span class="dv">35</span>,<span class="dv">40</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>respiration<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">11</span>,<span class="dv">18</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="do">##Initial parameters</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>exp.mod<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="at">Bp=</span><span class="fl">1.0</span>,<span class="at">Cp=</span><span class="fl">0.1</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">##Fits exponential model</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>res.exp<span class="ot">&lt;-</span><span class="fu">nls</span>(respiration<span class="sc">~</span>Bp <span class="sc">*</span> <span class="fu">exp</span>(temp<span class="sc">*</span>Cp),<span class="at">start=</span>exp.mod,<span class="at">trace=</span>T)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="do">##Summarise model</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res.exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="a">
+<li>Now you can fit a line to the plot. Does this look similar to your trendline in Excel?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Plots raw data</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(temp,respiration,<span class="at">xlab=</span><span class="st">'Temperature'</span>,<span class="at">ylab=</span><span class="st">'Respiration'</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Creates new dataset for predictions ( 5 to 40 at an interval of 1)</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>temp.new<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">5</span>,<span class="dv">40</span>,<span class="dv">1</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Makes predictions onto temp.new</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>pred.exp<span class="ot">&lt;-</span><span class="fu">predict</span>(res.exp,<span class="fu">list</span>(<span class="at">temp=</span>temp.new))</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Adds model fit to existing plots</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span> (temp.new,pred.exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<p><strong>ANSWER</strong></p>
+<p><strong>b)</strong> Yes, they do look similar.</p>
+</div>
+<p>Compare the parameters values between Excel and R. You can extract the RSS value from an <code>nls</code> object by using the code below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deviance</span>(res.exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="a">
+<li>Calculate the RSS value for the Excel exponential model. Based on this, which is the better model?</li>
+</ol>
+<div class="cell">
+<p><strong>ANSWER</strong></p>
+<p><strong>c)</strong> The better model is the one fitted in R which is optimized to fit the actual observations rather than the approximate linearization approach used by Excel.</p>
+</div>
+<p>When faced with the need to fit an exponential function, one approach that was used before computing power became readily accessible was to log the <em>y</em> values which linearises the relationship with <em>x</em>, enabling the modeller to use a simple linear model.</p>
+<p>If we linearise, model would be <span class="math inline">\(log_e(y) = b_0 + b_1x\)</span>, where <span class="math inline">\(e^{b_0}\)</span> is the <em>y<sub>0</sub></em> parameter in an exponential model, and <em>b<sub>1</sub></em> is the <em>k</em> parameter in the exponential model. This is similar to what was demonstrated in the lecture this week.</p>
+<p>In Excel, log the soil respiration data and fit a linear model. You will see that the fitted model gives the same values as the exponential model fitted to the untransformed data.</p>
+<p>If you compare the r<sup>2</sup> values for both you will see they are the same. This means that Excel reports the r<sup>2</sup> of the linear model fitted to logged respiration as the r<sup>2</sup> of the exponential model fitted to the raw data. This is naughty of Excel.</p>
+<div class="pad-box-mini" style="background-color: #f2f2f2; padding:10px;">
+<p>For the dataset used here the exponential model fits it so well the Excel approach is only slightly different to the correct approach used in R.</p>
+<p>In cases where the model does not fit the data so well the differences would be larger. Logarithm makes smaller values larger and larger values smaller.</p>
+<p><strong>WHY IS THIS SUB-OPTIMAL?</strong></p>
+<ul>
+<li><p>Regression modelling assumes that the residuals are normally distributed so logging normally distributed data will change the distribution to a non-normal one – it is best to analyse the data without transformation.</p></li>
+<li><p>Modelling data on the logged scale reduces the impact that larger values have on minimising the RSS but when you plot the fitted model with the original data you may observe large discrepancies for larger values. In other words, using a linear model on the log(data) can result in a higher discrepancy for larger values when plotting the fitted model on the original data. Therefore, the model fitted to the logged data is not necessarily the best on the original data.</p></li>
+<li><p>The reporting of the R-squared on the logged data on a model purported to be fitted to untransformed data is just wrong as the R-squared on the log scale will be better as the variation in the data has been reduced but we really want to know how well an exponential model fits the raw data.</p></li>
+</ul>
+</div>
+<p><br></p>
+</section>
+</section>
+<section id="logistic-function" class="level2">
+<h2 class="anchored" data-anchor-id="logistic-function">Logistic function</h2>
+<div class="pad-box-mini" style="background-color: #f2f2f2; padding:10px;">
+<p><span class="math inline">\(y = A + \frac{C}{1+e^{-B(t-M)}}\)</span></p>
+<p>where the parameters are <em>A</em> which is the starting point or initial condition, <em>C</em> which is the value of <em>y</em> where the functions flattens out (the horizontal asymptote), <em>M</em> which is the value of <em>x</em> where the change in <em>y</em> is largest (always occurs at y = A + 0.5<em>C</em>), and 0.5<em>B</em> is growth rate of individual when <em>t</em> = <em>M</em>.</p>
+<p>Commonly used to model growth that has a sigmoid shape, i.e.&nbsp;where growth is initially slow, then picks up to a maximum, then slows down again as the system reaches a maximum.</p>
+<p>Limitations:</p>
+<p>Harder to fit than polynomials.</p>
+</div>
+<p><br></p>
+<section id="exercise-5-logistic-models" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-5-logistic-models">Exercise 5: Logistic models</h3>
+<p>In this exercise you will model the yield of pasture over time (since sowing) using a logistic function. Since the yield at sowing = 0, the A parameter will be set to 0 and the form of the logistic function that you will use is:</p>
+<p><span class="math inline">\(y = A + \frac{C}{1+e^{-B(t-M)}}\)</span></p>
+<ol type="a">
+<li>Fit the model in Excel using SOLVER and in R using the <code>nls</code> function. Refer to previous exercises for <code>nls</code> function structure and implement the logistic function. You will need to specify credible starting values for the parameters (see Box below).</li>
+</ol>
+<div class="cell">
+<p><strong>ANSWER</strong></p>
+<p><strong>a)</strong> Use the following code to read in the code and run the model:</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data input</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>week<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">14</span>,<span class="dv">21</span>,<span class="dv">28</span>,<span class="dv">42</span>,<span class="dv">57</span>,<span class="dv">63</span>,<span class="dv">70</span>,<span class="dv">79</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>yield<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">8.93</span>,<span class="fl">10.80</span>,<span class="fl">18.59</span>,<span class="fl">22.33</span>,<span class="fl">39.35</span>,<span class="fl">56.11</span>,<span class="fl">61.73</span>,<span class="fl">64.62</span>,<span class="fl">67.08</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial parameters</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>log.mod<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="at">Cp=</span><span class="fl">70.0</span>,<span class="at">Bp=</span><span class="fl">0.1</span>,<span class="at">Mp=</span><span class="fl">40.0</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Fits logistic model</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>yld.log<span class="ot">&lt;-</span><span class="fu">nls</span>(yield<span class="sc">~</span>Cp<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>Bp<span class="sc">*</span>(week<span class="sc">-</span>Mp))),<span class="at">start=</span>log.mod,<span class="at">trace=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="a">
+<li>Plot the fitted model with the observations.</li>
+</ol>
+<div class="cell">
+<p><strong>ANSWER</strong></p>
+<p><strong>b)</strong> Use the following code:</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Creates new dataset for predictions ( 5 to 40 at an interval of 1)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>week.new<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">80</span>,<span class="dv">1</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Makes predictions onto temp.new</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>pred.log<span class="ot">&lt;-</span><span class="fu">predict</span>(yld.log,<span class="fu">list</span>(<span class="at">week=</span>week.new))</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Adds model fit to existing plots</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(week,yield,<span class="at">xlab=</span><span class="st">'Time (weeks)'</span>,<span class="at">ylab=</span><span class="st">'Yield (kg)'</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span> (week.new,pred.log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="a">
+<li>Compare the parameters estimated by R and Excel.</li>
+</ol>
+<div class="cell">
+<p><strong>ANSWER</strong></p>
+<p><strong>c)</strong> From the code below we can see the estimated parameters are 72.46 for <em>C</em>, 0.067 for <em>B</em>, and 38.87 for <em>M</em>. This should be similar to what Solver obtains in Excel.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Examine model</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(yld.log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="pad-box-mini" style="background-color: #f2f2f2; padding:10px;">
+<p><strong>STARTING VALUES</strong></p>
+<p>When fitting non-linear functions (i.e.&nbsp;logistic or exponential) using iterative procedures such as <code>nls</code> or SOLVER the starting estimates of the parameters have to be approximately correct to find a solution.</p>
+<p>The best way to ensure that you have suitable starting values is to plot the data with the predictions overlaid for your starting parameters. You can then see how close your initial model is to the data.</p>
+<p>For the logistic model the parameters have clear meanings so suitable starting values are:</p>
+<ol type="i">
+<li><p><em>C</em> is the maximum value of <em>y</em> so just use the maximum value of <em>y</em> in the raw data as the starting value.</p></li>
+<li><p><em>M</em> is the value of <em>t</em> when <em>y</em> = 0.5<em>C</em>, this can be read approximately off the graph.</p></li>
+<li><p><em>B</em> is harder to estimate but good starting point is 0.1.</p></li>
+</ol>
+</div>
+<p><br></p>
+<p>That’s it for Module 3! Great work exploring non-linear models!</p>
+<p>Thank you all (students and demonstrators!) for your hard work and enthusiasm throughout this Module. Good luck with Project 3 and the final exam!</p>
+<br> <br> <!--The code below reduces white space at the end of the output doc-->
+<div class="tocify-extend-page" data-unique="tocify-extend-page" style="height: 0;">
+
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/ENVX-resources\.github\.io\/ENVX1002-manual\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
