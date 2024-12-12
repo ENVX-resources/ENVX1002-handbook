@@ -16,6 +16,7 @@ date-format: YYYY
 Read this handbook before, or *after* each lecture to better understand certain concepts. Lab exercises are also included in this handbook, which you can use to prepare for the lab sessions.
 
 To begin, we strongly suggest that you read our introduction chapter, which will provide you with an overview of why ENVX1002 is important for your degree and includes some introductory statistical concepts.
+
 ::: {.callout-note collapse="true"}
 ## Acknowledgements
 
@@ -25,5 +26,12 @@ We would like to acknowledge the work of previous generations of teaching staff 
 - Dr. Kathryn Aufflick
 - Assoc. Prof. Peter Thomson
 - Prof. Thomas Bishop
+:::
+
+::: {.callout-tip collapse="true"}
+## License
+This handbook is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+:::
+
 
 When you are ready, check the sidebar to get started.
