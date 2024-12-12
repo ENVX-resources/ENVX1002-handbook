@@ -1,0 +1,682 @@
+---
+title: "ENVX1002 Practical Topic 12 - Non-linear models"
+embded-resources: true
+---
+
+```{r setup, warning=F, message=F, echo=F}
+library(knitr)
+library(kableExtra)
+library(readxl)
+
+knitr::opts_chunk$set(echo = TRUE) # change to TRUE for solutions, efficiency
+#### STILL NEED to set eval=TRUE for solutions
+```
+
+<br>
+
+<div class="pad-box-mini" style="border: 2px solid grey; padding-left:10px;">
+
+### Objectives
+
+* Calculate “by hand” the initial estimates of the parameters of a non-linear model
+* Interpret tables of regression coefficients for polynomials to perform hypothesis testing
+* Fit  polynomials and non-linear models to data using least-squares fitting using the SOLVER add-in in Excel
+* Fit polynomials and non-linear models to data in R, and interpret the outputs
+
+**Related Excel:	ENVX1002_wk12_practical_data_Regression.xlsx**
+
+</div>
+
+<br>
+
+
+Over the past few weeks you have explored linear models and how to interpret model summary output. Again we have stepped up the complexity, now venturing into the world of non-linear models.
+
+This practical focusses on fitting non-linear models to data with an emphasis on 3 important classes of functions that all budding biologists and environmental scientists should know
+
+* polynomials,
+* exponential models, and
+* logistic models.
+
+**A question before we begin:** 
+
+What are some advantages and disadvantages of non-linear models as compared to polynomials?
+
+```{asis}
+**ANSWER**
+
+|Polynomials|Non-linear models(exponential/logistic)|
+|-----------------|-----------|
+|Parameters hard to interpret|Parameters interpretable in terms of biological and environmental processes|
+|Can be fitted with analytical or numerical methods|Fitting parameters can be difficult as use numerical methods which rely on good initial estimates of parameters|
+|Hypothesis testing and estimating r^2^ straightforward|Hypothesis testing and estimating r^2^ is a bit more difficult – not absence of r^2^ in R output|
+|Difficult to model horizontal asymptotes|Can accommodate horizontal asymptotes|
+|Only polynomials of even order restricted to positive values|Constrained to positive values|
+    
+```
+
+
+<br>
+
+## Polynomials
+
+<div class="pad-box-mini" style="background-color: #f2f2f2; padding:10px;">
+
+
+**Quadratic**
+
+$y = \beta_0 + \beta_1 x + \beta_2 x^2$
+
+where the parameters are the y-intercept (*b~0~*), the linear component (*b~1~*) and the quadratic component (*b~2~*).
+
+If *b~2~* is negative then the shape of the function is convex upwards, i.e. *y* increases with *x* until reaches a peak and then *y* decreases.
+
+It is easy to understand so it has been commonly used for modelling the response of yield to inputs such as fertiliser, seeding rates. This is despite much criticism for being unrealistic.
+
+Limitations: 
+
+(i) rate of increase to peak is same as rate of decrease past peak 
+
+(ii) does not level off as *x* becomes small or very large, *y* just keeps increasing or decreasing.
+
+**Cubic**
+
+$y = \beta_0 + \beta_1 x + \beta_2 x^2 + \beta_3 x^3$
+
+Compared to the quadratic model which has 1 turning point, a cubic model has 2 turning points.
+
+</div>
+
+<br>
+
+### Exercise 1: Interpreting polynomials
+
+A study was performed to examine the soil properties that control the within-field variation in crop yield. The focus of this question is on soil pH which among other things controls the availability of nutrients to plants. 
+
+This exercise does not require you to read in any data, but rather focus on interpreting the model output and comparing the models. 
+
+The figure below shows the raw observations of yield plotted against pH with three models fitted; a linear model, quadratic polynomial and a cubic polynomial.
+
+a) which line corresponds to which model?
+
+```{r LoadData, echo = F}
+
+soil <- read.csv("data/east_creek.csv", header = T)
+
+soil.lin<-lm(yield ~ ph, data = soil)
+soil.quad<-lm(yield ~ ph + I(ph^2), data = soil)
+soil.cub<-lm(yield ~ ph + I(ph^2)+I(ph^3), data = soil)
+
+#Makes predictions onto pH.new
+
+ph.new<-seq(6.6,8.0,0.01)
+pred.quad<-predict(soil.quad,list(ph=ph.new))
+pred.cub<-predict(soil.cub,list(ph=ph.new))
+pred.lin<-predict(soil.lin,list(ph=ph.new))
+
+#Adds model fit to existing plots
+plot(soil$ph,soil$yield,xlab="pH",ylab="Yield (t/Ha)") 
+lines (ph.new,pred.quad,col="red")
+lines (ph.new,pred.lin,col="blue")
+lines (ph.new,pred.cub)
+
+
+```
+
+<br>
+
+```{asis}
+**ANSWER**
+  
+**a)** 
+  
+* The blue line is the linear model – it is straight. 
+
+Note: If the quadratic or higher order terms are very small for some values of the predictor the line could also appear to be straight.
+
+* The red line is the quadratic, it has one turning point (~pH = 7.4) where the slope of the line = 0.
+
+* The black line is the cubic, it has two turning points, one is around pH ~ 7.5, the other is not on the range of the plot but you can see that the curve is changing direction and bending up at a pH of ~ 6.8, as it transitions from concave down to concave up as values get smaller. This is useful as it allows for a gentler increase in the slope of the fitted line at smaller values of pH.
+    
+```
+
+
+b) based on the output from the 3 models below, which model fits the data best? 
+Note: no hypothesis testing yet, just how well the model fits the data (r^2^).
+
+1. Linear model:
+```{r , echo = F}
+
+summary(soil.lin)
+
+```
+
+2. Quadratic model: 
+```{r , echo = F}
+
+summary(soil.quad)
+
+```
+
+3. Cubic model:
+```{r , echo = F}
+
+summary(soil.cub)
+
+```
+
+```{asis}
+**ANSWER**
+  
+**b)** The r^2^ assesses how well the model fits the data. The best model based on this metric is the cubic polynomial (r^2^ = 0.255), then the quadratic polynomial (r^2^ = 0.231) and finally the linear model (r^2^ = 0.00016). 
+
+It should be noted that this does not consider the model complexity (i.e. aiming for the most parsimonious model - the one with least predictors). For example, is the extra complexity of the cubic polynomial worth an increase in r^2^ of 0.024? Formal hypothesis testing can address this question.
+    
+```
+
+<br>
+
+c) Use the R output to perform hypothesis testing to find the best model. Write out the hypotheses you are testing.
+
+```{asis}
+**ANSWER**
+  
+**c)** The general approach is to start with the most complex model and work backwards to the simplest model. 
+
+First we examine the cubic polynomial and more specifically the cubic term (the most complex term) where the hypotheses we are testing are:
+  
+H~0~: $\beta_3 = 0$, 
+
+H~1~: $\beta_3 \neq 0$
+
+The line of R output that addresses this is the 4th line of the coefficients table (i.e. highest order):
+```
+```{r, echo=F}
+
+summmar <- summary(soil.cub)
+summmar$coefficients
+
+```
+```{asis}
+The P-value is > 0.05 so we fail to reject the null hypothesis. This means we should remove the cubic term. 
+
+Note that the estimates of the quadratic and linear terms are conditional on the cubic term also being in the model so will change if we fit a quadratic polynomial (see the R output).
+
+Next we consider the quadratic polynomial model:
+  
+H~0~: $\beta_2 = 0$, 
+
+H~1~: $\beta_2 \neq 0$
+  
+The line of R output that addresses this is the 3rd line of the coefficients table (i.e. highest order): 
+```
+```{r, echo=F}
+
+summmarq <- summary(soil.quad)
+summmarq$coefficients
+```
+```{asis}
+The P-value is < 0.05 so we reject the null hypothesis and would keep the quadratic term in the model. The best model to use is the quadratic polynomial. 
+
+Note that the linear term is also significant but even if it were not, we would keep it in the model as in most situations it is hard to justify a situation where a biological or environmental process could be modelled by a quadratic term alone.
+
+In summary for polynomials we only test the highest order term in each polynomial in deciding whether to keep use the polynomial at all.
+    
+```
+
+<br>
+
+### Exercise 2: Fitting polynomials in R
+
+This exercise will use real data from a yield-fertiliser trial in Bedfordshire, United Kingdom. 
+
+First thing we can do is fit a linear model to the fertiliser data:
+
+```{r results = "show", echo=T}
+# create fertiliser and yield objects
+fert<-c(0,100,170,225)
+yield<-c(3.32,5.23,5.41,5.02)
+
+# Fits a linear model and saves it to an object called lin.mod 
+lin.mod<-lm(yield~fert)
+
+# Summarises key features of model
+summary(lin.mod)
+```
+
+
+a) What is the model fit like in this model?
+
+```{asis}
+**ANSWER**
+  
+**a)** Our model fit is ok, with r^2^ of 0.6344
+    
+```
+
+
+Fit and plot a quadratic polynomial in R. In R a quadratic polynomial can be fitted using the following lines of code:
+
+```{r results = "show", echo=T}
+
+# create a new variable which is the square of the fertilizer rates
+fert2<-fert^2
+
+# fit the quadratic model incorporating fert2
+quad.mod<-lm(yield~fert+fert2)
+
+summary(quad.mod)
+
+```
+
+
+b) What is the fit like for our quadratic model? is it better than our linear model?
+
+```{asis}
+**ANSWER**
+  
+**b)** Our model fit even better, with r^2^ of 0.9993
+    
+```
+
+In Excel it is easy to fit a line, by creating a scatterplot, then **add Trendline...** and selecting **Polynomial** (2nd order). 
+
+To fit our polynomial line in R, we need to obtain model predictions first. 
+
+To plot model predictions you first need to predict at fine intervals of the predictor to make a continuous plot that is not jagged or stepped. To create a new prediction dataset you can use the following code:
+
+```{r, echo=T}
+
+# creates a sequence of numbers from 0 to 225 going up in increments of 1
+new.fert<-seq(0,225,1) 
+
+```
+
+We can use our model to predict at the values in the new prediction dataset, in this case `new.fert`.
+
+```{r, echo=T}
+new.pred<-predict(quad.mod,list(fert=new.fert,fert2=new.fert^2))
+```
+
+The general form of the `predict` function is `predict(model object, list object)`. 
+
+The list object tells R what object contains the data we will use to predict. For example in our case the model was built on fert and fert2 so we have to tell the predict function what object contains the new values for each of these, in our case new.fert.
+
+Now we plot the raw observation as points and add an overlay of the model fit as lines:
+
+```{r, eval = T, echo=T}
+plot(fert,yield,xlab='Fertilizer', ylab='Yield')
+lines(new.fert,new.pred) #Adds lines to original plot
+```
+
+<br>
+
+## Exponential function
+
+<div class="pad-box-mini" style="background-color: #f2f2f2; padding:10px;">
+
+
+
+$y=y_0e^{kx}$
+
+where the parameters are *y~0~* which is the multiplier which expresses
+the starting or final value, and *k* which is negative for exponential decay and positive for the exponential growth.
+
+The half life (for decay) or doubling time (for growth) can be calculated as
+
+$\frac{log_e 2}{k}$
+
+Limitations: 
+
+(i) harder to fit than polynomials 
+
+(ii) exponential growth has no horizontal asymptote; keeps going up.
+
+</div>
+
+<br> 
+
+### Exercise 3: Initial estimates for exponential growth function
+
+In this exercise we will find initial estimates of the parameters of an exponential growth model by visual assessment of plots of the data and/or rough calculations. The initial estimates of the parameters are needed as starting points for the iterative fitting methods we will use in the practicals, e.g. SOLVER in Excel and the `nls()` function in R.
+
+The plot and table below presents the population of the world from 1650-1965. 
+
+We wish to model the data with an exponential growth function of the form; 
+
+$y=y_0e^{kx}$  
+
+where 
+
+* *y* is the population in the year *x*, 
+
+* y~0~ is the population in 1650 and 
+
+* *k* is the rate constant.
+
+```{r, echo = F}
+year<-c(1650,1750,1804,1850,1900,1927,1950,1955,1960)
+pop<-c(0.5,0.7,1,1.2,1.6,2,2.55,2.88,3)
+plot(year,pop,xlab="Year",ylab="World population (Billions)")
+
+
+dt <- rbind(format(year, digits =1), pop)
+row.names(dt) = c("Year", "Pop (billions)")
+
+dt %>%
+  kable() %>%
+  kable_styling()
+```
+<br>
+
+a) Provide an initial estimate of y~0~.
+
+
+```{asis}
+**ANSWER**
+  
+**a)** Use the first measurement, in 1650 the world population was 0.5 billion.
+    
+```
+
+The parameter *k* can be estimated from a linear model fitted to log~e~ population against year. 
+
+Rather than formally fitting a linear model you could estimate the slope approximately by using the smallest and largest value to estimate the slope and therefore *k*. 
+
+b) Use this approach to estimate k.
+
+Hint:
+$$
+slope = k = \frac{log_e y_{max} - log_e y_{min}}{x_{max} - x_{min}}
+$$  
+
+
+```{asis}
+**ANSWER**
+  
+**b)** The smallest value is 0.5 in 1650 and the largest value is 3 billion in 1960. 
+
+We log~e~ the population values and calculate the slope of the line between the 2 observations. 
+The slope is an estimate of k:
+  
+$$
+slope = k = \frac{log_e 3 - log_e 0.5}{1960-1650} = \frac{1.792}{310}  = 0.00577987
+$$  
+    
+```
+
+
+  
+c) For an exponential growth model the doubling time of a population can be estimated by log~e~2 /k.
+
+Examine the graph and/or table to estimate the doubling time and use this to estimate *k*. You will have to make *k* the subject in the equation for estimating the doubling time.
+
+```{asis}
+**ANSWER**
+  
+**c)** The smallest value is 0.5 in 1650 and the year it has doubled (1 billion) is in 1804. 
+
+Using the difference between the two years, we can solve for *k* :
+
+1804-1650 = 154
+
+$154 = \frac{log_e 2}{k}$ ; multiply both sides by *k*
+
+$154k = log_e 2$ ; divide both sides by 154
+
+$k = \frac{log_e 2}{154} = 0.004501$
+  
+  
+Alternatively, you can also use the slope calculation to obtain *k* for the doubling time:
+  
+$$
+slope = k = \frac{log_e 1 - log_e 0.5}{1804-1650} = \frac{0.693}{154}  = 0.004501
+$$  
+  
+
+```
+
+
+
+d) How similar were the estimates of *k*?
+
+```{asis}
+**ANSWER**
+  
+**d)** Both estimates are of a similar magnitude. It should be noted that the estimate of the slope (b) is an approximation. If we formally estimate the slope (`lm(log(pop)~year`) the value is 0.005835.
+    
+```
+
+<br>
+
+### Exercise 4 : Exponential growth models
+
+This data is from Jenkins & Adams (2010) who studied soil respiration rates against temperature for different vegetation communities in the Snowy Mountains. They fitted an exponential growth model to the data.
+
+The purpose of this exercise is to illustrate the dangers of using Excel’s in-built functions for statistics more complex than calculating means and fitting simple models.
+
+Plot the data in Excel and using the **Add Trendline...** option. Make sure tick the option for displaying the equation in the graph.
+
+a) The researchers performed the experiment up to a temperature of 40 degrees C, would you expect exponential growth in the respiration rate to continue if high temperatures were considered? Is there a better model?
+
+```{asis}
+
+**ANSWER**
+  
+**a)** Eventually it would get too hot and the microbes which cause soil respiration would start to “die” or the community structure would change. 
+
+Some sort of horizontal asymptote could be reached, which could be modelled by a logistic model, or a decline is needed after a peak; there are non-linear models that accommodate such data that follows such a pattern.
+    
+```
+
+
+Now fit the same model in R using the nls function. Code to get you started is:
+
+```{r, eval = T, echo=T}
+
+temp<-c(5,10,20,25,30,35,40)
+respiration<-c(1,2,4,6,8,11,18)
+
+##Initial parameters
+exp.mod<-c(Bp=1.0,Cp=0.1)
+
+##Fits exponential model
+res.exp<-nls(respiration~Bp * exp(temp*Cp),start=exp.mod,trace=T)
+
+##Summarise model
+summary(res.exp)
+```
+
+
+b) Now you can fit a line to the plot. Does this look similar to your trendline in Excel? 
+
+```{r, eval = T, echo=T}
+#Plots raw data
+plot(temp,respiration,xlab='Temperature',ylab='Respiration')
+
+#Creates new dataset for predictions ( 5 to 40 at an interval of 1)
+temp.new<-seq(5,40,1)
+
+#Makes predictions onto temp.new
+pred.exp<-predict(res.exp,list(temp=temp.new))
+
+#Adds model fit to existing plots
+lines (temp.new,pred.exp)
+```
+
+```{asis}
+
+**ANSWER**
+  
+**b)** Yes, they do look similar.
+    
+```
+
+
+Compare the parameters values between Excel and R. You can extract the RSS value from an `nls` object by using the code below:
+
+```{r, eval = T, echo=T}
+deviance(res.exp)
+```
+
+
+c) Calculate the RSS value for the Excel exponential model. Based on this, which is the better model?
+
+```{asis}
+**ANSWER**
+  
+**c)** The better model is the one fitted in R which is optimized to fit the actual observations rather than the approximate linearization approach used by Excel.
+    
+```
+
+
+When faced with the need to fit an exponential function, one approach that was used before computing power became readily accessible was to log the *y* values which linearises the relationship with *x*, enabling the modeller to use a simple linear model.
+
+If we linearise, model would be $log_e(y) = b_0 + b_1x$, where $e^{b_0}$ is the *y~0~* parameter in an exponential model, and *b~1~* is the *k* parameter in the exponential model. This is similar to what was demonstrated in the lecture this week. 
+
+In Excel, log the soil respiration data and fit a linear model. You will see that the fitted model gives the same values as the exponential model fitted to the untransformed data. 
+
+If you compare the r^2^ values for both you will see they are the same. This means that Excel reports the r^2^ of the linear model fitted to logged respiration as the r^2^ of the exponential model fitted to the raw data. This is naughty of Excel.
+
+<div class="pad-box-mini" style="background-color: #f2f2f2; padding:10px;">
+
+For the dataset used here the exponential model fits it so well the Excel approach is only slightly different to the correct approach used in R. 
+
+In cases where the model does not fit the data so well the differences would be larger. Logarithm makes smaller values larger and larger values smaller.
+
+**WHY IS THIS SUB-OPTIMAL?**
+
+* Regression modelling assumes that the residuals are normally distributed so logging normally distributed data will change the distribution to a non-normal one – it is best to analyse the data without transformation.
+
+* Modelling data on the logged scale reduces the impact that larger values have on minimising the RSS but when you plot the fitted model with the original data you may observe large discrepancies for larger values.  In other words, using a linear model on the log(data) can result in a higher discrepancy for larger values when plotting the fitted model on the original data.  Therefore, the model fitted to the logged data is not necessarily the best on the original data.
+
+* The reporting of the R-squared on the logged data on a model purported to be fitted to untransformed data is just wrong as the R-squared on the log scale will be better as the variation in the data has been reduced but we really want to know how well an exponential model fits the raw data.
+
+
+</div>
+
+<br>
+
+## Logistic function
+
+<div class="pad-box-mini" style="background-color: #f2f2f2; padding:10px;">
+
+
+
+$y = A + \frac{C}{1+e^{-B(t-M)}}$
+
+where the parameters are *A* which is the starting point or initial condition, 
+*C* which is the value of *y* where the functions flattens out (the horizontal asymptote), *M* which is the value of *x* where the change in *y* is largest (always occurs at y = A + 0.5*C*), and 0.5*B* is growth rate of individual when *t* = *M*.
+
+Commonly used to model growth that has a sigmoid shape, i.e. where growth is initially slow, then picks up to a maximum, then slows down again as the system reaches a maximum.
+
+Limitations: 
+
+Harder to fit than polynomials.
+
+</div>
+
+<br>
+
+### Exercise 5: Logistic models 
+
+In this exercise you will model the yield of pasture over time (since sowing) using a logistic function. Since the yield at sowing = 0, the A parameter will be set to 0 and the form of the logistic function that you will use is:
+
+$y = A + \frac{C}{1+e^{-B(t-M)}}$
+
+
+a) Fit the model in Excel using SOLVER and in R using the `nls` function. Refer to previous exercises for `nls` function structure and implement the logistic function. You will need to specify credible starting values for the parameters (see Box below).
+
+```{asis}
+**ANSWER**
+  
+**a)** Use the following code to read in the code and run the model:
+
+```
+```{r, eval = T}
+# Data input
+
+week<-c(9,14,21,28,42,57,63,70,79)
+yield<-c(8.93,10.80,18.59,22.33,39.35,56.11,61.73,64.62,67.08)
+
+# Initial parameters
+log.mod<-c(Cp=70.0,Bp=0.1,Mp=40.0)
+
+# Fits logistic model
+yld.log<-nls(yield~Cp/(1+exp(-Bp*(week-Mp))),start=log.mod,trace=T)
+
+```
+
+
+
+b) Plot the fitted model with the observations.
+
+```{asis}
+**ANSWER**
+  
+**b)** Use the following code:
+
+```
+```{r, eval = T}
+#Creates new dataset for predictions ( 5 to 40 at an interval of 1)
+week.new<-seq(0,80,1)
+
+#Makes predictions onto temp.new
+pred.log<-predict(yld.log,list(week=week.new))
+
+#Adds model fit to existing plots
+plot(week,yield,xlab='Time (weeks)',ylab='Yield (kg)')
+lines (week.new,pred.log)
+
+```
+
+
+c) Compare the parameters estimated by R and Excel. 
+
+```{asis}
+**ANSWER**
+  
+**c)** From the code below we can see the estimated parameters are 72.46 for *C*, 0.067 for *B*, and 38.87 for *M*. This should be similar to what Solver obtains in Excel. 
+
+```
+```{r, eval = T}
+#Examine model
+summary(yld.log)
+
+```
+
+
+
+<div class="pad-box-mini" style="background-color: #f2f2f2; padding:10px;">
+
+**STARTING VALUES**
+
+When fitting non-linear functions (i.e. logistic or exponential) using iterative procedures such as `nls` or SOLVER the starting estimates of the parameters have to be approximately correct to find a solution. 
+
+The best way to ensure that you have suitable starting values is to plot the data with the predictions overlaid for your starting parameters. You can then see how close your initial model is to the data. 
+
+For the logistic model the parameters have clear meanings so suitable starting values are:
+
+(i) *C* is the maximum value of *y* so just use the maximum value of *y* in the raw data as the starting value.
+
+(ii) *M* is the value of *t* when *y* = 0.5*C*, this can be read approximately off the graph.
+
+(iii) *B* is harder to estimate but good starting point is 0.1.
+
+
+</div>
+
+
+
+
+
+<br> 
+
+That's it for Module 3! Great work exploring non-linear models! 
+
+Thank you all (students and demonstrators!) for your hard work and enthusiasm throughout this Module. Good luck with Project 3 and the final exam!
+
+<br>
+<br>
+<!--The code below reduces white space at the end of the output doc-->
+<div class="tocify-extend-page" data-unique="tocify-extend-page" style="height: 0;"></div>
