@@ -2,4 +2,4 @@
 title: Getting started
 ---
 
-Welcome to the R Guide
+Welcome to the R Guide!
