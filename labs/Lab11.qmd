@@ -16,6 +16,8 @@ knitr::opts_chunk$set(echo = TRUE) # change to TRUE for solutions, efficiency
 
 ### Objectives
 
+###Test
+
 * Learn to perform MLR and interpret the results using R; 
 * Undertake hypothesis testing to determine if model is significant
 * Undertake hypothesis testing to determine if the true partial regression slope $\neq$ 0
