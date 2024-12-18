@@ -1,5 +1,12 @@
 # Sampling distributions
 
+```{r setup}
+#| include: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse)
+```
+
+
 First some definitions…
 
 A **simple random sample** is a sample of size n drawn from a population of size $N$ in such a way that every possible sample of size $n$ has the same probability of being selected. Variability among the simple random samples drawn from the same population is called **sampling variability**, and the probability distribution that characterizes some aspect of the sampling variability, usually the mean but not always, is called a **sampling distribution**.
@@ -44,7 +51,7 @@ $se(\bar y) = \frac{46}{\sqrt{10}} = 14.5$ mg.
 ```{r}
 s <- 46
 n <- 10
-se <- s/sqrt(n)
+se <- s / sqrt(n)
 se
 ```
 
@@ -100,7 +107,7 @@ How likely is it that a sample mean based on 10 observations exceeds 320 mg?  (i
 mu <- 300
 sigma <- 50
 n <- 10
-1 - pnorm(320, mu, sigma/sqrt(n))
+1 - pnorm(320, mu, sigma / sqrt(n))
 
 ```
 
@@ -121,8 +128,8 @@ carrots <- read.csv("data/Carrot_weights.csv")
 mean(carrots$Weight_g)
 sd(carrots$Weight_g)
 
-ggplot(carrots, aes(x=Weight_g)) + 
-  geom_histogram(binwidth = 20, fill = "lightblue", color = "black") + 
+ggplot(carrots, aes(x = Weight_g)) +
+  geom_histogram(binwidth = 20, fill = "lightblue", color = "black") +
   theme_minimal()
 
 ```
@@ -143,8 +150,8 @@ for (i in 1:n_samples) {
 mean(sample_means)
 sd(sample_means)
 
-ggplot() + 
-  geom_histogram(aes(x=sample_means), binwidth = 20, fill = "lightblue", color = "black") + 
+ggplot() +
+  geom_histogram(aes(x = sample_means), binwidth = 20, fill = "lightblue", color = "black") +
   theme_minimal()
 
 ```
@@ -167,8 +174,8 @@ for (i in 1:n_samples) {
 mean(sample_means)
 sd(sample_means)
 
-ggplot() + 
-  geom_histogram(aes(x=sample_means), binwidth = 20, fill = "lightblue", color = "black") + 
+ggplot() +
+  geom_histogram(aes(x = sample_means), binwidth = 20, fill = "lightblue", color = "black") +
   theme_minimal()
 ```
 

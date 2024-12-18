@@ -2,6 +2,12 @@
 title: Two-sample $t$-test
 ---
 
+```{r setup}
+#| include: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse)
+```
+
 In the one-sample tests just considered, we compared a population mean, $\mu$ (where our experimental sample represents the population) with a fixed numeric value of interest. In practice, this is fairly rare. More frequently we have samples drawn from two (or more) populations and we compare the two means to see if the treatments produce similar results.
 
 The null hypothesis is that the two samples come from a population with the same true mean, $\mu$. This is commonly expressed as

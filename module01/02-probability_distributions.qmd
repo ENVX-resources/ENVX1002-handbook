@@ -1,5 +1,12 @@
 # Probability distributions
 
+```{r setup}
+#| include: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse)
+```
+
+
 Biological systems are variable, and we consequently need statistical methods to cope with this variability in drawing valid inferences from our data. As a consequence of this variability, we can never say anything with absolute certainty based on biological data: there will always be some “doubt” due to chance variation. Not surprisingly, we need the tools and language of probability
 to assist us with quantifying our level of “doubt” when we make our conclusions.
 
@@ -91,7 +98,7 @@ library(ggplot2)
 mean <- 284.3
 sd <- 5.52
 # Create a sequence of x values
-x_values <- seq(mean - 4*sd, mean + 4*sd, length.out = 1000)
+x_values <- seq(mean - 4 * sd, mean + 4 * sd, length.out = 1000)
 # Create a ggplot
 ggplot(data.frame(x_values), aes(x = x_values)) +
   stat_function(fun = dnorm, args = list(mean = mean, sd = sd)) +
@@ -115,14 +122,16 @@ lower_bound <- 285
 upper_bound <- 300
 
 # Create a data frame for the x values
-x_values <- seq(mean - 4*sd, mean + 4*sd, length.out = 1000)
+x_values <- seq(mean - 4 * sd, mean + 4 * sd, length.out = 1000)
 df <- data.frame(x = x_values)
 
 # Create the ggplot object
 ggplot(df, aes(x)) +
   stat_function(fun = dnorm, args = list(mean = mean, sd = sd), colour = "blue") +
-  geom_area(stat = "function", fun = dnorm, args = list(mean = mean, sd = sd),
-            xlim = c(lower_bound, upper_bound), fill = "blue", alpha = 0.2) +
+  geom_area(
+    stat = "function", fun = dnorm, args = list(mean = mean, sd = sd),
+    xlim = c(lower_bound, upper_bound), fill = "blue", alpha = 0.2
+  ) +
   labs(title = "PDF", x = "Value", y = "Density") +
   theme_minimal()
 
@@ -144,22 +153,24 @@ x_lognorm <- seq(0.01, 3, length.out = 1000) # Avoid starting at 0 to prevent lo
 y_lognorm <- dlnorm(x_lognorm)
 
 # Data frame for standard normal
-df_norm <- data.frame(x = x_norm, y = y_norm, Distribution = 'Standard Normal')
+df_norm <- data.frame(x = x_norm, y = y_norm, Distribution = "Standard Normal")
 
 # Data frame for log-normal
-df_lognorm <- data.frame(x = x_lognorm, y = y_lognorm, Distribution = 'Log-Normal')
+df_lognorm <- data.frame(x = x_lognorm, y = y_lognorm, Distribution = "Log-Normal")
 
 # Combine data frames
 df <- rbind(df_norm, df_lognorm)
 
 # Plot
-ggplot(df, aes(x = x, y = y, color = Distribution)) + 
-  geom_line() + 
-  facet_wrap(~Distribution, scales = 'free_x') + 
-  theme_minimal() + 
-  labs(title = "Log-Normal PDF vs. Normal PDF", 
-       x = "Value", 
-       y = "Density")
+ggplot(df, aes(x = x, y = y, color = Distribution)) +
+  geom_line() +
+  facet_wrap(~Distribution, scales = "free_x") +
+  theme_minimal() +
+  labs(
+    title = "Log-Normal PDF vs. Normal PDF",
+    x = "Value",
+    y = "Density"
+  )
 
 ```
 
@@ -227,14 +238,16 @@ lower_bound <- -4
 upper_bound <- 1.85
 
 # Create a data frame for the x values
-x_values <- seq(mean - 4*sd, mean + 4*sd, length.out = 1000)
+x_values <- seq(mean - 4 * sd, mean + 4 * sd, length.out = 1000)
 df <- data.frame(x = x_values)
 
 # Create the ggplot object
 ggplot(df, aes(x)) +
   stat_function(fun = dnorm, args = list(mean = mean, sd = sd), colour = "blue") +
-  geom_area(stat = "function", fun = dnorm, args = list(mean = mean, sd = sd),
-            xlim = c(lower_bound, upper_bound), fill = "blue", alpha = 0.2) +
+  geom_area(
+    stat = "function", fun = dnorm, args = list(mean = mean, sd = sd),
+    xlim = c(lower_bound, upper_bound), fill = "blue", alpha = 0.2
+  ) +
   labs(title = "PDF", x = "Value", y = "Density") +
   theme_minimal()
 ```
@@ -247,7 +260,7 @@ $P(Z > 1.85)$ where $Z \sim N(0, 1)$
 $1 - P(Z < 1.85) = 0.0322$
 
 ```{r}
-1-pnorm(1.85)
+1 - pnorm(1.85)
 ```
 
 ```{r}
@@ -263,14 +276,16 @@ lower_bound <- 1.85
 upper_bound <- 4
 
 # Create a data frame for the x values
-x_values <- seq(mean - 4*sd, mean + 4*sd, length.out = 1000)
+x_values <- seq(mean - 4 * sd, mean + 4 * sd, length.out = 1000)
 df <- data.frame(x = x_values)
 
 # Create the ggplot object
 ggplot(df, aes(x)) +
   stat_function(fun = dnorm, args = list(mean = mean, sd = sd), colour = "blue") +
-  geom_area(stat = "function", fun = dnorm, args = list(mean = mean, sd = sd),
-            xlim = c(lower_bound, upper_bound), fill = "blue", alpha = 0.2) +
+  geom_area(
+    stat = "function", fun = dnorm, args = list(mean = mean, sd = sd),
+    xlim = c(lower_bound, upper_bound), fill = "blue", alpha = 0.2
+  ) +
   labs(title = "PDF", x = "Value", y = "Density") +
   theme_minimal()
 ```
@@ -304,14 +319,16 @@ lower_bound <- -1
 upper_bound <- 2
 
 # Create a data frame for the x values
-x_values <- seq(mean - 4*sd, mean + 4*sd, length.out = 1000)
+x_values <- seq(mean - 4 * sd, mean + 4 * sd, length.out = 1000)
 df <- data.frame(x = x_values)
 
 # Create the ggplot object
 ggplot(df, aes(x)) +
   stat_function(fun = dnorm, args = list(mean = mean, sd = sd), colour = "blue") +
-  geom_area(stat = "function", fun = dnorm, args = list(mean = mean, sd = sd),
-            xlim = c(lower_bound, upper_bound), fill = "blue", alpha = 0.2) +
+  geom_area(
+    stat = "function", fun = dnorm, args = list(mean = mean, sd = sd),
+    xlim = c(lower_bound, upper_bound), fill = "blue", alpha = 0.2
+  ) +
   labs(title = "PDF", x = "Value", y = "Density") +
   theme_minimal()
 ```
@@ -326,7 +343,7 @@ library(ggplot2)
 mean <- 285
 sd <- 10
 # Create a sequence of x values
-x_values <- seq(mean - 4*sd, mean + 4*sd, length.out = 1000)
+x_values <- seq(mean - 4 * sd, mean + 4 * sd, length.out = 1000)
 # Create a ggplot
 ggplot(data.frame(x_values), aes(x = x_values)) +
   stat_function(fun = dnorm, args = list(mean = mean, sd = sd)) +
@@ -351,14 +368,16 @@ lower_bound <- 275
 upper_bound <- 295
 
 # Create a data frame for the x values
-x_values <- seq(mean - 4*sd, mean + 4*sd, length.out = 1000)
+x_values <- seq(mean - 4 * sd, mean + 4 * sd, length.out = 1000)
 df <- data.frame(x = x_values)
 
 # Create the ggplot object
 ggplot(df, aes(x)) +
   stat_function(fun = dnorm, args = list(mean = mean, sd = sd), colour = "blue") +
-  geom_area(stat = "function", fun = dnorm, args = list(mean = mean, sd = sd),
-            xlim = c(lower_bound, upper_bound), fill = "blue", alpha = 0.2) +
+  geom_area(
+    stat = "function", fun = dnorm, args = list(mean = mean, sd = sd),
+    xlim = c(lower_bound, upper_bound), fill = "blue", alpha = 0.2
+  ) +
   labs(title = "PDF", x = "Value", y = "Density") +
   theme_minimal()
 ```
@@ -376,14 +395,16 @@ lower_bound <- 265
 upper_bound <- 305
 
 # Create a data frame for the x values
-x_values <- seq(mean - 4*sd, mean + 4*sd, length.out = 1000)
+x_values <- seq(mean - 4 * sd, mean + 4 * sd, length.out = 1000)
 df <- data.frame(x = x_values)
 
 # Create the ggplot object
 ggplot(df, aes(x)) +
   stat_function(fun = dnorm, args = list(mean = mean, sd = sd), colour = "blue") +
-  geom_area(stat = "function", fun = dnorm, args = list(mean = mean, sd = sd),
-            xlim = c(lower_bound, upper_bound), fill = "blue", alpha = 0.2) +
+  geom_area(
+    stat = "function", fun = dnorm, args = list(mean = mean, sd = sd),
+    xlim = c(lower_bound, upper_bound), fill = "blue", alpha = 0.2
+  ) +
   labs(title = "PDF", x = "Value", y = "Density") +
   theme_minimal()
 ```

@@ -3,6 +3,12 @@ title: Lab 03 -- Probability distributions
 embed-resources: true
 ---
 
+```{r setup}
+#| include: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse)
+```
+
 ::: {.callout-tip}
 **Learning Outcomes**
 
@@ -108,13 +114,13 @@ Now you calculate the rest!
 Now we will use R to simulate 4 coin tosses representing 1 as heads and 0 as tails. Note that I have withheld the output to avoid "spoiling" the suprise.
 
 ```{r, eval=FALSE}
-coin <- c(0,1) # vector representing coin tosses c(tails, heads)
+coin <- c(0, 1) # vector representing coin tosses c(tails, heads)
 set.seed(1) # makes sure we all get the same answer i.e. we use the same randomly generated numbers
-tosses <- sample(coin, size = 4*20, replace = T, prob = c(0.5, 0.5)) # this randomly picks a 0 or 1 from coin and there is an equal probability of sampling both. It creates a vector of results i.e. bo tosses in total
-dim(tosses) <- c(20,4) # This creates a data frame with 4 columns and 20 rows that represents the 20 trials of 4 coin tosses
+tosses <- sample(coin, size = 4 * 20, replace = T, prob = c(0.5, 0.5)) # this randomly picks a 0 or 1 from coin and there is an equal probability of sampling both. It creates a vector of results i.e. bo tosses in total
+dim(tosses) <- c(20, 4) # This creates a data frame with 4 columns and 20 rows that represents the 20 trials of 4 coin tosses
 tosses ## this prints the result
 NumHeads <- rowSums(tosses) ## this sums the number of heads in each trial
-NumHeads # this prints the results  
+NumHeads # this prints the results
 ```
 
 - The table function tallies each of the numbers of heads for each simulation. In each trial (4 tosses) How many times did you toss no heads, how many times did you toss 1 head, how many times did you toss 2 heads, how many times did you toss 3 heads and how many times did you toss 4 heads?
@@ -127,13 +133,13 @@ Freq_table
 The prob.table function divides each frequency by 20 i.e.$P(X=0)=2/20$
 
 ```{r, eval=FALSE}
-prop.table(Freq_table) 
+prop.table(Freq_table)
 ```
 
 - Now we can plot this. Notice how we customise the x-axis to ensure that 0 is displayed as even though there may be no instances where we got zero heads, it is still a possibility even if the probability is low. for this we use the argument , xaxt = "n" and then draw customised axis labels using the axis function.
 
 ```{r, eval=FALSE}
-plot(prop.table(Freq_table), ylab="P(X=X)", xlab = "x", xlim = c(0,4), xaxt = "n")
+plot(prop.table(Freq_table), ylab = "P(X=X)", xlab = "x", xlim = c(0, 4), xaxt = "n")
 axis(1, at = 0:4)
 ```
 
@@ -161,7 +167,7 @@ $P(X=6)=\left(\begin{matrix}6\\6\end{matrix}\right)0.5^6(1-0.5)^{6-6} = 0.015625
 or in R we can calculate using the dbinom function which calculates the exact probability of having 6 male calfs born
 
 ```{r, eval=FALSE}
-dbinom(6,6,0.5)
+dbinom(6, 6, 0.5)
 ```
 
 
@@ -175,7 +181,7 @@ $=\left(\begin{matrix}6\\0\end{matrix}\right)0.5^0(1-0.5)^{6-0}+\left(\begin{mat
 or in R
 
 ```{r, eval=FALSE}
-1-pbinom(4,6,0.5)
+1 - pbinom(4, 6, 0.5)
 ```
 
 **Question:** What are your assumptions? What is a more accurate estimate of the P(male calf)?
@@ -231,7 +237,7 @@ $P(X=0)=\frac{1.2^0e^{-1.2}}{0!}=0.3011942$
 Or in R
 
 ```{r, eval=FALSE}
-dpois(0,1.2)
+dpois(0, 1.2)
 ```
 
 
@@ -244,7 +250,7 @@ $=0.8794871$
 Or in R
 
 ```{r, eval=FALSE}
-ppois(2,1.2)
+ppois(2, 1.2)
 ```
 
 More recent research found that the average spontaneous rate of deleterious mutations was actually 1.4 per diploid genome. Using R recalculate the following.\
@@ -259,7 +265,7 @@ From the tutorial we looked at Tomato germination. Use simulations to find appro
 Remember that the exact probability is 
 
 ```{r}
-1-pbinom(6,8,0.7)
+1 - pbinom(6, 8, 0.7)
 ```
 
 - First try 10 simulations and fill out a similar table to below in excel. What is your estimate of the probability of 7 germinating seeds?
@@ -268,8 +274,8 @@ Remember that the exact probability is
 set.seed(123)
 seeds <- rbinom(n = 10, 8, 0.7) # randomly generates 10 values from Bin(8,0.7)
 seeds ## prints seeds
-table(seeds)/10 # turns counts into probabilities
-barplot(table(seeds)/10, xlab="Number Germinated x", ylab="Probability", col="green")
+table(seeds) / 10 # turns counts into probabilities
+barplot(table(seeds) / 10, xlab = "Number Germinated x", ylab = "Probability", col = "green")
 ```
 
 - Next try 100 simulations.
@@ -278,8 +284,8 @@ barplot(table(seeds)/10, xlab="Number Germinated x", ylab="Probability", col="gr
 set.seed(123)
 seeds <- rbinom(n = 100, 8, 0.7) # randomly generates 100 values from Bin(8,0.7)
 seeds ## prints seeds
-table(seeds)/100 # turns counts into probabilities
-barplot(table(seeds)/100, xlab="Number germinated (x)", ylab="Probability", col="green")
+table(seeds) / 100 # turns counts into probabilities
+barplot(table(seeds) / 100, xlab = "Number germinated (x)", ylab = "Probability", col = "green")
 ```
 
 - Now we will try 10000 simulations. What do you notice about the histogram?
@@ -287,8 +293,8 @@ barplot(table(seeds)/100, xlab="Number germinated (x)", ylab="Probability", col=
 ```{r, eval = FALSE}
 set.seed(123)
 seeds <- rbinom(n = 10000, 8, 0.7) # randomly generates 100 values from Bin(8,0.7)
-table(seeds)/10000 # turns counts into probabilities
-barplot(table(seeds)/10000, xlab="Number germinated (x)", ylab="Probability", col="green")
+table(seeds) / 10000 # turns counts into probabilities
+barplot(table(seeds) / 10000, xlab = "Number germinated (x)", ylab = "Probability", col = "green")
 ```
 
 5. Now we can compare the exact results and the simulated results by adding up the probabilities for 7 and 8 seeds germinating in each of the scenarios.
@@ -304,9 +310,3 @@ barplot(table(seeds)/10000, xlab="Number germinated (x)", ylab="Probability", co
 
 **Question:** Which of the simulations gives the closest result to the exact method, why do you think this is? - **try ask chatGPT** or use the **# q: What is ?** prompt if you have enabled copilot.
 
-
-```{r, echo = FALSE, eval = FALSE}
-#renv::install("jhelvy/renderthis")
-#renv::install("chromote")
-#renderthis::to_pdf("_site/ENVX1002-2024-Lab03.html")
-```

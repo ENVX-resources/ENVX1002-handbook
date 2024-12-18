@@ -3,10 +3,12 @@ title: "ENVX1002 Practical Topic 9 - Describing relationships"
 embed-resources: true
 ---
 
-```{r setup, warning=F, message=F, echo=F}
-library(knitr)
-library(kableExtra)
+```{r setup}
+#| include: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(readxl)
 ```
+
 
 <br>
 
@@ -46,8 +48,8 @@ This is our example of Analytical fitting method.
 The number of horses on Canadian farms appeared to decrease after the war:
 
 ```{r do_not_show, echo=FALSE}
-year <- c(1944,1945,1946,1947,1948)
-horse <- c(28,26,22,20,19)
+year <- c(1944, 1945, 1946, 1947, 1948)
+horse <- c(28, 26, 22, 20, 19)
 
 horse_year <- rbind(year, horse)
 horse_year %>%
@@ -179,8 +181,8 @@ a) Read the following code into R:
 
 ```{r}
 # add the data to R Studio
-fert <- c(0,1,2,3,4,5)
-yield <- c(2,13,19,18,25,33)
+fert <- c(0, 1, 2, 3, 4, 5)
+yield <- c(2, 13, 19, 18, 25, 33)
 ```
 
 
@@ -215,7 +217,7 @@ d) You can now fit the model in R using the `lm()` function. Remember to tell R 
 # Run your model
 ## yield = response variable (x)
 ## fert = predictor variable (y)
-model.lm <- lm(yield~fert)
+model.lm <- lm(yield ~ fert)
 
 # Obtain model summary - In here you can obtain the model parameters
 # Look for Intercept Estimate and fert Estimate

@@ -1,5 +1,11 @@
 # One-sample $t$-test
 
+```{r setup}
+#| include: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, gridExtra, moments)
+```
+
 ## Confidence intervals for $\mu$ 
 
 Confidence intervals (CI) are also known as “confidence limits”. Most commonly we generate a confidence interval (CI) for $\mu$ (the population mean) but you may also see CI’s for the population variance $\sigma$, or for the population probability $p$ in literature.
