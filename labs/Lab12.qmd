@@ -6,7 +6,7 @@ embded-resources: true
 ```{r setup}
 #| include: false
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load(tidyverse)
+pacman::p_load(tidyverse, kableExtra)
 knitr::opts_chunk$set(echo = TRUE) # change to TRUE for solutions, efficiency
 #### STILL NEED to set eval=TRUE for solutions
 ```
