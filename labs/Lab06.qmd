@@ -76,7 +76,7 @@ Try to compare `str()` and `glimpse()` to see what the differences are.
 
 ```{r}
 #| output: true
-barley <- readr::read_csv("data/barley.csv")
+barley <- readr::read_csv("data/Barley.csv")
 dplyr::glimpse(barley)
 ```
 
