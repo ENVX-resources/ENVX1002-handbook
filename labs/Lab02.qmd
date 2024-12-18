@@ -3,6 +3,12 @@ title: Lab 02 -- Quarto
 embed-resources: true
 ---
 
+```{r setup}
+#| include: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, readxl, moments)
+```
+
 # Academic integrity
 
 This exercise encourages students to discuss academic integrity, and in particular the grey areas often present. Your demonstrator will provide you with a number of scenarios to discuss with each other in smaller groups, and then with the class. 

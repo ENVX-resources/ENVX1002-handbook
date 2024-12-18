@@ -3,11 +3,10 @@ title: "ENVX1002 Practical Topic 12 - Non-linear models"
 embded-resources: true
 ---
 
-```{r setup, warning=F, message=F, echo=F}
-library(knitr)
-library(kableExtra)
-library(readxl)
-
+```{r setup}
+#| include: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse)
 knitr::opts_chunk$set(echo = TRUE) # change to TRUE for solutions, efficiency
 #### STILL NEED to set eval=TRUE for solutions
 ```

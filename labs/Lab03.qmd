@@ -3,6 +3,12 @@ title: Lab 03 -- Probability distributions
 embed-resources: true
 ---
 
+```{r setup}
+#| include: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse)
+```
+
 ::: {.callout-tip}
 **Learning Outcomes**
 

@@ -3,6 +3,11 @@ title: Lab 07 -- Chi-squared test
 embed-resources: true
 ---
 
+```{r setup}
+#| include: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, mosaic)
+```
 
 ::: callout-tip
 ## Learning Outcomes

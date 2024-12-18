@@ -3,10 +3,12 @@ title: "ENVX1002 Practical Topic 9 - Describing relationships"
 embed-resources: true
 ---
 
-```{r setup, warning=F, message=F, echo=F}
-library(knitr)
-library(kableExtra)
+```{r setup}
+#| include: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(readxl)
 ```
+
 
 <br>
 
