@@ -162,8 +162,8 @@ qqplots:
 ```{r}
 library(ggplot2)
 
-ggplot(milk, aes(sample = Yield)) + 
-  stat_qq() + 
+ggplot(milk, aes(sample = Yield)) +
+  stat_qq() +
   stat_qq_line()
 ```
 
@@ -182,12 +182,12 @@ Histogram and boxplots:
 ### Solution {style="color:green;"}
 
 ```{r}
-ggplot(milk, aes(x = Yield)) + 
+ggplot(milk, aes(x = Yield)) +
   geom_histogram(binwidth = 1, fill = "lightblue", color = "black") +
   labs(title = "Histogram of Milk Yield", x = "Yield", y = "Frequency")
 
 ggplot(milk, aes(x = Yield)) +
-  geom_boxplot(fill = "lightblue", color = "black") 
+  geom_boxplot(fill = "lightblue", color = "black")
 
 ```
 
@@ -414,19 +414,19 @@ Plot your data:
 ### Solution {style="color:green;"}
 
 ```{r}
-ggplot(sting, aes(sample = Stinging)) + 
-  stat_qq() + 
+ggplot(sting, aes(sample = Stinging)) +
+  stat_qq() +
   stat_qq_line()
 ```
 
 ```{r}
-ggplot(sting, aes(x = Stinging)) + 
+ggplot(sting, aes(x = Stinging)) +
   geom_histogram(binwidth = 1, fill = "lightgreen", color = "black") +
   labs(title = "Histogram of Stinging Tree Growth", x = "Growth (m)", y = "Frequency")
 ```
 
 ```{r}
-ggplot(sting, aes(x = Stinging)) + 
+ggplot(sting, aes(x = Stinging)) +
   geom_boxplot(fill = "lightgreen", color = "black") +
   labs(title = "Boxplot of Stinging Tree Growth", x = "Growth (m)", y = "Frequency")
 ```
@@ -542,7 +542,7 @@ t.test(sting$Stinging, mu = 1.5)
 This lab was developed using resources that are available under a [Creative Commons Attribution 4.0 International license](http://creativecommons.org/licenses/by/4.0/), made available on the [SOLES Open Educational Resources repository](https://github.com/usyd-soles-edu/).
 
 ```{r, echo=FALSE, eval=FALSE}
-#renv::install("jhelvy/renderthis")
-#renv::install("chromote")
+# renv::install("jhelvy/renderthis")
+# renv::install("chromote")
 renderthis::to_pdf("_solution/ENVX1002-2024-Lab05.html")
 ```

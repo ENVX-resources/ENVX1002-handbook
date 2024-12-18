@@ -165,11 +165,11 @@ The data is stored in a `table` object in R below. Note that it is different fro
 
 ```{r}
 crabs <- as.table(
-    rbind(
-        Aus = c(47, 42),
-        Bem = c(10, 41),
-        Cir = c(125, 49)
-    )
+  rbind(
+    Aus = c(47, 42),
+    Bem = c(10, 41),
+    Cir = c(125, 49)
+  )
 )
 
 colnames(crabs) <- c("Occupied", "Empty")

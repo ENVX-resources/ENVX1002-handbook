@@ -117,31 +117,38 @@ library(ggplot2)
 
 # Define the data for the three normal distributions
 mean_value <- 0
-std_dev_A <- 1   # Least spread
+std_dev_A <- 1 # Least spread
 std_dev_B <- 2
-std_dev_C <- 3   # Most spread
+std_dev_C <- 3 # Most spread
 
 # Create a data frame for plotting
 x_values <- seq(-10, 10, length.out = 300)
 normal_data <- data.frame(
   x = c(x_values, x_values, x_values),
-  y = c(dnorm(x_values, mean_value, std_dev_A), 
-        dnorm(x_values, mean_value, std_dev_B), 
-        dnorm(x_values, mean_value, std_dev_C)),
-  curve = factor(c(rep("A", length(x_values)), 
-                   rep("B", length(x_values)), 
-                   rep("C", length(x_values)))
-  )
+  y = c(
+    dnorm(x_values, mean_value, std_dev_A),
+    dnorm(x_values, mean_value, std_dev_B),
+    dnorm(x_values, mean_value, std_dev_C)
+  ),
+  curve = factor(c(
+    rep("A", length(x_values)),
+    rep("B", length(x_values)),
+    rep("C", length(x_values))
+  ))
 )
 
 # Generate the plot
 ggplot(normal_data, aes(x = x, y = y, color = curve)) +
   geom_line() +
-  labs(title = "Normal Distributions with Different Spreads",
-       x = "Value",
-       y = "Density") +
-  scale_color_manual(values = c("red", "green", "blue"),
-                     labels = c("A: Least Spread", "B", "C: Most Spread")) +
+  labs(
+    title = "Normal Distributions with Different Spreads",
+    x = "Value",
+    y = "Density"
+  ) +
+  scale_color_manual(
+    values = c("red", "green", "blue"),
+    labels = c("A: Least Spread", "B", "C: Most Spread")
+  ) +
   theme_minimal()
 ```
 
@@ -158,7 +165,7 @@ The R function is `max(y)-min(y)`
 
 ```{r}
 y <- c(1, 6, 4, 5, 6, 3, 8, 7)
-max(y)-min(y)
+max(y) - min(y)
 ```
 
 The Excel command is `=MAX()-MIN()`
@@ -201,7 +208,7 @@ y <- c(98, 100, 100, 103, 105, 107, 110, 113, 115)
 quantile(y, 0.75, type = 6) - quantile(y, 0.25, type = 6) ## Type 6
 
 ## Default which we will generally use going forward
-quantile(y, 0.75) - quantile(y, 0.25) 
+quantile(y, 0.75) - quantile(y, 0.25)
 ```
 
 **PERCENTILES**
@@ -265,7 +272,7 @@ set.seed(123) # For reproducibility
 quadrats <- data.frame(
   Treatment = factor(rep(c("Control", "Low", "Medium", "High"), each = 200)),
   SedgePlants = c(
-    rpois(200, lambda = 5),  # Assuming a Poisson distribution for count data 
+    rpois(200, lambda = 5), # Assuming a Poisson distribution for count data
     rpois(200, lambda = 10),
     rpois(200, lambda = 15),
     rpois(200, lambda = 20)
@@ -312,7 +319,7 @@ library(tidyverse)
 sedge <- read_csv("data/Sedge.csv", show_col_types = FALSE)
 
 ggplot(sedge, aes(x = Plants)) +
-  geom_histogram(aes(y = after_stat(count)/sum(after_stat(count)) * 100), bins = 8) +
+  geom_histogram(aes(y = after_stat(count) / sum(after_stat(count)) * 100), bins = 8) +
   ylab("Percentage") +
   xlab("Number of plants per quadrat")
 
@@ -419,7 +426,7 @@ p1 <- ggplot(bentgrass, aes(x = Root_length_mm)) +
 p2 <- ggplot(bentgrass, aes(x = Root_length_mm)) +
   geom_histogram(bins = 20) +
   xlab("Root length (mm)")
-p1+p2
+p1 + p2
 ```
 
 ### Positively Skewed
@@ -442,7 +449,7 @@ p1 <- ggplot(tccb, aes(x = TcCB_ppb)) +
 p2 <- ggplot(tccb, aes(x = TcCB_ppb)) +
   geom_histogram(bins = 20) +
   xlab("TcCB concentration (ppb)")
-p1+p2
+p1 + p2
 ```
 
 The distribution is highly positively skewed (right skewed): there are extreme outliers at high levels. This is also demonstrated by the mean (1.412 ppb) being substantially greater than the median (0.570 ppb).
@@ -469,7 +476,7 @@ p1 <- ggplot(arthritis, aes(x = AgeAtOnset)) +
 p2 <- ggplot(arthritis, aes(x = AgeAtOnset)) +
   geom_histogram(bins = 5) +
   xlab("Age at onset (years)")
-p1+p2
+p1 + p2
 ```
 
 The distribution is negatively skewed (left skewed): there are some outliers at low levels. This is also demonstrated by the mean (9.7 years) being marginally less than the median (11.1 years).
