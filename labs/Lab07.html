@@ -5394,11 +5394,11 @@ There is a significant difference in the proportion of flower colours of tulips 
 <p>The data is stored in a <code>table</code> object in R below. Note that it is different from a <code>data.frame</code> object. You can verify this by using the <code>str()</code> or <code>class()</code> functions.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>crabs <span class="ot">&lt;-</span> <span class="fu">as.table</span>(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rbind</span>(</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">Aus =</span> <span class="fu">c</span>(<span class="dv">47</span>, <span class="dv">42</span>),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">Bem =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">41</span>),</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">Cir =</span> <span class="fu">c</span>(<span class="dv">125</span>, <span class="dv">49</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">Aus =</span> <span class="fu">c</span>(<span class="dv">47</span>, <span class="dv">42</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Bem =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">41</span>),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Cir =</span> <span class="fu">c</span>(<span class="dv">125</span>, <span class="dv">49</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(crabs) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Occupied&quot;</span>, <span class="st">&quot;Empty&quot;</span>)</span>
