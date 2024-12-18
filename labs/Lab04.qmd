@@ -3,6 +3,12 @@ title: Lab 04 -- Sampling distributions
 embed-resources: true
 ---
 
+```{r setup}
+#| include: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, readxl)
+```
+
 # Facing challenges
 
 Project 1 is due in week 5 and for many of you this may be your first university assignment; some may be nervous, while others may be more relaxed. Your demonstrators will use the start of this practical to discuss how you may be feeling for this first assessment and share ways you might want to approach and prepare for the assessment.  

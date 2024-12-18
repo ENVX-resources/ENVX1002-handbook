@@ -1,5 +1,12 @@
 # Sampling distributions
 
+```{r setup}
+#| include: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse)
+```
+
+
 First some definitions…
 
 A **simple random sample** is a sample of size n drawn from a population of size $N$ in such a way that every possible sample of size $n$ has the same probability of being selected. Variability among the simple random samples drawn from the same population is called **sampling variability**, and the probability distribution that characterizes some aspect of the sampling variability, usually the mean but not always, is called a **sampling distribution**.

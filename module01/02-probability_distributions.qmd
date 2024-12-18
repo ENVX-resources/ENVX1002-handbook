@@ -1,5 +1,12 @@
 # Probability distributions
 
+```{r setup}
+#| include: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse)
+```
+
+
 Biological systems are variable, and we consequently need statistical methods to cope with this variability in drawing valid inferences from our data. As a consequence of this variability, we can never say anything with absolute certainty based on biological data: there will always be some “doubt” due to chance variation. Not surprisingly, we need the tools and language of probability
 to assist us with quantifying our level of “doubt” when we make our conclusions.
 
