@@ -1,5 +1,11 @@
 # Chi-squared tests
 
+```{r setup}
+#| include: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse)
+```
+
 The chi-squared distribution (where chi is pronounced ‘ky’) is a very widely used distribution in statistics. Its symbol is 2. It has MANY applications. Here we will consider only two of these applications – tests of agreement with expected outcomes, and contingency tables.
 
 7.1	Notes on the 2 Distribution

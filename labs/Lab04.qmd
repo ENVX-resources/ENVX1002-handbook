@@ -3,6 +3,12 @@ title: Lab 04 -- Sampling distributions
 embed-resources: true
 ---
 
+```{r setup}
+#| include: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, readxl)
+```
+
 # Facing challenges
 
 Project 1 is due in week 5 and for many of you this may be your first university assignment; some may be nervous, while others may be more relaxed. Your demonstrators will use the start of this practical to discuss how you may be feeling for this first assessment and share ways you might want to approach and prepare for the assessment.  
@@ -53,7 +59,7 @@ male_height <- c(175, 183, 163, 190)
 ```{r}
 f_mean <- mean(female_height)
 f_sd <- sd(female_height)
-hist(female_height) 
+hist(female_height)
 ```
 
 5. Discuss with your neighbour or post on the zoom chat, which model (distribution function) do you think would fit the data
@@ -83,7 +89,7 @@ ii) Discuss with your neighbour what happens to the shape of the histogram as yo
 
 ```{r}
 set.seed(1) # means that we all generate the same set of random numbers so we can compare
-sample10 = rnorm(10,163.9,6.6) #generates a random sample of size 10 from N(163.9,6.6^2)
+sample10 <- rnorm(10, 163.9, 6.6) # generates a random sample of size 10 from N(163.9,6.6^2)
 sample10 # prints the 10 simulated values (you may not want this with the 10K simulations!!)
 mean(sample10)
 sd(sample10)
@@ -95,15 +101,15 @@ iii) Find the probability $P(X \ge 180)$ for each of the simulations and also th
 **Actual probability**
 
 ```{r}
-1-pnorm(180,163.9,6.6) 
+1 - pnorm(180, 163.9, 6.6)
 ## OR
-pnorm(180,163.9,6.6, lower.tail = FALSE)
+pnorm(180, 163.9, 6.6, lower.tail = FALSE)
 ```
 
 **Simulated probability**
 
 ```{r}
-length(which(sample10>=180))/10 ## simulated p for sample size 10
+length(which(sample10 >= 180)) / 10 ## simulated p for sample size 10
 ```
 
 # Sampling distributions
@@ -144,17 +150,17 @@ iii) Create a histogram and boxplot of the milk fat data. Is the data `Normally 
 
 ```{r}
 require(ggplot2)
-ggplot(milkfat, aes(x=Milkfat)) +  
-  geom_histogram(binwidth = 0.1, fill="lightblue", color="black") +
-  xlab("Milkfat (%)") 
+ggplot(milkfat, aes(x = Milkfat)) +
+  geom_histogram(binwidth = 0.1, fill = "lightblue", color = "black") +
+  xlab("Milkfat (%)")
 ```
 
 iv) In the UK, `breakfast milk' (or `Channel Island milk') has 5.5% fat content. What percentage of the cows in this data set is yielding breakfast milk with $\ge$ 5.5%?
 
 ```{r}
-s=sort(milkfat$Milkfat) # Sorts the data
+s <- sort(milkfat$Milkfat) # Sorts the data
 s # Look at the sorted data
-length(s[s>=5.5]) # Counts how many are >= 5.5
+length(s[s >= 5.5]) # Counts how many are >= 5.5
 ```
 
 v) In Australia, full cream milk has greater than 3.2% milk fat content. What percentage of these cows is yielding full cream milk?
@@ -174,10 +180,10 @@ ii) Draw a picture of the curve representing $X$. The below example uses ggplot2
 
 ```{r}
 library(ggplot2)
-ggplot(data.frame(x = c(4.16-4*0.3, 4.16+4*0.3)), aes(x = x)) +
-  stat_function(fun = dnorm, args = list(mean = 4.16, sd=0.30)) +
+ggplot(data.frame(x = c(4.16 - 4 * 0.3, 4.16 + 4 * 0.3)), aes(x = x)) +
+  stat_function(fun = dnorm, args = list(mean = 4.16, sd = 0.30)) +
   xlab("x") +
-  ylab(expression(N(4.16,0.30^2)~pdf))
+  ylab(expression(N(4.16, 0.30^2) ~ pdf))
 ```
 
 iii) What is the probability that 1 cow has a fat content less than 4%? We will adapt the ggplot command above a picture of this probability and then use R to find the probability.
@@ -185,17 +191,21 @@ iii) What is the probability that 1 cow has a fat content less than 4%? We will 
 Hint: You may need to use the `stat_function` command to draw the curve and then use the `pnorm` command to find the probability.
 
 ```{r}
-ggplot(data.frame(x = c(4.16-4*0.3, 4.16+4*0.3)), aes(x = x)) +
-  stat_function(fun = dnorm, args = list(mean = 4.16, sd=0.30)
-                ,geom = "area", fill = "white") +
-  stat_function(fun = dnorm, args = list(mean = 4.16, sd=0.30)
-    , xlim = c(4.16-4*0.3, 4), geom = "area", fill = "red") +
+ggplot(data.frame(x = c(4.16 - 4 * 0.3, 4.16 + 4 * 0.3)), aes(x = x)) +
+  stat_function(
+    fun = dnorm, args = list(mean = 4.16, sd = 0.30),
+    geom = "area", fill = "white"
+  ) +
+  stat_function(
+    fun = dnorm, args = list(mean = 4.16, sd = 0.30),
+    xlim = c(4.16 - 4 * 0.3, 4), geom = "area", fill = "red"
+  ) +
   xlab("x") +
-  ylab(expression(N(4.16,0.30^2)~pdf))
+  ylab(expression(N(4.16, 0.30^2) ~ pdf))
 ```
 
 ```{r}
-pnorm(4,4.16,0.30)
+pnorm(4, 4.16, 0.30)
 ```
 
 iv) What is the probability that 1 cow (randomly sampled) has a fat content greater than 4.5%? Try and adapt the ggplots above to draw a picture of this probability and then use R to find the probability.
@@ -236,15 +246,19 @@ ii) What is the probability of finding an Australian woman of this height or tal
 **Step 2**: Calculate the probability in R.
 
 ```{r}
-1-pnorm(189, 161.8, 6)
+1 - pnorm(189, 161.8, 6)
 
 ggplot() +
-  stat_function(fun = dnorm, args = list(mean = 161.8, sd=6), 
-                geom = "area", fill = "white", xlim = c(180, 161.8+4*6)) +
-  stat_function(fun = dnorm, args = list(mean = 161.8, sd=6), 
-                geom = "area", fill = "red", xlim = c(161.8+4*6, 189)) +
+  stat_function(
+    fun = dnorm, args = list(mean = 161.8, sd = 6),
+    geom = "area", fill = "white", xlim = c(180, 161.8 + 4 * 6)
+  ) +
+  stat_function(
+    fun = dnorm, args = list(mean = 161.8, sd = 6),
+    geom = "area", fill = "red", xlim = c(161.8 + 4 * 6, 189)
+  ) +
   xlab("x") +
-  ylab(expression(N(161.8,6^2)~pdf)) +
+  ylab(expression(N(161.8, 6^2) ~ pdf)) +
   scale_x_continuous(breaks = 189)
 
 ```
