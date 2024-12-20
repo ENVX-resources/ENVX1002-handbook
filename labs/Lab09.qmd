@@ -12,7 +12,6 @@ pacman::p_load(tidyverse, readxl, knitr, kableExtra)
 
 <br>
 
-:::::::::::::::::::: {.pad-box-mini style="border: 2px solid grey; padding-left:10px;"}
 ::: callout-tip
 
 
