@@ -389,6 +389,7 @@ $b_0$ = -2998.0129 $b_1$ = 1.5632
 :::
 
 f) What would the equation for this model be?
+
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
