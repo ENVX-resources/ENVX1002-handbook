@@ -5159,8 +5159,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#exercise-1-linear-modelling-in-excel" id="toc-exercise-1-linear-modelling-in-excel" class="nav-link" data-scroll-target="#exercise-1-linear-modelling-in-excel">Exercise 1: Linear Modelling in Excel</a>
+  <li><a href="#exercise-1-linear-modelling-in-excel" id="toc-exercise-1-linear-modelling-in-excel" class="nav-link active" data-scroll-target="#exercise-1-linear-modelling-in-excel">Exercise 1: Linear Modelling in Excel</a>
   <ul class="collapse">
   <li><a href="#horses" id="toc-horses" class="nav-link" data-scroll-target="#horses">1.1 Horses</a></li>
   <li><a href="#fertiliser-data" id="toc-fertiliser-data" class="nav-link" data-scroll-target="#fertiliser-data">1.2 Fertiliser data</a></li>
@@ -5196,8 +5195,16 @@ window.Quarto = {
 
 
 <p><br></p>
-<section id="objectives" class="level3 pad-box-mini" style="border: 2px solid grey; padding-left:10px;">
-<h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
 <li>Calculate and interpret Correlation Coefficients in Excel and R</li>
 <li>Produce scatterplots in Excel and R</li>
@@ -5205,8 +5212,9 @@ window.Quarto = {
 <li>Fit simple linear models and obtain associated model summaries in R</li>
 <li>Overlay fitted models onto scatterplots in R</li>
 </ul>
+</div>
+</div>
 <p><strong>DATA: ENVX1002_practical_data_Regression.xlsx</strong></p>
-</section>
 <p><br></p>
 <section id="exercise-1-linear-modelling-in-excel" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-1-linear-modelling-in-excel">Exercise 1: Linear Modelling in Excel</h2>
@@ -5239,19 +5247,14 @@ window.Quarto = {
 <p>The R-squared value is a measure of how well the model fits the data where 1.0 is a perfect fit; we will discuss this more in Week 10. The values which appear in the model equation should be the same as those obtained in your earlier calculations.</p>
 <ol start="3" type="a">
 <li><p>Although it is important for the model equation, do you think the intercept provides a realistic value in this particular case? What does it mean?</p></li>
-<li><p>Calculate the correlation coefficient using the <strong>=CORREL</strong> function in Excel. Type <strong>=CORREL(</strong> and highlight the <strong>Year</strong> column, and then after a comma highlight the <strong>Horses</strong> column and close the brackets.</p></li>
-<li><p>If the relationship was non-linear would this would be a good statistic to use to describe the relationship between horse and years? Explain your answer.</p></li>
+<li><p>Although it is important for the model equation, do you think the intercept provides a realistic value in this particular case? What does it mean?</p></li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<ol type="a">
-<li><p>b0 = 4693.4 b1 = -2.40 SSxy = -24 SSxx = 10 mean(x) = 1946 mean(y) = 23</p></li>
-<li><p>Should be a nice plot in excel, equations should match your calculated b0 and b1</p></li>
-<li><p>The intercept is 4693, suggesting at the year zero, Canadian farms had 4693 horses. Other than to obtain an intercept, it does not make sense to extrapolate beyond the years we have data for.</p></li>
-<li><p>r = -0.979795897, meaning there is a strong relationship in the negative direction; i.e. as the years increase, the number of horses have decreased.</p></li>
-<li><p>The Pearson correlation coefficient is only useful for describing linear relationships. Based on the limited sample size we have, the scatterplot looks like a linear relationship, and so it would be ok to use the correlation coefficient in this case.</p></li>
+<ol start="4" type="a">
+<li>Calculate the correlation coefficient using the <strong>=CORREL</strong> function in Excel. Type <strong>=CORREL(</strong> and highlight the <strong>Year</strong> column, and then after a comma highlight the <strong>Horses</strong> column and close the brackets.</li>
 </ol>
-</div>
+<ol start="5" type="a">
+<li>If the relationship was non-linear would this would be a good statistic to use to describe the relationship between horse and years? Explain your answer.</li>
+</ol>
 <p><br></p>
 </section>
 <section id="fertiliser-data" class="level3">
@@ -5340,13 +5343,6 @@ SS_{res} =\sum_{i = 1}^{n} (y - \hat{y})^2 \label{2}
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To calculate the correlation coefficient:</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(fert, yield)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<ol start="2" type="a">
-<li><p>The points in the scatterplot are showing a linear trend, increasing towards the top-right corner of the plot area.</p></li>
-<li><p>The correlation coefficient is 0.964, indicating there is a strong relationship in the positive direction; i.e. as more fertiliser is applied, the yield increases.</p></li>
-</ol>
-</div>
 <ol start="4" type="a">
 <li>You can now fit the model in R using the <code>lm()</code> function. Remember to tell R the name of the object you want to store it as (in this case, <code>model.lm &lt;-</code>), then state the name of the function. The arguments within the function (i.e. between the brackets) will be <code>yield ~ fert</code>, with <code>yield</code> being the response variable and <code>fert</code> being the predictor.</li>
 </ol>
@@ -5361,20 +5357,11 @@ SS_{res} =\sum_{i = 1}^{n} (y - \hat{y})^2 \label{2}
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model.lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="5" type="a">
-<li><p>In the model output obtained from <code>summary(model.lm)</code> the model parameters will be listed under ‘Estimate’ for the intercept and ‘fert’. Compare these values to what you have calculated in Excel.</p></li>
-<li><p>Based on this output, what would the model equation be? Does it match your findings in Excel?</p></li>
+<li>In the model output obtained from <code>summary(model.lm)</code> the model parameters will be listed under ‘Estimate’ for the intercept and ‘fert’. Compare these values to what you have calculated in Excel.</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<ol start="5" type="a">
-<li><p>Intercept = 4.7619 = <span class="math inline">\(b_0\)</span> fert = 5.4286 = <span class="math inline">\(b_1\)</span> These coefficients should be the same as those calculated in Excel.</p></li>
-<li><p>Substituting in parameters from R output:</p></li>
+<ol start="6" type="a">
+<li>Based on this output, what would the model equation be? Does it match your findings in Excel?</li>
 </ol>
-<p><span class="math display">\[
-Yield = 4.7619 + 5.4286fert
-\]</span></p>
-<p>This should be the same as the equation obtained in Excel</p>
-</div>
 <ol start="7" type="a">
 <li>You can now fit your model to the scatterplot you created previously using the <code>abline()</code> function. Make sure you run the plot function and the abline function in one go. If the lines are run separately, an error may appear saying “plot.new hasn’t been called yet”; this is because the abline function requires a current plot on which it can overlay the line.</li>
 </ol>
@@ -5402,73 +5389,21 @@ Yield = 4.7619 + 5.4286fert
 <ol start="2" type="a">
 <li>Create a scatterplot of <code>Year</code> against <code>TFP</code>. Dont forget the format will be different now - instead of only mentioning the object name, e.g. plot(yield, fert), you will need to refer to the specific columns within the ABARES dataset. (i.e. ABARES$Year).</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ABARES<span class="sc">$</span>Year, ABARES<span class="sc">$</span>TFP)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <ol start="3" type="a">
 <li>Can you see a trend between TFP and Year? Or are the points evenly scattered?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<ol start="3" type="a">
-<li>There seems to be an overall positive trend in the plot</li>
-</ol>
-</div>
 <ol start="4" type="a">
 <li>Calculate the correlation coefficient between these two variables. Is there a strong relationship?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<ol start="4" type="a">
-<li>The correlation coefficient is 0.917, indicating a strong relationship in the positive direction. This means there has been positive growth in the dairy industry over time.<br>
-</li>
-</ol>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(ABARES<span class="sc">$</span>Year, ABARES<span class="sc">$</span>TFP)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <ol start="5" type="a">
 <li>Fit a model to your data and obtain the model summary. Year will be our predictor and TFP will be our response variable. What are the model parameters (i.e. <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span>)?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<ol start="5" type="a">
-<li>Based on the model summary output, our parameters are:</li>
-</ol>
-<p><span class="math inline">\(b_0\)</span> = -2998.0129 <span class="math inline">\(b_1\)</span> = 1.5632</p>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>abares.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(ABARES<span class="sc">$</span>TFP <span class="sc">~</span> ABARES<span class="sc">$</span>Year)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative structure: abares.lm &lt;- lm(TFP ~ Year data = ABARES)</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(abares.lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <ol start="6" type="a">
 <li>What would the equation for this model be?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<ol start="6" type="a">
-<li>Use the coefficients from above and substitute into lm equation:</li>
-</ol>
-<p><span class="math display">\[
-TFI = -2998.0 + 1.5632Year
-\]</span></p>
-</div>
 <ol start="7" type="a">
 <li>Overlay your model onto the scatterplot you produced earlier. When plotting make sure you refer to the column names as you did for the model (e.g. ABARES$Year).</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ABARES<span class="sc">$</span>Year, ABARES<span class="sc">$</span>TFP, <span class="at">xlab =</span> <span class="st">&quot;Year&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Total factor productivity of Dairy (TFP)&quot;</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(abares.lm, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <p><br></p>
 <p>That’s it! Great work today. Next week: interpreting linear models!</p>
 <br> <br> <!--The code below reduces white space at the end of the output doc-->
