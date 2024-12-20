@@ -12,7 +12,8 @@ pacman::p_load(tidyverse, readxl, knitr, kableExtra)
 
 <br>
 
-<div class="pad-box-mini" style="border: 2px solid grey; padding-left:10px;">
+::: callout-tip
+
 
 ### Objectives
 
@@ -22,9 +23,10 @@ pacman::p_load(tidyverse, readxl, knitr, kableExtra)
 * Fit simple linear models and obtain associated model summaries in R
 * Overlay fitted models onto scatterplots in R
 
+:::
+
 **DATA:	ENVX1002_practical_data_Regression.xlsx**
 
-</div>
 
 <br>
 
@@ -59,6 +61,16 @@ horse_year %>%
 
 a) To see whether this is likely to be true, fit a model to the above data 'by hand' in Excel. To aid the calculation it is recommended to fill out the Excel table provided ENVX1002_practical_data_Regression.xlsx, you can find it in the spreadsheet labelled *Horses*.  
 
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+------------------------------------------------------------------------
+
+a)  b0 = 4693.4 b1 = -2.40 SSxy = -24 SSxx = 10 mean(x) = 1946 mean(y) = 23 The table we have provided in Excel has broken the regression parameter equations (b0, b1) into smaller components so you can understand the underlying mechanisms and where these values come from.
+
+------------------------------------------------------------------------
+:::
+
 The table we have provided in Excel has broken the regression parameter equations (b0, b1) into smaller components so you can understand the underlying mechanisms and where these values come from. 
 
 b) Plot the two variables in Excel and fit a line. You can fit a number of models in Excel simply by right clicking on the scatter of points clicking **Add Trendline ...**.  Within the add Tendline window (see screenshot below), a number of options are given, here we want **Linear** and we want to tick **display the Equation** and **Display r-squared on the chart**.  
@@ -69,34 +81,55 @@ b) Plot the two variables in Excel and fit a line. You can fit a number of model
 
 <br>
 
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+------------------------------------------------------------------------
+
+b)  Should be a nice plot in excel, equations should match your calculated b0 and b1
+
+------------------------------------------------------------------------
+:::
+
 The R-squared value is a measure of how well the model fits the data where 1.0 is a perfect fit; we will discuss this more in Week 10.  The values which appear in the model equation should be the same as those obtained in your earlier calculations.  
 
 c) Although it is important for the model equation, do you think the intercept provides a realistic value in this particular case? What does it mean?
 
+c)  Although it is important for the model equation, do you think the intercept provides a realistic value in this particular case? What does it mean?
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+------------------------------------------------------------------------
+
+c)  The intercept is 4693, suggesting at the year zero, Canadian farms had 4693 horses. Other than to obtain an intercept, it does not make sense to extrapolate beyond the years we have data for.
+
+------------------------------------------------------------------------
+:::
+
 d) Calculate the correlation coefficient using the **=CORREL** function in Excel. Type **=CORREL(** and highlight the **Year** column, and then after a comma highlight the **Horses** column and close the brackets. 
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+------------------------------------------------------------------------
+
+d)  r = -0.979795897, meaning there is a strong relationship in the negative direction; i.e. as the years increase, the number of horses have decreased.
+
+------------------------------------------------------------------------
+:::
 
 e) If the relationship was non-linear would this would be a good statistic to use to describe the relationship between horse and years? Explain your answer. 
 
-```{asis, echo = T}
-**ANSWER**
-  
-a) b0 = 4693.4
-   b1 = -2.40
-   SSxy = -24
-   SSxx = 10
-   mean(x) = 1946
-   mean(y) = 23
-   
-b) Should be a nice plot in excel, equations should match your calculated b0 and b1
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
 
-c) The intercept is 4693, suggesting at the year zero, Canadian farms had 4693 horses.  Other than to obtain an intercept, it does not make sense to extrapolate beyond the years we have data for. 
+------------------------------------------------------------------------
 
-d) r = -0.979795897, meaning there is a strong relationship in the negative direction; i.e. as the years increase, the number of horses have decreased. 
+e)  The Pearson correlation coefficient is only useful for describing linear relationships. Based on the limited sample size we have, the scatterplot looks like a linear relationship, and so it would be ok to use the correlation coefficient in this case.
 
-e) The Pearson correlation coefficient is only useful for describing linear relationships. Based on the limited sample size we have, the scatterplot looks like a linear relationship, and so it would be ok to use the correlation coefficient in this case. 
-
-```
-
+------------------------------------------------------------------------
+:::
 
 <br>
 
@@ -193,6 +226,15 @@ b) To visually identify any trends or relationships, create a scatterplot of fer
 plot(fert, yield)
 ```
 
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+------------------------------------------------------------------------
+
+b)  The points in the scatterplot are showing a linear trend, increasing towards the top-right corner of the plot area.
+
+------------------------------------------------------------------------
+:::
 
 c) To numerically determine whether there is a relationship, calculate the correlation coefficient. (assume data is normally distributed). Does the correlation coefficient indicate a relationship between fertiliser and yield?
 
@@ -201,15 +243,15 @@ c) To numerically determine whether there is a relationship, calculate the corre
 cor(fert, yield)
 ```
 
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
 
-```{asis, echo = T}
-**ANSWER**
-  
-b) The points in the scatterplot are showing a linear trend, increasing towards the top-right corner of the plot area.
+------------------------------------------------------------------------
 
-c) The correlation coefficient is 0.964, indicating there is a strong relationship in the positive direction; i.e. as more fertiliser is applied, the yield increases. 
-```
+c)  The correlation coefficient is 0.964, indicating there is a strong relationship in the positive direction; i.e. as more fertiliser is applied, the yield increases.
 
+------------------------------------------------------------------------
+:::
 
 d) You can now fit the model in R using the `lm()` function. Remember to tell R the name of the object you want to store it as (in this case, `model.lm <-`), then state the name of the function. The arguments within the function (i.e. between the brackets) will be `yield ~ fert`, with `yield` being the response variable and `fert` being the predictor. 
 
@@ -226,23 +268,33 @@ summary(model.lm)
 
 e) In the model output obtained from `summary(model.lm)` the model parameters will be listed under 'Estimate' for the intercept and 'fert'. Compare these values to what you have calculated in Excel. 
 
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+------------------------------------------------------------------------
+
+e)  Intercept = 4.7619 = $b_0$ fert = 5.4286 = $b_1$ These coefficients should be the same as those calculated in Excel.
+
+------------------------------------------------------------------------
+:::
+
 f) Based on this output, what would the model equation be? Does it match your findings in Excel?
 
-```{asis, echo = T}
-**ANSWER**
-  
-e) Intercept = 4.7619 = $b_0$
-   fert = 5.4286 = $b_1$
-   These coefficients should be the same as those calculated in Excel. 
-    
-f)  Substituting in parameters from R output: 
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+------------------------------------------------------------------------
+
+f)  Substituting in parameters from R output:
 
 $$
 Yield = 4.7619 + 5.4286fert
 $$
 
 This should be the same as the equation obtained in Excel
-```
+
+------------------------------------------------------------------------
+:::
 
 g) You can now fit your model to the scatterplot you created previously using the `abline()` function. Make sure you run the plot function and the abline function in one go. If the lines are run separately, an error may appear saying "plot.new hasn't been called yet"; this is because the abline function requires a current plot on which it can overlay the line. 
 
@@ -275,43 +327,53 @@ ABARES <- read_excel("data/ENVX1002_practical_data_Regression.xlsx", sheet = "AB
 
 b) Create a scatterplot of `Year` against `TFP`. Dont forget the format will be different now - instead of only mentioning the object name, e.g. plot(yield, fert), you will need to refer to the specific columns within the ABARES dataset. (i.e. ABARES$Year).
 
-```{asis, echo = T}
-**ANSWER**
-```
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+------------------------------------------------------------------------
+
 ```{r , echo = T, eval = T}
 plot(ABARES$Year, ABARES$TFP)
 ```
 
+------------------------------------------------------------------------
+:::
+
 c) Can you see a trend between TFP and Year? Or are the points evenly scattered?
 
-```{asis, echo = T}
-**ANSWER**
-  
-c) There seems to be an overall positive trend in the plot
-```
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+------------------------------------------------------------------------
+
+c)  There seems to be an overall positive trend in the plot
+
+------------------------------------------------------------------------
+:::
 
 d) Calculate the correlation coefficient between these two variables. Is there a strong relationship?
 
-```{asis, echo = T}
-**ANSWER**
-  
-d) The correlation coefficient is 0.917, indicating a strong relationship in the positive direction. This means there has been positive growth in the dairy industry over time.   
-```
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+------------------------------------------------------------------------
+
 ```{r, echo = T, eval = T}
 cor(ABARES$Year, ABARES$TFP)
 ```
 
+d)  The correlation coefficient is 0.917, indicating a strong relationship in the positive direction. This means there has been positive growth in the dairy industry over time.
+
+------------------------------------------------------------------------
+:::
+
 e) Fit a model to your data and obtain the model summary. Year will be our predictor and TFP will be our response variable. What are the model parameters (i.e. $b_0$ and $b_1$)?
 
-```{asis, echo = T}
-**ANSWER**
-  
-e) Based on the model summary output, our parameters are:    
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
 
-$b_0$ = -2998.0129
-$b_1$ = 1.5632
+------------------------------------------------------------------------
 
-```
 ```{r , echo = T, eval = T}
 abares.lm <- lm(ABARES$TFP ~ ABARES$Year)
 
@@ -321,29 +383,42 @@ summary(abares.lm)
 
 ```
 
+e)  Based on the model summary output, our parameters are:
+
+$b_0$ = -2998.0129 $b_1$ = 1.5632
+:::
+
 f) What would the equation for this model be?
 
-```{asis, echo = T}
-**ANSWER**
-  
-f) Use the coefficients from above and substitute into lm equation:    
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+------------------------------------------------------------------------
+
+f)  Use the coefficients from above and substitute into lm equation:
 
 $$
 TFI = -2998.0 + 1.5632Year
-$$  
+$$
 
-```
+------------------------------------------------------------------------
+:::
 
 g) Overlay your model onto the scatterplot you produced earlier. When plotting make sure you refer to the column names as you did for the model (e.g. ABARES$Year).
 
-```{asis, echo = T}
-**ANSWER**
-```
-```{r, echo = T, eval = T} 
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+------------------------------------------------------------------------
+
+```{r, echo = T, eval = T}
 
 plot(ABARES$Year, ABARES$TFP, xlab = "Year", ylab = "Total factor productivity of Dairy (TFP)")
 abline(abares.lm, col = "red")
 ```
+
+------------------------------------------------------------------------
+:::
 
 <br>
 
