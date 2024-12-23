@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ENVX1002 Practical Topic 10 - Linear Functions – ENVX1002 Handbook</title>
+<title>Lab 10 - Linear Functions – ENVX1002 Handbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4911,7 +4911,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/Lab01.html"><strong>🖥️ Computer labs</strong></a></li><li class="breadcrumb-item"><a href="../labs/Lab10.html">ENVX1002 Practical Topic 10 - Linear Functions</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/Lab01.html"><strong>🖥️ Computer labs</strong></a></li><li class="breadcrumb-item"><a href="../labs/Lab10.html">Lab 10 - Linear Functions</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -5132,7 +5132,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/Lab10.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">ENVX1002 Practical Topic 10 - Linear Functions</span></a>
+ <span class="menu-text">Lab 10 - Linear Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -5159,8 +5159,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#exercise-1-walkthrough---fertiliser" id="toc-exercise-1-walkthrough---fertiliser" class="nav-link" data-scroll-target="#exercise-1-walkthrough---fertiliser">Exercise 1: Walkthrough - Fertiliser</a>
+  <li><a href="#exercise-1-walkthrough---fertiliser" id="toc-exercise-1-walkthrough---fertiliser" class="nav-link active" data-scroll-target="#exercise-1-walkthrough---fertiliser">Exercise 1: Walkthrough - Fertiliser</a>
   <ul class="collapse">
   <li><a href="#scatterplot-and-correlation" id="toc-scatterplot-and-correlation" class="nav-link" data-scroll-target="#scatterplot-and-correlation">1.1 Scatterplot and correlation</a></li>
   <li><a href="#state-hypotheses" id="toc-state-hypotheses" class="nav-link" data-scroll-target="#state-hypotheses">1.2 State hypotheses</a></li>
@@ -5186,9 +5185,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/Lab01.html"><strong>🖥️ Computer labs</strong></a></li><li class="breadcrumb-item"><a href="../labs/Lab10.html">ENVX1002 Practical Topic 10 - Linear Functions</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/Lab01.html"><strong>🖥️ Computer labs</strong></a></li><li class="breadcrumb-item"><a href="../labs/Lab10.html">Lab 10 - Linear Functions</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">ENVX1002 Practical Topic 10 - Linear Functions</h1>
+<h1 class="title">Lab 10 - Linear Functions</h1>
 </div>
 
 
@@ -5205,9 +5204,16 @@ window.Quarto = {
 </header>
 
 
-<p><br></p>
-<section id="objectives" class="level3 pad-box-mini" style="border: 2px solid grey; padding-left:10px;">
-<h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
 <li>Fit simple linear models and obtain associated model summaries in R</li>
 <li>Overlay fitted models onto scatterplots in R</li>
@@ -5215,13 +5221,12 @@ window.Quarto = {
 <li>Check assumptions are met prior to assessing model output</li>
 <li>Assess model summary in terms of fit and P-values</li>
 </ul>
+</div>
+</div>
 <p><strong>DATA: ENVX1002_wk10_practical_data_Regression.xlsx</strong></p>
-</section>
-<p><br></p>
 <p>Last week you fitted models in R, now it is time to understand what the output means.</p>
 <p>Before you begin, ensure you have a project set up in your desired folder. Then open up a fresh R markdown and save the file within this folder.</p>
 <p>Don’t forget to save as you go!</p>
-<p><br></p>
 <section id="exercise-1-walkthrough---fertiliser" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-1-walkthrough---fertiliser">Exercise 1: Walkthrough - Fertiliser</h2>
 <p>Like last week, we will start off our R modelling journey by fitting a model to the fertiliser data.</p>
@@ -5230,8 +5235,8 @@ window.Quarto = {
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add the data to R Studio</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>fert<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>yield<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">13</span>,<span class="dv">19</span>,<span class="dv">18</span>,<span class="dv">25</span>,<span class="dv">33</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>fert <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>yield <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">13</span>, <span class="dv">19</span>, <span class="dv">18</span>, <span class="dv">25</span>, <span class="dv">33</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="scatterplot-and-correlation" class="level3">
 <h3 class="anchored" data-anchor-id="scatterplot-and-correlation">1.1 Scatterplot and correlation</h3>
@@ -5270,7 +5275,7 @@ H_1 : \beta_1 \neq 0
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run your model</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">## yield = response variable (x)</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="do">## fert = predictor variable (y)</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>model.lm<span class="ot">&lt;-</span><span class="fu">lm</span>(yield<span class="sc">~</span>fert)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>model.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(yield <span class="sc">~</span> fert)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="check-assumptions" class="level3">
@@ -5287,7 +5292,7 @@ H_1 : \beta_1 \neq 0
 <p>These plots are only useful as an example of how to obtain and interpret output. If we wanted to obtain a more reliable check of our assumptions (and a more reliable model), we would need a larger sample size (n &gt; 10).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check your assumptions!!</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) <span class="co"># sets plots to show as 2x2 grid</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="co"># sets plots to show as 2x2 grid</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model.lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this case, we will assume the assumptions have been met and continue to assess the model output.</p>
@@ -5333,7 +5338,6 @@ Yield = 4.7619 + 5.4286*fert
 <p>Now we can put our interpretations together to form the conclusion:</p>
 <p>Observing the model output, we can see that the P-value for fert is significant (P = 0.00196) and we can say that as P &lt; 0.05, we reject the null hypothesis. We can conclude our slope is not 0 and our model is a better way to predict yield than the mean of our observations.</p>
 <p>We can therefore conclude that fertiliser is a significant predictor of crop yield as the slope is not equal to zero (P &lt; 0.05), and it accounts for 92.9% of the variation in yield.</p>
-<p><br></p>
 </section>
 </section>
 <section id="exercise-2-toxicity-in-peanuts" class="level2">
@@ -5347,21 +5351,17 @@ Yield = 4.7619 + 5.4286*fert
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>Peanuts <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/ENVX1002_wk10_practical_data_Regression.xlsx&quot;</span>, <span class="st">&quot;Peanuts&quot;</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Peanuts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><br></p>
 <section id="scatter-plot" class="level3">
 <h3 class="anchored" data-anchor-id="scatter-plot">2.1 Scatter plot</h3>
 <p>Make a scatter plot (using <code>plot(Peanuts$Toxin,Peanuts$Percent)</code>) of the data.</p>
 <ol type="a">
-<li><p>Describe the relationship between the two variables.</p></li>
-<li><p>Would you say that the percentage of non-contaminated peanuts in a batch could be predicted accurately from the level of aflatoxin in a sample via a linear relationship?</p></li>
+<li>Describe the relationship between the two variables.</li>
+</ol>
+<ol start="2" type="a">
+<li>Would you say that the percentage of non-contaminated peanuts in a batch could be predicted accurately from the level of aflatoxin in a sample via a linear relationship?</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Percent<span class="sc">~</span>Toxin, <span class="at">data =</span> Peanuts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>a)</strong> There seems to be a strong, negative relationship between Percent and Toxin</p>
-<p><strong>b)</strong> The relationship on the plot does seem to follow a straight line and so we can say that percentage of non-contaminated peanuts in a batch could be predicted from the level of aflatoxin in a sample via a linear relationship.</p>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Percent <span class="sc">~</span> Toxin, <span class="at">data =</span> Peanuts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="state-hypotheses-1" class="level3">
@@ -5369,27 +5369,14 @@ Yield = 4.7619 + 5.4286*fert
 <ol type="a">
 <li>What are the hypotheses we are testing? State them as the formulae and in the context of the study.</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>a)</strong> As above, the aim is to test whether it is possible to predict the percentage of non-contaminated peanuts from the aflatoxin level in a sample.</p>
-<p><span class="math display">\[
-H_0 : \beta_1 = 0
-\]</span></p>
-<p><span class="math display">\[
-H_1 : \beta_1 \neq 0
-\]</span></p>
-<p><span class="math inline">\(H_0\)</span>: Aflatoxin level is not a significant predictor of the percentage of non-contaminated peanuts and we are better off using the mean value.</p>
-<p><span class="math inline">\(H_1\)</span>: Aflatoxin level is a significant predictor of the percentage of non-contaminated peanuts.</p>
-</div>
 </section>
 <section id="fit-a-linear-model" class="level3">
 <h3 class="anchored" data-anchor-id="fit-a-linear-model">2.3 Fit a linear model</h3>
 <p>Use fit a linear model (<code>lm()</code>) to the Peanut data.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit a linear model using lm()</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Percent<span class="sc">~</span>Toxin, <span class="at">data=</span>Peanuts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Percent <span class="sc">~</span> Toxin, <span class="at">data =</span> Peanuts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><br></p>
 </section>
 <section id="check-assumptions-1" class="level3">
 <h3 class="anchored" data-anchor-id="check-assumptions-1">2.4 Check assumptions</h3>
@@ -5397,14 +5384,9 @@ H_1 : \beta_1 \neq 0
 <li>Inspect and comment on the residual plots- have the assumptions been met?</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>a)</strong> There seems to be no problem with the residual plots, the data are normally distributed and there is no indication of fanning (increasing variance) in the residuals.</p>
-</div>
-<p><br></p>
 </section>
 <section id="observe-model-output" class="level3">
 <h3 class="anchored" data-anchor-id="observe-model-output">2.5 Observe model output</h3>
@@ -5416,25 +5398,12 @@ H_1 : \beta_1 \neq 0
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit a linear model using lm()</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>a)</strong> The overall fit is good, with 83% of the variation explained. The model is significant with a p-value for <span class="math inline">\(b_1\)</span> &lt; 0.05 therefore indicating that the slope is significantly different from 0 and negative in this case (-0.0029).</p>
-</div>
 <ol start="2" type="a">
 <li>Is toxin a significant predictor of percentage non-contaminated peanuts? If so, how can we tell?</li>
 </ol>
-<div class="cell">
-<p><strong>Answer</strong></p>
-<p><strong>b)</strong> yes, as the p-value = 8.54e-14, which is much smaller than 0.05</p>
-</div>
 <ol start="3" type="a">
 <li>Interpret the slope parameter in terms of quantifying the relationship between toxin and percent.</li>
 </ol>
-<div class="cell">
-<p><strong>Answer</strong></p>
-<p><strong>c)</strong> An increase in toxin by 1 results in a decrease of 0.0029% of uncontaminated peanuts.</p>
-</div>
-<p><br></p>
 </section>
 </section>
 <section id="exercise-3-dippers" class="level2">
@@ -5451,129 +5420,45 @@ H_1 : \beta_1 \neq 0
 <ol type="a">
 <li>Read in the data from today’s Excel sheet, the corresponding sheet name is “Dippers”</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>a)</strong> Use the following code:</p>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl, <span class="at">quietly =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Dippers <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/ENVX1002_wk10_practical_data_Regression.xlsx&quot;</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                     ,<span class="st">&quot;Dippers&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <ol start="2" type="a">
 <li>Obtain a scatterplot, are there signs of a relationship between breeding pair density and caddis fly larvae?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>b)</strong> Looking at the scatterplot there seems to be a weak positive relationship. We can follow this up using correlation, which indicates there is a moderate positive relationship of 0.613 between breeding pair density along the study area.</p>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Dippers<span class="sc">$</span>LogCadd,Dippers<span class="sc">$</span>Br_Dens)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(Dippers<span class="sc">$</span>LogCadd,Dippers<span class="sc">$</span>Br_Dens)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <ol start="3" type="a">
 <li>What are the hypotheses we are testing? State them as the formulae and in the context of the study.</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>c)</strong> As above, the aim is to test whether the number of caddis fly larvae influence the number of breeding pairs of Dippers</p>
-<p><span class="math display">\[
-H_0 : \beta_1 = 0
-\]</span></p>
-<p><span class="math display">\[
-H_1 : \beta_1 \neq 0
-\]</span></p>
-<p><span class="math inline">\(H_0\)</span>: The number of caddis fly larvae is not significant predictor of dipper breeding pair density. OR could say: There is insufficient evidence to suggest the number of caddis fly larvae influence the number of breeding pairs of Dippers.</p>
-<p><span class="math inline">\(H_1\)</span>: The number of caddis fly larvae is a significant predictor of number of dipper breeding pair density. OR could say: The number of caddis fly larvae has an influence upon the number of breeding pairs of dippers.</p>
-</div>
 <ol start="4" type="a">
 <li>Let’s investigate further. Run the model, but before looking at our model output, are the assumptions ok?</li>
 </ol>
 <div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>d)</strong> Assumptions look ok:</p>
-<ul>
-<li>Residuals vs fitted: Points evenly scattered around mean</li>
-<li>Normal Q-Q: Points follow line</li>
-<li>Scale-Location: Points evenly scattered, no fanning.</li>
-<li>Residuals vs Leverage: No points occurring at top right or bottom right corners outside the dotted red lines. A couple of points are close, but not outside, so all is good.</li>
-</ul>
-<p>We can continue to interpreting the output!</p>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run model</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>dipper.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Br_Dens <span class="sc">~</span> LogCadd, <span class="at">data=</span>Dippers)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check assumptions</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dipper.lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run model</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>dipper.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Br_Dens <span class="sc">~</span> LogCadd, <span class="at">data =</span> Dippers)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check assumptions</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dipper.lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="5" type="a">
 <li>Once you are happy assumptions are good, you can use <code>summary()</code> to interpret the model output.</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dipper.lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <ol start="6" type="a">
 <li>What is the equation for our model, incorporating our coefficients?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>f)</strong> Br_Dens = 0.6295 + 0.9783*LogCadd</p>
-</div>
 <ol start="7" type="a">
 <li>Based on the F-statistic output, is the model significant? How can we tell? Is it different to the significance of LogCadd?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>g)</strong> The F-test statistic tells us whether our overall model is significant, which in this case it is (P = 0.002). In the case of simple linear models (with only 1 predictor variable), the hypothesis for the F-statistic will be the same as the hypothesis for the slope of our single predictor. Therefore we expect the P-values to be the same.</p>
-</div>
 <ol start="8" type="a">
 <li>Is LogCadd a significant predictor of Dipper breeding pair density? How can we tell?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>h)</strong> The P-value for LogCadd is less than 0.05 (P = 0.0024), and so we reject the null hypothesis that the slope is equal to zero. We can therefore say LogCadd a significant predictor of Dipper breeding pair density.</p>
-</div>
 <ol type="i">
 <li>How good is the fit of our model?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>i)</strong> Not too good. Our residual standard is (Residual SE = 1.204) and the r<sup>2</sup> is closer to 0 than 1 (r<sup>2</sup> = 0.375).</p>
-<p>Our residual SE is a low value, but relative to the range of Br_Dens (min = 2.9, max = 8.4), it is not too good.</p>
-<p>We can also back this up with a scatterplot and our model overlaid, notice how the points of the scatterplot follow the line somewhat, but not as tightly as we saw in the Peanuts data.</p>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Dippers<span class="sc">$</span>LogCadd,Dippers<span class="sc">$</span>Br_Dens)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(dipper.lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <ol start="10" type="a">
 <li>What conclusions can we make from this model output?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>j)</strong> Although the number of caddis fly larvae (LogCadd) is a significant predictor of Dipper breeding pair density (P &lt; 0.05), it only accounts for 37.5% of variation in breeding pair density.</p>
-<p>Back to the original question: Does the number of caddis fly larvae influence the number of breeding pairs of Dippers? Yes, but based on our findings, this relationship is not very strong.</p>
-</div>
 <ol start="11" type="a">
 <li>A final thought; Does our result make sense within the context? i.e. why might the Dipper breeding pair density be related to LogCadd?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>k)</strong> Our findings make sense that there is a relationship between caddis fly larvae and Dipper breeding density, as Dippers feed on benthic invertebrates such as caddis fly larvae.</p>
-<p>Why there is such a weak relationship may be because the caddis fly larvae is likely not to be the only type of invertebrate the Dippers eat, or perhaps the Dippers have a preference.</p>
-<p>There are also other factors in play, but we would have to build some knowledge in this area through research.</p>
-</div>
-<p><br></p>
 <p>Great work fitting simple linear models! Next week we step it up with <em>multiple</em> linear regression.</p>
-<br> <br> <!--The code below reduces white space at the end of the output doc-->
-<div class="tocify-extend-page" data-unique="tocify-extend-page" style="height: 0;">
-
-</div>
 
 
 </section>
