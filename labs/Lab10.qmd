@@ -9,7 +9,6 @@ if (!require("pacman")) install.packages("pacman")
 pacman::p_load(readxl)
 ```
 
-<br>
 
 ::: callout-tip
 ### Objectives
@@ -23,9 +22,6 @@ pacman::p_load(readxl)
 
 **DATA: ENVX1002_wk10_practical_data_Regression.xlsx**
 
-</div>
-
-<br>
 
 Last week you fitted models in R, now it is time to understand what the output means.
 
@@ -33,7 +29,7 @@ Before you begin, ensure you have a project set up in your desired folder. Then 
 
 Don't forget to save as you go!
 
-<br>
+
 
 ## Exercise 1: Walkthrough - Fertiliser
 
@@ -43,8 +39,8 @@ a)  Read the following code into R:
 
 ```{r}
 # add the data to R Studio
-fert<-c(0,1,2,3,4,5)
-yield<-c(2,13,19,18,25,33)
+fert <- c(0, 1, 2, 3, 4, 5)
+yield <- c(2, 13, 19, 18, 25, 33)
 ```
 
 ### 1.1 Scatterplot and correlation
@@ -97,7 +93,7 @@ After checking the correlations and scatterplot, we need to fit the model using 
 # Run your model
 ## yield = response variable (x)
 ## fert = predictor variable (y)
-model.lm<-lm(yield~fert)
+model.lm <- lm(yield ~ fert)
 ```
 
 ### 1.4 Check assumptions
@@ -120,7 +116,7 @@ These plots are only useful as an example of how to obtain and interpret output.
 
 ```{r}
 # Check your assumptions!!
-par(mfrow=c(2,2)) # sets plots to show as 2x2 grid
+par(mfrow = c(2, 2)) # sets plots to show as 2x2 grid
 plot(model.lm)
 ```
 
@@ -181,7 +177,6 @@ Observing the model output, we can see that the P-value for fert is significant 
 
 We can therefore conclude that fertiliser is a significant predictor of crop yield as the slope is not equal to zero (P \< 0.05), and it accounts for 92.9% of the variation in yield.
 
-<br>
 
 ## Exercise 2: Toxicity in peanuts
 
@@ -199,7 +194,6 @@ Peanuts <- read_xlsx("data/ENVX1002_wk10_practical_data_Regression.xlsx", "Peanu
 head(Peanuts)
 ```
 
-<br>
 
 ### 2.1 Scatter plot
 
@@ -230,7 +224,7 @@ b)  The relationship on the plot does seem to follow a straight line and so we c
 :::
 
 ```{r scatterplot, echo=T, eval=T}
-plot(Percent~Toxin, data = Peanuts)
+plot(Percent ~ Toxin, data = Peanuts)
 ```
 
 ### 2.2 State Hypotheses
@@ -265,17 +259,16 @@ Use fit a linear model (`lm()`) to the Peanut data.
 
 ```{r lmPeanuts, eval=T, echo=T}
 # fit a linear model using lm()
-mod <- lm(Percent~Toxin, data=Peanuts)
+mod <- lm(Percent ~ Toxin, data = Peanuts)
 ```
 
-<br>
 
 ### 2.4 Check assumptions
 
 a)  Inspect and comment on the residual plots- have the assumptions been met?
 
 ```{r ResidualPlots, echo = T, eval = T}
-par(mfrow=c(2,2))
+par(mfrow = c(2, 2))
 plot(mod)
 ```
 
@@ -289,7 +282,6 @@ a)  There seems to be no problem with the residual plots, the data are normally 
 ------------------------------------------------------------------------
 :::
 
-<br>
 
 ### 2.5 Observe model output
 
@@ -336,7 +328,6 @@ c)  An increase in toxin by 1 results in a decrease of 0.0029% of uncontaminated
 ------------------------------------------------------------------------
 :::
 
-<br>
 
 ## Exercise 3: Dippers
 
@@ -364,8 +355,10 @@ a)  Use the following code:
 
 ```{r, echo = T, eval = T}
 library(readxl, quietly = TRUE)
-Dippers <- read_xlsx("data/ENVX1002_wk10_practical_data_Regression.xlsx"
-                     ,"Dippers")
+Dippers <- read_xlsx(
+  "data/ENVX1002_wk10_practical_data_Regression.xlsx",
+  "Dippers"
+)
 ```
 
 ------------------------------------------------------------------------
@@ -381,9 +374,9 @@ b)  Obtain a scatterplot, are there signs of a relationship between breeding pai
 b)  Looking at the scatterplot there seems to be a weak positive relationship. We can follow this up using correlation, which indicates there is a moderate positive relationship of 0.613 between breeding pair density along the study area.
 
 ```{r, echo = T, eval = T}
-plot(Dippers$LogCadd,Dippers$Br_Dens)
+plot(Dippers$LogCadd, Dippers$Br_Dens)
 
-cor(Dippers$LogCadd,Dippers$Br_Dens)
+cor(Dippers$LogCadd, Dippers$Br_Dens)
 ```
 
 ------------------------------------------------------------------------
@@ -417,10 +410,10 @@ d)  Let's investigate further. Run the model, but before looking at our model ou
 
 ```{r , echo = T, eval = T}
 # Run model
-dipper.lm <- lm(Br_Dens ~ LogCadd, data=Dippers)
+dipper.lm <- lm(Br_Dens ~ LogCadd, data = Dippers)
 
 # Check assumptions
-par(mfrow = c(2,2))
+par(mfrow = c(2, 2))
 plot(dipper.lm)
 
 ```
@@ -507,7 +500,7 @@ Our residual SE is a low value, but relative to the range of Br_Dens (min = 2.9,
 We can also back this up with a scatterplot and our model overlaid, notice how the points of the scatterplot follow the line somewhat, but not as tightly as we saw in the Peanuts data.
 
 ```{r echo = T, eval = T}
-plot(Dippers$LogCadd,Dippers$Br_Dens)
+plot(Dippers$LogCadd, Dippers$Br_Dens)
 abline(dipper.lm)
 ```
 
@@ -544,11 +537,5 @@ There are also other factors in play, but we would have to build some knowledge 
 ------------------------------------------------------------------------
 :::
 
-<br>
 
 Great work fitting simple linear models! Next week we step it up with *multiple* linear regression.
-
-<br> <br> <!--The code below reduces white space at the end of the output doc-->
-
-::: {.tocify-extend-page data-unique="tocify-extend-page" style="height: 0;"}
-:::
