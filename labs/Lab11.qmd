@@ -73,11 +73,11 @@ a)  What do the results of the correlation matrix tell you?
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **a)** These results tell you that the correlation between CornP and InorgP the highest (r = 0.720) The correlation between CornP and OrgP (r = 0.212) or between OrgP and InorgP (r = 0.399) is much weaker.
 
----
+-----
 :::
 
 b)  Based on the correlation matrix, if we were to fit a single predictor model involving EITHER InorgP OR OrgP, then which model would be more successful?
@@ -87,11 +87,11 @@ b)  Based on the correlation matrix, if we were to fit a single predictor model 
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **b)** The more successful model would be $CornP = \beta_0 + \beta_1 InorgP$ as the correlation between CornP and InorgP is much higher than the relationship than CornP and OrgP.
 
----
+-----
 :::
 
 The pairs plot creates scatterplots between each possible pair of variables. Like a single scatterplot the pairs plot allows us to visually observe any trends.
@@ -105,11 +105,11 @@ pairs(Corn)
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **c)** We read the pairs plot like a correlation matrix. We can observe a slight trend between CornP and InorgP. The plots of CornP and OrgP, and that of OrgP and InorgP show much weaker trends and a more even scatter of points.
 
----
+-----
 :::
 
 <br>
@@ -168,13 +168,13 @@ plot(MLR.Corn)
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **a)** No there is not as the distribution is approximately normal and the variance is constant. In the residuals vs Leverage plot there is a point sitting close to the top right corner, but this is most likely because our dataset is small.
 
 Interpretation of the assumptions is quite subjective and often comes down to time and experience. If, for example in your Project 3 it is not obvious whether the assumptions have been met, make your decision and provide justification so that the viewer is able to come to the same conclusion as you. e.g. if you have a smaller dataset as you see in this exercise, it may be harder to tell whether assumptions have been met.
 
----
+-----
 :::
 
 <br>
@@ -192,11 +192,11 @@ summary(MLR.Corn)
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **a)** CornP = 66.4654 + 1.2902 * InorgP - 0.1110 * OrgP
 
----
+-----
 :::
 
 <br>
@@ -220,11 +220,11 @@ b)  Given the above, how would you interpret the relationship between OrgP and C
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **b)** As OrgP increases by 1, CornP decreases by 0.1110, given InorgP is held constant.
 
----
+-----
 :::
 
 <br>
@@ -262,22 +262,22 @@ a)  Looking at the `summary()` output, is our overall model significant?
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **a)** Our model is significant as the P-value derived from the F-test statistic is less than 0.05 (P = 0.005). As P < 0.05, we reject our null hypothesis and can say at least one of our predictors are significant. 
 
----
+-----
 :::
 b) Which independent variable is a significant predictor of corn yield?
 
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **b)** InorgP (P = 0.002)
 
----
+-----
 :::
 
 
@@ -290,11 +290,11 @@ a) How much of the variation in CornP content is explained by the two independen
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **a)** This question refers to the r-squared adjusted. As the adjusted r-squared = 0.4575, we can say that the model (containing our two independent variables) explains 45.8% of variation in CornP. 
 
----
+-----
 :::
 
 b) Run the model again but this time with *only* the significant independent variable. How do the model performance criteria (r^2^-adj, P-values, Residual Standard Error) change?
@@ -302,11 +302,11 @@ b) Run the model again but this time with *only* the significant independent var
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **b)** By removing OrgP (deemed non-significant as P = 0.662) and only retaining InorgP (P = 0.002), we can see that the r-squared adjusted has increased to 0.4864, indicating an improvement in model fit. 
 
----
+-----
 :::
 
 <br>
@@ -324,7 +324,7 @@ a) What would our statistical conclusion be?
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **a)** Statistical conclusion:
 
@@ -336,7 +336,7 @@ The fit of this model is moderate, with a residual standard error of 12.25 and a
 
 Furthermore this fit could be improved by the removal of the OrgP predictor within the model (r^2^-adj = 0.4864).
 
----
+-----
 :::
 
 b)  What would our Scientific conclusion be?
@@ -344,13 +344,13 @@ b)  What would our Scientific conclusion be?
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **b)** Scientific conclusion:
 
 Inorganic phosphorous is a significant predictor of phosphorous content in corn (P \< 0.05), whereas organic phosphorous is not (P \> 0.05). The model accounts for 45.8% of variation in the phosphorous content of corn.
 
----
+-----
 :::
 
 <br>
@@ -404,7 +404,7 @@ pairs(mic)
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
   
 **a)** The strongest correlation with total_bacteria is with NO3 (r = -0.759), followed by Carbon (r = 0.663) and water_temp (r = 0.645). 
 
@@ -412,7 +412,7 @@ Observing the pairs plot, there is something weird happening with NO3, so there 
 
 There are also some correlations between independent variables, but they are not strong enough to exclude from the model. 
 
----
+-----
 :::
 
 <br>
@@ -452,7 +452,7 @@ plot(mic.lm)
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **a)** Residuals vs fitted looks ok, as does normality. 
 
@@ -462,7 +462,7 @@ Note this question did not mention the Residuals vs Leverage plot. There is one 
 
 You are welcome to investigate this further, but for the sake of our example, we will move onto interpretation of the output. 
 
----
+-----
 :::
 
 <br>
@@ -480,11 +480,11 @@ a)  Incorporating the partial regression coefficient estimates, what is the equa
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **a)** total_bacteria = 766294 + 40051 * water_temp + 84425 * carbon_L_h - 16586 * NO3  
 
----
+-----
 :::
 
 b)  Like you did in Exercise 1.4, how would you interpret the relationship between total_bacteria and water_temp?
@@ -492,11 +492,11 @@ b)  Like you did in Exercise 1.4, how would you interpret the relationship betwe
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **b)** As water_temp increases by 1, total_bacteria increases by 40051, given all other partial regression coefficients remain constant.   
 
----
+-----
 :::
 
 <br>
@@ -509,11 +509,11 @@ a)  Observing the P-value of the F-statistic in the summary, can we say our mode
 ### Solution {style="color:green;"}
 
 
----
+-----
 
 **a)** The P-value for the F-statistic is 1.318e-10, which is smaller than 0.05. We therefore reject the null hypothesis and can say our model is indeed significant as at least one of our predictors are significant. 
 
----
+-----
 :::
 
 b)  Are any predictors significant?
@@ -521,13 +521,13 @@ b)  Are any predictors significant?
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **b)** Yes; as the P-value for N03 is 0.00268 (P < 0.05), we can reject the null hypothesis that the true partial regression slope for this variable is not zero.  
 
 Water_temp and carbon_L_h are not significant predictors (P > 0.05), i.e. as we cannot reject the null hypothesis that the true partial regression slope of each is non-zero.
 
----
+-----
 :::
 
 <br>
@@ -539,13 +539,13 @@ a)  How much of the variation in total bacteria is explained by the three indepe
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **a)** The model is not the best; the Residual Standard error is huge, even in terms of the response variable, and the r^2^-adjusted is only 0.5913. 
 
 The model accounts for 59.1% of variation in total bacteria counts. 
 
----
+-----
 :::
 
 b)  Run the model again but this time excluding the variable with the largest P-value. How do the model performance criteria (r^2^-adj, P-values, Residual Standard Error) change?
@@ -553,7 +553,7 @@ b)  Run the model again but this time excluding the variable with the largest P-
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **b)** The least significant predictor is carbon_L_h (P = 0.21624).
 
@@ -561,7 +561,7 @@ After removing carbon_L_h, the r^2^-adj has decreased (r^2^-adj = 0.5868) and Re
 
 From this, we can see the model has not been improved by eliminating the predictor.
   
----
+-----
 :::
 
 ```{r, eval=T}
@@ -578,7 +578,7 @@ a)  What would the statistical conclusion be for this model?
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **a)** Statistical conclusion:
 
@@ -592,7 +592,7 @@ Note: remember residual standard error is on the same scale as the response vari
 
 Furthermore this fit was not substantially improved by the removal of the water_temp predictor within the model (r^2^-adj = 0.587).
 
----
+-----
 :::
 
 b)  What would our scientific conclusion be?
@@ -600,13 +600,13 @@ b)  What would our scientific conclusion be?
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **b)** Scientific conclusion: 
   
   Nitrate is a significant predictor of total bacteria count in (P < 0.05), whereas water temperature and Carbon production rate were not is not in this case (P > 0.05). The model accounts for 59.1% of variation in the bacteria counts measured in water samples collected from Puget Sound. 
 
----
+-----
 :::
 
 <br>
@@ -644,7 +644,7 @@ a)  Read in the data from today's Excel sheet, the corresponding sheet name is "
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 **a)** Use the following code:
 
@@ -654,7 +654,7 @@ Dippers <- read_xlsx("data/ENVX1002_practical_wk11_data_Regression.xlsx"
                      ,"Dippers")
 ```
 
----
+-----
 :::
 
 b)  Investigate a correlation matrix and pairs plot of the dataset, are there signs of a relationship between breeding pair density and other independent variables?
@@ -668,11 +668,11 @@ cor(Dippers)
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
   
 **b)** Looking at the pairs scatterplots there seems to be a positive relationship between Br_Dens and RiverSlope, LogCadd, and with LogStone. We can follow this up using correlation, which indicates there is a moderate positive relationship of 0.710 between Br_Dens and RiverSlope, 0.763 Br_Dens and LogStone, and 0.613 between Br_Dens and LogCadd.  
 
----
+-----
 :::
 
 c)  Let's investigate further. Run the model incorporating all of our predictors, but before looking at our model output, are the assumptions ok?
@@ -690,7 +690,7 @@ plot(dipper.lm)
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
   
 **c)** Assumptions look ok:
   
@@ -704,7 +704,7 @@ plot(dipper.lm)
 
 We can continue to interpreting the output!
 
----
+-----
 :::
 
 <br>
@@ -714,14 +714,14 @@ Once you are happy assumptions are good, you can interpret the model output usin
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
 ```{r , eval=T}
 summary(dipper.lm)
 
 ```
 
----
+-----
 :::
 
 d)  What is the equation for our model, incorporating our partial regression coefficients?
@@ -729,11 +729,11 @@ d)  What is the equation for our model, incorporating our partial regression coe
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
   
 **d)** Br_Dens = -1.530702 + 0.006916 * Hardness + 0.067924 * RiverSlope + 0.317611 * LogCadd + 0.752987 * LogStone
 
----
+-----
 :::
 
 e)  Based on the F-statistic output, is the model significant? How can we tell? Is it different to the significance of LogCadd this time?
@@ -741,13 +741,13 @@ e)  Based on the F-statistic output, is the model significant? How can we tell? 
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
   
 **e)** The F-test statistic tells us whether our overall model is significant, which in this case it is (P = 1.971e-05). This time, unlike when we only used LogCadd as the predictor, our P-value from the F-Statistic is now different to the P-value of LogCadd (P = 0.16674).  
 
 As our P - value for the model is < 0.05, we can reject the null hypothesis and conclude our model is significant and at least one of our partial regression slopes are non-zero. 
 
----
+-----
 :::
 
 f)  Is LogCadd still a significant predictor of Dipper breeding pair density?
@@ -757,7 +757,7 @@ f)  Is LogCadd still a significant predictor of Dipper breeding pair density?
   
 **f)** Unlike last week, the P-value for LogCadd is now greater than 0.05 (P = 0.16674), and so we fail to reject the null hypothesis that the partial regression slope is equal to zero.  We can therefore say LogCadd not a significant predictor of Dipper breeding pair density. 
 
----
+-----
 :::
 
 g)  What are the significant predictors of this model?
@@ -765,11 +765,11 @@ g)  What are the significant predictors of this model?
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
   
 **g)** The only significant predictor for this model is LogStone (P < 0.05). 
 
----
+-----
 :::
 
 h)  How good is the fit of our model?
@@ -777,7 +777,7 @@ h)  How good is the fit of our model?
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
 
   
 **h)** Our model fit is much better compared to the simple linear model from last week. 
@@ -786,7 +786,7 @@ Our residual standard is (Residual SE = 0.7753) and the r^2^-adjusted is closer 
 
 Our residual SE is a low value, and relative to the range of Br_Dens (min = 2.9, max = 8.4), which is pretty good and also much better than last week. 
 
----
+-----
 :::
 
 i)  What might we do to improve the model fit?
@@ -794,11 +794,11 @@ i)  What might we do to improve the model fit?
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
   
 **i)** Consider elimination of a non-significant predictor variable. 
 
----
+-----
 :::
 
 j)  What statistical and scientific conclusions can we make from this model output?
@@ -806,7 +806,7 @@ j)  What statistical and scientific conclusions can we make from this model outp
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
----
+-----
   
 **j) ** 
 Statistical:
@@ -821,7 +821,7 @@ The number of Stonefly Larvae is a significant predictor of Dipper breeding pair
 
 The significance of Stonefly larvae over Caddis fly larvae, and the positive relationship in the partial regression coefficient, suggests that Dippers may have a preference for Stonefly Larvae over Caddis Fly larvae.  
 
----
+-----
 :::
 
 <br>
