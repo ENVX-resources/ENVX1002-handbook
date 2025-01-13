@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ENVX1002 Practical Topic 11 - Multiple Linear Regression – ENVX1002 Handbook</title>
+<title>Lab 11 - Multiple Linear Regression – ENVX1002 Handbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4911,7 +4911,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/Lab01.html"><strong>🖥️ Computer labs</strong></a></li><li class="breadcrumb-item"><a href="../labs/Lab11.html">ENVX1002 Practical Topic 11 - Multiple Linear Regression</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/Lab01.html"><strong>🖥️ Computer labs</strong></a></li><li class="breadcrumb-item"><a href="../labs/Lab11.html">Lab 11 - Multiple Linear Regression</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -5138,7 +5138,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/Lab11.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">ENVX1002 Practical Topic 11 - Multiple Linear Regression</span></a>
+ <span class="menu-text">Lab 11 - Multiple Linear Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -5159,8 +5159,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#exercise-1-corn-yields" id="toc-exercise-1-corn-yields" class="nav-link" data-scroll-target="#exercise-1-corn-yields">Exercise 1: Corn yields</a>
+  <li><a href="#exercise-1-corn-yields" id="toc-exercise-1-corn-yields" class="nav-link active" data-scroll-target="#exercise-1-corn-yields">Exercise 1: Corn yields</a>
   <ul class="collapse">
   <li><a href="#examine-the-correlations" id="toc-examine-the-correlations" class="nav-link" data-scroll-target="#examine-the-correlations">1.1 Examine the correlations</a></li>
   <li><a href="#fit-the-model" id="toc-fit-the-model" class="nav-link" data-scroll-target="#fit-the-model">1.2 Fit the model</a></li>
@@ -5187,9 +5186,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/Lab01.html"><strong>🖥️ Computer labs</strong></a></li><li class="breadcrumb-item"><a href="../labs/Lab11.html">ENVX1002 Practical Topic 11 - Multiple Linear Regression</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/Lab01.html"><strong>🖥️ Computer labs</strong></a></li><li class="breadcrumb-item"><a href="../labs/Lab11.html">Lab 11 - Multiple Linear Regression</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">ENVX1002 Practical Topic 11 - Multiple Linear Regression</h1>
+<h1 class="title">Lab 11 - Multiple Linear Regression</h1>
 </div>
 
 
@@ -5206,10 +5205,16 @@ window.Quarto = {
 </header>
 
 
-<p><br></p>
-<section id="objectives" class="level3 pad-box-mini" style="border: 2px solid grey; padding-left:10px;">
-<h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
-<p>###Test</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learning outcomes
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
 <li>Learn to perform MLR and interpret the results using R;</li>
 <li>Undertake hypothesis testing to determine if model is significant</li>
@@ -5218,14 +5223,13 @@ window.Quarto = {
 <li>Assess model summary in terms of fit and P-values</li>
 <li>Consider more parsimonious models</li>
 </ul>
+</div>
+</div>
 <p><strong>DATA: ENVX1002_wk11_practical_data_Regression.xlsx</strong></p>
-</section>
-<p><br></p>
 <p>Last week you explored simple linear regression and assessed the output of your models.</p>
 <p>This week we will build upon this and venture into multiple linear regression.</p>
 <p>Before you begin, ensure you have a project set up in your desired folder. Then open up a fresh R markdown and save the file within this folder.</p>
 <p>Don’t forget to save as you go!</p>
-<p><br></p>
 <section id="exercise-1-corn-yields" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-1-corn-yields">Exercise 1: Corn yields</h2>
 <p>Data: <em>Corn</em> spreadsheet</p>
@@ -5258,28 +5262,16 @@ window.Quarto = {
 <ol type="a">
 <li>What do the results of the correlation matrix tell you?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>a)</strong> These results tell you that the correlation between CornP and InorgP the highest (r = 0.720) The correlation between CornP and OrgP (r = 0.212) or between OrgP and InorgP (r = 0.399) is much weaker.</p>
-</div>
 <ol start="2" type="a">
 <li>Based on the correlation matrix, if we were to fit a single predictor model involving EITHER InorgP OR OrgP, then which model would be more successful?</li>
 </ol>
 <div class="line-block">          (Hint, the <em>r</em><sup>2</sup> is exactly that for a single predictor regression, the square of the correlation, <em>r</em>).</div>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>b)</strong> The more successful model would be <span class="math inline">\(CornP = \beta_0 + \beta_1 InorgP\)</span> as the correlation between CornP and InorgP is much higher than the relationship than CornP and OrgP.</p>
-</div>
 <p>The pairs plot creates scatterplots between each possible pair of variables. Like a single scatterplot the pairs plot allows us to visually observe any trends.</p>
 <ol start="3" type="a">
 <li>Observing the pairs plot below, do you see any strong trends? How well does this link to your correlation matrix?</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(Corn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>c)</strong> We read the pairs plot like a correlation matrix. We can observe a slight trend between CornP and InorgP. The plots of CornP and OrgP, and that of OrgP and InorgP show much weaker trends and a more even scatter of points.</p>
 </div>
 <p><br></p>
 <section id="simple-3-d-plot" class="level4">
@@ -5321,11 +5313,6 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MLR.Corn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>a)</strong> No there is not as the distribution is approximately normal and the variance is constant. In the residuals vs Leverage plot there is a point sitting close to the top right corner, but this is most likely because our dataset is small.</p>
-<p>Interpretation of the assumptions is quite subjective and often comes down to time and experience. If, for example in your Project 3 it is not obvious whether the assumptions have been met, make your decision and provide justification so that the viewer is able to come to the same conclusion as you. e.g. if you have a smaller dataset as you see in this exercise, it may be harder to tell whether assumptions have been met.</p>
-</div>
 <p><br></p>
 </section>
 <section id="model-output" class="level3">
@@ -5337,25 +5324,17 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(MLR.Corn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>a)</strong> CornP = 66.4654 + 1.2902 * InorgP - 0.1110 * OrgP</p>
-</div>
 <p><br></p>
 <p>Simple linear regression allowed us to describe the relationship incorporating our regression coefficient estimate. We would interpret it as follows:</p>
-<p><em>“As <span class="math inline">\(x\)</span> increases by 1, <span class="math inline">\(y\)</span> decreases by <span class="math inline">\(b_1\)</span> units”</em> (depending on the direction of the relationship).</p>
+<p>*“As* <span class="math inline">\(x\)</span> increases by 1, <span class="math inline">\(y\)</span> decreases by <span class="math inline">\(b_1\)</span> units” (depending on the direction of the relationship).</p>
 <p>This week it is a bit different because we are dealing with <strong>partial</strong> regression coefficients instead.</p>
 <p>Instead, we would say:</p>
-<p><em>“as <span class="math inline">\(x_1\)</span> increases by 1, <span class="math inline">\(y\)</span> decreases by <span class="math inline">\(b_1\)</span> units given all other partial regression coefficients are held constant”.</em></p>
+<p>*“as* <span class="math inline">\(x_1\)</span> increases by 1, <span class="math inline">\(y\)</span> decreases by <span class="math inline">\(b_1\)</span> units given all other partial regression coefficients are held constant”.</p>
 <p>Applied to our model, if we wanted to describe the relationship between InorgP and CornP, we would say:</p>
 <p><em>“As InorgP increases by 1, CornP increases by 1.2902, given OrgP is held constant.”</em></p>
 <ol start="2" type="a">
 <li>Given the above, how would you interpret the relationship between OrgP and CornP?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>b)</strong> As OrgP increases by 1, CornP decreases by 0.1110, given InorgP is held constant.</p>
-</div>
 <p><br></p>
 </section>
 <section id="is-the-model-useful" class="level3">
@@ -5379,17 +5358,9 @@ window.Quarto = {
 <ol type="a">
 <li>Looking at the <code>summary()</code> output, is our overall model significant?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>a)</strong> Our model is significant as the P-value derived from the F-test statistic is less than 0.05 (P = 0.005). As P &lt; 0.05, we reject our null hypothesis and can say at least one of our predictors are significant.</p>
-</div>
 <ol start="2" type="a">
 <li>Which independent variable is a significant predictor of corn yield?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>b)</strong> InorgP (P = 0.002)</p>
-</div>
 <p><br></p>
 </section>
 </section>
@@ -5398,17 +5369,9 @@ window.Quarto = {
 <ol type="a">
 <li>How much of the variation in CornP content is explained by the two independent variables?</li>
 </ol>
-<div class="cell">
-<p><strong>Answer:</strong></p>
-<p><strong>a)</strong> This question refers to the r-squared adjusted. As the adjusted r-squared = 0.4575, we can say that the model (containing our two independent variables) explains 45.8% of variation in CornP.</p>
-</div>
 <ol start="2" type="a">
 <li>Run the model again but this time with <em>only</em> the significant independent variable. How do the model performance criteria (r<sup>2</sup>-adj, P-values, Residual Standard Error) change?</li>
 </ol>
-<div class="cell">
-<p><strong>Answer:</strong></p>
-<p><strong>b)</strong> By removing OrgP (deemed non-significant as P = 0.662) and only retaining InorgP (P = 0.002), we can see that the r-squared adjusted has increased to 0.4864, indicating an improvement in model fit.</p>
-</div>
 <p><br></p>
 </section>
 <section id="our-conclusions" class="level3">
@@ -5419,22 +5382,9 @@ window.Quarto = {
 <ol type="a">
 <li>What would our statistical conclusion be?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>a)</strong> Statistical conclusion:</p>
-<p>The F-test indicated our model is significant (P &lt; 0.05), allowing us to reject the null hypothesis and conclude at least one of our partial regression coefficients has a slope not equal to 0.</p>
-<p>Our t-test upon each of our partial regression coefficients supports this, as the P-value for InorgP was 0.002, much smaller than 0.05 and we can therefore reject the null hypothesis that this coefficient is equal to 0. In contrast, the P-value for OrgP was greater than 0.05 (P = 0.662), and so we fail to reject the null hypothesis, concluding OrgP is not a significant predictor in this model.</p>
-<p>The fit of this model is moderate, with a residual standard error of 12.25 and an r<sup>2</sup>-adj = 0.4575.</p>
-<p>Furthermore this fit could be improved by the removal of the OrgP predictor within the model (r<sup>2</sup>-adj = 0.4864).</p>
-</div>
 <ol start="2" type="a">
 <li>What would our Scientific conclusion be?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>b)</strong> Scientific conclusion:</p>
-<p>Inorganic phosphorous is a significant predictor of phosphorous content in corn (P &lt; 0.05), whereas organic phosphorous is not (P &gt; 0.05). The model accounts for 45.8% of variation in the phosphorous content of corn.</p>
-</div>
 <p><br></p>
 </section>
 </section>
@@ -5473,12 +5423,6 @@ window.Quarto = {
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(mic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>a)</strong> The strongest correlation with total_bacteria is with NO3 (r = -0.759), followed by Carbon (r = 0.663) and water_temp (r = 0.645).</p>
-<p>Observing the pairs plot, there is something weird happening with NO3, so there may be another kind of relationship occurring here.</p>
-<p>There are also some correlations between independent variables, but they are not strong enough to exclude from the model.</p>
-</div>
 <p><br></p>
 </section>
 <section id="fit-the-model-1" class="level3">
@@ -5507,13 +5451,6 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mic.lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>a)</strong> Residuals vs fitted looks ok, as does normality.</p>
-<p>There seems to be some slight clustering but most likely due to the data being obtained from two sampling periods (both within the same season), or potentially from different points. Water quality and microbial activity is highly variable, so this is not entirely unexpected. Nevertheless we can move on with this in mind.</p>
-<p>Note this question did not mention the Residuals vs Leverage plot. There is one value in the top right corner outside the first threshold. This indicates there may be a potential outlier within the predictors influencing the regression model, or maybe the current model is not the best for this data.</p>
-<p>You are welcome to investigate this further, but for the sake of our example, we will move onto interpretation of the output.</p>
-</div>
 <p><br></p>
 </section>
 <section id="model-output-1" class="level3">
@@ -5525,17 +5462,9 @@ window.Quarto = {
 <ol type="a">
 <li>Incorporating the partial regression coefficient estimates, what is the equation for this model?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>a)</strong> total_bacteria = 766294 + 40051 * water_temp + 84425 * carbon_L_h - 16586 * NO3</p>
-</div>
 <ol start="2" type="a">
 <li>Like you did in Exercise 1.4, how would you interpret the relationship between total_bacteria and water_temp?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>b)</strong> As water_temp increases by 1, total_bacteria increases by 40051, given all other partial regression coefficients remain constant.</p>
-</div>
 <p><br></p>
 </section>
 <section id="is-the-model-useful-1" class="level3">
@@ -5543,18 +5472,9 @@ window.Quarto = {
 <ol type="a">
 <li>Observing the P-value of the F-statistic in the summary, can we say our model is significant?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>a)</strong> The P-value for the F-statistic is 1.318e-10, which is smaller than 0.05. We therefore reject the null hypothesis and can say our model is indeed significant as at least one of our predictors are significant.</p>
-</div>
 <ol start="2" type="a">
 <li>Are any predictors significant?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>b)</strong> Yes; as the P-value for N03 is 0.00268 (P &lt; 0.05), we can reject the null hypothesis that the true partial regression slope for this variable is not zero.</p>
-<p>Water_temp and carbon_L_h are not significant predictors (P &gt; 0.05), i.e. as we cannot reject the null hypothesis that the true partial regression slope of each is non-zero.</p>
-</div>
 <p><br></p>
 </section>
 <section id="how-good-is-the-model-1" class="level3">
@@ -5562,20 +5482,9 @@ window.Quarto = {
 <ol type="a">
 <li>How much of the variation in total bacteria is explained by the three independent variables?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>a)</strong> The model is not the best; the Residual Standard error is huge, even in terms of the response variable, and the r<sup>2</sup>-adjusted is only 0.5913.</p>
-<p>The model accounts for 59.1% of variation in total bacteria counts.</p>
-</div>
 <ol start="2" type="a">
 <li>Run the model again but this time excluding the variable with the largest P-value. How do the model performance criteria (r<sup>2</sup>-adj, P-values, Residual Standard Error) change?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>b)</strong> The least significant predictor is carbon_L_h (P = 0.21624).</p>
-<p>After removing carbon_L_h, the r<sup>2</sup>-adj has decreased (r<sup>2</sup>-adj = 0.5868) and Residual Standard Error has increased (251900). In terms of p-values, that of water_temp has decreased, but is still non-significant. The P-value for NO3 has decreased substantially.</p>
-<p>From this, we can see the model has not been improved by eliminating the predictor.</p>
-</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(total_bacteria <span class="sc">~</span> water_temp <span class="sc">+</span> NO3, <span class="at">data =</span> mic))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -5586,23 +5495,9 @@ window.Quarto = {
 <ol type="a">
 <li>What would the statistical conclusion be for this model?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>a)</strong> Statistical conclusion:</p>
-<p>The F-test indicated our model is significant (P &lt; 0.05), allowing us to reject the null hypothesis and conclude at least one of our partial regression coefficients has a slope not equal to 0.</p>
-<p>Our t-test upon each of our partial regression coefficients supports this, as the P-value for NO3 was 0.003, smaller than 0.05 and we can therefore reject the null hypothesis that this coefficient is equal to 0. In contrast, the P-value for water_temp and carbon_L_h were greater than 0.05 (P = 0.095 and 0.216, respectively), and so we fail to reject the null hypothesis, concluding water_temp and carbon_L_h were not significant predictors within this model.</p>
-<p>The fit of this model is moderate, with a residual standard error of 250500 and an r<sup>2</sup> = 0.5913.</p>
-<p>Note: remember residual standard error is on the same scale as the response variable, so although it is a huge number, it is not as large when we think of the scale.</p>
-<p>Furthermore this fit was not substantially improved by the removal of the water_temp predictor within the model (r<sup>2</sup>-adj = 0.587).</p>
-</div>
 <ol start="2" type="a">
 <li>What would our scientific conclusion be?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>b)</strong> Scientific conclusion:</p>
-<p>Nitrate is a significant predictor of total bacteria count in (P &lt; 0.05), whereas water temperature and Carbon production rate were not is not in this case (P &gt; 0.05). The model accounts for 59.1% of variation in the bacteria counts measured in water samples collected from Puget Sound.</p>
-</div>
 <p><br></p>
 </section>
 </section>
@@ -5626,116 +5521,50 @@ window.Quarto = {
 <ol type="a">
 <li>Read in the data from today’s Excel sheet, the corresponding sheet name is “Dippers”</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>a)</strong> Use the following code:</p>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl, <span class="at">quietly =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>Dippers <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/ENVX1002_practical_wk11_data_Regression.xlsx&quot;</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                     ,<span class="st">&quot;Dippers&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <ol start="2" type="a">
 <li>Investigate a correlation matrix and pairs plot of the dataset, are there signs of a relationship between breeding pair density and other independent variables?</li>
 </ol>
 <div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>b)</strong> Looking at the pairs scatterplots there seems to be a positive relationship between Br_Dens and RiverSlope, LogCadd, and with LogStone. We can follow this up using correlation, which indicates there is a moderate positive relationship of 0.710 between Br_Dens and RiverSlope, 0.763 Br_Dens and LogStone, and 0.613 between Br_Dens and LogCadd.</p>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(Dippers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(Dippers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(Dippers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(Dippers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="3" type="a">
 <li>Let’s investigate further. Run the model incorporating all of our predictors, but before looking at our model output, are the assumptions ok?</li>
 </ol>
 <div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>c)</strong> Assumptions look ok:</p>
-<ul>
-<li><p>Residuals vs fitted: Points evenly scattered around mean.</p></li>
-<li><p>Normal Q-Q: Points follow line.</p></li>
-<li><p>Scale-Location: Points evenly scattered, no fanning.</p></li>
-<li><p>Residuals vs Leverage: No points occurring at top right or bottom right corners outside the dotted red lines. A couple of points are close, but not outside, so all is good.</p></li>
-</ul>
-<p>We can continue to interpreting the output!</p>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run model</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>dipper.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Br_Dens <span class="sc">~</span> ., <span class="at">data=</span>Dippers)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check assumptions</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dipper.lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run model</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>dipper.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Br_Dens <span class="sc">~</span> ., <span class="at">data=</span>Dippers)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check assumptions</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dipper.lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <p>Once you are happy assumptions are good, you can interpret the model output using <code>summary()</code>.</p>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dipper.lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <ol start="4" type="a">
 <li>What is the equation for our model, incorporating our partial regression coefficients?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>d)</strong> Br_Dens = -1.530702 + 0.006916 * Hardness + 0.067924 * RiverSlope + 0.317611 * LogCadd + 0.752987 * LogStone</p>
-</div>
 <ol start="5" type="a">
 <li>Based on the F-statistic output, is the model significant? How can we tell? Is it different to the significance of LogCadd this time?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>e)</strong> The F-test statistic tells us whether our overall model is significant, which in this case it is (P = 1.971e-05). This time, unlike when we only used LogCadd as the predictor, our P-value from the F-Statistic is now different to the P-value of LogCadd (P = 0.16674).</p>
-<p>As our P - value for the model is &lt; 0.05, we can reject the null hypothesis and conclude our model is significant and at least one of our partial regression slopes are non-zero.</p>
-</div>
 <ol start="6" type="a">
 <li>Is LogCadd still a significant predictor of Dipper breeding pair density?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>f)</strong> Unlike last week, the P-value for LogCadd is now greater than 0.05 (P = 0.16674), and so we fail to reject the null hypothesis that the partial regression slope is equal to zero. We can therefore say LogCadd not a significant predictor of Dipper breeding pair density.</p>
-</div>
 <ol start="7" type="a">
 <li>What are the significant predictors of this model?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>g)</strong> The only significant predictor for this model is LogStone (P &lt; 0.05).</p>
-</div>
 <ol start="8" type="a">
 <li>How good is the fit of our model?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>h)</strong> Our model fit is much better compared to the simple linear model from last week.</p>
-<p>Our residual standard is (Residual SE = 0.7753) and the r<sup>2</sup>-adjusted is closer to 1 than 0 (r<sup>2</sup>-adj = 0.7281).</p>
-<p>Our residual SE is a low value, and relative to the range of Br_Dens (min = 2.9, max = 8.4), which is pretty good and also much better than last week.</p>
-</div>
 <ol type="i">
 <li>What might we do to improve the model fit?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>i)</strong> Consider elimination of a non-significant predictor variable.</p>
-</div>
 <ol start="10" type="a">
 <li>What statistical and scientific conclusions can we make from this model output?</li>
 </ol>
-<div class="cell">
-<p><strong>ANSWER</strong></p>
-<p><strong>j) </strong> Statistical:</p>
-<p>As the F-test statistic is less than 0.05, we can reject the null hypothesis that all partial regression coefficients are equal to zero. Furthermore, LogStone was the only significant predictor (P &lt; 0.05) and therefore we can only reject the null for this predictor.</p>
-<p>The model fit is good, with an r<sup>2</sup>-adjusted value of 0.7281 and Residual standard error of 0.7753.</p>
-<p>Scientific:</p>
-<p>The number of Stonefly Larvae is a significant predictor of Dipper breeding pair density (P &lt; 0.05), whereas other predictors used, such as water hardness, river slope and the number of Caddis Fly larvae are not significant. The overall model accounts for 72.8% of variation in Dipper breeding pair density.</p>
-<p>The significance of Stonefly larvae over Caddis fly larvae, and the positive relationship in the partial regression coefficient, suggests that Dippers may have a preference for Stonefly Larvae over Caddis Fly larvae.</p>
-</div>
 <p><br></p>
 <p>Another week of linear models done! Great work fitting Multiple Linear Regression! Next week we break away and explore non-linear functions.</p>
-<br> <br> <!--The code below reduces white space at the end of the output doc-->
+<p><br> <br> <!--The code below reduces white space at the end of the output doc--></p>
 <div class="tocify-extend-page" data-unique="tocify-extend-page" style="height: 0;">
 
 </div>
