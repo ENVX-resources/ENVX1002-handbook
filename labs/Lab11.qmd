@@ -1,5 +1,5 @@
 ---
-title: "ENVX1002 Practical Topic 11 - Multiple Linear Regression"
+title: "Lab 11 - Multiple Linear Regression"
 embed-resources: true
 ---
 
