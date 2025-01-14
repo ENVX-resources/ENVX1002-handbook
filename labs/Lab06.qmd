@@ -2,6 +2,7 @@
 title: Lab 06 -- Two-sample *t*-test
 embed-resources: true
 ---
+
 ```{r setup}
 #| include: false
 if (!require("pacman")) install.packages("pacman")
@@ -11,31 +12,27 @@ pacman::p_load(tidyverse, car)
 
 ::: callout-tip
 ## Learning outcomes
-- Learn to use R to calculate a 2-sample *t*-test
-  - independent samples with constant variance
-  - independent samples with unequal variance
-  - paired samples
-  - data transformations
-- Apply the steps for hypothesis testing from lectures
-- Learn how to interpret statistical output  
+
+-   Learn to use R to calculate a 2-sample *t*-test
+    -   independent samples with constant variance
+    -   independent samples with unequal variance
+    -   paired samples
+    -   data transformations
+-   Apply the steps for hypothesis testing from lectures
+-   Learn how to interpret statistical output\
 :::
 
-
-## Before we begin
+## Before you begin
 
 Create your Quarto document and save it as `Lab-06.Rmd` or similar. The following data files are required:
 
-::: column-margin
-You may need to right-click on the link and select "Save link as..." to download the data files.
-:::
-
-<!-- {{< downloadthis Barley.csv dname="Barley" label="Barley.csv" type="info">}}
-{{< downloadthis Plant_growth.csv dname="Plant_growth" label="Plant_growth.csv" type="info">}}
-{{< downloadthis Turbidity.csv dname="Turbidity" label="Turbidity.csv" type="info">}} -->
+1)  [Barley.csv](data/Barley.csv)
+2)  [Plant_growth.csv](data/Plant_growth.csv)
+3)  [Turbidity.csv](data/Turbidity.csv)
 
 The following external packages are used in this lab. Install them if you have not done so already.
 
-```r
+``` r
 install.packages(c("tidyverse", "car"), 
   repo = "https://cloud.r-project.org")
 ```
@@ -45,24 +42,26 @@ Finally, try to complete today's lab exercises in pairs and try out [pair progra
 ## Exercise 1: barley (walk-through)
 
 ### Background
-An experiment was designed to compare two varieties of spring barley. Thirty four plots were used, seventeen being randomly allocated to variety A and seventeen to variety B. Unfortunately five plots were destroyed. The yields (t/ha) from the remaining plots were as they appear in the file `Barley.csv`. 
 
+An experiment was designed to compare two varieties of spring barley. Thirty four plots were used, seventeen being randomly allocated to variety A and seventeen to variety B. Unfortunately five plots were destroyed. The yields (t/ha) from the remaining plots were as they appear in the file `Barley.csv`.
 
 ### Instructions
+
 First, quickly explore the data; then, utilise the **HATPC** process and test the hypothesis that the two varieties give equal yields, assuming that the samples are independent.
 
 ::: column-margin
 HATPC:
 
-- Hypothesis
-- Assumptions
-- Test (statistic)
-- P-value
-- Conclusion
+-   Hypothesis
+-   Assumptions
+-   Test (statistic)
+-   P-value
+-   Conclusion
 :::
 
 ::: callout-note
 ## Level of significance
+
 **The level of significance is usually set at 0.05.** This value is generally accepted in the scientific community and is also linked to Type 2 errors, where choosing a lower significance increases the likelihood of failing to reject the null hypothesis when it is false.
 :::
 
@@ -105,8 +104,7 @@ A trained eye will anticipate that the data may not meet the assumption of equal
 
 What are the null and alternative hypotheses? We can use the following notation:
 
-$$H_0: \mu_A = \mu_B$$
-$$H_1: \mu_A \neq \mu_B$$
+$$H_0: \mu_A = \mu_B$$ $$H_1: \mu_A \neq \mu_B$$
 
 where $\mu_A$ and $\mu_B$ are the population means of varieties A and B, respectively.
 
@@ -116,7 +114,7 @@ It is **important** that when using mathematical symbols to denote the null and 
 
 The equations above are written in LaTeX, a typesetting system that is commonly used in scientific writing. You can learn more about LaTeX [here](https://www.latex-project.org/). The raw syntax used to write the equations are shown below:
 
-```markdown
+``` markdown
 $$H_0: \mu_A = \mu_B$$
 $$H_1: \mu_A \neq \mu_B$$
 ```
@@ -131,6 +129,7 @@ There are many ways to check for normality. Here we will use the QQ-plot. Use of
 
 ::: panel-tabset
 ## Using `ggplot2`
+
 ```{r}
 #| output: true
 
@@ -142,6 +141,7 @@ ggplot(barley, aes(sample = Yield)) +
 ```
 
 ## Using base R
+
 ```{r}
 #| output: true
 
@@ -152,7 +152,6 @@ qqnorm(barley$Yield[barley$Variety == "B"], main = "Variety B")
 qqline(barley$Yield[barley$Variety == "B"])
 
 ```
-
 :::
 
 **Question**: Do the plots indicate the data are normally distributed?
@@ -173,7 +172,6 @@ bartlett.test(Yield ~ Variety, data = barley)
 
 **Answer**: The two groups have unequal variance (Bartlett's test: $X^2 = 14.6$, $p < 0.01$). This means that we will need to use the Welch's *t*-test, which does not assume equal variances.
 
-
 ### Test statistic
 
 We can now calculate the test statistic using the `t.test()` function in R. Since the variances are unequal, we do not have to specify the `var.equal` argument -- the default test for `t.test()` is the Welch's *t*-test which does not assume equal variances.
@@ -186,30 +184,29 @@ t.test(Yield ~ Variety, data = barley)
 
 ### P-value
 
-Since the p-value is < 0.05, we can reject the null hypothesis that the mean yield of both varieties is equal.
+Since the p-value is \< 0.05, we can reject the null hypothesis that the mean yield of both varieties is equal.
 
 ### Conclusion
 
 The conclusion needs to be brought into the context of the study. In a scientific report or paper, you would write something like this:
 
-> The mean yield of barley variety A was significantly different from that of variety B ($t = -5.0$, $df = 19.4$, $p < 0.01$). 
-
-
+> The mean yield of barley variety A was significantly different from that of variety B ($t = -5.0$, $df = 19.4$, $p < 0.01$).
 
 ## Exercise 2: plant growth
 
 ### Background
 
-In a test of a particular treatment aimed at inducing growth, 20 plants were grouped into ten pairs so that the two members of each pair were as similar as possible. One plant of each pair was chosen randomly and treated; the other was left as a control. The increases in height (in centimetres) of plants over a two-week period are given in the file Two week plant heights. We wish to compare whether the treatment is actually inducing improved growth, as compared to the control.  
+In a test of a particular treatment aimed at inducing growth, 20 plants were grouped into ten pairs so that the two members of each pair were as similar as possible. One plant of each pair was chosen randomly and treated; the other was left as a control. The increases in height (in centimetres) of plants over a two-week period are given in the file Two week plant heights. We wish to compare whether the treatment is actually inducing improved growth, as compared to the control.
 
 ### Instructions
+
 Here, we have two samples, and the samples are paired as it is a before-after experiment. So we’d like to conduct a paired *t*-test.
 
 For paired *t*-tests the analysis is performed as a 1-sample *t*-test on the difference between each pair so the only assumption is the normality assumption.
 
 Copy the structure below and perform your analysis in your document.
 
-```md
+``` md
 ## Exercise 2: plant growth
 ### Data exploration
 ### Hypothesis
@@ -232,12 +229,11 @@ tidy_plant <- plant_growth %>%
 
 You may also need to perform a Shapiro-Wilk test to check for normality. To do this for each group, you can use the `tapply()` function.
 
-```r
+``` r
 tapply(tidy_plant$Height, tidy_plant$Treatment, shapiro.test)
 ```
 
 ::: {.content-visible when-profile="solution"}
-
 ## Answer 2 {style="color:green;"}
 
 ### Data exploration {style="color:green;"}
@@ -251,8 +247,7 @@ The boxplot shows no unusual observations.
 
 ### Hypothesis {style="color:green;"}
 
-$$H_0: \mu_{\text{treated}} = \mu_{\text{control}}$$
-$$H_1: \mu_{\text{treated}} \neq \mu_{\text{control}}$$
+$$H_0: \mu_{\text{treated}} = \mu_{\text{control}}$$ $$H_1: \mu_{\text{treated}} \neq \mu_{\text{control}}$$
 
 where $\mu_{\text{treated}}$ and $\mu_{\text{control}}$ are the mean increses in height of the treated and control plants, respectively.
 
@@ -289,7 +284,6 @@ t.test(tidy_plant$Height[tidy_plant$Treatment == "Treated"],
 )
 ```
 
-
 ### P-value {style="color:green;"}
 
 The p-value is 0.03 which is less than 0.05, so we reject the null hypothesis that the mean increase in height of the treated and control plants is equal.
@@ -297,27 +291,27 @@ The p-value is 0.03 which is less than 0.05, so we reject the null hypothesis th
 ### Conclusion {style="color:green;"}
 
 The mean increase in height of the treated plants is significantly different from that of the control plants ($t = 2.5$, $df = 9$, $p = 0.03$).
-
 :::
 
 ## Exercise 3: turbidity
 
 ### Background
+
 A new filtering process was installed at a dam which provided drinking water for a nearby town. To check on its success, a number of water samples were taken at random times and locations in the weeks before and after the process was installed. The following are the turbidity values (units = NTU) of the water samples.
 
 ### Instructions
-Now we consider further examples of a two-sample *t*-test, but where the assumption of equal variance and normality may not be met for the raw data. Sometimes after applying a data transformation the analysis can proceed assuming equal variances -- but always check after a data transformation.  
 
+Now we consider further examples of a two-sample *t*-test, but where the assumption of equal variance and normality may not be met for the raw data. Sometimes after applying a data transformation the analysis can proceed assuming equal variances -- but always check after a data transformation.
 
 The data can be read with the code below:
 
-```r
+``` r
 turbidity <-read_csv("Turbidity.csv")
 ```
 
 For data transformation, you may need to create a new variable in your dataset to store the transformed data. For example, to create a new variable `TurbLog10` that stores the log~10~ transformed turbidity values, you can use the following code:
 
-```r
+``` r
 turbidity$TurbLog10 <- log10(turbidity$Turbidity)
 ```
 
@@ -329,9 +323,7 @@ To back-transform natural log, log~e~, you use:
 
 $$e^{\text{mean or CI}}$$
 
-
 ::: {.content-visible when-profile="solution"}
-
 ## Answer 3 {style="color:green;"}
 
 ### Data exploration {style="color:green;"}
@@ -346,12 +338,12 @@ The boxplot shows skewing of the data, and outliers, a strong indication that th
 
 ### Hypothesis {style="color:green;"}
 
-$$H_0: \mu_{\text{before}} = \mu_{\text{after}}$$
-$$H_1: \mu_{\text{before}} \neq \mu_{\text{after}}$$
+$$H_0: \mu_{\text{before}} = \mu_{\text{after}}$$ $$H_1: \mu_{\text{before}} \neq \mu_{\text{after}}$$
 
 where $\mu_{\text{before}}$ and $\mu_{\text{after}}$ are the mean turbidity values before and after the new filtering process was installed.
 
 ### Assumptions {style="color:green;"}
+
 #### Normality: part 1 {style="color:green;"}
 
 ```{r}
@@ -408,11 +400,12 @@ t.test(TurbLog10 ~ Time, data = turbidity, var.equal = TRUE)
 
 The p-value is 0.007, which is less than 0.05, so we reject the null hypothesis that the mean turbidity values before and after the new filtering process was installed are equal.
 
-
 ### Conclusion {style="color:green;"}
+
 We want to make a biological conclusion based on the results. To do this, we need to back-transform the mean difference and the confidence intervals so that the units are in NTU, not log~10~ NTU.
 
 #### Mean difference {style="color:green;"}
+
 ```{r}
 10^(1.514274 - 0.683656)
 ```
@@ -424,8 +417,5 @@ We want to make a biological conclusion based on the results. To do this, we nee
 10^(1.302095)
 ```
 
-
 The mean turbidity values before and after the new filtering process was installed are significantly different ($t = -3.7$, $df = 17$, $p = 0.007$). The new filtering process has effectively reduced turbidity by 7 NTU on average. We are 95% confident that the new filtering process will reduce water turbidity by between 2.3 and 20 NTU.
 :::
-
-
