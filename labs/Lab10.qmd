@@ -11,7 +11,7 @@ pacman::p_load(readxl)
 
 
 ::: callout-tip
-### Objectives
+### Learning Outcomes
 
 -   Fit simple linear models and obtain associated model summaries in R
 -   Overlay fitted models onto scatterplots in R
