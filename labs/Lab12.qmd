@@ -27,13 +27,19 @@ knitr::opts_chunk$set(echo = TRUE) # change to TRUE for solutions, efficiency
     the outputs
 :::
 
-**Related Excel: ENVX1002_wk12_practical_data_Regression.xlsx**
+## Before we begin
+
+Create your Quarto document and save it as `Lab-12.qmd` or similar.
+
+The following data files are required:
+
+1)  [east_creek.csv](data/east_creek.csv)
 
 Over the past few weeks you have explored linear models and how to
 interpret model summary output. Again we have stepped up the complexity,
 now venturing into the world of non-linear models.
 
-This practical focusses on fitting non-linear models to data with an
+This practical focuses on fitting non-linear models to data with an
 emphasis on 3 important classes of functions that all budding biologists
 and environmental scientists should know
 
