@@ -5159,7 +5159,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#before-we-begin" id="toc-before-we-begin" class="nav-link active" data-scroll-target="#before-we-begin">Before we begin</a></li>
+  <li><a href="#before-you-begin" id="toc-before-you-begin" class="nav-link active" data-scroll-target="#before-you-begin">Before you begin</a></li>
   <li><a href="#exercise-1-barley-walk-through" id="toc-exercise-1-barley-walk-through" class="nav-link" data-scroll-target="#exercise-1-barley-walk-through">Exercise 1: barley (walk-through)</a>
   <ul class="collapse">
   <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
@@ -5230,16 +5230,15 @@ Learning outcomes
 </ul>
 </div>
 </div>
-<section id="before-we-begin" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="before-we-begin">Before we begin</h2>
+<section id="before-you-begin" class="level2">
+<h2 class="anchored" data-anchor-id="before-you-begin">Before you begin</h2>
 <p>Create your Quarto document and save it as <code>Lab-06.Rmd</code> or similar. The following data files are required:</p>
-
-<!-- 
-
- -->
-<div class="no-row-height column-margin column-container"><div class>
-<p>You may need to right-click on the link and select “Save link as…” to download the data files.</p>
-</div></div><p>The following external packages are used in this lab. Install them if you have not done so already.</p>
+<ol type="1">
+<li><a href="data/Barley.csv">Barley.csv</a></li>
+<li><a href="data/Plant_growth.csv">Plant_growth.csv</a></li>
+<li><a href="data/Turbidity.csv">Turbidity.csv</a></li>
+</ol>
+<p>The following external packages are used in this lab. Install them if you have not done so already.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;car&quot;</span>), </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">repo =</span> <span class="st">&quot;https://cloud.r-project.org&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Finally, try to complete today’s lab exercises in pairs and try out <a href="https://en.wikipedia.org/wiki/Pair_programming">pair programming</a>, where one person writes the code and the other person reviews each line as it is written. You can swap roles every 10 minutes or so. This is a great way to learn from each other and to improve your coding skills.</p>
