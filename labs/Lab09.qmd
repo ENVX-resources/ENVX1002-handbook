@@ -1,5 +1,5 @@
 ---
-title: "ENVX1002 Practical Topic 9 - Describing relationships"
+title: Lab 9 - Describing relationships
 embed-resources: true
 ---
 
@@ -13,9 +13,7 @@ pacman::p_load(tidyverse, readxl, knitr, kableExtra)
 <br>
 
 ::: callout-tip
-
-
-### Objectives
+### Learning Outcomes
 
 * Calculate and interpret Correlation Coefficients in Excel and R
 * Produce scatterplots in Excel and R
