@@ -1,6 +1,8 @@
 ---
 title: "Lab 11 - Multiple Linear Regression"
 embed-resources: true
+resources:
+  - data/ENVX1002_wk11_practical_data_Regression.xlsx
 ---
 
 
@@ -23,7 +25,12 @@ knitr::opts_chunk$set(echo = TRUE) # change to TRUE for solutions, efficiency
 -   Consider more parsimonious models
 :::
 
-**DATA: ENVX1002_wk11_practical_data_Regression.xlsx**
+## Before you begin
+
+Create your Quarto document and save it as `Lab-11.Rmd` or similar. The following data files are required:
+
+1) [ENVX1002_wk11_practical_data_Regression.xlsx](data/ENVX1002_wk11_practical_data_Regression.xlsx)
+
 
 Last week you explored simple linear regression and assessed the output of your models.
 
