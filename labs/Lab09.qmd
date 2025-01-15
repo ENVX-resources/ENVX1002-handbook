@@ -27,7 +27,7 @@ pacman::p_load(tidyverse, readxl, knitr, kableExtra)
 
 ## Before you begin
 
-Create your Quarto document and save it as `Lab-06.Rmd` or similar. The following data files are required:
+Create your Quarto document and save it as `Lab-09.Rmd` or similar. The following data files are required:
 
 1) [ENVX1002_practical_data_Regression.xlsx](data/ENVX1002_practical_data_Regression.xlsx)
 
