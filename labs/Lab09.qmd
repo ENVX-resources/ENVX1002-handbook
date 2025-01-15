@@ -1,6 +1,8 @@
 ---
 title: Lab 9 - Describing relationships
 embed-resources: true
+resources:
+  - data/ENVX1002_practical_data_Regression.xlsx
 ---
 
 ```{r setup}
@@ -23,8 +25,11 @@ pacman::p_load(tidyverse, readxl, knitr, kableExtra)
 
 :::
 
-**DATA:	ENVX1002_practical_data_Regression.xlsx**
+## Before you begin
 
+Create your Quarto document and save it as `Lab-06.Rmd` or similar. The following data files are required:
+
+1) [ENVX1002_practical_data_Regression.xlsx](data/ENVX1002_practical_data_Regression.xlsx)
 
 <br>
 
