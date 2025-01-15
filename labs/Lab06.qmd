@@ -3,6 +3,7 @@ title: Lab 06 -- Two-sample *t*-test
 embed-resources: true
 resources:
   - data/Barley.csv
+  - data/Plant_growth.csv
 ---
 
 ```{r setup}
