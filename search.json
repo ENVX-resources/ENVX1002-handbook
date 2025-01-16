@@ -1133,11 +1133,11 @@
     ]
   },
   {
-    "objectID": "labs/Lab09.html",
-    "href": "labs/Lab09.html",
+    "objectID": "labs/Lab09.html#before-you-begin",
+    "href": "labs/Lab09.html#before-you-begin",
     "title": "Lab 9 - Describing relationships",
-    "section": "",
-    "text": "DATA: ENVX1002_practical_data_Regression.xlsx",
+    "section": "Before you begin",
+    "text": "Before you begin\nCreate your Quarto document and save it as Lab-09.Rmd or similar. The following data files are required:\n\nENVX1002_practical_data_Regression.xlsx",
     "crumbs": [
       "**🖥️ Computer labs**",
       "Lab 9 - Describing relationships"
