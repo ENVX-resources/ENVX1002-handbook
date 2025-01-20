@@ -4,6 +4,7 @@ embed-resources: true
 resources:
   - data/Barley.csv
   - data/Plant_growth.csv
+  - data/Turbidity.csv
 ---
 
 ```{r setup}
