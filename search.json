@@ -1313,7 +1313,18 @@
     "href": "labs/Lab10.html",
     "title": "Lab 10 - Linear Functions",
     "section": "",
-    "text": "Learning Outcomes\n\n\n\n\nFit simple linear models and obtain associated model summaries in R\nOverlay fitted models onto scatterplots in R\nUndertake hypothesis testing to determine if slope \\(\\neq\\) 0\nCheck assumptions are met prior to assessing model output\nAssess model summary in terms of fit and P-values\nDATA: ENVX1002_wk10_practical_data_Regression.xlsx\nLast week you fitted models in R, now it is time to understand what the output means.\nBefore you begin, ensure you have a project set up in your desired folder. Then open up a fresh R markdown and save the file within this folder.\nDon’t forget to save as you go!",
+    "text": "Learning Outcomes\n\n\n\n\nFit simple linear models and obtain associated model summaries in R\nOverlay fitted models onto scatterplots in R\nUndertake hypothesis testing to determine if slope \\(\\neq\\) 0\nCheck assumptions are met prior to assessing model output\nAssess model summary in terms of fit and P-values",
+    "crumbs": [
+      "**🖥️ Computer labs**",
+      "Lab 10 - Linear Functions"
+    ]
+  },
+  {
+    "objectID": "labs/Lab10.html#before-you-begin",
+    "href": "labs/Lab10.html#before-you-begin",
+    "title": "Lab 10 - Linear Functions",
+    "section": "Before you begin",
+    "text": "Before you begin\nCreate your Quarto document and save it as Lab-10.Rmd or similar. The following data files are required:\n\nENVX1002_wk10_practical_data_Regression.xlsx\n\nLast week you fitted models in R, now it is time to understand what the output means.\nBefore you begin, ensure you have a project set up in your desired folder. Then open up a fresh R markdown and save the file within this folder.\nDon’t forget to save as you go!",
     "crumbs": [
       "**🖥️ Computer labs**",
       "Lab 10 - Linear Functions"
