@@ -1,9 +1,8 @@
 ---
 title: "Lab 12 - Non-linear models"
 embded-resources: true
-editor: 
-  markdown: 
-    wrap: 72
+resources:
+  - data/east_creek.csv
 ---
 
 ```{r setup}
