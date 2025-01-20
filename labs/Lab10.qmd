@@ -1,6 +1,8 @@
 ---
 title: "Lab 10 - Linear Functions"
 embed-resources: true
+resources:
+  - data/ENVX1002_wk10_practical_data_Regression.xlsx
 ---
 
 ```{r setup}
@@ -20,7 +22,12 @@ pacman::p_load(readxl)
 -   Assess model summary in terms of fit and P-values
 :::
 
-**DATA: ENVX1002_wk10_practical_data_Regression.xlsx**
+## Before you begin
+
+Create your Quarto document and save it as `Lab-10.Rmd` or similar. The following data files are required:
+
+1) [ENVX1002_wk10_practical_data_Regression.xlsx](data/ENVX1002_wk10_practical_data_Regression.xlsx)
+
 
 
 Last week you fitted models in R, now it is time to understand what the output means.
