@@ -244,8 +244,8 @@ coefficients table (i.e. highest order):
 
 ```{r, echo=F}
 
-summmar <- summary(soil.cub)
-summmar$coefficients
+summmarc <- summary(soil.cub)
+summmarc$coefficients
 
 ```
 
