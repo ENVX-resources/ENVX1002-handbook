@@ -162,6 +162,7 @@ qqplots:
 ### Solution {style="color:green;"}
 
 ```{r}
+#Load library
 library(ggplot2)
 
 ggplot(milk, aes(sample = Yield)) +
@@ -184,10 +185,12 @@ Histogram and boxplots:
 ### Solution {style="color:green;"}
 
 ```{r}
+#Histogram
 ggplot(milk, aes(x = Yield)) +
   geom_histogram(binwidth = 1, fill = "lightblue", color = "black") +
   labs(title = "Histogram of Milk Yield", x = "Yield", y = "Frequency")
 
+#Boxplot
 ggplot(milk, aes(x = Yield)) +
   geom_boxplot(fill = "lightblue", color = "black")
 
@@ -416,18 +419,21 @@ Plot your data:
 ### Solution {style="color:green;"}
 
 ```{r}
+#qq plot
 ggplot(sting, aes(sample = Stinging)) +
   stat_qq() +
   stat_qq_line()
 ```
 
 ```{r}
+#histogram
 ggplot(sting, aes(x = Stinging)) +
   geom_histogram(binwidth = 1, fill = "lightgreen", color = "black") +
   labs(title = "Histogram of Stinging Tree Growth", x = "Growth (m)", y = "Frequency")
 ```
 
 ```{r}
+#Boxplot
 ggplot(sting, aes(x = Stinging)) +
   geom_boxplot(fill = "lightgreen", color = "black") +
   labs(title = "Boxplot of Stinging Tree Growth", x = "Growth (m)", y = "Frequency")
@@ -449,7 +455,6 @@ Normality tests:
 
 ```{r}
 
-# write your R code here
 shapiro.test(sting$Stinging)
 
 ```
@@ -489,7 +494,7 @@ shapiro.test(sting$Stinging)
 
 ```{r}
 
-# write your R code here
+
 t.test(sting$Stinging, mu = 1.5)
 
 ```
