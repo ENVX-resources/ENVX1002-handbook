@@ -98,8 +98,6 @@ The R-squared value is a measure of how well the model fits the data where 1.0 i
 
 c) Although it is important for the model equation, do you think the intercept provides a realistic value in this particular case? What does it mean?
 
-c)  Although it is important for the model equation, do you think the intercept provides a realistic value in this particular case? What does it mean?
-
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
@@ -378,10 +376,10 @@ e) Fit a model to your data and obtain the model summary. Year will be our predi
 ------------------------------------------------------------------------
 
 ```{r , echo = T, eval = T}
-abares.lm <- lm(ABARES$TFP ~ ABARES$Year)
+#Fit linear model
+abares.lm <- lm(TFP ~ Year, data = ABARES)
 
-# Alternative structure: abares.lm <- lm(TFP ~ Year data = ABARES)
-
+#Model summary
 summary(abares.lm)
 
 ```
