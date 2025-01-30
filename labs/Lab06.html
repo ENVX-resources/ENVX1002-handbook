@@ -5283,7 +5283,7 @@ Level of significance
 <div class="no-row-height column-margin column-container"><div class>
 <p>Try to compare <code>str()</code> and <code>glimpse()</code> to see what the differences are.</p>
 </div></div><div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>barley <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/Barley.csv&quot;</span>)</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>barley <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/Barley.csv&quot;</span>) <span class="co"># packagename:: before a function lets you access a function without having to load the whole library first</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(barley)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 29
@@ -5338,7 +5338,7 @@ $ Yield   &lt;dbl&gt; 4.6, 4.3, 3.8, 3.4, 3.9, 3.9, 3.9, 4.4, 3.6, 3.6, 4.7, 3.9
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(barley, <span class="fu">aes</span>(<span class="at">sample =</span> Yield)) <span class="sc">+</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Variety)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Variety) <span class="co">#facet_wrap ensures there are separate plots for each variety rather than one plot with all the data in Yield </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -5351,7 +5351,7 @@ $ Yield   &lt;dbl&gt; 4.6, 4.3, 3.8, 3.4, 3.9, 3.9, 3.9, 4.4, 3.6, 3.6, 4.7, 3.9
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(barley<span class="sc">$</span>Yield[barley<span class="sc">$</span>Variety <span class="sc">==</span> <span class="st">&quot;A&quot;</span>], <span class="at">main =</span> <span class="st">&quot;Variety A&quot;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(barley<span class="sc">$</span>Yield[barley<span class="sc">$</span>Variety <span class="sc">==</span> <span class="st">&quot;A&quot;</span>], <span class="at">main =</span> <span class="st">&quot;Variety A&quot;</span>) <span class="co"># square brackets to subset the data by variety</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(barley<span class="sc">$</span>Yield[barley<span class="sc">$</span>Variety <span class="sc">==</span> <span class="st">&quot;A&quot;</span>])</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(barley<span class="sc">$</span>Yield[barley<span class="sc">$</span>Variety <span class="sc">==</span> <span class="st">&quot;B&quot;</span>], <span class="at">main =</span> <span class="st">&quot;Variety B&quot;</span>)</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(barley<span class="sc">$</span>Yield[barley<span class="sc">$</span>Variety <span class="sc">==</span> <span class="st">&quot;B&quot;</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5446,7 +5446,9 @@ mean in group A mean in group B
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(Treated, Control), <span class="at">names_to =</span> <span class="st">&quot;Treatment&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Height&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You may also need to perform a Shapiro-Wilk test to check for normality. To do this for each group, you can use the <code>tapply()</code> function.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(tidy_plant<span class="sc">$</span>Height, tidy_plant<span class="sc">$</span>Treatment, shapiro.test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(tidy_plant<span class="sc">$</span>Height, tidy_plant<span class="sc">$</span>Treatment, shapiro.test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="exercise-3-turbidity" class="level2">
@@ -5459,9 +5461,13 @@ mean in group A mean in group B
 <h3 class="anchored" data-anchor-id="instructions-2">Instructions</h3>
 <p>Now we consider further examples of a two-sample <em>t</em>-test, but where the assumption of equal variance and normality may not be met for the raw data. Sometimes after applying a data transformation the analysis can proceed assuming equal variances – but always check after a data transformation.</p>
 <p>The data can be read with the code below:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>turbidity <span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">&quot;Turbidity.csv&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>turbidity <span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">&quot;data/Turbidity.csv&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>For data transformation, you may need to create a new variable in your dataset to store the transformed data. For example, to create a new variable <code>TurbLog10</code> that stores the log<sub>10</sub> transformed turbidity values, you can use the following code:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>turbidity<span class="sc">$</span>TurbLog10 <span class="ot">&lt;-</span> <span class="fu">log10</span>(turbidity<span class="sc">$</span>Turbidity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>turbidity<span class="sc">$</span>TurbLog10 <span class="ot">&lt;-</span> <span class="fu">log10</span>(turbidity<span class="sc">$</span>Turbidity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>To interpret the results for your conclusions, you may need to back-transform the mean and/or confidence interval values. To back transform log<sub>10</sub> data you use:</p>
 <p><span class="math display">\[10^{\text{mean or CI}}\]</span></p>
 <p>To back-transform natural log, log<sub>e</sub>, you use:</p>
