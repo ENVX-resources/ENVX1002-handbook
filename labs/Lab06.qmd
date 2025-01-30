@@ -79,7 +79,7 @@ Try to compare `str()` and `glimpse()` to see what the differences are.
 
 ```{r}
 #| output: true
-barley <- readr::read_csv("data/Barley.csv")
+barley <- readr::read_csv("data/Barley.csv") # packagename:: before a function lets you access a function without having to load the whole library first
 dplyr::glimpse(barley)
 ```
 
@@ -140,7 +140,7 @@ There are many ways to check for normality. Here we will use the QQ-plot. Use of
 ggplot(barley, aes(sample = Yield)) +
   stat_qq() +
   stat_qq_line() +
-  facet_wrap(~Variety)
+  facet_wrap(~Variety) #facet_wrap ensures there are separate plots for each variety rather than one plot with all the data in Yield 
 
 ```
 
@@ -150,7 +150,7 @@ ggplot(barley, aes(sample = Yield)) +
 #| output: true
 
 par(mfrow = c(1, 2))
-qqnorm(barley$Yield[barley$Variety == "A"], main = "Variety A")
+qqnorm(barley$Yield[barley$Variety == "A"], main = "Variety A") # square brackets to subset the data by variety
 qqline(barley$Yield[barley$Variety == "A"])
 qqnorm(barley$Yield[barley$Variety == "B"], main = "Variety B")
 qqline(barley$Yield[barley$Variety == "B"])
@@ -233,7 +233,7 @@ tidy_plant <- plant_growth %>%
 
 You may also need to perform a Shapiro-Wilk test to check for normality. To do this for each group, you can use the `tapply()` function.
 
-``` r
+``` {r}
 tapply(tidy_plant$Height, tidy_plant$Treatment, shapiro.test)
 ```
 
@@ -243,6 +243,7 @@ tapply(tidy_plant$Height, tidy_plant$Treatment, shapiro.test)
 ### Data exploration {style="color:green;"}
 
 ```{r}
+#Boxplot
 ggplot(tidy_plant, aes(x = Treatment, y = Height)) +
   geom_boxplot()
 ```
@@ -260,6 +261,7 @@ where $\mu_{\text{treated}}$ and $\mu_{\text{control}}$ are the mean increses in
 #### Normality {style="color:green;"}
 
 ```{r}
+#qqplots
 ggplot(tidy_plant, aes(sample = Height)) +
   stat_qq() +
   stat_qq_line() +
@@ -309,13 +311,13 @@ Now we consider further examples of a two-sample *t*-test, but where the assumpt
 
 The data can be read with the code below:
 
-``` r
-turbidity <-read_csv("Turbidity.csv")
+``` {r}
+turbidity <-read_csv("data/Turbidity.csv")
 ```
 
 For data transformation, you may need to create a new variable in your dataset to store the transformed data. For example, to create a new variable `TurbLog10` that stores the log~10~ transformed turbidity values, you can use the following code:
 
-``` r
+``` {r}
 turbidity$TurbLog10 <- log10(turbidity$Turbidity)
 ```
 
@@ -333,7 +335,10 @@ $$e^{\text{mean or CI}}$$
 ### Data exploration {style="color:green;"}
 
 ```{r}
+#Read in data
 turbidity <- read_csv("data/Turbidity.csv")
+
+#Make boxplot
 ggplot(turbidity, aes(x = Time, y = Turbidity)) +
   geom_boxplot()
 ```
@@ -351,6 +356,7 @@ where $\mu_{\text{before}}$ and $\mu_{\text{after}}$ are the mean turbidity valu
 #### Normality: part 1 {style="color:green;"}
 
 ```{r}
+#qqplots
 ggplot(turbidity, aes(sample = Turbidity)) +
   stat_qq() +
   stat_qq_line() +
