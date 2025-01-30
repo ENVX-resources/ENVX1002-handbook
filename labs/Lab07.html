@@ -5309,7 +5309,7 @@ Note
 </div>
 <p>To calculate expected frequencies, we first calculate the total number of tulips and then divide by the number of categories.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>expected <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">sum</span>(tulip) <span class="sc">*</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>expected <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">sum</span>(tulip) <span class="sc">*</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span>, <span class="dv">3</span>) <span class="co">#rep function replicated the value we&#39;re calculating inside the brackets</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Does the data satisfy the assumptions of a <span class="math inline">\(\chi^2\)</span> test?</p>
@@ -5393,7 +5393,7 @@ There is a significant difference in the proportion of flower colours of tulips 
 </table>
 <p>The data is stored in a <code>table</code> object in R below. Note that it is different from a <code>data.frame</code> object. You can verify this by using the <code>str()</code> or <code>class()</code> functions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>crabs <span class="ot">&lt;-</span> <span class="fu">as.table</span>(</span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>crabs <span class="ot">&lt;-</span> <span class="fu">as.table</span>( <span class="co">#Make a table with values for each row</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">Aus =</span> <span class="fu">c</span>(<span class="dv">47</span>, <span class="dv">42</span>),</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Bem =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">41</span>),</span>
@@ -5401,7 +5401,7 @@ There is a significant difference in the proportion of flower colours of tulips 
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(crabs) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Occupied&quot;</span>, <span class="st">&quot;Empty&quot;</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(crabs) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Occupied&quot;</span>, <span class="st">&quot;Empty&quot;</span>) <span class="co">#Add column names to table</span></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(crabs)</span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>crabs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
