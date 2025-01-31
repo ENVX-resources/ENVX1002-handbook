@@ -429,3 +429,233 @@ We want to make a biological conclusion based on the results. To do this, we nee
 
 The mean turbidity values before and after the new filtering process was installed are significantly different ($t = -3.7$, $df = 17$, $p = 0.007$). The new filtering process has effectively reduced turbidity by 7 NTU on average. We are 95% confident that the new filtering process will reduce water turbidity by between 2.3 and 20 NTU.
 :::
+# Bonus take home exercises
+
+Use the HATPC framework to answer the following questions
+
+1.  Hypothesis
+2.  Assumptions
+3.  Test (statistic)
+4.  P-value
+5.  Conclusion
+
+## Exercise 1: Tooth growth
+
+Tooth GRowth is an inbuilt dataset that shows the effect of vitamin c in Guinea pig tooth growth. It has three variables:
+
+-   len = tooth length
+
+-   supp = type of supplement (Orange juice or ascorbic acid)
+
+-   dose = mg/day gieven to the guinea pigs
+
+```{r}
+head(ToothGrowth)
+str(ToothGrowth)
+```
+
+Using the HATPC framework, test whether the type of supplent affects tooth length.
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+1.  Hypothesis
+
+> H~0~: $\mu_{OJ}$ = $\mu_{VC}$
+
+> H~1~: $\mu_{OJ}$ $\neq$ $\mu_{VC}$
+
+2.  Assumptions
+
+Normality
+
+```{r}
+library(tidyverse)
+# qqplot
+ggplot(ToothGrowth, aes(sample = len)) +
+  stat_qq() +
+  stat_qq_line() +
+  facet_wrap(~supp)
+```
+
+> The data appear to be normally distribute, as most of the dots follow the line
+
+Homogeneity of variance
+
+```{r}
+#Boxplots
+ggplot(ToothGrowth, aes(x = supp, y = len))+
+  geom_boxplot()
+# Barttlet test
+bartlett.test(len~supp, data = ToothGrowth)
+```
+
+> The two groups have equal variance
+
+3.  Test statistic
+
+```{r}
+t.test(len~supp, var.equal = TRUE, data = ToothGrowth)
+```
+
+4.  P-value
+
+> Since the p-value \> 0.05, we retain the null hypothesis
+
+5.  Conclusion
+
+> The mean tooth length was the same for each treatment group. The type of supplement does not have a significant effect on guinea pig tooth length
+
+
+:::
+
+## Exercise 2: Adelie penguin bill length
+
+For this exercise, we will be using a subset of the palmer penguins dataset.
+
+```{r}
+library(palmerpenguins)
+library(tidyverse)
+
+adelie <-penguins%>%
+  filter(species == "Adelie")%>%
+  na.omit()%>%
+  droplevels()
+
+head(adelie)
+
+```
+
+Using the HATPC framework, test whether male and female penguins have the same length bill
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+1.  Hypothesis
+
+> H~0~: $\mu_{f bill length}$ = $\mu_{m bill length}$ 
+
+> H~1~: $\mu_{f bill length}$ $\neq$ $\mu_{m bill length}$
+
+2.  Assumptions
+
+Normality
+
+```{r}
+library(tidyverse)
+
+# qqplot
+ggplot(adelie, aes(sample = bill_length_mm))+
+  geom_qq()+
+  geom_qq_line()+
+  facet_wrap(~sex)
+
+#shapiro.test
+tapply(adelie$bill_length_mm, adelie$sex, shapiro.test)
+```
+
+> The two groups appear to be normally distributed, both according to the qqplot and the shapiro test
+
+Homogeneity of variance
+
+```{r}
+#boxplot
+ggplot(adelie, aes(x = sex, y = bill_length_mm))+
+  geom_boxplot()
+
+
+#barttlet test
+bartlett.test(bill_length_mm~sex, data = adelie)
+```
+
+> The two groups have equal variance
+
+3.  Test (statistic)
+
+```{r}
+# t.test
+t.test(bill_length_mm~sex, var.equal = TRUE,data = adelie)
+```
+
+4.  P-value
+
+> Since p\< 0.05, we reject the null hypothesis
+
+5.  Conclusion
+
+> Male and female adelie penguins have different mean bill legths. Males have longer beaks than females
+
+
+:::
+
+## Exercise 3: Penguin body mass
+
+For this exercise, we will use a subset of the palmer penguins data set again. This time, we will be comparing two different penguin species.
+
+```{r}
+
+library(palmerpenguins)
+
+penguins2<- penguins%>%
+  filter(species != "Adelie")%>%
+  na.omit()%>%
+  droplevels()
+```
+
+Using the HATPC framework, test whether chinstrap and gentoo penguins have different body masses.
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+1.  Hypothesis
+
+> H~0~: $\mu_{chinstrap}$ = $\mu_{gentoo}$
+
+> H~1~: $\mu_{chinstrap}$ $\neq$ $\mu_{gentoo}$
+
+2.  Assumptions
+
+Normality
+
+```{r}
+library(tidyverse)
+
+#qqplot
+
+ggplot(penguins2, aes(sample = body_mass_g))+
+  geom_qq()+
+  geom_qq_line()+
+  facet_wrap(~species)
+
+#shapiro test
+
+tapply(penguins2$body_mass_g, penguins2$species, shapiro.test)
+
+```
+
+> The data appear to be normally distributed. The point in the qq plot follow the line pretty closely, and the shapiro tests also indicate a normal distribution
+
+Homogeneity of variance
+
+```{r}
+# barttlettest
+bartlett.test(penguins2$body_mass_g~penguins2$species)
+```
+
+> According to the BArttlet test, the two samples do not have equal variances
+
+3.  Test (statistic)
+
+```{r}
+t.test(body_mass_g~species, var.equal = FALSE, data = penguins2)
+```
+
+4.  P-value
+
+> Since p\>0.05, we reject the null hypothesis
+
+5.  Conclusion
+
+> Chinstrap and gentoo penguins have different mean body masses. Gentoo pneguins are heavier than chinstrap penguins on average.
+
+:::
