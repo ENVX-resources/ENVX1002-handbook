@@ -726,6 +726,39 @@
     ]
   },
   {
+    "objectID": "labs/Lab09.html#exercise-1-cars-stopping-distance",
+    "href": "labs/Lab09.html#exercise-1-cars-stopping-distance",
+    "title": "Lab 9 - Describing relationships",
+    "section": "Exercise 1: Cars stopping distance",
+    "text": "Exercise 1: Cars stopping distance\nFor this exercise we willuse the inbuilt dataset cars to see if there is a relationship between a cars speed (mph) and stopping distance (fft).\n\nhead(cars)\n\n\nCreate a scatterplot of speed vs distance\n\n\nIs there are trend? Or are the point evenly scatered?\n\n\nCalculate the correlation coefficient between these two variables. Is there a strong relationship?\n\n\nFit a model to your data and obtain the model summary.\n\n\nWhat would the equation of the line be?\n\n\nOverlay your model onto the scatterplot you produced earlier",
+    "crumbs": [
+      "**🖥️ Computer labs**",
+      "Lab 9 - Describing relationships"
+    ]
+  },
+  {
+    "objectID": "labs/Lab09.html#exercise-2-penguins",
+    "href": "labs/Lab09.html#exercise-2-penguins",
+    "title": "Lab 9 - Describing relationships",
+    "section": "Exercise 2: Penguins",
+    "text": "Exercise 2: Penguins\nFor this exercise, we will be using the palmer penguin data set to see if there is a relationship between bill and flipper length.\n\n#Load libraries\nlibrary(palmerpenguins)\nlibrary(tidyverse)\n\n#Clean data\npenguins &lt;- penguins%&gt;%\n  na.omit()#remove missing data\n\nhead(penguins)\n\n\nCreate a scatterplot of bill length vs flipper legth\n\n\nIs there are trend? Or are the point evenly scatered?\n\n\nCalculate the correlation coefficient between these two variables. Is there a strong relationship?\n\n\nFit a model to your data and obtain the model summary. What are the parameters?\n\n\nWhat would the equation of the line be?\n\n\nOverlay your model onto the scatterplot you produced earlier",
+    "crumbs": [
+      "**🖥️ Computer labs**",
+      "Lab 9 - Describing relationships"
+    ]
+  },
+  {
+    "objectID": "labs/Lab09.html#exercise-3-old-faithful-geyser-data",
+    "href": "labs/Lab09.html#exercise-3-old-faithful-geyser-data",
+    "title": "Lab 9 - Describing relationships",
+    "section": "Exercise 3: Old Faithful Geyser Data",
+    "text": "Exercise 3: Old Faithful Geyser Data\nFor this exercise, we will be looking at the relationship between geyser eruption time and time between erupttions, using the inbuilt data set faithful\n\nhead(faithful)\n\n\nCreate a scatterplot of eruptions vs waiting time\n\n\nIs there are trend? Or are the point evenly scatered?\n\n\nCalculate the correlation coefficient between these two variables. Is there a strong relationship?\n\n\nFit a model to your data and obtain the model summary.\n\n\nWhat would the equation of the line be?\n\n\nOverlay your model onto the scatterplot you produced earlier",
+    "crumbs": [
+      "**🖥️ Computer labs**",
+      "Lab 9 - Describing relationships"
+    ]
+  },
+  {
     "objectID": "001-intro.html",
     "href": "001-intro.html",
     "title": "Introduction",

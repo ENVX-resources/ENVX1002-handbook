@@ -5170,6 +5170,12 @@ window.Quarto = {
   <li><a href="#have-a-go---fertiliser-data" id="toc-have-a-go---fertiliser-data" class="nav-link" data-scroll-target="#have-a-go---fertiliser-data">2.1 Have a go - Fertiliser data</a></li>
   <li><a href="#abares-data" id="toc-abares-data" class="nav-link" data-scroll-target="#abares-data">2.2 ABARES data</a></li>
   </ul></li>
+  <li><a href="#bonus-take-home-exercises" id="toc-bonus-take-home-exercises" class="nav-link" data-scroll-target="#bonus-take-home-exercises">Bonus take home exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-cars-stopping-distance" id="toc-exercise-1-cars-stopping-distance" class="nav-link" data-scroll-target="#exercise-1-cars-stopping-distance">Exercise 1: Cars stopping distance</a></li>
+  <li><a href="#exercise-2-penguins" id="toc-exercise-2-penguins" class="nav-link" data-scroll-target="#exercise-2-penguins">Exercise 2: Penguins</a></li>
+  <li><a href="#exercise-3-old-faithful-geyser-data" id="toc-exercise-3-old-faithful-geyser-data" class="nav-link" data-scroll-target="#exercise-3-old-faithful-geyser-data">Exercise 3: Old Faithful Geyser Data</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -5412,6 +5418,92 @@ SS_{res} =\sum_{i = 1}^{n} (y - \hat{y})^2 \label{2}
 </ol>
 <p><br></p>
 <p>That’s it! Great work today. Next week: interpreting linear models!</p>
+</section>
+</section>
+<section id="bonus-take-home-exercises" class="level1">
+<h1>Bonus take home exercises</h1>
+<section id="exercise-1-cars-stopping-distance" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1-cars-stopping-distance">Exercise 1: Cars stopping distance</h2>
+<p>For this exercise we willuse the inbuilt dataset cars to see if there is a relationship between a cars speed (mph) and stopping distance (fft).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="a">
+<li>Create a scatterplot of speed vs distance</li>
+</ol>
+<ol start="2" type="a">
+<li>Is there are trend? Or are the point evenly scatered?</li>
+</ol>
+<ol start="3" type="a">
+<li>Calculate the correlation coefficient between these two variables. Is there a strong relationship?</li>
+</ol>
+<ol start="4" type="a">
+<li>Fit a model to your data and obtain the model summary.</li>
+</ol>
+<ol start="5" type="a">
+<li>What would the equation of the line be?</li>
+</ol>
+<ol start="6" type="a">
+<li>Overlay your model onto the scatterplot you produced earlier</li>
+</ol>
+</section>
+<section id="exercise-2-penguins" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2-penguins">Exercise 2: Penguins</h2>
+<p>For this exercise, we will be using the palmer penguin data set to see if there is a relationship between bill and flipper length.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load libraries</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Clean data</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> penguins<span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()<span class="co">#remove missing data</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="a">
+<li>Create a scatterplot of bill length vs flipper legth</li>
+</ol>
+<ol start="2" type="a">
+<li>Is there are trend? Or are the point evenly scatered?</li>
+</ol>
+<ol start="3" type="a">
+<li>Calculate the correlation coefficient between these two variables. Is there a strong relationship?</li>
+</ol>
+<ol start="4" type="a">
+<li>Fit a model to your data and obtain the model summary. What are the parameters?</li>
+</ol>
+<ol start="5" type="a">
+<li>What would the equation of the line be?</li>
+</ol>
+<ol start="6" type="a">
+<li>Overlay your model onto the scatterplot you produced earlier</li>
+</ol>
+</section>
+<section id="exercise-3-old-faithful-geyser-data" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3-old-faithful-geyser-data">Exercise 3: Old Faithful Geyser Data</h2>
+<p>For this exercise, we will be looking at the relationship between geyser eruption time and time between erupttions, using the inbuilt data set faithful</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(faithful)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="a">
+<li>Create a scatterplot of eruptions vs waiting time</li>
+</ol>
+<ol start="2" type="a">
+<li>Is there are trend? Or are the point evenly scatered?</li>
+</ol>
+<ol start="3" type="a">
+<li>Calculate the correlation coefficient between these two variables. Is there a strong relationship?</li>
+</ol>
+<ol start="4" type="a">
+<li>Fit a model to your data and obtain the model summary.</li>
+</ol>
+<ol start="5" type="a">
+<li>What would the equation of the line be?</li>
+</ol>
+<ol start="6" type="a">
+<li>Overlay your model onto the scatterplot you produced earlier</li>
+</ol>
 <br> <br> <!--The code below reduces white space at the end of the output doc-->
 <div class="tocify-extend-page" data-unique="tocify-extend-page" style="height: 0;">
 
