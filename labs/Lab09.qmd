@@ -425,6 +425,291 @@ abline(abares.lm, col = "red")
 
 That's it! Great work today. Next week: interpreting linear models!
 
+# Bonus take home exercises
+
+## Exercise 1: Cars stopping distance
+
+For this exercise we willuse the inbuilt dataset cars to see if there is a relationship between a cars speed (mph) and stopping distance (fft).
+
+```{r}
+head(cars)
+```
+
+
+a) Create a scatterplot of speed vs distance
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+--------------------------------
+```{r}
+plot(cars$speed, cars$dist)
+```
+
+------
+:::
+
+b) Is there are trend? Or are the point evenly scatered? 
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+--------------------------------
+
+> There is a positive relationship between speed and distance.
+
+-------
+:::
+
+c) Calculate the correlation coefficient between these two variables. Is there a strong relationship?
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+--------------------------------
+
+```{r}
+cor(cars$speed, cars$dist)
+```
+> The correlation coefficient is 0.8, which indicates a very strong positive relationship
+
+-------
+:::
+
+d) Fit a model to your data and obtain the model summary.
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+--------------------------------
+```{r}
+cars_lm <- lm(dist~ speed, data = cars)
+
+summary(cars_lm)
+```
+>  $b_0$ =  -17.5791  
+> $b_1$ = 3.9324
+
+--------
+:::
+
+e) What would the equation of the line be?
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+--------------------------------
+> Distance = 3.9324*Speed -17.5791
+
+------
+:::
+
+f) Overlay your model onto the scatterplot you produced earlier
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+--------------------------------
+
+```{r}
+plot(cars$speed, cars$dist)
+abline(cars_lm, col = "red")
+```
+
+-----------
+
+::: 
+
+## Exercise 2: Penguins
+
+For this exercise, we will be using the palmer penguin data set to see if there is a relationship between bill and flipper length.
+
+```{r}
+#Load libraries
+library(palmerpenguins)
+library(tidyverse)
+
+#Clean data
+penguins <- penguins%>%
+  na.omit()#remove missing data
+
+head(penguins)
+
+```
+a) Create a scatterplot of bill length vs flipper legth
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+------------------------------------------------------------------------
+```{r}
+plot(penguins$bill_length_mm, penguins$flipper_length_mm)
+```
+
+------
+:::
+
+b) Is there are trend? Or are the point evenly scatered? 
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+--------------------
+
+> There is a positive trend
+
+------
+
+:::
+
+c) Calculate the correlation coefficient between these two variables. Is there a strong relationship?
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+--------------------
+```{r}
+
+cor(penguins$bill_length_mm, penguins$flipper_length_mm)
+```
+> The correlation coefficient is 0.65, ehich indicates a medium- positive relationship.
+
+-----
+
+:::
+
+d) Fit a model to your data and obtain the model summary. What are the parameters?
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+--------------------
+```{r}
+penguin_model<- lm(bill_length_mm ~ flipper_length_mm, data = penguins)
+
+summary(penguin_model)
+```
+>  $b_0$ = -7.21856  
+> $b_1$ = 0.25482
+
+------
+
+:::
+
+e) What would the equation of the line be?
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+--------------------
+
+> bill length = -7.21856  + 0.25482* flipper length
+
+--------
+
+:::
+
+f) Overlay your model onto the scatterplot you produced earlier
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+--------------------
+
+```{r}
+plot(penguins$bill_length_mm, penguins$flipper_length_mm)
+abline(penguin_model, col = "red")
+```
+
+-----
+
+:::
+
+## Exercise 3: Old Faithful Geyser Data
+
+For this exercise, we will be looking at the relationship between geyser eruption time and time between erupttions, using the inbuilt data set faithful
+
+```{r}
+head(faithful)
+```
+
+
+a) Create a scatterplot of eruptions vs waiting time
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+--------------------------------
+
+```{r}
+plot(faithful$waiting, faithful$eruptions)
+```
+
+-------
+
+:::
+
+
+b) Is there are trend? Or are the point evenly scatered? 
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+--------------------------------
+
+> There is a positive relationship between eruptions length and waiting time
+
+------
+
+:::
+
+c) Calculate the correlation coefficient between these two variables. Is there a strong relationship?
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+--------------------------------
+
+```{r}
+cor(faithful$eruptions, faithful$waiting)
+```
+> The correlation coefficient is 0.9, which indicates a very strong positive relationship
+
+-----------
+:::
+
+d) Fit a model to your data and obtain the model summary.
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+--------------------------------
+```{r}
+faithful_lm <- lm(eruptions~ waiting, data = faithful)
+
+summary(faithful_lm)
+```
+>  $b_0$ = -1.874016 
+> $b_1$ = 0.075628
+
+--------
+:::
+
+e) What would the equation of the line be?
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+--------------------------------
+
+> eruptions =  0.075628* waiting -1.874016 
+
+-------
+:::
+
+f) Overlay your model onto the scatterplot you produced earlier
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+--------------------------------
+```{r}
+plot(faithful$waiting, faithful$eruptions)
+abline(faithful_lm, col = "red")
+```
+
+-------
+:::
+
 <br>
 <br>
 <!--The code below reduces white space at the end of the output doc-->
