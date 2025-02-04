@@ -544,6 +544,203 @@ t.test(sting$Stinging, mu = 1.5)
 
 ## Thanks!
 
+# Bonus take home exercices
+
+For each of these exercises, follow the steps outlined in the lectures (and this lab!) to test your hypotheses:
+
+1. Choose level of significance (α)
+2. Write null and alternate hypotheses
+3. Check assumptions (normal)
+4. Calculate test statistic
+5. Obtain P-value or critical value
+6. Make statistical conclusion
+7. Write a scientific (biological) conclusion
+
+## Exercise 1: Carrots
+
+A farmer is growing carrots for a restaurant. The restaraunt wants their carrots to be 10 cm long, so the farmer wants to check if the carrots in their field differ significantly from the needed length.
+
+```{r}
+#Read in data
+
+carrots <- c(7, 7, 13, 5, 13, 10, 11, 12, 10,  9)
+```
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+----
+1. Choose level of significance (α)
+> Answer:  0.05 is generally accepted in the scientific community.
+
+2. Write null and alternate hypotheses
+
+> H~0~: $\mu_{carrot}$ = 10cm     
+> H~1~: $\mu_{carrot}$ $\neq$ 10 cm 
+
+3. Check assumptions (normal)
+
+```{r}
+#boxplot
+boxplot(carrots)
+
+#histogram
+hist(carrots)
+
+#shapiro test
+
+shapiro.test(carrots)
+```
+> The data are normally distributed
+
+4. Calculate test statistic and
+5. Obtain P-value or critical value
+```{r}
+
+#t test
+t.test(carrots, mu = 10)
+```
+
+6. Make statistical conclusion
+
+> p > 0.05, so we retain the. null hypothesis
+
+7. Write a scientific (biological) conclusion
+
+> The carrot length is not equal to 10 cm. The farmer's carrots have a mean of 9.7 cm, so they are smaller than the needed length
+
+----
+:::
+
+## Exercise 2: Penguins
+
+Rey has just landed on earth and notived that penguins look really similar to porgs. Using weight as the point of comparison, she wants to know if two different penguin species weigh the same as her pet Porg Stevie, who weighs  4000g.
+
+We will be using the Palmer penguin dataset to test if chinstrap and gentoo penguins weigh the same as Stevie.
+
+```{r}
+#install.packages("palmerpenguins")
+library(palmerpenguins)
+```
+
+### 2.1 Chinstrap
+```{r}
+chinstrap <-  penguins%>%
+  filter(species == "Chinstrap")%>%
+  na.omit()
+
+```
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+----
+1. Choose level of significance (α)
+> Answer:  0.05 is generally accepted in the scientific community.
+
+2. Write null and alternate hypotheses
+
+> H~0~: $\mu_{chinstrap}$ = 4000g     
+> H~1~: $\mu_{chinstrap}$ $\neq$ 4000g 
+
+3. Check assumptions (normal)
+
+```{r}
+#Load library
+library(tidyverse)
+#qqplot
+ggplot(chinstrap, aes(sample = body_mass_g))+
+  geom_qq()+
+  geom_qq_line()
+#boxplot
+ggplot(chinstrap, aes(x = body_mass_g))+
+  geom_boxplot()
+
+#histogram
+ggplot(chinstrap, aes(x = body_mass_g))+
+  geom_histogram()
+
+#shapiro test
+shapiro.test(chinstrap$body_mass_g)
+
+```
+> The data are normally distributed
+
+4. Calculate test statistic and
+5. Obtain P-value or critical value
+```{r}
+
+#t test
+t.test(chinstrap$body_mass_g, mu = 4000)
+```
+
+6. Make statistical conclusion
+
+> p < 0.05, so we reject null hypothesis
+
+7. Write a scientific (biological) conclusion
+
+> Chinstrap penguins do not weigh the same as Stevie. On average, chinstrap penguins weigh 3733.088g, so they are lighter. 
+
+----
+:::
+
+### 2.2 Gentoo
+```{r}
+gentoo <-penguins%>%
+  filter(species == "Gentoo")%>%
+  na.omit() 
+```
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+----
+1. Choose level of significance (α)
+> Answer:  0.05 is generally accepted in the scientific community.
+
+2. Write null and alternate hypotheses
+
+> H~0~: $\mu_{gentoo}$ = 4000g     
+> H~1~: $\mu_{gentoo}$ $\neq$ 4000g 
+
+3. Check assumptions (normal)
+
+```{r}
+#qqplot
+ggplot(gentoo, aes(sample = body_mass_g))+
+  geom_qq()+
+  geom_qq_line()
+#boxplot
+ggplot(gentoo, aes(x = body_mass_g))+
+  geom_boxplot()
+
+#histogram
+ggplot(gentoo, aes(x = body_mass_g))+
+  geom_histogram()
+
+#shapiro test
+shapiro.test(gentoo$body_mass_g)
+```
+> The data are normally distributed
+
+4. Calculate test statistic and
+5. Obtain P-value or critical value
+```{r}
+
+#t test
+t.test(gentoo$body_mass_g, mu = 4000)
+```
+
+6. Make statistical conclusion
+
+> p < 0.05, so we reject the null hypothesis
+
+7. Write a scientific (biological) conclusion
+
+> penguins do not weigh the same as Stevie.On average, gentoo penguins weigh 5092.437g, so they are heavier.
+
+----
+:::
 ### Attribution
 
 This lab was developed using resources that are available under a [Creative Commons Attribution 4.0 International license](http://creativecommons.org/licenses/by/4.0/), made available on the [SOLES Open Educational Resources repository](https://github.com/usyd-soles-edu/).
