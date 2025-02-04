@@ -1240,6 +1240,39 @@
     ]
   },
   {
+    "objectID": "labs/Lab10.html#exercise-1-cars-stopping-distance",
+    "href": "labs/Lab10.html#exercise-1-cars-stopping-distance",
+    "title": "Lab 10 - Linear Functions",
+    "section": "Exercise 1: Cars stopping distance",
+    "text": "Exercise 1: Cars stopping distance\nUse the cars dataset from last week to test if speed (mph) is a predictor of stopping distance (fft).\n\nhead(cars)",
+    "crumbs": [
+      "**🖥️ Computer labs**",
+      "Lab 10 - Linear Functions"
+    ]
+  },
+  {
+    "objectID": "labs/Lab10.html#exercise-2-penguins",
+    "href": "labs/Lab10.html#exercise-2-penguins",
+    "title": "Lab 10 - Linear Functions",
+    "section": "Exercise 2: Penguins",
+    "text": "Exercise 2: Penguins\nUse the palmer penguins dataset to test if flipper length is a significant predictor of bill length.\n\n#Load libraries\nlibrary(palmerpenguins)\nlibrary(tidyverse)\n\n#Clean data\npenguins &lt;- penguins%&gt;%\n  na.omit()#remove missing data\n\nhead(penguins)",
+    "crumbs": [
+      "**🖥️ Computer labs**",
+      "Lab 10 - Linear Functions"
+    ]
+  },
+  {
+    "objectID": "labs/Lab10.html#exercise-3-old-faithful-geyser-data",
+    "href": "labs/Lab10.html#exercise-3-old-faithful-geyser-data",
+    "title": "Lab 10 - Linear Functions",
+    "section": "Exercise 3: Old Faithful Geyser Data",
+    "text": "Exercise 3: Old Faithful Geyser Data\nUsing the inbuilt faithful dataset, test whether waiting time is a significant predictor of eruption time.\n\nhead(faithful)",
+    "crumbs": [
+      "**🖥️ Computer labs**",
+      "Lab 10 - Linear Functions"
+    ]
+  },
+  {
     "objectID": "labs/Lab06.html",
     "href": "labs/Lab06.html",
     "title": "Lab 06 – Two-sample t-test",

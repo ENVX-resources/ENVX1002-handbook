@@ -5180,6 +5180,12 @@ window.Quarto = {
   <li><a href="#observe-model-output" id="toc-observe-model-output" class="nav-link" data-scroll-target="#observe-model-output">2.5 Observe model output</a></li>
   </ul></li>
   <li><a href="#exercise-3-dippers" id="toc-exercise-3-dippers" class="nav-link" data-scroll-target="#exercise-3-dippers">Exercise 3: Dippers</a></li>
+  <li><a href="#bonus-take-home-exercises" id="toc-bonus-take-home-exercises" class="nav-link" data-scroll-target="#bonus-take-home-exercises">Bonus take home exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-cars-stopping-distance" id="toc-exercise-1-cars-stopping-distance" class="nav-link" data-scroll-target="#exercise-1-cars-stopping-distance">Exercise 1: Cars stopping distance</a></li>
+  <li><a href="#exercise-2-penguins" id="toc-exercise-2-penguins" class="nav-link" data-scroll-target="#exercise-2-penguins">Exercise 2: Penguins</a></li>
+  <li><a href="#exercise-3-old-faithful-geyser-data" id="toc-exercise-3-old-faithful-geyser-data" class="nav-link" data-scroll-target="#exercise-3-old-faithful-geyser-data">Exercise 3: Old Faithful Geyser Data</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -5468,8 +5474,54 @@ Yield = 4.7619 + 5.4286*fert
 <li>A final thought; Does our result make sense within the context? i.e. why might the Dipper breeding pair density be related to LogCadd?</li>
 </ol>
 <p>Great work fitting simple linear models! Next week we step it up with <em>multiple</em> linear regression.</p>
+</section>
+<section id="bonus-take-home-exercises" class="level1">
+<h1>Bonus take home exercises</h1>
+<p>Use the template below to test the hypotheses for each exercise.</p>
+<ol type="1">
+<li><p>Scatterplot and correlation</p></li>
+<li><p>State Hypothesis</p></li>
+<li><p>Fit the model</p></li>
+<li><p>Check assumptions</p></li>
+<li><p>P value and model fit</p>
+<ol type="a">
+<li><p>Is the model significant?</p></li>
+<li><p>Is the predictor significant?</p></li>
+<li><p>How good is the model fit?</p></li>
+</ol></li>
+<li><p>Conclusions</p></li>
+</ol>
+<section id="exercise-1-cars-stopping-distance" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1-cars-stopping-distance">Exercise 1: Cars stopping distance</h2>
+<p>Use the cars dataset from last week to test if speed (mph) is a predictor of stopping distance (fft).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exercise-2-penguins" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2-penguins">Exercise 2: Penguins</h2>
+<p>Use the palmer penguins dataset to test if flipper length is a significant predictor of bill length.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load libraries</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Clean data</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> penguins<span class="sc">%&gt;%</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()<span class="co">#remove missing data</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exercise-3-old-faithful-geyser-data" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3-old-faithful-geyser-data">Exercise 3: Old Faithful Geyser Data</h2>
+<p>Using the inbuilt faithful dataset, test whether waiting time is a significant predictor of eruption time.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(faithful)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
