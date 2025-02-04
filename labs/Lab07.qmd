@@ -12,18 +12,18 @@ pacman::p_load(tidyverse, mosaic)
 ::: callout-tip
 ## Learning Outcomes
 
-- Learn to use R to calculate a chi-squared test for:
-  - Test of proportions
-  - Test of independence
-- Learn how to interpret statistical output.
+-   Learn to use R to calculate a chi-squared test for:
+    -   Test of proportions
+    -   Test of independence
+-   Learn how to interpret statistical output.
 :::
 
 ## Before we begin
 
-Create your Quarto document and save it as `Lab-07.qmd` or similar. 
-There are no data files to download for this lab.
+Create your Quarto document and save it as `Lab-07.qmd` or similar. There are no data files to download for this lab.
 
 ## Quick introduction
+
 The chi-square test is used to compare the *observed* distribution to an *expected* distribution, in a situation where we have **two or more categories** in a discrete data. In other words, it compares multiple observed proportions to expected probabilities.
 
 The formula is:
@@ -36,7 +36,6 @@ For more information about the technique, consult your lecture slides and tutori
 
 ## Exercise 1: wild tulips (walk-through)
 
-
 ### Background
 
 Suppose we collected wild tulips and found that 81 were red, 50 were yellow and 27 were white. Are these colours equally common?
@@ -44,43 +43,50 @@ Suppose we collected wild tulips and found that 81 were red, 50 were yellow and 
 **If these colours were equally distributed, the expected proportion would be 1/3 for each of the colour.** Therefore, we want to test if the observed proportions are significantly different from the expected proportions.
 
 The data is below.
+
 ```{r}
 tulip <- c(81, 50, 27)
 ```
 
 ### Instructions
+
 Utilise the **HATPC** process and test the hypothesis that the proportion of flower colours of tulips are equally common, assuming that the samples are independent. We can explore the data as we check the assumptions of the test.
 
 ::: column-margin
 HATPC:
 
-- Hypothesis
-- Assumptions
-- Test (statistic)
-- P-value
-- Conclusion
+-   Hypothesis
+-   Assumptions
+-   Test (statistic)
+-   P-value
+-   Conclusion
 :::
 
 ::: callout-note
 ## Level of significance
+
 **The level of significance is usually set at 0.05.** This value is generally accepted in the scientific community and is also linked to Type 2 errors, where choosing a lower significance increases the likelihood of failing to reject the null hypothesis when it is false.
 :::
 
 ### Hypotheses
-What are the null hypothesis and alternative hypotheses? 
+
+What are the null hypothesis and alternative hypotheses?
 
 <details>
+
 <summary>Click here to view answer</summary>
-- H~0~: There is no significant difference between the observed and the expected proportions of flower colours.  
-- H~1~: There is a significant difference between the observed and the expected proportions of flower colours.    
+
+-   H~0~: There is no significant difference between the observed and the expected proportions of flower colours.\
+-   H~1~: There is a significant difference between the observed and the expected proportions of flower colours.\
+
 </details>
 
 ### Assumptions
 
 Recall that the assumptions of the $\chi^2$ test are:
 
-1. No cell has expected frequencies less than 1
-2. No more than 20% of cells have expected frequencies less than 5
+1.  No cell has expected frequencies less than 1
+2.  No more than 20% of cells have expected frequencies less than 5
 
 ::: callout-note
 In the case that the above assumptions are violated then the probability of a type 1 error occurring (rejecting the null hypothesis when it is true, i.e. false positive) increases.
@@ -94,18 +100,19 @@ expected
 
 ```
 
-Does the data satisfy the assumptions of a $\chi^2$ test? 
+Does the data satisfy the assumptions of a $\chi^2$ test?
 
 <details>
-<summary>Click here to view answer</summary>
-Yes, as expected frequencies > 5.  
-</details>
 
+<summary>Click here to view answer</summary>
+
+Yes, as expected frequencies \> 5.
+
+</details>
 
 ### Test statistic
 
-
-The ```chisq.test()``` function in R is used  to calculate the chi-squared test.
+The `chisq.test()` function in R is used to calculate the chi-squared test.
 
 ```{r}
 
@@ -115,51 +122,56 @@ res
 ```
 
 Note that we coud check our assumptions post-analysis by checking the expected frequencies stored in the `expected` object of the output:
+
 ```{r}
 res$expected
 ```
 
-
 ### P-value
 
-Write down how you should report the critical value, p-value and df in a scientific paper?  
+Write down how you should report the critical value, p-value and df in a scientific paper?
 
 <details>
-<summary>Click here to view answer</summary>
-$\chi^2 = 27.9, d.f. =2, p < 0.01$
-</details>
 
+<summary>Click here to view answer</summary>
+
+$\chi^2 = 27.9, d.f. =2, p < 0.01$
+
+</details>
 
 ### Conclusions
 
-Based on the p-value, do we accept or reject the null hypothesis?  
-
+Based on the p-value, do we accept or reject the null hypothesis?
 
 <details>
-<summary>Click here to view answer</summary>
-We reject the null hypothesis as the p-value is less than 0.05.
-</details>
 
+<summary>Click here to view answer</summary>
+
+We reject the null hypothesis as the p-value is less than 0.05.
+
+</details>
 
 Now write a scientific (biological) conclusion based on the outcome.
 
 <details>
+
 <summary>Click here to view answer</summary>
-There is a significant difference in the proportion of flower colours of tulips ($\chi^2 = 27.9, d.f. =2, p < 0.01$).  
+
+There is a significant difference in the proportion of flower colours of tulips ($\chi^2 = 27.9, d.f. =2, p < 0.01$).
+
 </details>
 
-
-
 ## Exercise 2: hermit crabs
+
 ### Background
 
 In a study of hermit crab behaviour at Point Lookout, North Stradbroke Island, a random sample of 3 types of gastropod shells was collected. Each shell was then scored as being either occupied by a hermit crab or empty. Do hermit crabs prefer a certain shell?
 
-|Shell species | Occupied| Empty|
-|--------------|---------|------|
-|Austrochochlea|       47|    42|
-|Bembicium     |       10|    41|
-|Cirithid      |      125|    49|
+| Shell species  | Occupied | Empty |
+|----------------|----------|-------|
+| Austrochochlea | 47       | 42    |
+| Bembicium      | 10       | 41    |
+| Cirithid       | 125      | 49    |
 
 The data is stored in a `table` object in R below. Note that it is different from a `data.frame` object. You can verify this by using the `str()` or `class()` functions.
 
@@ -177,7 +189,6 @@ str(crabs)
 crabs
 ```
 
-
 #### Data exploration
 
 Since we have a multi-dimensional dataset, we can try to plot the data to visualise it.
@@ -186,56 +197,52 @@ A mosaic plot is a graphical representation of the data in a two-way contingency
 
 Try the code below. Can you interpret the plot?
 
-
-
 ```{r}
 # mosaic plot of crabs
 mosaicplot(crabs, main = "Hermit crabs and shell species")
 ```
 
 <details>
+
 <summary>Click here to view interpretation</summary>
+
 The plot shows that the distribution of hermit crabs in the different shell species is not equal. The majority of hermit crabs are found in the *Cirithid* shell species, followed by *Austrochochlea* and *Bembicium*. This can be observed by the **width** of the boxes in the plot.
 
 There are also differences in the number of empty shells in the different shell species. The *Bembicium* shell species has the highest number of empty shells, followed by *Austrochochlea* and *Cirithid*. This can be observed by the **height** of the boxes in the plot.
 
 </details>
 
-
 ### HATPC
 
 Now it is your turn to test the hypothesis that the three shell species are equally preferred by hermit crabs. Follow the HATPC process with the following questions in mind (but you don't have to answer them individually):
 
-1. What are the null hypothesis and alternative hypotheses?
-2. Does the data satisfy the assumptions of a $\chi^2$ test?
-3. How should you report the critical value, p-value and df in a scientific paper?
-4. Based on the p-value, do we accept or reject the null hypothesis?
-5. Write a scientific (biological) conclusion based on the outcome.
+1.  What are the null hypothesis and alternative hypotheses?
+2.  Does the data satisfy the assumptions of a $\chi^2$ test?
+3.  How should you report the critical value, p-value and df in a scientific paper?
+4.  Based on the p-value, do we accept or reject the null hypothesis?
+5.  Write a scientific (biological) conclusion based on the outcome.
 
 Use the markdown structure below to answer the questions (if you wish):
 
-```md
+``` md
 ## Exercise 2: hermit crabs
 ### Hypothesis
 ### Assumptions
 ### Test statistic
 ### P-value
 ### Conclusions
-
 ```
 
 Take your time, and when you are ready, check your answers with your demonstrators.
-
-
 
 ::: {.content-visible when-profile="solution"}
 ## Answer to Exercise 2 {style="color:green;"}
 
 ### Hypothesis {style="color:green;"}
 
-**H~0~**: There is no significant difference between the observed and the expected use of different shell species by hermit crabs.  
+**H~0~**: There is no significant difference between the observed and the expected use of different shell species by hermit crabs.
 
-**H~1~**: There is a significant difference between the observed and the expected use of different shell species by hermit crabs.   
+**H~1~**: There is a significant difference between the observed and the expected use of different shell species by hermit crabs.
 
 ### Assumptions {style="color:green;"}
 
@@ -264,3 +271,145 @@ We reject the null hypothesis as the p-value is less than 0.05 and conclude that
 
 This is the end of the lab. Remember to save your work, render your document and ask your demonstrators for feedback if you are unsure about your answers.
 
+# Bonus take home exercises
+
+## Exercise 1: National RSPCA statistics
+
+The RSPCA releases statistics on the number of animals they receive, reclaim and rehome [every year](https://www.rspca.org.au/about/annual-statistics/). In the 2023-24 financial year, the RSPCA received 17468 dogs, 26704 cats, and 37497 other animals. The "other" category includes horses, small animals, livestock and wildlife.
+
+Using the HATPC framework, test whether these animals were received in equal proportions.
+
+```{r}
+received <- c(17468, 26704, 37497)
+```
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+-   Hypothesis 
+
+> H~0~ : There is no significant difference between the observed and the expected number of animals received from each category
+
+> H~1~ : There is a significant difference betwwen the observed and the expected number of animals received from each category
+
+-   Assumptions
+
+```{r}
+expected_received <- rep(sum(received)*1/3, 3)
+expected_received
+```
+
+> 1)  No cell has expected frequencies less than 1 and 2) No more than 20% of cells have expected frequencies less than 5 so the assumptions are met
+
+-   Test (statistic)
+
+```{r}
+chisq.test(received)
+```
+
+-   P-value \> p \< 0.05, so we reject the null hypothesis
+
+-   Conclusion
+
+> There is a significant difference betwwen the observed and the expected number of animals received from each category
+:::
+
+## Exercise 2: UC Berkeley Admissions
+
+For the two exercises we're going to use simplified versions of the inbuilt dataset 'UCBAdmissions', which has data on student admissions for Berkeley. The dataset shows how many students were rejected and admitted to the university by both department and gender.
+
+### 2.1 Admissions by department
+
+Did every department at UC Berkeley admit students in equal proportions?
+
+```{r}
+dept_admissions <- c(601, 370, 322, 269, 147, 46)
+```
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+-   Hypothesis
+
+> H~0~:There is no significant difference between the expected and observed number of students admitted by each department 
+
+> H~1~: There is a significant difference between the expected and observed number of students admitted by each department
+
+-   Assumptions
+
+```{r}
+rep(sum(dept_admissions)*1/6, 6)
+```
+
+> 1)  No cell has expected frequencies less than 1 and 2) No more than 20% of cells have expected frequencies less than 5 so the assumptions are met
+
+-   Test (statistic)
+
+```{r}
+chisq.test(dept_admissions)
+```
+
+-   P-value
+
+> p < 0.05, so we reject the null hypothesis
+
+-   Conclusion 
+
+> There is a significant difference between the expected and observed number of students admitted by each department
+
+:::
+
+### 2.2
+Are male and female students admitted and rejected in the same proportion?
+
+```{r}
+gender <- as.table( #Make a table with values for each row
+  rbind(
+    admitted = c(1198, 557),
+    rejected = c(1493, 1278)
+  )
+)
+
+colnames(gender) <- c("Male", "Female") #Add column names to table
+```
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+Can make a mosaic plot to look at what the data looks like
+
+```{r}
+mosaicplot(gender)
+```
+
+-   Hypothesis
+
+> H~0~:There is no significant difference between the expected and observed number of students admitted or rejected by gender
+
+> H~1~:There is a significant difference between the expected and observed number of students admitted or rejected by gender
+
+-   Assumptions
+```{r}
+
+#Fit the chisq test to be able to call up the expected
+fit_gender <-chisq.test(gender)
+
+fit_gender$expected
+```
+> 1)  No cell has expected frequencies less than 1 and 2) No more than 20% of cells have expected frequencies less than 5 so the assumptions are met
+
+-   Test (statistic)
+```{r}
+#call up the test we ran above
+fit_gender
+```
+
+-   P-value
+
+> p < 0.05, so we reject the null hypothesis
+
+-   Conclusion
+
+> There is a significant difference between the expected and observed number of students admitted or rejected by gender
+
+:::
