@@ -5185,8 +5185,15 @@ window.Quarto = {
   <li><a href="#exercise-2-stinging-trees-individual-or-in-pairs" id="toc-exercise-2-stinging-trees-individual-or-in-pairs" class="nav-link" data-scroll-target="#exercise-2-stinging-trees-individual-or-in-pairs">Exercise 2: Stinging trees (individual or in pairs)</a>
   <ul class="collapse">
   <li><a href="#check-you-answers-with-teaching-staff" id="toc-check-you-answers-with-teaching-staff" class="nav-link" data-scroll-target="#check-you-answers-with-teaching-staff">Check you answers with teaching staff</a></li>
-  <li><a href="#thanks" id="toc-thanks" class="nav-link" data-scroll-target="#thanks">Thanks!</a>
+  <li><a href="#thanks" id="toc-thanks" class="nav-link" data-scroll-target="#thanks">Thanks!</a></li>
+  </ul></li>
+  <li><a href="#bonus-take-home-exercices" id="toc-bonus-take-home-exercices" class="nav-link" data-scroll-target="#bonus-take-home-exercices">Bonus take home exercices</a>
   <ul class="collapse">
+  <li><a href="#exercise-1-carrots" id="toc-exercise-1-carrots" class="nav-link" data-scroll-target="#exercise-1-carrots">Exercise 1: Carrots</a></li>
+  <li><a href="#exercise-2-penguins" id="toc-exercise-2-penguins" class="nav-link" data-scroll-target="#exercise-2-penguins">Exercise 2: Penguins</a>
+  <ul class="collapse">
+  <li><a href="#chinstrap" id="toc-chinstrap" class="nav-link" data-scroll-target="#chinstrap">2.1 Chinstrap</a></li>
+  <li><a href="#gentoo" id="toc-gentoo" class="nav-link" data-scroll-target="#gentoo">2.2 Gentoo</a></li>
   <li><a href="#attribution" id="toc-attribution" class="nav-link" data-scroll-target="#attribution">Attribution</a></li>
   </ul></li>
   </ul></li>
@@ -5472,6 +5479,53 @@ Answer:</li>
 </section>
 <section id="thanks" class="level2">
 <h2 class="anchored" data-anchor-id="thanks">Thanks!</h2>
+</section>
+</section>
+<section id="bonus-take-home-exercices" class="level1">
+<h1>Bonus take home exercices</h1>
+<p>For each of these exercises, follow the steps outlined in the lectures (and this lab!) to test your hypotheses:</p>
+<ol type="1">
+<li>Choose level of significance (α)</li>
+<li>Write null and alternate hypotheses</li>
+<li>Check assumptions (normal)</li>
+<li>Calculate test statistic</li>
+<li>Obtain P-value or critical value</li>
+<li>Make statistical conclusion</li>
+<li>Write a scientific (biological) conclusion</li>
+</ol>
+<section id="exercise-1-carrots" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1-carrots">Exercise 1: Carrots</h2>
+<p>A farmer is growing carrots for a restaurant. The restaraunt wants their carrots to be 10 cm long, so the farmer wants to check if the carrots in their field differ significantly from the needed length.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Read in data</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>carrots <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">13</span>, <span class="dv">5</span>, <span class="dv">13</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">10</span>,  <span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exercise-2-penguins" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2-penguins">Exercise 2: Penguins</h2>
+<p>Rey has just landed on earth and notived that penguins look really similar to porgs. Using weight as the point of comparison, she wants to know if two different penguin species weigh the same as her pet Porg Stevie, who weighs 4000g.</p>
+<p>We will be using the Palmer penguin dataset to test if chinstrap and gentoo penguins weigh the same as Stevie.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;palmerpenguins&quot;)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="chinstrap" class="level3">
+<h3 class="anchored" data-anchor-id="chinstrap">2.1 Chinstrap</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>chinstrap <span class="ot">&lt;-</span>  penguins<span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">&quot;Chinstrap&quot;</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="gentoo" class="level3">
+<h3 class="anchored" data-anchor-id="gentoo">2.2 Gentoo</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>gentoo <span class="ot">&lt;-</span>penguins<span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">&quot;Gentoo&quot;</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 <section id="attribution" class="level3">
 <h3 class="anchored" data-anchor-id="attribution">Attribution</h3>
 <p>This lab was developed using resources that are available under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>, made available on the <a href="https://github.com/usyd-soles-edu/">SOLES Open Educational Resources repository</a>.</p>

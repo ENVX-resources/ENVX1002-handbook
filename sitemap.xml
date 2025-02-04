@@ -2,126 +2,126 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/module01/01-exploring_data.html</loc>
-    <lastmod>2025-02-03T04:37:25.117Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.472Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/module01/03-sampling_distributions.html</loc>
-    <lastmod>2025-02-03T04:37:25.117Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.472Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/module03/040-describing_relationships.html</loc>
-    <lastmod>2025-02-03T04:37:25.157Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.512Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/module03/041-linear_functions.html</loc>
-    <lastmod>2025-02-03T04:37:25.157Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.512Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/labs/Lab01.html</loc>
-    <lastmod>2025-02-03T04:37:25.075Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.430Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/labs/Lab03.html</loc>
-    <lastmod>2025-02-03T04:37:25.075Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.430Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/labs/Lab05.html</loc>
-    <lastmod>2025-02-03T04:37:25.075Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.430Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/labs/Lab04.html</loc>
-    <lastmod>2025-02-03T04:37:25.075Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.430Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/labs/Lab12.html</loc>
-    <lastmod>2025-02-03T04:37:25.076Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.431Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/labs/Lab09.html</loc>
-    <lastmod>2025-02-03T04:37:25.075Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.430Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/001-intro.html</loc>
-    <lastmod>2025-02-03T04:37:25.009Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.362Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/R Guide/01-getting-started.html</loc>
-    <lastmod>2025-02-03T04:37:25.010Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.362Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/R Guide/06-rstudio.html</loc>
-    <lastmod>2025-02-03T04:37:25.010Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.362Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/R Guide/04-install.html</loc>
-    <lastmod>2025-02-03T04:37:25.010Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.362Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/module02/03-nonparametric1.html</loc>
-    <lastmod>2025-02-03T04:37:25.155Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.510Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/references.html</loc>
-    <lastmod>2025-02-03T04:37:25.157Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.512Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/module02/01-ttest1.html</loc>
-    <lastmod>2025-02-03T04:37:25.155Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.510Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/module02/02-ttest2.html</loc>
-    <lastmod>2025-02-03T04:37:25.155Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.510Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/R Guide/08-quarto-r-markdown.html</loc>
-    <lastmod>2025-02-03T04:37:25.010Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.362Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/R Guide/10-copilot.html</loc>
-    <lastmod>2025-02-03T04:37:25.010Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.362Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/CONTRIBUTING/quick-start.html</loc>
-    <lastmod>2025-02-03T04:37:25.010Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.362Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/labs/Lab10.html</loc>
-    <lastmod>2025-02-03T04:37:25.075Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.431Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/labs/Lab06.html</loc>
-    <lastmod>2025-02-03T04:37:25.075Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.430Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/labs/Lab08.html</loc>
-    <lastmod>2025-02-03T04:37:25.075Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.430Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/labs/Lab07.html</loc>
-    <lastmod>2025-02-03T04:37:25.075Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.430Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/labs/Lab02.html</loc>
-    <lastmod>2025-02-03T04:37:25.075Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.430Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/labs/Lab11.html</loc>
-    <lastmod>2025-02-03T04:37:25.076Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.431Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/index.html</loc>
-    <lastmod>2025-02-03T04:37:25.074Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.430Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/module03/042-linear_functions_multi.html</loc>
-    <lastmod>2025-02-03T04:37:25.157Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.512Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/module03/043-nonlinear.html</loc>
-    <lastmod>2025-02-03T04:37:25.157Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.512Z</lastmod>
   </url>
   <url>
     <loc>https://ENVX-resources.github.io/ENVX1002-handbook/module01/02-probability_distributions.html</loc>
-    <lastmod>2025-02-03T04:37:25.117Z</lastmod>
+    <lastmod>2025-02-04T01:58:42.472Z</lastmod>
   </url>
 </urlset>

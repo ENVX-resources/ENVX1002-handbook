@@ -554,7 +554,29 @@
     "href": "labs/Lab05.html#thanks",
     "title": "Lab 05 – Hypothesis Testing",
     "section": "Thanks!",
-    "text": "Thanks!\n\nAttribution\nThis lab was developed using resources that are available under a Creative Commons Attribution 4.0 International license, made available on the SOLES Open Educational Resources repository.",
+    "text": "Thanks!",
+    "crumbs": [
+      "**🖥️ Computer labs**",
+      "Lab 05 -- Hypothesis Testing"
+    ]
+  },
+  {
+    "objectID": "labs/Lab05.html#exercise-1-carrots",
+    "href": "labs/Lab05.html#exercise-1-carrots",
+    "title": "Lab 05 – Hypothesis Testing",
+    "section": "Exercise 1: Carrots",
+    "text": "Exercise 1: Carrots\nA farmer is growing carrots for a restaurant. The restaraunt wants their carrots to be 10 cm long, so the farmer wants to check if the carrots in their field differ significantly from the needed length.\n\n#Read in data\n\ncarrots &lt;- c(7, 7, 13, 5, 13, 10, 11, 12, 10,  9)",
+    "crumbs": [
+      "**🖥️ Computer labs**",
+      "Lab 05 -- Hypothesis Testing"
+    ]
+  },
+  {
+    "objectID": "labs/Lab05.html#exercise-2-penguins",
+    "href": "labs/Lab05.html#exercise-2-penguins",
+    "title": "Lab 05 – Hypothesis Testing",
+    "section": "Exercise 2: Penguins",
+    "text": "Exercise 2: Penguins\nRey has just landed on earth and notived that penguins look really similar to porgs. Using weight as the point of comparison, she wants to know if two different penguin species weigh the same as her pet Porg Stevie, who weighs 4000g.\nWe will be using the Palmer penguin dataset to test if chinstrap and gentoo penguins weigh the same as Stevie.\n\n#install.packages(\"palmerpenguins\")\nlibrary(palmerpenguins)\n\n\n2.1 Chinstrap\n\nchinstrap &lt;-  penguins%&gt;%\n  filter(species == \"Chinstrap\")%&gt;%\n  na.omit()\n\n\n\n2.2 Gentoo\n\ngentoo &lt;-penguins%&gt;%\n  filter(species == \"Gentoo\")%&gt;%\n  na.omit() \n\n\n\nAttribution\nThis lab was developed using resources that are available under a Creative Commons Attribution 4.0 International license, made available on the SOLES Open Educational Resources repository.",
     "crumbs": [
       "**🖥️ Computer labs**",
       "Lab 05 -- Hypothesis Testing"
