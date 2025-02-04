@@ -1295,6 +1295,39 @@
     ]
   },
   {
+    "objectID": "labs/Lab06.html#exercise-1-tooth-growth",
+    "href": "labs/Lab06.html#exercise-1-tooth-growth",
+    "title": "Lab 06 – Two-sample t-test",
+    "section": "Exercise 1: Tooth growth",
+    "text": "Exercise 1: Tooth growth\nTooth GRowth is an inbuilt dataset that shows the effect of vitamin c in Guinea pig tooth growth. It has three variables:\n\nlen = tooth length\nsupp = type of supplement (Orange juice or ascorbic acid)\ndose = mg/day gieven to the guinea pigs\n\n\nhead(ToothGrowth)\nstr(ToothGrowth)\n\nUsing the HATPC framework, test whether the type of supplent affects tooth length.",
+    "crumbs": [
+      "**🖥️ Computer labs**",
+      "Lab 06 -- Two-sample *t*-test"
+    ]
+  },
+  {
+    "objectID": "labs/Lab06.html#exercise-2-adelie-penguin-bill-length",
+    "href": "labs/Lab06.html#exercise-2-adelie-penguin-bill-length",
+    "title": "Lab 06 – Two-sample t-test",
+    "section": "Exercise 2: Adelie penguin bill length",
+    "text": "Exercise 2: Adelie penguin bill length\nFor this exercise, we will be using a subset of the palmer penguins dataset.\n\nlibrary(palmerpenguins)\nlibrary(tidyverse)\n\nadelie &lt;-penguins%&gt;%\n  filter(species == \"Adelie\")%&gt;%\n  na.omit()%&gt;%\n  droplevels()\n\nhead(adelie)\n\nUsing the HATPC framework, test whether male and female penguins have the same length bill",
+    "crumbs": [
+      "**🖥️ Computer labs**",
+      "Lab 06 -- Two-sample *t*-test"
+    ]
+  },
+  {
+    "objectID": "labs/Lab06.html#exercise-3-penguin-body-mass",
+    "href": "labs/Lab06.html#exercise-3-penguin-body-mass",
+    "title": "Lab 06 – Two-sample t-test",
+    "section": "Exercise 3: Penguin body mass",
+    "text": "Exercise 3: Penguin body mass\nFor this exercise, we will use a subset of the palmer penguins data set again. This time, we will be comparing two different penguin species.\n\nlibrary(palmerpenguins)\n\npenguins2&lt;- penguins%&gt;%\n  filter(species != \"Adelie\")%&gt;%\n  na.omit()%&gt;%\n  droplevels()\n\nUsing the HATPC framework, test whether chinstrap and gentoo penguins have different body masses.",
+    "crumbs": [
+      "**🖥️ Computer labs**",
+      "Lab 06 -- Two-sample *t*-test"
+    ]
+  },
+  {
     "objectID": "labs/Lab08.html",
     "href": "labs/Lab08.html",
     "title": "Lab 08 – 🚫 No exercises",
@@ -1366,6 +1399,28 @@
     "title": "Lab 07 – Chi-squared test",
     "section": "Done!",
     "text": "Done!\nThis is the end of the lab. Remember to save your work, render your document and ask your demonstrators for feedback if you are unsure about your answers.",
+    "crumbs": [
+      "**🖥️ Computer labs**",
+      "Lab 07 -- Chi-squared test"
+    ]
+  },
+  {
+    "objectID": "labs/Lab07.html#exercise-1-national-rspca-statistics",
+    "href": "labs/Lab07.html#exercise-1-national-rspca-statistics",
+    "title": "Lab 07 – Chi-squared test",
+    "section": "Exercise 1: National RSPCA statistics",
+    "text": "Exercise 1: National RSPCA statistics\nThe RSPCA releases statistics on the number of animals they receive, reclaim and rehome every year. In the 2023-24 financial year, the RSPCA received 17468 dogs, 26704 cats, and 37497 other animals. The “other” category includes horses, small animals, livestock and wildlife.\nUsing the HATPC framework, test whether these animals were received in equal proportions.\n\nreceived &lt;- c(17468, 26704, 37497)",
+    "crumbs": [
+      "**🖥️ Computer labs**",
+      "Lab 07 -- Chi-squared test"
+    ]
+  },
+  {
+    "objectID": "labs/Lab07.html#exercise-2-uc-berkeley-admissions",
+    "href": "labs/Lab07.html#exercise-2-uc-berkeley-admissions",
+    "title": "Lab 07 – Chi-squared test",
+    "section": "Exercise 2: UC Berkeley Admissions",
+    "text": "Exercise 2: UC Berkeley Admissions\nFor the two exercises we’re going to use simplified versions of the inbuilt dataset ‘UCBAdmissions’, which has data on student admissions for Berkeley. The dataset shows how many students were rejected and admitted to the university by both department and gender.\n\n2.1 Admissions by department\nDid every department at UC Berkeley admit students in equal proportions?\n\ndept_admissions &lt;- c(601, 370, 322, 269, 147, 46)\n\n\n\n2.2\nAre male and female students admitted and rejected in the same proportion?\n\ngender &lt;- as.table( #Make a table with values for each row\n  rbind(\n    admitted = c(1198, 557),\n    rejected = c(1493, 1278)\n  )\n)\n\ncolnames(gender) &lt;- c(\"Male\", \"Female\") #Add column names to table",
     "crumbs": [
       "**🖥️ Computer labs**",
       "Lab 07 -- Chi-squared test"

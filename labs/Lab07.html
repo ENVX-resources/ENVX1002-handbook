@@ -5177,6 +5177,15 @@ window.Quarto = {
   <li><a href="#hatpc" id="toc-hatpc" class="nav-link" data-scroll-target="#hatpc">HATPC</a></li>
   </ul></li>
   <li><a href="#done" id="toc-done" class="nav-link" data-scroll-target="#done">Done!</a></li>
+  <li><a href="#bonus-take-home-exercises" id="toc-bonus-take-home-exercises" class="nav-link" data-scroll-target="#bonus-take-home-exercises">Bonus take home exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-national-rspca-statistics" id="toc-exercise-1-national-rspca-statistics" class="nav-link" data-scroll-target="#exercise-1-national-rspca-statistics">Exercise 1: National RSPCA statistics</a></li>
+  <li><a href="#exercise-2-uc-berkeley-admissions" id="toc-exercise-2-uc-berkeley-admissions" class="nav-link" data-scroll-target="#exercise-2-uc-berkeley-admissions">Exercise 2: UC Berkeley Admissions</a>
+  <ul class="collapse">
+  <li><a href="#admissions-by-department" id="toc-admissions-by-department" class="nav-link" data-scroll-target="#admissions-by-department">2.1 Admissions by department</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2.2</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -5317,7 +5326,7 @@ Note
 <summary>
 Click here to view answer
 </summary>
-Yes, as expected frequencies &gt; 5.
+<p>Yes, as expected frequencies &gt; 5.</p>
 </details>
 </section>
 <section id="test-statistic" class="level3">
@@ -5339,7 +5348,7 @@ Yes, as expected frequencies &gt; 5.
 <summary>
 Click here to view answer
 </summary>
-<span class="math inline">\(\chi^2 = 27.9, d.f. =2, p &lt; 0.01\)</span>
+<p><span class="math inline">\(\chi^2 = 27.9, d.f. =2, p &lt; 0.01\)</span></p>
 </details>
 </section>
 <section id="conclusions" class="level3">
@@ -5349,14 +5358,14 @@ Click here to view answer
 <summary>
 Click here to view answer
 </summary>
-We reject the null hypothesis as the p-value is less than 0.05.
+<p>We reject the null hypothesis as the p-value is less than 0.05.</p>
 </details>
 <p>Now write a scientific (biological) conclusion based on the outcome.</p>
 <details>
 <summary>
 Click here to view answer
 </summary>
-There is a significant difference in the proportion of flower colours of tulips (<span class="math inline">\(\chi^2 = 27.9, d.f. =2, p &lt; 0.01\)</span>).
+<p>There is a significant difference in the proportion of flower colours of tulips (<span class="math inline">\(\chi^2 = 27.9, d.f. =2, p &lt; 0.01\)</span>).</p>
 </details>
 </section>
 </section>
@@ -5446,8 +5455,44 @@ Click here to view interpretation
 <section id="done" class="level2">
 <h2 class="anchored" data-anchor-id="done">Done!</h2>
 <p>This is the end of the lab. Remember to save your work, render your document and ask your demonstrators for feedback if you are unsure about your answers.</p>
+</section>
+<section id="bonus-take-home-exercises" class="level1">
+<h1>Bonus take home exercises</h1>
+<section id="exercise-1-national-rspca-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1-national-rspca-statistics">Exercise 1: National RSPCA statistics</h2>
+<p>The RSPCA releases statistics on the number of animals they receive, reclaim and rehome <a href="https://www.rspca.org.au/about/annual-statistics/">every year</a>. In the 2023-24 financial year, the RSPCA received 17468 dogs, 26704 cats, and 37497 other animals. The “other” category includes horses, small animals, livestock and wildlife.</p>
+<p>Using the HATPC framework, test whether these animals were received in equal proportions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>received <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">17468</span>, <span class="dv">26704</span>, <span class="dv">37497</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exercise-2-uc-berkeley-admissions" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2-uc-berkeley-admissions">Exercise 2: UC Berkeley Admissions</h2>
+<p>For the two exercises we’re going to use simplified versions of the inbuilt dataset ‘UCBAdmissions’, which has data on student admissions for Berkeley. The dataset shows how many students were rejected and admitted to the university by both department and gender.</p>
+<section id="admissions-by-department" class="level3">
+<h3 class="anchored" data-anchor-id="admissions-by-department">2.1 Admissions by department</h3>
+<p>Did every department at UC Berkeley admit students in equal proportions?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dept_admissions <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">601</span>, <span class="dv">370</span>, <span class="dv">322</span>, <span class="dv">269</span>, <span class="dv">147</span>, <span class="dv">46</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section">2.2</h3>
+<p>Are male and female students admitted and rejected in the same proportion?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">as.table</span>( <span class="co">#Make a table with values for each row</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">admitted =</span> <span class="fu">c</span>(<span class="dv">1198</span>, <span class="dv">557</span>),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">rejected =</span> <span class="fu">c</span>(<span class="dv">1493</span>, <span class="dv">1278</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(gender) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>) <span class="co">#Add column names to table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
