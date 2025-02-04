@@ -11,7 +11,6 @@ if (!require("pacman")) install.packages("pacman")
 pacman::p_load(readxl)
 ```
 
-
 ::: callout-tip
 ### Learning Outcomes
 
@@ -26,16 +25,13 @@ pacman::p_load(readxl)
 
 Create your Quarto document and save it as `Lab-10.Rmd` or similar. The following data files are required:
 
-1) [ENVX1002_wk10_practical_data_Regression.xlsx](data/ENVX1002_wk10_practical_data_Regression.xlsx)
-
+1)  [ENVX1002_wk10_practical_data_Regression.xlsx](data/ENVX1002_wk10_practical_data_Regression.xlsx)
 
 Last week you fitted models in R, now it is time to understand what the output means.
 
 Before you begin, ensure you have a project set up in your desired folder. Then open up a fresh R markdown and save the file within this folder.
 
 Don't forget to save as you go!
-
-
 
 ## Exercise 1: Walkthrough - Fertiliser
 
@@ -183,7 +179,6 @@ Observing the model output, we can see that the P-value for fert is significant 
 
 We can therefore conclude that fertiliser is a significant predictor of crop yield as the slope is not equal to zero (P \< 0.05), and it accounts for 92.9% of the variation in yield.
 
-
 ## Exercise 2: Toxicity in peanuts
 
 Data: *Peanuts* spreadsheet
@@ -200,10 +195,10 @@ Peanuts <- read_xlsx("data/ENVX1002_wk10_practical_data_Regression.xlsx", sheet 
 head(Peanuts)
 ```
 
-
 ### 2.1 Scatter plot
 
 Make a scatter plot of the data.
+
 ```{r}
 plot(Percent ~ Toxin, data = Peanuts)
 
@@ -220,7 +215,6 @@ a)  Describe the relationship between the two variables.
 
 a)  There seems to be a strong, negative relationship between Percent and Toxin
 
-
 ------------------------------------------------------------------------
 :::
 
@@ -235,7 +229,6 @@ b)  The relationship on the plot does seem to follow a straight line and so we c
 
 ------------------------------------------------------------------------
 :::
-
 
 ### 2.2 State Hypotheses
 
@@ -272,7 +265,6 @@ Use fit a linear model (`lm()`) to the Peanut data.
 mod <- lm(Percent ~ Toxin, data = Peanuts)
 ```
 
-
 ### 2.4 Check assumptions
 
 a)  Inspect and comment on the residual plots- have the assumptions been met?
@@ -291,7 +283,6 @@ a)  There seems to be no problem with the residual plots, the data are normally 
 
 ------------------------------------------------------------------------
 :::
-
 
 ### 2.5 Observe model output
 
@@ -337,7 +328,6 @@ c)  An increase in toxin by 1 results in a decrease of 0.0029% of uncontaminated
 
 ------------------------------------------------------------------------
 :::
-
 
 ## Exercise 3: Dippers
 
@@ -467,7 +457,7 @@ f)  What is the equation for our model, incorporating our coefficients?
 
 ------------------------------------------------------------------------
 
-f)  Br_Dens = 0.6295 + 0.9783*LogCadd
+f)  Br_Dens = 0.6295 + 0.9783\*LogCadd
 
 ------------------------------------------------------------------------
 :::
@@ -547,5 +537,222 @@ There are also other factors in play, but we would have to build some knowledge 
 ------------------------------------------------------------------------
 :::
 
-
 Great work fitting simple linear models! Next week we step it up with *multiple* linear regression.
+
+# Bonus take home exercises
+
+Use the template below to test the hypotheses for each exercise. 
+
+1.  Scatterplot and correlation
+
+2.  State Hypothesis
+
+3.  Fit the model
+
+4.  Check assumptions
+
+5.  P value and model fit
+
+    a)   Is the model significant?
+
+    b)   Is the predictor significant?
+
+    c)   How good is the model fit?
+
+6.  Conclusions
+
+## Exercise 1: Cars stopping distance
+
+Use the cars dataset from last week to test if speed (mph) is a predictor of stopping distance (fft).
+
+```{r}
+head(cars)
+```
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+--------------------------------
+1.  Scatterplot and correlation
+
+```{r}
+#scatter plot
+plot(cars$speed, cars$dist)
+
+#correlation
+cor(cars$speed, cars$dist)
+```
+
+2.  State Hypothesis
+
+> H_0_: car speed is not a significant predictor of stopping distance
+> H_1_: car speed is a significant predictor of stopping distance
+
+3.  Fit the model
+
+```{r}
+cars_lm <- lm(dist~ speed, data = cars)
+```
+
+4.  Check assumptions
+
+```{r}
+par(mfrow = c(2, 2))
+plot(cars_lm)
+```
+ Assumptions look ok:
+
+-   Residuals vs fitted: Points evenly scattered around mean
+-   Normal Q-Q: Points mostly follow line
+-   Scale-Location: Points evenly scattered, no fanning.
+-   Residuals vs Leverage: No points occurring at top right or bottom right corners outside the dotted red lines. A couple of points are close, but not outside, so all is good.
+
+
+5.  P value and model fit
+```{r}
+summary(cars_lm)
+```
+
+
+    a)   Is the model significant? The F-test statistic tells us whether our overall model is significant, which in this case it is (p < 0.05)
+
+    b)   Is the predictor significant? speed is a significant predictor (p < 0.05)
+
+    c)   How good is the model fit? The fit is decent though it could be better. The R^2^ is 0.65, which tells us that the model accounts for 65% of the variation in the data.
+
+6.  Conclusions
+
+Speed is a statistically significant predictor of stoppingdistance. The model accounts for 65% of the data, so there may also be other factors that affect stoppping distance. 
+
+-------
+:::
+
+## Exercise 2: Penguins
+
+Use the palmer penguins dataset to test if flipper length is a significant predictor of bill length.
+```{r}
+#Load libraries
+library(palmerpenguins)
+library(tidyverse)
+
+#Clean data
+penguins <- penguins%>%
+  na.omit()#remove missing data
+
+head(penguins)
+
+```
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+---------------------------------------------------
+
+1.  Scatterplot and correlation
+```{r}
+#scatter plots
+plot(penguins$flipper_length_mm,penguins$bill_length_mm)
+
+#correlation
+cor(penguins$bill_length_mm, penguins$flipper_length_mm)
+```
+
+2.  State Hypothesis
+
+> H_0_: flipper length is not a significant predictor of bill length
+> H_1_: flipper length is a significant predictor of bill length
+
+3.  Fit the model
+```{r}
+penguin_model<- lm(bill_length_mm ~ flipper_length_mm, data = penguins)
+```
+
+
+4.  Check assumptions
+```{r}
+par(mfrow = c(2, 2))
+plot(penguin_model)
+```
+ Assumptions look ok:
+
+-   Residuals vs fitted: Points evenly scattered around mean
+-   Normal Q-Q: Points follow the line
+-   Scale-Location: Points evenly scattered, no fanning.
+-   Residuals vs Leverage: No points occurring at top right or bottom right corners outside the dotted red lines.
+
+5.  P value and model fit
+```{r}
+summary(penguin_model)
+```
+
+
+    a)   Is the model significant? The F-test statistic tells us whether our overall model is significant, which in this case it is (p < 0.05)
+
+    b)   Is the predictor significant? flipper length is a significant predictor of bill length (p< 0.05)
+
+    c)   How good is the model fit? The model has an R^2^ of 0.42, which tells us that the model only explain 42% of the variation in the data. It could be worse, but it's not particularly good.
+    
+6.  Conclusions
+> Flipper length is a statistically significant predictor of bill length. However, only 42% of the variation in the data was explained by the model. There are likely to be other variables that also help predict bill length. For example, the dataset has three different penguin species, which could also be adding noise to our model.
+ 
+----------
+:::
+
+## Exercise 3: Old Faithful Geyser Data
+Using the inbuilt faithful dataset, test whether waiting time is a significant predictor of eruption time.
+
+```{r}
+head(faithful)
+```
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+---------------------------------------------------
+1.  Scatterplot and correlation
+```{r}
+#scatterplot
+plot(faithful$waiting, faithful$eruptions)
+
+#correlation
+cor(faithful$eruptions, faithful$waiting)
+```
+
+2.  State Hypothesis
+
+> H_0_: Waiting time is not a significant predictor of eruption time
+> H_1_: Waiting time is a significant predictor of eruption time
+
+3.  Fit the model
+```{r}
+faithful_lm <- lm(eruptions~ waiting, data = faithful)
+```
+
+4.  Check assumptions
+```{r}
+par(mfrow = c(2,2))
+plot(faithful_lm)
+```
+
+ Assumptions look ok:
+
+-   Residuals vs fitted: Looks a little funky, but the red line is still reasonably straight and the dots are vaguely spread above and below the line
+-   Normal Q-Q: Points follow the line
+-   Scale-Location: Points evenly scattered, no fanning.
+-   Residuals vs Leverage: No points occurring at top right or bottom right corners outside the dotted red lines.
+
+5.  P value and model fit
+```{r}
+summary(faithful_lm)
+```
+
+
+    a)   Is the model significant? The F-test statistic tells us whether our overall model is significant, which in this case it is (p < 0.05)
+
+    b)   Is the predictor significant? waiting is a significant predictor of eruption (p<0.05)
+
+    c)   How good is the model fit? The model has an R^2^ of 0.81, which tells us that the model explains 81% of the varation in the data. This is an excellent fit!
+
+6.  Conclusions
+Time between eruptions is a statistically significant predictor of eruption time.
+
+---------
+:::
