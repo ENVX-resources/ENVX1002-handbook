@@ -1603,6 +1603,39 @@
     ]
   },
   {
+    "objectID": "labs/Lab11.html#exercise-1-house-prices",
+    "href": "labs/Lab11.html#exercise-1-house-prices",
+    "title": "Lab 11 - Multiple Linear Regression",
+    "section": "Exercise 1: House Prices",
+    "text": "Exercise 1: House Prices\nData: - Housing\nThis exercise will use a dataset from kaggleto explore the variables affecting house prices.",
+    "crumbs": [
+      "**🖥️ Computer labs**",
+      "Lab 11 - Multiple Linear Regression"
+    ]
+  },
+  {
+    "objectID": "labs/Lab11.html#exercise-2-energy-use",
+    "href": "labs/Lab11.html#exercise-2-energy-use",
+    "title": "Lab 11 - Multiple Linear Regression",
+    "section": "Exercise 2: Energy use",
+    "text": "Exercise 2: Energy use\nData:\n\nenergy\n\nUse the dataset from kaggle to explore which variables affect energy consumption.",
+    "crumbs": [
+      "**🖥️ Computer labs**",
+      "Lab 11 - Multiple Linear Regression"
+    ]
+  },
+  {
+    "objectID": "labs/Lab11.html#exercise-3-sales-vs-advertising-budget",
+    "href": "labs/Lab11.html#exercise-3-sales-vs-advertising-budget",
+    "title": "Lab 11 - Multiple Linear Regression",
+    "section": "Exercise 3: Sales vs advertising budget",
+    "text": "Exercise 3: Sales vs advertising budget\nData:\n\nadvertising budget\n\nUse the dataset from kaggle to explore how different advertising budgets affect sales.",
+    "crumbs": [
+      "**🖥️ Computer labs**",
+      "Lab 11 - Multiple Linear Regression"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "ENVX1002 Handbook",
