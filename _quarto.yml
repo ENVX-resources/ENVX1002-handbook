@@ -31,7 +31,7 @@ website:
 format:
   html:
     grid: 
-      sidebar-width: 350px
+      sidebar-width: 340px
     highlight-style: a11y
     theme:
       light: cosmo
