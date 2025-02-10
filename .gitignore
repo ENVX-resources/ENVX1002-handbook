@@ -49,3 +49,5 @@ _site/
 
 # macOS
 .DS_Store
+
+_solution/
