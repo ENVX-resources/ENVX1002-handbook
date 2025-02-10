@@ -1,39 +1,33 @@
 ---
-title: Lab 01 -- Introduction
+title: Lab 01 -- Getting started
+format: 
+  html: default
+  typst: default
 embed-resources: true
+execute:
+  eval: true
 ---
-
 
 ```{r setup}
 #| include: false
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load(knitr, kableExtra)
+pacman::p_load(readr, readxl) # Only load packages we actually use
 ```
-# Getting started: Excel and R
 
 ::: {.callout-tip}
-**Learning Outcomes**
+## Learning Outcomes
 
 At the end of this practical students should be able to:
 
-- use Microsoft Word for writing equations
-- use Excel and RStudio to calculate simple summary statistics
-- Understand the link between R and RStudio
-- Produce your own rendered Quarto document
+- Install and set up R and RStudio on their computer
+- Understand the relationship between R and RStudio
+- Create and manage R projects effectively
+- Write and render basic Quarto documents
+- Import data from CSV and Excel files
+- Perform basic operations in R
 :::
 
-## Before you begin
-Make sure you have access to:
-
-- Microsoft Word and Excel
-- R and RStudio
-- The data set and code file for this computer lab:
-
-  <!-- - Github: [download Lead_content.csv file](./data/Lead_content.csv)
-  - Canvas: [download Lead_content.csv file](https://canvas.sydney.edu.au/courses/55713/pages/week-1-computer-lab-introduction-and-the-scientific-method?module_item_id=2156201)
-  - Canvas: [download Code_Topic1.R file](https://canvas.sydney.edu.au/courses/55713/pages/week-1-computer-lab-introduction-and-the-scientific-method?module_item_id=2156201) -->
-
-## Settling in
+### Settling in {-}
 
 At the beginning of the next few weeks we will be doing some short activities before getting into the stats to help you foster a sense of belonging, learn more about your peers, and help better prepare you for your studies. This week we will start with a simple introduction, but before we do this, we would like to acknowledge those who were here before us:
 
@@ -42,425 +36,444 @@ At the beginning of the next few weeks we will be doing some short activities be
 
 To learn more about why we do Acknowledgement of Country, and the difference to Welcome to Country, see the following page: [Welcome and Acknowledgement](https://www.sydney.edu.au/about-us/vision-and-values/our-aboriginal-and-torres-strait-islander-community/kinship-module/learning-module/welcome-and-acknowledgement.html).
 
-## AnswerGardens
+### AnswerGardens {-}
 
 We are all from diverse backgrounds and have followed different paths to get to where we are today. To help you get to know your peers, your demonstrator will lead a class discussion, posting a number of questions on AnswerGarden, where you can then anonymously post your answer to the questions. Links will be provided once your demonstrator has set up the question. 
 
-After about 20 minutes of discussion, we can get started on the Stats! Welcome to ENVX1002!
+After about 20 minutes of discussion, we can get started on the lab! Welcome to ENVX1002!
 
-# Equations in MS Word
+## Exercise 1: setting up 
 
-Make sure you have access to Microsoft Word and Microsoft Excel. You can get free access to these programs through the University of Sydney here <https://www.sydney.edu.au/students/student-it/apps.html>. You can also use the desktops in the computer labs.
+### Installing R and RStudio
 
-Equations are a fundamental part of statistics and data science. They help us to communicate complex ideas in a simple and concise manner. 
+Before we begin working with data, we need to set up our statistical computing environment. We'll be using two main pieces of software:
 
-Specialised software is needed to write out equations when writing documents and reports. One option is Microsoft Equation Editor which comes as part of Microsoft Word. You may use this functionality to write equations in this or other units to write out equations.
+1. **R**: The statistical programming language (the engine)
+2. **RStudio**: The integrated development environment (IDE) that makes working with R easier (the interface)
 
-To Start off, open a word document, select the `Insert` tab and click your cursor on the Equation icon outlined in red in the screenshot below. This may look slightly different depending on the version of Word you are using.
+::: column-margin
+Think of R and RStudio like a car: R is the engine that does all the work, while RStudio is the dashboard and controls that make it easier to drive.
+:::
 
-![Screenshot of Excel Equation tool highlighted](images/MS_eqtn_highlighted.jpg)
+This week's tutorial would have guided you through the installation process, but if you missed it, below are the steps to install R and RStudio on your personal computer.
 
+::: {.callout-important}
+You must install R **before** installing RStudio, as RStudio needs R to function.
+:::
 
-This will open up a menu (see screenshot below) for writing equations which is quite intuitive for most forms of equations. 
+#### Installing R
 
-![Screenshot of Excel Equation menu with Large Operator & Accent highlighted](images/MS_Lg operator_accent_highlighted.jpg)
+1. Go to the [CRAN (Comprehensive R Archive Network) website](https://cran.r-project.org/)
+2. Click on the link for your operating system
+3. Follow the installation instructions for your system
+   - For Windows: Click "base" then download the latest version
+   - For Mac: Choose the appropriate .pkg file for your system (Apple Silicon or Intel)
+   - For Linux: Follow the instructions for your distribution
 
-The screenshot has outlined some less intuitive parts of equation you will need, the red outline is for equations requiring sigma notation ($\sigma$) such as the population variance, and outline in blue is for equations with accents such y-bar ($\bar{y}$)for the sample mean and y-tilde ($\tilde{y}$) for the sample median.
+#### Installing RStudio
 
-Use MS Word to type the following equations
+1. Visit the [Posit download page](https://posit.co/download/rstudio-desktop/)
+2. Scroll down to "RStudio Desktop"
+3. Click the download button for your operating system
+4. Run the installer and follow the prompts
 
-1. Mean:$$\bar{x} = \frac{1}{n} \sum_{i=1}^{n}x_{i}$$ 
+::: {.callout-tip}
+If you're using a University computer, both R and RStudio should already be installed. However, it's important to install them on your personal computer for working outside of class.
+:::
 
-2. Variance:$$\sigma^{2} = \frac{\sum\limits_{i=1}^{n} \left(x_{i} - \bar{x}\right)^{2}} {n-1}$$
+### Creating your first R project
 
-3. The equation for a straight line:$$y = mx + b$$
+An R project is like a container that keeps all your work organised and tidy. Think of it as a dedicated workspace for your course where everything stays together and works smoothly. Here's why R projects are especially helpful for beginners:
 
-You will also learn a little bit about how to write equations in R Studio using LATeX during this course.
+::: column-margin
+Good project organisation is crucial for reproducible research. It helps you and others find files easily and ensures your code works consistently.
+:::
 
-# Introduction to MS Excel
+- **Consistent starting point**: Every time you open your project, you'll be in the right place with all your files readily available
+- **No more lost files**: Your data, code, and outputs stay together in one organised location
+- **Easier file paths**: You don't need to worry about complex file locations - R projects make it simple to find and use your files
+- **Collaboration ready**: When sharing your work, everything stays organised and works on other computers
+- **Better workflow**: As you learn more complex analyses, having an organised project structure will save you time and prevent headaches
 
-Excel has limited statistical capabilities but is quite useful for storing and manipulating small data sets. Due to the global dominance of *MS Windows* it is also the most commonly used format for storing and distributing data within workplaces so a super useful skill to have. While we will mostly be using RStudio in this course we will also be providing some exercises in *MS Excel* to help you get familiar with the software.
+Let's create a project for this course:
 
-## Excel worksheets and cells
+1. Open RStudio
+2. Click File → New Project
+3. Choose "New Directory"
+4. Click "New Project"
+5. Enter "ENVX1002" as the directory name
+6. Choose a location on your computer (preferably in a cloud-synced folder)
+7. Click "Create Project"
 
-Excel files come in series of worksheets where data is stored in cells. The columns are given letters and the rows are given numbers, enabling a particular cell to be referenced by a combination a letter and number. In the screenshot below the number 2 in the orange cell could be referenced by **B3**. In a blank worksheet type **2** in the **B3** cell.
+To keep things simple but organised, let's create one essential folder:
 
-In cell **C3** type **=B3**
+```
+ENVX1002/
+├── ENVX1002.Rproj  # This file helps RStudio manage your project
+└── data/           # Store your datasets here
+```
 
-The equals sign tells Excel you are calculating something or referring to a cell. You should now have 2 in cell C3.
+::: column-margin
+Always keep your raw data separate from your analysis files. This helps prevent accidental modifications to your original data.
+:::
 
-![Screenshot of Excel Typing number 2 in cell B3](images/Excel_demo_C3=B3.jpg)
+To create the data folder, any of the following works:
 
-At the bottom of the Excel page you will see references to each of the worksheets in the file, for example ‘Sheet1’, ‘Sheet2’, ‘Sheet3’. This enables you to store multiple data sets in the one file. In this unit the data sets for each exercise will be stored in separate worksheets but in the same file.
+1. In RStudio's Files pane (bottom-right), click "New Folder", then name it "data"
+2. In the console, run `dir.create("data")` to create the folder
+3. Manually create a folder named "data" in your project directory, using Finder(macOS), File Explorer(Windows), or similar
 
-## Basic arithmetic in Excel 
+::: {.callout-tip}
+As you progress in the course, you can create more folders to organise your work. But for now, keeping it simple will help you focus on learning R without getting overwhelmed by complex folder structures.
+:::
 
-When typing equations, make sure you start by typing = . This tells Excel you want to solve the input equation. 
+## Exercise 2: using Quarto
 
-The basic arithmetic operators return numeric values:
+### What is Quarto?
 
-|Key | Operation |
-|--|--|
-|+|Addition|
-|-|subtraction|
-|*|Multiplication|
-|/|Division|
-|^|Exponentiation|
+Quarto is a modern publishing system that allows you to:
 
-These can be used in combination with numbers or cell references. 
+::: column-margin
+Quarto documents combine code, text, and output in one file, making your analysis reproducible and easy to share.
+:::
 
-For example, to get a value of **4** in cell **D3** you can type either
+- Combine text, code, and output in one document
+- Create professional reports, presentations, and websites
+- Work with multiple programming languages (including R)
+- Generate high-quality output in various formats (HTML, PDF, Word)
 
-<strong>=2*2</strong> (type numbers)
+### Creating your first Quarto document
 
-or 
+1. In RStudio, click File → New File → Quarto Document
+2. Fill in the title and author
+3. Click "Create"
+4. Save the document (File → Save As...) with a .qmd extension
 
-<strong>=B3*C3</strong> (reference cells)
+To render your document:
 
-It is better to reference cells so that if you change the values the same equations can be applied.
+1. Click the "Render" button (blue arrow) in the editor toolbar
+2. The HTML output will automatically open in your default browser
 
-<br>
+#### Basic markdown formatting
 
-## Basic functions in Excel
+Quarto uses markdown for text formatting:
 
-Some basic functions are:
+::: column-margin
+Markdown is a simple way to format text that's easy to read and write. The syntax is designed to be intuitive. Quarto's documentation on markdown can be found [here](https://quarto.org/docs/authoring/markdown-basics.html).
+:::
 
-|Function | Operation |
-|--|--|
-|SUM|Sums a range of cells| 
-|COUNT|Counts a range of cells|
-|LN|Natural Log| 
-|EXP|Exponent|
+- **Bold text**: `**bold**`
+- *Italic text*: `*italic*`
+- Headers: `# Level 1`, `## Level 2`, `### Level 3`
+- Lists: Use `-` or `1.` for bullet or numbered lists
+- Links: `[text](URL)`
+- Images: `![alt text](image.png)`
 
-These can be used in combination with numbers or cell references.
+#### Code chunks
 
-For example in cell **E3** you can type either
+Code chunks in Quarto start with ` ```{r} ` and end with ` ``` `:
 
-**=EXP(4)** or **=EXP(D3)**,
-
-Another example is in cell **F3** type
-
-**=COUNT(B3:D3)**
-
-Note that Excel has an auto-complete function that allows you to select from a list of functions after typing the first letter i.e. **=C**. Selecting the function gives a brief description of what the function does.
-
-![Screenshot of Excel Typing =C to show function description](images/Excel_demo_=C.jpg)
-
-Once the function has been selected, you can proceed to type the opening bracket and enter in the cell reference, cell range or numeric value. Excel aids you in showing what the required input is as you type the opening bracket (see image below). The square bracket indicates an optional value, in this case if only one cell is selected **=COUNT(E3)**, then the function will return the value **1**.
-
-![Screenshot of Excel showing required input arguments for COUNT function](images/Excel_demo_COUNT_args.jpg)
-
-
-## Simple summary statistics in Excel
-
-There are functions for calculating summary statistics in Excel. Click on a cell where you want the answer to be entered and then use the menu by **Formulas >> Insert Function**. A screenshot for calculating the sum is shown below.
-
-![Screenshot of Excel Insert Function](images/Excel_demo_insertfunction.jpg)
-
-On the next screen you can then select the cells where the observations are located from which then median will be calculated.
-
-After a while you should get to know the name of the functions in Excel and be able to write the arguments in manually. In the screenshot below the function is **MEDIAN** and it refers to cells between (and including) **A2** and **A9**. A row or column of cells can be represented by the starting cell, then colon, then final cell (**A2:A9**).
-
-![Screenshot of Excel calculating the Median of cells A2 to A9](images/Excel_demo_Median_A2A9.jpg)
-
-Some of examples of the functions that can be accessed in Excel are shown below. Note that the .S and .P extensions for variance and standard deviation are from later excel versions.
-
-|Statistic | Function |
-|--|--|
-|Minimum|=MIN|
-|Maximum|=MAX|
-|Arithmetic mean|=AVERAGE( )| 
-|Median|=MEDIAN( )|
-|population variance|=VAR.P()| 
-|Sample variance|=VAR( ) or =VAR.S()|
-|Population standard deviation|=STDEV.P()|
-
-## Calculating simple summary statistics in Excel
-
-In this exercise you will use the **Lead_content.csv** See start of lesson for link to download the file.
-
-This data was collected from a recreational parkland in Sydney and is a measurement of the lead concentration (mg/kg) detected in the soil, measured through chemical analysis (ICP-OES). There are a total of 60 samples collected from around the park. The park was originally a municipal landfill but remediated in 1990, so we expected to find low levels of lead. The guide value set by the Australian Government is 300 mg/kg and this is where further investigation is needed (potential to cause harm). 
-
-In excel, calculate the following: 
-
-- minimum value 
-- Maximum value
-- mean
-- median
-- range
-- sample variance
-- sample standard deviation
-
-From these statistics, 
-
-1. Were there any samples higher than the guide value?
-2. Were there any samples where no lead was detected?
-3. What is the mean value?
-
-# Introduction to R coding
-
-- R is a statistical programming language that can be used to store, manipulate, visualise and analyse data.  It contains a number of pre-defined analysis techniques but you can also program your own methods.  
-- R is open source which means that you can examine and modify the raw software code if you like.  A worldwide collective of scientists, programmers and statisticians are working on improving and extending the capabilities of R.  
-- Of immediate value to you is that it is free so for the rest of your career you can keep using R without burdening future employers with software licence fees.  An article on the merits of R can be found by at <http://monkeysuncle.stanford.edu/?p=367>.  
-- This module will provide an introduction to R.  Work through the examples by typing in all code you see to familiarise yourself with the syntax of R and some of the commands available in R.
-
-## Getting a copy of R & RSudio
-
-Remember that:
-
-**R = Engine** and **RStudio = Interface**
-
-Both are free & opensource and downloadable from <https://posit.co/download/rstudio-desktop/>.  
-
-Make sure you have installed both - it is best to have the latest version of R and RStudio.  If you have not done this yet, please do so now.
-
-## R basics
-
-- To begin with we are going to open R ("The Engine") from the program files menu on your computer.
-- When you open R, a window containing the R console will open.  It will look slightly different depending on the operating system you use.  The screenshot is from a Mac.
-
-![The R Console](images/R_console.png)
-
-- At the bottom of the screen is the command prompt >.
-Commands are typed at the command prompt and followed by the **ENTER** key. 
-- From now type all the command you see into R.
-If you type in an expression, when you hit the **ENTER** key, the expression will be evaluated and the result returned, for example, lets add 5 and 5 together.
+::: column-margin
+Code chunks are where you write and execute R code. They keep your code separate from your text while showing both the code and its output.
+:::
 
 ```{r}
-5+5
+#| echo: fenced
+2 + 2
+mean(c(1, 2, 3, 4, 5))
 ```
 
-- R is an object-oriented programming language and the basic unit in R is called an object.  Objects can store single numbers, columns of data, modelling output, functions and other kinds of information.  
-- The class of the object determines the way in which commands are executed on an object and the way in which data can be stored by the object.  For example, vectors store a single column of data, a matrix can store multiple columns of data and a data frame can store multiple columns of data where the columns may be of different data types (e.g. numbers and text).
-- We can also save our result above into a named object using the assignment operator <- or =. I like the arrow because it points in the direction of the object being created.  For example, the following command saves the value 5+5 as an object called myData. 
+You can control chunk behavior with options:
+
+- `echo: false` - Hide the code but show results
+- `eval: false` - Show code but don't run it
+- `warning: false` - Hide warning messages
+- `message: false` - Hide messages
+
+```{{r}}
+#| warning: false
+#| message: false
+
+10 / 5
+```
+
+### Basic R operations
+
+Now that we have our environment set up, let's try some basic R operations:
+
+::: column-margin
+R uses standard mathematical operators. Remember that `^` means "to the power of" and `*` means multiplication.
+:::
 
 ```{r}
-myData <- 5+5
+# Basic arithmetic
+5 + 5
+10 - 3
+4 * 2
+8 / 2
+2^3 # Exponentiation
 ```
 
-- You can view the contents of an object by typing the object name:
+That's it for now. We will look more into code chunks next week when we focus on statistical operations.
 
-```{r, results="hide"}
-myData
+## Exercise 3: R packages
+
+### What are R packages?
+
+R packages are collections of functions, data, and documentation that extend R's capabilities. Think of them as add-ons or extensions that provide additional functionality beyond what comes with base R. They are essential tools that make R incredibly versatile for different types of analysis.
+
+::: column-margin
+Think of R packages like apps on your phone - they add new features and capabilities to the base system.
+:::
+
+::: {.callout-tip}
+R comes with several built-in packages (called "base R"), but thousands more are available for specific tasks, from data manipulation to complex statistical analyses.
+:::
+
+### Installing packages
+
+There are two main ways to install R packages:
+
+::: column-margin
+You only need to install a package once, but you need to load it every time you start a new R session.
+:::
+
+1. Using the `install.packages()` function:
+```{r}
+#| eval: false
+# Install a single package
+install.packages("readr")
+
+# Install multiple packages at once
+install.packages(c("readr", "readxl"))
 ```
 
-- When you hit the **RETURN** Key, you will see the following output:
+2. Using the RStudio interface:
+   - Tools → Install Packages...
+   - Type the package name
+   - Click "Install"
 
-```{r, echo=FALSE}
-myData
-```
+::: {.callout-important}
+You only need to install a package once on your computer. However, you'll need to load it each time you start a new R session.
+:::
 
-- Object names can be made up of letters, numbers and `,` and `_` symbols.  A name must start with `.` or a letter.  If it starts with `.` the second character must not be a number.
-- R is case sensitive, so calling `mydata` is not the same as `myData` and will generate an error:
+### Loading packages
 
-```{r, error=TRUE}
-mydata
-```
+To use a package in your R session, you need to load it using the `library()` function:
 
-- To see a list of all the named objects you've created in R, use the `objects` function:
+::: column-margin
+The `pacman` package is a helpful tool that combines installing and loading packages in one step.
+:::
 
 ```{r}
-objects()
+#| eval: true
+# Load individual packages
+library(readr)
+library(readxl)
 ```
 
-- To delete an object, use the `remove` function:
+A more efficient way to handle package management is using the `pacman` package. You can read more about it [here](https://trinker.github.io/pacman/vignettes/Introduction_to_pacman.html).
 
 ```{r}
-remove(myData)
+#| eval: false
+# Install pacman if not already installed
+if (!require("pacman")) install.packages("pacman")
+
+# Load multiple packages at once
+pacman::p_load(readr, readxl)
 ```
 
-- If you type and enter an incomplete command, a continuation prompt will appear on the next line: +.  You can continue typing the command followed by the **ENTER** Key.
+::: {.callout-note}
+The `::` operator in R allows you to use a function from a package without loading the entire package. For example, `readr::read_csv()` uses the `read_csv` function from the `readr` package.
+:::
+
+
+## Exercise 4: importing data
+
+Now that we understand R packages, let's use some specific ones for importing data. We'll use:
+- `readr` for importing CSV files
+- `readxl` for importing Excel files
+
+::: column-margin
+CSV files are simple text files that can be opened by many programs. Excel files are more complex but can store multiple sheets and formatting.
+:::
+
+First, make sure these packages are installed and loaded:
 
 ```{r}
-myData3 <-
-+ 8
+# Install and load required packages
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(readr, readxl)
 ```
 
-- To cancel a command at the continuation prompt (or during execution of a command), press the **ESC** key.
-- The up and down arrow keys can be used to scroll through previous commands.
-- Comments can be indicated by a hash mark (#) - everything on the line following the hash mark will be ignored by R.  This can be after R code on a line or on a separate line as shown below.
+### Example data files
+
+Before we begin, download these example files that we'll use throughout this exercise:
+Download these example files and place them in your `data` folder:a
+
+- [Student Scores (CSV)](data/student_scores.csv)
+- [Weather Data (Excel)](data/weather_data.xlsx)
+
+Save these files in your project's `data` folder before proceeding.
+
+### Understanding file paths
+
+Before we import data, it's important to understand how R finds your files using file paths:
+
+::: column-margin
+Using relative paths makes your code more portable - it will work on any computer that has the same project structure.
+:::
+
+- **Absolute paths** start from the root of your system (e.g., `/Users/yourname/Documents/data.csv` on Mac/Linux or `C:/Users/yourname/Documents/data.csv` on Windows)
+- **Relative paths** start from your current working directory (e.g., `data/data.csv`)
+
+When working in an R project:
+
+- The project folder becomes your working directory
+- Use relative paths to make your code more portable
+- Organise files in subdirectories (like 'data/', 'scripts/', 'output/')
+
+You can check your working directory with:
+```{r}
+getwd() # Shows your current working directory
+```
+
+### Importing CSV files
+
+CSV files are simple text files where data is separated by commas. They're widely used because they're simple and can be read by most software.
+
+::: column-margin
+Always check your data after importing it. A quick look at the structure and first few rows can catch common issues early.
+:::
+
+To import a CSV file, we use the `read_csv()` function from the `readr` package:
 
 ```{r}
-#I am adding 6+6 and saving it to an object called my.Data
-my.Data <- 6+6
+# Using a relative path from the project root
+student_data <- read_csv("data/student_scores.csv")
+
+# View the first few rows
+head(student_data)
+
+# Get a summary of the data
+summary(student_data)
 ```
 
-## Basic arithmetic in R
+::: {.callout-tip}
+Always try to use relative paths within your R project. This makes your code:
+- More portable (works on different computers)
+- Easier to share with others
+- Less likely to break when files move
+:::
 
-- The symbols for basic arithmetic operators are shown in the table below.
+### Importing Excel files
 
-```{r, echo=FALSE}
-Operators<-c("+","-","*","/","^ or **")
-Operation<-c("addition","subtraction","multiplication","division","exponentiation")
-tdata<-cbind(Operators,Operation)
-library(knitr)
-kable(tdata)
-```
-
-- Parentheses ( ) can be used to specify order of operations.
-- You can perform basic calculations by typing expressions into the command line. 
+For Excel files, we use the `read_excel()` function from the `readxl` package:
 
 ```{r}
-(5*10) ^2
+# Import an Excel file
+weather_data <- read_excel("data/weather_data.xlsx")
+
+# View the first few rows
+head(weather_data)
+
+# Look at the structure of the data
+str(weather_data)
 ```
 
-- Better still you can assign results to a named object to be used at a later date.
+::: {.callout-note}
+When importing data:
+
+- Always check the first few rows using `head()`
+- Look at the data structure using `str()`
+- Check for any missing values using `summary()`
+:::
+
+### Common importing issues
+
+Here are some common issues you might encounter when importing data:
+
+::: column-margin
+Data import problems are common but can usually be fixed by specifying the correct options in your import function.
+:::
+
+1. **File path errors**: Ensure you're using the correct path relative to your project directory
+2. **Missing values**: R might interpret empty cells differently than expected
+3. **Column types**: Sometimes R might guess the wrong data type for columns
+4. **Special characters**: Non-ASCII characters might not import correctly
+
+You can handle these issues using additional arguments in the import functions:
 
 ```{r}
-myresult <- 20/10 + 6 - 1
+#| eval: false
+# Example with more options
+student_data <- read_csv("data/student_scores.csv",
+  na = c("", "NA", "missing"), # Define missing value codes
+  col_types = cols( # Specify column types
+    student_id = col_character(),
+    quiz_score = col_double(),
+    homework_score = col_double(),
+    final_score = col_double()
+  )
+)
 ```
-
-- For example, We can then halve the value of `myresult`.
-
-```{r}
-myresult <- myresult/2
-```
-
-## Text editors in R
-
-- Until now you have copied and pasted commands which you may wish to use again.  This is particularly important as you begin to write series of commands to perform a certain task.  One option is to save these commands to text files and copy the relevant commands into R as needed. You can save logical groupings of commands into different text files.
-- A better option is to use text editors – one example is RStudio and unlike notepad it allows syntax highlighting of R commands.  When an R session is open, RStudio includes an additional menu and toolbar and it allows the user to interact with R by submitting code in whole or in part. 
-- From now on you should start to use RStudio by copying the commands into a R file and then submitting them to R.  By doing this you will have a record of the commands you have used.  From now you will be using R through RStudio and not the console directly.  Over time you will develop a library of code to perform analyses and create graphics. 
-- The screenshot below shows RStudio, the top left window shows your code and the bottom left window shows the input and output in R.  The top right hand window side shows the objects you have created, for example `myData`.  The bottom left hand corner shows graphics, in this case a histogram, but can also show other useful features such as the help menu. 
-
-![R Studio](images/R_studio.png)
-
-## Simple data analysis in RStudio
-
-- Download and open the file **Code_Topic1.r** see link at start of lesson. Once open using the File > Open menu items in RStudio, you will see most of the commands you have been typing in the code editor.  Rather than typing commands directly into into R we will now start to use RStudio code editor.  
-- You send code from your open R code file which the top left hand pane of to the R console which is found in the bottom left hand pane.  The output, e.g. the mean, will also appear in the bottom left hand window.   
-- To send a line of code to R from your R file (the **Code_Topic1.R** file), click anywhere in the line and click on the Run icon or use the short cut **CTRL+ENTER** (Windows) or **COMMAND+ENTER** (Mac) or click on Run to run all code at once.  The output is shown in the bottom left hand window.  
-- You can also use the # symbol to write comments which R will ignore.  It is really important to comment throughout your code to help you and others who may use it to understand what the code does. It is recommended you copy the output into your R file and comment it out using # so you have a complete record of your work.
-
-## Getting data into RStudio
-
-- RStudio can accept data from many different sources; for example directly from scientific instruments or even scraping the internet for data.  In this topic we are only considering small data sets so we will enter the data manually via the keyboard.
-- A vector (or list) of numbers can be manually entered using the assignment operator and the `c` function which essentially means combine, an example is below.
-
-```{r}
-myDataset <- c(5,12,52,32,14,6.1)
-```
-
-- Now it is your turn. Similar to above, use the `c` function to enter a soil carbon data set (48, 56, 90, 78, 86, 71, 42) as an object called `Carbon`.  We will then calculate some basic statistics on this data set.
-
-```{r}
-Carbon<-c(48, 56, 90, 78, 86, 71, 42)
-```
-
-## Summary statistics in RStudio
-
-- Now we have entered the data in R we want to do something with it, such as calculate summary statistics.
-- R functions behave differently depending on the data type. 
-- Some functions will work only on specific data types, other functions will use different methods on different data types.
-
-To find the mean of data set we use the `mean` function.
-
-```{r}
-mean(Carbon)
-```
-
-Other commands related to summary statistics include:
-
-- `median` - median
-- `var` - sample variance
-- `sd` - sample standard deviation 
-- `min` - minimum value
-- `max` - maximum value
-- `length` - number of observations (length of the vector)
-
-Calculate all of the statistics above using R.
-
-```{r}
-median(Carbon)
-var(Carbon)
-sd(Carbon)
-min(Carbon)
-max(Carbon)
-length(Carbon)
-```
-
-- Rather than using all of these indiviudally you can use the `summary` function which gives the minimum, maximum, mean and median values.  We will consider the `1st Qu.` and `2nd Qu.` in the next practical. 
-
-```{r}
-summary(Carbon)
-```
-
-- Note, that it does not calculate the standard deviation, variance or number of observations.
-- That is all we will do in R in this practical.  Remember to save your code so you can refer and reuse this for your online quiz and other assessments in the future.
-
-```{r, echo=FALSE}
-#library(knitr)
-#purl("IntroR_Practical.Rmd","Solutions_Code_Topic1.r")
-```
-
-# Setting up a project in R and coding in Quarto
-
-- Working smartly with your data and code can save you time and tears. We are going to work with projects as this helps manage your data in a clean and easy way. You can either decide to creat a new project for each lab or create one project for the course. 
-
-## Projects
-
-Having all your files organised into a logical folder structure will be super beneficial in this course and also your day-to-day life. Also Super important is that you back up your work in the cloud. You can do this using One Drive which you can access as through your university account, you can also use your own cloud storage (Dropbox, iCloud,...) and or you can use your GitHub account. 
-
-Your tutors can assist you to get your files organised. The following is my recommendation: 
-
-- Set up a course folder called ENVX1002 on your desktop/network drive/USB/cloud storage.
-- Set up a project folder called Lab_1 in your ENVX1002 folder.
-
-1. Create a folder called ENVX1002 on your laptop or the class desktop (prefereably in a folder backed up to the cloud. If you are using a class computer you will need to save the file to upload to your cloud storage or USB/External Hard Drive or zip the folder and email to yourself at the end of the class.
-
-2. Open R Studio go to the file drop down menu and select New Project
-
-![New project](images/File_dropdwn.jpg)
-
-3. Select New directory and navigate to your class folder.
-
-![New project](images/new_prj.jpg)
-
-<br>
-
-4. Enter on the directory name, for example `Lab_1`, and click on Create Project.
-
-5. Well done! you have now set up a project.
-
-![New project name](images/prj_result.jpg)
-6. You should now see a folder called Lab_1 in your ENVX1002 folder. If you open that folder you will see a file called `Lab_1.Rproj`. This is your project file and it will open RStudio with the working directory set to the Lab_1 folder.
-
-## Coding in Quarto
-
-Your tutor will assist you to open a Quarto (.qmd) file. You will do this for each Lab and your also for your reports:
-
-- Open a qmd file, and save it as, for example, Prac1.qmd.
-- Run the file using render.
-- View filename.html in a browser.
-- Now experiment with editing the file (both text and code chunks) and then re-run using render.
-- Use this file to store your summary of today’s lab work.
-
-The screenshots will help you do this.
-
-1. Navigate to **New File > Quarto Document**
-
-2. Enter in an appropriate name for your file such as ENVX1002_lab_1 and enter in your name. Select HTML format.
-
-![New Quarto](images/QuartoDoc.jpg)
-
-3. Well done! you have created a new Quarto file. First save your file by navigating to the File menu i.e. **File > Save as**. Name your file ENVX1002_lab_1.qmd it should automatically save in your Project folder.
-
-4. Finally you can **Render** the file by selecting the render button - see if you can spot it - it's a blue block arrow pointing to the right above the text editor.
-
-5. Go to your project folder and open the HTML file by double clicking on it, it will open in your default browser.
 
 ## Summing up
-Well done!
 
-You now know how to:
+In this lab, you've learned:
 
-- write equations in a word document
-- do basic operations in Excel
-- do basic operations in R and RStudio and 
-- consider how to manage files and folders and
-- set up a project as well as generate an Quarto Document
+- [ ] Basic setup: Installing R/RStudio and creating projects
+- [ ] Creating and formatting Quarto documents
+- [ ] Using R packages and basic operations
+- [ ] Importing data from CSV and Excel files
 
-To do by next week:
+## Take-home exercises
 
-- complete anything you have missed from today's lab
-- complete the practice [O-quiz](https://canvas.sydney.edu.au/courses/55713/quizzes/249580) - this is to help you get familiar with Canvas quizzes. 
+### Exercise 5: Creating a lab report template
+
+Create a Quarto document that will serve as your template for future lab reports. Your template should include:
+
+1. A YAML header with:
+   - Your name and student ID
+   - The unit of study code (ENVX1002)
+   - The current date
+   - Output format set to HTML
+
+2. The following sections (using appropriate header levels):
+   - Introduction
+   - Methods
+   - Results
+   - Discussion
+   - References
+
+3. Include at least one example of each of these formatting elements:
+   - Bold text
+   - Italic text
+   - A bullet point list
+   - A numbered list
+   - A link to a relevant website
+   - An empty R code chunk
+
+Save this template as `lab_report_template.qmd` in your ENVX1002 project folder.
+
+### Exercise 6: Data exploration practice
+
+Create a new Quarto document called `data_exploration.qmd` and complete the following tasks:
+
+1. Load the required packages (`readr` and `readxl`)
+
+2. Create a simple data frame with two columns. You may need to use the `data.frame()` function to create this data frame, or you could do this manually in Excel and then import it using one of the `read_*()` functions. The data frame should have the following structure:
+   - `site_id`: A to E
+   - `temperature`: 15.2, 14.8, 15.6, 14.9, 15.3
+
+3. Use these functions to explore your data frame:
+   - `head()` to view the first few rows
+   - `str()` to examine the structure and data types
+   - `dim()` to check the dimensions (rows and columns)
+   - `names()` to see the column names
+
+Remember to add text explanations between your code chunks describing what each function does and what information it provides about your data.
+
+::: {.callout-tip}
+These exercises will help reinforce the skills you've learned today and create useful resources for future labs. Make sure to render your documents to check that everything works correctly.
+:::
