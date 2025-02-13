@@ -1,3 +1,511 @@
-# Linear functions
+---
+execute:
+  warning: false
+  message: false
+---
 
-In summary, this book has no content whatsoever.
+```{r setup}
+#| include: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse)
+
+library(patchwork)
+library(ggplot2)
+```
+
+# Why do we create models?
+
+Often in a scientific experiment, we collect data for a response variable ($y$) and one or more predictor variables ($x$).
+
+Some interchangeable terms:
+
+- $y$ -- independent variable, response variable, target, outcome, etc.
+- $x$ -- dependent variable, predictor variable, feature, input etc.
+
+There are several reasons why we would 'model' or 'create a model' for the data we have collected:
+
+- To describe the relationship between $x$ and $y$ (e.g. weak/moderate/strong, positive/negative, linear/non-linear, etc.)
+- To explain the relationship between $x$ and $y$ in terms of an equation
+- To predict the value of $y$ for a given value of $x$
+
+The simplest form of a model is a linear model.
+
+# Regression
+
+We start with a hypothetical dataset, with $x$ and $y$. A linear model is essentially the line of best fit. How do we determine what the line of best fit is?
+
+```{r}
+#| code-fold: true
+# simulate example data
+set.seed(340)
+x <- runif(10, 0, 30)
+y <- 5 * x + rnorm(10, 0, 40)
+df <- data.frame(x, y)
+
+# make and save the plot
+ggplot(df, aes(x, y)) +
+  geom_point(size=2) +
+  labs(x = "x", y = "y") +
+  theme_classic()
+
+```
+
+Realistically, if we fit a 'line of best fit' it will not pass through all the points. There will be some error -- we call these errors the *residuals*. The residuals ($\epsilon_{i}$) are the difference between the observed value of $y$ ($y_{i}$) and the value predicted ($\hat{y}_{i}$) by the model.
+
+```{r, warning=FALSE, message=FALSE}
+#| echo: false
+
+# fit linear model, add residual vertical lines as arrows
+mod <- lm(y ~ x, data = df)
+p1 <- ggplot(df, aes(x, y)) +
+  geom_point() +
+  geom_segment(aes(xend = x, yend = fitted(mod)),
+    arrow = arrow(length = unit(0.2, "cm")),
+    color = "royalblue"
+  ) +
+  labs(x = "x", y = "y")
+
+p1 +
+  geom_smooth(method = "lm", se = FALSE, color = "firebrick") +
+  annotate("text",
+    x = 6.3, y = -6, size = 7,
+    label = expression(hat(epsilon[i])), colour = "royalblue"
+  ) +
+  annotate("text",
+    x = 5.6, y = 25, size = 7,
+    label = expression(hat(y[i])), colour = "forestgreen"
+  ) +
+  annotate("text",
+    x = 5.6, y = -36, size = 7,
+    label = expression(y[i]), colour = "firebrick"
+  ) +
+  theme_classic()
+
+```
+
+**Regression is a statistical method to fit a model** by minimising the residuals or error. In essence, the model that best minimises the error has the best fit. The most commonly used error term is the **sum of squares**. By squaring the residual, it won't matter if error is positive or negative, and larger errors have a larger penalty. By summing all squared residuals together, we get a single number that represents the total error of the model. 
+
+$$ \text{sum of squared residuals} = \sum_{i=1}^{n} \left( y_i - \hat{y}_i \right)^2 $$
+Regression is the foundation of most numerical statistical models, from simple linear regression to deep learning neural networks.
+
+# Simple linear regression
+
+The equation of a simple linear regression model is:
+
+$$y = \beta_0 + \beta_1 x$$
+
+where $\beta_0$ is the y-intercept or constant, and $\beta_1$ is the slope.
+
+The goal of regression is to fit a straight line that will have the lowest sum of squares. This line can be described with the parameters $\beta_0$ and $\beta_1$.
+
+There are two methods that we can use - the analytical method (with equations) and the numerical method (trial and error).
+
+We will showcase these methods with an example with the famous `iris` dataset. The dataset contains 150 observations of three species of iris flowers, measuring four features (`sepal length`, `sepal width`, `petal length`, `petal width`). For our example, we will model the relationship between `petal length` and `petal width`.
+
+```{r}
+x <- iris$Petal.Length
+y <- iris$Petal.Width
+
+ggplot() +
+  geom_point(aes(x = x, y = y)) +
+  labs(title = "Petal length vs Petal width",
+       x = "Petal length",
+       y = "Petal width")
+
+```
+
+## Analytical method
+
+For simple linear regression, we can calculate the values of $\beta_0$ and $\beta_1$ with equations
+
+First we calculate the slope $\beta_1$:
+
+$$ \beta_1 = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2} =  \frac{Cov(x,y)}{Var(x)} = \frac{SS_{xy}}{SS_{xx}} $$
+Which we then substitute into the equation below to get the intercept $\beta_0$:
+
+$$ \beta_0 = \bar{y} - \beta_1 \bar{x} $$
+
+Using R to do our calculations:
+
+```{r}
+cov_xy <- sum((x - mean(x)) * (y - mean(y)))
+var_x <- sum((x - mean(x))^2)
+b1 <- cov_xy / var_x
+
+b0 <- mean(y) - b1 * mean(x)
+```
+
+```{r}
+#| echo: false
+
+print(paste("The covariance of x and y is: ", round(cov_xy, 2)))
+print(paste("The variance of x is: ", round(var_x, 2)))
+print(paste("The slope is: ", round(b1, 6)))
+print(paste("The intercept is: ", round(b0, 6)))
+```
+
+So the analytical method determines that our linear model is $y = -0.363076 + 0.415755 \cdot x$.
+
+## Numerical method
+
+The numerical method is a trial and error method. We start with some initial values of $\beta_0$ and $\beta_1$, and then update the values to minimize the sum of squares. This is the most common method that computer programs (e.g. Excel, R, Python, etc.) will use as it is more computationally efficient with very large dataset (e.g. millions of rows).
+
+Fitting the model in R is very simple:
+
+```{r}
+mod <- lm(y ~ x) # fit a linear model between x and y
+summary(mod)     # model output in a neat summary table
+```
+
+The estimate of our parameters (or `coefficients`) are in the `Estimate` column. The `Intercept` `Estimate` is our y-intercept $\beta_0$ and the `x` `Estimate` is our slope $\beta_1$.
+
+So the numerical method run by R determines that our linear model is $y = -0.363076 + 0.415755 \cdot x$. This is exactly the same result as the analytical method (at least to 6 decimal places).
+
+# Steps of linear regression
+
+Fitting a simple linear regression can be done in two lines of code in R. But there is a series of steps that we need to go through to ensure our model is robust and we can trust the results.
+
+## 1. Exploratory data analysis
+
+This is a basic step in any data analysis. We need to understand the data we are working with. As with previous modules, we can look at summary statistics, distributions, and visualise the data.
+
+For linear regression, we also need to look at the relationship between the predictor and response. We first look at a scatter plot to determine if we have linear data, and then we choose a suitable correlation coefficient.
+
+```{r}
+ggplot() +
+  geom_point(aes(x = x, y = y)) +
+  labs(title = "Petal length vs Petal width",
+       x = "Petal length",
+       y = "Petal width")
+```
+
+There appears to be a strong, positive linear relationship between `petal length` and `petal width`.
+
+```{r}
+cor(x, y) |> round(2) # calculate correlation |> round to 2 decimal places
+```
+
+The correlation coefficient is 0.96, which is very close to 1. This is almost a perfect positive linear relationship!
+
+## 2. Assumptions
+
+To use linear regression, there are several assumptions (LINE) that need to be met:
+
+- *L*inearity -- is there a linear relationship? 
+- *I*ndependence -- are the residuals independent of each other?
+- *N*ormality -- are the residuals normally distributed?
+- *E*qual variance -- is the variance of the residuals constant?
+
+If assumptions are met, then we can be confident that the model is a good fit for the data. If they are not met, then the hypothesis test results are unreliable, the standard error estimate is unreliable, and the estimates of the coefficients will not fit the model well.
+
+If the assumptions are **not** met, then we either need to transform our data (e.g. $x$, $y$, or both) with a function (e.g. square root, natural log etc.) or use a non-linear model.
+
+An important point to remember is that the assumptions are about the **residuals**, not the data itself. The equation for a linear model is:
+
+$$y = \beta_0 + \beta_1 x + \epsilon$$
+where $\epsilon$ is the error term, or residual. This is the only term which adds variation to an otherwise straight line, so this is what we need to check our assumptions with.
+
+### Linearity
+
+Linear regression assumes that there is a linear relationship between $x$ and $y$. It does not make logical or statistical sense to fit a linear model to data that does not have a linear relationship. With non-linear data, the other assumptions will not be met either. The easiest method to check for linearity with a scatter plot.
+
+### Independence
+
+The independence of errors is the assumption that the residuals for one observation are independent of another observation. This is a difficult assumption to check, but it is often assumed that the data is collected in a way that the residuals are independent.
+
+For example, if we are measuring the height of children in a class, the height of one child should not affect the height of another child. However, if all the children were siblings or identical octuplets, then the residuals would not be independent. Another case where this assumption could be broken is in time series data -- the height of a child this year is not independent from the height last year.
+
+### Normality
+
+A linear model assumes the residuals are normally distributed around the line of best fit. This is important for hypothesis testing and confidence intervals. We can check this assumption with a **Q-Q plot** or a histogram of the residuals.
+
+![](images/residual.jpg){fig-align="center"}
+
+### Equal variance
+
+This is also known as the assumption of **constant variance** or **homoscedasticity**. It assumes that the variance of the residuals is constant across all levels of the predictor variable (i.e. no fanning). Again, this is important for hypothesis testing and confidence intervals. We can check this assumption with a scatter plot of *Residuals vs Fitted* values and the *Scale-Location* plot.
+
+### Assumption Plots
+
+In R, plots of the residuals can be made with the `plot()` function and the model object (in this case `mod`) as the input. The four plots produced are 1) *Residuals vs Fitted* (linearity, equal variances), 2) the *Normal Q-Q* plot (normality), 3) a *Scale-Location* plot (equal variances), and 4) the *Residuals vs Leverage* plot (extreme outliers).
+
+```{r}
+mod <- lm(y ~ x)  # fit a linear model between x and y
+
+par(mfrow=c(2,2)) # set up a 2x2 grid of plots
+plot(mod)         # create the plots
+```
+
+These same plots can also be made with `autoplot()` function (from the `ggfortify` package). It does not require the `par()` function to set up the grid and is more aesthetically customisable.
+
+```{r}
+library(ggfortify)
+ggplot2::autoplot(mod)
+```
+
+1. The *Residuals vs Fitted* plots the residuals against the 'predicted' values (i.e. points on the line). If met, the points will be randomly scattered around the horizontal 0 line. If there is a pattern (e.g. a curve, a quadratic), then the assumption of linearity is not met. If there is a fan shape, then the assumption of equal variance is not met.
+
+2. The *Normal Q-Q* plot compares the residuals to a normal distribution. If the residuals are normally distributed, the points will fall on the straight line. If the points deviate from the line, then the residuals are not normally distributed.
+
+3. The *Scale-Location* plot is used to check the assumption of equal variance. If the line is essentially horizontal and points are randomly scattered, then the assumption is met.
+
+4. The *Residuals vs Leverage* plot is used to identify extreme outliers. Although not an official assumption, a very extreme outlier has the potential to skew the line of best fit. These influential points should be kept track of or removed from the dataset.
+
+The examples above are for the `iris` dataset with `petal length` and `petal width`. The assumptions are met.
+
+Below is an example of plots from data that has an exponential relationship with unequal variances (it fans in) with a couple of extreme outliers (in red).
+
+```{r}
+#| echo: false
+
+par(mfrow = c(1,1))
+
+# Generate 100 normal observations
+x_exp <- rnorm(100, mean = 60, sd = 10)
+error_sd <- 10 + 10* x_exp
+y_exp <- 2 * exp(0.1 * x_exp) + rnorm(100, mean = 0, sd = error_sd)
+
+# Append 3 outlier observations
+x_exp <- c(x_exp, 60, 80)
+y_exp <- c(y_exp, 8000, 0)  # These values are chosen to be far from the model's prediction
+
+# Create a color vector: first 100 points in black, last 3 (outliers) in red
+point_colors <- c(rep("black", 100), rep("red", 3))
+
+# Plot the data with the specified colors
+plot(x_exp, y_exp, pch = 19, col = point_colors)
+
+```
+
+```{r}
+mod_exp <- lm(y_exp ~ x_exp)
+par(mfrow=c(2,2))
+plot(mod_exp)
+```
+
+We can see that:
+
+- The *Residuals vs Fitted* plot looks curved, indicating unequal variances. The scatter of points is also not very even because of the extreme outliers.
+- The *Normal Q-Q* plot shows the points are not on the line at the tails and hence the residuals are not normally distributed.
+- The *Scale-Location* plot shows a 'W' shape, indicating unequal variances.
+- The *Residuals vs Leverage* plot shows the two extreme outliers past the dotted lines, which confirms they are influential points.
+
+## Model evaluation
+
+So now that we have confirmed the assumptions are met, the next step is to determine how good the model actually is. If the model was not a good fit to the data, then we wouldn't want to interpret it -- we'd try and improve it first.
+
+Let's break down the `summary(mod)` output. The first few lines are the model formula `lm(formula = y ~ x)`, so this is our linear model. The `Residuals` section gives some summary statistics of the residuals. 
+
+```{r}
+#| eval: false
+
+Call:
+lm(formula = y ~ x)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.56515 -0.12358 -0.01898  0.13288  0.64272 
+
+```
+
+### Hypothesis Test
+
+The null hypothesis for a simple linear regression is that the slope is zero ($\beta_1 = 0$), and the model does not perform better than just using the mean. There is thus no relationship between $x$ and $y$. The alternative hypothesis is that the slope is not zero ($\beta_1 \neq 0$), which means there is a relationship between $x$ and $y$, and the model is better than using the mean.
+
+The `Coefficients` section gives the estimates of our y-intercept and slope, as well as the standard error, the t-value, and the p-value when determining the estimate. The p-value is the most easily interpreted -- we care the p-value of the ($x$). If the p-value is less than 0.05, then we can reject the null hypothesis that the slope $\beta_1$ is zero.
+
+The `Signif. codes` section gives a visual representation of the p-value. The more stars, the smaller the p-value. The `***` means the p-value is less than 0.001, `**` means less than 0.01, and `*` means less than 0.05. This is useful when we have many predictors.
+
+```{r}
+#| eval: false
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -0.363076   0.039762  -9.131  4.7e-16 ***
+x            0.415755   0.009582  43.387  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+```
+
+### Model Fit
+
+```{r}
+#| eval: false
+Residual standard error: 0.2065 on 148 degrees of freedom
+Multiple R-squared:  0.9271,	Adjusted R-squared:  0.9266 
+F-statistic:  1882 on 1 and 148 DF,  p-value: < 2.2e-16
+```
+
+The `Residual standard error` is the standard deviation of the residuals. The smaller the value, the better the model fits the data. It is in the same units as the response variable. Considering the $y$ ranges between 0.1 and 2.5, a standard error of 0.2065 is quite small.
+
+The `Multiple R-squared` is the proportion of the variance in the response variable that is explained by the model. The more variation explained by the model, the better the fit. A value of '1' indicates a perfect fit, and a value of '0' suggests the model explained no variation at all. A value of 92.71% is very good. In simple linear regression, the R^2^ is actually equivalent to the correlation coefficient squared - which is also where the term comes from.
+
+The `Adjusted R-squared` is the same as the `Multiple R-squared`, but adjusted for the number of predictors in the model. We use the `Adjusted R-squared` in multiple linear regression, and the `Multiple R-squared` in simple linear regression.
+
+$$ R^2 = \frac{SS_{reg}}{SS_{tot}} = 1 - \frac{SS_{res}}{SS_{tot}} $$
+
+$$ R^2_{adj} = 1 - \frac{SS_{res}}{SS_{tot}} \frac{n-1}{n-p-1} $$
+Lastly, the `F-statistic` is a statistical test of the overall significance of the model. In simple linear regression (1 predictor, 1 response) it is the same as the p-value in the `Coefficients` table. The F-statistic value is 1882 in the example, and the degrees of freedom (1, 148) are the number of predictors (1) and the number of observations minus two (150-2=148) because there are two parameters. This is covered in more detail in ENVX2001.
+
+## Interpretation
+
+The assumptions for simple linear regression were met. The model explains 92.71% of the variation in the `petal width` with `petal length` with a residual standard error of 0.2065, and `petal length` is a significant predictor (p < 2e-16).
+
+The equation of the model is $y = -0.36 + 0.42 \cdot x$. This means that for every unit increase in `petal length`, `petal width` increases by 0.42 cm. 
+
+The y-intercept is -0.36, which is the value of `petal width` when `petal length` is zero. This is not a meaningful value in this context, as `petal length` cannot be zero. This is often the case with the y-intercept.
+
+Last but not least, the result can be plotted on a scatterplot with the line of best fit.
+
+```{r}
+### Base R
+plot(x, y, pch = 19,
+     xlab = "Petal Length", ylab = "Petal Width", main = "Base R"
+)
+abline(mod, col = "red") # using our model `mod` object
+# abline(a = -0.363076, b = 0.415755, col = "red") # manually inputting coefficients
+
+### ggplot
+ggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "red") + # ggplot will fit the model for us
+  # geom_abline(intercept = -0.363076, slope = 0.415755, color = "red") + # manually inputting coefficients
+  labs(x = "Petal Length", y = "Petal Width", title = "ggplot2")
+
+```
+
+# Transformation
+
+In the case assumptions are not met, we can try transforming. Some common options are the square root or natural log. In the case there are negative values, we can also add a constant to ensure all values are greater than 0.
+
+To demonstrate this, we use another well known dataset - air quality in New York (USA). The dataset contains 153 observations of `Ozone` (ppb), as well as `Solar.R` (solar radiation, Langleys), `Wind` (mph), `Temp` ($\deg$F), `Day` (1-31), and `Month` (1-12).
+
+```{r}
+data <- na.omit(airquality) # remove missing values of ozone
+cor(data) |> round(2)       # calculate correlation |> round to 2 decimal places
+```
+
+The correlation matrix shows that `Temp` has the highest correlation with `Ozone` (0.7), so we will model the relationship between `Ozone` and `Temp`. Given `Ozone` is a pollutant that is of interest, it is the response variable and `Temp` is the predictor.
+
+```{r}
+ggplot(data, aes(x = Temp, y = Ozone)) +
+  geom_point() +
+  labs(x = "Temp", y = "Ozone")
+```
+
+The relationship does not appear linear. We can fit the model and the other assumptions as well to be sure.
+
+```{r}
+# Fit model
+mod <- lm(Ozone ~ Temp, data = data)
+
+# Assumption plots
+par(mfrow=c(2,2))
+plot(mod)
+```
+
+The *Residuals vs Fitted* plot is curved, which also signifies the relationship is not linear. The spread of points for lower fitted values is tighter than the larger values - i.e. fanning, unequal variance. The *Normal Q-Q* plot shows the points are not on the line, especially at the upper tails, indicating the residuals are not normally distributed. Hence assumptions are indeed not met.
+
+We can transform 1) just the response variable, 2) just the predictor variable, or 3) both. The easiest option transform the response variable (especially in multiple linear regression), and natural log transformations are more easily backtransformed for meaningful interpretation.
+
+```{r}
+#| code-fold: true
+
+data$Ozone_sqrt <- sqrt(data$Ozone) # square root
+data$Ozone_log <- log(data$Ozone)  # natural log
+data$Ozone_log10 <- log(data$Ozone, base = 10) # base 10 log
+
+# Original
+correlation_coef <- cor(data$Temp, data$Ozone) |> round(3)
+p1 <- ggplot(data, aes(x = Temp, y = Ozone)) +
+  geom_point() +
+  labs(x = "Temp", y = "Ozone", title = "Original",
+        subtitle = paste("Pearson's r: ", correlation_coef))
+
+# Square root
+correlation_coef <- cor(data$Temp, data$Ozone_sqrt) |> round(3)
+p2 <- ggplot(data, aes(x = Temp, y = Ozone_sqrt)) + # square root
+  geom_point() +
+  labs(x = "Temp", y = "Ozone", title = "Square root",
+        subtitle = paste("Pearson's r: ", correlation_coef))
+
+# Natural log
+correlation_coef <- cor(data$Temp, data$Ozone_log) |> round(3)
+p3 <- ggplot(data, aes(x = Temp, y = Ozone_log)) +
+  geom_point() +
+  labs(x = "Temp", y = "Ozone", title = "Natural log",,
+        subtitle = paste("Pearson's r: ", correlation_coef))
+
+# Base 10 log
+correlation_coef <- cor(data$Temp, data$Ozone_log10) |> round(3)
+p4 <- ggplot(data, aes(x = Temp, y = Ozone_log10)) + # base 10 log
+  geom_point() +
+  labs(x = "Temp", y = "Ozone", title = "Base 10 log",
+        subtitle = paste("Pearson's r: ", correlation_coef))
+
+p1 + p2 + p3 + p4
+```
+
+All the transformations improve the linearity of the relationship by about the same amount (based on $r$). We choose the natural log transformation (because it is easiest to backtranform), re-fit the model and check the assumptions again.
+
+```{r}
+mod_log <- lm(Ozone_log ~ Temp, data = data)
+
+par(mfrow=c(2,2))
+plot(mod_log)
+```
+
+Not quite textbook perfect, but definitely an improvement. The residuals are more evenly spread, and the Q-Q plot is closer to the line. The model is now ready for evaluation and interpretation.
+
+```{r}
+summary(mod_log)
+```
+
+The linear model with `Temp` explains 55.5% of the variation in `Ozone` with a residual standard error of 0.580 log(ppm). Even if this value were back-transformed, it would not have much meaning - which is a limitation of transformations.
+
+The natural log transformation of `Temp` is a significant predictor of `Ozone` (p < 2e-16). The equation of the model is $log(\text{Ozone}) = -1.849 + 0.068 \cdot \text{Temp}$. This means that for every unit (farenheit) increase in `Temp`, `log(Ozone)` increases by 0.068 log(ppm). To backtransform, we can use the `exp()` function. So for every unit increase in `Temp`, `Ozone` increases by $e^{0.068} = 1.070$ times. We can also say that for every unit increase in `Temp`, `Ozone` increases by 6.8%.
+
+## Explaining backtransformation
+
+### Square root
+
+The backtransformation of the coefficients is not as straightforward as the interpretation of the coefficients. For example, if we had used a square root transformation `sqrt(Ozone)`, then if we wanted to get the effect of increasing `Temp` by one unit:
+
+$$ \sqrt{Ozone} = \beta_0 + \beta_1 \cdot Temp $$
+$$ Ozone = (\beta_0 + \beta_1 \cdot Temp)^2 $$
+$$ Ozone = \beta_0^2 + 2 \beta_0 \beta_1 Temp + \beta_1^2 Temp^2 $$
+So if `Temp` increases by one unit, the increase in `Ozone` is not just $\beta_1^2$! We end up with $2\beta_1(\beta_0+\beta_1 \cdot Temp) + \beta_1^2$.
+
+### Natural log
+
+For natural logs, however, the backtransformation is much simpler because of log laws.
+
+$$ log(Ozone) = \beta_0 + \beta_1 \cdot Temp $$
+$$ Ozone = e^{\beta_0 + \beta_1 \cdot Temp} = e^{\beta_0} \cdot e^{\beta_1 \cdot Temp} $$
+If `Temp` increases by one unit, then the increase in Ozone is:
+
+$$ Ozone = e^{\beta_0} \cdot e^{\beta_1 \cdot (Temp+1)} = e^{\beta_0} \cdot e^{\beta_1 \cdot Temp} \cdot e^{\beta_1} $$
+The ratio between the two is:
+
+$$ \frac{e^{\beta_0} \cdot e^{\beta_1 \cdot Temp} \cdot e^{\beta_1}}{e^{\beta_0} \cdot e^{\beta_1 \cdot Temp}} = e^{\beta_1} $$
+So for a one unit increase in `Temp`, `Ozone` increases by $e^{\beta_1}$ times.
+
+## Percentage Change
+
+Interpreting as a percent change can be more meaningful - it can be done with any log transformation (substitute $e$ below for 10 or any other base), but the **quick approximation only works with natural log transformations**.
+
+If $y$ has been transformed with a natural log (`log(y)`), for a one-unit increase in $x$ the **percent change in $y$** (not `log(y)`) is calculated with:
+
+$$\Delta y \% = 100 \cdot (e^{\beta_1}-1)$$
+If $\beta_1$ is small (i.e. $-0.25 < \beta_1 < 0.25$), then: $e^{\beta_1} \approx 1 + \beta_1$. So $\Delta y \% \approx 100 \cdot \beta_1$. Below are some examples -- when $\beta_1$ is 2, the 'quick estimate' is off by 439%!
+
+|   β   |   Exact $(e^{\beta} - 1)$%   |   Approximate $100 \cdot \beta$   |
+|-----:|-----------------:|------------------:|
+| -0.25 |                      -22.13  |                               -25 |
+| -0.1  |                       -9.52  |                               -10 |
+|  0.01 |                        1.01  |                                 1 |
+|  0.1  |                       10.52  |                                10 |
+|  0.25 |                       28.41  |                                25 |
+|  0.5  |                       64.87  |                                50 |
+|   2   |                      638.91  |                               200 |
+
+So for our linear model $log(\text{Ozone}) = -1.849 + 0.068 \cdot \text{Temp}$, a one unit increase in `Temp` results in approximately a 6.8% increase in `Ozone`.
