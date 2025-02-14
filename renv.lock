@@ -41,6 +41,17 @@
       ],
       "Hash": "7a29697b75e027767a53fde6c903eca7"
     },
+    "GPArotation": {
+      "Package": "GPArotation",
+      "Version": "2024.3-1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "stats"
+      ],
+      "Hash": "b8b658ec0d7a6a55d9d01e00e3cafd20"
+    },
     "MASS": {
       "Package": "MASS",
       "Version": "7.3-61",
@@ -750,6 +761,24 @@
       ],
       "Hash": "1dc0a70a8f8ddb3435368835d7ab6511"
     },
+    "ggfortify": {
+      "Package": "ggfortify",
+      "Version": "0.4.17",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "dplyr",
+        "ggplot2",
+        "grid",
+        "gridExtra",
+        "methods",
+        "scales",
+        "stringr",
+        "tibble",
+        "tidyr"
+      ],
+      "Hash": "28eb83fd20b824710e681fc4e1a9ac94"
+    },
     "ggplot2": {
       "Package": "ggplot2",
       "Version": "3.5.1",
@@ -1221,6 +1250,31 @@
       ],
       "Hash": "785ef8e22389d4a7634c6c944f2dc07d"
     },
+    "mnormt": {
+      "Package": "mnormt",
+      "Version": "2.1.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "c83992ef63553d1e4b97162a4a753470"
+    },
+    "modeest": {
+      "Package": "modeest",
+      "Version": "2.4.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "fBasics",
+        "stable",
+        "stabledist",
+        "statip",
+        "stats"
+      ],
+      "Hash": "af93fbfa4f5fceb8d36d736ebc4b0982"
+    },
     "modelr": {
       "Package": "modelr",
       "Version": "0.1.11",
@@ -1327,6 +1381,19 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "27550641889a3abf3aec4d91186311ec"
+    },
+    "nlstools": {
+      "Package": "nlstools",
+      "Version": "2.1-0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "grDevices",
+        "graphics",
+        "stats",
+        "utils"
+      ],
+      "Hash": "07cda591104ce02de0b3c22c0eba7617"
     },
     "nnet": {
       "Package": "nnet",
@@ -1495,6 +1562,24 @@
         "utils"
       ],
       "Hash": "b4404b1de13758dea1c0484ad0d48563"
+    },
+    "psych": {
+      "Package": "psych",
+      "Version": "2.4.6.26",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "GPArotation",
+        "grDevices",
+        "graphics",
+        "lattice",
+        "methods",
+        "mnormt",
+        "nlme",
+        "parallel",
+        "stats"
+      ],
+      "Hash": "4448d5f3ac3e2cbf79074391d494637e"
     },
     "purrr": {
       "Package": "purrr",
