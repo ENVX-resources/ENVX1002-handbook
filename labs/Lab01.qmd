@@ -4,6 +4,9 @@ format:
   html: default
   typst: default
 embed-resources: true
+resources:
+  - data/student_scores.csv
+  - data/weather_data.xlsx
 execute:
   eval: true
 ---
@@ -190,7 +193,7 @@ You can control chunk behavior with options:
 - `warning: false` - Hide warning messages
 - `message: false` - Hide messages
 
-```{{r}}
+```{r}
 #| warning: false
 #| message: false
 
@@ -309,7 +312,6 @@ pacman::p_load(readr, readxl)
 ### Example data files
 
 Before we begin, download these example files that we'll use throughout this exercise:
-Download these example files and place them in your `data` folder:a
 
 - [Student Scores (CSV)](data/student_scores.csv)
 - [Weather Data (Excel)](data/weather_data.xlsx)
