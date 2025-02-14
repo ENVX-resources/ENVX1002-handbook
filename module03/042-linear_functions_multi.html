@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -39,8 +73,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-ed04999718f06b735b1f8009dce43b94.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9959048ad043ebf04c42832c35049e99.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-597124e1a1e6638dfe199336729b98e9.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-23a9d138e7e1bf06b372a111379326d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-0973a0db49f0712bde2e04708837bcc0.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -125,7 +159,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module03/040-describing_relationships.html"><strong>📘 Module 3</strong></a></li><li class="breadcrumb-item"><a href="../module03/042-linear_functions_multi.html">Linear functions – multiple predictors</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module03/040-describing_relationships.html"><strong>📘 Module 3</strong></a></li><li class="breadcrumb-item"><a href="../module03/042-linear_functions_multi.html">Multiple Linear Regression</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -147,54 +181,12 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text"><strong>🛟 R Guide</strong></span></a>
+ <span class="menu-text"><strong>📕 Module 1</strong></span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/01-getting-started.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Getting started</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/04-install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Installing R and RStudio</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/06-rstudio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Using RStudio effectively</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/08-quarto-r-markdown.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Writing in markdown</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/10-copilot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GitHub Copilot and RStudio</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text"><strong>📕 Module 1</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module01/01-exploring_data.html" class="sidebar-item-text sidebar-link">
@@ -217,13 +209,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text"><strong>📗 Module 2</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module02/01-ttest1.html" class="sidebar-item-text sidebar-link">
@@ -246,13 +238,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text"><strong>📘 Module 3</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module03/040-describing_relationships.html" class="sidebar-item-text sidebar-link">
@@ -262,19 +254,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module03/041-linear_functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Linear functions</span></a>
+ <span class="menu-text">Why do we create models?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module03/042-linear_functions_multi.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Linear functions – multiple predictors</span></a>
+ <span class="menu-text">Multiple Linear Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module03/043-nonlinear.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Non-linear functions</span></a>
+ <span class="menu-text">Non-linear regression</span></a>
   </div>
 </li>
       </ul>
@@ -282,13 +274,13 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text"><strong>🖥️ Computer labs</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/Lab01.html" class="sidebar-item-text sidebar-link">
@@ -298,7 +290,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/Lab02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 02 – Quarto</span></a>
+ <span class="menu-text">Lab 02 – Statistical programming</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -373,19 +365,132 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#linear-functions-multiple-predictors" id="toc-linear-functions-multiple-predictors" class="nav-link active" data-scroll-target="#linear-functions-multiple-predictors">Linear functions – multiple predictors</a></li>
+  <li><a href="#multiple-linear-regression" id="toc-multiple-linear-regression" class="nav-link active" data-scroll-target="#multiple-linear-regression">Multiple Linear Regression</a>
+  <ul class="collapse">
+  <li><a href="#principle-of-parsimony" id="toc-principle-of-parsimony" class="nav-link" data-scroll-target="#principle-of-parsimony">Principle of Parsimony</a></li>
+  </ul></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a>
+  <ul class="collapse">
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">Exploratory data analysis</a></li>
+  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions">Assumptions</a></li>
+  <li><a href="#model-evaluation" id="toc-model-evaluation" class="nav-link" data-scroll-target="#model-evaluation">Model evaluation</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a></li>
+  </ul></li>
+  <li><a href="#simple-vs-multiple-linear-regression" id="toc-simple-vs-multiple-linear-regression" class="nav-link" data-scroll-target="#simple-vs-multiple-linear-regression">Simple vs multiple linear regression</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module03/040-describing_relationships.html"><strong>📘 Module 3</strong></a></li><li class="breadcrumb-item"><a href="../module03/042-linear_functions_multi.html">Linear functions – multiple predictors</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module03/040-describing_relationships.html"><strong>📘 Module 3</strong></a></li><li class="breadcrumb-item"><a href="../module03/042-linear_functions_multi.html">Multiple Linear Regression</a></li></ol></nav></header>
 
 
 
 
-<section id="linear-functions-multiple-predictors" class="level1">
-<h1>Linear functions – multiple predictors</h1>
-<p>In summary, this book has no content whatsoever.</p>
+<section id="multiple-linear-regression" class="level1">
+<h1>Multiple Linear Regression</h1>
+<p>The formula or function for multiple linear regression is:</p>
+<p><span class="math display">\[ y_i = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_k x_k + \epsilon_i \]</span></p>
+<p>Therefore, estimating the model involves <em>estimating the values of</em> <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span>, <span class="math inline">\(\beta_2\)</span>, …, <span class="math inline">\(\beta_k\)</span>.</p>
+<ul>
+<li><span class="math inline">\(\beta_0\)</span> is the intercept</li>
+<li><span class="math inline">\(\beta_1\)</span> to <span class="math inline">\(\beta_k\)</span> are the partial regression coefficients</li>
+<li><span class="math inline">\(\epsilon\)</span> is the error term (aka residuals)</li>
+</ul>
+<p>For simple linear regression (response and one predictor), we can visualise this with a scatterplot (response on the y-axis, predictor on the x-axis) and a line of best fit. Two variables, two dimensions, a 2D plot. When we have more than one predictor - this becomes more difficult to visualise.</p>
+<p>Likewise, interpretation becomes more complex. If <span class="math inline">\(x_1\)</span> increases by one unit, <span class="math inline">\(y_i\)</span> increases by <span class="math inline">\(\beta_1\)</span> units, if <strong>all other variables are held constant</strong>. This is why the coefficients in multiple linear regression are referred to as <strong>partial regression coefficients</strong>.</p>
+<section id="principle-of-parsimony" class="level2">
+<h2 class="anchored" data-anchor-id="principle-of-parsimony">Principle of Parsimony</h2>
+<p>The principle of parsimony is the idea that the simplest explanation is the best explanation. In the context of multiple linear regression, this means we need to consider whether adding more variables is actually useful. This is because the more variables we include, the more complex the model becomes, and the more likely it is to overfit the data. If we have too few variables, we could underfit the data (low % variance explained).</p>
+<p><img src="images/fit.jpg" class="img-fluid"></p>
+<p>If a model with 3 variables has the same predictive power as a model with 10 variables, it is better to use the model with 3 variables. A model with 3 variables is easier to fit and interpret, and it means the other 7 variables were not adding much to the model and could be culled.</p>
+<p>The process of selecting the correct variables is called <strong>variable selection</strong>. There are methods to do this (e.g.&nbsp;stepwise regression with <code>step()</code>) but they are beyond the scope of this unit. A simple method is to remove predictors that do not appear significant in the model (ideally one by one) until all remaining variables are significant. This should be done in conjunction with checking the adjust R<sup>2</sup> to ensure the model does not decline drastically in predictive capability.</p>
+</section>
+</section>
+<section id="example" class="level1">
+<h1>Example</h1>
+<p>Multiple linear regression is very similar in many aspects to simple linear regression - just more variables. We will go through the <code>airquality</code> dataset in R as an example. This dataset contains daily air quality measurements in New York in 1973. The research question posed by the dataset is - can we find a relationship between <code>Ozone</code> concentration (ppm) and meteorological data or the time of the year? And if so, how well can we predict <code>Ozone</code> from those variables?</p>
+<section id="exploratory-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory data analysis</h2>
+<p>First we will need to remove the missing values in the dataset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(airquality)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(airquality) <span class="co"># remove NA and rename as new object (to not change original dataset)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next we will look at the relationships between <code>Ozone</code> and the other variables in the dataset. Below are some potential functions that can visualise the data and correlations – choose the one that works best visually for your data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">###</span><span class="co"> Base R</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pairs(data)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cor(data) |&gt; round(2)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">###</span><span class="co"> corrplot</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># library(corrplot)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># corrplot::corrplot(cor(data), method = "circle")</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="do">### psych</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">pairs.panels</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The key thing to check is the plots and correlations between <code>Ozone</code> and the predictors (first column, first row). The best correlated variables are <code>Temp</code> (<span class="math inline">\(r = 0.7\)</span>), <code>Wind</code> (<span class="math inline">\(r = -0.61\)</span>), and <code>Solar.R</code> (<span class="math inline">\(r = 0.35\)</span>). <code>Month</code> is negligibly correlated (<span class="math inline">\(r = 0.14\)</span>) and <code>Day</code> has no relationship (<span class="math inline">\(r = -0.01\)</span>).</p>
+<p>We can see that <code>Ozone</code> does not have a linear relationship with <code>Temp</code>, <code>Solar.R</code> or <code>Wind</code>, so we do a pre-emptive natural log transformation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Ozone_log =</span> <span class="fu">log</span>(Ozone)) <span class="sc">%&gt;%</span>  <span class="co"># create the log-transformed column</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Ozone) <span class="sc">%&gt;%</span>                  <span class="co"># remove the original Ozone column</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Ozone_log, <span class="fu">everything</span>())     <span class="co"># reorder so that Ozone_log is first</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">pairs.panels</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The linearity between <code>Ozone_log</code> and both <code>Temp</code> and <code>Solar.R</code> are higher, and for <code>Wind</code> it is slightly lower. The scatterplots however are looking more linear.</p>
+</section>
+<section id="assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="assumptions">Assumptions</h2>
+<p>The assumptions for multiple linear regression are the same as simple linear regression - except one additional condition, called <strong>collinearity</strong>. This is when <strong>two or more predictors are highly correlated with each other</strong>. For the assumption to be broken, it requires a perfect relationship (<span class="math inline">\(r\)</span> = -1 or 1), but strong and very correlations will still have an effect. This can cause problems with the model, as the model cannot distinguish between the two predictors and the resulting relationships are unreliable. Judging from the correlations above, this is not an issue for this dataset.</p>
+<p>We fit the model with all variables and create our assumption plots.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Ozone_log <span class="sc">~</span> Temp <span class="sc">+</span> Wind <span class="sc">+</span> Solar.R <span class="sc">+</span> Month <span class="sc">+</span> Day, <span class="at">data =</span> data)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The residuals vs fitted plot is fairly evenly distributed around the line, and the red line is mostly flat. The normal QQ sticks to the line well except one outlier - we cross-check with the residuals vs leverage plot, but the point does not exceed the dotted Cook’s distance line so it is not extreme enough to need action. Scale-location is slightly tilted but the line is fairly straight, and the points are evenly distributed so variances are equal.</p>
+<p>All assumptions are met.</p>
+</section>
+<section id="model-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="model-evaluation">Model evaluation</h2>
+<p>Like simple linear regression, there is a hypothesis for multiple linear regression. The null hypothesis is that all partial regression coefficients are equal to zero, and the mean is a better predictor or line of best fit. The alternate hypothesis is that at least one of the partial regression coefficients is not equal to zero, and there is merit in the multiple linear regression model.</p>
+<p><span class="math display">\[ H_0: \beta_1 = \beta_2 = ... = \beta_k = 0 \]</span> <span class="math display">\[ H_1: \beta_1 = \beta_2 = ... = \beta_k \neq 0 \]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can see that the p-value for the F-statistic is very low, so we fail to reject the alternate hypothesis, and the model is better than using the mean of the data. The <code>Adjusted R-squared</code> is 65.36%, which means that 65.36% of the variance in <code>Ozone_log</code> can be explained by the predictors. The <code>Residual standard error</code> is 0.5096.</p>
+<p><code>Temp</code>, <code>Wind</code> and <code>Solar.R</code> are all significant predictors of <code>Ozone_log</code>, but <code>Month</code> and <code>Day</code> are not. So we try removing them from the model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Ozone_log <span class="sc">~</span> Temp <span class="sc">+</span> Wind <span class="sc">+</span> Solar.R, <span class="at">data =</span> data)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>Temp</code>, <code>Wind</code> and <code>Solar.R</code> are all still significant predictors of <code>Ozone_log</code>. The <code>Adjusted R-squared</code> is 65.5% (which is higher) and the <code>Residual standard error</code> is 0.5086 (which is lower). This means that the model is slightly better without <code>Month</code> and <code>Day</code>.</p>
+<p>Following the principle of parsimony, the model with just <code>Temp</code>, <code>Wind</code> and <code>Solar.R</code> is the more parsimonious model, and the model we will use to predict <code>Ozone_log</code>.</p>
+</section>
+<section id="interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
+<p>The equation for our model is <span class="math inline">\(log(\text{Ozone}) = -0.026 + 0.049 \cdot \text{Temp} - 0.062 \cdot \text{Wind} + 0.003 \cdot \text{Solar.R}\)</span>. For a unit increase in <code>Temp</code>, <code>log(Ozone)</code> increases by 0.049 units, and <code>Ozone</code> increases by <span class="math inline">\(e^0.049 = 1.05\)</span> times or approximately 4.9%, <em>given all other predictors are held constant</em>. The most useful interpretation here is the percentage increase. Given all partial regression coefficient are <span class="math inline">\(&lt; |0.25|\)</span>, we can use a quick approximation (<span class="math inline">\(\times 100 \%\)</span>).</p>
+<ul>
+<li>For every one unit increase in <code>Temp</code>, <code>Ozone</code> increases by 4.9%, <em>given all other predictors are held constant</em></li>
+<li>For every one unit increase in <code>Wind</code>, <code>Ozone</code> decreases by 6.2%, <em>given all other predictors are held constant</em></li>
+<li>For every one unit increase in <code>Solar.R</code>, <code>Ozone</code> increases by 0.3%, <em>given all other predictors are held constant</em></li>
+</ul>
+<p>The variation in Ozone concentration in 1973 New York could be mostly (adjusted R<sup>2</sup> = 65.5%) explained by the weather, i.e.&nbsp;temperature, wind speed, and solar radiation.</p>
+</section>
+</section>
+<section id="simple-vs-multiple-linear-regression" class="level1">
+<h1>Simple vs multiple linear regression</h1>
+<p>The key differences between simple (SLR) and multiple linear regression (MLR) are:</p>
+<ul>
+<li><strong>Number of predictors</strong>: SLR has one predictor, MLR has more than one.</li>
+<li><strong>Assumptions</strong>: MLR has an additional assumption of <em>no collinearity</em> between predictors (CLINE).</li>
+<li><strong>Hypothesis</strong>: The null hypothesis for SLR is that <span class="math inline">\(\beta_1 = 0\)</span> whereas for MLR <span class="math inline">\(H_0: \beta_1 = \beta_2 = ... = \beta_k = 0\)</span>.</li>
+<li><strong>Variable selection</strong>: MLR has multiple variables, not all of which will be useful.</li>
+<li><strong>Model evaluation</strong>: SLR uses <code>Multiple R-squared</code> whereas MLR uses the <code>Adjusted R-squared</code> which has a penalty for the extra predictors.</li>
+<li><strong>Interpretation</strong>: In SLR, the coefficient is the slope of the line. In MLR, there are multiple dimensions and the coefficient is the partial regression coefficient (don’t forget: given all other predictors are held constant).</li>
+</ul>
 
 
 </section>

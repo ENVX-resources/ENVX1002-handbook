@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -39,8 +73,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-ed04999718f06b735b1f8009dce43b94.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9959048ad043ebf04c42832c35049e99.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-597124e1a1e6638dfe199336729b98e9.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-23a9d138e7e1bf06b372a111379326d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-0973a0db49f0712bde2e04708837bcc0.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -147,54 +181,12 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text"><strong>🛟 R Guide</strong></span></a>
+ <span class="menu-text"><strong>📕 Module 1</strong></span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/01-getting-started.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Getting started</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/04-install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Installing R and RStudio</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/06-rstudio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Using RStudio effectively</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/08-quarto-r-markdown.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Writing in markdown</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/10-copilot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GitHub Copilot and RStudio</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text"><strong>📕 Module 1</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module01/01-exploring_data.html" class="sidebar-item-text sidebar-link">
@@ -217,13 +209,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text"><strong>📗 Module 2</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module02/01-ttest1.html" class="sidebar-item-text sidebar-link">
@@ -246,13 +238,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text"><strong>📘 Module 3</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module03/040-describing_relationships.html" class="sidebar-item-text sidebar-link active">
@@ -262,19 +254,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module03/041-linear_functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Linear functions</span></a>
+ <span class="menu-text">Why do we create models?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module03/042-linear_functions_multi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Linear functions – multiple predictors</span></a>
+ <span class="menu-text">Multiple Linear Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module03/043-nonlinear.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Non-linear functions</span></a>
+ <span class="menu-text">Non-linear regression</span></a>
   </div>
 </li>
       </ul>
@@ -282,13 +274,13 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text"><strong>🖥️ Computer labs</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/Lab01.html" class="sidebar-item-text sidebar-link">
@@ -298,7 +290,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/Lab02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 02 – Quarto</span></a>
+ <span class="menu-text">Lab 02 – Statistical programming</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -373,7 +365,16 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#describing-relationships" id="toc-describing-relationships" class="nav-link active" data-scroll-target="#describing-relationships">Describing relationships</a></li>
+  <li><a href="#describing-relationships" id="toc-describing-relationships" class="nav-link active" data-scroll-target="#describing-relationships">Describing relationships</a>
+  <ul class="collapse">
+  <li><a href="#scatter-plots" id="toc-scatter-plots" class="nav-link" data-scroll-target="#scatter-plots">Scatter Plots</a></li>
+  <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation">Correlation</a>
+  <ul class="collapse">
+  <li><a href="#linear-relationships" id="toc-linear-relationships" class="nav-link" data-scroll-target="#linear-relationships">Linear relationships</a></li>
+  <li><a href="#non-linear-relationships" id="toc-non-linear-relationships" class="nav-link" data-scroll-target="#non-linear-relationships">Non-linear relationships</a></li>
+  </ul></li>
+  <li><a href="#causation" id="toc-causation" class="nav-link" data-scroll-target="#causation">Causation</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -385,9 +386,68 @@ window.Quarto = {
 
 <section id="describing-relationships" class="level1">
 <h1>Describing relationships</h1>
-<p>In summary, this book has no content whatsoever.</p>
+<p>In statistics, a relationship between two or more numerical variables means when one variable changes, the other variable/s will also change. We can describe these relationships in terms of direction, strength, and form.</p>
+<p>To determine the relationship between two variables qualitatively with by visualising our data with scatter plots.</p>
+<section id="scatter-plots" class="level2">
+<h2 class="anchored" data-anchor-id="scatter-plots">Scatter Plots</h2>
+<p><strong>Direction</strong></p>
+<p>A relationship can be positive, negative, or non-existent.</p>
+<ul>
+<li><strong>Positive relationship</strong>: when one variable increases, the other variable also increases, e.g.&nbsp;the amount of rainfall received and the resulting crop yield.</li>
+<li><strong>Negative relationship</strong>: when one variable increases, the other variable decreases, e.g.&nbsp;the levels of insulin and glucose in blood.</li>
+<li><strong>No relationship</strong>: when one variable changes, the other variable does not change, e.g.&nbsp;shoe size and IQ.</li>
+</ul>
+<p><strong>Strength</strong></p>
+<p>The strength of a relationship refers to how closely the two variables are related - weak, moderate, strong, very strong and perfect. A weak relationship will have more scatter than a strong relationship.</p>
+<p><strong>Form</strong></p>
+<p>The form of a relationship refers to the shape of the relationship. The simplest form is a straight line or linear relationship. Some examples of non-linear forms include polynomials (e.g.&nbsp;quadratic, cubic), exponential, and logistic.</p>
+</section>
+<section id="correlation" class="level2">
+<h2 class="anchored" data-anchor-id="correlation">Correlation</h2>
+<section id="linear-relationships" class="level3">
+<h3 class="anchored" data-anchor-id="linear-relationships">Linear relationships</h3>
+<p>To measure the relationship quantitatively, we use correlation coefficients. These are numbers between -1 and 1, where -1 indicates a perfect negative relationship, 0 indicates no relationship, and 1 indicates a perfect positive relationship.</p>
+<p>The most common correlation coefficient is the Pearson correlation coefficient (<span class="math inline">\(r\)</span>). It measures <strong>linear relationships</strong> between <strong>two numerical variables</strong>.</p>
+<p>Pearson’s Correlation (<em>r</em>) Formula:</p>
+<p><span class="math display">\[ r = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2 \sum_{i=1}^n (y_i - \bar{y})^2}} \]</span></p>
+<p>In essence, it is the covariance divided by the product of the standard deviations.</p>
+<p>In R, we use the function <code>cor()</code> to calculate the correlation coefficient. By default, it calculates the Pearson correlation coefficient.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, y) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Describing the correlation coefficient in terms of strength can be a little subjective. Below are some approximate ranges for the common terms.</p>
+<ul>
+<li><strong>|0 - 0.1|</strong> : no relationship</li>
+<li><strong>|0.1 - 0.3|</strong> : weak</li>
+<li><strong>|0.4 - 0.6|</strong> : moderate</li>
+<li><strong>|0.7 - 1|</strong> : strong</li>
+<li><strong>|0.9 - 1|</strong> : very strong</li>
+</ul>
+</section>
+<section id="non-linear-relationships" class="level3">
+<h3 class="anchored" data-anchor-id="non-linear-relationships">Non-linear relationships</h3>
+<p>In the case of non-linear relationships, it is best not to use the Pearson’s correlation coefficient. Instead, we can use the Spearman’s rank correlation coefficient (<span class="math inline">\(r_{s}\)</span>) or Kendall’s tau (<span class="math inline">\(\tau\)</span>). Note, these relationships must still be monotonic.</p>
+<ul>
+<li><strong>Monotonic</strong>: a relationship that is consistently increasing or decreasing</li>
+<li><strong>Linear</strong>: a relationship that is increasing or decreasing <em>at a constant rate</em></li>
+</ul>
+<p>To use either Spearman’s rank correlation coefficient or Kendall’s tau, we can use the <code>cor()</code> function with the <code>method</code> argument set to either <code>"spearman"</code> or <code>"kendall"</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, y, <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, y, <span class="at">method =</span> <span class="st">"kendall"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Spearman’s rank correlation coefficient essentially ranks the data (e.g.&nbsp;the smallest value will be ranked 1, the second smallest 2, etc.) for both the x and y axis, and then calculates the Pearson correlation coefficient for the ranks. Thus it works for any monotonic relationship.</p>
+<p>Kendall’s tau looks at all possible x and y pairs, and determines if they are concordant. e.g.&nbsp;one pair of points <span class="math inline">\((x_{i}, y_{i})\)</span> is concordant with another pair <span class="math inline">\((x_{j}, y_{j})\)</span> if <span class="math inline">\(x_{i} &gt; x_{j}\)</span> and <span class="math inline">\(y_{i} &gt; y_{j}\)</span> or <span class="math inline">\(x_{i} &lt; x_{j}\)</span> and <span class="math inline">\(y_{i} &lt; y_{j}\)</span>. Kendall’s tau is then calculated with:</p>
+<p><span class="math display">\[ \tau = \frac{\text{(number of concordant pairs)} - \text{(number of discordant pairs)}}{\text{(total number of pairs)}}\]</span></p>
+</section>
+</section>
+<section id="causation" class="level2">
+<h2 class="anchored" data-anchor-id="causation">Causation</h2>
+<p>Correlation does not imply causation. Just because two variables are correlated does not mean that one causes the other to change. Some example of spurious (i.e.&nbsp;ridiculous) correlations can be found at <a href="https://www.tylervigen.com/spurious-correlations">Spurious Correlations</a>.</p>
+<p>Before conducting an experiment to collect data (or analysing existing data), it is important to have a hypothesis about the relationship between the variables. <em>Is there reason</em> to believe the two variables should have a relationship? If not, any ‘relationship’ found via scatter plots or correlations are unlikely meaningful.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

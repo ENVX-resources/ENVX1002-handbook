@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -39,8 +73,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-ed04999718f06b735b1f8009dce43b94.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9959048ad043ebf04c42832c35049e99.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-597124e1a1e6638dfe199336729b98e9.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-23a9d138e7e1bf06b372a111379326d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-0973a0db49f0712bde2e04708837bcc0.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -125,7 +159,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module03/040-describing_relationships.html"><strong>📘 Module 3</strong></a></li><li class="breadcrumb-item"><a href="../module03/043-nonlinear.html">Non-linear functions</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module03/040-describing_relationships.html"><strong>📘 Module 3</strong></a></li><li class="breadcrumb-item"><a href="../module03/043-nonlinear.html">Non-linear regression</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -147,54 +181,12 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text"><strong>🛟 R Guide</strong></span></a>
+ <span class="menu-text"><strong>📕 Module 1</strong></span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/01-getting-started.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Getting started</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/04-install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Installing R and RStudio</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/06-rstudio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Using RStudio effectively</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/08-quarto-r-markdown.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Writing in markdown</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/10-copilot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GitHub Copilot and RStudio</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text"><strong>📕 Module 1</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module01/01-exploring_data.html" class="sidebar-item-text sidebar-link">
@@ -217,13 +209,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text"><strong>📗 Module 2</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module02/01-ttest1.html" class="sidebar-item-text sidebar-link">
@@ -246,13 +238,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text"><strong>📘 Module 3</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module03/040-describing_relationships.html" class="sidebar-item-text sidebar-link">
@@ -262,19 +254,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module03/041-linear_functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Linear functions</span></a>
+ <span class="menu-text">Why do we create models?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module03/042-linear_functions_multi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Linear functions – multiple predictors</span></a>
+ <span class="menu-text">Multiple Linear Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module03/043-nonlinear.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Non-linear functions</span></a>
+ <span class="menu-text">Non-linear regression</span></a>
   </div>
 </li>
       </ul>
@@ -282,13 +274,13 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text"><strong>🖥️ Computer labs</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/Lab01.html" class="sidebar-item-text sidebar-link">
@@ -298,7 +290,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/Lab02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 02 – Quarto</span></a>
+ <span class="menu-text">Lab 02 – Statistical programming</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -373,19 +365,294 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#non-linear-functions" id="toc-non-linear-functions" class="nav-link active" data-scroll-target="#non-linear-functions">Non-linear functions</a></li>
+  <li><a href="#non-linear-regression" id="toc-non-linear-regression" class="nav-link active" data-scroll-target="#non-linear-regression">Non-linear regression</a>
+  <ul class="collapse">
+  <li><a href="#polynomial-regression" id="toc-polynomial-regression" class="nav-link" data-scroll-target="#polynomial-regression">Polynomial regression</a>
+  <ul class="collapse">
+  <li><a href="#in-practice" id="toc-in-practice" class="nav-link" data-scroll-target="#in-practice">In practice</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#non-linear-models" id="toc-non-linear-models" class="nav-link" data-scroll-target="#non-linear-models">Non-linear models</a>
+  <ul class="collapse">
+  <li><a href="#horizontal-asymptotic-regression" id="toc-horizontal-asymptotic-regression" class="nav-link" data-scroll-target="#horizontal-asymptotic-regression">Horizontal asymptotic regression</a></li>
+  <li><a href="#in-practice-1" id="toc-in-practice-1" class="nav-link" data-scroll-target="#in-practice-1">In practice</a>
+  <ul class="collapse">
+  <li><a href="#poor-estimation" id="toc-poor-estimation" class="nav-link" data-scroll-target="#poor-estimation">Poor estimation</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link" data-scroll-target="#logistic-regression">Logistic regression</a>
+  <ul class="collapse">
+  <li><a href="#in-practice-2" id="toc-in-practice-2" class="nav-link" data-scroll-target="#in-practice-2">In practice</a></li>
+  </ul></li>
+  <li><a href="#self-starting-functions" id="toc-self-starting-functions" class="nav-link" data-scroll-target="#self-starting-functions">Self-starting functions</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module03/040-describing_relationships.html"><strong>📘 Module 3</strong></a></li><li class="breadcrumb-item"><a href="../module03/043-nonlinear.html">Non-linear functions</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module03/040-describing_relationships.html"><strong>📘 Module 3</strong></a></li><li class="breadcrumb-item"><a href="../module03/043-nonlinear.html">Non-linear regression</a></li></ol></nav></header>
 
 
 
 
-<section id="non-linear-functions" class="level1">
-<h1>Non-linear functions</h1>
-<p>In summary, this book has no content whatsoever.</p>
+<section id="non-linear-regression" class="level1">
+<h1>Non-linear regression</h1>
+<p>Linear relationships are simple to interpret since the rate of change is constant – i.e.&nbsp;as <span class="math inline">\(x\)</span> changes, <span class="math inline">\(y\)</span> changes at a constant rate. For non-linear relationships – as <span class="math inline">\(x\)</span> changes, <span class="math inline">\(y\)</span> changes at an unproportional rate. To simplify interpretation and enable the use of linear models, it is often recommended to transform non-linear data to make it approximately linear.</p>
+<p>Transformation is usually possible for monotonic relationships (i.e.&nbsp;relationships that are always increasing or decreasing) such as exponential growth curves. The most common transformations are:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th style="text-align: center;">Transformation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Inverse</td>
+<td style="text-align: center;"><span class="math inline">\(y = \frac{1}{x}\)</span></td>
+</tr>
+<tr class="even">
+<td>Root</td>
+<td style="text-align: center;"><span class="math inline">\(y = \sqrt[a]{x}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Exponential</td>
+<td style="text-align: center;"><span class="math inline">\(y = e^x\)</span></td>
+</tr>
+<tr class="even">
+<td>Logarithmic</td>
+<td style="text-align: center;"><span class="math inline">\(y = \log_a(x)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>However, in the case of non-monotonic relationships (e.g.&nbsp;polynomials, asymptotic, logistic) transformation may not be enough to make the data meet the assumptions. In this section, we look at fitting non-linear models.</p>
+<p><span class="math display">\[ Y_i = f(x_i, \beta) + \epsilon_i \]</span> where <span class="math inline">\(f(x_i, \beta)\)</span> is a nonlinear function of the parameters <span class="math inline">\(\beta\)</span>.</p>
+<p>The assumptions for non-linear regression are INE (Independence, Normality, Equal variance).</p>
+<section id="polynomial-regression" class="level2">
+<h2 class="anchored" data-anchor-id="polynomial-regression">Polynomial regression</h2>
+<p>A polynomial equation is an extension to linear regression and can still be fitted using least squares. Typically, a polynomial equation has multiple terms of the same predictor (i.e.&nbsp;one <span class="math inline">\(x\)</span>). The more terms in the polynomial, the more complex the model and the less likely it follows an actual biological relationship. A complex model may ‘fit’ the data well, but fail to represent the true relationship between the variables (overfitting).</p>
+<p><span class="math display">\[ Y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 + ... + \beta_k x_i^k + \epsilon_i \]</span> where <span class="math inline">\(k\)</span> is the degree of the polynomial.</p>
+<ul>
+<li>Linear: <span class="math inline">\(y = \beta_0 + \beta_1 x\)</span></li>
+<li>Quadratic: <span class="math inline">\(y = \beta_0 + \beta_1 x + \beta_2 x^2\)</span></li>
+<li>Cubic: <span class="math inline">\(y = \beta_0 + \beta_1 x + \beta_2 x^2 + \beta_3 x^3\)</span></li>
+<li>Each level increases the power of the predictor by 1.</li>
+</ul>
+<section id="in-practice" class="level3">
+<h3 class="anchored" data-anchor-id="in-practice">In practice</h3>
+<p>To fit a polynomial, we still use the <code>lm()</code> function. To create the polynomial terms, we use the <code>poly(x, n)</code> function, where <code>x</code> is the predictor and <code>n</code> is the degree of the polynomial.</p>
+<p>Below is an example with asymptotic data – it increases rapidly to a certain point and then levels off. The linear model (blue) does not capture the complexity of the relationship. The polynomial model with 10 terms (green) fits the data well, but it is too complex between <span class="math inline">\(x\)</span> = 5-10. In this case, the polynomial model with 2 terms (red), aka the quadratic model, fits the data the best.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate some data with an asymptotic relationship</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">442</span>) <span class="co"># set seed</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>asymptotic <span class="ot">=</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">predictor =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="at">by =</span> <span class="fl">0.2</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">response =</span> <span class="dv">100</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.5</span><span class="sc">*</span>predictor)) <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(predictor), <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mod_lin <span class="ot">&lt;-</span> <span class="fu">lm</span>(response <span class="sc">~</span> predictor, asymptotic) <span class="co"># blue</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>mod_poly2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(response <span class="sc">~</span> <span class="fu">poly</span>(predictor, <span class="dv">2</span>), asymptotic) <span class="co"># red</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>mod_poly10 <span class="ot">&lt;-</span> <span class="fu">lm</span>(response <span class="sc">~</span> <span class="fu">poly</span>(predictor, <span class="dv">10</span>), asymptotic) <span class="co">#green</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(asymptotic, <span class="fu">aes</span>(<span class="at">x =</span> predictor, <span class="at">y =</span> response)) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Predictor"</span>, <span class="at">y =</span> <span class="st">"Response"</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">predict</span>(mod_lin)), <span class="at">color =</span> <span class="st">"slateblue"</span>, <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">predict</span>(mod_poly2)), <span class="at">color =</span> <span class="st">"brown"</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">predict</span>(mod_poly10)), <span class="at">color =</span> <span class="st">"seagreen"</span>, <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>This is also evident when comparing the <code>summary()</code> of the models. The linear model explains the least amount of variation in <span class="math inline">\(y\)</span> (<code>Multiple R-squared</code> = 57.01%). The 2-term polynomial model explains 81.95% of variation (<code>Adjusted R-squared</code>), whereas the 10-term polynomial model explains 86.21% of variation (<code>Adjusted R-squared</code>). The first three terms of the polynomial model are significant, the fourth is almost significant, but the remainder are not. Comparing the 2 and 10-term polynomial models, are the extra 8 terms worth an extra 4.26% of variation explained? Considering the 10-term polynomial is very complex and overfitted – the principle of parsimony would say ‘no’.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_lin)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_poly2)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_poly10)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The hypothesis of a polynomial model is similar to that of multiple linear regression. A significance test is done for each individual coefficient, and the overall model hypothesis is below:</p>
+<p><span class="math display">\[H_0: \beta_1 = \beta_2 = ... = \beta_k = 0\]</span> <span class="math display">\[H_0: \beta_1 = \beta_2 = ... = \beta_k \neq 0\]</span> In the case that all coefficients are zero, the model is better represented by the mean of the data.</p>
+<p>As for interpretation of the quadratic model, we can write the equation, but the coefficients do not have much meaning.</p>
+<p><span class="math display">\[\text{response} = 79.82 + 159.37 \cdot \text{predictor} + -106.94 \cdot \text{predictor}^2\]</span> Given it is a quadratic equation, we could calculate the peak of the curve (<span class="math inline">\(x_{peak} = -\frac{b}{2a}\)</span> and substitute to get <span class="math inline">\(y_{peak} = c - \frac{b^2}{4a}\)</span>). For a polynomial of a higher degree, it would not be meaningful.</p>
+<p>Although a little out of order, we can also check the assumptions. Recall that linearity is not an assumption for a non-linear model – we can disregard the shape of the line for the <em>Residuals vs Fitted</em> plot, and focus on the distribution of the point around the line (which is even). The residuals fall on the line for the <em>Normal-QQ</em> plot indicating residuals are normally distributed, and the <em>Scale-Location</em> plot shows the residuals evenly distributed (equal varince), and there are no extreme outliers in the <em>Residuals vs Leverage</em> plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod_poly2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="non-linear-models" class="level1">
+<h1>Non-linear models</h1>
+<p>To fit a non-linear model, we use the <code>nls()</code> function. While it is still a regression model that minimises the sum of squares, as there is no closed-form analytical solution, so <code>nls()</code> fits the model iteratively with numerical methods. Thus it <strong>requires initial parameter guesses</strong>, which can be obtained from domain knowledge, data exploration, or trial and error.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nls</span>(formula, data, start)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>formula</code>: a formula object, with the response variable on the left of a ~ operator, and the predictor variable(s) on the right.</li>
+<li><code>data</code>: a data frame containing the variables in the model.</li>
+<li><code>start</code>: a named list of starting values for the parameters in the model.</li>
+</ul>
+<p>The <code>nls()</code> function can be used to fit most non-linear models including but not limited to exponential, polynomial, asymptotic, and logistic models.</p>
+<section id="horizontal-asymptotic-regression" class="level2">
+<h2 class="anchored" data-anchor-id="horizontal-asymptotic-regression">Horizontal asymptotic regression</h2>
+<p>An asymptotic relationship is a type of non-linear relationship where the response variable approaches a limit as the predictor variable increases. This is common in growth curves, where growth is rapid at first and then slows down as it approaches a maximum (e.g.&nbsp;age vs height, population growth, diminishing returns). The equation for an asymptotic relationship is:</p>
+<p><span class="math display">\[ y = a + b(1 - e^{-cx}) \]</span></p>
+<ul>
+<li><span class="math inline">\(a\)</span> is value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x = 0\)</span>.</li>
+<li><span class="math inline">\(b\)</span> is the upper limit: the maximum value of <span class="math inline">\(y\)</span>.</li>
+<li><span class="math inline">\(c\)</span> is the rate of change <span class="math inline">\(y\)</span> approaches the upper limit.</li>
+</ul>
+</section>
+<section id="in-practice-1" class="level2">
+<h2 class="anchored" data-anchor-id="in-practice-1">In practice</h2>
+<p>With the <code>nls()</code> function, we first need to estimate our initial parameters for <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> and <span class="math inline">\(c\)</span>. We can do this by plotting the data and making an educated guess. For the asymptotic data, we can see that the lower limit (<span class="math inline">\(a\)</span>) is around 0 and the upper limit (<span class="math inline">\(b\)</span>) is around 100. The rate of change (<span class="math inline">\(c\)</span>) is a little harder to estimate, so we will guess a value of 0.8. If the model returns an error (singular gradient matrix at initial parameter estimates), we can try different values – the most likely culprit will be the rate of change (<span class="math inline">\(c\)</span>).</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> asymptotic, <span class="fu">aes</span>(<span class="at">x =</span> predictor, <span class="at">y =</span> response)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">100</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## plot the rate</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">xend =</span> <span class="fl">2.5</span>, <span class="at">yend =</span> <span class="dv">100</span>), </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">"cm"</span>)), </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Predictor"</span>, <span class="at">y =</span> <span class="st">"Response"</span>) <span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>mod_asymptotic <span class="ot">&lt;-</span> <span class="fu">nls</span>(response <span class="sc">~</span> a <span class="sc">+</span> b<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>c<span class="sc">*</span>predictor)), <span class="at">data =</span> asymptotic, </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">start =</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">100</span>, <span class="at">c =</span> <span class="fl">0.8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>After we fit out model, we assess the assumptions plots and check our residuals for INE – they look fine.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assumption plots</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nlstools)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>resids <span class="ot">&lt;-</span> <span class="fu">nlsResiduals</span>(mod_asymptotic)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(resids)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Finally, we evaluate the model. There is not much to interpret - except the <code>Residual standard error</code>. We can compare models directly with this error term. R<sup>2</sup> is not calculated for non-linear models.</p>
+<p>The <code>Number of iterations to convergence</code> is the number of times the computer changed the parameters to try and get a better fit.</p>
+<p>The resulting model equation would be <span class="math inline">\(y = -14.52 + 113.04(1 - e^{-0.63x})\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_asymptotic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can then plot the original data and the line of best fit.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(asymptotic, <span class="fu">aes</span>(predictor, response)) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span>  <span class="co"># Original data points</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">y =</span> <span class="fu">predict</span>(mod_asymptotic), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span>  <span class="co"># Fitted line</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Predictor"</span>, <span class="at">y =</span> <span class="st">"Response"</span>) <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="poor-estimation" class="level3">
+<h3 class="anchored" data-anchor-id="poor-estimation">Poor estimation</h3>
+<p>If the starting values are too far (most likely <span class="math inline">\(c\)</span> term), the model will not run, and there will be an error. However, there is some flexibility allowed. We use very inaccurate initial estimates - and the model still gets to the same result, it just takes more tries (iterations) to get there.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>mod_asymptotic <span class="ot">&lt;-</span> <span class="fu">nls</span>(response <span class="sc">~</span> a <span class="sc">+</span> b<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>c<span class="sc">*</span>predictor)), <span class="at">data =</span> asymptotic, </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">start =</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="sc">-</span><span class="dv">100</span>, <span class="at">b =</span> <span class="dv">200</span>, <span class="at">c =</span> <span class="dv">15</span>))</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_asymptotic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="logistic-regression" class="level1">
+<h1>Logistic regression</h1>
+<p>Logistic regression is a type of non-linear regression typically used when the response variable is binary (0 or 1). The logistic function is an S-shaped curve that models the probability of the response variable being 1. The equation for logistic regression is:</p>
+<p><span class="math display">\[ y = c + \frac{d-c}{1+e^{-b(x-a)}} \]</span></p>
+<ul>
+<li><span class="math inline">\(c\)</span> is the lower limit: the minimum value of <span class="math inline">\(y\)</span>.</li>
+<li><span class="math inline">\(d\)</span> is the upper limit: the maximum value of <span class="math inline">\(y\)</span>.</li>
+<li><span class="math inline">\(a\)</span> is the value of <span class="math inline">\(x\)</span> when <span class="math inline">\(y\)</span> is halfway between the lower and upper limits.</li>
+<li><span class="math inline">\(b\)</span> is the rate of change: the rate at which <span class="math inline">\(y\)</span> approaches the upper limit.</li>
+</ul>
+<section id="in-practice-2" class="level2">
+<h2 class="anchored" data-anchor-id="in-practice-2">In practice</h2>
+<p>So if we were to estimate the initial parameters…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mod_logistic <span class="ot">&lt;-</span> <span class="fu">nls</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  response <span class="sc">~</span> c <span class="sc">+</span> (d <span class="sc">-</span> c) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>b <span class="sc">*</span> (predictor <span class="sc">-</span> a))),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> logistic,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">start =</span> <span class="fu">list</span>(<span class="at">c =</span> <span class="dv">20</span>, <span class="at">d =</span> <span class="dv">300</span>, <span class="at">b =</span> <span class="dv">5</span>, <span class="at">a =</span> <span class="dv">5</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_logistic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As above, we can only interpret the <code>Residual standard error</code>. The resulting model equation would be <span class="math inline">\(y = 16.20 + 293.25 / (1 + e^{-0.81(x - 5.06)})\)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(logistic, <span class="fu">aes</span>(predictor, response)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span>  <span class="co"># Original data points</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">y =</span> <span class="fu">predict</span>(mod_logistic), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span>  <span class="co"># Fitted line</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Predictor"</span>, <span class="at">y =</span> <span class="st">"Response"</span>) <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="self-starting-functions" class="level1">
+<h1>Self-starting functions</h1>
+<p>Several self-starting functions are becoming available in R. These automatically estimate the initial parameters (<span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(c\)</span>, etc.). There are some pre-defined functions available (e.g.&nbsp;<code>SSasymp()</code>, <code>SSexp()</code> and <code>SSlogis()</code>) which may be slightly different.</p>
+<p>To refit the asymptotic model using the self-starting function, we can use the <code>SSasymp()</code> function. Note - the parameters are labelled differently. The equation used is <span class="math inline">\(y = Asym \cdot (1-e^{-e^{lrc} \cdot x})\)</span>. However, the <code>Residual standard error</code> is identical, which suggests this line fits as well as the previous line – which we can see below as well.</p>
+<ul>
+<li><code>input</code>: the predictor variable.</li>
+<li><code>Asym</code>: the upper limit (<span class="math inline">\(b\)</span>).</li>
+<li><code>R0</code>: the lower limit (<span class="math inline">\(a\)</span>).</li>
+<li><code>lrc</code>: the logarithm of the rate of change (<span class="math inline">\(c\)</span>).</li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mod_asymptotic_ss <span class="ot">&lt;-</span> <span class="fu">nls</span>(response <span class="sc">~</span> <span class="fu">SSasymp</span>(predictor, b, a, c), <span class="at">data =</span> asymptotic)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_asymptotic_ss)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot both models</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> asymptotic, <span class="fu">aes</span>(<span class="at">x =</span> predictor, <span class="at">y =</span> response)) <span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Predictor"</span>, <span class="at">y =</span> <span class="st">"Response"</span>) <span class="sc">+</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">predict</span>(mod_asymptotic)), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">predict</span>(mod_asymptotic_ss)), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Likewise the logistic model can be refit using the <code>SSlogis()</code> function. The equation used is $ y = $ – the lowest possible value is 0.</p>
+<ul>
+<li><code>input</code>: the predictor variable.</li>
+<li><code>Asym</code>: the upper limit (<span class="math inline">\(d\)</span>).</li>
+<li><code>xmid</code>: the value of <span class="math inline">\(x\)</span> when <span class="math inline">\(y\)</span> is halfway between the lower and upper limits (<span class="math inline">\(a\)</span>).</li>
+<li><code>scal</code>: the rate of change (<span class="math inline">\(b\)</span>).</li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mod_logistic_ss <span class="ot">&lt;-</span> <span class="fu">nls</span>(response <span class="sc">~</span> <span class="fu">SSlogis</span>(predictor, d, a, b), <span class="at">data =</span> logistic)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_logistic_ss)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot both models</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> logistic, <span class="fu">aes</span>(<span class="at">x =</span> predictor, <span class="at">y =</span> response)) <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Predictor"</span>, <span class="at">y =</span> <span class="st">"Response"</span>) <span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">predict</span>(mod_logistic)), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">predict</span>(mod_logistic_ss)), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Both models are very similar, but there is a slight difference – the <code>nls()</code> model had a <code>Residual standard error</code> of 8.891, whereas the <code>SSlogis()</code> model has a <code>Residual standard error</code> of 8.824. Both models fit the data well, and the difference is negligible.</p>
+<p>There are options to define your own <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/selfStart">self-starting functions</a>, but this is beyond the scope of this course.</p>
 
 
 </section>

@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -39,8 +73,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-ed04999718f06b735b1f8009dce43b94.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9959048ad043ebf04c42832c35049e99.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-597124e1a1e6638dfe199336729b98e9.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-23a9d138e7e1bf06b372a111379326d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-0973a0db49f0712bde2e04708837bcc0.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -125,7 +159,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module03/040-describing_relationships.html"><strong>📘 Module 3</strong></a></li><li class="breadcrumb-item"><a href="../module03/041-linear_functions.html">Linear functions</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module03/040-describing_relationships.html"><strong>📘 Module 3</strong></a></li><li class="breadcrumb-item"><a href="../module03/041-linear_functions.html">Why do we create models?</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -147,54 +181,12 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text"><strong>🛟 R Guide</strong></span></a>
+ <span class="menu-text"><strong>📕 Module 1</strong></span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/01-getting-started.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Getting started</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/04-install.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Installing R and RStudio</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/06-rstudio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Using RStudio effectively</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/08-quarto-r-markdown.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Writing in markdown</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../R Guide/10-copilot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GitHub Copilot and RStudio</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text"><strong>📕 Module 1</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module01/01-exploring_data.html" class="sidebar-item-text sidebar-link">
@@ -217,13 +209,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text"><strong>📗 Module 2</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module02/01-ttest1.html" class="sidebar-item-text sidebar-link">
@@ -246,13 +238,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text"><strong>📘 Module 3</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module03/040-describing_relationships.html" class="sidebar-item-text sidebar-link">
@@ -262,19 +254,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module03/041-linear_functions.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Linear functions</span></a>
+ <span class="menu-text">Why do we create models?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module03/042-linear_functions_multi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Linear functions – multiple predictors</span></a>
+ <span class="menu-text">Multiple Linear Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module03/043-nonlinear.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Non-linear functions</span></a>
+ <span class="menu-text">Non-linear regression</span></a>
   </div>
 </li>
       </ul>
@@ -282,13 +274,13 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text"><strong>🖥️ Computer labs</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/Lab01.html" class="sidebar-item-text sidebar-link">
@@ -298,7 +290,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/Lab02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 02 – Quarto</span></a>
+ <span class="menu-text">Lab 02 – Statistical programming</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -373,21 +365,439 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#linear-functions" id="toc-linear-functions" class="nav-link active" data-scroll-target="#linear-functions">Linear functions</a></li>
+  <li><a href="#why-do-we-create-models" id="toc-why-do-we-create-models" class="nav-link active" data-scroll-target="#why-do-we-create-models">Why do we create models?</a></li>
+  <li><a href="#regression" id="toc-regression" class="nav-link" data-scroll-target="#regression">Regression</a></li>
+  <li><a href="#simple-linear-regression" id="toc-simple-linear-regression" class="nav-link" data-scroll-target="#simple-linear-regression">Simple linear regression</a>
+  <ul class="collapse">
+  <li><a href="#analytical-method" id="toc-analytical-method" class="nav-link" data-scroll-target="#analytical-method">Analytical method</a></li>
+  <li><a href="#numerical-method" id="toc-numerical-method" class="nav-link" data-scroll-target="#numerical-method">Numerical method</a></li>
+  </ul></li>
+  <li><a href="#steps-of-linear-regression" id="toc-steps-of-linear-regression" class="nav-link" data-scroll-target="#steps-of-linear-regression">Steps of linear regression</a>
+  <ul class="collapse">
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">1. Exploratory data analysis</a></li>
+  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions">2. Assumptions</a>
+  <ul class="collapse">
+  <li><a href="#linearity" id="toc-linearity" class="nav-link" data-scroll-target="#linearity">Linearity</a></li>
+  <li><a href="#independence" id="toc-independence" class="nav-link" data-scroll-target="#independence">Independence</a></li>
+  <li><a href="#normality" id="toc-normality" class="nav-link" data-scroll-target="#normality">Normality</a></li>
+  <li><a href="#equal-variance" id="toc-equal-variance" class="nav-link" data-scroll-target="#equal-variance">Equal variance</a></li>
+  <li><a href="#assumption-plots" id="toc-assumption-plots" class="nav-link" data-scroll-target="#assumption-plots">Assumption Plots</a></li>
+  </ul></li>
+  <li><a href="#model-evaluation" id="toc-model-evaluation" class="nav-link" data-scroll-target="#model-evaluation">Model evaluation</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
+  <li><a href="#model-fit" id="toc-model-fit" class="nav-link" data-scroll-target="#model-fit">Model Fit</a></li>
+  </ul></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a></li>
+  </ul></li>
+  <li><a href="#transformation" id="toc-transformation" class="nav-link" data-scroll-target="#transformation">Transformation</a>
+  <ul class="collapse">
+  <li><a href="#explaining-backtransformation" id="toc-explaining-backtransformation" class="nav-link" data-scroll-target="#explaining-backtransformation">Explaining backtransformation</a>
+  <ul class="collapse">
+  <li><a href="#square-root" id="toc-square-root" class="nav-link" data-scroll-target="#square-root">Square root</a></li>
+  <li><a href="#natural-log" id="toc-natural-log" class="nav-link" data-scroll-target="#natural-log">Natural log</a></li>
+  </ul></li>
+  <li><a href="#percentage-change" id="toc-percentage-change" class="nav-link" data-scroll-target="#percentage-change">Percentage Change</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module03/040-describing_relationships.html"><strong>📘 Module 3</strong></a></li><li class="breadcrumb-item"><a href="../module03/041-linear_functions.html">Linear functions</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module03/040-describing_relationships.html"><strong>📘 Module 3</strong></a></li><li class="breadcrumb-item"><a href="../module03/041-linear_functions.html">Why do we create models?</a></li></ol></nav></header>
 
 
 
 
-<section id="linear-functions" class="level1">
-<h1>Linear functions</h1>
-<p>In summary, this book has no content whatsoever.</p>
+<section id="why-do-we-create-models" class="level1">
+<h1>Why do we create models?</h1>
+<p>Often in a scientific experiment, we collect data for a response variable (<span class="math inline">\(y\)</span>) and one or more predictor variables (<span class="math inline">\(x\)</span>).</p>
+<p>Some interchangeable terms:</p>
+<ul>
+<li><span class="math inline">\(y\)</span> – independent variable, response variable, target, outcome, etc.</li>
+<li><span class="math inline">\(x\)</span> – dependent variable, predictor variable, feature, input etc.</li>
+</ul>
+<p>There are several reasons why we would ‘model’ or ‘create a model’ for the data we have collected:</p>
+<ul>
+<li>To describe the relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> (e.g.&nbsp;weak/moderate/strong, positive/negative, linear/non-linear, etc.)</li>
+<li>To explain the relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> in terms of an equation</li>
+<li>To predict the value of <span class="math inline">\(y\)</span> for a given value of <span class="math inline">\(x\)</span></li>
+</ul>
+<p>The simplest form of a model is a linear model.</p>
+</section>
+<section id="regression" class="level1">
+<h1>Regression</h1>
+<p>We start with a hypothetical dataset, with <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. A linear model is essentially the line of best fit. How do we determine what the line of best fit is?</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simulate example data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">340</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">30</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">40</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, y)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># make and save the plot</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(x, y)) <span class="sc">+</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"x"</span>, <span class="at">y =</span> <span class="st">"y"</span>) <span class="sc">+</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Realistically, if we fit a ‘line of best fit’ it will not pass through all the points. There will be some error – we call these errors the <em>residuals</em>. The residuals (<span class="math inline">\(\epsilon_{i}\)</span>) are the difference between the observed value of <span class="math inline">\(y\)</span> (<span class="math inline">\(y_{i}\)</span>) and the value predicted (<span class="math inline">\(\hat{y}_{i}\)</span>) by the model.</p>
+<p><strong>Regression is a statistical method to fit a model</strong> by minimising the residuals or error. In essence, the model that best minimises the error has the best fit. The most commonly used error term is the <strong>sum of squares</strong>. By squaring the residual, it won’t matter if error is positive or negative, and larger errors have a larger penalty. By summing all squared residuals together, we get a single number that represents the total error of the model.</p>
+<p><span class="math display">\[ \text{sum of squared residuals} = \sum_{i=1}^{n} \left( y_i - \hat{y}_i \right)^2 \]</span> Regression is the foundation of most numerical statistical models, from simple linear regression to deep learning neural networks.</p>
+</section>
+<section id="simple-linear-regression" class="level1">
+<h1>Simple linear regression</h1>
+<p>The equation of a simple linear regression model is:</p>
+<p><span class="math display">\[y = \beta_0 + \beta_1 x\]</span></p>
+<p>where <span class="math inline">\(\beta_0\)</span> is the y-intercept or constant, and <span class="math inline">\(\beta_1\)</span> is the slope.</p>
+<p>The goal of regression is to fit a straight line that will have the lowest sum of squares. This line can be described with the parameters <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</p>
+<p>There are two methods that we can use - the analytical method (with equations) and the numerical method (trial and error).</p>
+<p>We will showcase these methods with an example with the famous <code>iris</code> dataset. The dataset contains 150 observations of three species of iris flowers, measuring four features (<code>sepal length</code>, <code>sepal width</code>, <code>petal length</code>, <code>petal width</code>). For our example, we will model the relationship between <code>petal length</code> and <code>petal width</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> iris<span class="sc">$</span>Petal.Length</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> iris<span class="sc">$</span>Petal.Width</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Petal length vs Petal width"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Petal length"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Petal width"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="analytical-method" class="level2">
+<h2 class="anchored" data-anchor-id="analytical-method">Analytical method</h2>
+<p>For simple linear regression, we can calculate the values of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> with equations</p>
+<p>First we calculate the slope <span class="math inline">\(\beta_1\)</span>:</p>
+<p><span class="math display">\[ \beta_1 = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2} =  \frac{Cov(x,y)}{Var(x)} = \frac{SS_{xy}}{SS_{xx}} \]</span> Which we then substitute into the equation below to get the intercept <span class="math inline">\(\beta_0\)</span>:</p>
+<p><span class="math display">\[ \beta_0 = \bar{y} - \beta_1 \bar{x} \]</span></p>
+<p>Using R to do our calculations:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cov_xy <span class="ot">&lt;-</span> <span class="fu">sum</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x)) <span class="sc">*</span> (y <span class="sc">-</span> <span class="fu">mean</span>(y)))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>var_x <span class="ot">&lt;-</span> <span class="fu">sum</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> cov_xy <span class="sc">/</span> var_x</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> <span class="fu">mean</span>(y) <span class="sc">-</span> b1 <span class="sc">*</span> <span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>So the analytical method determines that our linear model is <span class="math inline">\(y = -0.363076 + 0.415755 \cdot x\)</span>.</p>
+</section>
+<section id="numerical-method" class="level2">
+<h2 class="anchored" data-anchor-id="numerical-method">Numerical method</h2>
+<p>The numerical method is a trial and error method. We start with some initial values of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>, and then update the values to minimize the sum of squares. This is the most common method that computer programs (e.g.&nbsp;Excel, R, Python, etc.) will use as it is more computationally efficient with very large dataset (e.g.&nbsp;millions of rows).</p>
+<p>Fitting the model in R is very simple:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x) <span class="co"># fit a linear model between x and y</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)     <span class="co"># model output in a neat summary table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The estimate of our parameters (or <code>coefficients</code>) are in the <code>Estimate</code> column. The <code>Intercept</code> <code>Estimate</code> is our y-intercept <span class="math inline">\(\beta_0\)</span> and the <code>x</code> <code>Estimate</code> is our slope <span class="math inline">\(\beta_1\)</span>.</p>
+<p>So the numerical method run by R determines that our linear model is <span class="math inline">\(y = -0.363076 + 0.415755 \cdot x\)</span>. This is exactly the same result as the analytical method (at least to 6 decimal places).</p>
+</section>
+</section>
+<section id="steps-of-linear-regression" class="level1">
+<h1>Steps of linear regression</h1>
+<p>Fitting a simple linear regression can be done in two lines of code in R. But there is a series of steps that we need to go through to ensure our model is robust and we can trust the results.</p>
+<section id="exploratory-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis">1. Exploratory data analysis</h2>
+<p>This is a basic step in any data analysis. We need to understand the data we are working with. As with previous modules, we can look at summary statistics, distributions, and visualise the data.</p>
+<p>For linear regression, we also need to look at the relationship between the predictor and response. We first look at a scatter plot to determine if we have linear data, and then we choose a suitable correlation coefficient.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Petal length vs Petal width"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Petal length"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Petal width"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>There appears to be a strong, positive linear relationship between <code>petal length</code> and <code>petal width</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, y) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>) <span class="co"># calculate correlation |&gt; round to 2 decimal places</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The correlation coefficient is 0.96, which is very close to 1. This is almost a perfect positive linear relationship!</p>
+</section>
+<section id="assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="assumptions">2. Assumptions</h2>
+<p>To use linear regression, there are several assumptions (LINE) that need to be met:</p>
+<ul>
+<li><em>L</em>inearity – is there a linear relationship?</li>
+<li><em>I</em>ndependence – are the residuals independent of each other?</li>
+<li><em>N</em>ormality – are the residuals normally distributed?</li>
+<li><em>E</em>qual variance – is the variance of the residuals constant?</li>
+</ul>
+<p>If assumptions are met, then we can be confident that the model is a good fit for the data. If they are not met, then the hypothesis test results are unreliable, the standard error estimate is unreliable, and the estimates of the coefficients will not fit the model well.</p>
+<p>If the assumptions are <strong>not</strong> met, then we either need to transform our data (e.g.&nbsp;<span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, or both) with a function (e.g.&nbsp;square root, natural log etc.) or use a non-linear model.</p>
+<p>An important point to remember is that the assumptions are about the <strong>residuals</strong>, not the data itself. The equation for a linear model is:</p>
+<p><span class="math display">\[y = \beta_0 + \beta_1 x + \epsilon\]</span> where <span class="math inline">\(\epsilon\)</span> is the error term, or residual. This is the only term which adds variation to an otherwise straight line, so this is what we need to check our assumptions with.</p>
+<section id="linearity" class="level3">
+<h3 class="anchored" data-anchor-id="linearity">Linearity</h3>
+<p>Linear regression assumes that there is a linear relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. It does not make logical or statistical sense to fit a linear model to data that does not have a linear relationship. With non-linear data, the other assumptions will not be met either. The easiest method to check for linearity with a scatter plot.</p>
+</section>
+<section id="independence" class="level3">
+<h3 class="anchored" data-anchor-id="independence">Independence</h3>
+<p>The independence of errors is the assumption that the residuals for one observation are independent of another observation. This is a difficult assumption to check, but it is often assumed that the data is collected in a way that the residuals are independent.</p>
+<p>For example, if we are measuring the height of children in a class, the height of one child should not affect the height of another child. However, if all the children were siblings or identical octuplets, then the residuals would not be independent. Another case where this assumption could be broken is in time series data – the height of a child this year is not independent from the height last year.</p>
+</section>
+<section id="normality" class="level3">
+<h3 class="anchored" data-anchor-id="normality">Normality</h3>
+<p>A linear model assumes the residuals are normally distributed around the line of best fit. This is important for hypothesis testing and confidence intervals. We can check this assumption with a <strong>Q-Q plot</strong> or a histogram of the residuals.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/residual.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="equal-variance" class="level3">
+<h3 class="anchored" data-anchor-id="equal-variance">Equal variance</h3>
+<p>This is also known as the assumption of <strong>constant variance</strong> or <strong>homoscedasticity</strong>. It assumes that the variance of the residuals is constant across all levels of the predictor variable (i.e.&nbsp;no fanning). Again, this is important for hypothesis testing and confidence intervals. We can check this assumption with a scatter plot of <em>Residuals vs Fitted</em> values and the <em>Scale-Location</em> plot.</p>
+</section>
+<section id="assumption-plots" class="level3">
+<h3 class="anchored" data-anchor-id="assumption-plots">Assumption Plots</h3>
+<p>In R, plots of the residuals can be made with the <code>plot()</code> function and the model object (in this case <code>mod</code>) as the input. The four plots produced are 1) <em>Residuals vs Fitted</em> (linearity, equal variances), 2) the <em>Normal Q-Q</em> plot (normality), 3) a <em>Scale-Location</em> plot (equal variances), and 4) the <em>Residuals vs Leverage</em> plot (extreme outliers).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)  <span class="co"># fit a linear model between x and y</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) <span class="co"># set up a 2x2 grid of plots</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod)         <span class="co"># create the plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>These same plots can also be made with <code>autoplot()</code> function (from the <code>ggfortify</code> package). It does not require the <code>par()</code> function to set up the grid and is more aesthetically customisable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggfortify)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">autoplot</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li><p>The <em>Residuals vs Fitted</em> plots the residuals against the ‘predicted’ values (i.e.&nbsp;points on the line). If met, the points will be randomly scattered around the horizontal 0 line. If there is a pattern (e.g.&nbsp;a curve, a quadratic), then the assumption of linearity is not met. If there is a fan shape, then the assumption of equal variance is not met.</p></li>
+<li><p>The <em>Normal Q-Q</em> plot compares the residuals to a normal distribution. If the residuals are normally distributed, the points will fall on the straight line. If the points deviate from the line, then the residuals are not normally distributed.</p></li>
+<li><p>The <em>Scale-Location</em> plot is used to check the assumption of equal variance. If the line is essentially horizontal and points are randomly scattered, then the assumption is met.</p></li>
+<li><p>The <em>Residuals vs Leverage</em> plot is used to identify extreme outliers. Although not an official assumption, a very extreme outlier has the potential to skew the line of best fit. These influential points should be kept track of or removed from the dataset.</p></li>
+</ol>
+<p>The examples above are for the <code>iris</code> dataset with <code>petal length</code> and <code>petal width</code>. The assumptions are met.</p>
+<p>Below is an example of plots from data that has an exponential relationship with unequal variances (it fans in) with a couple of extreme outliers (in red).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mod_exp <span class="ot">&lt;-</span> <span class="fu">lm</span>(y_exp <span class="sc">~</span> x_exp)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod_exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can see that:</p>
+<ul>
+<li>The <em>Residuals vs Fitted</em> plot looks curved, indicating unequal variances. The scatter of points is also not very even because of the extreme outliers.</li>
+<li>The <em>Normal Q-Q</em> plot shows the points are not on the line at the tails and hence the residuals are not normally distributed.</li>
+<li>The <em>Scale-Location</em> plot shows a ‘W’ shape, indicating unequal variances.</li>
+<li>The <em>Residuals vs Leverage</em> plot shows the two extreme outliers past the dotted lines, which confirms they are influential points.</li>
+</ul>
+</section>
+</section>
+<section id="model-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="model-evaluation">Model evaluation</h2>
+<p>So now that we have confirmed the assumptions are met, the next step is to determine how good the model actually is. If the model was not a good fit to the data, then we wouldn’t want to interpret it – we’d try and improve it first.</p>
+<p>Let’s break down the <code>summary(mod)</code> output. The first few lines are the model formula <code>lm(formula = y ~ x)</code>, so this is our linear model. The <code>Residuals</code> section gives some summary statistics of the residuals.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Call<span class="sc">:</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span> x)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>Residuals<span class="sc">:</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>     Min       <span class="dv">1</span>Q   Median       <span class="dv">3</span>Q      Max </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fl">0.56515</span> <span class="sc">-</span><span class="fl">0.12358</span> <span class="sc">-</span><span class="fl">0.01898</span>  <span class="fl">0.13288</span>  <span class="fl">0.64272</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="hypothesis-test" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h3>
+<p>The null hypothesis for a simple linear regression is that the slope is zero (<span class="math inline">\(\beta_1 = 0\)</span>), and the model does not perform better than just using the mean. There is thus no relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. The alternative hypothesis is that the slope is not zero (<span class="math inline">\(\beta_1 \neq 0\)</span>), which means there is a relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, and the model is better than using the mean.</p>
+<p>The <code>Coefficients</code> section gives the estimates of our y-intercept and slope, as well as the standard error, the t-value, and the p-value when determining the estimate. The p-value is the most easily interpreted – we care the p-value of the (<span class="math inline">\(x\)</span>). If the p-value is less than 0.05, then we can reject the null hypothesis that the slope <span class="math inline">\(\beta_1\)</span> is zero.</p>
+<p>The <code>Signif. codes</code> section gives a visual representation of the p-value. The more stars, the smaller the p-value. The <code>***</code> means the p-value is less than 0.001, <code>**</code> means less than 0.01, and <code>*</code> means less than 0.05. This is useful when we have many predictors.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Coefficients<span class="sc">:</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>             Estimate Std. Error t value <span class="fu">Pr</span>(<span class="sc">&gt;</span><span class="er">|</span>t<span class="sc">|</span>)    </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>(Intercept) <span class="sc">-</span><span class="fl">0.363076</span>   <span class="fl">0.039762</span>  <span class="sc">-</span><span class="fl">9.131</span>  <span class="fl">4.7e-16</span> <span class="sc">**</span><span class="er">*</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>x            <span class="fl">0.415755</span>   <span class="fl">0.009582</span>  <span class="fl">43.387</span>  <span class="sc">&lt;</span> <span class="fl">2e-16</span> <span class="sc">**</span><span class="er">*</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>Signif. codes<span class="sc">:</span>  <span class="dv">0</span> ‘<span class="sc">**</span><span class="er">*</span>’ <span class="fl">0.001</span> ‘<span class="sc">**</span>’ <span class="fl">0.01</span> ‘<span class="sc">*</span>’ <span class="fl">0.05</span> ‘.’ <span class="fl">0.1</span> ‘ ’ <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="model-fit" class="level3">
+<h3 class="anchored" data-anchor-id="model-fit">Model Fit</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Residual standard error<span class="sc">:</span> <span class="fl">0.2065</span> on <span class="dv">148</span> degrees of freedom</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>Multiple R<span class="sc">-</span>squared<span class="sc">:</span>  <span class="fl">0.9271</span>,    Adjusted R<span class="sc">-</span>squared<span class="sc">:</span>  <span class="fl">0.9266</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>F<span class="sc">-</span>statistic<span class="sc">:</span>  <span class="dv">1882</span> on <span class="dv">1</span> and <span class="dv">148</span> DF,  p<span class="sc">-</span>value<span class="sc">:</span> <span class="er">&lt;</span> <span class="fl">2.2e-16</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <code>Residual standard error</code> is the standard deviation of the residuals. The smaller the value, the better the model fits the data. It is in the same units as the response variable. Considering the <span class="math inline">\(y\)</span> ranges between 0.1 and 2.5, a standard error of 0.2065 is quite small.</p>
+<p>The <code>Multiple R-squared</code> is the proportion of the variance in the response variable that is explained by the model. The more variation explained by the model, the better the fit. A value of ‘1’ indicates a perfect fit, and a value of ‘0’ suggests the model explained no variation at all. A value of 92.71% is very good. In simple linear regression, the R<sup>2</sup> is actually equivalent to the correlation coefficient squared - which is also where the term comes from.</p>
+<p>The <code>Adjusted R-squared</code> is the same as the <code>Multiple R-squared</code>, but adjusted for the number of predictors in the model. We use the <code>Adjusted R-squared</code> in multiple linear regression, and the <code>Multiple R-squared</code> in simple linear regression.</p>
+<p><span class="math display">\[ R^2 = \frac{SS_{reg}}{SS_{tot}} = 1 - \frac{SS_{res}}{SS_{tot}} \]</span></p>
+<p><span class="math display">\[ R^2_{adj} = 1 - \frac{SS_{res}}{SS_{tot}} \frac{n-1}{n-p-1} \]</span> Lastly, the <code>F-statistic</code> is a statistical test of the overall significance of the model. In simple linear regression (1 predictor, 1 response) it is the same as the p-value in the <code>Coefficients</code> table. The F-statistic value is 1882 in the example, and the degrees of freedom (1, 148) are the number of predictors (1) and the number of observations minus two (150-2=148) because there are two parameters. This is covered in more detail in ENVX2001.</p>
+</section>
+</section>
+<section id="interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
+<p>The assumptions for simple linear regression were met. The model explains 92.71% of the variation in the <code>petal width</code> with <code>petal length</code> with a residual standard error of 0.2065, and <code>petal length</code> is a significant predictor (p &lt; 2e-16).</p>
+<p>The equation of the model is <span class="math inline">\(y = -0.36 + 0.42 \cdot x\)</span>. This means that for every unit increase in <code>petal length</code>, <code>petal width</code> increases by 0.42 cm.</p>
+<p>The y-intercept is -0.36, which is the value of <code>petal width</code> when <code>petal length</code> is zero. This is not a meaningful value in this context, as <code>petal length</code> cannot be zero. This is often the case with the y-intercept.</p>
+<p>Last but not least, the result can be plotted on a scatterplot with the line of best fit.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Base R</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Petal Length"</span>, <span class="at">ylab =</span> <span class="st">"Petal Width"</span>, <span class="at">main =</span> <span class="st">"Base R"</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(mod, <span class="at">col =</span> <span class="st">"red"</span>) <span class="co"># using our model `mod` object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># abline(a = -0.363076, b = 0.415755, col = "red") # manually inputting coefficients</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="do">### ggplot</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Petal.Width)) <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span> <span class="co"># ggplot will fit the model for us</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_abline(intercept = -0.363076, slope = 0.415755, color = "red") + # manually inputting coefficients</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Petal Length"</span>, <span class="at">y =</span> <span class="st">"Petal Width"</span>, <span class="at">title =</span> <span class="st">"ggplot2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="transformation" class="level1">
+<h1>Transformation</h1>
+<p>In the case assumptions are not met, we can try transforming. Some common options are the square root or natural log. In the case there are negative values, we can also add a constant to ensure all values are greater than 0.</p>
+<p>To demonstrate this, we use another well known dataset - air quality in New York (USA). The dataset contains 153 observations of <code>Ozone</code> (ppb), as well as <code>Solar.R</code> (solar radiation, Langleys), <code>Wind</code> (mph), <code>Temp</code> (<span class="math inline">\(\deg\)</span>F), <code>Day</code> (1-31), and <code>Month</code> (1-12).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(airquality) <span class="co"># remove missing values of ozone</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)       <span class="co"># calculate correlation |&gt; round to 2 decimal places</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The correlation matrix shows that <code>Temp</code> has the highest correlation with <code>Ozone</code> (0.7), so we will model the relationship between <code>Ozone</code> and <code>Temp</code>. Given <code>Ozone</code> is a pollutant that is of interest, it is the response variable and <code>Temp</code> is the predictor.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> Temp, <span class="at">y =</span> Ozone)) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temp"</span>, <span class="at">y =</span> <span class="st">"Ozone"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The relationship does not appear linear. We can fit the model and the other assumptions as well to be sure.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit model</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Ozone <span class="sc">~</span> Temp, <span class="at">data =</span> data)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Assumption plots</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <em>Residuals vs Fitted</em> plot is curved, which also signifies the relationship is not linear. The spread of points for lower fitted values is tighter than the larger values - i.e.&nbsp;fanning, unequal variance. The <em>Normal Q-Q</em> plot shows the points are not on the line, especially at the upper tails, indicating the residuals are not normally distributed. Hence assumptions are indeed not met.</p>
+<p>We can transform 1) just the response variable, 2) just the predictor variable, or 3) both. The easiest option transform the response variable (especially in multiple linear regression), and natural log transformations are more easily backtransformed for meaningful interpretation.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Ozone_sqrt <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(data<span class="sc">$</span>Ozone) <span class="co"># square root</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Ozone_log <span class="ot">&lt;-</span> <span class="fu">log</span>(data<span class="sc">$</span>Ozone)  <span class="co"># natural log</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Ozone_log10 <span class="ot">&lt;-</span> <span class="fu">log</span>(data<span class="sc">$</span>Ozone, <span class="at">base =</span> <span class="dv">10</span>) <span class="co"># base 10 log</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Original</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>correlation_coef <span class="ot">&lt;-</span> <span class="fu">cor</span>(data<span class="sc">$</span>Temp, data<span class="sc">$</span>Ozone) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">3</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> Temp, <span class="at">y =</span> Ozone)) <span class="sc">+</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temp"</span>, <span class="at">y =</span> <span class="st">"Ozone"</span>, <span class="at">title =</span> <span class="st">"Original"</span>,</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Pearson's r: "</span>, correlation_coef))</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Square root</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>correlation_coef <span class="ot">&lt;-</span> <span class="fu">cor</span>(data<span class="sc">$</span>Temp, data<span class="sc">$</span>Ozone_sqrt) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">3</span>)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> Temp, <span class="at">y =</span> Ozone_sqrt)) <span class="sc">+</span> <span class="co"># square root</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temp"</span>, <span class="at">y =</span> <span class="st">"Ozone"</span>, <span class="at">title =</span> <span class="st">"Square root"</span>,</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Pearson's r: "</span>, correlation_coef))</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Natural log</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>correlation_coef <span class="ot">&lt;-</span> <span class="fu">cor</span>(data<span class="sc">$</span>Temp, data<span class="sc">$</span>Ozone_log) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">3</span>)</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> Temp, <span class="at">y =</span> Ozone_log)) <span class="sc">+</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temp"</span>, <span class="at">y =</span> <span class="st">"Ozone"</span>, <span class="at">title =</span> <span class="st">"Natural log"</span>,,</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Pearson's r: "</span>, correlation_coef))</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Base 10 log</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>correlation_coef <span class="ot">&lt;-</span> <span class="fu">cor</span>(data<span class="sc">$</span>Temp, data<span class="sc">$</span>Ozone_log10) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">3</span>)</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> Temp, <span class="at">y =</span> Ozone_log10)) <span class="sc">+</span> <span class="co"># base 10 log</span></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temp"</span>, <span class="at">y =</span> <span class="st">"Ozone"</span>, <span class="at">title =</span> <span class="st">"Base 10 log"</span>,</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>        <span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Pearson's r: "</span>, correlation_coef))</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3 <span class="sc">+</span> p4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>All the transformations improve the linearity of the relationship by about the same amount (based on <span class="math inline">\(r\)</span>). We choose the natural log transformation (because it is easiest to backtranform), re-fit the model and check the assumptions again.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mod_log <span class="ot">&lt;-</span> <span class="fu">lm</span>(Ozone_log <span class="sc">~</span> Temp, <span class="at">data =</span> data)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod_log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Not quite textbook perfect, but definitely an improvement. The residuals are more evenly spread, and the Q-Q plot is closer to the line. The model is now ready for evaluation and interpretation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod_log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The linear model with <code>Temp</code> explains 55.5% of the variation in <code>Ozone</code> with a residual standard error of 0.580 log(ppm). Even if this value were back-transformed, it would not have much meaning - which is a limitation of transformations.</p>
+<p>The natural log transformation of <code>Temp</code> is a significant predictor of <code>Ozone</code> (p &lt; 2e-16). The equation of the model is <span class="math inline">\(log(\text{Ozone}) = -1.849 + 0.068 \cdot \text{Temp}\)</span>. This means that for every unit (farenheit) increase in <code>Temp</code>, <code>log(Ozone)</code> increases by 0.068 log(ppm). To backtransform, we can use the <code>exp()</code> function. So for every unit increase in <code>Temp</code>, <code>Ozone</code> increases by <span class="math inline">\(e^{0.068} = 1.070\)</span> times. We can also say that for every unit increase in <code>Temp</code>, <code>Ozone</code> increases by 6.8%.</p>
+<section id="explaining-backtransformation" class="level2">
+<h2 class="anchored" data-anchor-id="explaining-backtransformation">Explaining backtransformation</h2>
+<section id="square-root" class="level3">
+<h3 class="anchored" data-anchor-id="square-root">Square root</h3>
+<p>The backtransformation of the coefficients is not as straightforward as the interpretation of the coefficients. For example, if we had used a square root transformation <code>sqrt(Ozone)</code>, then if we wanted to get the effect of increasing <code>Temp</code> by one unit:</p>
+<p><span class="math display">\[ \sqrt{Ozone} = \beta_0 + \beta_1 \cdot Temp \]</span> <span class="math display">\[ Ozone = (\beta_0 + \beta_1 \cdot Temp)^2 \]</span> <span class="math display">\[ Ozone = \beta_0^2 + 2 \beta_0 \beta_1 Temp + \beta_1^2 Temp^2 \]</span> So if <code>Temp</code> increases by one unit, the increase in <code>Ozone</code> is not just <span class="math inline">\(\beta_1^2\)</span>! We end up with <span class="math inline">\(2\beta_1(\beta_0+\beta_1 \cdot Temp) + \beta_1^2\)</span>.</p>
+</section>
+<section id="natural-log" class="level3">
+<h3 class="anchored" data-anchor-id="natural-log">Natural log</h3>
+<p>For natural logs, however, the backtransformation is much simpler because of log laws.</p>
+<p><span class="math display">\[ log(Ozone) = \beta_0 + \beta_1 \cdot Temp \]</span> <span class="math display">\[ Ozone = e^{\beta_0 + \beta_1 \cdot Temp} = e^{\beta_0} \cdot e^{\beta_1 \cdot Temp} \]</span> If <code>Temp</code> increases by one unit, then the increase in Ozone is:</p>
+<p><span class="math display">\[ Ozone = e^{\beta_0} \cdot e^{\beta_1 \cdot (Temp+1)} = e^{\beta_0} \cdot e^{\beta_1 \cdot Temp} \cdot e^{\beta_1} \]</span> The ratio between the two is:</p>
+<p><span class="math display">\[ \frac{e^{\beta_0} \cdot e^{\beta_1 \cdot Temp} \cdot e^{\beta_1}}{e^{\beta_0} \cdot e^{\beta_1 \cdot Temp}} = e^{\beta_1} \]</span> So for a one unit increase in <code>Temp</code>, <code>Ozone</code> increases by <span class="math inline">\(e^{\beta_1}\)</span> times.</p>
+</section>
+</section>
+<section id="percentage-change" class="level2">
+<h2 class="anchored" data-anchor-id="percentage-change">Percentage Change</h2>
+<p>Interpreting as a percent change can be more meaningful - it can be done with any log transformation (substitute <span class="math inline">\(e\)</span> below for 10 or any other base), but the <strong>quick approximation only works with natural log transformations</strong>.</p>
+<p>If <span class="math inline">\(y\)</span> has been transformed with a natural log (<code>log(y)</code>), for a one-unit increase in <span class="math inline">\(x\)</span> the <strong>percent change in <span class="math inline">\(y\)</span></strong> (not <code>log(y)</code>) is calculated with:</p>
+<p><span class="math display">\[\Delta y \% = 100 \cdot (e^{\beta_1}-1)\]</span> If <span class="math inline">\(\beta_1\)</span> is small (i.e.&nbsp;<span class="math inline">\(-0.25 &lt; \beta_1 &lt; 0.25\)</span>), then: <span class="math inline">\(e^{\beta_1} \approx 1 + \beta_1\)</span>. So <span class="math inline">\(\Delta y \% \approx 100 \cdot \beta_1\)</span>. Below are some examples – when <span class="math inline">\(\beta_1\)</span> is 2, the ‘quick estimate’ is off by 439%!</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 41%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">β</th>
+<th style="text-align: right;">Exact <span class="math inline">\((e^{\beta} - 1)\)</span>%</th>
+<th style="text-align: right;">Approximate <span class="math inline">\(100 \cdot \beta\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">-0.25</td>
+<td style="text-align: right;">-22.13</td>
+<td style="text-align: right;">-25</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-0.1</td>
+<td style="text-align: right;">-9.52</td>
+<td style="text-align: right;">-10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">1.01</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">10.52</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">28.41</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">64.87</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">638.91</td>
+<td style="text-align: right;">200</td>
+</tr>
+</tbody>
+</table>
+<p>So for our linear model <span class="math inline">\(log(\text{Ozone}) = -1.849 + 0.068 \cdot \text{Temp}\)</span>, a one unit increase in <code>Temp</code> results in approximately a 6.8% increase in <code>Ozone</code>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
