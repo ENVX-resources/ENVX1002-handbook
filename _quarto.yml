@@ -15,9 +15,6 @@ website:
     contents:
       - 001-intro.qmd
       - "---"
-      - section: "**🛟 R Guide**"
-        contents: "R Guide/*"
-      - "---"
       - section: "**📕 Module 1**"
         contents: module01/*
       - section: "**📗 Module 2**"

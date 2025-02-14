@@ -1,5 +1,0 @@
----
-title: GitHub Copilot and RStudio
----
-
-This is the GitHub Copilot guide!
