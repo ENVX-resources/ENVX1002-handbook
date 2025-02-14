@@ -1,3 +1,355 @@
+---
+execute:
+  warning: false
+  message: false
+---
+
+
 # Describing relationships
 
-In summary, this book has no content whatsoever.
+```{r setup}
+#| include: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse)
+
+library(patchwork)
+library(ggplot2)
+
+```
+
+In statistics, a relationship between two or more numerical variables means when one variable changes, the other variable/s will also change. We can describe these relationships in terms of direction, strength, and form.
+
+To determine the relationship between two variables qualitatively with by visualising our data with scatter plots.
+
+## Scatter Plots
+
+**Direction**
+
+A relationship can be positive, negative, or non-existent.
+
+- **Positive relationship**: when one variable increases, the other variable also increases, e.g. the amount of rainfall received and the resulting crop yield.
+- **Negative relationship**: when one variable increases, the other variable decreases, e.g. the levels of insulin and glucose in blood.
+- **No relationship**: when one variable changes, the other variable does not change, e.g. shoe size and IQ.
+
+```{r}
+#| echo: false
+
+# Generate synthetic data
+set.seed(123)
+x <- rnorm(100, mean = 50, sd = 10)
+y <- x + rnorm(100, mean = 0, sd = 5)
+
+# Plot data using ggplot2
+
+p1 <- ggplot(data = data.frame(x, y), aes(x = x, y = y)) +
+    geom_point() +
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(
+        title = "Positive",
+        x = "x", y = "y"
+    ) 
+# Generate synthetic data
+x <- rnorm(100, mean = 50, sd = 10)
+y <- 100 - x + rnorm(100, mean = 0, sd = 5)
+
+p2 <- ggplot(data = data.frame(x, y), aes(x = x, y = y)) +
+    geom_point() +
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(
+        title = "Negative",
+        x = "x", y = "y")
+# Generate synthetic data
+x <- rnorm(100, mean = 50, sd = 5)
+y <- rnorm(100, mean = 50, sd = 5)
+
+p3 <- ggplot(data = data.frame(x, y), aes(x, y)) +
+    geom_point() +
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(
+        title = "None",
+        x = "x", y = "y"
+    )
+p1 + p2 + p3 + plot_spacer()
+```
+
+**Strength**
+
+The strength of a relationship refers to how closely the two variables are related - weak, moderate, strong, very strong and perfect. A weak relationship will have more scatter than a strong relationship.
+
+```{r}
+#| echo: false
+
+# Generate synthetic data
+set.seed(123)
+x <- rnorm(100, mean = 50, sd = 10)
+y <- x + rnorm(100, mean = 0, sd = 45)
+
+p1 <- ggplot(data = data.frame(x, y), aes(x = x, y = y)) +
+    geom_point() +
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(
+        title = "Weak",
+        x = "x", y = "y"
+    )
+
+
+y <- x + rnorm(100, mean = 0, sd = 15)
+p2 <- ggplot(data = data.frame(x, y), aes(x = x, y = y)) +
+    geom_point() +
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(
+        title = "Moderate",
+        x = "x", y = "y"
+    )
+
+y <- x + rnorm(100, mean = 0, sd = 7)
+p3 <- ggplot(data = data.frame(x, y), aes(x = x, y = y)) +
+    geom_point() +
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(
+        title = "Strong",
+        x = "x", y = "y"
+    )
+
+y <- x + rnorm(100, mean = 0, sd = 1)
+p4 <- ggplot(data = data.frame(x, y), aes(x = x, y = y)) +
+    geom_point() +
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(
+        title = "Very Strong",
+        x = "x", y = "y"
+    )
+
+p1+p2+p3+p4
+```
+
+**Form**
+
+The form of a relationship refers to the shape of the relationship. The simplest form is a straight line or linear relationship. Some examples of non-linear forms include polynomials (e.g. quadratic, cubic), exponential, and logistic.
+
+```{r}
+#| echo: false
+
+# Linear
+x <- rnorm(100, mean = 50, sd = 10)
+y <- x + rnorm(100, mean = 0, sd = 5)
+
+p1 <- ggplot(data = data.frame(x, y), aes(x = x, y = y)) +
+    geom_point() +
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(
+        title = "Linear",
+        x = "x", y = "y"
+    )
+
+# Quadratic
+x <- seq(0, 10, by = 0.2)
+y <- -(x-5)^2 + 15 + rnorm(length(x), mean = 0, sd = 3)
+
+p2 <- ggplot(data = data.frame(x, y), aes(x = x, y = y)) +
+    geom_point() +
+    geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE) +
+    labs(
+        title = "Quadratic",
+        x = "x", y = "y"
+    )
+
+# Exponential
+p3 <- tibble(x = seq(0, 10, by = 0.2), y = x^2 + rnorm(length(x), mean = 0, sd = 5)) %>% 
+  ggplot(aes(x = x, y = y)) +
+  geom_point() +
+  geom_smooth(method = "lm", formula = y ~ x + I(x^2), se = FALSE) +
+  labs(
+    title = "Exponential",
+    x = "x", y = "y"
+  )
+
+logistic <- tibble(predictor = seq(0, 10, by = 0.2),
+  response = 10 + abs(300 * (1 / (1 + exp(-0.8 * (predictor - 5)))) + rnorm(length(predictor), mean = 0, sd = 10)))
+
+p4 <- ggplot(data = logistic, aes(x = predictor, y = response)) +
+  geom_point() +
+  geom_smooth(method = "loess", se = FALSE) +
+  labs(
+    title = "Logistic",
+    x = "x", y = "y"
+  )
+
+p1 + p2 + p3 + p4
+```
+
+## Correlation
+
+### Linear relationships
+
+To measure the relationship quantitatively, we use correlation coefficients. These are numbers between -1 and 1, where -1 indicates a perfect negative relationship, 0 indicates no relationship, and 1 indicates a perfect positive relationship.
+
+The most common correlation coefficient is the Pearson correlation coefficient ($r$). It measures **linear relationships** between **two numerical variables**.
+
+Pearson's Correlation (*r*) Formula:
+
+$$ r = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2 \sum_{i=1}^n (y_i - \bar{y})^2}} $$
+
+In essence, it is the covariance divided by the product of the standard deviations.
+
+In R, we use the function `cor()` to calculate the correlation coefficient. By default, it calculates the Pearson correlation coefficient.
+
+```{r}
+#| eval: false
+cor(x, y) 
+```
+
+Describing the correlation coefficient in terms of strength can be a little subjective. Below are some approximate ranges for the common terms.
+
+- **|0 - 0.1|** : no relationship
+- **|0.1 - 0.3|** : weak
+- **|0.4 - 0.6|** : moderate
+- **|0.7 - 1|** : strong
+- **|0.9 - 1|** : very strong
+
+```{r}
+#| eval: true
+#| echo: false
+
+set.seed(123)
+x <- rnorm(100, mean = 50, sd = 10)
+y <- 100 - x + rnorm(100, mean = 0, sd = 45)
+correlation_coef <- cor(x, y)
+
+
+p1 <- ggplot(data = data.frame(x, y), aes(x = x, y = y)) +
+    geom_point() +
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(
+        title = "Weak Negative",
+        x = "x", y = "y",
+        subtitle = paste("Pearson's r: ", round(correlation_coef, 2))
+    )
+
+y <- x + rnorm(100, mean = 0, sd = 15)
+correlation_coef <- cor(x, y)
+
+p2 <- ggplot(data = data.frame(x, y), aes(x = x, y = y)) +
+    geom_point() +
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(
+        title = "Moderate Positive",
+        x = "x", y = "y",
+        subtitle = paste("Pearson's r: ", round(correlation_coef, 2))
+    )
+
+y <- 100 - x + rnorm(100, mean = 0, sd = 7)
+correlation_coef <- cor(x, y)
+
+p3 <- ggplot(data = data.frame(x, y), aes(x = x, y = y)) +
+    geom_point() +
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(
+        title = "Strong Negative",
+        x = "x", y = "y",
+        subtitle = paste("Pearson's r: ", round(correlation_coef, 2))
+    )
+
+y <- x + rnorm(100, mean = 0, sd = 1)
+correlation_coef <- cor(x, y)
+
+p4 <- ggplot(data = data.frame(x, y), aes(x = x, y = y)) +
+    geom_point() +
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(
+        title = "Very Strong Positive",
+        x = "x", y = "y",
+        subtitle = paste("Pearson's r: ", round(correlation_coef, 2))
+    )
+
+p1+p2+p3+p4
+
+```
+
+### Non-linear relationships
+
+In the case of non-linear relationships, it is best not to use the Pearson's correlation coefficient. Instead, we can use the Spearman's rank correlation coefficient ($r_{s}$) or Kendall's tau ($\tau$). Note, these relationships must still be monotonic.
+
+- **Monotonic**: a relationship that is consistently increasing or decreasing
+- **Linear**: a relationship that is increasing or decreasing *at a constant rate*
+
+```{r}
+#| echo: false
+
+set.seed(123)
+x <- seq(0, 10, length.out = 100)
+x_length <- length(x)
+
+# Create the data for each relationship
+y_straight <- 2 * x + 5
+y_exponential <- exp(x)
+y_log <- logb(x+1, base = 2)
+y_sigmoid <- 1 / (1 + exp(-x))
+y_quadratic <- -1 * (x - 5)^2 + 100
+y_polynomial <- x^3 - 4 * x^2 + 3 * x + 2
+
+# Function to scale y-values to a specific range [0, 100]
+scale_to_range <- function(y_values, new_min = 0, new_max = 100) {
+  old_min <- min(y_values)
+  old_max <- max(y_values)
+  scaled_values <- (y_values - old_min) / (old_max - old_min) * (new_max - new_min) + new_min
+  return(scaled_values)
+}
+
+# Apply scaling to each relationship
+y_straight_scaled <- scale_to_range(y_straight)
+y_exponential_scaled <- scale_to_range(y_exponential)
+y_log_scaled <- scale_to_range(y_log)
+y_sigmoid_scaled <- scale_to_range(y_sigmoid)
+y_quadratic_scaled <- scale_to_range(y_quadratic)
+y_polynomial_scaled <- scale_to_range(y_polynomial)
+
+# Combine the data into a tibble
+data <- tibble(
+  x = rep(x, 6),
+  y = c(y_straight_scaled, y_exponential_scaled, y_log_scaled, y_sigmoid_scaled, y_quadratic_scaled, y_polynomial_scaled),
+  type = rep(c("Straight Line", "Exponential", "Log Curve", "Sigmoid Curve", "Quadratic Line", "Polynomial"), each = x_length)
+)
+
+# Calculate the correlation coefficients for each relationship type
+cor_values <- data %>%
+  group_by(type) %>%
+  summarise(
+    pearson = cor(x, y, method = "pearson"),
+    spearman = cor(x, y, method = "spearman"),
+    kendall = cor(x, y, method = "kendall")
+  )
+
+# Plot the data and add correlation coefficients
+ggplot(data, aes(x = x, y = y)) +
+  geom_line() +
+  facet_wrap(~type, scales = 'free') +
+  geom_text(data = cor_values, aes(x = 3, y =25, label = 
+                                    paste("Pearson: ", round(pearson, 2), 
+                                          "\nSpearman: ", round(spearman, 2),
+                                          "\nKendall: ", round(kendall, 2))),
+            inherit.aes = FALSE, size = 4, color = "black", hjust = 0) +
+  theme_minimal()
+
+```
+
+To use either Spearman's rank correlation coefficient or Kendall's tau, we can use the `cor()` function with the `method` argument set to either `"spearman"` or `"kendall"`.
+
+```{r}
+#| eval: false
+
+cor(x, y, method = "spearman")
+cor(x, y, method = "kendall")
+```
+
+Spearman's rank correlation coefficient essentially ranks the data (e.g. the smallest value will be ranked 1, the second smallest 2, etc.) for both the x and y axis, and then calculates the Pearson correlation coefficient for the ranks. Thus it works for any monotonic relationship.
+
+Kendall's tau looks at all possible x and y pairs, and determines if they are concordant. e.g. one pair of points $(x_{i}, y_{i})$ is concordant with another pair $(x_{j}, y_{j})$ if $x_{i} > x_{j}$ and $y_{i} > y_{j}$ or $x_{i} < x_{j}$ and $y_{i} < y_{j}$. Kendall's tau is then calculated with:
+
+$$ \tau = \frac{\text{(number of concordant pairs)} - \text{(number of discordant pairs)}}{\text{(total number of pairs)}}$$
+
+## Causation
+
+Correlation does not imply causation. Just because two variables are correlated does not mean that one causes the other to change. Some example of spurious (i.e. ridiculous) correlations can be found at [Spurious Correlations](https://www.tylervigen.com/spurious-correlations).
+
+Before conducting an experiment to collect data (or analysing existing data), it is important to have a hypothesis about the relationship between the variables. *Is there reason* to believe the two variables should have a relationship? If not, any 'relationship' found via scatter plots or correlations are unlikely meaningful.

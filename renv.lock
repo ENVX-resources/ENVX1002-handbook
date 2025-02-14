@@ -1221,21 +1221,6 @@
       ],
       "Hash": "785ef8e22389d4a7634c6c944f2dc07d"
     },
-    "modeest": {
-      "Package": "modeest",
-      "Version": "2.4.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "fBasics",
-        "stable",
-        "stabledist",
-        "statip",
-        "stats"
-      ],
-      "Hash": "af93fbfa4f5fceb8d36d736ebc4b0982"
-    },
     "modelr": {
       "Package": "modelr",
       "Version": "0.1.11",
