@@ -2,6 +2,3 @@ project:
   output-dir: _solution
   # post-render:
   #   - quarto render --profile exercise
-
-execute: 
-  output: true
