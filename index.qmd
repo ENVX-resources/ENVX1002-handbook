@@ -5,7 +5,7 @@ date-format: YYYY
 
 ---
 
-**Welcome to the ENVX1002 lab handbook.** This handbook is designed to be an *optional* companion to the lectures, labs and assessments for the course.
+**Welcome to the ENVX1002 lab handbook.** This handbook is designed to be a useful companion to the lectures, labs and assessments.
 
 ## How to use this handbook
 
