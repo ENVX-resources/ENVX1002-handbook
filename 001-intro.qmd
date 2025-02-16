@@ -12,6 +12,8 @@ By the end of this unit, you will be able to:
 - Create clear visualisations of your findings
 - Interpret and communicate statistical results confidently
 
+The above are, of course, simplified for your convenience. The actual learning objectives are more detailed and you can find them in the unit outline.
+
 ## What is ENVX1002?
 
 ENVX1002 is about learning to use statistical and computing methods to answer quantitative questions. It combines three key elements:
