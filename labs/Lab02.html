@@ -367,16 +367,25 @@ window.Quarto = {
   <ul>
   <li><a href="#before-we-begin" id="toc-before-we-begin" class="nav-link active" data-scroll-target="#before-we-begin">Before we begin</a></li>
   <li><a href="#academic-integrity" id="toc-academic-integrity" class="nav-link" data-scroll-target="#academic-integrity">Academic integrity</a></li>
-  <li><a href="#exercise-1-setting-up" id="toc-exercise-1-setting-up" class="nav-link" data-scroll-target="#exercise-1-setting-up">Exercise 1: Setting up</a></li>
-  <li><a href="#exercise-2-exploring-water-quality" id="toc-exercise-2-exploring-water-quality" class="nav-link" data-scroll-target="#exercise-2-exploring-water-quality">Exercise 2: exploring water quality</a></li>
-  <li><a href="#exercise-3-calculating-basic-statistics" id="toc-exercise-3-calculating-basic-statistics" class="nav-link" data-scroll-target="#exercise-3-calculating-basic-statistics">Exercise 3: Calculating basic statistics</a></li>
-  <li><a href="#exercise-4-doing-it-in-excel" id="toc-exercise-4-doing-it-in-excel" class="nav-link" data-scroll-target="#exercise-4-doing-it-in-excel">Exercise 4: doing it in Excel</a></li>
-  <li><a href="#exercise-5-soil" id="toc-exercise-5-soil" class="nav-link" data-scroll-target="#exercise-5-soil">Exercise 5: soil</a>
+  <li><a href="#exercise-1-setting-up" id="toc-exercise-1-setting-up" class="nav-link" data-scroll-target="#exercise-1-setting-up">Exercise 1: Setting up</a>
+  <ul class="collapse">
+  <li><a href="#getting-started---important" id="toc-getting-started---important" class="nav-link" data-scroll-target="#getting-started---important">Getting Started - Important!</a></li>
+  </ul></li>
+  <li><a href="#exercise-2-water-quality" id="toc-exercise-2-water-quality" class="nav-link" data-scroll-target="#exercise-2-water-quality">Exercise 2: water quality</a></li>
+  <li><a href="#exercise-3-using-ms-excel" id="toc-exercise-3-using-ms-excel" class="nav-link" data-scroll-target="#exercise-3-using-ms-excel">Exercise 3: using MS Excel</a></li>
+  <li><a href="#exercise-3-using-ms-excel-1" id="toc-exercise-3-using-ms-excel-1" class="nav-link" data-scroll-target="#exercise-3-using-ms-excel-1">Exercise 3: using MS Excel</a></li>
+  <li><a href="#exercise-4-soil-data" id="toc-exercise-4-soil-data" class="nav-link" data-scroll-target="#exercise-4-soil-data">Exercise 4: soil data</a>
   <ul class="collapse">
   <li><a href="#understanding-data-structure" id="toc-understanding-data-structure" class="nav-link" data-scroll-target="#understanding-data-structure">Understanding data structure</a></li>
-  <li><a href="#basic-subsetting-in-r" id="toc-basic-subsetting-in-r" class="nav-link" data-scroll-target="#basic-subsetting-in-r">Basic Subsetting in R</a></li>
-  <li><a href="#practice-questions" id="toc-practice-questions" class="nav-link" data-scroll-target="#practice-questions">Practice Questions</a></li>
+  <li><a href="#basic-subsetting-in-r" id="toc-basic-subsetting-in-r" class="nav-link" data-scroll-target="#basic-subsetting-in-r">Basic subsetting in R</a></li>
   </ul></li>
+  <li><a href="#exercise-5-soil-statistics" id="toc-exercise-5-soil-statistics" class="nav-link" data-scroll-target="#exercise-5-soil-statistics">Exercise 5: soil statistics</a></li>
+  <li><a href="#done" id="toc-done" class="nav-link" data-scroll-target="#done">Done!</a></li>
+  <li><a href="#bonus-take-home-exercises" id="toc-bonus-take-home-exercises" class="nav-link" data-scroll-target="#bonus-take-home-exercises">Bonus: Take-home exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-5-mario-kart-statistics" id="toc-exercise-5-mario-kart-statistics" class="nav-link" data-scroll-target="#exercise-5-mario-kart-statistics">Exercise 5: Mario Kart statistics</a></li>
+  </ul></li>
+  <li><a href="#attribution" id="toc-attribution" class="nav-link" data-scroll-target="#attribution">Attribution</a></li>
   </ul>
 </nav>
     </div>
@@ -418,19 +427,20 @@ Learning Outcomes
 <li>Import, subset and inspect data in R</li>
 <li>Calculate simple summary statistics using both R and Excel</li>
 <li>Generate dynamic reports in Quarto using inline R code</li>
-<li>Write equations in both Quarto and MS Word</li>
-<li>understand how to debug R code</li>
+<li>Understand how to debug R code</li>
 </ul>
 </div>
 </div>
 <section id="before-we-begin" class="level2">
 <h2 class="anchored" data-anchor-id="before-we-begin">Before we begin</h2>
-<p>At the beginnning of each lab, please create a new Quarto document in your project folder. This will be where you will practice R code, write notes and work on the exercises in this lab. We will go through the process together in the Exercise 1.</p>
+<p>Please create a new Quarto document in your project folder to practice R code and complete lab exercises. We will go through the process in Exercise 1.</p>
 <p>The following packages are required for this practical:</p>
 <ul>
-<li><code>pacman</code> – a package for managing the loading of other packages (among other awesome features) -<code>tidyverse</code> – a collection of R packages designed for data science</li>
+<li><code>pacman</code> – a package for managing the loading of other packages (among other awesome features)</li>
+<li><code>tidyverse</code> – a collection of R packages designed for data science</li>
 <li><code>readxl</code> – a package for reading Excel files</li>
 <li><code>modeest</code> – a package for estimating the mode of a distribution</li>
+<li><code>lubridate</code> – a package for working with dates and times</li>
 </ul>
 <p>If you have not already installed these packages, you can do so by adding the following code into a code chunk in your Quarto document:</p>
 <div class="cell">
@@ -446,11 +456,13 @@ Learning Outcomes
 </section>
 <section id="exercise-1-setting-up" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="exercise-1-setting-up">Exercise 1: Setting up</h2>
-<p>Today we will go through the process of getting into your RStudio project for labs and set up a new Quarto document. Follow these steps carefully:</p>
+<section id="getting-started---important" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="getting-started---important">Getting Started - Important!</h3>
+<p>Before starting each lab session, you will need to create a new Quarto document to work on the exercises. Follow these steps to set up your lab environment:</p>
 <ol type="1">
 <li><strong>Open RStudio Project</strong>
 <ul>
-<li>Locate your RStudio project file (<code>.Rproj</code>) in your lab folder</li>
+<li>Locate your RStudio project file (<code>.Rproj</code>) in your lab folder. This was set up in Lab 01.</li>
 <li>Either:
 <ol type="a">
 <li>Open RStudio and use File &gt; Open Project to navigate to your <code>.Rproj</code> file</li>
@@ -460,58 +472,46 @@ Learning Outcomes
 </ol>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p>Look at the top-right corner of your RStudio window. If you’ve opened the project correctly, you’ll see your project name displayed there. This confirms you’re working in the right project environment.</p>
+<p>Your project name should appear in the top-right corner of RStudio.</p>
 </div></div><ol start="2" type="1">
 <li><strong>Create a New Quarto Document</strong>
 <ul>
-<li>In RStudio, click File &gt; New File &gt; Quarto Document…</li>
-<li>In the dialog box that appears:
-<ul>
-<li>Choose “HTML” as the output format</li>
-<li>Give your document a clear title (e.g., “Lab 02”)</li>
-<li>Click “Create”</li>
+<li>Several ways to do it, the easiest is by clicking the “New File” button in the toolbar and selecting “Quarto Document…”</li>
+<li>Give your document a meaningful name (e.g., <code>Lab 2 Exercises</code>), leave other options as default and click “Create”</li>
 </ul></li>
-</ul></li>
-<li><strong>Save Your Document</strong>
+<li><strong>Save and Render Your Document</strong>
 <ul>
-<li>Immediately save your new document</li>
 <li>Click File &gt; Save or press Ctrl+S (Windows) / Cmd+S (Mac)</li>
 <li>Name it something meaningful like <code>lab02_practice.qmd</code></li>
-<li>Ensure you save it in your lab project folder</li>
-</ul></li>
-<li><strong>Render the Document</strong>
-<ul>
-<li>Click the “Render” button in the editor toolbar</li>
-<li>Review the output HTML file that appears</li>
-<li>Let us know if you encounter any issues</li>
+<li>Click the “Render” button in the editor toolbar to generate the HTML output</li>
 </ul></li>
 </ol>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Pro tips
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ul>
-<li>Look for your project name in the top-right corner to confirm you’re in the right project</li>
-<li>Use Ctrl+S (Windows) / Cmd+S (Mac) to save your work frequently</li>
-<li>Check for missing backticks or brackets if your document won’t render</li>
-</ul>
+<p>If you encounter any issues, please ask your demonstrator for help.</p>
 </div>
 </div>
 </section>
-<section id="exercise-2-exploring-water-quality" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-2-exploring-water-quality">Exercise 2: exploring water quality</h2>
-<p>Sulphate (SO<sub>4</sub>) is an important indicator in water quality monitoring, typically measured to assess environmental impacts from industrial and agricultural activities. In this exercise we will calculate basic descriptive statistics for the SO<sub>4</sub> concentration in water samples. The data is stored in an Excel file with a single sheet named “SO4”.</p>
-<p>First, let’s load the SO<sub>4</sub> data from the Excel file:</p>
+</section>
+<section id="exercise-2-water-quality" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="exercise-2-water-quality">Exercise 2: water quality</h2>
+<p>Sulphate (SO<sub>4</sub>) is a key indicator in water quality monitoring and can be used to assess environmental impacts from industry and agriculture. In this exercise, we will explore a dataset of SO<sub>4</sub> concentrations (mg/kg) in water samples.</p>
+<p>The data is stored in a sheet called “SO4” in the MS Excel file, <code>soil.xlsx</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>so4 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/soil.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"SO4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>When we load data into R for the first time, it is important to check what it looks like (and whether it loaded correctly). The <code>str()</code> function is a good way to quickly inspect the data:</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Try writing and running the code chunks in your own Quarto document to see their outputs. Results will appear below each chunk. See Lab 01 for more information on inserting and running code chunks in Quarto.</p>
+</div></div><p>When we load data into R for the first time, it is important to check what it looks like (and whether it loaded correctly). The <code>str()</code> function is a good way to quickly inspect the data:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(so4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -520,10 +520,7 @@ Pro tips
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(so4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="exercise-3-calculating-basic-statistics" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-3-calculating-basic-statistics">Exercise 3: Calculating basic statistics</h2>
-<p>Now let’s calculate some basic descriptive statistics:</p>
+<p>Let’s calculate some basic descriptive statistics:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean, median, and mode</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mean_so4 <span class="ot">&lt;-</span> <span class="fu">mean</span>(so4<span class="sc">$</span>SO4)</span>
@@ -537,8 +534,8 @@ Pro tips
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>sd_so4 <span class="ot">&lt;-</span> <span class="fu">sd</span>(so4<span class="sc">$</span>SO4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When reporting statistics in a scientific document, there are two approaches we could take:</p>
-<section id="basic-r-output-not-recommended" class="level4">
-<h4 class="anchored" data-anchor-id="basic-r-output-not-recommended">1. Basic R output (not recommended):</h4>
+<section id="basic-r-output" class="level4">
+<h4 class="anchored" data-anchor-id="basic-r-output">1. Basic R output:</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mean_so4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -556,7 +553,7 @@ Pro tips
 </section>
 <section id="inline-reporting-recommended" class="level4">
 <h4 class="anchored" data-anchor-id="inline-reporting-recommended">2. Inline reporting (recommended):</h4>
-<p>Consider the following text:</p>
+<p>Consider the following reporting:</p>
 <blockquote class="blockquote">
 <p>The mean SO<sub>4</sub> concentration in our samples is 61.92 mg/kg, with a standard deviation of 5.24 mg/kg. The median value is 62.1 mg/kg.</p>
 </blockquote>
@@ -568,43 +565,58 @@ Pro tips
 </ul>
 <p>To create inline R code, use backticks with r, like this:</p>
 <pre><code>The mean SO~4~ concentration in our samples is 61.92 mg/kg</code></pre>
-<p>Now try to recreate the paragraph above in your Quarto document.</p>
+<p>Try to recreate the report above in your Quarto document, or use other objects like <code>mode_so4</code> and <code>var_so4</code> in your report.</p>
 </section>
 </section>
-<section id="exercise-4-doing-it-in-excel" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-4-doing-it-in-excel">Exercise 4: doing it in Excel</h2>
-<p>While R is powerful for data analysis, Microsoft Excel remains a widely used tool in just about any setting. Understanding how to perform basic statistical calculations in Excel is valuable for quick analyses and data exploration.</p>
-<p>Given data, you can pick <em>any</em> cell to calculate statistics, but it’s common to use a new row or column to keep the data and results separate. For this exercise, we’ll calculate the same statistical measures as we did in R, but using Excel’s built-in functions.</p>
-<p>Excel formulas always begin with an equals sign (=) followed by the function name and parentheses containing the data range.</p>
-<ul>
-<li>Select the cell where you want the result to appear</li>
-<li>Type = to begin the formula</li>
-<li>Type the function name (e.g., AVERAGE)</li>
-<li>Enter the data range in parentheses</li>
-<li>Press Enter to calculate the result</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
+<section id="exercise-3-using-ms-excel" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3-using-ms-excel">Exercise 3: using MS Excel</h2>
+</section>
+<section id="exercise-3-using-ms-excel-1" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="exercise-3-using-ms-excel-1">Exercise 3: using MS Excel</h2>
+<p>Let’s calculate the same statistics using Excel to compare approaches. First:</p>
+<ol type="1">
+<li>Open the <code>soil.xlsx</code> file in Excel</li>
+<li>Navigate to the “SO4_excel” sheet (we’ll use this sheet to avoid modifying the original data)</li>
+<li>Ensure the data is properly displayed in columns</li>
+</ol>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>MS Excel remains a popular tool for quick and dirty data analysis and can be a valuable resource in just about any field.</p>
+</div></div><div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/excel-data.png" class="img-fluid figure-img"></p>
-<figcaption>Imported data in Excel.</figcaption>
+<figcaption>Imported data in Excel. Make sure to use the “SO4_excel” sheet.</figcaption>
 </figure>
 </div>
-<p>To calculate these statistics in Excel:</p>
+<p>For any calculation in Excel:</p>
 <ol type="1">
+<li>Select an empty cell</li>
+<li>Type “<code>=</code>” followed by the function name</li>
+<li>Select your data range</li>
+<li>Press Enter</li>
+</ol>
+<p>For example, to calculate the mean:</p>
+<ol type="1">
+<li>Click an empty cell</li>
+<li>Type <code>=AVERAGE(</code></li>
+<li>Select all SO4 values</li>
+<li>Type <code>)</code> and press Enter</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/excel-mean-formula.png" class="img-fluid figure-img"></p>
+<figcaption>Using the <code>=AVERAGE()</code> formula in Excel. Note that this screenshot demonstrates the selection of a specific range of data.</figcaption>
+</figure>
+</div>
+<div style="color: blue">
+<p>Calculate these statistics for the SO<sub>4</sub> data in Excel:</p>
+<ul>
 <li>For central tendency:
 <ul>
 <li>Mean: Use <code>=AVERAGE()</code></li>
 <li>Median: Use <code>=MEDIAN()</code></li>
 <li>Mode: Use <code>=MODE()</code></li>
 </ul></li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/excel-mean-formula.png" class="img-fluid figure-img"></p>
-<figcaption>Using the <code>MEAN()</code> formula in Excel.</figcaption>
-</figure>
-</div>
-<ol start="2" type="1">
 <li>For spread:
 <ul>
 <li>Range: Use <code>=MAX()</code> and <code>=MIN()</code></li>
@@ -612,10 +624,13 @@ Pro tips
 <li>Variance: Use <code>=VAR.S()</code></li>
 <li>Standard Deviation: Use <code>=STDEV.S()</code></li>
 </ul></li>
-</ol>
+</ul>
+<p>Write notes on how you used these formulas if necessary. You may also want to compare the results with those obtained in R and write down your thoughts on the efficiency and ease of use for each method.</p>
+</div>
 </section>
-<section id="exercise-5-soil" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-5-soil">Exercise 5: soil</h2>
+<section id="exercise-4-soil-data" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="exercise-4-soil-data">Exercise 4: soil data</h2>
+<p>In agricultural science, soil characteristics are essential for understanding soil health and fertility. The <code>soil</code> sheet in the <code>soil.xlsx</code> file contains data on soil properties at different depths, as well as lithology and land use information.</p>
 <p>In this exercise, we’ll explore different ways to subset data in R using the soil characteristics data. First, let’s load the data:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>soil <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/soil.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"soil"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -624,26 +639,74 @@ Pro tips
 <h3 class="anchored" data-anchor-id="understanding-data-structure">Understanding data structure</h3>
 <p>Let’s examine our data structure:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(soil)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soil)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(soil)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [55 × 7] (S3: tbl_df/tbl/data.frame)
+ $ id       : chr [1:55] "AT1" "AT2" "AT3" "BM1" ...
+ $ clay0    : num [1:55] 21.26 21.43 4.52 19.37 40.64 ...
+ $ clay60   : num [1:55] 30.4 38.2 42.6 24.6 75.6 ...
+ $ ec0      : num [1:55] 52.4 34.9 52.8 35.1 46.4 ...
+ $ ec60     : num [1:55] 32.6 25.1 38.5 26.4 35.2 ...
+ $ lithology: chr [1:55] "Siliceous Mid" "Siliceous Mid" "Siliceous Lower" "Siliceous Lower" ...
+ $ land_use : chr [1:55] "Grazing" "Grazing" "Grazing" "Grazing" ...</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soil)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 7
+  id    clay0 clay60   ec0  ec60 lithology       land_use
+  &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;   
+1 AT1   21.3    30.4  52.4  32.6 Siliceous Mid   Grazing 
+2 AT2   21.4    38.2  34.8  25.1 Siliceous Mid   Grazing 
+3 AT3    4.52   42.6  52.8  38.5 Siliceous Lower Grazing 
+4 BM1   19.4    24.6  35.2  26.4 Siliceous Lower Grazing 
+5 BM2   40.6    75.6  46.4  35.2 Mafic           Grazing 
+6 BM3   42.7    75.1  50.0  59.7 Mafic           Grazing </code></pre>
+</div>
+</div>
+<p><span style="color: blue">What do you notice about the data structure that is different from the SO<sub>4</sub> data?</span></p>
+<p>The <code>soil</code> data frame contains the following columns:</p>
+<ul>
+<li><code>clay0</code>: Clay content at 0 cm depth</li>
+<li><code>clay60</code>: Clay content at 60 cm depth</li>
+<li><code>ec0</code>: Electrical conductivity at 0 cm depth</li>
+<li><code>ec60</code>: Electrical conductivity at 60 cm depth</li>
+<li><code>lithology</code>: Type of soil composition</li>
+<li><code>land_use</code>: Land usage type</li>
+</ul>
 </section>
-<section id="basic-subsetting-in-r" class="level3">
-<h3 class="anchored" data-anchor-id="basic-subsetting-in-r">Basic Subsetting in R</h3>
+<section id="basic-subsetting-in-r" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="basic-subsetting-in-r">Basic subsetting in R</h3>
 <p>There are two main ways to subset data in R:</p>
 <ol type="1">
 <li>Using the <code>$</code> operator to select columns</li>
 <li>Using square brackets <code>[]</code> to select rows and columns</li>
 </ol>
 <section id="using-the-operator" class="level4">
-<h4 class="anchored" data-anchor-id="using-the-operator">Using the $ Operator</h4>
+<h4 class="anchored" data-anchor-id="using-the-operator">Using the $ operator</h4>
 <p>The <code>$</code> operator allows us to select a specific column from our data frame. For example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the land use column</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>soil<span class="sc">$</span>land_use</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean clay content at 60 cm depth</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(soil<span class="sc">$</span>clay60)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the land use column</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>soil<span class="sc">$</span>land_use</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Grazing"  "Grazing"  "Grazing"  "Grazing"  "Grazing"  "Grazing" 
+ [7] "Grazing"  "Grazing"  "Grazing"  "Grazing"  "Grazing"  "Grazing" 
+[13] "Grazing"  "Grazing"  "Grazing"  "Grazing"  "Grazing"  "Grazing" 
+[19] "Grazing"  "Grazing"  "Grazing"  "Grazing"  "Cropping" "Cropping"
+[25] "Cropping" "Cropping" "Grazing"  "Grazing"  "Grazing"  "Grazing" 
+[31] "Grazing"  "Grazing"  "Cropping" "Cropping" "Cropping" "Grazing" 
+[37] "Cropping" "Grazing"  "Grazing"  "Grazing"  "Cropping" "Grazing" 
+[43] "Grazing"  "Grazing"  "Cropping" "Grazing"  "Grazing"  "Grazing" 
+[49] "Grazing"  "Grazing"  "Natural"  "Natural"  "Grazing"  "Cropping"
+[55] "Cropping"</code></pre>
+</div>
+</div>
+<p>Combined with functions, the <code>$</code> operator can be used to calculate statistics on specific columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean clay content at 0 cm depth</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(soil<span class="sc">$</span>clay0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 23.198</code></pre>
+</div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -664,57 +727,149 @@ Note
 </div>
 </div>
 </section>
-<section id="using-square-brackets" class="level4">
-<h4 class="anchored" data-anchor-id="using-square-brackets">Using Square Brackets []</h4>
-<p>Square brackets allow more flexible subsetting using the format: <code>dataframe[rows, columns]</code></p>
+<section id="using-square-brackets" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="using-square-brackets">Using square brackets []</h4>
+<p>Square brackets allow more flexible subsetting using the format: <code>dataframe[rows, columns]</code>. It also works with vectors, lists, and matrices. Try the following examples:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First 5 rows, all columns</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>soil[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, ]</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Clay columns</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>soil[, <span class="fu">c</span>(<span class="st">"clay0"</span>, <span class="st">"clay60"</span>)]</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># First 3 rows, electrical conductivity columns</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>soil[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">c</span>(<span class="st">"ec0"</span>, <span class="st">"ec60"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>soil[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, ] <span class="co"># First 5 rows, all columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 7
+  id    clay0 clay60   ec0  ec60 lithology       land_use
+  &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;   
+1 AT1   21.3    30.4  52.4  32.6 Siliceous Mid   Grazing 
+2 AT2   21.4    38.2  34.8  25.1 Siliceous Mid   Grazing 
+3 AT3    4.52   42.6  52.8  38.5 Siliceous Lower Grazing 
+4 BM1   19.4    24.6  35.2  26.4 Siliceous Lower Grazing 
+5 BM2   40.6    75.6  46.4  35.2 Mafic           Grazing </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>soil[, <span class="fu">c</span>(<span class="st">"clay0"</span>, <span class="st">"clay60"</span>)] <span class="co"># Clay columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 55 × 2
+   clay0 clay60
+   &lt;dbl&gt;  &lt;dbl&gt;
+ 1 21.3    30.4
+ 2 21.4    38.2
+ 3  4.52   42.6
+ 4 19.4    24.6
+ 5 40.6    75.6
+ 6 42.7    75.1
+ 7 28.1    50.5
+ 8 41.3    72.6
+ 9 48.7    78.7
+10 26.3    50.5
+# ℹ 45 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>soil[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">c</span>(<span class="st">"ec0"</span>, <span class="st">"ec60"</span>)] <span class="co"># First 3 rows, electrical conductivity columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+    ec0  ec60
+  &lt;dbl&gt; &lt;dbl&gt;
+1  52.4  32.6
+2  34.8  25.1
+3  52.8  38.5</code></pre>
+</div>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>When using <code>[]</code>, leaving the row or column section empty (with just a comma) means “select all”</p>
+</div></div><p><strong>Basic subsetting</strong>: Use square brackets to extract soil samples at 0cm depth that have clay content greater than 40%.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>soil[soil<span class="sc">$</span>clay0 <span class="sc">&gt;</span> <span class="dv">40</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Multiple conditions</strong>: Find samples where clay content at 60cm is greater than 30% AND electrical conductivity at 0cm is less than 0.5.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>soil[soil<span class="sc">$</span>clay60 <span class="sc">&gt;</span> <span class="dv">30</span> <span class="sc">&amp;</span> soil<span class="sc">$</span>ec0 <span class="sc">&lt;</span> <span class="fl">0.5</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div style="color: blue">
+<p><strong>Practice</strong>: Subset the data to find samples where:</p>
+<ul>
+<li>clay content at 0cm depth is less than 50%</li>
+<li>electrical conductivity at 60cm depth is greater than 1.5</li>
+<li>clay content at 0cm is less than 20% OR pH at 60cm is greater than 6.5</li>
+</ul>
 </div>
 </section>
 </section>
-<section id="practice-questions" class="level3">
-<h3 class="anchored" data-anchor-id="practice-questions">Practice Questions</h3>
+</section>
+<section id="exercise-5-soil-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-5-soil-statistics">Exercise 5: soil statistics</h2>
+<p>We will continue to work on the soil dataset and practice calculating some basic summary statistics.</p>
+<div style="color: blue">
 <ol type="1">
-<li>Using the <code>$</code> operator:
+<li>Calculate the mean, median, and mode for clay content at 0cm depth</li>
+<li>Calculate the range, IQR, variance, and standard deviation for electrical conductivity at 60cm depth</li>
+<li>Report these statistics in your Quarto document using inline R code</li>
+</ol>
+</div>
+</section>
+<section id="done" class="level2">
+<h2 class="anchored" data-anchor-id="done">Done!</h2>
+<p>This is the end of Lab 02. Remember to save your Quarto document and submit it to Canvas when you’re done. If you have any questions, feel free to ask your demonstrator for help.</p>
+</section>
+<section id="bonus-take-home-exercises" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-take-home-exercises">Bonus: Take-home exercises</h2>
+<p>Take-home exercises are optional but recommended for further practice. You can complete these exercises in your own time.</p>
+<section id="exercise-5-mario-kart-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-5-mario-kart-statistics">Exercise 5: Mario Kart statistics</h3>
+<p>We’re not going to go too much about the game – but here is a dataset of character attributes from the popular game.</p>
+<p>Download it here: <a href="data/mario_kart.csv">mario_kart.csv</a></p>
+<p>The data is stored in a CSV file, which MS Excel can open directly. To read it into R, use the <code>read_csv()</code> function from the <code>readr</code> package.</p>
+<p>The dataset contains the following variables:</p>
 <ul>
-<li>Extract all EC (Electrical Conductivity) values</li>
-<li>Calculate the mean EC</li>
+<li><code>character</code>: Character name</li>
+<li><code>weight</code>: Character’s weight class (1-5 scale)</li>
+<li><code>speed</code>: Maximum speed rating (1-5 scale)</li>
+<li><code>acceleration</code>: How quickly they reach top speed (1-5 scale)</li>
+<li><code>handling</code>: Steering control rating (1-5 scale)</li>
+<li><code>traction</code>: Grip on different surfaces (1-5 scale)</li>
+<li><code>drift_rating</code>: Skill at power-sliding around corners (1-5 scale)</li>
+</ul>
+<div style="color: blue">
+<p>Complete the following exercises using both R and Excel:</p>
+<ol type="1">
+<li><p><strong>Data Import and Inspection</strong></p>
+<ul>
+<li>Load the data into R using <code>read_csv()</code></li>
+<li>Examine the structure using <code>str()</code></li>
+<li>View the first few rows using <code>head()</code></li>
+<li>What do you notice about the data?</li>
 </ul></li>
-<li>Using square brackets:
+<li><p><strong>Central Tendency</strong> Calculate for the speed attribute:</p>
 <ul>
-<li>Select rows 10-15 of the dataset</li>
-<li>Extract pH values for samples 5-10</li>
-<li>Create a subset containing only pH and OC (Organic Carbon) columns</li>
+<li>Mean</li>
+<li>Median</li>
+<li>Mode</li>
+</ul>
+<p>Which measure best represents the “typical” speed rating? Why?</p></li>
+<li><p><strong>Spread Analysis</strong> For the weight attribute, calculate:</p>
+<ul>
+<li>Range</li>
+<li>IQR</li>
+<li>Variance</li>
+<li>Standard deviation</li>
+</ul>
+<p>What do these tell you about the variation in character weights?</p></li>
+<li><p><strong>Character Comparison</strong></p>
+<ul>
+<li>Which characters have the highest and lowest acceleration?</li>
+<li>Find all characters with above-average handling</li>
+<li>Identify characters with both speed and weight above 4.0</li>
 </ul></li>
-<li>Challenge: Create a subset that contains:
+<li><p><strong>Advanced Challenge</strong></p>
 <ul>
-<li>Only samples where pH is greater than 7</li>
-<li>Only the pH and EC columns</li>
+<li>Calculate the mean of all attributes for each character</li>
+<li>Who is the most “well-rounded” character (closest to average in all stats)?</li>
+<li>Create a report comparing Mario and Luigi’s stats using inline R code</li>
 </ul></li>
 </ol>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Remember: - When using <code>[]</code>, leaving the row or column section empty (with just a comma) means “select all” - You can use logical conditions inside <code>[]</code> to filter data</p>
-</div>
-</div>
-
-
 </section>
+</section>
+<section id="attribution" class="level2">
+<h2 class="anchored" data-anchor-id="attribution">Attribution</h2>
+<p>This lab document is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+
+
 </section>
 
 </main> <!-- /main -->
