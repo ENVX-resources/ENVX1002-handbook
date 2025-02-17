@@ -1,0 +1,15 @@
+subtitle: "[ENVX1002 Handbook](/index.qmd)"
+description: The University of Sydney
+date: today
+date-format: "[Semester 1,] YYYY"
+# adjust banner and title block colours
+title-block-banner: "#FCEDE2"
+title-block-banner-color: "#000"
+format: 
+  html: default
+  typst: default
+execute:
+  eval: true
+navbar: false
+sidebar: false
+toc-location: left

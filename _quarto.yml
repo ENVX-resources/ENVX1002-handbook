@@ -23,8 +23,31 @@ website:
         contents: module03/*
       - "---"
       - section: "**🖥️ Computer labs**"
-        contents: labs/*
-
+        contents:
+          - href: labs/Lab01.qmd
+            target: _blank
+          - href: labs/Lab02.qmd
+            target: _blank
+          - href: labs/Lab03.qmd
+            target: _blank
+          - href: labs/Lab04.qmd
+            target: _blank
+          - href: labs/Lab05.qmd
+            target: _blank
+          - href: labs/Lab06.qmd
+            target: _blank
+          - href: labs/Lab07.qmd
+            target: _blank
+          - href: labs/Lab08.qmd
+            target: _blank
+          - href: labs/Lab09.qmd
+            target: _blank
+          - href: labs/Lab10.qmd
+            target: _blank
+          - href: labs/Lab11.qmd
+            target: _blank
+          - href: labs/Lab12.qmd
+            target: _blank
 format:
   html:
     grid: 
