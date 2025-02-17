@@ -7,11 +7,17 @@ date-format: YYYY
 
 **Welcome to the ENVX1002 lab handbook.** This handbook is designed to be a useful companion to the lectures, labs and assessments.
 
+## Quick links
+
+- [ENVX1002 Unit page](https://www.sydney.edu.au/units/ENVX1002) -- check assessment weights, due dates, and other important information
+- [Canvas](https://canvas.sydney.edu.au) -- the main hub
+- [Ed discussion forum](https://edstem.org/au/dashboard) -- ask questions, share resources, and get help
+
 ## How to use this handbook
 
-Read this handbook before, or *after* each lecture to better understand certain concepts. Lab exercises are also included in this handbook, which you can use to prepare for the lab sessions.
+Read this handbook before, or *after* each lecture to better understand certain concepts. Computer lab exercises are also included, which you can use to prepare for the lab sessions.
 
-To begin, we strongly suggest that you read our introduction chapter, which will provide you with an overview of why ENVX1002 is important for your degree and includes some introductory statistical concepts.
+To begin, we strongly suggest that you read our [introduction](/001-intro.qmd) chapter (which will align with Week 1 Lectures) to get an overview of why ENVX1002 is important for your degree and includes some introductory statistical concepts.
 
 ::: {.callout-note collapse="true"}
 ## Acknowledgements
