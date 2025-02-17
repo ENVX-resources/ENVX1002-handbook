@@ -1,110 +1,100 @@
-# Introduction
+# Introduction to statistics
 
-## What is ENVX?
+Welcome to ENVX1002! This unit introduces you to essential statistical methods that will help you understand and analyse data, regardless of your field of study. Whether you're studying environmental science, agriculture, veterinary science, or any other discipline, the skills you'll learn here will help you make sense of data and draw meaningful conclusions from it.
 
-A practical definition of ENVX is “The use of statistical and computing methods to answer quantitative biological questions.” 
+## Learning objectives
 
-It sits at the interface of applied statistics, data science and life and environmental sciences. It is a field that is growing rapidly in importance as the amount of data being collected in the biological and environmental sciences increases.
+By the end of this unit, you will be able to:
 
-![ENVX is at the interface of applied statistics, data science and life and environmental science](images/venn.png)
+- Understand different types of data and when to use them
+- Use R and Excel for basic data analysis
+- Apply appropriate statistical methods to answer research questions
+- Create clear visualisations of your findings
+- Interpret and communicate statistical results confidently
 
+The above are, of course, simplified for your convenience. The actual learning objectives are more detailed and you can find them in the unit outline.
 
+## What is ENVX1002?
 
-## Introduction to Research
+ENVX1002 is about learning to use statistical and computing methods to answer quantitative questions. It combines three key elements:
 
-You will soon learn that the University of Sydney has a great tradition in research (with many of our efforts earning international recognition). Your teachers will include some experiences of or findings from their research in their classes, and you will have an opportunity to participate in research projects throughout your degree.
-ENVX comprises of three vertically integrated units designed to equip you to confidently approach the design and data analysis aspects of your research. The diagram below shows one view of the process of research (or experimentation).
+1. **Applied statistics**: Tools and methods to analyse data
+2. **Data analysis**: Practical skills to process and understand information
+3. **Research methods**: Approaches to answer scientific questions
 
+![Statistics bridges data analysis and scientific research](images/venn.png){fig-align="left" width="60%"}
 
-![The research process](images/research_cycle.png)
+## Introduction to research
 
-### The Use of Statistics in Research
+The University of Sydney has a strong research tradition, and throughout your degree, you'll have opportunities to engage with research in your chosen field. This unit will equip you with the fundamental skills needed to understand and conduct research, regardless of your specific area of study.
 
-Statistics provides us with an avenue for exploring and reporting the findings of the research. In terms of reporting, it allows us to give a measure (generally a probability) of the extent to which our conclusion could be wrong. Statistics is a means of informing the decision-making process.
+![The research cycle: from question formulation through data collection, analysis, and communication of results which (often) leads to more questions, and iterations thereof](images/research_cycle.png){fig-align="left" width="70%"}
 
-## Data
+### The role of statistics in research
 
-Data is the information we collect on the subjects, factors and variables we are interested in studying. Data may be textual (i.e. words) or numerical. 
+Statistics plays a vital role in modern research by providing rigorous methods to analyse and interpret data. In research, we use statistics to explore patterns in our data, from simple summaries to complex relationships between variables. For example, astronomers used statistical analysis to discover thousands of planets around other stars by detecting tiny, regular dips in star brightness - sometimes as small as 0.01%! Without statistics to separate these tiny signals from random variations in brightness, we would never have found these distant worlds.
 
-### Observations, samples and populations
+These analytical methods go beyond just describing data - they give us the power to draw reliable conclusions. Using techniques like hypothesis testing, we can determine if observed differences between groups are truly meaningful or just due to chance. Perhaps most importantly, we can quantify our uncertainty. Rather than simply claiming "Treatment A works better than Treatment B," we can state precisely how confident we are in our findings.
 
-Populations may be real and therefore able to be listed e.g. all veterinarian practices in the Sydney region. They may be hypothetical and unable to all be listed e.g. all dogs possible that could have a particular treatment applied to them.
+Most importantly, these methods enable discoveries that change the world. From measuring the impact of renewable energy breakthroughs to tracking the recovery of endangered species, data analysis replaces guesswork with evidence-based confidence. This approach helps us tackle our planet's biggest challenges.
 
-Each sampling unit (or observation) in the population (e.g. plot of land, animal, etc.) has a value y (e.g. nematode count, gestational length): $y_1,y_2,y_3,...y_N$. Typically the population size (N) is very large - even infinite! The population can be described by population parameters e.g. population mean = $\mu$, population variance = $\sigma^2$. These are generally characters from the Greek alphabet. Since populations are large, we usually cannot determine these values exactly.
+## Understanding data
 
-Often we wish to make generalisations about populations that are too large or too difficult to survey completely. In these cases we sample the population and use characteristics of the sample to extrapolate to characteristics of the larger population. We can define a sample (of size n) as drawn from population “at random”. We call each piece of information recorded about a sampling unit or subject (e.g. plant, person, animal, 1x1m plot of land) an observation.
+### Types of data
 
-![n = 20 units (v) sampled at random from population of N = 1,000 (O)](images/random_sample.png)
+Data comes in various forms. Understanding these different types helps us choose the right analysis methods:
 
-The sample is taken to be representative of the population – but there are **no guarantees**! It is easier/quicker/cheaper to take a sample than study the entire population (since n << N). The results obtained from the sample not important in themselves - the importance is in how it can be used to estimate population parameters i.e. $\bar{y}$ estimates $\mu$; $s^2$ estimates $\sigma^2$.
+1. **Continuous data** (measurements on a continuous scale)
+   - Height measurements
+   - Temperature readings
+   - Weight measurements
 
-Example: For a sample of $n = 10$ cows, gestation length in cattle was measured in days. The sample mean $\bar{y} = 345$ days *estimates* the population mean $\mu = ???$ days. The sample standard deviation $s = 10$ days estimates population standard deviation $\sigma = ???$ days.
+2. **Discrete data** (counts or whole numbers)
+   - Number of items in a sample
+   - Frequency of events
+   - Population counts
 
-### Variables (types of data)
+3. **Categorical data**
+   - Yes/no responses
+   - Classifications (A, B, C)
+   - Types or categories
 
-The table below shows fresh weights of cabbages that were included in a field trial that was investigating the effects of irrigation frequency and plant spacing on cabbage yields. This fresh weight measurement is on a continuous scale. 
+### Samples and populations
 
-Generally in an experiment, several different characteristics of the subjects are measured/recorded. We may score the level of insect damage to leaves of the plant on a scale of 0 to 3 (0 = no damage, 1 = slight damage, 2 = moderate damage, 3 = heavy damage). This is a discrete categorical scale as only certain values on the scale are defined, but it is also an ordered scale. If we had difficulty deciding how to categorize plants using this scale, we might choose to classify plants as either damaged or not damaged, which is a binary measurement scale.
+In research, we often study samples to understand larger populations:
 
-Already you can begin to see that from just one fairly simple field trial quite a lot of data can be generated, also data of differing properties/types.
+- A **population** includes all possible cases (e.g., all students at the university)
+- A **sample** is a subset we actually measure (e.g., 100 randomly selected students)
 
-![Yields of cabbage (mean fresh weight per head in kg) for 24 plots (Source: Mead, Curnow & Hasted (2003)).](images/table1.png)
+![A sample of n = 20 units (v) taken from a population of N = 1,000 (O)](images/random_sample.png)
 
-Data may also be classified as either **quantitative** (e.g. root length) or **qualitative** (e.g. plant species). Quantitative observations are based on some sort of measurement e.g. length, weight, temperature, pH. Qualitative observations are based on categories reflecting a quality or characteristic of the observed event e.g. male vs. female, diseased vs. healthy, mutant vs. wild type.
+### Natural variability
 
-The most common types of variables are:
+When scientists measure things in nature, they never get exactly the same result twice. For example, if you measure a tree's height several times, each measurement will be slightly different. This is called natural variability.
 
-1. Continuous (and interval) data can assume any value in some (possible unbounded) interval of real numbers. Examples are length, weight, temperature, volume, height.
-2. Discrete variables assume only isolated values. E.g. trees per hectare, items per quadrat, number of diseased plants in a section of a glasshouse. They arise from counting – usually either the number of successes in n trials (binary data) OR the number of occurrences of the event in an interval of time or space (count data).
-3. Categorical variables
-    i) Binary variables (listed above as discrete variables) may also be thought of as categorical variables since the subject falls into either of 2 mutually exclusive categories (yes/no, alive/dead, diseased/not diseased etc.).
-    ii) Ordinal variables are not measured but nevertheless have a natural ordering. E.g. candidates for political office can be ranked by individual voters. The rank values have no inherent meaning outside the “order” that they provide. That is, a candidate ranked 2 is not twice as preferable as the person ranked 1. (Compare this with measurement variables where a plant 2 feet tall is twice as tall as a plant1 foot tall. With measurement variables such ratios are meaningful, while with ordinal variables they are not.)
-    iii) Nominal data is qualitative data. Some examples are species, gender, genotype, phenotype, healthy/diseased. Unlike ranked data, there is no “natural” ordering that can be assigned to these categories.
+In science, we expect and plan for this variation. It happens because the natural world isn't perfectly uniform - trees in a forest grow to different heights, temperatures change throughout the day, and no two soil samples are identical. Even our measuring tools add some variation to our results.
 
-Note that some applied statistics texts will define the types of data slightly differently to that shown above.
+Statistics gives us ways to work with this natural variation. It helps us understand what's normal variation and what might signal a real difference that needs our attention. This understanding is essential for making reliable scientific conclusions.
 
-In this unit of study most emphasis will be on the analysis of continuous measurement variables. However a few basic analyses for discrete and categorical variables will be covered.
+## Tools we'll use
 
-Recognising the type of data we have measured is REALLY important as it helps to determine the choice of analysis (and even the descriptive statistics we undertake e.g. the mean of a score doesn’t make sense, but the median is a good alternative measure of central tendency).
+### R programming
+Don't worry if you've never programmed before! We'll start with the basics and build your skills gradually. You'll learn to import and organize data, calculate summary statistics, create informative graphs, and perform statistical tests.
 
-### Relationships between variables
+### Microsoft Excel
+Excel will complement your R skills by helping you organize data, create simple summaries, perform basic calculations, and prepare data for analysis.
 
-Sometimes you will want to explore the relationship between two (or more) variables that you have measured in your research. You will explore the strength of the relationship and the nature of it (e.g. linear, exponential etc.). 
+## Getting help
 
-In the most simple case, we examine the amount of variability in one variable (Y, the dependent variable) that is explained by changes in another variable (X, the independent variable). Often the X variable is called the predictor and the Y variable the response. 
+In general, you can get help through:
 
-### Biological and Environmental Variability
+- Face-to-face (lectures, tutorials, labs)
+- Email consultations
+- Ed Discussion forum (public or private posts)
+- Drop-in sessions (Floris will organise these and announce them on Ed)
 
-Variation is the norm. It occurs in both observational studies as well as designed experiments. For example, river flow varies from sampling time to sampling time and from sampling location to sampling location. Also, levels of soil contamination on a site vary from site to site.
+Remember to ask questions early - we're here to help you succeed.
 
-This type of variation distinguishes the biological and environmental sciences from the physical sciences, which shows relatively little variability:
+## What's next?
 
-- Dropping a ball from a certain height: the time to reach the ground is (nearly) identical each time;
-- Amount of a chemical product produced when reagents are mixed are (nearly) identical and predictable.
-
-Biological data is far more variable due to environmental and genetic effects. To interpret biological data, we need to control variation by an appropriate experimental design, and adjust for variation by means of statistical analyses.
-
-## Statistical distributions
-
-We use statistical distributions to determine the probability of occurrence of our particular sets of observations. A statistical distribution is a representation (using either mathematical formula or a table) of all possible outcomes of a given event. The most well-known distribution is the normal (or Gaussian) distribution for which the probability distribution function is the familiar bell-shaped curve. 
-
-## Sampling
-
-The aim of sampling is to gain a representative picture of the population. There are various methods and strategies for doing this. Experimental groups/samples must be constructed without bias and must be large enough to give the researcher an acceptable level of confidence in the results.
-
-## Hypotheses
-
-A hypothesis is a tentative explanation for the initial or ad hoc observations made. It suggests a cause and effect or associative relationship that is testable, e.g. yield response to nitrogen (N) fertilizer. The purpose and design of an experiment is to test the hypothesis.
-
-## Statistical tests
-
-We decide whether or not a research outcome if significant by conducting a statistical test. Firstly we set arbitrary critical thresholds of probability (P-values). The occurrence of an event whose estimated probability is less than a critical threshold is regarded as a statistically significant outcome. The usual significance level chosen is P<0.05. You will also see P<0.01 and P<0.001 used in research literature. Which statistical test you use (there are many!) depends on the type of data you have collected and the question you wish to ask.
-
-## Software
-
-In this unit of study, we will focus on the use of one statistical package called R. It has been designed specifically for statistical analysis and is freely available. It is a powerful tool for data analysis and is widely used in the biological and environmental sciences. 
-
-You will also learn to use Microsoft Excel to organize and summarise your data. In the next section some of the basic features of Excel are presented. See computer lab 1.
-
-
- 
+In the coming weeks, we'll work with real datasets and learn practical statistical methods that you can apply to data. The first step is to get comfortable with R and Excel, so make sure you're ready to dive in...
