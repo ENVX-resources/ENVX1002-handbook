@@ -1,8 +1,5 @@
 ---
 title: Lab 01 -- Getting started
-format: 
-  html: default
-  typst: default
 embed-resources: true
 resources:
   - data/student_scores.csv

@@ -1,6 +1,6 @@
 ---
 title: Lab 02 -- Statistical programming
-embed-resources: false
+embed-resources: true
 resources:
   - data/soil.xlsx
 ---
