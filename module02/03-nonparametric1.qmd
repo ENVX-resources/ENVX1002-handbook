@@ -227,12 +227,6 @@ $$
 
 As before, the test statistic is $\chi^2 =\sum \frac{\text{(Observed - expected)}^2}{\text{Expected}} $ and this will have (4-1)$\times$(3-1) = 6 df.
 
-This is how to do the test in the Stats menu in GenStat:
-        
->Stats > Statistical Tests > Contingency Tables…
-
-GenStat requires the data to be set up as a 4x3 Table type of spreadsheet (as opposed to a Variate or Matrix). It then reports the $\chi^2$ test statistic and P-Value by selecting the Pearson method.
-
 Pearson chi-squared value is 45.22 with 6 df.
 
 Probability level (under null hypothesis) p \< 0.001
