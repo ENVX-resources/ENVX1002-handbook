@@ -863,7 +863,7 @@ Use the template below to test the hypotheses for each exercise.
 Data:
 - [Housing](data/Housing.csv)
 
-This exercise will use a dataset from [kaggle](#https://www.kaggle.com/datasets/vikramamin/housing-linear-regression)to explore the variables affecting house prices.
+This exercise will use a dataset from [kaggle](https://www.kaggle.com/datasets/vikramamin/housing-linear-regression)to explore the variables affecting house prices.
 
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
