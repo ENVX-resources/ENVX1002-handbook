@@ -1,5 +1,8 @@
 project:
   type: website
+  render: 
+    - "*.qmd"
+    - "!*.md"
 
 website:
   title: "ENVX1002 Handbook"
@@ -63,6 +66,6 @@ execute:
   freeze: auto
 
 profile:
-  default: 
+  default:
     - exercise
     # - solution
