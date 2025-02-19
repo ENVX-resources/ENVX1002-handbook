@@ -123,22 +123,22 @@ a)  which line corresponds to which model?
 
 soil <- read.csv("data/east_creek.csv", header = T)
 
-soil.lin<-lm(yield ~ ph, data = soil)
-soil.quad<-lm(yield ~ ph + I(ph^2), data = soil)
-soil.cub<-lm(yield ~ ph + I(ph^2)+I(ph^3), data = soil)
+soil.lin <- lm(yield ~ ph, data = soil)
+soil.quad <- lm(yield ~ ph + I(ph^2), data = soil)
+soil.cub <- lm(yield ~ ph + I(ph^2) + I(ph^3), data = soil)
 
-#Makes predictions onto pH.new
+# Makes predictions onto pH.new
 
-ph.new<-seq(6.6,8.0,0.01)
-pred.quad<-predict(soil.quad,list(ph=ph.new))
-pred.cub<-predict(soil.cub,list(ph=ph.new))
-pred.lin<-predict(soil.lin,list(ph=ph.new))
+ph.new <- seq(6.6, 8.0, 0.01)
+pred.quad <- predict(soil.quad, list(ph = ph.new))
+pred.cub <- predict(soil.cub, list(ph = ph.new))
+pred.lin <- predict(soil.lin, list(ph = ph.new))
 
-#Adds model fit to existing plots
-plot(soil$ph,soil$yield,xlab="pH",ylab="Yield (t/Ha)") 
-lines (ph.new,pred.quad,col="red")
-lines (ph.new,pred.lin,col="blue")
-lines (ph.new,pred.cub)
+# Adds model fit to existing plots
+plot(soil$ph, soil$yield, xlab = "pH", ylab = "Yield (t/Ha)")
+lines(ph.new, pred.quad, col = "red")
+lines(ph.new, pred.lin, col = "blue")
+lines(ph.new, pred.cub)
 
 
 ```
@@ -297,11 +297,11 @@ First thing we can do is fit a linear model to the fertiliser data:
 
 ```{r results = "show", echo=T}
 # create fertiliser and yield objects
-fert<-c(0,100,170,225)
-yield<-c(3.32,5.23,5.41,5.02)
+fert <- c(0, 100, 170, 225)
+yield <- c(3.32, 5.23, 5.41, 5.02)
 
-# Fits a linear model and saves it to an object called lin.mod 
-lin.mod<-lm(yield~fert)
+# Fits a linear model and saves it to an object called lin.mod
+lin.mod <- lm(yield ~ fert)
 
 # Summarises key features of model
 summary(lin.mod)
@@ -325,10 +325,10 @@ can be fitted using the following lines of code:
 ```{r results = "show", echo=T}
 
 # create a new variable which is the square of the fertilizer rates
-fert2<-fert^2
+fert2 <- fert^2
 
 # fit the quadratic model incorporating fert2
-quad.mod<-lm(yield~fert+fert2)
+quad.mod <- lm(yield ~ fert + fert2)
 
 summary(quad.mod)
 
@@ -360,7 +360,7 @@ To create a new prediction dataset you can use the following code:
 ```{r, echo=T}
 
 # creates a sequence of numbers from 0 to 225 going up in increments of 1
-new.fert<-seq(0,225,1) 
+new.fert <- seq(0, 225, 1)
 
 ```
 
@@ -368,7 +368,7 @@ We can use our model to predict at the values in the new prediction
 dataset, in this case `new.fert`.
 
 ```{r, echo=T}
-new.pred<-predict(quad.mod,list(fert=new.fert,fert2=new.fert^2))
+new.pred <- predict(quad.mod, list(fert = new.fert, fert2 = new.fert^2))
 ```
 
 The general form of the `predict` function is
@@ -383,8 +383,8 @@ Now we plot the raw observation as points and add an overlay of the
 model fit as lines:
 
 ```{r, eval = T, echo=T}
-plot(fert,yield,xlab='Fertilizer', ylab='Yield')
-lines(new.fert,new.pred) #Adds lines to original plot
+plot(fert, yield, xlab = "Fertilizer", ylab = "Yield")
+lines(new.fert, new.pred) # Adds lines to original plot
 ```
 
 <br>
@@ -437,13 +437,13 @@ where
 -   *k* is the rate constant.
 
 ```{r, echo = F}
-year<-c(1650,1750,1804,1850,1900,1927,1950,1955,1960)
-pop<-c(0.5,0.7,1,1.2,1.6,2,2.55,2.88,3)
-plot(year,pop,xlab="Year",ylab="World population (Billions)")
+year <- c(1650, 1750, 1804, 1850, 1900, 1927, 1950, 1955, 1960)
+pop <- c(0.5, 0.7, 1, 1.2, 1.6, 2, 2.55, 2.88, 3)
+plot(year, pop, xlab = "Year", ylab = "World population (Billions)")
 
 
-dt <- rbind(format(year, digits =1), pop)
-row.names(dt) = c("Year", "Pop (billions)")
+dt <- rbind(format(year, digits = 1), pop)
+row.names(dt) <- c("Year", "Pop (billions)")
 
 dt %>%
   kable() %>%
