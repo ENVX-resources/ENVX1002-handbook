@@ -13,3 +13,4 @@ execute:
 navbar: false
 sidebar: false
 toc-location: left
+prefer-html: true
