@@ -140,7 +140,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../001-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction</span></a>
+ <span class="menu-text">Introduction to statistics</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -249,73 +249,73 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab01.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab01.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 01 – Getting started</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab02.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab02.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 02 – Statistical programming</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab03.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab03.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 03 – Probability distributions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab04.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab04.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 04 – Sampling distributions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab05.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab05.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 05 – Hypothesis Testing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab06.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab06.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 06 – Two-sample <em>t</em>-test</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab07.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab07.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 07 – Chi-squared test</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab08.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab08.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 08 – 🚫 No exercises</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab09.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab09.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 9 - Describing relationships</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab10.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab10.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 10 - Linear Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab11.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab11.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 11 - Multiple Linear Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab12.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab12.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 12 - Non-linear models</span></a>
   </div>
 </li>
@@ -331,7 +331,21 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#chi-squared-tests" id="toc-chi-squared-tests" class="nav-link active" data-scroll-target="#chi-squared-tests">Chi-squared tests</a></li>
+  <li><a href="#chi-squared-tests" id="toc-chi-squared-tests" class="nav-link active" data-scroll-target="#chi-squared-tests">Chi-squared tests</a>
+  <ul class="collapse">
+  <li><a href="#notes-on-the-chi2-distribution" id="toc-notes-on-the-chi2-distribution" class="nav-link" data-scroll-target="#notes-on-the-chi2-distribution">Notes on the <span class="math inline">\(\chi^2\)</span> Distribution</a></li>
+  <li><a href="#testing-agreement-of-frequency-data-with-expectation-models" id="toc-testing-agreement-of-frequency-data-with-expectation-models" class="nav-link" data-scroll-target="#testing-agreement-of-frequency-data-with-expectation-models">Testing Agreement of Frequency Data with Expectation Models</a>
+  <ul class="collapse">
+  <li><a href="#steps-in-chi-squared-tests-of-agreement" id="toc-steps-in-chi-squared-tests-of-agreement" class="nav-link" data-scroll-target="#steps-in-chi-squared-tests-of-agreement">Steps in Chi-Squared Tests of Agreement</a></li>
+  <li><a href="#examples-testing-whether-outcomes-are-equally-probable" id="toc-examples-testing-whether-outcomes-are-equally-probable" class="nav-link" data-scroll-target="#examples-testing-whether-outcomes-are-equally-probable">Examples: Testing Whether Outcomes are Equally Probable</a></li>
+  <li><a href="#example-testing-whether-outcomes-are-in-expected-proportions" id="toc-example-testing-whether-outcomes-are-in-expected-proportions" class="nav-link" data-scroll-target="#example-testing-whether-outcomes-are-in-expected-proportions">Example: Testing Whether Outcomes are in Expected Proportions</a></li>
+  </ul></li>
+  <li><a href="#contingency-tables" id="toc-contingency-tables" class="nav-link" data-scroll-target="#contingency-tables">Contingency Tables</a>
+  <ul class="collapse">
+  <li><a href="#example-2-x-2-contingency-table" id="toc-example-2-x-2-contingency-table" class="nav-link" data-scroll-target="#example-2-x-2-contingency-table">Example: (2 x 2) Contingency Table</a></li>
+  <li><a href="#example-4-x-3-contingency-table" id="toc-example-4-x-3-contingency-table" class="nav-link" data-scroll-target="#example-4-x-3-contingency-table">Example: (4 x 3) Contingency Table</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -343,16 +357,27 @@ window.Quarto = {
 
 <section id="chi-squared-tests" class="level1">
 <h1>Chi-squared tests</h1>
-<p>The chi-squared distribution (where chi is pronounced ‘ky’) is a very widely used distribution in statistics. Its symbol is 2. It has MANY applications. Here we will consider only two of these applications – tests of agreement with expected outcomes, and contingency tables.</p>
-<p>7.1 Notes on the 2 Distribution</p>
-<p>The density function for a 2 distribution is positively skewed, that is, it has a long tail to the right. The typical shape of the 2 density function is that shown for the 4 df case in Figure 7.1 below. When df is very low e.g.&nbsp;1 or 2, the curve changes shape dramatically. When df are very large (say greater than 100), the 2 distribution approaches the shape (and properties) of a normal distribution.</p>
-<p>Figure 7.1 The shape of the 2 density function for various degrees of freedom.</p>
-<p>The mean and variance of a 2 variable are simple functions of the degrees of freedom of the distribution. If we express the general degrees of freedom as  (Greek n), then</p>
-<pre><code>Mean of   variable =   (i.e. mean = df)
-Variance of   variable = 2 (i.e. variance = twice the df)</code></pre>
-<p>Critical values of a 2 distribution are given in the 2 probability table that appears as Appendix A.5.</p>
-<p>7.2 Testing Agreement of Frequency Data with Expectation Models</p>
-<p>7.2.1 Steps in Chi-Squared Tests of Agreement</p>
+<p>The chi-squared distribution (where chi is pronounced ‘ky’) is a very widely used distribution in statistics. Its symbol is <span class="math inline">\(\chi^2\)</span>. It has MANY applications. Here we will consider only two of these applications – tests of agreement with expected outcomes, and contingency tables.</p>
+<section id="notes-on-the-chi2-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="notes-on-the-chi2-distribution">Notes on the <span class="math inline">\(\chi^2\)</span> Distribution</h2>
+<p>The density function for a <span class="math inline">\(\chi^2\)</span> distribution is positively skewed, that is, it has a long tail to the right. The typical shape of the <span class="math inline">\(\chi^2\)</span> density function is that shown for the 4 df case in Figure 7.1 below. When df is very low e.g.&nbsp;1 or 2, the curve changes shape dramatically. When df are very large (say greater than 100), the <span class="math inline">\(\chi^2\)</span> distribution approaches the shape (and properties) of a normal distribution.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chisquare_density_function.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 7.1 The shape of the <span class="math inline">\(\chi^2\)</span> density function for various degrees of freedom.</figcaption>
+</figure>
+</div>
+<p>The mean and variance of a <span class="math inline">\(\chi^2\)</span> variable are simple functions of the degrees of freedom of the distribution. If we express the general degrees of freedom as <span class="math inline">\(\nu\)</span> (Greek n), then</p>
+<ul>
+<li>Mean of <span class="math inline">\(\chi^2\)</span> variable = <span class="math inline">\(\nu\)</span> (i.e.&nbsp;mean = df)</li>
+<li>Variance of <span class="math inline">\(\chi^2\)</span> variable = <span class="math inline">\(2\nu\)</span> (i.e.&nbsp;variance = twice the df)</li>
+</ul>
+<p>Critical values of a <span class="math inline">\(\chi^2\)</span> distribution are given in the <span class="math inline">\(\chi^2\)</span> probability table that appears as Appendix A.5.</p>
+</section>
+<section id="testing-agreement-of-frequency-data-with-expectation-models" class="level2">
+<h2 class="anchored" data-anchor-id="testing-agreement-of-frequency-data-with-expectation-models">Testing Agreement of Frequency Data with Expectation Models</h2>
+<section id="steps-in-chi-squared-tests-of-agreement" class="level3">
+<h3 class="anchored" data-anchor-id="steps-in-chi-squared-tests-of-agreement">Steps in Chi-Squared Tests of Agreement</h3>
 <p>The process for performing a goodness of fit test is the similar to that of the other hypothesis tests you have encountered thus far, that is,</p>
 <ol type="1">
 <li><p>Choose an appropriate hypothesis test for the type of data you have, and the type of question you’re asking.</p></li>
@@ -364,84 +389,366 @@ Variance of   variable = 2 (i.e. variance = twice the df)</code></pre>
 <li><p>Obtain the P-value.</p></li>
 <li><p>Draw a statistical conclusion, and use this to generate a biological conclusion.</p></li>
 </ol>
-<p>7.2.2 Examples: Testing Whether Outcomes are Equally Probable</p>
-<p>EXAMPLE 1</p>
+</section>
+<section id="examples-testing-whether-outcomes-are-equally-probable" class="level3">
+<h3 class="anchored" data-anchor-id="examples-testing-whether-outcomes-are-equally-probable">Examples: Testing Whether Outcomes are Equally Probable</h3>
+<p><em>EXAMPLE 1</em></p>
 <p>Sometimes the simplest form of hypothesis is that different outcomes are equally probable. For example, we expect that when a “fair” coin is tossed that the heads and tails outcomes are equally probable. However, we would see different results if the coin is biased and we can conduct a formal hypothesis test to see whether the outcomes are deviating significantly from our expectation of a “fair” coin.</p>
-<p>EXAMPLE 2 (from Mead et al, 2003)</p>
+<p><em>EXAMPLE 2</em> (from Mead et al, 2003)</p>
 <p>Suppose that 40 testers were asked to compare four different cheeses produced by different procedures and identified only by the letters A, B, C, D. Assume that each tester makes one choice and the preferences were as follows.</p>
-<p>Cheese First preference A 5 B 7 C 18 D 10 Total 40</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Cheese</th>
+<th>First preference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>18</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>40</td>
+</tr>
+</tbody>
+</table>
 <p>We might suspect that this shows an overall preference for C. To test the simple model that testers are equally likely to prefer A, B, C, or D, we would calculate the expected frequency for each cheese to be preferred as the total number of testers divided by 4 = 40/4 = 10. Then we calculate:</p>
-<pre><code> =  =9.80.</code></pre>
-<p>This time we have four frequencies with one overall restriction that they total 40, and so there are 3 df. The 5% point of the distribution on 3df is 7.82, so the unevenness of the preferences is significant (given that the value of 9.80 is greater than the value of 7.82. The evidence suggests that the model of equally likely choices is incorrect. [Equivalently, we could produce a chi-squared probability via =CHISQ.DIST.RT(9.80,3) in Excel which returns P = 0.0203. We reject H0 since P &lt; 0.05.)</p>
+<p><span class="math display">\[\chi^2_{obs}=\frac{(5-10)^2}{10}+ \frac{(7-10)^2}{10}+ \frac{(10-10)^2}{10}  =9.80\]</span></p>
+<p>This time we have four frequencies with one overall restriction that they total 40, and so there are 3 df. The 5% point of the <span class="math inline">\(\chi^2\)</span> distribution on 3df is 7.82, so the unevenness of the preferences is significant (given that the <span class="math inline">\(\chi^2_{obs}\)</span> value of 9.80 is greater than the <span class="math inline">\(\chi^2_{crit}\)</span> value of 7.82. The evidence suggests that the model of equally likely choices is incorrect. [Equivalently, we could produce a chi-squared probability via =CHISQ.DIST.RT(9.80,3) in Excel which returns P = 0.0203. We reject H<sub>0</sub> since <span class="math inline">\(P &lt; 0.05\)</span>)</p>
 <p>To assess the extent to which it is the preference for cheese C that contradicts the model, we might decide to do a further test to compare whether the preference for C only is different to the preference for all the other cheeses. In a model of likely choices, our expected values are C = 10 and all other = 30. We observed C = 18, and all other = 22. You can proceed with the test as per above starting with</p>
-<pre><code> =  =…      etc.</code></pre>
-<p>7.2.3 Example: Testing Whether Outcomes are in Expected Proportions (from Mead et al, 2003)</p>
+<p><span class="math display">\[ \chi^2_{obs}=\frac{(18-10)^2}{10}+ \frac{(22-30)^2}{30}  =…\text{etc.}\]</span></p>
+</section>
+<section id="example-testing-whether-outcomes-are-in-expected-proportions" class="level3">
+<h3 class="anchored" data-anchor-id="example-testing-whether-outcomes-are-in-expected-proportions">Example: Testing Whether Outcomes are in Expected Proportions</h3>
+<p>(from Mead et al, 2003)</p>
 <p>A total of 560 primula plants were classified by the type of leaf (flat or crimped) and the type of eye (normal or Primrose Queen).</p>
-<p>The figures obtained for the primula plants follow. Normal eye Primrose Queen eye Total Flat leaves 328 122 450 Crimped leaves 77 33 110 Total 405 155 560</p>
-<p>On the hypothesis of a Mendelian 3:1 ratio, we would expect, for each characteristic, ¾ of the total 560 observation in the first class of the characteristic and the remaining ¼ in the second class. Further, this model predicts that ¾ of the flat-leaved plants should have normal eyes, resulting in ¾ × ¾ of all the plants or 9/16 with flat leaves and normal eyes; the remaining ¼ of the flat-leaved plants, which is ¼ × ¾ or 3/16, should have Primrose Queen eyes. Similarly, 3/16 of the plants should have crimped leaves and normal eyes; and 1/16 crimped leaves and Primrose Queen eyes.</p>
+<p>The figures obtained for the primula plants follow.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Normal eye</th>
+<th>Primrose Queen eye</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Flat leaves</td>
+<td>328</td>
+<td>122</td>
+<td>450</td>
+</tr>
+<tr class="even">
+<td>Crimped leaves</td>
+<td>77</td>
+<td>33</td>
+<td>110</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>405</td>
+<td>115</td>
+<td>560</td>
+</tr>
+</tbody>
+</table>
+<p>On the hypothesis of a Mendelian 3:1 ratio, we would expect, for each characteristic, 3/4 of the total 560 observation in the first class of the characteristic and the remaining 1/4 in the second class. Further, this model predicts that 3/4 of the flat-leaved plants should have normal eyes, resulting in 3/4 <span class="math inline">\(\times\)</span> 3/4 of all the plants or 9/16 with flat leaves and normal eyes; the remaining 3/4 of the flat-leaved plants, which is 1/4 <span class="math inline">\(\times\)</span> 3/4or 3/16, should have Primrose Queen eyes. Similarly, 3/16 of the plants should have crimped leaves and normal eyes; and 1/16 crimped leaves and Primrose Queen eyes.</p>
 <p>The calculation of these expected or predicted proportions is shown below.</p>
-<pre><code>Normal eye  Primrose Queen eye</code></pre>
-<p>Flat leaves ¾ × ¾ = 9/16 ¼ × ¾ = 3/16 Crimped leaves ¾ × ¼ = 3/16 ¼ × ¼ = 1/16</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Normal eye</th>
+<th>Primrose Queen eye</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Flat leaves</td>
+<td>3/4 x 3/4 = 9/16</td>
+<td>1/4 x 3/4 = 3/16</td>
+</tr>
+<tr class="even">
+<td>Crimped leaves</td>
+<td>3/4 x 1/4 = 3/16</td>
+<td>1/4 x 1/4 = 1/16</td>
+</tr>
+</tbody>
+</table>
 <p>Hence, the hypothesis predicts ratios of 9:3:3:1 for the four classes (flat normal: flat Primrose Queen: crimped normal: crimped Primrose Queen). The expected frequencies are calculated as 9/16, 3/16, 3/16, and 1/16 of 560, producing 315, 105, 105, and 35.</p>
 <p>The observed and expected frequencies are summarized in the table below.</p>
-<pre><code>Normal eye  Primrose Queen eye</code></pre>
-<p>Flat leaves 328 (315) 122 (105) Crimped leaves 77 (105) 33 (35)</p>
-<pre><code>    =  
-    = 0.54 + 2.75 + 7.47 + 0.11 = 10.77. </code></pre>
-<p>We compare 10.77 with the 5% point of the distribution on 3df (7.82). We conclude that the 9:3:3:1 model is not acceptable.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Normal eye</th>
+<th>Primrose Queen eye</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Flat leaves</td>
+<td>328 (315)</td>
+<td>122 (105)</td>
+</tr>
+<tr class="even">
+<td>Crimped leaves</td>
+<td>77 (105)</td>
+<td>33 (35)</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+\begin{split}
+\chi^2_{obs} &amp;= \frac{(328-315)^2}{315}+ \frac{(122+105)^2}{105}+ \frac{(77-105)^2}{105}+ \frac{(33-35)^2}{35}  \\
+&amp;= 0.54 + 2.75 + 7.47 + 0.11 \\
+&amp;= 10.77.
+\end{split}
+\]</span> We compare 10.77 with the 5% point of the <span class="math inline">\(\chi^2\)</span> distribution on 3df (7.82). We conclude that the 9:3:3:1 model is not acceptable.</p>
 <p>See pp.&nbsp;332-333 of Mead et al, 2003 for what to do next… after rejecting the model.</p>
-<p>7.3 Contingency Tables</p>
-<p>7.3.1 Example: (2 x 2) Contingency Table</p>
+</section>
+</section>
+<section id="contingency-tables" class="level2">
+<h2 class="anchored" data-anchor-id="contingency-tables">Contingency Tables</h2>
+<section id="example-2-x-2-contingency-table" class="level3">
+<h3 class="anchored" data-anchor-id="example-2-x-2-contingency-table">Example: (2 x 2) Contingency Table</h3>
 <p>Consider an experiment in which two surgical procedures are to be compared by observing the recovery rates of animals receiving either Procedure 1 or Procedure 2. Twenty animals were randomly allocated to receive Procedure 1 and twenty animals to receive Procedure 2.</p>
-<pre><code>Recovered   
-Yes No  Total</code></pre>
-<p>Procedure 1 14 6 20 Procedure 2 8 12 20 Total 22 18 40</p>
-<p>This is one form of a 22 contingency table, since there are two rows and two columns (ignoring the totals). It appears that Procedure 1 leads to a higher recovery rate. Is this due to chance?</p>
+<table class="table-striped table-hover caption-top table">
+<caption>Recovered</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th>Yes</th>
+<th>No</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Procedure 1</td>
+<td>2.05</td>
+<td>6</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>Procedure 2</td>
+<td>1.37</td>
+<td>12</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>20</td>
+<td>18</td>
+<td>40</td>
+</tr>
+</tbody>
+</table>
+<p>This is one form of a 2x2 contingency table, since there are two rows and two columns (ignoring the totals). It appears that Procedure 1 leads to a higher recovery rate. Is this due to chance?</p>
 <p>Solution: We will perform a statistical hypothesis test:</p>
-<p>H0: There is no difference in the true recovery rates for animals on either procedure H1: The recovery rates do differ.</p>
-<p>In terms of parameters, let p1 be the probability that an animal recovers under Procedure 1, and p2 the probability that an animal recovers under Procedure 2. Then the hypotheses are equivalent to</p>
-<pre><code>H0: p1 = p2
-H1: p1 ≠ p2</code></pre>
-<p>Estimates of individual recovery rates are = 14/20 = 0.7 and = 8/20 = 0.4. Is this difference due to chance?</p>
-<p>If H0 is true, there is a common recovery rate (which we label p). Assuming H0 is true, the best estimate of p is</p>
-<pre><code>  =  .</code></pre>
-<p>So the expected frequency (under H0) of recoveries for Procedure 1 would be 20 22/40 = 20 0.55 = 11 animals. In general this can be written as:</p>
-<p>So the expected frequencies for the cells in the table are:</p>
-<p>  Expected frequencies are written on the contingency table in parentheses, allowing comparisons with observed frequencies:</p>
-<pre><code>Recovered   
-Yes No  Total</code></pre>
-<p>Procedure 1 14 (11) 6 (9) 20 Procedure 2 8 (11) 12 (9) 20 Total 22 18 40</p>
-<p>The table shows observed (and expected) frequencies. The 2 test statistic is then calculated using:</p>
-<p>Large values of 2 indicate discrepancies between observed and expected frequencies, i.e.&nbsp;large values indicate that H0 should be rejected in favour of H1.</p>
-<p>The df of this 2 test is 1 for a 22 contingency table. In general,</p>
-<p>If H0 is true, the observed 2 is just one observation from a 2 distribution with 1 df:</p>
-<p>Since , there is (just) not sufficient evidence to reject H0. Thus, while Procedure 1 has a higher recovery rate, it just fails to reach statistical significance. At this stage, the difference in individual recovery rates appears to be chance. Increasing the numbers of animals in a new experiment will determine the question with higher precision.</p>
-<p>  7.3.2 Example: (4 x 3) Contingency Table</p>
+<p>H<sub>0</sub>: There is no difference in the true recovery rates for animals on either procedure.</p>
+<p>H<sub>1</sub>: The recovery rates do differ.</p>
+<p>In terms of parameters, let p<sub>1</sub> be the probability that an animal recovers under Procedure 1, and p<sub>2</sub> the probability that an animal recovers under Procedure 2. Then the hypotheses are equivalent to</p>
+<p><span class="math display">\[       
+H_0: p_1 = p_2
+H_1: p_1 \neq p_2
+\]</span></p>
+<p>Estimates of individual recovery rates are <span class="math inline">\(\hat p = 14/20 = 0.7\)</span> and <span class="math inline">\(\hat p = 8/20 = 0.4\)</span>. Is this difference due to chance?</p>
+<p>If H<sub>0</sub> is true, there is a common recovery rate (which we label p). Assuming H<sub>0</sub> is true, the best estimate of p is</p>
+<p><span class="math display">\[
+\hat p = \frac{14 +8}{20+20}= \frac{22}{40}=0.55
+\]</span></p>
+<p>So the expected frequency (under H<sub>0</sub>) of recoveries for Procedure 1 would be $20 /40 = 20 = 11 $ animals. In general this can be written as: <span class="math display">\[
+\text{Expected Frequency} = \frac{( \text{row total})\times (\text{Column total})}{\text{Grand Total}}
+\]</span> So the expected frequencies for the cells in the table are: <span class="math display">\[
+\begin{split}
+\text{Procedure 1, Recovered:}\ \frac{20 \times 22}{40} &amp;= 11\\
+\text{Procedure 1, Not recovered:}\ \frac{20 \times 18}{40} &amp;=9 \\
+\text{Procedure 2, Recovered:}\ \frac{20 \times 22}{40} &amp;= 11\\
+\text{Procedure 2, Not recovered:}\ \frac{20 \times 18}{40} &amp;=9
+\end{split}
+\]</span> Expected frequencies are written on the contingency table in parentheses, allowing comparisons with observed frequencies:</p>
+<table class="table-striped table-hover caption-top table">
+<caption>Recovered</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th>Yes</th>
+<th>No</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Procedure 1</td>
+<td>14 (11)</td>
+<td>6 (9)</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>Procedure 2</td>
+<td>8 (11)</td>
+<td>12 (9)</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>20</td>
+<td>18</td>
+<td>40</td>
+</tr>
+</tbody>
+</table>
+<p>The table shows observed (and expected) frequencies. The <span class="math inline">\(\chi^2\)</span> test statistic is then calculated using: <span class="math display">\[
+\begin{split}
+\chi^2 &amp;=\sum \frac{\text{(Observed - expected)}^2}{\text{Expected}}\\
+&amp;=\frac{(14-11)^2}{11}+\frac{(6-9)^2}{9}+ \frac{(8-11)^2}{11}+\frac{(12-9)^2}{9}\\
+&amp;= 3.64
+\end{split}
+\]</span> Large values of <span class="math inline">\(\chi^2\)</span> indicate discrepancies between observed and expected frequencies, i.e.&nbsp;large values indicate that H<sub>0</sub> should be rejected in favour of H<sub>1</sub>.</p>
+<p>The df of this <span class="math inline">\(\chi^2\)</span> test is 1 for a <span class="math inline">\(2 \times 2\)</span> contingency table. In general, &gt;df = (number of rows - 1) x (number of columns - 1)</p>
+<p>If H<sub>0</sub> is true, the observed <span class="math inline">\(\chi^2\)</span> is just one observation from a <span class="math inline">\(\chi^2\)</span> distribution with 1 df:</p>
+<p>Since <span class="math inline">\(P =P(\chi^2_1&gt;3.64)=0.056\)</span>, there is (just) not sufficient evidence to reject H<sub>0</sub>. Thus, while Procedure 1 has a higher recovery rate, it just fails to reach statistical significance. At this stage, the difference in individual recovery rates appears to be chance. Increasing the numbers of animals in a new experiment will determine the question with higher precision.</p>
+</section>
+<section id="example-4-x-3-contingency-table" class="level3">
+<h3 class="anchored" data-anchor-id="example-4-x-3-contingency-table">Example: (4 x 3) Contingency Table</h3>
 <p>The second example is a 43 contingency table. Three vaccines for a disease were compared with a control. The number of animals with no, mild, and severe infection was recorded after 24 months. Data were recorded in the following table:</p>
-<pre><code>    Disease Status      </code></pre>
-<p>Vaccine No Mild Severe Total Control 100 (137.3) 71 (42.6) 29 (20.1) 200 A 146 (133.9) 32 (41.6) 17 (19.6) 195 B 149 (132.5) 28 (41.2) 16 (19.3) 193 C 146 (137.3) 37 (42.6) 17 (20.1) 200 Total 541 168 79 788</p>
+<table class="table-striped table-hover caption-top table">
+<caption>Disease Status</caption>
+<thead>
+<tr class="header">
+<th>Vaccine</th>
+<th>No</th>
+<th>Mild</th>
+<th>Severe</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Control</td>
+<td>100 (137.3)</td>
+<td>71 (42.6)</td>
+<td>29 (20.1)</td>
+<td>200</td>
+</tr>
+<tr class="even">
+<td>A</td>
+<td>146 (133.9)</td>
+<td>32 (41.6)</td>
+<td>17 (19.6)</td>
+<td>195</td>
+</tr>
+<tr class="odd">
+<td>B</td>
+<td>149 (132.5)</td>
+<td>28 (41.2)</td>
+<td>16 (19.3)</td>
+<td>193</td>
+</tr>
+<tr class="even">
+<td>C</td>
+<td>146 (137.3)</td>
+<td>37 (42.6)</td>
+<td>17 (20.1)</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>541</td>
+<td>168</td>
+<td>79</td>
+<td>788</td>
+</tr>
+</tbody>
+</table>
 <p>The table shows observed (and expected) frequencies.</p>
-<p>We test H0 that there is no association between disease status and vaccination given, i.e.&nbsp;all vaccinations have equal effectiveness.</p>
-<p>Assuming H0 is true, the expected frequencies are calculated as follows:</p>
-<p>e.g.&nbsp;Expected frequency for an animal in the Control, No disease group:</p>
-<p>.</p>
-<p>As before, the test statistic is and this will have (4-1)(3-1) = 6 df.</p>
-<p>This is how to do the test in the Stats menu in GenStat:</p>
-<pre><code>Stats &gt; Statistical Tests &gt; Contingency Tables…</code></pre>
-<p>GenStat requires the data to be set up as a 43 Table type of spreadsheet (as opposed to a Variate or Matrix). It then reports the X2 test statistic and P-Value by selecting the Pearson method.</p>
+<p>We test H<sub>0</sub> that there is no association between disease status and vaccination given, i.e.&nbsp;all vaccinations have equal effectiveness.</p>
+<p>Assuming H<sub>0</sub> is true, the expected frequencies are calculated as follows:</p>
+<p>e.g.&nbsp;Expected frequency for an animal in the <em>Control, No</em> disease group: <span class="math display">\[
+\frac{\text{row total}\times \text{column total}}{\text{grand total}}
+= \frac{200 \times 541}{788} =137.3
+\]</span></p>
+<p>As before, the test statistic is $^2 = $ and this will have (4-1)<span class="math inline">\(\times\)</span>(3-1) = 6 df.</p>
 <p>Pearson chi-squared value is 45.22 with 6 df.</p>
 <p>Probability level (under null hypothesis) p &lt; 0.001</p>
 <p>The other available method is known as the maximum likelihood (ML) method. The two answers are usually very similar:</p>
 <p>Likelihood chi-squared value is 43.34 with 6 df.</p>
-<p>Probability level (under null hypothesis) p &lt; 0.001   The ML 2 is calculated as follows:</p>
+<p>Probability level (under null hypothesis) p &lt; 0.001</p>
+<p>The ML <span class="math inline">\(\chi^2\)</span> is calculated as follows: <span class="math display">\[
+\chi^2=2\sum Observed \times ln(\frac{Observed}{Expected} )
+\]</span></p>
 <p>The degrees of freedom are (r – 1)(c – 1) as before, where r and c are the numbers of rows and columns respectively.</p>
-<p>In general, the 2 approximation should only be used if the sample size is relatively large. As a general rule, there should be few expected frequencies below 5 and none below 1.0. Most packages will print out a warning when this occurs. Some situations allow exact probabilities to be calculated, but we will not pursue that in this course.</p>
+<p>In general, the <span class="math inline">\(\chi^2\)</span> approximation should only be used if the sample size is relatively large. As a general rule, there should be few expected frequencies below 5 and none below 1.0. Most packages will print out a warning when this occurs. Some situations allow exact probabilities to be calculated, but we will not pursue that in this course.</p>
 <p>An example of low numbers would be the following, (these are basically 1/10th the numbers in the previous example):</p>
-<pre><code>Disease Status  </code></pre>
-<p>Vaccine No Mild Severe Total Control 10 7 3 20 A 15 3 2 20 B 15 3 2 20 C 15 4 2 21 Total 55 17 9 81</p>
-<p> </p>
+<table class="table-striped table-hover caption-top table">
+<caption>Disease Status</caption>
+<thead>
+<tr class="header">
+<th>Vaccine</th>
+<th>No</th>
+<th>Mild</th>
+<th>Severe</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Control</td>
+<td>10</td>
+<td>7</td>
+<td>3</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>A</td>
+<td>15</td>
+<td>3</td>
+<td>2</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>B</td>
+<td>15</td>
+<td>3</td>
+<td>2</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>C</td>
+<td>15</td>
+<td>4</td>
+<td>2</td>
+<td>21</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>55</td>
+<td>17</td>
+<td>9</td>
+<td>81</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="The University of Sydney">
 
 <title>Lab 12 - Non-linear models – ENVX1002 Handbook</title>
 <style>
@@ -102,6 +103,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: #000;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: #000;
+background: #FCEDE2;
+      }
+</style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -136,232 +154,42 @@ window.Quarto = {
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">ENVX1002 Handbook</span>
-    </a>
-  </div>
-        <div class="quarto-navbar-tools tools-end">
-    <a href="../#" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-</div>
-          <div id="quarto-search" class="" title="Search"></div>
-      </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/Lab01.html"><strong>🖥️ Computer labs</strong></a></li><li class="breadcrumb-item"><a href="../labs/Lab12.html">Lab 12 - Non-linear models</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
-</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/Lab01.html"><strong>🖥️ Computer labs</strong></a></li><li class="breadcrumb-item"><a href="../labs/Lab12.html">Lab 12 - Non-linear models</a></li></ol></nav>
+      <h1 class="title">Lab 12 - Non-linear models</h1>
+            <p class="subtitle lead"><a href="../index.html">ENVX1002 Handbook</a></p>
+                  <div>
+        <div class="description">
+          The University of Sydney
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">Semester 1, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../001-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction</span></a>
-  </div>
-</li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text"><strong>📕 Module 1</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../module01/01-exploring_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exploratory Data Analysis</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../module01/02-probability_distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Probability distributions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../module01/03-sampling_distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Sampling distributions</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text"><strong>📗 Module 2</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../module02/01-ttest1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">One-sample <span class="math inline">\(t\)</span>-test</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../module02/02-ttest2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Two-sample <span class="math inline">\(t\)</span>-test</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../module02/03-nonparametric1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Chi-squared tests</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text"><strong>📘 Module 3</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../module03/040-describing_relationships.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Describing relationships</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../module03/041-linear_functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Why do we create models?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../module03/042-linear_functions_multi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Multiple Linear Regression</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../module03/043-nonlinear.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Non-linear regression</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text"><strong>🖥️ Computer labs</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/Lab01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 01 – Getting started</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/Lab02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 02 – Statistical programming</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/Lab03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 03 – Probability distributions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/Lab04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 04 – Sampling distributions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/Lab05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 05 – Hypothesis Testing</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/Lab06.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 06 – Two-sample <em>t</em>-test</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/Lab07.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 07 – Chi-squared test</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/Lab08.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 08 – 🚫 No exercises</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/Lab09.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 9 - Describing relationships</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/Lab10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 10 - Linear Functions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/Lab11.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 11 - Multiple Linear Regression</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/Lab12.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Lab 12 - Non-linear models</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+    <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -381,28 +209,17 @@ window.Quarto = {
   <li><a href="#exercise-5-logistic-models" id="toc-exercise-5-logistic-models" class="nav-link" data-scroll-target="#exercise-5-logistic-models">Exercise 5: Logistic models</a></li>
   </ul></li>
   </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Lab12.pdf"><i class="bi bi-file-pdf"></i>Typst</a></li></ul></div></nav>
 </nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/Lab01.html"><strong>🖥️ Computer labs</strong></a></li><li class="breadcrumb-item"><a href="../labs/Lab12.html">Lab 12 - Non-linear models</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Lab 12 - Non-linear models</h1>
-</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
 
 
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -467,6 +284,15 @@ Learning outcomes
 <ol type="a">
 <li>which line corresponds to which model?</li>
 </ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lab12_files/figure-html/LoadData-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <p><br></p>
 <ol start="2" type="a">
 <li>based on the output from the 3 models below, which model fits the data best? Note: no hypothesis testing yet, just how well the model fits the data (r<sup>2</sup>).</li>
@@ -475,12 +301,81 @@ Learning outcomes
 <ol type="1">
 <li>Linear model:</li>
 </ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = yield ~ ph, data = soil)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.0027 -0.5540  0.2189  0.7643  1.9424 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)  7.08842    3.05279   2.322   0.0221 *
+ph          -0.05249    0.40438  -0.130   0.8970  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.137 on 108 degrees of freedom
+Multiple R-squared:  0.000156,  Adjusted R-squared:  -0.009102 
+F-statistic: 0.01685 on 1 and 108 DF,  p-value: 0.897</code></pre>
+</div>
+</div>
 <ol start="2" type="1">
 <li>Quadratic model:</li>
 </ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = yield ~ ph + I(ph^2), data = soil)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.5010 -0.4380 -0.0099  0.5871  1.7064 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -299.9031    54.2430  -5.529 2.30e-07 ***
+ph            83.1948    14.6954   5.661 1.27e-07 ***
+I(ph^2)       -5.6336     0.9942  -5.667 1.24e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.002 on 107 degrees of freedom
+Multiple R-squared:  0.2309,    Adjusted R-squared:  0.2166 
+F-statistic: 16.07 on 2 and 107 DF,  p-value: 7.921e-07</code></pre>
+</div>
+</div>
 <ol start="3" type="1">
 <li>Cubic model:</li>
 </ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = yield ~ ph + I(ph^2) + I(ph^3), data = soil)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.3734 -0.4540  0.0526  0.5171  1.9561 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept) 1719.020   1082.451   1.588   0.1152  
+ph          -745.066    443.767  -1.679   0.0961 .
+I(ph^2)      107.461     60.570   1.774   0.0789 .
+I(ph^3)       -5.140      2.752  -1.867   0.0646 .
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.9908 on 106 degrees of freedom
+Multiple R-squared:  0.2554,    Adjusted R-squared:  0.2344 
+F-statistic: 12.12 on 3 and 106 DF,  p-value: 6.971e-07</code></pre>
+</div>
+</div>
 <p><br></p>
 <ol start="3" type="a">
 <li>Use the R output to perform hypothesis testing to find the best model. Write out the hypotheses you are testing.</li>
@@ -492,15 +387,15 @@ Learning outcomes
 <p>This exercise will use real data from a yield-fertiliser trial in Bedfordshire, United Kingdom.</p>
 <p>First thing we can do is fit a linear model to the fertiliser data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create fertiliser and yield objects</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>fert<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">170</span>,<span class="dv">225</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>yield<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">3.32</span>,<span class="fl">5.23</span>,<span class="fl">5.41</span>,<span class="fl">5.02</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fits a linear model and saves it to an object called lin.mod </span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>lin.mod<span class="ot">&lt;-</span><span class="fu">lm</span>(yield<span class="sc">~</span>fert)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarises key features of model</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lin.mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create fertiliser and yield objects</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>fert <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">170</span>, <span class="dv">225</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>yield <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">3.32</span>, <span class="fl">5.23</span>, <span class="fl">5.41</span>, <span class="fl">5.02</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fits a linear model and saves it to an object called lin.mod</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>lin.mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(yield <span class="sc">~</span> fert)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarises key features of model</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lin.mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -527,13 +422,13 @@ F-statistic:  3.47 on 1 and 2 DF,  p-value: 0.2035</code></pre>
 </ol>
 <p>Fit and plot a quadratic polynomial in R. In R a quadratic polynomial can be fitted using the following lines of code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new variable which is the square of the fertilizer rates</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>fert2<span class="ot">&lt;-</span>fert<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># fit the quadratic model incorporating fert2</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>quad.mod<span class="ot">&lt;-</span><span class="fu">lm</span>(yield<span class="sc">~</span>fert<span class="sc">+</span>fert2)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(quad.mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new variable which is the square of the fertilizer rates</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fert2 <span class="ot">&lt;-</span> fert<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># fit the quadratic model incorporating fert2</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>quad.mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(yield <span class="sc">~</span> fert <span class="sc">+</span> fert2)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(quad.mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -563,19 +458,26 @@ F-statistic: 731.7 on 2 and 1 DF,  p-value: 0.02613</code></pre>
 <p>To fit our polynomial line in R, we need to obtain model predictions first.</p>
 <p>To plot model predictions you first need to predict at fine intervals of the predictor to make a continuous plot that is not jagged or stepped. To create a new prediction dataset you can use the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creates a sequence of numbers from 0 to 225 going up in increments of 1</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>new.fert<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">225</span>,<span class="dv">1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creates a sequence of numbers from 0 to 225 going up in increments of 1</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>new.fert <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">225</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can use our model to predict at the values in the new prediction dataset, in this case <code>new.fert</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>new.pred<span class="ot">&lt;-</span><span class="fu">predict</span>(quad.mod,<span class="fu">list</span>(<span class="at">fert=</span>new.fert,<span class="at">fert2=</span>new.fert<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>new.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(quad.mod, <span class="fu">list</span>(<span class="at">fert =</span> new.fert, <span class="at">fert2 =</span> new.fert<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The general form of the <code>predict</code> function is <code>predict(model object, list object)</code>.</p>
 <p>The list object tells R what object contains the data we will use to predict. For example in our case the model was built on fert and fert2 so we have to tell the predict function what object contains the new values for each of these, in our case new.fert.</p>
 <p>Now we plot the raw observation as points and add an overlay of the model fit as lines:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fert,yield,<span class="at">xlab=</span><span class="st">'Fertilizer'</span>, <span class="at">ylab=</span><span class="st">'Yield'</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(new.fert,new.pred) <span class="co">#Adds lines to original plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fert, yield, <span class="at">xlab =</span> <span class="st">"Fertilizer"</span>, <span class="at">ylab =</span> <span class="st">"Yield"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(new.fert, new.pred) <span class="co"># Adds lines to original plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lab12_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <p><br></p>
 </section>
@@ -606,6 +508,45 @@ F-statistic: 731.7 on 2 and 1 DF,  p-value: 0.02613</code></pre>
 <li><p>y<sub>0</sub> is the population in 1650 and</p></li>
 <li><p><em>k</em> is the rate constant.</p></li>
 </ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lab12_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Year</td>
+<td style="text-align: left;">1650</td>
+<td style="text-align: left;">1750</td>
+<td style="text-align: left;">1804</td>
+<td style="text-align: left;">1850</td>
+<td style="text-align: left;">1900</td>
+<td style="text-align: left;">1927</td>
+<td style="text-align: left;">1950</td>
+<td style="text-align: left;">1955</td>
+<td style="text-align: left;">1960</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pop (billions)</td>
+<td style="text-align: left;">0.5</td>
+<td style="text-align: left;">0.7</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1.2</td>
+<td style="text-align: left;">1.6</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2.55</td>
+<td style="text-align: left;">2.88</td>
+<td style="text-align: left;">3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><br></p>
 <ol type="a">
 <li>Provide an initial estimate of y<sub>0</sub>.</li>
@@ -637,37 +578,71 @@ slope = k = \frac{log_e y_{max} - log_e y_{min}}{x_{max} - x_{min}}
 </ol>
 <p>Now fit the same model in R using the nls function. Code to get you started is:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>temp<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">25</span>,<span class="dv">30</span>,<span class="dv">35</span>,<span class="dv">40</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>respiration<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">11</span>,<span class="dv">18</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="do">##Initial parameters</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>exp.mod<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="at">Bp=</span><span class="fl">1.0</span>,<span class="at">Cp=</span><span class="fl">0.1</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">##Fits exponential model</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>res.exp<span class="ot">&lt;-</span><span class="fu">nls</span>(respiration<span class="sc">~</span>Bp <span class="sc">*</span> <span class="fu">exp</span>(temp<span class="sc">*</span>Cp),<span class="at">start=</span>exp.mod,<span class="at">trace=</span>T)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="do">##Summarise model</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res.exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>temp<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">25</span>,<span class="dv">30</span>,<span class="dv">35</span>,<span class="dv">40</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>respiration<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">11</span>,<span class="dv">18</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="do">##Initial parameters</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>exp.mod<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="at">Bp=</span><span class="fl">1.0</span>,<span class="at">Cp=</span><span class="fl">0.1</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="do">##Fits exponential model</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>res.exp<span class="ot">&lt;-</span><span class="fu">nls</span>(respiration<span class="sc">~</span>Bp <span class="sc">*</span> <span class="fu">exp</span>(temp<span class="sc">*</span>Cp),<span class="at">start=</span>exp.mod,<span class="at">trace=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2025.224    (3.23e+01): par = (1 0.1)
+90.64319    (7.34e+00): par = (0.6559559 0.09162898)
+2.841421    (9.49e-01): par = (0.7302258 0.08091595)
+1.488431    (5.63e-02): par = (0.7944381 0.07731867)
+1.483685    (1.52e-03): par = (0.8033809 0.07707711)
+1.483681    (4.12e-05): par = (0.8036903 0.07706805)
+1.483681    (1.71e-06): par = (0.8037011 0.07706768)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Summarise model</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res.exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Formula: respiration ~ Bp * exp(temp * Cp)
+
+Parameters:
+   Estimate Std. Error t value Pr(&gt;|t|)    
+Bp 0.803701   0.118632   6.775  0.00107 ** 
+Cp 0.077068   0.004048  19.037 7.37e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.5447 on 5 degrees of freedom
+
+Number of iterations to convergence: 6 
+Achieved convergence tolerance: 1.71e-06</code></pre>
+</div>
 </div>
 <ol start="2" type="a">
 <li>Now you can fit a line to the plot. Does this look similar to your trendline in Excel?</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Plots raw data</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(temp,respiration,<span class="at">xlab=</span><span class="st">'Temperature'</span>,<span class="at">ylab=</span><span class="st">'Respiration'</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Creates new dataset for predictions ( 5 to 40 at an interval of 1)</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>temp.new<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">5</span>,<span class="dv">40</span>,<span class="dv">1</span>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Makes predictions onto temp.new</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>pred.exp<span class="ot">&lt;-</span><span class="fu">predict</span>(res.exp,<span class="fu">list</span>(<span class="at">temp=</span>temp.new))</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Adds model fit to existing plots</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span> (temp.new,pred.exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Plots raw data</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(temp,respiration,<span class="at">xlab=</span><span class="st">'Temperature'</span>,<span class="at">ylab=</span><span class="st">'Respiration'</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Creates new dataset for predictions ( 5 to 40 at an interval of 1)</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>temp.new<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">5</span>,<span class="dv">40</span>,<span class="dv">1</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Makes predictions onto temp.new</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>pred.exp<span class="ot">&lt;-</span><span class="fu">predict</span>(res.exp,<span class="fu">list</span>(<span class="at">temp=</span>temp.new))</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Adds model fit to existing plots</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span> (temp.new,pred.exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lab12_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>Compare the parameters values between Excel and R. You can extract the RSS value from an <code>nls</code> object by using the code below:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deviance</span>(res.exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deviance</span>(res.exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.483681</code></pre>
+</div>
 </div>
 <ol start="3" type="a">
 <li>Calculate the RSS value for the Excel exponential model. Based on this, which is the better model?</li>
@@ -726,10 +701,6 @@ slope = k = \frac{log_e y_{max} - log_e y_{min}}{x_{max} - x_{min}}
 <p><br></p>
 <p>That’s it for Module 3! Great work exploring non-linear models!</p>
 <p>Thank you all (students and demonstrators!) for your hard work and enthusiasm throughout this Module. Good luck with Project 3 and the final exam!</p>
-<p><br> <br> <!--The code below reduces white space at the end of the output doc--></p>
-<div class="tocify-extend-page" data-unique="tocify-extend-page" style="height: 0;">
-
-</div>
 
 
 </section>

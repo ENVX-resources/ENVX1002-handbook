@@ -140,7 +140,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../001-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction</span></a>
+ <span class="menu-text">Introduction to statistics</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -249,73 +249,73 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab01.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab01.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 01 – Getting started</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab02.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab02.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 02 – Statistical programming</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab03.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab03.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 03 – Probability distributions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab04.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab04.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 04 – Sampling distributions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab05.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab05.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 05 – Hypothesis Testing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab06.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab06.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 06 – Two-sample <em>t</em>-test</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab07.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab07.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 07 – Chi-squared test</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab08.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab08.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 08 – 🚫 No exercises</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab09.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab09.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 9 - Describing relationships</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab10.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab10.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 10 - Linear Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab11.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab11.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 11 - Multiple Linear Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/Lab12.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/Lab12.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Lab 12 - Non-linear models</span></a>
   </div>
 </li>
@@ -347,6 +347,8 @@ window.Quarto = {
   </ul></li>
   <li><a href="#f-test-for-equality-of-variances" id="toc-f-test-for-equality-of-variances" class="nav-link" data-scroll-target="#f-test-for-equality-of-variances">F-Test for Equality of Variances</a></li>
   <li><a href="#example-two-sample-t-test" id="toc-example-two-sample-t-test" class="nav-link" data-scroll-target="#example-two-sample-t-test">Example: Two-Sample t-Test</a></li>
+  <li><a href="#paired-t-test" id="toc-paired-t-test" class="nav-link" data-scroll-target="#paired-t-test">Paired t-Test</a></li>
+  <li><a href="#confidence-interval-for-mu_1-mu_2-paired-samples" id="toc-confidence-interval-for-mu_1-mu_2-paired-samples" class="nav-link" data-scroll-target="#confidence-interval-for-mu_1-mu_2-paired-samples">Confidence Interval for <span class="math inline">\(\mu_1 – \mu_2\)</span> (Paired Samples)</a></li>
   </ul>
 </nav>
     </div>
@@ -374,7 +376,7 @@ window.Quarto = {
 
 <p>In the one-sample tests just considered, we compared a population mean, <span class="math inline">\(\mu\)</span> (where our experimental sample represents the population) with a fixed numeric value of interest. In practice, this is fairly rare. More frequently we have samples drawn from two (or more) populations and we compare the two means to see if the treatments produce similar results.</p>
 <p>The null hypothesis is that the two samples come from a population with the same true mean, <span class="math inline">\(\mu\)</span>. This is commonly expressed as</p>
-<p><span class="math display">\[H_0: \mu_1 = \mu_2\]</span></p>
+<p><span class="math display">\[H_0: \mu_1 = \mu_2\ \text{or}\ H_0:\mu_1-\mu_2 =0\]</span></p>
 <p>where <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span> are the means of the two populations. The alternative hypothesis is that the two means are different, i.e.</p>
 <p><span class="math display">\[H_1: \mu_1 \neq \mu_2\]</span></p>
 <section id="assumptions" class="level2">
@@ -454,75 +456,253 @@ Calculating the test statistic
 <section id="confidence-interval-for-mu_1---mu_2-independent-samples" class="level2">
 <h2 class="anchored" data-anchor-id="confidence-interval-for-mu_1---mu_2-independent-samples">Confidence Interval for <span class="math inline">\(\mu_1 - \mu_2\)</span> (Independent Samples)</h2>
 <p>A two-sample t-test shows whether there is evidence of a difference in population means. The magnitude of this difference can be estimated with a confidence interval.</p>
-<p>A 95% confidence interval for the true difference <span class="math inline">\(\mu_1 - \mu_2\)</span> is given by <span class="math display">\[\bar{y}_1 - \bar{y}_2 \pm t^{\alpha/2}_{df} \times SED\]</span></p>
+<p>A 95% confidence interval for the true difference <span class="math inline">\(\mu_1 - \mu_2\)</span> is given by <span class="math inline">\(\bar{y}_1 - \bar{y}_2 \pm t^{\alpha/2}_{df} \times SED\)</span></p>
 <p>where <span class="math inline">\(\bar{y}_1 - \bar{y}_2\)</span> is the difference between the sample means, <span class="math inline">\(t^{\alpha/2}_{df}\)</span> is the critical value from the t-distribution for the chosen level of significance and degrees of freedom, and <span class="math inline">\(SED\)</span> is the standard error of the difference between the means.</p>
 <p>The df and SED need to take into account whether or not you are assuming equal variances.</p>
 </section>
 <section id="sed-and-df-for-independent-samples-with-equal-variances" class="level2">
 <h2 class="anchored" data-anchor-id="sed-and-df-for-independent-samples-with-equal-variances">SED and df for Independent Samples with EQUAL Variances</h2>
+<p><span class="math display">\[
+SED = \sqrt{s^2_p \frac{1}{n1}+ \frac {1}{n2}}
+\]</span> and <span class="math display">\[ s^2_p = \frac{(n_1- 1)s^2_1 + (n_2 -1)s^2_2}{n_1 + n_2 -2}\]</span> <span class="math inline">\(s^2_p\)</span> is the pooled estimate of variance and <span class="math inline">\(df = n_1 +n_2 -2\)</span>. We used a a pooled estimate in this estimate in this instance since we are assuming <span class="math inline">\(\sigma^2_1 = \sigma^2_2\)</span>. <span class="math inline">\(df = n_1 + n_2 -2\)</span></p>
 </section>
 <section id="sed-and-df-for-independent-samples-with-unequal-variances" class="level2">
 <h2 class="anchored" data-anchor-id="sed-and-df-for-independent-samples-with-unequal-variances">SED and df for Independent Samples with UNequal Variances</h2>
-<p>What do you do if when you’re checking your assumptions for a two- sample t-test you find that the variances are not equal? You can go ahead with a modified t-test or you can choose a different test.</p>
+<p>What do you do if when you’re checking your assumptions for a two- sample t-test you find that the variances are not equal but the data is normally distributed? You can go ahead with a modified t-test or you can choose a different test.</p>
 <p>This modified t-test used in the case of unequal variances is often called Satterthwaite’s approximate t-test.</p>
 <section id="satterthwaites-approximate-t-test" class="level3">
 <h3 class="anchored" data-anchor-id="satterthwaites-approximate-t-test">Satterthwaite’s Approximate t-Test</h3>
 <p>The null and alternate hypotheses remain the same i.e.&nbsp;<span class="math display">\[H_0: \mu1 = \mu2\]</span> or <span class="math display">\[H_0: \mu1 - \mu2 = 0\]</span></p>
-<p>The formula for the test statistic, <span class="math inline">\(t\)</span>, in Satterthwaite’s approximate test is a little different to that for the t-test with equal variances. The s.e.d. changes because we can no longer use a pooled estimate of the variance (since the variances cannot be assumed equal).</p>
-<p>A correction for unequal variance is made to the degrees of freedom.</p>
+<p>The formula for the test statistic, <span class="math inline">\(t\)</span>, in Satterthwaite’s approximate test is a little different to that for the t-test with equal variances. The s.e.d. changes because we can no longer use a pooled estimate of the variance (since the variances cannot be assumed equal). <span class="math display">\[
+t = \frac {\bar{y_1 }- \bar{y}_2}{SED} \text {, where} \
+SED = \sqrt{\frac{s^2_1}{n^1}+ \frac{s^2_2}{n_2}}
+\]</span></p>
+<p>A correction for unequal variance is made to the degrees of freedom. <span class="math display">\[
+df = \frac{(\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2})^2}
+{\frac{(\frac{s^2_1}{n_1})^2}{n_1 - 1} + \frac{(\frac{s^2_2}{n_2})^2}{n_2 - 1}}
+\]</span></p>
+<blockquote class="blockquote">
+<p>The result of this equation for df is rounded to the nearest integer</p>
+</blockquote>
 <p>Then proceed as usual through the rest of the test - i.e.&nbsp;find the P-value; draw a statistical conclusion about your hypothesis; interpret your results biologically.</p>
 </section>
 </section>
 <section id="f-test-for-equality-of-variances" class="level2">
 <h2 class="anchored" data-anchor-id="f-test-for-equality-of-variances">F-Test for Equality of Variances</h2>
-<p>One of the conditions for the independent sample t-test to be valid is that the population variances σ12 and σ22 are equal.</p>
-<p>To test the null hypothesis that σ12 = σ22 divide the larger s2 value by the smaller s2 to obtain the variance ratio, v.r.:</p>
-<p>To undertake this two-tailed test at the 5% level you need to carry out the one-tailed test at the 2.5% level. You can use the 2.5% F table of critical values, or you can use GenStat via the menus Data&gt;Probability Calculations… to find the P-value.</p>
-<p>If you use the printed statistical table, you will need to compare the critical value you find there with the variance ratio you calculated. If the calculated variance ratio &gt; critical value, reject H0 and conclude that the variances are significantly different.</p>
+<p>One of the conditions for the independent sample t-test to be valid is that the population variances <span class="math inline">\(\sigma_{12}\)</span> and <span class="math inline">\(\sigma_{22}\)</span> are equal.</p>
+<p>To test the null hypothesis that <span class="math inline">\(\sigma_{12}=\sigma_{22}\)</span> divide the larger s^2 value by the smaller s^2 to obtain the variance ratio, v.r.: <span class="math display">\[
+v.r. = \frac{larger\ s^2}{smaller\ s^2}
+\]</span> To undertake this two-tailed test at the 5% level you need to carry out the one-tailed test at the 2.5% level. You can use the 2.5% F table of critical values, or you can use GenStat via the menus Data&gt;Probability Calculations… to find the P-value.</p>
+<p>If you use the printed statistical table, you will need to compare the critical value you find there with the variance ratio you calculated. If the calculated variance ratio &gt; critical value, reject H<sub>0</sub> and conclude that the variances are significantly different.</p>
 </section>
 <section id="example-two-sample-t-test" class="level2">
 <h2 class="anchored" data-anchor-id="example-two-sample-t-test">Example: Two-Sample t-Test</h2>
 <p>Weights of two breeds of cattle are to be compared: 15 cattle from Breed 1 and 12 cattle from Breed 2 were randomly sampled. Their recorded weights (kg) are shown.</p>
-<p>Breed 1 Breed 2 148.1 187.6 146.2 180.3 152.8 198.6 135.3 190.7 151.2 196.3 146.3 203.8 163.5 190.2 146.6 201.0 162.4 194.7 140.2 221.1 159.4 186.7 181.8 203.1 165.1<br>
-165.0<br>
-141.6</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Breed 1</th>
+<th>Breed 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>148.1</td>
+<td>187.6</td>
+</tr>
+<tr class="even">
+<td>146.2</td>
+<td>180.3</td>
+</tr>
+<tr class="odd">
+<td>152.8</td>
+<td>198.6</td>
+</tr>
+<tr class="even">
+<td>135.3</td>
+<td>190.7</td>
+</tr>
+<tr class="odd">
+<td>151.2</td>
+<td>196.3</td>
+</tr>
+<tr class="even">
+<td>146.3</td>
+<td>203.8</td>
+</tr>
+<tr class="odd">
+<td>163.5</td>
+<td>190.2</td>
+</tr>
+<tr class="even">
+<td>146.6</td>
+<td>201.0</td>
+</tr>
+<tr class="odd">
+<td>162.4</td>
+<td>194.7</td>
+</tr>
+<tr class="even">
+<td>140.2</td>
+<td>221.1</td>
+</tr>
+<tr class="odd">
+<td>159.4</td>
+<td>186.7</td>
+</tr>
+<tr class="even">
+<td>181.8</td>
+<td>203.1</td>
+</tr>
+<tr class="odd">
+<td>165.1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>165.0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>141.6</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p>The following descriptive statistics are obtained from these data.</p>
-<pre><code>Breed 1 Breed2</code></pre>
-<p>Sample mean (kg) 153.700 196.175 Sample s.d. (kg) 12.301 10.616</p>
-<p>Is there any systematic difference in their weights? The question, “Is there any systematic difference in their weights?”, is asking whether or not there is any significant difference between the 2 samples – and in effect if there is any significant difference between the 2 breeds because the factor that distinguishes the 2 samples is breed.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Breed 1</th>
+<th>Breed 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sample mean (kg)</td>
+<td>153.700</td>
+<td>196.175</td>
+</tr>
+<tr class="even">
+<td>Sample s.d. (kg)</td>
+<td>12.301</td>
+<td>10.616</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Is there any systematic difference in their weights?</strong></p>
+<p>The question, “Is there any systematic difference in their weights?”, is asking whether or not there is any significant difference between the 2 samples – and in effect if there is any significant difference between the 2 breeds because the factor that distinguishes the 2 samples is breed.</p>
 <p>We could answer this question by testing whether or not the population mean weights for the 2 breeds can be assumed to be equal:</p>
-<p>H0: μbreed 1 = μBreed 2 versus H1: μBreed 1 ≠ μBreed 2</p>
-<p>To test this particular hypothesis about the equality of the means (as an avenue for answering our broader question), we would use a two-sample t-test.</p>
+<p><span class="math display">\[H_0: \mu_{breed\ 1} = \mu_{breed\ 2}\]</span>versus<br>
+<span class="math display">\[H_1: \mu_{breed\ 1} \neq \mu_{breed\ 2}\]</span> To test this particular hypothesis about the equality of the means (as an avenue for answering our broader question), we would use a two-sample t-test.</p>
 <p>However, it is REALLY important to remember that there are other tests and hypotheses that we could use to answer our broader question (about whether or not there is any statistical difference between the weights of the 2 breeds). We’ll consider some non-parametric alternatives in Biometry 2.</p>
-<p>To proceed with a two-sample t-test, there are 2 assumptions that we need to check: • Normality of Breed 1 data and normality of Breed 2 data • Equality of variances of the 2 samples</p>
+<p>To proceed with a two-sample t-test, there are 2 assumptions that we need to check:</p>
+<ul>
+<li>Normality of Breed 1 data and normality of Breed 2 data</li>
+<li>Equality of variances of the 2 samples</li>
+</ul>
 <p>Both of these checks are hypothesis tests in their own right and contain the usual elements of a hypothesis test i.e.&nbsp;null &amp; alternate hypothesis; test statistic; df; P-value or critical value; conclusion.</p>
-<p>Testing the Assumption of Normality If you are doing the test by hand, you would need to assume that the data are normally distributed (and hope this is true). At least the data in this example is continuous… which is one small step towards normality.</p>
-<p>Testing the Assumption of Equality of Variance H0: σ2Breed 1 = σ2Breed 2 versus H1: σ2Breed 1 ≠ σ2Breed 2</p>
+<p><strong>Testing the Assumption of Normality</strong></p>
+<p>If you are doing the test by hand, you would need to assume that the data are normally distributed (and hope this is true). At least the data in this example is continuous… which is one small step towards normality.</p>
+<p>Testing the Assumption of Equality of Variance <span class="math display">\[H_0: \sigma^2~Breed1~ = \sigma^2~Breed2~\  \text{versus}\  H_0: \sigma^2~Breed1~ \neq \sigma^2~Breed2~ \]</span></p>
 <p>Test statistic:</p>
-<p>There are 2 degrees of freedom to calculate for an F test. They are called the numerator df, 1 and the denominator df, 2. (Remember from school days, numerator is the top half of a fraction, denominator is the bottom half of a fraction.) The  that looks like a curly ‘v’ is the Greek letter ‘nu’.</p>
-<p>For an F test used to test equality of variance, df are: 1 = n1 – 1, 2 = n2 – 1.</p>
-<p>Here, 1 = nBreed 1 -1 = 15 - 1 = 14 and 2 = nBreed 2 - 1 = 12 – 1 = 11.</p>
-<p>Using the 2.5% F table, we can compare (at the upper tail) the Fcritical and Fobserved values. If Fobs &gt; Fcrit, we reject H0 and conclude that the variances of the 2 samples are NOT equal.</p>
-<p>From these tables, it is not possible to find exactly, so we will make do with the closest possible value .</p>
-<p>We find Fcrit ≈ 3.33 and Fobs = 1.34. Since Fcrit &gt; Fobs ,we CAN assume that the variances are equal.</p>
-<p>So… assuming normality and equal variances, we can complete a “pooled” two-sample t-test where</p>
-<p>Testing the null hypothesis that H0: μBreed 1 = μBreed 2, we find that there is a significant difference in the mean weights of the two breeds of cattle (T = 9.46, df = 25, P &lt; 0.001). The mean weight of Breed 2 is significantly higher and we are 95% confident that the mean weight for Breed 2 is between 33.2 and 51.7 kg higher than the mean weight for Breed 1.</p>
-<p>This last piece of information, “we are 95% confident that the mean weight for Breed 2 is between 33.2 and 51.7 kg higher than the mean weight for Breed 1”, is obtained from the 95% confidence interval for the true difference (μ1 – μ2).</p>
-<p>NB. Recall that a 95% confidence interval for the true difference (μ1 – μ2) is .</p>
-<p>6.10 Paired t-Test</p>
-<p>We can re-write the generic null hypothesis for a two-sample test of means, H0: μ1 = μ2 as… H0: μ1 – μ2 = 0, or H0: μd = 0.</p>
+<p><span class="math display">\[F_{Observed} = variance\ ratio \ (v.r.) = \frac {larger\ s^2}{smaller\ s^2} = \frac {12.301^2}{10.616^2} = \frac {151.315}{112.699} =1.34\]</span> There are 2 degrees of freedom to calculate for an F test. They are called the numerator df, <span class="math inline">\(\nu1\)</span> and the denominator df, <span class="math inline">\(\nu2\)</span>. (Remember from school days, numerator is the top half of a fraction, denominator is the bottom half of a fraction.) The <span class="math inline">\(\nu\)</span> that looks like a curly ‘v’ is the Greek letter ‘nu’.</p>
+<p>For an F test used to test equality of variance, df are: <span class="math inline">\(\nu1 = n1 – 1\)</span>, <span class="math inline">\(\nu 2 = n2 – 1\)</span>.</p>
+<p>Here, <span class="math inline">\(\nu1 = n_{Breed 1} -1 = 15 - 1 = 14\)</span> and <span class="math inline">\(\nu2 = n_{Breed 2} - 1 = 12 – 1 = 11\)</span></p>
+<p>Using the 2.5% F table, we can compare (at the upper tail) the F<sub>critical</sub> and F<sub>observed</sub> values. If <span class="math inline">\(Fobs &gt; Fcrit\)</span>, we reject H<sub>0</sub> and conclude that the variances of the 2 samples are NOT equal.</p>
+<p>From these tables, it is not possible to find exactly<span class="math inline">\(F^{0.025}_{14,11}\)</span>, so we will make do with the closest possible value <span class="math inline">\(F^{0.025}_{15,11} = 3.33\)</span>.</p>
+<p>We find <span class="math inline">\(F_{crit} \approx 3.33\)</span> and <span class="math inline">\(F_{obs} = 1.34\)</span>. Since <span class="math inline">\(F_{crit} &gt; F_{obs}\)</span> ,we CAN assume that the variances are equal.</p>
+<p>So… assuming normality and equal variances, we can complete a “pooled” two-sample t-test where <span class="math display">\[
+SED = \sqrt{s^2_p \frac{1}{n1}+ \frac {1}{n2}}
+\]</span> and <span class="math display">\[ s^2_p = \frac{(n_1- 1)s^2_1 + (n_2 -1)s^2_2}{n_1 + n_2 -2}\]</span> <span class="math inline">\(s^2_p\)</span> is the pooled estimate of variance and <span class="math inline">\(df = n_1 +n_2 -2\)</span>.</p>
+<p>Testing the null hypothesis that H<sub>0</sub>: <span class="math inline">\(\mu_{Breed 1} = \mu_{Breed 2}\)</span>, we find that there is a significant difference in the mean weights of the two breeds of cattle (T = 9.46, df = 25, <span class="math inline">\(P &lt; 0.001\)</span>). The mean weight of Breed 2 is significantly higher and we are 95% confident that the mean weight for Breed 2 is between 33.2 and 51.7 kg higher than the mean weight for Breed 1.</p>
+<p>This last piece of information, “we are 95% confident that the mean weight for Breed 2 is between 33.2 and 51.7 kg higher than the mean weight for Breed 1”, is obtained from the 95% confidence interval for the true difference (<span class="math inline">\(\mu1 = \mu2\)</span>).</p>
+<p>NB. Recall that a 95% confidence interval for the true difference (<span class="math inline">\(\mu1 = \mu2\)</span>) is</p>
+<p><span class="math display">\[
+(\overline{y_1}- \overline{y_2})\pm t^{0.025}_{df} \times SED
+\]</span></p>
+</section>
+<section id="paired-t-test" class="level1">
+<h1>Paired t-Test</h1>
+<p>We can re-write the generic null hypothesis for a two-sample test of means, <span class="math inline">\(H_0: \mu1 = \mu2\)</span> as… <span class="math display">\[H_0: \mu1 – \mu2 = 0$ , or $H_0: \mu_d = 0\]</span>.</p>
 <p>The paired t-test is actually a one-sample t-test of the differences between pairs of observations (from 2 different samples).</p>
-<p>Assumption: • Data is approximately normally distributed.</p>
+<p>Assumption:</p>
+<ul>
+<li>Data is approximately normally distributed.</li>
+</ul>
 <p>Since we are doing a one-sample t-test on the differences then the assumption of equal variances is not relevant. Firstly, create a single column of data to use in the t test. Each value in the column corresponds to the difference between the 2 values for a particular matched pair.</p>
-<p>Farm Yield Variety A (kg) Yield Variety B (kg) Difference 1 17.8 14.7 3.1 2 18.5 15.2 3.3 3 12.2 12.9 -0.7 4 19.7 18.3 1.4 5 10.8 10.1 0.7 6 11.9 12.2 -0.3 7 15.6 13.5 2.1 8 12.5 9.9 2.6</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Farm</th>
+<th>Yield Variety A (kg)</th>
+<th>Yield Variety B (kg)</th>
+<th>Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>17.8</td>
+<td>14.7</td>
+<td>3.1</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>18.5</td>
+<td>15.2</td>
+<td>3.3</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>12.2</td>
+<td>12.9</td>
+<td>-0.7</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>19.7</td>
+<td>18.3</td>
+<td>1.4</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>10.8</td>
+<td>10.1</td>
+<td>0.7</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>11.9</td>
+<td>12.2</td>
+<td>-0.3</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>15.6</td>
+<td>13.5</td>
+<td>2.1</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>12.5</td>
+<td>9.9</td>
+<td>2.6</td>
+</tr>
+</tbody>
+</table>
 <p>The difference for Farm 1 = 17.8 – 14.7 = 3.1.</p>
 <p>Data Source: Clewer and Scarisbrick (2001, 46)</p>
 <p>Secondly, find some summary statistics of the differences so you can complete the t test:</p>
 <pre><code>No. of values, n = 8        Sum = 12.2          Mean = 1.525
 Variance = 2.299            Std Dev = 1.516</code></pre>
-<p>and df = n -1, where d is usually 0.</p>
-<p>6.11 Confidence Interval for 1 – 2 (Paired Samples)</p>
-<p>A 95% confidence interval for the mean difference is</p>
+<p>Test statsic, <span class="math display">\[
+t = \frac {\overline{y}- \mu_d}{\sqrt{\frac{s^2_d}{n_d}}}
+\]</span> and df = n -1, where <span class="math inline">\(\mu_d\)</span> is usually 0.</p>
+</section>
+<section id="confidence-interval-for-mu_1-mu_2-paired-samples" class="level1">
+<h1>Confidence Interval for <span class="math inline">\(\mu_1 – \mu_2\)</span> (Paired Samples)</h1>
+<p>A 95% confidence interval for the mean difference is <span class="math inline">\(\overline{y}_d \pm t^0.025_{df} \times s.e\)</span></p>
 
 
 </section>
