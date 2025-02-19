@@ -445,9 +445,7 @@ plot(year, pop, xlab = "Year", ylab = "World population (Billions)")
 dt <- rbind(format(year, digits = 1), pop)
 row.names(dt) <- c("Year", "Pop (billions)")
 
-dt %>%
-  kable() %>%
-  kable_styling()
+knitr::kable(dt, format = "pipe")
 ```
 
 <br>
@@ -837,8 +835,3 @@ Thank you all (students and demonstrators!) for your hard work and
 enthusiasm throughout this Module. Good luck with Project 3 and the
 final exam!
 
-<br> <br>
-<!--The code below reduces white space at the end of the output doc-->
-
-::: {.tocify-extend-page data-unique="tocify-extend-page" style="height: 0;"}
-:::

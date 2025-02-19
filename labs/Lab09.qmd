@@ -8,7 +8,7 @@ resources:
 ```{r setup}
 #| include: false
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load(tidyverse, readxl, knitr, kableExtra)
+pacman::p_load(tidyverse, readxl, knitr)
 ```
 
 
@@ -57,9 +57,7 @@ year <- c(1944, 1945, 1946, 1947, 1948)
 horse <- c(28, 26, 22, 20, 19)
 
 horse_year <- rbind(year, horse)
-horse_year %>%
-  kable() %>%
-  kable_styling("bordered")
+knitr::kable(horse_year, format = "pipe")
 ```
 
 a) To see whether this is likely to be true, fit a model to the above data 'by hand' in Excel. To aid the calculation it is recommended to fill out the Excel table provided ENVX1002_practical_data_Regression.xlsx, you can find it in the spreadsheet labelled *Horses*.  
