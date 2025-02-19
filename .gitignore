@@ -1,41 +1,40 @@
-# Quarto
-/.quarto/
-
-# Output files
-_book/
-_site/
-
+# R and RStudio
+# ---------------
 # History files
 .Rhistory
 .Rapp.history
 
 # Session Data files
 .RData
-
-# User-specific files
 .Ruserdata
 
-# Example code in package build process
-*-Ex.R
+# RStudio files
+.Rproj.user/
 
+# R Environment Variables
+.Renviron
+
+# R Package Development
+# -------------------
 # Output files from R CMD build
 /*.tar.gz
 
 # Output files from R CMD check
 /*.Rcheck/
 
-# RStudio files
-.Rproj.user/
+# Example code in package build process
+*-Ex.R
 
-
-# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
+# OAuth2 token
 .httr-oauth
 
-# knitr and R markdown default cache directories
-*_cache/
-/cache/
+# Quarto
+# ------
+/.quarto/
+_book/
+_site/
 
-# Temporary files created by Quarto
+# Quarto temporary files
 *.utf8.md
 *.knit.md
 *.tex
@@ -44,10 +43,22 @@ _site/
 *.log
 *_files/
 
-# R Environment Variables
-.Renviron
+# R Markdown and knitr
+# -------------------
+*_cache/
+/cache/
 
+# Project specific
+# ---------------
+_solution/
+
+# Cline
+# -----
+memory-bank/
+.cline*
+.clinerules*
+
+# System files
+# -----------
 # macOS
 .DS_Store
-
-_solution/
