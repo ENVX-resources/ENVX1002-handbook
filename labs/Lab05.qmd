@@ -1,5 +1,5 @@
 ---
-title: Lab 05 -- Hypothesis Testing
+title: Lab 05 -- Hypothesis testing
 embed-resources: true
 resources:
   - data/ENVX1002_Data5.xlsx
