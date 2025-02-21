@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>describing_relationships – ENVX1002 Handbook</title>
+<title>Introduction to Statistical Programming – ENVX1002 Handbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -159,7 +159,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module03/040-describing_relationships.html"><strong>📘 Module 3</strong></a></li><li class="breadcrumb-item"><a href="../module03/040-describing_relationships.html">Describing relationships</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module01/01-intro_statistical_programming.html"><strong>📕 Module 1</strong></a></li><li class="breadcrumb-item"><a href="../module01/01-intro_statistical_programming.html">Introduction to Statistical Programming</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -189,7 +189,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../module01/01-intro_statistical_programming.html" class="sidebar-item-text sidebar-link">
+  <a href="../module01/01-intro_statistical_programming.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Introduction to Statistical Programming</span></a>
   </div>
 </li>
@@ -247,7 +247,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../module03/040-describing_relationships.html" class="sidebar-item-text sidebar-link active">
+  <a href="../module03/040-describing_relationships.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Describing relationships</span></a>
   </div>
 </li>
@@ -365,86 +365,444 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#describing-relationships" id="toc-describing-relationships" class="nav-link active" data-scroll-target="#describing-relationships">Describing relationships</a>
+  <li><a href="#data-introduction" id="toc-data-introduction" class="nav-link active" data-scroll-target="#data-introduction">Data Introduction</a>
   <ul class="collapse">
-  <li><a href="#scatter-plots" id="toc-scatter-plots" class="nav-link" data-scroll-target="#scatter-plots">Scatter Plots</a></li>
-  <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation">Correlation</a>
-  <ul class="collapse">
-  <li><a href="#linear-relationships" id="toc-linear-relationships" class="nav-link" data-scroll-target="#linear-relationships">Linear relationships</a></li>
-  <li><a href="#non-linear-relationships" id="toc-non-linear-relationships" class="nav-link" data-scroll-target="#non-linear-relationships">Non-linear relationships</a></li>
+  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
+  <li><a href="#understanding-data-structure" id="toc-understanding-data-structure" class="nav-link" data-scroll-target="#understanding-data-structure">Understanding Data Structure</a></li>
+  <li><a href="#previewing-the-data" id="toc-previewing-the-data" class="nav-link" data-scroll-target="#previewing-the-data">Previewing the Data</a></li>
+  <li><a href="#quick-statistical-overview" id="toc-quick-statistical-overview" class="nav-link" data-scroll-target="#quick-statistical-overview">Quick Statistical Overview</a></li>
   </ul></li>
-  <li><a href="#causation" id="toc-causation" class="nav-link" data-scroll-target="#causation">Causation</a></li>
+  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics">Summary Statistics</a>
+  <ul class="collapse">
+  <li><a href="#mean-central-tendency" id="toc-mean-central-tendency" class="nav-link" data-scroll-target="#mean-central-tendency">Mean: central tendency</a></li>
+  <li><a href="#median-a-robust-central-measure" id="toc-median-a-robust-central-measure" class="nav-link" data-scroll-target="#median-a-robust-central-measure">Median: a “robust” central measure</a></li>
+  <li><a href="#mode-most-frequent-value" id="toc-mode-most-frequent-value" class="nav-link" data-scroll-target="#mode-most-frequent-value">Mode: Most frequent value</a></li>
+  </ul></li>
+  <li><a href="#measures-of-spread" id="toc-measures-of-spread" class="nav-link" data-scroll-target="#measures-of-spread">Measures of Spread</a>
+  <ul class="collapse">
+  <li><a href="#range" id="toc-range" class="nav-link" data-scroll-target="#range">Range</a></li>
+  <li><a href="#variance-and-standard-deviation" id="toc-variance-and-standard-deviation" class="nav-link" data-scroll-target="#variance-and-standard-deviation">Variance and standard deviation</a></li>
+  <li><a href="#interquartile-range-iqr" id="toc-interquartile-range-iqr" class="nav-link" data-scroll-target="#interquartile-range-iqr">Interquartile range (IQR)</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module03/040-describing_relationships.html"><strong>📘 Module 3</strong></a></li><li class="breadcrumb-item"><a href="../module03/040-describing_relationships.html">Describing relationships</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
 
-
-
-
-<section id="describing-relationships" class="level1">
-<h1>Describing relationships</h1>
-<p>In statistics, a relationship between two or more numerical variables means when one variable changes, the other variable/s will also change. We can describe these relationships in terms of direction, strength, and form.</p>
-<p>To determine the relationship between two variables qualitatively with by visualising our data with scatter plots.</p>
-<section id="scatter-plots" class="level2">
-<h2 class="anchored" data-anchor-id="scatter-plots">Scatter Plots</h2>
-<p><strong>Direction</strong></p>
-<p>A relationship can be positive, negative, or non-existent.</p>
-<ul>
-<li><strong>Positive relationship</strong>: when one variable increases, the other variable also increases, e.g.&nbsp;the amount of rainfall received and the resulting crop yield.</li>
-<li><strong>Negative relationship</strong>: when one variable increases, the other variable decreases, e.g.&nbsp;the levels of insulin and glucose in blood.</li>
-<li><strong>No relationship</strong>: when one variable changes, the other variable does not change, e.g.&nbsp;shoe size and IQ.</li>
-</ul>
-<p><strong>Strength</strong></p>
-<p>The strength of a relationship refers to how closely the two variables are related - weak, moderate, strong, very strong and perfect. A weak relationship will have more scatter than a strong relationship.</p>
-<p><strong>Form</strong></p>
-<p>The form of a relationship refers to the shape of the relationship. The simplest form is a straight line or linear relationship. Some examples of non-linear forms include polynomials (e.g.&nbsp;quadratic, cubic), exponential, and logistic.</p>
-</section>
-<section id="correlation" class="level2">
-<h2 class="anchored" data-anchor-id="correlation">Correlation</h2>
-<section id="linear-relationships" class="level3">
-<h3 class="anchored" data-anchor-id="linear-relationships">Linear relationships</h3>
-<p>To measure the relationship quantitatively, we use correlation coefficients. These are numbers between -1 and 1, where -1 indicates a perfect negative relationship, 0 indicates no relationship, and 1 indicates a perfect positive relationship.</p>
-<p>The most common correlation coefficient is the Pearson correlation coefficient (<span class="math inline">\(r\)</span>). It measures <strong>linear relationships</strong> between <strong>two numerical variables</strong>.</p>
-<p>Pearson’s Correlation (<em>r</em>) Formula:</p>
-<p><span class="math display">\[ r = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2 \sum_{i=1}^n (y_i - \bar{y})^2}} \]</span></p>
-<p>In essence, it is the covariance divided by the product of the standard deviations.</p>
-<p>In R, we use the function <code>cor()</code> to calculate the correlation coefficient. By default, it calculates the Pearson correlation coefficient.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, y) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module01/01-intro_statistical_programming.html"><strong>📕 Module 1</strong></a></li><li class="breadcrumb-item"><a href="../module01/01-intro_statistical_programming.html">Introduction to Statistical Programming</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Introduction to Statistical Programming</h1>
 </div>
-<p>Describing the correlation coefficient in terms of strength can be a little subjective. Below are some approximate ranges for the common terms.</p>
-<ul>
-<li><strong>|0 - 0.1|</strong> : no relationship</li>
-<li><strong>|0.1 - 0.3|</strong> : weak</li>
-<li><strong>|0.4 - 0.6|</strong> : moderate</li>
-<li><strong>|0.7 - 1|</strong> : strong</li>
-<li><strong>|0.9 - 1|</strong> : very strong</li>
-</ul>
-</section>
-<section id="non-linear-relationships" class="level3">
-<h3 class="anchored" data-anchor-id="non-linear-relationships">Non-linear relationships</h3>
-<p>In the case of non-linear relationships, it is best not to use the Pearson’s correlation coefficient. Instead, we can use the Spearman’s rank correlation coefficient (<span class="math inline">\(r_{s}\)</span>) or Kendall’s tau (<span class="math inline">\(\tau\)</span>). Note, these relationships must still be monotonic.</p>
-<ul>
-<li><strong>Monotonic</strong>: a relationship that is consistently increasing or decreasing</li>
-<li><strong>Linear</strong>: a relationship that is increasing or decreasing <em>at a constant rate</em></li>
-</ul>
-<p>To use either Spearman’s rank correlation coefficient or Kendall’s tau, we can use the <code>cor()</code> function with the <code>method</code> argument set to either <code>"spearman"</code> or <code>"kendall"</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, y, <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x, y, <span class="at">method =</span> <span class="st">"kendall"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>Spearman’s rank correlation coefficient essentially ranks the data (e.g.&nbsp;the smallest value will be ranked 1, the second smallest 2, etc.) for both the x and y axis, and then calculates the Pearson correlation coefficient for the ranks. Thus it works for any monotonic relationship.</p>
-<p>Kendall’s tau looks at all possible x and y pairs, and determines if they are concordant. e.g.&nbsp;one pair of points <span class="math inline">\((x_{i}, y_{i})\)</span> is concordant with another pair <span class="math inline">\((x_{j}, y_{j})\)</span> if <span class="math inline">\(x_{i} &gt; x_{j}\)</span> and <span class="math inline">\(y_{i} &gt; y_{j}\)</span> or <span class="math inline">\(x_{i} &lt; x_{j}\)</span> and <span class="math inline">\(y_{i} &lt; y_{j}\)</span>. Kendall’s tau is then calculated with:</p>
-<p><span class="math display">\[ \tau = \frac{\text{(number of concordant pairs)} - \text{(number of discordant pairs)}}{\text{(total number of pairs)}}\]</span></p>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This section will not teach you the basics of R and RStudio. If you need that, please refer to <a href="https://canvas.sydney.edu.au/courses/64771/pages/r-guide-envx1002">A brief R guide for surviving ENVX1002</a>. <em>You will need to be logged into Canvas to access this link.</em></p>
+</div>
+</div>
+<section id="data-introduction" class="level2">
+<h2 class="anchored" data-anchor-id="data-introduction">Data Introduction</h2>
+<p>While we are all not ecologists, we will be working with two datasets from the Long Term Ecological Research (LTER) Network:</p>
+<ol type="1">
+<li><strong>Salamander Counts</strong> (<code>and_vertebrates</code>): Data from the Andrews Forest LTER site tracking salamander populations across different streams.</li>
+<li><strong>Lake Ice Duration</strong> (<code>ntl_icecover</code>): Records from the North Temperate Lakes LTER site measuring annual ice cover duration.</li>
+</ol>
+<p>Load the data to get started:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(lterdatasampler)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load the data</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"and_vertebrates"</span>, <span class="st">"ntl_icecover"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>These are very large datasets – but don’t be intimidated! The point is to show you that statistical programming can handle big data, and it will all make sense as we go along.</p>
+<section id="metadata" class="level3">
+<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
+<p>Statistical analysis starts by exploring the data’s structure. Sometimes, datasets include metadata—context that helps explain the data.</p>
+<p>For the data that we are using today, metadata is available in the documentation. Use <code>?and_vertebrates</code> and <code>?ntl_icecover</code> to access it.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>?and_vertebrates</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>?ntl_icecover</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="understanding-data-structure" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-data-structure">Understanding Data Structure</h3>
+<p>The <code>str()</code> function shows us the types of variables and how the data is “arranged”:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(and_vertebrates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [32,209 × 16] (S3: tbl_df/tbl/data.frame)
+ $ year       : num [1:32209] 1987 1987 1987 1987 1987 ...
+ $ sitecode   : chr [1:32209] "MACKCC-L" "MACKCC-L" "MACKCC-L" "MACKCC-L" ...
+ $ section    : chr [1:32209] "CC" "CC" "CC" "CC" ...
+ $ reach      : chr [1:32209] "L" "L" "L" "L" ...
+ $ pass       : num [1:32209] 1 1 1 1 1 1 1 1 1 1 ...
+ $ unitnum    : num [1:32209] 1 1 1 1 1 1 1 1 1 1 ...
+ $ unittype   : chr [1:32209] "R" "R" "R" "R" ...
+ $ vert_index : num [1:32209] 1 2 3 4 5 6 7 8 9 10 ...
+ $ pitnumber  : num [1:32209] NA NA NA NA NA NA NA NA NA NA ...
+ $ species    : chr [1:32209] "Cutthroat trout" "Cutthroat trout" "Cutthroat trout" "Cutthroat trout" ...
+ $ length_1_mm: num [1:32209] 58 61 89 58 93 86 107 131 103 117 ...
+ $ length_2_mm: num [1:32209] NA NA NA NA NA NA NA NA NA NA ...
+ $ weight_g   : num [1:32209] 1.75 1.95 5.6 2.15 6.9 5.9 10.5 20.6 9.55 13 ...
+ $ clip       : chr [1:32209] "NONE" "NONE" "NONE" "NONE" ...
+ $ sampledate : Date[1:32209], format: "1987-10-07" "1987-10-07" ...
+ $ notes      : chr [1:32209] NA NA NA NA ...</code></pre>
+</div>
+</div>
+<p>There is also <code>glimpse()</code>, which requires you to load the <code>tidyverse</code> package:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(and_vertebrates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 32,209
+Columns: 16
+$ year        &lt;dbl&gt; 1987, 1987, 1987, 1987, 1987, 1987, 1987, 1987, 1987, 1987…
+$ sitecode    &lt;chr&gt; "MACKCC-L", "MACKCC-L", "MACKCC-L", "MACKCC-L", "MACKCC-L"…
+$ section     &lt;chr&gt; "CC", "CC", "CC", "CC", "CC", "CC", "CC", "CC", "CC", "CC"…
+$ reach       &lt;chr&gt; "L", "L", "L", "L", "L", "L", "L", "L", "L", "L", "L", "L"…
+$ pass        &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+$ unitnum     &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2…
+$ unittype    &lt;chr&gt; "R", "R", "R", "R", "R", "R", "R", "R", "R", "R", "R", "R"…
+$ vert_index  &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1, …
+$ pitnumber   &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ species     &lt;chr&gt; "Cutthroat trout", "Cutthroat trout", "Cutthroat trout", "…
+$ length_1_mm &lt;dbl&gt; 58, 61, 89, 58, 93, 86, 107, 131, 103, 117, 100, 127, 99, …
+$ length_2_mm &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ weight_g    &lt;dbl&gt; 1.75, 1.95, 5.60, 2.15, 6.90, 5.90, 10.50, 20.60, 9.55, 13…
+$ clip        &lt;chr&gt; "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "NONE", "N…
+$ sampledate  &lt;date&gt; 1987-10-07, 1987-10-07, 1987-10-07, 1987-10-07, 1987-10-0…
+$ notes       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</code></pre>
+</div>
+</div>
+<p>You will soon realise that there are many ways to “skin a cat” in R – that is, there are multiple ways to achieve the same outcome. You can pick any method as long as you are comfortable with it.</p>
+<p>In general, the outputs from <code>str()</code> and <code>glimpse()</code> can seem overwhelming at first. This is completely normal, especially when you’re new to data exploration. Take your time, and don’t worry if it doesn’t all make sense immediately – it will come with practice.</p>
+</section>
+<section id="previewing-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="previewing-the-data">Previewing the Data</h3>
+<p>The <code>head()</code> function shows us the first few rows of a dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(and_vertebrates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 16
+   year sitecode section reach  pass unitnum unittype vert_index pitnumber
+  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;
+1  1987 MACKCC-L CC      L         1       1 R                 1        NA
+2  1987 MACKCC-L CC      L         1       1 R                 2        NA
+3  1987 MACKCC-L CC      L         1       1 R                 3        NA
+4  1987 MACKCC-L CC      L         1       1 R                 4        NA
+5  1987 MACKCC-L CC      L         1       1 R                 5        NA
+6  1987 MACKCC-L CC      L         1       1 R                 6        NA
+# ℹ 7 more variables: species &lt;chr&gt;, length_1_mm &lt;dbl&gt;, length_2_mm &lt;dbl&gt;,
+#   weight_g &lt;dbl&gt;, clip &lt;chr&gt;, sampledate &lt;date&gt;, notes &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>While <code>tail()</code> shows the last few rows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(ntl_icecover)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  lakeid      ice_on     ice_off    ice_duration  year
+  &lt;fct&gt;       &lt;date&gt;     &lt;date&gt;            &lt;dbl&gt; &lt;dbl&gt;
+1 Lake Monona 2014-12-02 2015-04-02          105  2014
+2 Lake Monona 2016-01-11 2016-03-13           62  2015
+3 Lake Monona 2016-12-16 2017-03-07           81  2016
+4 Lake Monona 2017-12-26 2018-03-29           93  2017
+5 Lake Monona 2018-12-11 2019-03-31           97  2018
+6 Lake Monona 2019-12-16 2020-03-20           80  2019</code></pre>
+</div>
+</div>
+</section>
+<section id="quick-statistical-overview" class="level3">
+<h3 class="anchored" data-anchor-id="quick-statistical-overview">Quick Statistical Overview</h3>
+<p>The <code>summary()</code> function provides a statistical overview of your data, adapting its output based on variable types (numerical, categorical, etc.). This means that it can be useful for some datasets but not for others.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(and_vertebrates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      year        sitecode           section             reach          
+ Min.   :1987   Length:32209       Length:32209       Length:32209      
+ 1st Qu.:1998   Class :character   Class :character   Class :character  
+ Median :2006   Mode  :character   Mode  :character   Mode  :character  
+ Mean   :2005                                                           
+ 3rd Qu.:2012                                                           
+ Max.   :2019                                                           
+                                                                        
+      pass          unitnum         unittype           vert_index    
+ Min.   :1.000   Min.   : 1.000   Length:32209       Min.   :  1.00  
+ 1st Qu.:1.000   1st Qu.: 3.000   Class :character   1st Qu.:  5.00  
+ Median :1.000   Median : 7.000   Mode  :character   Median : 13.00  
+ Mean   :1.224   Mean   : 7.696                      Mean   : 20.17  
+ 3rd Qu.:1.000   3rd Qu.:11.000                      3rd Qu.: 27.00  
+ Max.   :2.000   Max.   :20.000                      Max.   :147.00  
+                                                                     
+   pitnumber          species           length_1_mm      length_2_mm   
+ Min.   :   62048   Length:32209       Min.   : 19.00   Min.   : 28.0  
+ 1st Qu.:13713632   Class :character   1st Qu.: 47.00   1st Qu.: 77.0  
+ Median :18570447   Mode  :character   Median : 63.00   Median : 98.0  
+ Mean   :16286432                      Mean   : 73.83   Mean   :100.5  
+ 3rd Qu.:19132429                      3rd Qu.: 97.00   3rd Qu.:119.0  
+ Max.   :28180046                      Max.   :253.00   Max.   :284.0  
+ NA's   :26574                         NA's   :17       NA's   :19649  
+    weight_g           clip             sampledate            notes          
+ Min.   :  0.090   Length:32209       Min.   :1987-10-06   Length:32209      
+ 1st Qu.:  1.510   Class :character   1st Qu.:1998-09-04   Class :character  
+ Median :  6.050   Mode  :character   Median :2006-09-06   Mode  :character  
+ Mean   :  8.903                      Mean   :2005-08-05                     
+ 3rd Qu.: 11.660                      3rd Qu.:2012-09-05                     
+ Max.   :134.590                      Max.   :2019-09-05                     
+ NA's   :13268                                                               </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ntl_icecover)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          lakeid        ice_on              ice_off            ice_duration  
+ Lake Mendota:167   Min.   :1851-12-13   Min.   :1852-03-25   Min.   : 21.0  
+ Lake Monona :167   1st Qu.:1895-12-04   1st Qu.:1896-04-04   1st Qu.: 92.0  
+ Lake Wingra :  0   Median :1936-12-07   Median :1937-10-01   Median :103.0  
+                    Mean   :1937-03-15   Mean   :1937-09-25   Mean   :102.8  
+                    3rd Qu.:1978-12-09   3rd Qu.:1979-04-08   3rd Qu.:115.0  
+                    Max.   :2020-01-12   Max.   :2020-03-22   Max.   :161.0  
+                    NA's   :1            NA's   :2            NA's   :3      
+      year     
+ Min.   :1851  
+ 1st Qu.:1894  
+ Median :1936  
+ Mean   :1936  
+ 3rd Qu.:1978  
+ Max.   :2019  
+               </code></pre>
+</div>
+</div>
 </section>
 </section>
-<section id="causation" class="level2">
-<h2 class="anchored" data-anchor-id="causation">Causation</h2>
-<p>Correlation does not imply causation. Just because two variables are correlated does not mean that one causes the other to change. Some example of spurious (i.e.&nbsp;ridiculous) correlations can be found at <a href="https://www.tylervigen.com/spurious-correlations">Spurious Correlations</a>.</p>
-<p>Before conducting an experiment to collect data (or analysing existing data), it is important to have a hypothesis about the relationship between the variables. <em>Is there reason</em> to believe the two variables should have a relationship? If not, any ‘relationship’ found via scatter plots or correlations are unlikely meaningful.</p>
+<section id="summary-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="summary-statistics">Summary Statistics</h2>
+<section id="mean-central-tendency" class="level3">
+<h3 class="anchored" data-anchor-id="mean-central-tendency">Mean: central tendency</h3>
+<p>The arithmetic mean is often our first step in understanding typical values in data.</p>
+<p>Mathematically, the mean (<span class="math inline">\(\bar{x}\)</span>) is calculated as the sum of all values (<span class="math inline">\(x_i\)</span>) divided by the number of values (<span class="math inline">\(n\)</span>):</p>
+<p><span class="math display">\[
+\bar{x} = \frac{\sum_{i=1}^{n} x_i}{n}
+\]</span></p>
+<p>For example, consider the following set of salamander weights (in grams): 2, 3, 5, 7, and 8. The mean weight is:</p>
+<p><span class="math display">\[
+\bar{x} = \frac{2 + 3 + 5 + 7 + 8}{5} = \frac{25}{5} = 5
+\]</span></p>
+<p>In simpler terms, the mean is what you get if you add up all the numbers and then divide by how many numbers you added. It’s a way to find the “average” value.</p>
+<p>In R, we can calculate the mean using the <code>mean()</code> function. Note that we used the <code>$</code> operator to access the specific variables in the dataset. It will make sense once you start typing the code as RStudio will provide you with suggestions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean salamander weight</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(and_vertebrates<span class="sc">$</span>weight_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8.902859</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean ice duration</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(ntl_icecover<span class="sc">$</span>ice_duration, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 102.8187</code></pre>
+</div>
+</div>
+<p>Missing values are called <code>NA</code> in R. The <code>na.rm = TRUE</code> argument tells R to ignore these missing values when calculating the mean. If you don’t include this argument, R will return <code>NA</code> as the mean as mathematically, you can’t do calculations with unknown values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This will return NA</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(and_vertebrates<span class="sc">$</span>weight_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+</div>
+</section>
+<section id="median-a-robust-central-measure" class="level3">
+<h3 class="anchored" data-anchor-id="median-a-robust-central-measure">Median: a “robust” central measure</h3>
+<p>The median is the middle value when all numbers are arranged in order, like finding the middle person if everyone lined up by height. This makes it especially good at representing “typical” values when there are some extreme measurements in your data.</p>
+<p>For example, let’s take these salamander weights (in grams): 2, 3, 5, 7, 20 To find the median:</p>
+<ol type="1">
+<li>Arrange in order: 2, 3, 5, 7, 20</li>
+<li>Find the middle number: 5</li>
+</ol>
+<p>Even though there’s one unusually large salamander (20g), the median (5g) still represents a typical salamander weight. Compare this to the mean:</p>
+<p>(2 + 3 + 5 + 7 + 20) ÷ 5 = 7.4g</p>
+<p>The mean is pulled higher by the unusually large salamander, making it less representative of a typical salamander in this case. This is why we say the median is “robust” - it’s not easily influenced by extreme values or outliers.</p>
+<p>For datasets with an even number of values, we take the average of the two middle numbers. For example, with weights 2, 3, 5, 7:</p>
+<ol type="1">
+<li>Arrange in order: 2, 3, 5, 7</li>
+<li>Find the middle pair: 3 and 5</li>
+<li>Calculate their average: (3 + 5) ÷ 2 = 4</li>
+</ol>
+<p>This robustness proves particularly valuable in data where extreme values are common:</p>
+<ul>
+<li>House prices in a neighborhood (a few mansion prices won’t skew the “typical” house value)</li>
+<li>Animal body sizes (a few giants won’t affect the “typical” size)</li>
+<li>Stream depths (a few very deep pools won’t change the “typical” depth)</li>
+</ul>
+<p>Let’s look at our full salamander data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Median ice_duration</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(ntl_icecover<span class="sc">$</span>ice_duration, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 103</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare with mean</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(ntl_icecover<span class="sc">$</span>ice_duration, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 102.8187</code></pre>
+</div>
+</div>
+<p>From the above you can see that both values are close indicating that the data is not skewed by extreme values. We will learn more about how this relates to statistics and data distributions in the next few chapters.</p>
+</section>
+<section id="mode-most-frequent-value" class="level3">
+<h3 class="anchored" data-anchor-id="mode-most-frequent-value">Mode: Most frequent value</h3>
+<p>The mode represents the most frequently occurring value within a dataset, making it especially valuable for understanding the most common category or value in a dataset, whereas the mean and median are more suitable for continuous numerical data.</p>
+<p>For example, consider these salamander counts in different sections of a stream: 2, 3, 2, 4, 2, 1, 3</p>
+<p>To find the mode: 1. Count how often each value appears: - 1 appears once - 2 appears three times - 3 appears twice - 4 appears once 2. The mode is 2 because it appears most frequently (three times)</p>
+<p>Some datasets can have multiple modes:</p>
+<ul>
+<li>If we had: 2, 3, 2, 4, 3, 1, 3</li>
+<li>Both 2 and 3 appear three times</li>
+<li>This dataset would be “bimodal” (having two modes)</li>
+</ul>
+<p>While the mode is useful for discrete data like species counts, R lacks a built-in function for it. We <em>could</em> write one, but we’ll use existing packages instead. It is good practice to find out if a package exists before writing your own function since you are (probably) not in this unit to become a software developer.</p>
+<p>A Google search should lead you to multiple packages that can calculate the mode, we’ll just use the <code>modeest</code> package for now. Note that the function used is called <code>mlv()</code> (Maximum Likelihood Value):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(modeest)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>ml <span class="ot">&lt;-</span> <span class="fu">mlv</span>(and_vertebrates<span class="sc">$</span>weight_g, <span class="at">method =</span> <span class="st">"shorth"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now that we know that the modal weight in grams is 2, we can use this information to understand the distribution of salamander weights in the dataset.</p>
+</section>
+</section>
+<section id="measures-of-spread" class="level2">
+<h2 class="anchored" data-anchor-id="measures-of-spread">Measures of Spread</h2>
+<section id="range" class="level3">
+<h3 class="anchored" data-anchor-id="range">Range</h3>
+<p>The range helps us understand the full scope of variation in their measurements. For salamanders, this might reveal the difference between the smallest juvenile and largest adult:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Range of salamander weights</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(and_vertebrates<span class="sc">$</span>weight_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]   0.09 134.59</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative using min and max</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(and_vertebrates<span class="sc">$</span>weight_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.09</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(and_vertebrates<span class="sc">$</span>weight_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 134.59</code></pre>
+</div>
+</div>
+<p>The range provides a basic understanding of data spread, showing the total span of values. It’s useful for a quick look at the extent of variation in data. However, the range doesn’t tell us <strong>how</strong> the values are distributed within that span. To understand this, we need more advanced measures like variance and standard deviation.</p>
+</section>
+<section id="variance-and-standard-deviation" class="level3">
+<h3 class="anchored" data-anchor-id="variance-and-standard-deviation">Variance and standard deviation</h3>
+<p>Variance and standard deviation help us understand how spread out our data is from the mean. Think of them as measuring how much values typically “deviate” or differ from the average.</p>
+<section id="variance" class="level4">
+<h4 class="anchored" data-anchor-id="variance">Variance</h4>
+<p>Variance measures the average squared distance of each value from the mean. Let’s break this down with a simple example using salamander weights (in grams): 2, 3, 5, 7, 8</p>
+<ol type="1">
+<li>Calculate the mean: (2 + 3 + 5 + 7 + 8) ÷ 5 = 5</li>
+<li>Find how far each value is from the mean:
+<ul>
+<li>2 is 3 below the mean: (2 - 5) = -3</li>
+<li>3 is 2 below the mean: (3 - 5) = -2</li>
+<li>5 equals the mean: (5 - 5) = 0</li>
+<li>7 is 2 above the mean: (7 - 5) = 2</li>
+<li>8 is 3 above the mean: (8 - 5) = 3</li>
+</ul></li>
+<li>Square these differences (this makes all values positive):
+<ul>
+<li>(-3)² = 9</li>
+<li>(-2)² = 4</li>
+<li>0² = 0</li>
+<li>2² = 4</li>
+<li>3² = 9</li>
+</ul></li>
+<li>Calculate the average of these squared differences: (9 + 4 + 0 + 4 + 9) ÷ 5 = 5.2</li>
+</ol>
+<p>The variance in this case is 5.2 (square grams). This squared unit is a bit awkward - imagine trying to explain that salamanders vary by “5.2 square grams” from the mean! This is one of the main reasons we use standard deviation instead of variance.</p>
+</section>
+<section id="standard-deviation" class="level4">
+<h4 class="anchored" data-anchor-id="standard-deviation">Standard Deviation</h4>
+<p>The standard deviation is simply the square root of the variance. We often prefer it because: - It’s in the same units as our original data (grams instead of square grams) - It’s easier to interpret in relation to the mean</p>
+<p>For our example: - Variance = 5.2 - Standard deviation = √5.2 ≈ 2.28 grams</p>
+<p>This means that salamander weights typically vary by about 2.28 grams above or below the mean.</p>
+<p>Let’s calculate these for our full salamander dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Variance in salamander weights</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(and_vertebrates<span class="sc">$</span>weight_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 113.9829</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard deviation (square root of variance)</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(and_vertebrates<span class="sc">$</span>weight_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.67628</code></pre>
+</div>
+</div>
+<p>The mean, standard deviation, and variance are key for understanding data variability and underpin many statistical tests/models. Expect to see them often in research.</p>
+</section>
+</section>
+<section id="interquartile-range-iqr" class="level3">
+<h3 class="anchored" data-anchor-id="interquartile-range-iqr">Interquartile range (IQR)</h3>
+<p>The Interquartile Range (IQR) is a robust measure of spread that tells us the range where the middle 50% of our data falls. It’s calculated as the difference between the 75th percentile (Q3) and the 25th percentile (Q1).</p>
+<p>To understand IQR, let’s first understand quartiles using a simple example with salamander weights (in grams): 2, 2, 3, 4, 5, 5, 6, 8, 10</p>
+<ol type="1">
+<li>First, arrange the data in order (already done above)</li>
+<li>Find the median (Q2) - it’s 5</li>
+<li>Split the data into two halves:
+<ul>
+<li>Lower half: 2, 2, 3, 4</li>
+<li>Upper half: 5, 6, 8, 10</li>
+</ul></li>
+<li>Find Q1 (median of lower half) = 2.5</li>
+<li>Find Q3 (median of upper half) = 7</li>
+<li>Calculate IQR = Q3 - Q1 = 7 - 2.5 = 4.5</li>
+</ol>
+<p>The IQR tells us that the middle 50% of salamander weights vary by 4.5 grams. This is particularly useful because:</p>
+<ul>
+<li>It’s not affected by extreme values (very large or small salamanders)</li>
+<li>It gives us a sense of “typical” variation in the population</li>
+<li>It helps identify outliers: values below Q1 - 1.5×IQR or above Q3 + 1.5×IQR are often considered outliers</li>
+</ul>
+<p>The IQR is particularly useful in studies where we want to focus on typical variations while excluding extreme values. For lake ice duration, this helps us understand normal annual patterns whilst excluding unusually warm or cold years:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># IQR for ice duration</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(ntl_icecover<span class="sc">$</span>ice_duration, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 23</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get quartiles (handling missing values)</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(ntl_icecover<span class="sc">$</span>ice_duration, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  0%  25%  50%  75% 100% 
+  21   92  103  115  161 </code></pre>
+</div>
+</div>
+<p>Looking at the quartiles:</p>
+<ul>
+<li>Q1 (25th percentile): 25% of ice durations are below this value</li>
+<li>Q2 (50th percentile/median): The middle ice duration</li>
+<li>Q3 (75th percentile): 75% of ice durations are below this value</li>
+<li>IQR = Q3 - Q1: The range where the middle 50% of ice durations fall</li>
+</ul>
+<p>This information helps us understand the typical variation in ice duration while being less sensitive to extreme weather events that might produce unusually long or short ice cover periods.</p>
 
 
 </section>
