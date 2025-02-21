@@ -61,6 +61,7 @@ format:
       dark: solar
     css: styles.css
     toc: true
+    code-overflow: wrap
 
 execute:
   freeze: auto
