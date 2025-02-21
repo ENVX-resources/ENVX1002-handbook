@@ -1167,6 +1167,16 @@
       ],
       "Hash": "5f0e0456cdabdc82fbf1e4a7dcb5885e"
     },
+    "lterdatasampler": {
+      "Package": "lterdatasampler",
+      "Version": "0.1.1",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "5f085a8d7b1196e6ac938376e260889f"
+    },
     "lubridate": {
       "Package": "lubridate",
       "Version": "1.9.4",
