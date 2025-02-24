@@ -1393,6 +1393,23 @@
       "Repository": "CRAN",
       "Hash": "27550641889a3abf3aec4d91186311ec"
     },
+    "nlraa": {
+      "Package": "nlraa",
+      "Version": "1.9.7",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "MASS",
+        "Matrix",
+        "R",
+        "boot",
+        "knitr",
+        "mgcv",
+        "nlme",
+        "stats"
+      ],
+      "Hash": "c8caccf8b19920d2fc3ab6d2acdb63f6"
+    },
     "nlstools": {
       "Package": "nlstools",
       "Version": "2.1-0",
