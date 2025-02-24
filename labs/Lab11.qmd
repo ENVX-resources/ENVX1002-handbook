@@ -3,6 +3,10 @@ title: "Lab 11 - Multiple Linear Regression"
 embed-resources: true
 resources:
   - data/ENVX1002_wk11_practical_data_Regression.xlsx
+  - data/Housing.csv
+  - data/energy_data.csv
+  - data/Advertising_Budget_and_Sales.csv
+  
 ---
 
 
@@ -139,7 +143,7 @@ levelplot(CornP ~ InorgP + OrgP, data = Corn
           , col.regions = viridis(100))
 ```
 
-The level plot shows us the x (InorgP) and y variable (OrgP), with the colour scale representing the z variable, which in this case is Phosphorous being taken up by the corn (cornP). From the plot we can see that with higher levels of orgP and inorgP in the soil, the Phosphorous content in the corn is generally higher.
+The level plot shows us the x (InorgP) and y variable (OrgP), with the colour scale representing the z variable, which in this case is Phosphorous being taken up by the corn (cornP). From the plot we can see that with higher levels of OrgP and InorgP in the soil, the Phosphorous content in the corn is generally higher.
 
 It is clear that the 3-D surface plot does not have colours everywhere, but this relates of course to the underlying data. In this case we don't have continuous data in both directions, so the response (the colour) is only plotted where we have input variables.
 
@@ -834,6 +838,229 @@ The significance of Stonefly larvae over Caddis fly larvae, and the positive rel
 <br>
 
 Another week of linear models done! Great work fitting Multiple Linear Regression! Next week we break away and explore non-linear functions.
+
+# Bonus Take Home Exercises
+Use the template below to test the hypotheses for each exercise. 
+
+1.  Scatterplot and correlation
+
+2.  Fit the model
+
+3.  Check assumptions
+
+4.  P-value and model fit
+
+    a)   Is the model significant?
+
+    b)   Are the predictors significant?
+
+    c)   How good is the model fit?
+
+5.  Conclusions
+
+## Exercise 1: House Prices
+
+Data:
+- [Housing](data/Housing.csv)
+
+This exercise will use a dataset from [kaggle](https://www.kaggle.com/datasets/vikramamin/housing-linear-regression)to explore the variables affecting house prices.
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+-----
+
+1. State Aim:
+> To  
+
+2.  Scatterplot and correlation
+```{r}
+#Read in data
+housing<- read_csv("data/Housing.csv")
+
+str(housing) #There is a character variable that will mess with the analysis
+
+#Clean data
+housing<- housing%>%
+  select(-Address)
+
+str(housing)
+```
+
+Looking at the correlation matrix and the plots, it looks like the average number of bedrooms for a house in the area (`bedroom_no`) is fairly correlated to the average number of rooms for a house in the area (`room_no`). Additionally, `bedroom_no` has a very weak relationship to Price, so I will leave it out of the model to try to keep all the variables independent from each other. Everything else will go in the model.
+
+```{r}
+pairs(housing)
+round(cor(housing), 3)
+```
+
+2.  Fit the model
+
+```{r}
+housing_mlr <- lm(Price~ area_income+ area_house_age + room_no + area_pop, data = housing)
+```
+
+
+3.  Check assumptions
+
+```{r}
+par(mfrow = c(2,2))
+plot(housing_mlr)
+par(mfrow = c(1,1))
+```
+
+> Assumptions are beautiful and prefect. Relationship is linear, data is normally distributed, there is no fanning in the scale-location plot, and the residuals vs leverage doesn't even show the Cook's distance line.
+
+4.  P-value and model fit
+
+```{r}
+summary(housing_mlr)
+```
+
+    a)   Is the model significant? Yes, the f tests shows p < 0.05
+
+    b)   Are the predictors significant? All the predictors are significant, with p-values < 0.05
+
+    c)   How good is the model fit? The model has an excellent fit. The R^2^ = 0.9179, which indicates that the model explains ~92% of the variation in the data.
+
+5.  Conclusions
+
+>  The F-test indicated our model is significant (P < 0.05), allowing us to reject the null hypothesis and conclude at least one of our partial regression coefficients has a slope not equal to 0. 
+
+> Our t-test upon each of our partial regression coefficients supports this, as area income, area house age, room number and area population all have p-values below 0.05.
+
+> The fit of the model is excellent, with ~92% of the variation explained by our model.
+
+--------
+:::
+
+## Exercise 2: Energy use
+
+Data:
+
+- [energy](data/energy_data.csv)
+
+Use the dataset from [kaggle](https://www.kaggle.com/datasets/govindaramsriram/energy-consumption-dataset-linear-regression) to explore which variables affect energy consumption.
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+-----
+
+```{r}
+#Read data
+energy<- read_csv("data/energy_data.csv")
+
+str(energy)
+
+#Keep only the numeric variables
+energy_numeric <- energy%>%
+  select(-building_type, -day_of_week)
+```
+
+1.  Scatterplot and correlation
+
+```{r}
+pairs(energy_numeric)
+round(cor(energy_numeric),3)
+```
+> Not too much correlation between independent variables, but `appliances_used` has a very weak relationship with `energy_consumption`. I'm going to leave it out of my model.
+
+2.  Fit the model
+```{r}
+energy_lm <-lm(energy_consumption~ square_footage + occupant_number, data = energy_numeric )
+```
+
+3.  Check assumptions
+```{r}
+par(mfrow = c(2,2))
+plot(energy_lm)
+par(mfrow = c(1,1))
+```
+> All the assumptions look fine. The points are starting to veer off the line at the edges of the QQ plot, but I'm not worried about it.
+
+4.  P-value and model fit
+
+```{r}
+summary(energy_lm)
+```
+
+    a)   Is the model significant? yes, the f-test shows p< 0.05
+
+    b)   Are the predictors significant? yes, the t tests for theindividual predictors all have p < 0.05
+
+    c)   How good is the model fit? The model has a decent fit, with an adjusted R^2^ of 0.65
+
+5.  Conclusions
+>  The F-test indicated our model is significant (P < 0.05), allowing us to reject the null hypothesis and conclude at least one of our partial regression coefficients has a slope not equal to 0. 
+
+> Our t-test upon each of our partial regression coefficients supports this, as area income, area house age, room number and area population all have p-values below 0.05.
+
+> The fit of the model is good, with 65% of the variation explained by our model.
+
+-------
+:::
+## Exercise 3: Sales vs advertising budget
+
+Data:
+
+- [advertising budget](data/Advertising_Budget_and_Sales.csv)
+
+Use the dataset from [kaggle](https://www.kaggle.com/datasets/yasserh/advertising-sales-dataset) to explore how different advertising budgets affect sales. 
+
+::: {.content-visible when-profile="solution"}
+### Solution {style="color:green;"}
+
+-----
+
+```{r}
+sales<- read_csv("data/Advertising_Budget_and_Sales.csv")
+
+str(sales)
+```
+
+1.  Scatterplot and correlation
+```{r}
+pairs(sales)
+round(cor(sales),3)
+```
+> The first variable is just the row ID, so I'm going to ignore it. All the independent variables look like they have a relationship with the target variable, though the relationship with `newspaper_ad_budget` is rather weak. There aren't any particularly strong correlations between the budgets, so I will include all of them in my model.
+
+2.  Fit the model
+```{r}
+sales_mlr<- lm(Sales~tv_ad_budget+radio_ad_budget+ newspaper_ad_budget, data = sales)
+```
+
+
+3.  Check assumptions
+```{r}
+par(mfrow = c(2,2))
+plot(sales_mlr)
+par(mfrow = c(1,1))
+```
+> All the assumptions look fine. The residuals vs fitted plot is a bit squished, but the line is relatively straight, so I'm not worried about it.
+
+4.  P-value and model fit
+```{r}
+summary(sales_mlr)
+```
+
+
+    a)   Is the model significant? Yes, the F-test shows p< 0.05.
+
+    b)   Are the predictors significant? The tv and radio ad budgets are both significant, but the newspaper ad budget was not significant (p = 0.86)
+
+    c)   How good is the model fit? The model has an excellent fit with an adjusted R^2^ of 0.8956
+
+5.  Conclusions
+>  The F-test indicated our model is significant (P < 0.05), allowing us to reject the null hypothesis and conclude at least one of our partial regression coefficients has a slope not equal to 0. 
+
+> Our t-test upon each of our partial regression coefficients supports this, as `tv_ad_budget` and `radio_ad_budget` both have p-values below 0.05. However, `newspaper_ad_budget` was not a significant predictor, with p = 0.86.
+
+> The fit of the model is excellent, with ~90% of the variation explained by our model. Since the `newspaper_ad_budget` was not significant, we could try running the model again without this variable, to see if it imporves the fit.
+
+------
+:::
 
 <br> <br> <!--The code below reduces white space at the end of the output doc-->
 

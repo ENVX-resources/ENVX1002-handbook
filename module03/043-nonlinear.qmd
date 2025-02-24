@@ -188,7 +188,7 @@ resids <- nlsResiduals(mod_exponential)
 plot(resids)
 ```
 
-## Interpretation
+### Interpretation
 
 ```{r}
 #| echo: true
@@ -209,7 +209,7 @@ ggplot(data = growth, aes(x = predictor, y = response)) +
   geom_line(aes(y = predict(mod_exponential)), color = "red", size = 2)
 ```
 
-## Poor estimation
+### Poor estimation
 
 If the starting values are too far (most likely the 'rate of change' term), the model will not run and there will be an error. However, there is some flexibility allowed. Below we use some inaccurate initial estimates -- the model still reaches the same result (fit, parameters, errors), it just takes more tries (iterations).
 
@@ -221,7 +221,7 @@ mod_exponential <- nls(response ~ y0*exp(k*predictor), data = growth,
 summary(mod_exponential)
 ```
 
-## Self-starting function
+### Self-starting function
 
 The self-starting function for exponential curves can be found in the `nlraa` package. The function is `SSexpf()` and has the same formula as above -- but has different names for parameters ($y_0$ = $a$, $k$ = $c$). We can re-define the names of the parameters when we use the function. It reaches the same result with less effort and typically fewer iterations.
 
@@ -310,7 +310,7 @@ ggplot(asymptotic, aes(predictor, response)) +
   theme_classic()
 ```
 
-# Logistic regression
+## Logistic regression
 
 Logistic regression is a type of non-linear regression typically used when the response variable is binary (0 or 1). The logistic function is an S-shaped or sigmoid curve that models the probability of the response variable being 1. The equation that `SSlogis()` (base R) assumes $y$ is positive and uses:
 
@@ -321,7 +321,7 @@ where
 - $xmid$ is the value of $x$ when $y$ is halfway between the lower and upper limits (inflection point).
 - $scal$ is the rate of change: the rate at which $y$ approaches the upper limit.
 
-## In practice
+### In practice
 
 So if we were to estimate the initial parameters...
 
