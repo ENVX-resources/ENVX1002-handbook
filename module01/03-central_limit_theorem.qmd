@@ -1,0 +1,233 @@
+---
+title: The Central Limit Theorem
+draft: true
+---
+
+```{r setup}
+#| include: false
+#| message: false
+#| warning: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, lterdatasampler)
+
+# Explicitly load the dataset
+data("knz_bison", package = "lterdatasampler")
+```
+
+## Overview
+
+
+
+The Central Limit Theorem (CLT) is a fundamental concept in statistics that helps us understand the behaviour of sample means. In this chapter, we'll explore this concept using real ecological data, building on our knowledge of descriptive statistics and data visualisation.
+
+## Data Introduction
+
+We'll work with the Konza Prairie LTER dataset (`knz_bison`), which contains bison weight measurements across different years:
+
+```{r}
+glimpse(knz_bison)
+```
+
+## Population Concepts
+
+### Understanding Populations and Samples
+
+Let's examine the bison weight measurements as our population:
+
+```{r}
+# Population summary
+summary(knz_bison$animal_weight)
+
+# Visualise the population distribution
+ggplot(knz_bison, aes(x = animal_weight)) +
+  geom_histogram(bins = 30) +
+  labs(
+    x = "Bison Weight (kg)",
+    y = "Count",
+    title = "Distribution of Bison Weight Measurements"
+  )
+```
+
+### Natural Variation in Ecological Data
+
+Bison weight varies due to multiple factors:
+
+```{r}
+# Examine variation across years
+ggplot(knz_bison, aes(x = as.factor(rec_year), y = animal_weight)) +
+  geom_boxplot() +
+  labs(
+    x = "Year",
+    y = "Bison Weight (kg)",
+    title = "Bison Weight Variation Across Years"
+  )
+```
+
+## Sampling Distributions
+
+### Creating Sample Means
+
+Let's demonstrate how sample means behave:
+
+```{r}
+# Function to calculate mean of random sample
+get_sample_mean <- function(data, n) {
+  sample_data <- sample(data, size = n, replace = TRUE)
+  mean(sample_data, na.rm = TRUE)
+}
+
+# Take multiple samples and calculate means
+set.seed(123) # For reproducibility
+sample_means_small <- replicate(
+  1000,
+  get_sample_mean(knz_bison$animal_weight, n = 5)
+)
+
+sample_means_large <- replicate(
+  1000,
+  get_sample_mean(knz_bison$animal_weight, n = 30)
+)
+
+# Create dataframe for plotting
+sample_means_df <- data.frame(
+  mean = c(sample_means_small, sample_means_large),
+  sample_size = rep(c("n = 5", "n = 30"), each = 1000)
+)
+
+# Plot distributions of sample means
+ggplot(sample_means_df, aes(x = mean)) +
+  geom_histogram(bins = 30) +
+  facet_wrap(~sample_size) +
+  geom_vline(
+    aes(xintercept = mean(knz_bison$animal_weight, na.rm = TRUE)),
+    color = "red",
+    linetype = "dashed"
+  ) +
+  labs(
+    x = "Sample Mean Weight (kg)",
+    y = "Count",
+    title = "Distribution of Sample Means",
+    subtitle = "Red line shows population mean"
+  )
+```
+
+### Sample Size Effects
+
+Compare variability in sample means with different sample sizes:
+
+```{r}
+# Calculate standard deviations of sampling distributions
+sample_means_df %>%
+  group_by(sample_size) %>%
+  summarise(
+    sd = sd(mean, na.rm = TRUE),
+    mean = mean(mean, na.rm = TRUE)
+  )
+```
+
+Note how the larger sample size produces less variable sample means.
+
+### Building Understanding
+
+Key observations about sampling distributions:
+1. They're more normal than the population distribution
+2. They center around the population mean
+3. Their spread decreases with larger sample sizes
+
+## The Central Limit Theorem
+
+### Main Principles
+
+The CLT states that the sampling distribution of means:
+1. Approaches a normal distribution
+2. Has a mean equal to the population mean
+3. Has a standard error = $\frac{\sigma}{\sqrt{n}}$
+
+Let's demonstrate this:
+
+```{r}
+# Function to test normality of sampling distribution
+sample_distribution_test <- function(data, n_samples, sample_size) {
+  sample_means <- replicate(
+    n_samples,
+    get_sample_mean(data, sample_size)
+  )
+
+  # Create QQ plot
+  means_df <- data.frame(means = sample_means)
+
+  ggplot(means_df, aes(sample = means)) +
+    stat_qq() +
+    stat_qq_line() +
+    labs(
+      title = paste("Normal Q-Q Plot (n =", sample_size, ")"),
+      x = "Theoretical Quantiles",
+      y = "Sample Quantiles"
+    )
+}
+
+# Test with different sample sizes
+sample_distribution_test(knz_bison$animal_weight, 1000, 5)
+sample_distribution_test(knz_bison$animal_weight, 1000, 30)
+```
+
+### Standard Error
+
+The standard error decreases with sample size:
+
+```{r}
+# Calculate standard error for different sample sizes
+sample_sizes <- c(5, 10, 30, 50)
+standard_errors <- sapply(sample_sizes, function(n) {
+  samples <- replicate(1000, get_sample_mean(knz_bison$animal_weight, n))
+  sd(samples, na.rm = TRUE)
+})
+
+# Plot relationship
+se_df <- data.frame(
+  sample_size = sample_sizes,
+  standard_error = standard_errors
+)
+
+ggplot(se_df, aes(x = sample_size, y = standard_error)) +
+  geom_point() +
+  geom_line() +
+  labs(
+    x = "Sample Size",
+    y = "Standard Error",
+    title = "Standard Error vs Sample Size",
+    subtitle = "Demonstrates decrease in SE with larger samples"
+  )
+```
+
+## Practical Applications
+
+### In Ecological Research
+
+The CLT helps us:
+1. Plan appropriate sample sizes
+2. Make inferences about populations
+3. Understand sampling variation
+4. Design effective monitoring programs
+
+### Field Implementation
+
+When designing animal surveys:
+1. Consider required precision (affects sample size)
+2. Account for natural variation
+3. Balance cost and statistical power
+4. Plan for long-term monitoring
+
+## Summary
+
+We've learned how:
+- Sample means form a sampling distribution
+- The CLT describes this distribution's properties
+- Sample size affects sampling variation
+- These concepts apply to ecological research
+
+This understanding is crucial for:
+- Research design
+- Data interpretation
+- Statistical inference
+- Environmental monitoring
