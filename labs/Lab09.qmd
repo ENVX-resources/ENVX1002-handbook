@@ -1,5 +1,5 @@
 ---
-title: Lab 9 - Describing relationships
+title: Lab 9 -- Describing relationships
 embed-resources: true
 resources:
   - data/ENVX1002_practical_data_Regression.xlsx
@@ -35,7 +35,7 @@ Create your Quarto document and save it as `Lab-09.Rmd` or similar. The followin
 
 ## Exercise 1: Linear Modelling in Excel
 
-This exercise focusses on fitting the model parameters and demonstrating two ways a model can be fitted - numerical or analytical; 
+This exercise focusses on fitting the model parameters and demonstrating two ways a model can be fitted -- numerical or analytical; 
 
 * Analytical: equation(s) are used directly to find solution, e.g. estimate parameters that minimise residual sum of squares
 
@@ -65,7 +65,7 @@ a) To see whether this is likely to be true, fit a model to the above data 'by h
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
-b0 = 4693.4 b1 = -2.40 SSxy = -24 SSxx = 10 mean(x) = 1946 mean(y) = 23 The table we have provided in Excel has broken the regression parameter equations (b0, b1) into smaller components so you can understand the underlying mechanisms and where these values come from.
+b0 = 4693.4 b1 = -2.40 SSxy = -24 SSxx = 10 mean(x) = 1946 mean(y) = 23
 
 :::
 
@@ -97,12 +97,12 @@ The intercept is 4693, suggesting at the year zero, Canadian farms had 4693 hors
 
 :::
 
-d) Calculate the correlation coefficient using the **=CORREL** function in Excel. Type **=CORREL(** and highlight the **Year** column, and then after a comma highlight the **Horses** column and close the brackets. 
+d) Calculate the correlation coefficient using the **=CORREL** function in Excel. Type **=CORREL(** and highlight the **Year** column, and then after a comma highlight the **Horses** column and close the brackets **)**. 
 
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
-r = -0.979795897, meaning there is a strong relationship in the negative direction; i.e. as the years increase, the number of horses have decreased.
+r = -0.9798, meaning there is a strong relationship in the negative direction; i.e. as the years increase, the number of horses have decreased.
 
 :::
 
@@ -137,7 +137,7 @@ residual = y_i - \hat{y}_1
 \label{1}
 \end{equation}
 
-Where $y_i$ is the observed value for the ith observation and $\hat{y}_1$ is the predicted value for the *i*th observation.  In this case the predicted value is based on the linear model.
+Where $y_i$ is the observed value for the ith observation and $\hat{y}_1$ is the predicted value for the *i*th observation. In this case the predicted value is based on the linear model.
 
 If we add up the square of the residuals for the n observations we get something called the Residual Sum of Squares ($SS_{res}$):
 
@@ -145,13 +145,13 @@ If we add up the square of the residuals for the n observations we get something
 SS_{res} =\sum_{i = 1}^{n} (y - \hat{y})^2 \label{2} 
 \end{equation}
 
-The best fitting model will have the smallest RSS.  The general method is called least-squared estimation.  We will now use Excel to find the optimal model.
+The best fitting model will have the smallest RSS. The general method is called least-squared estimation.  We will now use Excel to find the optimal model.
 
 Enter values of 2 for the y-intercept ($b_0$) and 3 for the slope ($b_1$) in cells H2:H3.  These are the initial guess values.  
 
 b)	Now use these parameter values to create predictions for each value of fertiliser in the Predicted column. 
 
-Make sure that rather than writing in the value '2' and '3' for your predicted column, you refer to cells H2 and H3 (write as $H$2 and $H$3, see screenshot below).  Once you have completed the equation, you can apply the equation to the other rows by clicking on the small box at the bottom right corner of the cell and drag it down the rows.   Writing dollar signs into your references to H2 and H3 prevents your equation from moving down the row column. 
+Instead of typing '2' and '3' directly in your formula, you must use $H$2 and $H$3. The dollar signs lock these cells as reference points, so they won't shift when you copy the formula. To apply the formula to other rows, either drag the small box at the bottom right of the cell down the column or double-click it.
 
 <br>
 
@@ -217,7 +217,7 @@ The points in the scatterplot are showing a linear trend, increasing towards the
 
 :::
 
-c) To numerically determine whether there is a relationship, calculate the correlation coefficient. (assume data is normally distributed). Does the correlation coefficient indicate a relationship between fertiliser and yield?
+c) To numerically determine whether there is a relationship, calculate the correlation coefficient. (Assume data is normally distributed). Does the correlation coefficient indicate a relationship between fertiliser and yield?
 
 ```{r , echo = T, eval = T}
 # To calculate the correlation coefficient:
@@ -261,10 +261,10 @@ f) Based on this output, what would the model equation be? Does it match your fi
 Substituting in parameters from R output:
 
 $$
-Yield = 4.7619 + 5.4286fert
+yield = 4.7619 + 5.4286fert
 $$
 
-This should be the same as the equation obtained in Excel
+This should be the same as the equation obtained in Excel.
 
 :::
 
@@ -274,7 +274,7 @@ Also remember, when presenting plots (e.g. in a report), they should be able to 
 
 ```{r}
 # Add the linear model to your scatterplot
-plot(fert, yield, xlab = "fertiliser applied", ylab = "Yield")
+plot(fert, yield, xlab = "Fertiliser Applied", ylab = "Yield")
 abline(model.lm, col = "red")
 ```
 
@@ -384,30 +384,31 @@ That's it! Great work today. Next week: interpreting linear models!
 
 ## Exercise 1: Cars stopping distance
 
-For this exercise we willuse the inbuilt dataset cars to see if there is a relationship between a cars speed (mph) and stopping distance (fft).
+For this exercise we will use the inbuilt dataset cars to see if there is a relationship between a car's `speed` (mph) and `dist` )stopping distance, fft).
 
 ```{r}
 head(cars)
 ```
 
 
-a) Create a scatterplot of speed vs distance
+a) Create a scatterplot of `speed` vs `dist`.
 
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
 ```{r}
 plot(cars$speed, cars$dist)
+
 ```
 
 :::
 
-b) Is there are trend? Or are the point evenly scatered? 
+b) Is there are trend? Or are the point evenly scattered? 
 
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
-There is a positive relationship between speed and distance.
+There is a positive relationship between `speed` and `dist`.
 
 :::
 
@@ -435,8 +436,7 @@ cars_lm <- lm(dist~ speed, data = cars)
 summary(cars_lm)
 ```
 
-$b_0$ =  -17.5791  
-$b_1$ = 3.9324
+$b_0$ = -17.5791 and $b_1$ = 3.9324.
 
 :::
 
@@ -449,7 +449,7 @@ Distance = 3.9324*Speed -17.5791
 
 :::
 
-f) Overlay your model onto the scatterplot you produced earlier
+f) Overlay your model onto the scatterplot you produced earlier.
 
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
@@ -457,13 +457,19 @@ f) Overlay your model onto the scatterplot you produced earlier
 ```{r}
 plot(cars$speed, cars$dist)
 abline(cars_lm, col = "red")
+
+### In ggplot
+# ggplot(cars, aes(x = speed, y = dist)) +
+#   geom_point() +
+#   geom_line(y = predict(cars_lm), col = "red")
+
 ```
 
 :::
 
 ## Exercise 2: Penguins
 
-For this exercise, we will be using the palmer penguin data set to see if there is a relationship between bill and flipper length.
+For this exercise, we will be using the palmer penguin data set to see if there is a relationship between bill and flipper length (`bill_length_mm`, `flipper_length_mm`).
 
 ```{r}
 #Load libraries
@@ -477,7 +483,8 @@ penguins <- penguins%>%
 head(penguins)
 
 ```
-a) Create a scatterplot of bill length vs flipper legth
+
+a) Create a scatterplot of `bill_length_mm` vs `flipper_length_mm`.
 
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
@@ -488,7 +495,7 @@ plot(penguins$bill_length_mm, penguins$flipper_length_mm)
 
 :::
 
-b) Is there are trend? Or are the point evenly scatered? 
+b) Is there are trend? Or are the point evenly scattered? 
 
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
@@ -507,7 +514,7 @@ c) Calculate the correlation coefficient between these two variables. Is there a
 cor(penguins$bill_length_mm, penguins$flipper_length_mm)
 ```
 
-The correlation coefficient is 0.65, ehich indicates a medium- positive relationship.
+The correlation coefficient is 0.65, which indicates a medium positive relationship.
 
 :::
 
@@ -527,16 +534,16 @@ $b_1$ = 0.25482
 
 :::
 
-e) What would the equation of the line be?
+e) What would the equation of the linear model be?
 
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
-bill length = -7.21856  + 0.25482* flipper length
+$ \text{bill length} = -7.21856  + 0.25482* \text{flipper length}$
 
 :::
 
-f) Overlay your model onto the scatterplot you produced earlier
+f) Overlay your model onto the scatterplot you produced earlier.
 
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
@@ -550,14 +557,14 @@ abline(penguin_model, col = "red")
 
 ## Exercise 3: Old Faithful Geyser Data
 
-For this exercise, we will be looking at the relationship between geyser eruption time and time between erupttions, using the inbuilt data set faithful
+For this exercise, we will be looking at the relationship between geyser eruption time (`eruptions`) and the time between eruptions (`waiting`), using the inbuilt data set `faithful`.
 
 ```{r}
 head(faithful)
 ```
 
 
-a) Create a scatterplot of eruptions vs waiting time
+a) Create a scatterplot of `eruptions` vs `waiting` (time).
 
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
@@ -568,12 +575,12 @@ plot(faithful$waiting, faithful$eruptions)
 
 :::
 
-b) Is there are trend? Or are the point evenly scatered? 
+b) Is there are trend? Or are the point evenly scattered?
 
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
-There is a positive relationship between eruptions length and waiting time
+There is a positive relationship between eruptions length and waiting time.
 
 :::
 
@@ -586,7 +593,7 @@ c) Calculate the correlation coefficient between these two variables. Is there a
 cor(faithful$eruptions, faithful$waiting)
 ```
 
-The correlation coefficient is 0.9, which indicates a very strong positive relationship
+The correlation coefficient is 0.9, which indicates a very strong positive relationship.
 
 :::
 
@@ -615,7 +622,7 @@ eruptions =  0.075628* waiting -1.874016
 
 :::
 
-f) Overlay your model onto the scatterplot you produced earlier
+f) Overlay your model onto the scatterplot you produced earlier.
 
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}

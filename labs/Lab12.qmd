@@ -60,7 +60,7 @@ compared to polynomials?
 |-------------------------------------------|-----------------------------|
 | Parameters hard to interpret | Parameters interpretable in terms of biological and environmental processes |
 | Can be fitted with analytical or numerical methods | Fitting parameters can be difficult as use numerical methods which rely on good initial estimates of parameters |
-| Hypothesis testing and estimating r^2^ straightforward | Hypothesis testing and estimating r^2^ is a bit more difficult – not absence of r^2^ in R output |
+| Hypothesis testing and estimating R^2^ straightforward | Hypothesis testing and estimating R^2^ is a bit more difficult – not absence of R^2^ in R output |
 | Difficult to model horizontal asymptotes | Can accommodate horizontal asymptotes |
 | Only polynomials of even order restricted to positive values | Constrained to positive values |
 
@@ -107,7 +107,7 @@ has 2 turning points.
 
 A study was performed to examine the soil properties that control the
 within-field variation in crop yield. The focus of this question is on
-soil pH which among other things controls the availability of nutrients
+soil pH which (among other things) controls the availability of nutrients
 to plants.
 
 This exercise does not require you to read in any data, but rather focus
@@ -172,7 +172,7 @@ values of the predictor the line could also appear to be straight.
 
 b)  based on the output from the 3 models below, which model fits the
     data best? Note: no hypothesis testing yet, just how well the model
-    fits the data (r^2^).
+    fits the data (R^2^).
 
 <!-- -->
 
@@ -205,15 +205,15 @@ summary(soil.cub)
 
 ------------------------------------------------------------------------
 
-**b)** The r^2^ assesses how well the model fits the data. The best
-model based on this metric is the cubic polynomial (r^2^ = 0.255), then
-the quadratic polynomial (r^2^ = 0.231) and finally the linear model
-(r^2^ = 0.00016).
+**b)** The R^2^ assesses how well the model fits the data. The best
+model based on this metric is the cubic polynomial (R^2^ = 0.255), then
+the quadratic polynomial (R^2^ = 0.231) and finally the linear model
+(R^2^ = 0.00016).
 
 It should be noted that this does not consider the model complexity
 (i.e. aiming for the most parsimonious model - the one with least
 predictors). For example, is the extra complexity of the cubic
-polynomial worth an increase in r^2^ of 0.024? Formal hypothesis testing
+polynomial worth an increase in R^2^ of 0.024? Formal hypothesis testing
 can address this question.
 
 ------------------------------------------------------------------------
@@ -314,7 +314,7 @@ a)  What is the model fit like in this model?
 
 ------------------------------------------------------------------------
 
-**a)** Our model fit is ok, with r^2^ of 0.6344
+**a)** Our model fit is ok, with R^2^ of 0.6344.
 
 ------------------------------------------------------------------------
 :::
@@ -342,7 +342,7 @@ b)  What is the fit like for our quadratic model? is it better than our
 
 ------------------------------------------------------------------------
 
-**b)** Our model fit even better, with r^2^ of 0.9993
+**b)** Our model fit even better, with R^2^ of 0.9993.
 
 ------------------------------------------------------------------------
 :::
@@ -385,6 +385,7 @@ model fit as lines:
 ```{r, eval = T, echo=T}
 plot(fert, yield, xlab = "Fertilizer", ylab = "Yield")
 lines(new.fert, new.pred) # Adds lines to original plot
+
 ```
 
 <br>
@@ -537,7 +538,7 @@ d)  How similar were the estimates of *k*?
 ------------------------------------------------------------------------
 
 **d)** Both estimates are of a similar magnitude. It should be noted
-that the estimate of the slope (b) is an approximation. If we formally
+that the estimate of the slope (b1) is an approximation. If we formally
 estimate the slope (`lm(log(pop)~year`) the value is 0.005835.
 
 ------------------------------------------------------------------------
@@ -589,10 +590,10 @@ temp<-c(5,10,20,25,30,35,40)
 respiration<-c(1,2,4,6,8,11,18)
 
 ##Initial parameters
-exp.mod<-c(Bp=1.0,Cp=0.1)
+exp.mod<-c(y0=1.0,k=0.1)
 
 ##Fits exponential model
-res.exp<-nls(respiration~Bp * exp(temp*Cp),start=exp.mod,trace=T)
+res.exp<-nls(respiration ~ y0 * exp(k*temp), start=exp.mod,trace=T)
 
 ##Summarise model
 summary(res.exp)
@@ -641,7 +642,7 @@ c)  Calculate the RSS value for the Excel exponential model. Based on
 ------------------------------------------------------------------------
 
 **c)** The better model is the one fitted in R which is optimized to fit
-the actual observations rather than the approximate linearization
+the actual observations rather than the approximate linearisation
 approach used by Excel.
 
 ------------------------------------------------------------------------
@@ -661,9 +662,9 @@ In Excel, log the soil respiration data and fit a linear model. You will
 see that the fitted model gives the same values as the exponential model
 fitted to the untransformed data.
 
-If you compare the r^2^ values for both you will see they are the same.
-This means that Excel reports the r^2^ of the linear model fitted to
-logged respiration as the r^2^ of the exponential model fitted to the
+If you compare the R^2^ values for both you will see they are the same.
+This means that Excel reports the R^2^ of the linear model fitted to
+logged respiration as the R^2^ of the exponential model fitted to the
 raw data. This is naughty of Excel.
 
 ::: {.pad-box-mini style="background-color: #f2f2f2; padding:10px;"}
@@ -702,13 +703,17 @@ smaller.
 ## Logistic function
 
 ::: {.pad-box-mini style="background-color: #f2f2f2; padding:10px;"}
-$y = A + \frac{C}{1+e^{-B(t-M)}}$
 
-where the parameters are *A* which is the starting point or initial
-condition, *C* which is the value of *y* where the functions flattens
-out (the horizontal asymptote), *M* which is the value of *x* where the
-change in *y* is largest (always occurs at y = A + 0.5*C*), and 0.5*B*
-is growth rate of individual when *t* = *M*.
+There are several versions of the logistic function. We will use the following:
+
+$$ y = \frac{Asym}{1+e^{\frac{xmid-x}{scal}}} $$
+
+where
+
+- $Asym$ is the maximum value of $y$ (upper limit, horizontal asymptote).
+- $xmid$ is the value of $x$ when $y$ is halfway between the lower and upper 
+limits (inflection point, $y = 0.5 \times Asym$).
+- $scal$ is the rate of change: the rate at which $y$ approaches the upper limit.
 
 Commonly used to model growth that has a sigmoid shape, i.e. where
 growth is initially slow, then picks up to a maximum, then slows down
@@ -724,16 +729,18 @@ Harder to fit than polynomials.
 ### Exercise 5: Logistic models
 
 In this exercise you will model the yield of pasture over time (since
-sowing) using a logistic function. Since the yield at sowing = 0, the A
-parameter will be set to 0 and the form of the logistic function that
-you will use is:
+sowing).
 
-$y = A + \frac{C}{1+e^{-B(t-M)}}$
+Note, we will assume the yield at sowing = 0 is 0 t/ha, which 
+allows us to use the equation above (that is pre-defined in `SSlogis()`).
 
-a)  Fit the model in Excel using SOLVER and in R using the `nls`
-    function. Refer to previous exercises for `nls` function structure
-    and implement the logistic function. You will need to specify
-    credible starting values for the parameters (see Box below).
+If this were not the case, we would need to use a slightly different equation;
+$y = y_0 + \frac{Asym}{1+e^{-scal(x-xmid)}}$, where $y_0$ is the yield at sowing.
+
+a)  Fit the model in R using the `nls` function. Estimate the starting  
+    parameters manually (using the previous exercise and the equation above as
+    a guide). Then use the `SSlogis()` function to automatically estimate 
+    the parameters (see L12, Tut12 or the [handbook](https://envx-resources.github.io/ENVX1002-handbook/module03/043-nonlinear.html)).
 
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
@@ -744,15 +751,15 @@ a)  Fit the model in Excel using SOLVER and in R using the `nls`
 
 ```{r, eval = T}
 # Data input
+week <- c(9,14,21,28,42,57,63,70,79)
+yield <- c(8.93,10.80,18.59,22.33,39.35,56.11,61.73,64.62,67.08)
 
-week<-c(9,14,21,28,42,57,63,70,79)
-yield<-c(8.93,10.80,18.59,22.33,39.35,56.11,61.73,64.62,67.08)
+# Estimating parameters
+log.mod <- c(Asym=70.0, xmid=40.0, scal=1.0)
+yld.log <- nls(yield ~ Asym/(1 + exp((xmid - week)/scal)), start = log.mod, trace=T)
 
-# Initial parameters
-log.mod<-c(Cp=70.0,Bp=0.1,Mp=40.0)
-
-# Fits logistic model
-yld.log<-nls(yield~Cp/(1+exp(-Bp*(week-Mp))),start=log.mod,trace=T)
+# Self-starting function
+yld.log <- nls(yield ~ SSlogis(week, Asym, xmid, scal))
 
 ```
 
@@ -769,22 +776,28 @@ b)  Plot the fitted model with the observations.
 **b)** Use the following code:
 
 ```{r, eval = T}
-#Creates new dataset for predictions ( 5 to 40 at an interval of 1)
-week.new<-seq(0,80,1)
+# Creates new dataset for predictions (5 to 40 at an interval of 1)
+week.new <- seq(0,80,1)
 
 #Makes predictions onto temp.new
-pred.log<-predict(yld.log,list(week=week.new))
+pred.log <- predict(yld.log, list(week = week.new))
 
 #Adds model fit to existing plots
-plot(week,yield,xlab='Time (weeks)',ylab='Yield (kg)')
-lines (week.new,pred.log)
+plot(week, yield,
+     xlab='Time (weeks)', ylab='Yield (kg)')
+lines(week.new, pred.log)
+
+## In ggplot
+# ggplot(data = data.frame(week, yield), aes(x = week, y = yield)) +
+#   geom_point() +
+#   geom_line(y = predict(yld.log, week.new), color = "red")
 
 ```
 
 ------------------------------------------------------------------------
 :::
 
-c)  Compare the parameters estimated by R and Excel.
+c)  Compare the final model parameters when we provide starting estimates, and when we use `SSlogis()`. Are they the same?
 
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
@@ -792,7 +805,7 @@ c)  Compare the parameters estimated by R and Excel.
 ------------------------------------------------------------------------
 
 **c)** From the code below we can see the estimated parameters are 72.46
-for *C*, 0.067 for *B*, and 38.87 for *M*. This should be similar to
+for $Asym$, 38.87 for $xmid$ and 14.85 for $scal$. This should be similar to
 what Solver obtains in Excel.
 
 ```{r, eval = T}
@@ -809,22 +822,21 @@ summary(yld.log)
 
 When fitting non-linear functions (i.e. logistic or exponential) using
 iterative procedures such as `nls` or SOLVER the starting estimates of
-the parameters have to be approximately correct to find a solution.
+the parameters need to be approximated. If the values are too far, the
+model will not run and return an error.
 
 The best way to ensure that you have suitable starting values is to plot
 the data with the predictions overlaid for your starting parameters. You
 can then see how close your initial model is to the data.
 
-For the logistic model the parameters have clear meanings so suitable
-starting values are:
+The reason we go through the process of estimating parameters is because `nls` 
+and SOLVER can fit *any* nonlinear equation. They are more versatile
 
-(i) *C* is the maximum value of *y* so just use the maximum value of *y*
-    in the raw data as the starting value.
+Realistically, most nonlinear relationships you would fit are covered by a
+self-starting function; i.e. `SSlogis()`, `SSasymp()`, or `nlraa::SSexpf()`.
+These estimate the parameters for you and are more efficient to run.
+We recommend using these when suitable.
 
-(ii) *M* is the value of *t* when *y* = 0.5*C*, this can be read
-     approximately off the graph.
-
-(iii) *B* is harder to estimate but good starting point is 0.1.
 :::
 
 <br>
