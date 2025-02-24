@@ -57,16 +57,17 @@ Below is an example with asymptotic data -- it increases rapidly to a certain po
 # Generate some data with an asymptotic relationship
 set.seed(442) # set seed
 
-asymptotic = tibble(
+asymptotic <- tibble(
   predictor = seq(0, 10, by = 0.2),
-  response = 100*(1-exp(-0.5*predictor)) + rnorm(length(predictor), mean = 0, sd = 10))
+  response = 100 * (1 - exp(-0.5 * predictor)) + rnorm(length(predictor), mean = 0, sd = 10)
+)
 ```
 
 ```{r}
 #| echo: true
 mod_lin <- lm(response ~ predictor, asymptotic) # blue
 mod_poly2 <- lm(response ~ poly(predictor, 2), asymptotic) # red
-mod_poly10 <- lm(response ~ poly(predictor, 10), asymptotic) #green
+mod_poly10 <- lm(response ~ poly(predictor, 10), asymptotic) # green
 ```
 
 ```{r}
@@ -106,7 +107,7 @@ Given it is a quadratic equation, we could calculate the peak of the curve ($x_{
 Although a little out of order, we can also check the assumptions. Recall that linearity is not an assumption for a non-linear model -- we can disregard the shape of the line for the *Residuals vs Fitted* plot, and focus on the distribution of the point around the line (which is even). The residuals fall on the line for the *Normal-QQ* plot indicating residuals are normally distributed, and the *Scale-Location* plot shows the residuals evenly distributed (equal varince), and there are no extreme outliers in the *Residuals vs Leverage* plot.  
 
 ```{r}
-par(mfrow=c(2,2))
+par(mfrow = c(2, 2))
 plot(mod_poly2)
 ```
 
@@ -153,8 +154,9 @@ Because of the equation for the exponential curve, $y_0$ cannot be zero.
 #| code-fold: true
 set.seed(123)
 growth <- tibble(
-  predictor = seq(0,10, by = 0.2),
-  response = abs(exp(0.5*predictor) + rnorm(length(predictor), mean = 1, sd = 5)))
+  predictor = seq(0, 10, by = 0.2),
+  response = abs(exp(0.5 * predictor) + rnorm(length(predictor), mean = 1, sd = 5))
+)
 
 ggplot(data = growth, aes(x = predictor, y = response)) +
   geom_point() +
@@ -167,8 +169,10 @@ Based on the plot, we can estimate the initial parameters for the model. The low
 
 ```{r}
 #| echo: true
-mod_exponential <- nls(response ~ y0*exp(k*predictor), data = growth, 
-  start = list(y0 = 0.1, k = 1))
+mod_exponential <- nls(response ~ y0 * exp(k * predictor),
+  data = growth,
+  start = list(y0 = 0.1, k = 1)
+)
 ```
 
 After we fit out model, we assess the assumptions plots and check our residuals for INE.
@@ -204,7 +208,7 @@ The `Number of iterations to convergence` is the number of times the computer ch
 ```{r}
 #| code-fold: true
 ggplot(data = growth, aes(x = predictor, y = response)) +
-  geom_point() + 
+  geom_point() +
   labs(x = "Predictor", y = "Response") +
   geom_line(aes(y = predict(mod_exponential)), color = "red", size = 2)
 ```
@@ -215,8 +219,10 @@ If the starting values are too far (most likely the 'rate of change' term), the 
 
 ```{r}
 #| echo: true
-mod_exponential <- nls(response ~ y0*exp(k*predictor), data = growth, 
-  start = list(y0 = 10, k = 2))
+mod_exponential <- nls(response ~ y0 * exp(k * predictor),
+  data = growth,
+  start = list(y0 = 10, k = 2)
+)
 
 summary(mod_exponential)
 ```
@@ -227,10 +233,14 @@ The self-starting function for exponential curves can be found in the `nlraa` pa
 
 ```{r}
 #| echo: true
+#| eval: false
+
+# currently not evaluating this code as decay object not found
 library(nlraa)
-mod_exponential <- nls(response ~ SSexpf(predictor, y0, k), data = decay) 
+mod_exponential <- nls(response ~ SSexpf(predictor, y0, k), data = decay)
 summary(mod_exponential)
 ```
+
 
 ## Horizontal asymptotic regression
 
@@ -251,13 +261,14 @@ If the model returns an error (singular gradient matrix at initial parameter est
 ```{r}
 #| code-fold: true
 ggplot(data = asymptotic, aes(x = predictor, y = response)) +
-  geom_point() + 
+  geom_point() +
   geom_hline(yintercept = 100, linetype = "dashed") +
   geom_vline(xintercept = 0, linetype = "dashed") +
   ## plot the rate
-  geom_segment(aes(x = 0, y = 0, xend = 2.5, yend = 100), 
-               arrow = arrow(length = unit(0.5, "cm")), 
-               color = "red") +
+  geom_segment(aes(x = 0, y = 0, xend = 2.5, yend = 100),
+    arrow = arrow(length = unit(0.5, "cm")),
+    color = "red"
+  ) +
   labs(x = "Predictor", y = "Response") +
   theme_classic()
 ```
@@ -266,8 +277,10 @@ ggplot(data = asymptotic, aes(x = predictor, y = response)) +
 #| echo: true
 
 # Fit the model
-fit_asymptotic <- nls(response ~ Asym + (R0-Asym)*(exp(-exp(lrc)*predictor)), data = asymptotic, 
-   start = list(R0 = 0, Asym = 100, lrc = 0.8))
+fit_asymptotic <- nls(response ~ Asym + (R0 - Asym) * (exp(-exp(lrc) * predictor)),
+  data = asymptotic,
+  start = list(R0 = 0, Asym = 100, lrc = 0.8)
+)
 ```
 
 The alternative is to use `SSasymp()` and skip the estimation of the parameters. We simply list the predictor, then the names we want the three parameters to be called. The order is pre-defined, so we must label Asym, R0 and lrc in that order. We could use letters (a, b, c) or any other interpretable names.
@@ -303,8 +316,8 @@ We can then plot the original data and the line of best fit.
 ```{r}
 #| code-fold: true
 ggplot(asymptotic, aes(predictor, response)) +
-  geom_point(color = "black") +  # Original data points
-  geom_line(y = predict(mod_asymptotic), color = "red", size = 1) +  # Fitted line
+  geom_point(color = "black") + # Original data points
+  geom_line(y = predict(mod_asymptotic), color = "red", size = 1) + # Fitted line
   theme_minimal() +
   labs(x = "Predictor", y = "Response") +
   theme_classic()
@@ -327,8 +340,10 @@ So if we were to estimate the initial parameters...
 
 ```{r}
 #| echo: false
-logistic <- tibble(predictor = seq(0, 10, by = 0.2), 
-  response = 10 + abs(300 * (1 / (1 + exp(-0.8 * (predictor - 5)))) + rnorm(length(predictor), mean = 0, sd = 10)))
+logistic <- tibble(
+  predictor = seq(0, 10, by = 0.2),
+  response = 10 + abs(300 * (1 / (1 + exp(-0.8 * (predictor - 5)))) + rnorm(length(predictor), mean = 0, sd = 10))
+)
 
 #| code-fold: true
 ggplot(data = logistic, aes(x = predictor, y = response)) +
@@ -340,9 +355,10 @@ ggplot(data = logistic, aes(x = predictor, y = response)) +
   annotate("text", x = 0, y = 300, label = "Asym", size = 8, vjust = 1.5) +
   annotate("text", x = 5, y = 100, label = "xmid", size = 8, hjust = -1) +
   ## plot the rate
-  geom_segment(aes(x = 2.5, y = 60, xend = 6, yend = 250), 
-               arrow = arrow(length = unit(0.5, "cm")), 
-               color = "red") +
+  geom_segment(aes(x = 2.5, y = 60, xend = 6, yend = 250),
+    arrow = arrow(length = unit(0.5, "cm")),
+    color = "red"
+  ) +
   # label the rate
   annotate("text", x = 4, y = 180, label = "scal", size = 8, colour = "red", hjust = -1)
 ```
@@ -351,8 +367,10 @@ And we would estimate the initial parameters for the model. The upper limit ($As
 
 ```{r}
 #| echo: true
-mod_logistic <- nls(response ~ Asym/(1+exp((xmid-predictor)/scal)), data = logistic,
-   start = list(Asym = 300, xmid = 5, scal = 1))
+mod_logistic <- nls(response ~ Asym / (1 + exp((xmid - predictor) / scal)),
+  data = logistic,
+  start = list(Asym = 300, xmid = 5, scal = 1)
+)
 ```
 
 But we can also use the self-starting function `SSlogis()`.
@@ -381,8 +399,8 @@ Finally, we visualise our model.
 ```{r}
 #| code-fold: true
 ggplot(logistic, aes(predictor, response)) +
-  geom_point(color = "black") +  # Original data points
-  geom_line(y = predict(mod_logistic), color = "red", size = 1) +  # Fitted line
+  geom_point(color = "black") + # Original data points
+  geom_line(y = predict(mod_logistic), color = "red", size = 1) + # Fitted line
   theme_minimal() +
   labs(x = "Predictor", y = "Response") +
   theme_classic()
