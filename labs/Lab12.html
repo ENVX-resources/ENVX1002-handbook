@@ -209,7 +209,7 @@ window.Quarto = {
   <li><a href="#exercise-5-logistic-models" id="toc-exercise-5-logistic-models" class="nav-link" data-scroll-target="#exercise-5-logistic-models">Exercise 5: Logistic models</a></li>
   </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Lab12.pdf"><i class="bi bi-file-pdf"></i>Typst</a></li></ul></div></nav>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -278,7 +278,7 @@ Learning outcomes
 <p><br></p>
 <section id="exercise-1-interpreting-polynomials" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1-interpreting-polynomials">Exercise 1: Interpreting polynomials</h3>
-<p>A study was performed to examine the soil properties that control the within-field variation in crop yield. The focus of this question is on soil pH which among other things controls the availability of nutrients to plants.</p>
+<p>A study was performed to examine the soil properties that control the within-field variation in crop yield. The focus of this question is on soil pH which (among other things) controls the availability of nutrients to plants.</p>
 <p>This exercise does not require you to read in any data, but rather focus on interpreting the model output and comparing the models.</p>
 <p>The figure below shows the raw observations of yield plotted against pH with three models fitted; a linear model, quadratic polynomial and a cubic polynomial.</p>
 <ol type="a">
@@ -295,7 +295,7 @@ Learning outcomes
 </div>
 <p><br></p>
 <ol start="2" type="a">
-<li>based on the output from the 3 models below, which model fits the data best? Note: no hypothesis testing yet, just how well the model fits the data (r<sup>2</sup>).</li>
+<li>based on the output from the 3 models below, which model fits the data best? Note: no hypothesis testing yet, just how well the model fits the data (R<sup>2</sup>).</li>
 </ol>
 <!-- -->
 <ol type="1">
@@ -582,10 +582,10 @@ slope = k = \frac{log_e y_{max} - log_e y_{min}}{x_{max} - x_{min}}
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>respiration<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">11</span>,<span class="dv">18</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="do">##Initial parameters</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>exp.mod<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="at">Bp=</span><span class="fl">1.0</span>,<span class="at">Cp=</span><span class="fl">0.1</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>exp.mod<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="at">y0=</span><span class="fl">1.0</span>,<span class="at">k=</span><span class="fl">0.1</span>)</span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="do">##Fits exponential model</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>res.exp<span class="ot">&lt;-</span><span class="fu">nls</span>(respiration<span class="sc">~</span>Bp <span class="sc">*</span> <span class="fu">exp</span>(temp<span class="sc">*</span>Cp),<span class="at">start=</span>exp.mod,<span class="at">trace=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>res.exp<span class="ot">&lt;-</span><span class="fu">nls</span>(respiration <span class="sc">~</span> y0 <span class="sc">*</span> <span class="fu">exp</span>(k<span class="sc">*</span>temp), <span class="at">start=</span>exp.mod,<span class="at">trace=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>2025.224    (3.23e+01): par = (1 0.1)
 90.64319    (7.34e+00): par = (0.6559559 0.09162898)
@@ -599,12 +599,12 @@ slope = k = \frac{log_e y_{max} - log_e y_{min}}{x_{max} - x_{min}}
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(res.exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-Formula: respiration ~ Bp * exp(temp * Cp)
+Formula: respiration ~ y0 * exp(k * temp)
 
 Parameters:
    Estimate Std. Error t value Pr(&gt;|t|)    
-Bp 0.803701   0.118632   6.775  0.00107 ** 
-Cp 0.077068   0.004048  19.037 7.37e-06 ***
+y0 0.803701   0.118632   6.775  0.00107 ** 
+k  0.077068   0.004048  19.037 7.37e-06 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -650,7 +650,7 @@ Achieved convergence tolerance: 1.681e-06</code></pre>
 <p>When faced with the need to fit an exponential function, one approach that was used before computing power became readily accessible was to log the <em>y</em> values which linearises the relationship with <em>x</em>, enabling the modeller to use a simple linear model.</p>
 <p>If we linearise, model would be <span class="math inline">\(log_e(y) = b_0 + b_1x\)</span>, where <span class="math inline">\(e^{b_0}\)</span> is the <em>y<sub>0</sub></em> parameter in an exponential model, and <em>b<sub>1</sub></em> is the <em>k</em> parameter in the exponential model. This is similar to what was demonstrated in the lecture this week.</p>
 <p>In Excel, log the soil respiration data and fit a linear model. You will see that the fitted model gives the same values as the exponential model fitted to the untransformed data.</p>
-<p>If you compare the r<sup>2</sup> values for both you will see they are the same. This means that Excel reports the r<sup>2</sup> of the linear model fitted to logged respiration as the r<sup>2</sup> of the exponential model fitted to the raw data. This is naughty of Excel.</p>
+<p>If you compare the R<sup>2</sup> values for both you will see they are the same. This means that Excel reports the R<sup>2</sup> of the linear model fitted to logged respiration as the R<sup>2</sup> of the exponential model fitted to the raw data. This is naughty of Excel.</p>
 <div class="pad-box-mini" style="background-color: #f2f2f2; padding:10px;">
 <p>For the dataset used here the exponential model fits it so well the Excel approach is only slightly different to the correct approach used in R.</p>
 <p>In cases where the model does not fit the data so well the differences would be larger. Logarithm makes smaller values larger and larger values smaller.</p>
@@ -667,8 +667,14 @@ Achieved convergence tolerance: 1.681e-06</code></pre>
 <section id="logistic-function" class="level2">
 <h2 class="anchored" data-anchor-id="logistic-function">Logistic function</h2>
 <div class="pad-box-mini" style="background-color: #f2f2f2; padding:10px;">
-<p><span class="math inline">\(y = A + \frac{C}{1+e^{-B(t-M)}}\)</span></p>
-<p>where the parameters are <em>A</em> which is the starting point or initial condition, <em>C</em> which is the value of <em>y</em> where the functions flattens out (the horizontal asymptote), <em>M</em> which is the value of <em>x</em> where the change in <em>y</em> is largest (always occurs at y = A + 0.5<em>C</em>), and 0.5<em>B</em> is growth rate of individual when <em>t</em> = <em>M</em>.</p>
+<p>There are several versions of the logistic function. We will use the following:</p>
+<p><span class="math display">\[ y = \frac{Asym}{1+e^{\frac{xmid-x}{scal}}} \]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(Asym\)</span> is the maximum value of <span class="math inline">\(y\)</span> (upper limit, horizontal asymptote).</li>
+<li><span class="math inline">\(xmid\)</span> is the value of <span class="math inline">\(x\)</span> when <span class="math inline">\(y\)</span> is halfway between the lower and upper limits (inflection point, <span class="math inline">\(y = 0.5 \times Asym\)</span>).</li>
+<li><span class="math inline">\(scal\)</span> is the rate of change: the rate at which <span class="math inline">\(y\)</span> approaches the upper limit.</li>
+</ul>
 <p>Commonly used to model growth that has a sigmoid shape, i.e.&nbsp;where growth is initially slow, then picks up to a maximum, then slows down again as the system reaches a maximum.</p>
 <p>Limitations:</p>
 <p>Harder to fit than polynomials.</p>
@@ -676,27 +682,25 @@ Achieved convergence tolerance: 1.681e-06</code></pre>
 <p><br></p>
 <section id="exercise-5-logistic-models" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-5-logistic-models">Exercise 5: Logistic models</h3>
-<p>In this exercise you will model the yield of pasture over time (since sowing) using a logistic function. Since the yield at sowing = 0, the A parameter will be set to 0 and the form of the logistic function that you will use is:</p>
-<p><span class="math inline">\(y = A + \frac{C}{1+e^{-B(t-M)}}\)</span></p>
+<p>In this exercise you will model the yield of pasture over time (since sowing).</p>
+<p>Note, we will assume the yield at sowing = 0 is 0 t/ha, which allows us to use the equation above (that is pre-defined in <code>SSlogis()</code>).</p>
+<p>If this were not the case, we would need to use a slightly different equation; <span class="math inline">\(y = y_0 + \frac{Asym}{1+e^{-scal(x-xmid)}}\)</span>, where <span class="math inline">\(y_0\)</span> is the yield at sowing.</p>
 <ol type="a">
-<li>Fit the model in Excel using SOLVER and in R using the <code>nls</code> function. Refer to previous exercises for <code>nls</code> function structure and implement the logistic function. You will need to specify credible starting values for the parameters (see Box below).</li>
+<li>Fit the model in R using the <code>nls</code> function. Estimate the starting<br>
+parameters manually (using the previous exercise and the equation above as a guide). Then use the <code>SSlogis()</code> function to automatically estimate the parameters (see L12, Tut12 or the <a href="https://envx-resources.github.io/ENVX1002-handbook/module03/043-nonlinear.html">handbook</a>).</li>
 </ol>
 <ol start="2" type="a">
 <li>Plot the fitted model with the observations.</li>
 </ol>
 <ol start="3" type="a">
-<li>Compare the parameters estimated by R and Excel.</li>
+<li>Compare the final model parameters when we provide starting estimates, and when we use <code>SSlogis()</code>. Are they the same?</li>
 </ol>
 <div class="pad-box-mini" style="background-color: #f2f2f2; padding:10px;">
 <p><strong>STARTING VALUES</strong></p>
-<p>When fitting non-linear functions (i.e.&nbsp;logistic or exponential) using iterative procedures such as <code>nls</code> or SOLVER the starting estimates of the parameters have to be approximately correct to find a solution.</p>
+<p>When fitting non-linear functions (i.e.&nbsp;logistic or exponential) using iterative procedures such as <code>nls</code> or SOLVER the starting estimates of the parameters need to be approximated. If the values are too far, the model will not run and return an error.</p>
 <p>The best way to ensure that you have suitable starting values is to plot the data with the predictions overlaid for your starting parameters. You can then see how close your initial model is to the data.</p>
-<p>For the logistic model the parameters have clear meanings so suitable starting values are:</p>
-<ol type="i">
-<li><p><em>C</em> is the maximum value of <em>y</em> so just use the maximum value of <em>y</em> in the raw data as the starting value.</p></li>
-<li><p><em>M</em> is the value of <em>t</em> when <em>y</em> = 0.5<em>C</em>, this can be read approximately off the graph.</p></li>
-<li><p><em>B</em> is harder to estimate but good starting point is 0.1.</p></li>
-</ol>
+<p>The reason we go through the process of estimating parameters is because <code>nls</code> and SOLVER can fit <em>any</em> nonlinear equation. They are more versatile</p>
+<p>Realistically, most nonlinear relationships you would fit are covered by a self-starting function; i.e.&nbsp;<code>SSlogis()</code>, <code>SSasymp()</code>, or <code>nlraa::SSexpf()</code>. These estimate the parameters for you and are more efficient to run. We recommend using these when suitable.</p>
 </div>
 <p><br></p>
 <p>That’s it for Module 3! Great work exploring non-linear models!</p>
