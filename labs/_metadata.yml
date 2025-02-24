@@ -7,7 +7,7 @@ title-block-banner: "#FCEDE2"
 title-block-banner-color: "#000"
 format: 
   html: default
-  typst: default
+  # typst: default
 execute:
   eval: true
 navbar: false
