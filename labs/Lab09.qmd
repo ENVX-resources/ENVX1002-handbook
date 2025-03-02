@@ -336,10 +336,10 @@ e) Fit a model to your data and obtain the model summary. Year will be our predi
 ### Solution {style="color:green;"}
 
 ```{r , echo = T, eval = T}
-#Fit linear model
+# Fit linear model
 abares.lm <- lm(TFP ~ Year, data = ABARES)
 
-#Model summary
+# Model summary
 summary(abares.lm)
 
 ```
@@ -431,7 +431,7 @@ d) Fit a model to your data and obtain the model summary.
 ### Solution {style="color:green;"}
 
 ```{r}
-cars_lm <- lm(dist~ speed, data = cars)
+cars_lm <- lm(dist ~ speed, data = cars)
 
 summary(cars_lm)
 ```
@@ -472,13 +472,13 @@ abline(cars_lm, col = "red")
 For this exercise, we will be using the palmer penguin data set to see if there is a relationship between bill and flipper length (`bill_length_mm`, `flipper_length_mm`).
 
 ```{r}
-#Load libraries
+# Load libraries
 library(palmerpenguins)
 library(tidyverse)
 
-#Clean data
-penguins <- penguins%>%
-  na.omit()#remove missing data
+# Clean data
+penguins <- penguins %>%
+  na.omit() # remove missing data
 
 head(penguins)
 
@@ -524,7 +524,7 @@ d) Fit a model to your data and obtain the model summary. What are the parameter
 ### Solution {style="color:green;"}
 
 ```{r}
-penguin_model<- lm(bill_length_mm ~ flipper_length_mm, data = penguins)
+penguin_model <- lm(bill_length_mm ~ flipper_length_mm, data = penguins)
 
 summary(penguin_model)
 ```
@@ -603,7 +603,7 @@ d) Fit a model to your data and obtain the model summary.
 ### Solution {style="color:green;"}
 
 ```{r}
-faithful_lm <- lm(eruptions~ waiting, data = faithful)
+faithful_lm <- lm(eruptions ~ waiting, data = faithful)
 
 summary(faithful_lm)
 ```
