@@ -48,3 +48,9 @@ pre.highlight {
 .code-with-copy {
   font-size: 0.9em !important;
 }
+
+/* change colour of cell-output */
+.cell-output {
+  background-color: #fff7ee;
+  border-radius: 4px;
+}
