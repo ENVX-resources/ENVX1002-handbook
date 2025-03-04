@@ -3,6 +3,7 @@ title: Lab 02 -- Statistical programming
 embed-resources: true
 resources:
   - data/soil.xlsx
+  - data/mario_kart.csv
 execute: 
   output: false
 ---
@@ -500,7 +501,7 @@ The mean clay content at 60cm depth is `{{r}} round(mean_clay0, 2)`%, with a med
 
 ## Done!
 
-This is the end of Lab 02. Remember to save your Quarto document and submit it to Canvas when you're done. If you have any questions, feel free to ask your demonstrator for help.
+This is the end of Lab 02. Remember to save your Quarto document ~~and submit it to Canvas~~ when you're done. If you have any questions, feel free to ask your demonstrator for help.
 
 ## Bonus: Take-home exercises
 
@@ -508,7 +509,7 @@ Take-home exercises are optional but recommended for further practice. You can c
 
 ### Exercise 5: Mario Kart statistics
 
-We're not going to go too much about the game -- but here is a dataset of character attributes from the popular game.
+We're not going to go too much about the game -- but here is a dataset of character attributes from the popular Mario Kart.
 
 Download it here: [mario_kart.csv](data/mario_kart.csv)
 
