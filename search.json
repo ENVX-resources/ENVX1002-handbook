@@ -1078,78 +1078,78 @@
   {
     "objectID": "labs/Lab04.html",
     "href": "labs/Lab04.html",
-    "title": "Lab 04 – Sampling distributions",
+    "title": "Lab 04 – Central limit theorem",
     "section": "",
     "text": "Project 1 is due in week 5 and for many of you this may be your first university assignment; some may be nervous, while others may be more relaxed. Your demonstrators will use the start of this practical to discuss how you may be feeling for this first assessment and share ways you might want to approach and prepare for the assessment.\nThis is the last reflective activity for now, thank you all for contributing so far and we hope you have found some benefit in the activities. Now for some probability!\n\n\n\n\n\n\nLearning outcomes\n\n\n\nAt the end of this computer practical, students should be able to:\n\ncalculate tail, interval and inverse probabilities associated with the Normal distribution\ncalculate probabilities associated sampling distribution of the sample mean by using simulation in R and using R commands.\n\n\n\nLink to data is below:\n\nENVX1002_Data4.xlsx\nAlternatively download from Canvas",
     "crumbs": [
       "**🖥️ Computer labs**",
-      "Lab 04 -- Sampling distributions"
+      "Lab 04 -- Central limit theorem"
     ]
   },
   {
     "objectID": "labs/Lab04.html#exercise-1---class-activity---how-tall-is-envx1002",
     "href": "labs/Lab04.html#exercise-1---class-activity---how-tall-is-envx1002",
-    "title": "Lab 04 – Sampling distributions",
+    "title": "Lab 04 – Central limit theorem",
     "section": "Exercise 1 - Class activity - How tall is ENVX1002??",
-    "text": "Exercise 1 - Class activity - How tall is ENVX1002??\n\nSet up a new PROJECT for Lab 4 and create a quarto document called Lab_4.qmd and save it in your project directory.\nRecord the height of all male and female students in the class up on the board (we will try to provide a tape if you are unsure about your height)\nEnter the data into r, for example:\n\n\nfemale_height &lt;- c(176, 180, 187, 168)\nmale_height &lt;- c(175, 183, 163, 190)\n\n\nCalculate the mean and standard deviation using R and graph the distribution for both genders, for example\n\n\nf_mean &lt;- mean(female_height)\nf_sd &lt;- sd(female_height)\nhist(female_height)\n\n\nDiscuss with your neighbour or post on the zoom chat, which model (distribution function) do you think would fit the data\nHow does your class compare to the Australian statistics. For this we will look at the mean and standard deviation of measured heights for men and women aged 18 - 24 from the ABS for 1995 see page 13 of\n\nhttps://www.ausstats.abs.gov.au/Ausstats/subscriber.nsf/Lookup/CA25687100069892CA256889001F4A36/$File/43590_1995.pdf\nNote that both reported and measured heights are provided and not surprisingly reported heights are bigger that the measured :o)",
+    "text": "Exercise 1 - Class activity - How tall is ENVX1002??\n\nSet up a new PROJECT for Lab 4 and create a quarto document called Lab_4.qmd and save it in your project directory.\nRecord the height of all male and female students in the class up on the board (we will try to provide a tape if you are unsure about your height)\nEnter the data into r, for example:\n\n\nfemale_height &lt;- c(176, 180, 187, 168)\nmale_height &lt;- c(175, 183, 163, 190)\n\n\nCalculate the mean and standard deviation using R and graph the distribution for both genders, for example\n\n\nf_mean &lt;- mean(female_height)\nf_sd &lt;- sd(female_height)\nhist(female_height)\n\n\n\n\n\n\n\n\n\nDiscuss with your neighbour or post on the zoom chat, which model (distribution function) do you think would fit the data\nHow does your class compare to the Australian statistics. For this we will look at the mean and standard deviation of measured heights for men and women aged 18 - 24 from the ABS for 1995 see page 13 of\n\nhttps://www.ausstats.abs.gov.au/Ausstats/subscriber.nsf/Lookup/CA25687100069892CA256889001F4A36/$File/43590_1995.pdf\nNote that both reported and measured heights are provided and not surprisingly reported heights are bigger that the measured :o)",
     "crumbs": [
       "**🖥️ Computer labs**",
-      "Lab 04 -- Sampling distributions"
+      "Lab 04 -- Central limit theorem"
     ]
   },
   {
     "objectID": "labs/Lab04.html#exercise-2---milkfat-example",
     "href": "labs/Lab04.html#exercise-2---milkfat-example",
-    "title": "Lab 04 – Sampling distributions",
+    "title": "Lab 04 – Central limit theorem",
     "section": "Exercise 2 - Milkfat example",
-    "text": "Exercise 2 - Milkfat example\n\nPart 1\nThe milkfat content in milk (in %) for 120 cows are presented in the worksheet called ENVX1002_Data4.xlsx. Copy the file into your project directory and:\n\nImport the data into R.\n\n\nlibrary(readxl)\nmilkfat &lt;- read_excel(\"data/ENVX1002_Data4.xlsx\", sheet = \"Milkfat\")\n\n\nCalculate the summary statistics of Milkfat (mean, median and sd)\n\nNote that we use $ColumnName to select a column from the data\n\nmean(milkfat$Milkfat)\n\n\nWhat type of cows could they be? Compare your data to the table in the following link:\n\nhttps://lactalis.com.au/info-center/different-breeds-of-cows/\n\nWhat state could they be from? Check some of the recent Milk Production reports from Dairy Australia. The data can be found in the Average Milkfat & Protein (%) section of the PDF report: The reports can be found at the following link:\n\nhttps://www.dairyaustralia.com.au/resource-repository/2020/09/25/milk-production-report\n\nCould the data be normally distributed?\n\n\nCreate a histogram and boxplot of the milk fat data. Is the data Normally distributed?\n\n\nrequire(ggplot2)\nggplot(milkfat, aes(x = Milkfat)) +\n  geom_histogram(binwidth = 0.1, fill = \"lightblue\", color = \"black\") +\n  xlab(\"Milkfat (%)\")\n\n\nIn the UK, breakfast milk' (orChannel Island milk’) has 5.5% fat content. What percentage of the cows in this data set is yielding breakfast milk with \\(\\ge\\) 5.5%?\n\n\ns &lt;- sort(milkfat$Milkfat) # Sorts the data\ns # Look at the sorted data\nlength(s[s &gt;= 5.5]) # Counts how many are &gt;= 5.5\n\n\nIn Australia, full cream milk has greater than 3.2% milk fat content. What percentage of these cows is yielding full cream milk?\n\n\n## Your turn\n\n\n\nPart 2\nLet \\(X\\) represent the milk fat content for the population of this breed of cows.\n\nAssuming the population is normal, use the sample mean and standard deviation from the previous question as estimates of the population parameters. So \\(X\\sim (\\mu =..., \\sigma^2 = ...)\\).\nDraw a picture of the curve representing \\(X\\). The below example uses ggplot2 to draw the curve for \\(N(4.16,0.30^2)\\).\n\n\nlibrary(ggplot2)\nggplot(data.frame(x = c(4.16 - 4 * 0.3, 4.16 + 4 * 0.3)), aes(x = x)) +\n  stat_function(fun = dnorm, args = list(mean = 4.16, sd = 0.30)) +\n  xlab(\"x\") +\n  ylab(expression(N(4.16, 0.30^2) ~ pdf))\n\n\nWhat is the probability that 1 cow has a fat content less than 4%? We will adapt the ggplot command above a picture of this probability and then use R to find the probability.\n\nHint: You may need to use the stat_function command to draw the curve and then use the pnorm command to find the probability.\n\nggplot(data.frame(x = c(4.16 - 4 * 0.3, 4.16 + 4 * 0.3)), aes(x = x)) +\n  stat_function(\n    fun = dnorm, args = list(mean = 4.16, sd = 0.30),\n    geom = \"area\", fill = \"white\"\n  ) +\n  stat_function(\n    fun = dnorm, args = list(mean = 4.16, sd = 0.30),\n    xlim = c(4.16 - 4 * 0.3, 4), geom = \"area\", fill = \"red\"\n  ) +\n  xlab(\"x\") +\n  ylab(expression(N(4.16, 0.30^2) ~ pdf))\n\n\npnorm(4, 4.16, 0.30)\n\n\nWhat is the probability that 1 cow (randomly sampled) has a fat content greater than 4.5%? Try and adapt the ggplots above to draw a picture of this probability and then use R to find the probability.\nFor a sample of 10 cows (randomly sampled), what is the probability that the sample mean milk fat content is greater than 4.2%?\n\nHint: First find the distribution of the sample mean \\(\\overline{X}\\). Then find \\(P(\\overline{X}&gt;4.2)\\)",
+    "text": "Exercise 2 - Milkfat example\n\nPart 1\nThe milkfat content in milk (in %) for 120 cows are presented in the worksheet called ENVX1002_Data4.xlsx. Copy the file into your project directory and:\n\nImport the data into R.\n\n\nlibrary(readxl)\nmilkfat &lt;- read_excel(\"data/ENVX1002_Data4.xlsx\", sheet = \"Milkfat\")\n\n\nCalculate the summary statistics of Milkfat (mean, median and sd)\n\nNote that we use $ColumnName to select a column from the data\n\nmean(milkfat$Milkfat)\n\n[1] 4.166083\n\n\n\nWhat type of cows could they be? Compare your data to the table in the following link:\n\nhttps://lactalis.com.au/info-center/different-breeds-of-cows/\n\nWhat state could they be from? Check some of the recent Milk Production reports from Dairy Australia. The data can be found in the Average Milkfat & Protein (%) section of the PDF report: The reports can be found at the following link:\n\nhttps://www.dairyaustralia.com.au/resource-repository/2020/09/25/milk-production-report\n\nCould the data be normally distributed?\n\n\nCreate a histogram and boxplot of the milk fat data. Is the data Normally distributed?\n\n\nrequire(ggplot2)\nggplot(milkfat, aes(x = Milkfat)) +\n  geom_histogram(binwidth = 0.1, fill = \"lightblue\", color = \"black\") +\n  xlab(\"Milkfat (%)\")\n\n\n\n\n\n\n\n\n\nIn the UK, breakfast milk' (orChannel Island milk’) has 5.5% fat content. What percentage of the cows in this data set is yielding breakfast milk with \\(\\ge\\) 5.5%?\n\n\ns &lt;- sort(milkfat$Milkfat) # Sorts the data\ns # Look at the sorted data\n\n  [1] 3.47 3.56 3.58 3.66 3.66 3.70 3.70 3.72 3.74 3.74 3.77 3.81 3.82 3.83 3.86\n [16] 3.86 3.87 3.88 3.89 3.89 3.89 3.89 3.91 3.91 3.92 3.93 3.94 3.95 3.96 3.96\n [31] 3.97 3.97 3.97 3.97 3.97 3.98 3.99 3.99 4.00 4.00 4.00 4.02 4.03 4.05 4.05\n [46] 4.05 4.06 4.06 4.07 4.08 4.09 4.09 4.09 4.09 4.10 4.10 4.10 4.11 4.12 4.14\n [61] 4.15 4.16 4.16 4.17 4.17 4.18 4.20 4.20 4.20 4.20 4.22 4.23 4.24 4.24 4.24\n [76] 4.24 4.25 4.27 4.28 4.28 4.29 4.29 4.30 4.31 4.32 4.32 4.33 4.33 4.33 4.34\n [91] 4.35 4.36 4.38 4.38 4.38 4.38 4.38 4.40 4.41 4.42 4.42 4.46 4.48 4.49 4.51\n[106] 4.52 4.58 4.58 4.60 4.60 4.66 4.67 4.67 4.70 4.71 4.81 4.82 4.88 4.91 5.00\n\nlength(s[s &gt;= 5.5]) # Counts how many are &gt;= 5.5\n\n[1] 0\n\n\n\nIn Australia, full cream milk has greater than 3.2% milk fat content. What percentage of these cows is yielding full cream milk?\n\n\n## Your turn\n\n\n\nPart 2\nLet \\(X\\) represent the milk fat content for the population of this breed of cows.\n\nAssuming the population is normal, use the sample mean and standard deviation from the previous question as estimates of the population parameters. So \\(X\\sim (\\mu =..., \\sigma^2 = ...)\\).\nDraw a picture of the curve representing \\(X\\). The below example uses ggplot2 to draw the curve for \\(N(4.16,0.30^2)\\).\n\n\nlibrary(ggplot2)\nggplot(data.frame(x = c(4.16 - 4 * 0.3, 4.16 + 4 * 0.3)), aes(x = x)) +\n  stat_function(fun = dnorm, args = list(mean = 4.16, sd = 0.30)) +\n  xlab(\"x\") +\n  ylab(expression(N(4.16, 0.30^2) ~ pdf))\n\n\n\n\n\n\n\n\n\nWhat is the probability that 1 cow has a fat content less than 4%? We will adapt the ggplot command above a picture of this probability and then use R to find the probability.\n\nHint: You may need to use the stat_function command to draw the curve and then use the pnorm command to find the probability.\n\nggplot(data.frame(x = c(4.16 - 4 * 0.3, 4.16 + 4 * 0.3)), aes(x = x)) +\n  stat_function(\n    fun = dnorm, args = list(mean = 4.16, sd = 0.30),\n    geom = \"area\", fill = \"white\"\n  ) +\n  stat_function(\n    fun = dnorm, args = list(mean = 4.16, sd = 0.30),\n    xlim = c(4.16 - 4 * 0.3, 4), geom = \"area\", fill = \"red\"\n  ) +\n  xlab(\"x\") +\n  ylab(expression(N(4.16, 0.30^2) ~ pdf))\n\n\n\n\n\n\n\n\n\npnorm(4, 4.16, 0.30)\n\n[1] 0.2969014\n\n\n\nWhat is the probability that 1 cow (randomly sampled) has a fat content greater than 4.5%? Try and adapt the ggplots above to draw a picture of this probability and then use R to find the probability.\nFor a sample of 10 cows (randomly sampled), what is the probability that the sample mean milk fat content is greater than 4.2%?\n\nHint: First find the distribution of the sample mean \\(\\overline{X}\\). Then find \\(P(\\overline{X}&gt;4.2)\\)",
     "crumbs": [
       "**🖥️ Computer labs**",
-      "Lab 04 -- Sampling distributions"
+      "Lab 04 -- Central limit theorem"
     ]
   },
   {
     "objectID": "labs/Lab04.html#exercise-3---skin-cancer",
     "href": "labs/Lab04.html#exercise-3---skin-cancer",
-    "title": "Lab 04 – Sampling distributions",
+    "title": "Lab 04 – Central limit theorem",
     "section": "Exercise 3 - Skin cancer",
     "text": "Exercise 3 - Skin cancer\nA dermatologist investigating a certain type of skin cancer induced the cancer in nine rats and then treated them with a new experimental drug. For each rat she recorded the number of hours until remission of the cancer. The rats had a mean remission time of 400 hours and a standard deviation of 30 hours. From this data, calculate the standard error of the mean.",
     "crumbs": [
       "**🖥️ Computer labs**",
-      "Lab 04 -- Sampling distributions"
+      "Lab 04 -- Central limit theorem"
     ]
   },
   {
     "objectID": "labs/Lab04.html#exercise-4---soil-carbon",
     "href": "labs/Lab04.html#exercise-4---soil-carbon",
-    "title": "Lab 04 – Sampling distributions",
+    "title": "Lab 04 – Central limit theorem",
     "section": "Exercise 4 - Soil carbon",
     "text": "Exercise 4 - Soil carbon\nAn initial soil carbon survey of a farm based on 12 observations found that the sample mean \\(\\overline{X}\\) was 1.2% and the standard deviation s was 0.4%. How many observations would be needed to estimate the mean carbon value with a standard error of 0.1%?",
     "crumbs": [
       "**🖥️ Computer labs**",
-      "Lab 04 -- Sampling distributions"
+      "Lab 04 -- Central limit theorem"
     ]
   },
   {
     "objectID": "labs/Lab04.html#exercise-5---whats-in-the-media---looming-state-election",
     "href": "labs/Lab04.html#exercise-5---whats-in-the-media---looming-state-election",
-    "title": "Lab 04 – Sampling distributions",
+    "title": "Lab 04 – Central limit theorem",
     "section": "Exercise 5 - What’s in the media - looming state election",
     "text": "Exercise 5 - What’s in the media - looming state election\nAn article was published in the Sydney Morning Herald on Saturday 20.3.2010 about statistics related to opinion polls. Read it and find the sentences related to (i) populations versus samples (ii) standard error formula (iv) the effect of sample size on standard errors.\nhttp://www.smh.com.au/national/demystifying-the-dark-art-of-polling-20100319-qmai.html",
     "crumbs": [
       "**🖥️ Computer labs**",
-      "Lab 04 -- Sampling distributions"
+      "Lab 04 -- Central limit theorem"
     ]
   },
   {
     "objectID": "labs/Lab04.html#exercise-6---extra-practice",
     "href": "labs/Lab04.html#exercise-6---extra-practice",
-    "title": "Lab 04 – Sampling distributions",
+    "title": "Lab 04 – Central limit theorem",
     "section": "Exercise 6 - Extra practice",
-    "text": "Exercise 6 - Extra practice\nThe average Australian woman has height (in cms) of 161.8 with a standard deviation of 6.\n\nThe Australian Institute of Sport ran a netball training camp for the best Australian young players. How tall were the goal position players? http://www.abc.net.au/news/2015-06-14/tall-athletes-get-support-at-ais-to-stand-as-proud-netballers/6544642\nWhat is the probability of finding an Australian woman of this height or taller?\n\nHints:\nStep 1: Using ggplot, draw a sketch of the Normal curve with the probability identified. You may need to draw a section of the right tail as the probability is small! We have provided the solution for the plotting to assist you.\nStep 2: Calculate the probability in R.\n\n1 - pnorm(189, 161.8, 6)\n\nggplot() +\n  stat_function(\n    fun = dnorm, args = list(mean = 161.8, sd = 6),\n    geom = \"area\", fill = \"white\", xlim = c(180, 161.8 + 4 * 6)\n  ) +\n  stat_function(\n    fun = dnorm, args = list(mean = 161.8, sd = 6),\n    geom = \"area\", fill = \"red\", xlim = c(161.8 + 4 * 6, 189)\n  ) +\n  xlab(\"x\") +\n  ylab(expression(N(161.8, 6^2) ~ pdf)) +\n  scale_x_continuous(breaks = 189)\n\n\nDharshani Sivalingam is the tallest netball player in the world. How tall is Dharshani? https://en.wikipedia.org/wiki/Tharjini_Sivalingam What is the probability of finding an Australian woman of Dharshani’s height?\nMadison Brown is one of the the shortest Australian International players. How tall is Madision? https://en.wikipedia.org/wiki/Madison_Browne What percentage of Australian women are between Madison and Dharshani’s heights?\nIf 80% of Australian women are above a certain height, what is that height?",
+    "text": "Exercise 6 - Extra practice\nThe average Australian woman has height (in cms) of 161.8 with a standard deviation of 6.\n\nThe Australian Institute of Sport ran a netball training camp for the best Australian young players. How tall were the goal position players? http://www.abc.net.au/news/2015-06-14/tall-athletes-get-support-at-ais-to-stand-as-proud-netballers/6544642\nWhat is the probability of finding an Australian woman of this height or taller?\n\nHints:\nStep 1: Using ggplot, draw a sketch of the Normal curve with the probability identified. You may need to draw a section of the right tail as the probability is small! We have provided the solution for the plotting to assist you.\nStep 2: Calculate the probability in R.\n\n1 - pnorm(189, 161.8, 6)\n\n[1] 2.903004e-06\n\nggplot() +\n  stat_function(\n    fun = dnorm, args = list(mean = 161.8, sd = 6),\n    geom = \"area\", fill = \"white\", xlim = c(180, 161.8 + 4 * 6)\n  ) +\n  stat_function(\n    fun = dnorm, args = list(mean = 161.8, sd = 6),\n    geom = \"area\", fill = \"red\", xlim = c(161.8 + 4 * 6, 189)\n  ) +\n  xlab(\"x\") +\n  ylab(expression(N(161.8, 6^2) ~ pdf)) +\n  scale_x_continuous(breaks = 189)\n\n\n\n\n\n\n\n\n\nDharshani Sivalingam is the tallest netball player in the world. How tall is Dharshani? https://en.wikipedia.org/wiki/Tharjini_Sivalingam What is the probability of finding an Australian woman of Dharshani’s height?\nMadison Brown is one of the the shortest Australian International players. How tall is Madision? https://en.wikipedia.org/wiki/Madison_Browne What percentage of Australian women are between Madison and Dharshani’s heights?\nIf 80% of Australian women are above a certain height, what is that height?",
     "crumbs": [
       "**🖥️ Computer labs**",
-      "Lab 04 -- Sampling distributions"
+      "Lab 04 -- Central limit theorem"
     ]
   },
   {
