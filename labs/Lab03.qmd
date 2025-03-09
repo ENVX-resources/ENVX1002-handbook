@@ -1,312 +1,836 @@
 ---
-title: Lab 03 -- Probability distributions
-embed-resources: true
+title: Lab 03 -- Exploring and visualising data
+embed-resources: false
+toc-depth: 2
+resources:
+  - data/pie_crab.csv
+  - data/hbr_maples.csv
+execute: 
+  cache: true
 ---
 
 ```{r setup}
 #| include: false
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load(tidyverse)
+pacman::p_load(tidyverse, moments, lterdatasampler, patchwork)
+
+# Load data from package (for consistency in solutions)
+data("pie_crab", "hbr_maples", package = "lterdatasampler")
 ```
+
 
 ::: {.callout-tip}
-**Learning Outcomes**
+## Learning outcomes
 
-At the end of this computer practical, students should be able to: 
+At the end of this computer practical, students should be able to:
 
-- Calculate Binomial probabilities
-  - Using your calculator;
-  - R commands;
-  - R simulations.
-- Calculate Poisson probabilities
-  - Using your calculator;
-  - R commands;
-  - R simulations.
+- Import and prepare data for visualisation
+- Create basic plot types using ggplot2 (histograms, boxplots, bar plots, scatterplots)
+- Customise plots with appropriate labels, colours, and themes
+- Identify and visualise distribution properties (normality, skewness, kurtosis)
+- Interpret visualisations to draw meaningful conclusions
+- Export and save plots for reports
 :::
 
-# Computer lab
+## Before we begin
 
-The first part of this prac involves walking through some exercises with your demonstrator. These may involve some hand calculations, which you can do using R, your calculator, or in your head.
+For this lab, you'll need to:
 
+1. Create a new Quarto document in your project folder to practice the code and complete exercises
+2. Download the data files from the links provided in Exercise 1
+3. Make sure you have the following packages installed and loaded:
+   - `tidyverse`: For data manipulation and visualization (includes `ggplot2`)
+   - `moments`: For calculating skewness and kurtosis
+   - `patchwork`: For combining multiple plots
 
-# The Binomial Distribution
+You can install packages using `install.packages("package_name")` if needed, and load them with `library(package_name)`.
 
-## Notation
 
-Factorials: $n! = n(n - 1)(n - 2)...(3)(2)(1)$ for $n \ge 1$ and $0! = 1$.
+## Exercise 1: Dataset exploration
 
-Binomial coefficients: $\left(\begin{matrix}n\\x\end{matrix}\right)=\frac{n!}{x!(n-x)!}$ for $x=1,2,3,...,n$
+### Exploring the `pie_crab` dataset
 
-The **Binomial distribution** models a context in which we have a fixed number n of independent Binary trials and a fixed likelihood of a success at each trial $p = P(success)$.
+In this lab, we'll work with two environmental datasets. They can be downloaded from the links below:
 
-X = the number of successes in n trials $\sim Bin(n,p)$
+- [pie_crab.csv](data/pie_crab.csv): Crab size measurements across different sites and latitudes
+- [hbr_maples.csv](data/hbr_maples.csv): Maple seedling measurements from different watersheds
 
-Probability distribution function: $P(X = x) = \left(\begin{matrix}n\\x\end{matrix}\right)p^x(1-p)^{n-x}$ for $x=1,2,3,...,n$
+By now, you should know how to use `read_csv()` to read these datasets into R. If you need a refresher, refer to the previous labs or ask for help from a demonstrator (if available).
 
-Cumulative distribution function (CDF): $F(x) = P(X \le x)$.
+Let's start by exploring the `pie_crab` dataset. We've done this before, but it's always good to refresh our memory as these functions are extremely common to use. 
 
-## Exercise 1 - Walk through
+- The `str()` function shows us the structure of the dataset, including variable names, types, and a preview of the values.
+- The `head()` function shows the first six rows of the dataset, giving us a quick look at the data.
+- The `summary()` function provides descriptive statistics for each variable, including minimum, maximum, mean, and quartiles for numeric variables.
 
-With your neighbour, discuss how coin tossing is related to the Binomial distribution?
-
-## Exercise 2 - Walk through
-
-Practicing using the Binomial distribution formula
-
-- Calculate 4!, 3!, 2! and 1!.
-
-$$4!=4 \times 3 \times 2 \times 1$$
-
-Now you calculate the rest
-
-- Show that
-
-$\left(\begin{matrix}4\\0\end{matrix}\right)=1$, $\left(\begin{matrix}4\\1\end{matrix}\right)=4$, $\left(\begin{matrix}4\\2\end{matrix}\right)=6$, $\left(\begin{matrix}4\\3\end{matrix}\right)=4$, $\left(\begin{matrix}4\\4\end{matrix}\right)=1$
-
-$\left(\begin{matrix}4\\0\end{matrix}\right)=\frac{4!}{0!(4-0)!}=\frac{4!}{4!}=1$
-\
-$\left(\begin{matrix}4\\1\end{matrix}\right)=\frac{4!}{1!(4-1)!}=\frac{4!}{1!\times3!}=\frac{4\times3\times2\times1}{1\times3\times2\times1}=\frac{4}{1}=4$ 
-\
-
-Now you calculate the rest!
-
-**Note** you can also calculate this using the nCr option on your calculator - watch this [YouTube video](https://www.youtube.com/watch?v=tZf8alsyVCQ) which gives a nice demonstration with some elevator music in the background to relax you.
-
-## Exercise 3  - Walk through
-
-**Collaboration** - Simulate the Binomial Distribution by Coin Tossing
-
-- Choose a partner and together toss a coin 4 times counting the number of heads (use [Flip a coin](https://justflipacoin.com/) if you don't have a coin). Record the number of heads in an excel spreadsheet called (Simulation 1)  and set out a table in excel similar to below. Now repeat this process 19 more times.\
-
-| Simulation | Toss 1 | Toss 2 | Toss 3 | Toss 4 
-|:---------- |:------ |:------ |:------ |:------
-| 1          |        |        |        |           
-| 2          |        |        |        |        
-| 3          |        |        |        |        
-| ...        |        |        |        |        
-| ...        |        |        |        |        
-| 20         |        |        |        |        
-
-- Tally up the frequency of each number of heads and fill in a table similar to the following in excel.
-
-| Number heads $x$ | 0   | 1   | 2   | 3   | 4   | Total 
-|:---------------- |:--- |:--- |:--- |:--- |:--- |:----- 
-| Frequency        |     |     |     |     |     | 20     
-
-
-- Now fill in the probability distribution in excel = the proportion of number of heads in all simulations i.e. number of simulations ith 0 heads/20, number of simulations with 1 head/20, number of simulations with 2 heads/20,.... 
-
-| Number heads $x$     | 0   | 1   | 2   | 3   | 4   | Total 
-|:-------------------- |:--- |:--- |:--- |:--- |:--- |:----- 
-| Probability $P(X=x)$ |     |     |     |     |     | 1    
-
-- now see if you can make a barplot in Excel of the above table [Excel instructinos](https://support.microsoft.com/en-us/office/present-your-data-in-a-column-chart-d89050ba-e6b6-47de-b090-e9ab353c4c00) 
-
-![Barchart 1](images/Barchart_1.png)
-
-![Barchart 2](images/Barchart_2.png)
-
-
-**Question:** With your **stats** partner, discuss the shape of the distribution, is it what you would expect to see and compare this to what the barplot you made in excel, are they similar?
-
-## Exercise 4  - Walk through
-
-Now we will use R to simulate 4 coin tosses representing 1 as heads and 0 as tails. Note that I have withheld the output to avoid "spoiling" the suprise.
-
-```{r, eval=FALSE}
-coin <- c(0, 1) # vector representing coin tosses c(tails, heads)
-set.seed(1) # makes sure we all get the same answer i.e. we use the same randomly generated numbers
-tosses <- sample(coin, size = 4 * 20, replace = T, prob = c(0.5, 0.5)) # this randomly picks a 0 or 1 from coin and there is an equal probability of sampling both. It creates a vector of results i.e. bo tosses in total
-dim(tosses) <- c(20, 4) # This creates a data frame with 4 columns and 20 rows that represents the 20 trials of 4 coin tosses
-tosses ## this prints the result
-NumHeads <- rowSums(tosses) ## this sums the number of heads in each trial
-NumHeads # this prints the results
-```
-
-- The table function tallies each of the numbers of heads for each simulation. In each trial (4 tosses) How many times did you toss no heads, how many times did you toss 1 head, how many times did you toss 2 heads, how many times did you toss 3 heads and how many times did you toss 4 heads?
-
-```{r, eval=FALSE}
-Freq_table <- table(NumHeads)
-Freq_table
-```
-
-The prob.table function divides each frequency by 20 i.e.$P(X=0)=2/20$
-
-```{r, eval=FALSE}
-prop.table(Freq_table)
-```
-
-- Now we can plot this. Notice how we customise the x-axis to ensure that 0 is displayed as even though there may be no instances where we got zero heads, it is still a possibility even if the probability is low. for this we use the argument , xaxt = "n" and then draw customised axis labels using the axis function.
-
-```{r, eval=FALSE}
-plot(prop.table(Freq_table), ylab = "P(X=X)", xlab = "x", xlim = c(0, 4), xaxt = "n")
-axis(1, at = 0:4)
-```
-
-## Exercise 5
-
-Repeat exercise 4, but this time change the 'prob = c(0.5, 0.5)' to 'prob = c(0.3, 0.7)'. 
-
-**Question:** What happens to the shape of the distribution? What type of coin does this change in probability represent?
-
-## Exercise 6
-
-Repeat exercise 4, but this time change the `set.seed(1)` to `set.seed(123)`. 
-
-**Question:** What happens to the frequency table 'Freq_table' why do you think it might change?
-
-## Exercise 7
-
-Six calves were born after artificial insemination (AI) with regular semen. Assuming that the probability for either being male or female is 0.5,
-
-**Question:** What is the probability that all 6 are male?\
-
-$X=$ number of male calves $\sim Bin(n=6,p=0.5)$
-$P(X=6)=\left(\begin{matrix}6\\6\end{matrix}\right)0.5^6(1-0.5)^{6-6} = 0.015625$
-
-or in R we can calculate using the dbinom function which calculates the exact probability of having 6 male calfs born
-
-```{r, eval=FALSE}
-dbinom(6, 6, 0.5)
-```
-
-
-**Question:** What is the probability that more than 4 calves are female?
-
-NOTE
-*P(more than 4 calves are female)* = *P(less than 2 calcves are male)* = *P(X=0)+P(X=1)*
-
-$=\left(\begin{matrix}6\\0\end{matrix}\right)0.5^0(1-0.5)^{6-0}+\left(\begin{matrix}6\\1\end{matrix}\right)0.5^1(1-0.5)^{6-1} = 0.109375$
-
-or in R
-
-```{r, eval=FALSE}
-1 - pbinom(4, 6, 0.5)
-```
-
-**Question:** What are your assumptions? What is a more accurate estimate of the P(male calf)?
-[Beef Article](https://www.beefmagazine.com/mag/sex_ratio_riddle)
-
-**Assumptions:** Each of the births is independent and *P(male calf = 0.5)*. (In reality, it is 1.06 males per every female born in large populations of cattle, which gives p = 0.5145631. See article link.)
-
-Using the updated probability p = 0.5145631 and using R recalculate\
-
-**Question:** What is the probability that all 6 are male?\
-
-**Question:** What is the probability that more than 4 calves are female?\
-
-**Question:** Finally, calculate what is the probability that exactly 4 females are born?\
-
-# The Poisson Distribution
-
-The Poisson distribution is often used to model the number of expected events that occur during a given unit of time. 
-
-Remember if $X \sim Po(\lambda)$ then
-
-$P(X=x)=\frac{\lambda^xe^{-\lambda}}{x!}$ for $x = 0,1,2,...$ and $\lambda>0$
-
-## Exercise 1  - Walk through
-
-Lets take a look at an example. Let us assume that **on average** 5 shoppers enter a store each hour. Say the shop is open for 10 hours per day, what would a typical day look like. Assuming that the number of visits follows a Poisson distribution i.e. If $X \sim Po(\lambda)$, and because we know $\lambda=5$ and $n=10$, we can simulate this in R using the following:
-
-```{r, eval=FALSE}
-shoppers <- rpois(10, 5)
-shoppers
-```
-
-**Question:** Take a look at the minimum and maximum number of shoppers generated by the model and discuss with your neighbour how you, as a shop owner, might use this information?\
-
-**Question:** Now run the simulation for a full 5 day week, is there any change?\
-
-**Question:** Now suppose as a shop owner you are concerned that your shop assistant might get overwhelmed if more than 10 shoppers come in, in any one hour period, what is the probability of this?\
-
-## Exercise 2
-
-We also often say that the Poisson Distribution is good for modeling rare events. For example, recent work in Drosophila suggests the spontaneous rate of deleterious mutations is 1.2 per diploid genome.
-
-Open the following article and read the abstract and then search the word poisson and read the final two sentences of this paragraph.
-
-[Nature article](http://www.nature.com/nature/journal/v445/n7123/full/nature05388.html)
-
-Assume that X = the number of deleterious mutations $X \sim Po(1.2)$.
-
-**Question:** What is the probability that an individual has 0 mutations?
-
-$P(X=0)=\frac{1.2^0e^{-1.2}}{0!}=0.3011942$
-
-Or in R
-
-```{r, eval=FALSE}
-dpois(0, 1.2)
-```
-
-
-**Question:** What is the probability that an individual has less than or equal to 2 mutations?
-
-$P(X\le2)=P(X=0)+P(X=1)+P(X=2)$
-$=\frac{1.2^0e^{-1.2}}{0!}+\frac{1.2^1e^{-1.2}}{1!}+\frac{1.2^2e^{-1.2}}{2!}$
-$=0.8794871$
-
-Or in R
-
-```{r, eval=FALSE}
-ppois(2, 1.2)
-```
-
-More recent research found that the average spontaneous rate of deleterious mutations was actually 1.4 per diploid genome. Using R recalculate the following.\
-
-**Question:** What is the new probability that an individual has 0 mutations. How does this compare to the former probability, what does this suggest?\
-**Question:** What is the new probability that an individual has less than or equal to 2 mutations How does this compare to the former probability, what does this suggest?\
-
-## Advanced exercise
-
-From the tutorial we looked at Tomato germination. Use simulations to find approximate Binomial probabilities obtain an estimate of the probability of getting 7 or more germinating seeds, by doing simulations from a $Bin(8, 0.7)$ in R.
-
-Remember that the exact probability is 
 
 ```{r}
-1 - pbinom(6, 8, 0.7)
+str(pie_crab)
+head(pie_crab)
+summary(pie_crab)
 ```
 
-- First try 10 simulations and fill out a similar table to below in excel. What is your estimate of the probability of 7 germinating seeds?
 
-```{r, eval = FALSE}
-set.seed(123)
-seeds <- rbinom(n = 10, 8, 0.7) # randomly generates 10 values from Bin(8,0.7)
-seeds ## prints seeds
-table(seeds) / 10 # turns counts into probabilities
-barplot(table(seeds) / 10, xlab = "Number Germinated x", ylab = "Probability", col = "green")
+::: {.callout-tip}
+## Question 1
+What variables are in the dataset? What are the data types of each variable? Are there any missing values? What are the ranges of the numeric variables?
+:::
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer 1
+From our exploration of the pie_crab dataset, we can see that:
+
+- The dataset contains 6 variables: date, latitude, site, size, air_temp, and water_temp
+- Data types: date is a date variable, latitude is numeric, site is a character/factor, size is numeric (in mm), and both temperature variables are numeric (in °C)
+- There don't appear to be any missing values in the dataset based on the summary output
+- Ranges of numeric variables:
+  - latitude: approximately 36.6 to 41.3 degrees
+  - size: approximately 3.1 to 38.2 mm
+  - air_temp: approximately 14.0 to 37.8 °C
+  - water_temp: approximately 14.5 to 36.0 °C
+
+This information helps us understand the structure and content of our dataset before creating visualizations.
+:::
+:::
+
+From our exploration, we can see that the pie_crab dataset contains information about:
+
+- `date`: When the crabs were measured
+- `latitude`: The latitude where the crabs were collected
+- `site`: The specific collection site
+- `size`: The size of the crabs in millimeters
+- `air_temp`: Air temperature in degrees Celsius
+- `water_temp`: Water temperature in degrees Celsius
+
+### Identifying factors in the data
+
+One of the first steps in data exploration is to determine if your data types are recognised correctly by R, as R simply treats everything as a character when it doesn't know what it is. Looking at the output of `str()` can help you identify a data type that could be something more.
+
+Hopefully you can see that `site` and `name` pop out as being character variables, but appear to have repeating values. This is a good sign that they should be factors. We can quickly check this by using the `unique()` function to see all the unique values in a variable. If there are only a few unique values compared to the number of observations, it's a good sign that it should be a factor.
+
+```{r}
+unique(pie_crab$site)
+unique(pie_crab$name)
 ```
 
-- Next try 100 simulations.
+For a dataset with 392 observations, having only `r length(unique(pie_crab$site))` unique sites and `r length(unique(pie_crab$name))` unique names suggests that these variables should be factors. We can convert them using the `factor()` function:
 
-```{r, eval = FALSE}
-set.seed(123)
-seeds <- rbinom(n = 100, 8, 0.7) # randomly generates 100 values from Bin(8,0.7)
-seeds ## prints seeds
-table(seeds) / 100 # turns counts into probabilities
-barplot(table(seeds) / 100, xlab = "Number germinated (x)", ylab = "Probability", col = "green")
+```{r}
+# Convert site and name to factors
+pie_crab$site <- factor(pie_crab$site)
+pie_crab$name <- factor(pie_crab$name)
 ```
 
-- Now we will try 10000 simulations. What do you notice about the histogram?
+Notice how we've converted the specific variables to factors, and used the assignment operator `<-` to update the dataset. This is a common pattern in R, where we update the dataset in place.
 
-```{r, eval = FALSE}
-set.seed(123)
-seeds <- rbinom(n = 10000, 8, 0.7) # randomly generates 100 values from Bin(8,0.7)
-table(seeds) / 10000 # turns counts into probabilities
-barplot(table(seeds) / 10000, xlab = "Number germinated (x)", ylab = "Probability", col = "green")
+You can run `str(pie_crab)` again to confirm that the variables have been converted to factors.
+
+
+## Exercise 2: Building visualizations with `ggplot2`
+
+### The Grammar of Graphics
+
+The ggplot2 package is based on the "Grammar of Graphics," a framework that breaks visualisations into components, similar to how grammar breaks language into parts of speech. This approach makes it possible to create complex visualisations by combining simple elements.
+
+The key components include:
+
+- **Data**: The dataset being visualised
+- **Aesthetics**: Mappings from data variables to visual properties
+- **Geometries**: The shapes used to represent the data
+- **Facets**: Subplots that show different subsets of the data
+- **Statistics**: Transformations of the data (e.g., counts, means)
+- **Coordinates**: The space in which the data is plotted
+- **Themes**: Visual styling of non-data elements
+
+Let's learn how to create visualisations using this approach by building a plot step by step, explaining each component along the way.
+
+### Step 1: The canvas
+
+Every ggplot2 visualisation starts with a blank canvas:
+
+```{r}
+# Start with an empty canvas
+ggplot()
 ```
 
-5. Now we can compare the exact results and the simulated results by adding up the probabilities for 7 and 8 seeds germinating in each of the scenarios.
+This creates an empty plotting space. It doesn't show anything yet because we haven't specified any data or how to visualise it.
 
-**Note** that the numbers will may differ slightly each time as they a randomly generated unless you set the same seed.
+### Step 2: Adding data
 
-| Number germinated    | $P(X\ge{7}$) | 
-|:-------------------- |:------------ | 
-| Exact method using R |              |    
-| Simulation (n=10)    |              |
-| Simulation (n=100)   |              |
-| Simulation (n=10000) |              |
+Next, we tell ggplot2 what data to use:
 
-**Question:** Which of the simulations gives the closest result to the exact method, why do you think this is? - **try ask chatGPT** or use the **# q: What is ?** prompt if you have enabled copilot.
+```{r}
+# Add data to the plot
+ggplot(data = pie_crab)
+```
 
+We've now told ggplot2 to use the pie_crab dataset, but we still don't see anything because we haven't specified which variables to plot or how to represent them.
+
+### Step 3: Mapping Aesthetics
+
+Aesthetics map variables in your data to visual properties in the plot:
+
+```{r}
+# Map variables to visual properties
+ggplot(data = pie_crab, mapping = aes(x = size))
+```
+
+Here, we've mapped the `size` variable to the x-axis. We still don't see any data points because we haven't specified how to represent the data (e.g., as points, bars, or lines).
+
+### Step 4: Adding a Geometry
+
+Geometries determine how the data is represented visually:
+
+```{r}
+# Add a histogram geometry
+ggplot(data = pie_crab, mapping = aes(x = size)) +
+  geom_histogram()
+```
+
+Now we can see the data! We've added a histogram geometry (`geom_histogram()`), which counts the number of observations falling into bins along the x-axis. The `+` operator adds layers to the plot.
+
+Notice the message about the default bin width. ggplot2 automatically chose 30 bins, but we can adjust this.
+
+### Step 5: Customizing the Geometry
+
+Let's customize our histogram:
+
+```{r}
+# Customize the histogram
+ggplot(data = pie_crab, mapping = aes(x = size)) +
+  geom_histogram(bins = 20, fill = "skyblue", color = "black")
+```
+
+We've made several changes:
+
+- `bins = 20`: Changed the number of bins to 20
+- `fill = "skyblue"`: Set the fill color of the bars to sky blue
+- `color = "black"`: Set the outline color of the bars to black
+
+These are fixed properties applied to all bars, not mappings from data variables.
+
+### Step 6: Adding Labels and Titles
+
+Good visualisations have clear labels:
+
+```{r}
+# Add informative labels
+ggplot(data = pie_crab, mapping = aes(x = size)) +
+  geom_histogram(bins = 20, fill = "skyblue", color = "black") +
+  labs(
+    title = "Distribution of Crab Sizes",
+    x = "Size (mm)",
+    y = "Count"
+  )
+```
+
+The `labs()` function adds various text elements to the plot:
+
+- `title`: The main title of the plot
+- `x`: The x-axis label
+- `y`: The y-axis label
+
+### Step 7: Applying a Theme
+
+Themes control the overall appearance of the plot:
+
+```{r}
+# Add a theme for consistent styling
+ggplot(data = pie_crab, mapping = aes(x = size)) +
+  geom_histogram(bins = 20, fill = "skyblue", color = "black") +
+  labs(
+    title = "Distribution of Crab Sizes",
+    x = "Size (mm)",
+    y = "Count"
+  ) +
+  theme_minimal()
+```
+
+The `theme_minimal()` function applies a minimalist theme with a white background and subtle grid lines. Other common themes include:
+
+- `theme_classic()`: No grid lines, simple axes
+- `theme_light()`: Light background with subtle grid lines
+- `theme_dark()`: Dark background for presentations
+
+### Adding Multiple Geometries
+
+One of the powerful features of ggplot2 is the ability to layer multiple geometries:
+
+```{r}
+# Add a density curve on top of the histogram
+ggplot(data = pie_crab, mapping = aes(x = size)) +
+  geom_histogram(aes(y = after_stat(density)),
+    bins = 20,
+    fill = "skyblue", color = "black"
+  ) +
+  geom_density(color = "red", linewidth = 1) +
+  labs(
+    title = "Distribution of Crab Sizes",
+    x = "Size (mm)",
+    y = "Density"
+  ) +
+  theme_minimal()
+```
+
+In this plot:
+
+- We've changed the y-axis of the histogram to show density instead of count using `aes(y = after_stat(density))`
+- We've added a density curve with `geom_density()`
+- We've set the density curve color to red and increased its line width
+
+::: {.callout-tip}
+## Question 2
+1. What's the difference between setting a fixed property (like `fill = "blue"`) and mapping a variable to an aesthetic (like `aes(fill = site)`)?
+2. How would you modify the histogram to have more or fewer bins?
+3. What would happen if you changed the order of the `geom_histogram()` and `geom_density()` layers?
+:::
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer 2
+
+1. **Fixed property vs. aesthetic mapping**:
+   - Fixed property (e.g., `fill = "blue"`): Applies the same value to all elements, regardless of data values
+   - Aesthetic mapping (e.g., `aes(fill = site)`): Maps a variable in your data to a visual property, creating different values based on the data
+   - Fixed properties are used for consistent styling, while aesthetic mappings are used to represent data values visually
+
+2. **Modifying histogram bins**:
+   - To change the number of bins: Use the `bins` parameter (e.g., `geom_histogram(bins = 30)`)
+   - To specify bin width directly: Use the `binwidth` parameter (e.g., `geom_histogram(binwidth = 2)`)
+   - Fewer bins show broader patterns but less detail, while more bins show more detail but may be noisier
+
+3. **Changing layer order**:
+   - If `geom_density()` came before `geom_histogram()`, the histogram would be drawn on top of the density curve
+   - This would make the density curve partially or completely hidden behind the histogram
+   - Layer order matters because layers are drawn in the order they are added, with later layers appearing on top
+:::
+:::
+
+## Exercise 3: Analyzing environmental variables
+
+Now that we understand the Grammar of Graphics approach, let's analyze a different variable in our dataset.
+
+### Examining water temperature distribution
+
+Let's examine the distribution of water temperatures across our sampling sites:
+
+```{r}
+# Create a basic histogram of water temperatures
+ggplot(pie_crab, aes(x = water_temp)) +
+  geom_histogram(bins = 15) +
+  labs(
+    title = "Distribution of Water Temperatures",
+    x = "Water Temperature (°C)",
+    y = "Count"
+  )
+```
+
+The histogram shows us the frequency distribution of water temperatures. We can see the shape of the distribution, including any skewness or unusual patterns.
+
+```{r}
+# Add a density curve
+ggplot(pie_crab, aes(x = water_temp)) +
+  geom_histogram(aes(y = after_stat(density)),
+    bins = 15,
+    fill = "lightblue", colour = "black"
+  ) +
+  geom_density(colour = "red") +
+  labs(
+    title = "Distribution of Water Temperatures",
+    x = "Water Temperature (°C)",
+    y = "Density"
+  )
+```
+
+Adding a density curve helps us see the overall shape of the distribution more clearly.
+
+::: {.callout-tip}
+## Question 3
+What is the shape of the distribution of water temperatures? Does the distribution appear to be normal? Are there any outliers? How might water temperature affect crab biology?
+:::
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer 3
+Based on the histogram and density plot of water temperatures:
+
+- **Shape of the distribution**: The distribution appears to be right-skewed (positively skewed), with a longer tail extending toward higher temperatures.
+
+- **Normality**: The distribution does not appear to be perfectly normal. A normal distribution would be symmetric around the mean, but this distribution shows some asymmetry. The density curve helps visualize this deviation from normality.
+
+- **Outliers**: There appear to be a few potential outliers on the right side of the distribution, representing unusually warm water temperatures. These can be seen as isolated bars in the histogram at the right end of the distribution.
+
+- **Biological implications**: Water temperature is a critical environmental factor for crabs as it affects their metabolism, growth rate, and behavior. Crabs are ectothermic (cold-blooded), so their body temperature and physiological processes are directly influenced by the temperature of their environment. Higher water temperatures generally increase metabolic rates up to a point, potentially leading to faster growth in warmer waters. However, extremely high temperatures can be stressful or even lethal. The variation in water temperatures across sampling sites might help explain some of the variation we see in crab sizes.
+
+These observations are important for understanding the environmental conditions across our sampling sites and how they might influence the biological characteristics we're studying.
+:::
+:::
+
+### Skewness and Kurtosis
+
+To quantify the shape of the water temperature distribution, we can calculate skewness and kurtosis:
+
+```{r}
+# Calculate skewness and kurtosis for water temperature
+skewness_value <- skewness(pie_crab$water_temp)
+kurtosis_value <- kurtosis(pie_crab$water_temp)
+
+# Print the values
+cat("Skewness of water temperature:", skewness_value, "\n")
+cat("Kurtosis of water temperature:", kurtosis_value, "\n")
+```
+
+**Interpreting these values:**
+
+- **Skewness** measures the asymmetry of the distribution:
+
+  - 0 = symmetric (like a normal distribution)
+  - > 0 = right-skewed (tail extends to the right)
+  - < 0 = left-skewed (tail extends to the left)
+
+- **Kurtosis** measures the "tailedness" of the distribution:
+
+  - 3 = normal distribution (in the `moments` package, this is sometimes normalized to 0)
+  - > 3 = leptokurtic (heavy-tailed, more outliers)
+  - < 3 = platykurtic (light-tailed, fewer outliers)
+
+The skewness value of approximately 0.5 confirms our visual observation that the water temperature distribution is moderately right-skewed. The kurtosis value of approximately 2.5 indicates the distribution has slightly lighter tails than a normal distribution.
+
+These numerical measures help us quantify what we observe visually in the histograms and density plots. Now that we understand the overall distribution of our data, let's explore how it varies across different groups.
+
+## Exercise 4: Comparing groups
+
+Now that we've examined the overall distribution of crab sizes, let's compare sizes across different groups.
+
+### Creating boxplots to compare sites
+
+Boxplots are excellent for comparing distributions between groups:
+
+```{r}
+# Create boxplots of crab sizes by site
+ggplot(pie_crab, aes(x = site, y = size)) +
+  geom_boxplot(fill = "skyblue") +
+  labs(
+    title = "Crab Sizes by Site",
+    x = "Site",
+    y = "Size (mm)"
+  )
+```
+
+A boxplot shows:
+
+- The median (middle line)
+- The interquartile range (IQR) from the 25th to 75th percentile (the box)
+- The whiskers (typically extend to 1.5 × IQR)
+- Outliers (points beyond the whiskers)
+
+To see the actual data points alongside the boxplots:
+
+```{r}
+# Add points to see the actual data
+ggplot(pie_crab, aes(x = site, y = size)) +
+  geom_boxplot(fill = "skyblue", alpha = 0.5) +
+  geom_jitter(width = 0.2, alpha = 0.5) +
+  labs(
+    title = "Crab Sizes by Site",
+    x = "Site",
+    y = "Size (mm)"
+  )
+```
+
+We've added:
+
+- `geom_jitter()` to add individual data points with a slight horizontal jitter to avoid overplotting
+- `alpha = 0.5` to make both the boxplots and points semi-transparent
+- `width = 0.2` to control the amount of horizontal jittering
+
+::: {.callout-tip}
+## Question 4
+How do crab sizes vary across different sites? Which site has the largest median crab size? Which site shows the most variability in crab sizes? Are there any outliers at specific sites?
+:::
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer 4
+Based on the boxplots comparing crab sizes across different sites:
+
+- **Variation across sites**: There is considerable variation in crab sizes between sites. Some sites (like Oregon) have generally larger crabs, while others (like Woods Hole) have smaller crabs.
+
+- **Largest median size**: Oregon appears to have the largest median crab size, as indicated by the highest middle line in its boxplot.
+
+- **Most variability**: Rhode Island shows the most variability in crab sizes, as evidenced by its wider box (larger interquartile range) and longer whiskers, indicating a broader spread of sizes.
+
+- **Outliers**: Yes, there are outliers at specific sites. Woods Hole has a few outliers on the upper end (unusually large crabs for that site), shown as individual points above the upper whisker. These outliers represent crabs that are substantially larger than is typical for that location.
+
+The addition of jittered points to the boxplots helps visualize the actual distribution of data points within each site, giving us a better understanding of the sample size and distribution at each location. This comparison across sites suggests that geographic location plays an important role in determining crab size distributions.
+:::
+:::
+
+### Exploring the relationship between latitude and size
+
+Let's examine if there's a relationship between latitude and crab size:
+
+```{r}
+# Create a scatterplot of size vs. latitude
+ggplot(pie_crab, aes(x = latitude, y = size)) +
+  geom_point(alpha = 0.5) +
+  labs(
+    title = "Crab Size vs. Latitude",
+    x = "Latitude",
+    y = "Size (mm)"
+  )
+```
+
+Scatterplots show the relationship between two continuous variables. Each point represents a single observation.
+
+To help visualize the trend, we can add a trend line:
+
+```{r}
+# Add a trend line
+ggplot(pie_crab, aes(x = latitude, y = size)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(
+    title = "Crab Size vs. Latitude",
+    x = "Latitude",
+    y = "Size (mm)"
+  )
+```
+
+We've added:
+
+- `geom_smooth(method = "lm")` to add a linear regression line
+- `se = TRUE` to include the standard error as a shaded confidence band
+
+::: {.callout-tip}
+## Question 5
+Is there a relationship between latitude and crab size? What does the trend line suggest about this relationship? What might explain this relationship from an ecological perspective?
+:::
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer 5
+Based on the scatterplot examining the relationship between latitude and crab size:
+
+- **Relationship existence**: Yes, there appears to be a relationship between latitude and crab size. The points show a pattern rather than being randomly scattered, suggesting a correlation between these variables.
+
+- **Trend line interpretation**: The trend line shows a negative relationship between latitude and crab size. As latitude increases (moving northward), crab size tends to decrease. The slope of the line indicates that for each degree increase in latitude, there is an approximate decrease in crab size of several millimeters. The shaded confidence band around the line is relatively narrow, suggesting we can be fairly confident in this relationship.
+
+- **Ecological explanation**: This pattern could be explained by several ecological factors:
+  1. **Temperature gradient**: Lower latitudes (more southern locations) typically have warmer waters, which might promote faster growth or larger body sizes in crabs.
+  2. **Food availability**: Different latitudes may have different food resources available, affecting growth potential.
+  3. **Adaptation to local conditions**: Crabs at different latitudes might have evolved different body sizes as adaptations to local environmental pressures.
+  4. **Bergmann's rule**: This is the opposite of what Bergmann's rule would predict (which states that organisms within a species are larger in colder environments), suggesting that other factors may be more important for these crabs.
+
+This relationship demonstrates how geographic location can influence biological characteristics, highlighting the importance of considering spatial factors in ecological studies.
+:::
+:::
+
+## Exercise 5: Faceting and grouping
+
+So far, we've created separate plots for different analyses. Now, let's explore techniques for comparing multiple groups or variables within a single plot.
+
+### Exploring the `hbr_maples` dataset
+
+Let's switch to our second dataset, which contains measurements of maple seedlings from different watersheds:
+
+```{r}
+# Examine the structure of the maples dataset
+str(hbr_maples)
+```
+
+```{r}
+# View the first few rows
+head(hbr_maples)
+```
+
+```{r}
+# Get a summary of the variables
+summary(hbr_maples)
+```
+
+Now, let's create histograms of stem length by watershed using faceting:
+
+```{r}
+# Create histograms of stem length by watershed
+ggplot(hbr_maples, aes(x = stem_length)) +
+  geom_histogram(bins = 20, fill = "forestgreen", colour = "black") +
+  facet_wrap(~watershed) +
+  labs(
+    title = "Distribution of Stem Lengths by Watershed",
+    x = "Stem Length (mm)",
+    y = "Count"
+  )
+```
+
+The `facet_wrap()` function creates separate panels for each value of the specified variable. This allows us to compare distributions across groups.
+
+::: {.callout-tip}
+## Question 6
+How do stem lengths differ between watersheds? Which watershed shows more variability in stem lengths? Are the distributions similarly shaped?
+:::
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer 6
+Based on the faceted histograms of stem lengths by watershed:
+
+- **Differences between watersheds**: The distributions of stem lengths differ noticeably between watersheds. Watershed 1 appears to have generally shorter stem lengths with most values concentrated at the lower end of the range. Watershed 6 shows a broader distribution with stems generally longer than in Watershed 1.
+
+- **Variability comparison**: Watershed 6 shows more variability in stem lengths, as evidenced by its wider spread across the x-axis. The distribution is less peaked and covers a broader range of values compared to Watershed 1.
+
+- **Shape comparison**: The distributions are not similarly shaped. Watershed 1's distribution is more right-skewed (positively skewed) with a concentration of values at the lower end and a tail extending to the right. Watershed 6's distribution appears more symmetric and closer to a normal distribution, though still with some right skew.
+
+These differences suggest that environmental conditions between the two watersheds may significantly impact maple seedling growth. Watershed 6 may provide more favorable or more variable growing conditions, resulting in generally longer stems with greater variability in length.
+:::
+:::
+
+### Comparing leaf area and stem length
+
+Let's examine the relationship between leaf area and stem length, comparing across watersheds:
+
+```{r}
+# Create a scatterplot of leaf area vs. stem length, coloured by watershed
+ggplot(hbr_maples, aes(x = stem_length, y = corrected_leaf_area, colour = watershed)) +
+  geom_point(alpha = 0.7) +
+  labs(
+    title = "Leaf Area vs. Stem Length",
+    x = "Stem Length (mm)",
+    y = "Corrected Leaf Area (cm²)",
+    colour = "Watershed"
+  )
+```
+
+Here, we've mapped the `watershed` variable to the `colour` aesthetic, which automatically creates a color-coded legend.
+
+Let's add separate trend lines for each watershed:
+
+```{r}
+# Add separate trend lines for each watershed
+ggplot(hbr_maples, aes(x = stem_length, y = corrected_leaf_area, colour = watershed)) +
+  geom_point(alpha = 0.7) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "Leaf Area vs. Stem Length",
+    x = "Stem Length (mm)",
+    y = "Corrected Leaf Area (cm²)",
+    colour = "Watershed"
+  )
+```
+
+When we include `colour = watershed` in the global aesthetics, ggplot2 automatically applies this grouping to all geometries, including `geom_smooth()`. This creates separate trend lines for each watershed.
+
+::: {.callout-tip}
+## Question 7
+Is there a relationship between stem length and leaf area? Does this relationship differ between watersheds? What might explain these differences from an ecological perspective?
+:::
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer 7
+Based on the scatterplot examining the relationship between stem length and leaf area:
+
+- **Relationship existence**: Yes, there is a clear positive relationship between stem length and leaf area. As stem length increases, leaf area tends to increase as well. This suggests that larger seedlings generally have both longer stems and larger leaves.
+
+- **Differences between watersheds**: The relationship does differ between watersheds. The trend lines for each watershed have different slopes, indicating that the rate at which leaf area increases with stem length varies. Watershed 6 appears to have a steeper slope than Watershed 1, suggesting that for each unit increase in stem length, seedlings in Watershed 6 gain more leaf area than those in Watershed 1.
+
+- **Ecological explanation**: These differences could be explained by several ecological factors:
+  1. **Resource availability**: Watershed 6 may have more favorable growing conditions (e.g., better soil nutrients, more water, or optimal light conditions) that allow seedlings to allocate more resources to leaf production relative to stem growth.
+  2. **Adaptation to local conditions**: Seedlings in different watersheds may have adapted different growth strategies in response to local environmental pressures.
+  3. **Competition**: Different levels of competition in each watershed might influence how seedlings allocate resources between stem and leaf growth.
+  4. **Genetic differences**: There could be genetic differences between maple populations in different watersheds that influence their growth patterns.
+
+These findings highlight the importance of considering environmental context when studying plant growth relationships, as the same species can show different growth patterns in different habitats.
+:::
+:::
+
+## Exercise 6: Take-home exercises
+
+These exercises are designed for you to practice the visualisation techniques we've covered in this lab. You can complete them during the lab if you finish early, or at home for additional practice.
+
+### Basic visualization practice
+
+1. Create a histogram of the `water_temp` variable in the crabs dataset. Calculate and interpret its skewness and kurtosis.
+2. Create boxplots comparing the `leaf_dry_mass` between watersheds in the maples dataset. What do you observe?
+3. Create a scatterplot examining the relationship between `stem_dry_mass` and `leaf_dry_mass` in the maples dataset, with points coloured by watershed.
+
+
+### Advanced challenge: `patchwork`
+
+The patchwork package allows you to combine multiple plots into a single figure. This is useful for creating complex visualisations that tell a story about your data.
+
+```{r}
+# Load the patchwork package
+library(patchwork)
+```
+
+Let's create a few plots and then combine them:
+
+```{r}
+# Create multiple plots
+p1 <- ggplot(pie_crab, aes(x = size)) +
+  geom_histogram(fill = "skyblue", colour = "black") +
+  labs(title = "Distribution of Crab Sizes")
+
+p2 <- ggplot(pie_crab, aes(x = latitude, y = size)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = "Size vs. Latitude")
+
+p3 <- ggplot(pie_crab, aes(x = site, y = size)) +
+  geom_boxplot(fill = "skyblue") +
+  labs(title = "Size by Site")
+
+# Combine plots
+p1 / (p2 + p3)
+```
+
+The patchwork syntax is intuitive:
+- `/` arranges plots vertically (one above the other)
+- `+` arranges plots horizontally (side by side)
+- You can use parentheses to control the layout
+
+Now, try these exercises:
+
+1. Create a combined plot using patchwork that shows:
+   - A histogram of stem lengths
+   - A scatterplot of stem length vs. leaf area
+   - Boxplots of stem lengths by watershed
+   - Arrange these plots in a 2x2 grid
+
+2. Create a combined plot that tells a story about the relationship between temperature and crab size:
+   - A scatterplot of air temperature vs. crab size
+   - A scatterplot of water temperature vs. crab size
+   - A boxplot of crab sizes by site
+   - Arrange the scatterplots side by side and the boxplot below them
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Solutions to Take-home Exercises
+
+### Basic Exercises
+
+1. Histogram of water temperature with skewness and kurtosis:
+
+```{r}
+# Create histogram of water temperature
+ggplot(pie_crab, aes(x = water_temp)) +
+  geom_histogram(bins = 15, fill = "lightblue", color = "black") +
+  labs(
+    title = "Distribution of Water Temperature",
+    x = "Water Temperature (°C)",
+    y = "Count"
+  )
+
+# Calculate skewness and kurtosis
+skew_water <- skewness(pie_crab$water_temp)
+kurt_water <- kurtosis(pie_crab$water_temp)
+
+cat("Skewness of water temperature:", skew_water, "\n")
+cat("Kurtosis of water temperature:", kurt_water, "\n")
+```
+
+**Interpretation**: The water temperature distribution has a skewness of approximately 0.5, indicating it is right-skewed (though only moderately). The kurtosis value of approximately 2.5 suggests the distribution is slightly less peaked than a normal distribution with lighter tails.
+
+2. Boxplots of leaf dry mass by watershed:
+
+```{r}
+# Create boxplots of leaf dry mass by watershed
+ggplot(hbr_maples, aes(x = watershed, y = leaf_dry_mass)) +
+  geom_boxplot(fill = "lightgreen") +
+  labs(
+    title = "Leaf Dry Mass by Watershed",
+    x = "Watershed",
+    y = "Leaf Dry Mass (g)"
+  )
+```
+
+**Observation**: The boxplots show that Watershed 6 has higher median leaf dry mass compared to Watershed 1. There appears to be more variability in Watershed 6 as indicated by the larger interquartile range. This pattern is consistent with what we observed for stem lengths, suggesting that Watershed 6 generally supports larger, more variable maple seedling growth.
+
+3. Scatterplot of stem dry mass vs. leaf dry mass:
+
+```{r}
+# Create scatterplot of stem dry mass vs. leaf dry mass
+ggplot(hbr_maples, aes(x = stem_dry_mass, y = leaf_dry_mass, color = watershed)) +
+  geom_point(alpha = 0.7) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "Relationship Between Stem and Leaf Dry Mass",
+    x = "Stem Dry Mass (g)",
+    y = "Leaf Dry Mass (g)",
+    color = "Watershed"
+  )
+```
+
+**Observation**: There appears to be a strong positive relationship between stem dry mass and leaf dry mass, suggesting that seedlings with larger stems also have more leaf mass. The relationship differs between watersheds, with Watershed 6 showing a steeper slope. This indicates that for the same increase in stem dry mass, seedlings in Watershed 6 tend to have a greater increase in leaf dry mass compared to those in Watershed 1.
+
+### Advanced Exercises
+
+1. Combined plot of stem length visualisations:
+
+```{r}
+# Create individual plots
+p1 <- ggplot(hbr_maples, aes(x = stem_length)) +
+  geom_histogram(fill = "forestgreen", color = "black") +
+  labs(title = "Distribution of Stem Lengths")
+
+p2 <- ggplot(hbr_maples, aes(x = stem_length, y = corrected_leaf_area)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = "Stem Length vs. Leaf Area")
+
+p3 <- ggplot(hbr_maples, aes(x = watershed, y = stem_length)) +
+  geom_boxplot(fill = "forestgreen") +
+  labs(title = "Stem Length by Watershed")
+
+# Combine the plots
+p1 / (p2 + p3)
+```
+
+2. Combined plot of temperature and crab size:
+
+```{r}
+# Create individual plots
+p1 <- ggplot(pie_crab, aes(x = air_temp, y = size)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = "Size vs. Air Temperature")
+
+p2 <- ggplot(pie_crab, aes(x = water_temp, y = size)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = "Size vs. Water Temperature")
+
+p3 <- ggplot(pie_crab, aes(x = site, y = size)) +
+  geom_boxplot(fill = "skyblue") +
+  labs(title = "Size by Site")
+
+# Combine the plots
+(p1 + p2) / p3
+```
+
+**Story**: These plots together tell us that crab size increases with both air and water temperature, with a stronger relationship for water temperature (as shown by the steeper slope). The boxplot shows that sites with higher temperatures (like Oregon, which is at a lower latitude) tend to have larger crabs, while sites with lower temperatures (like Woods Hole, at higher latitude) have smaller crabs. This suggests that temperature is an important factor influencing crab size, which aligns with our earlier finding of a negative relationship between latitude and size.
+:::
+:::
+
+## Summary
+
+In this lab, we've explored how to create and customize various types of visualisations using ggplot2. We've learned:
+
+1. The Grammar of Graphics approach to building visualisations layer by layer
+2. How to create and interpret histograms, density plots, boxplots, and scatterplots
+3. How to quantify and interpret distribution properties like skewness and kurtosis
+4. How to compare groups using boxplots and faceting
+5. How to examine relationships between variables using scatterplots and trend lines
+6. How to combine multiple plots using the patchwork package
+
+These skills will be valuable for exploring and presenting data in future labs and assignments.
+
+## Additional Resources
+
+- [R for Data Science - Data Visualisation chapter](https://r4ds.had.co.nz/data-visualisation.html)
+- [ggplot2 documentation](https://ggplot2.tidyverse.org/)
+- [patchwork package documentation](https://patchwork.data-imaginist.com/)
+- [R Graph Gallery](https://www.r-graph-gallery.com/) - Examples of various visualisations in R
+- [Cookbook for R - Graphs](http://www.cookbook-r.com/Graphs/) - Recipes for common visualisation tasks

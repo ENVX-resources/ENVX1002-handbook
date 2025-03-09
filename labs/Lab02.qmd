@@ -4,8 +4,6 @@ embed-resources: true
 resources:
   - data/soil.xlsx
   - data/mario_kart.csv
-execute: 
-  output: false
 ---
 
 ```{r setup}
@@ -561,6 +559,204 @@ Complete the following exercises using both R and Excel:
    - Who is the most "well-rounded" character (closest to average in all stats)?
    - Create a report comparing Mario and Luigi's stats using inline R code
 
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer - Mario Kart Exercise
+
+### 1. Data Import and Inspection
+
+```{r}
+#| eval: true
+# Load the data
+mario_kart <- read_csv("data/mario_kart.csv")
+
+# Examine structure
+str(mario_kart)
+
+# View first few rows
+head(mario_kart)
+```
+
+**Observations about the data:**
+
+- The dataset contains 12 characters with 7 variables
+- All attributes except 'character' are numeric values on rating scales
+- Character names are stored as strings
+- The data appears to be clean with no missing values
+- Attributes are rated on scales that appear to range from approximately 2.5 to 4.5
+
+### 2. Central Tendency for Speed Attribute
+
+```{r}
+#| eval: true
+# Calculate mean speed
+mean_speed <- mean(mario_kart$speed)
+mean_speed
+
+# Calculate median speed
+median_speed <- median(mario_kart$speed)
+median_speed
+
+# Calculate mode of speed
+mode_speed <- mfv(mario_kart$speed)[1]
+mode_speed
+```
+
+**Which measure best represents the "typical" speed rating?**
+
+The median (4.1) is likely the best representation of the typical speed rating because:
+
+- It's not influenced by extreme values like the mean
+- The data shows a slight negative skew (more characters with higher speeds)
+- The median gives us the middle value that divides the characters evenly
+
+### 3. Spread Analysis for Weight Attribute
+
+```{r}
+#| eval: true
+# Calculate range
+range_weight <- range(mario_kart$weight)
+range_weight
+
+# Calculate IQR
+iqr_weight <- IQR(mario_kart$weight)
+iqr_weight
+
+# Calculate variance
+var_weight <- var(mario_kart$weight)
+var_weight
+
+# Calculate standard deviation
+sd_weight <- sd(mario_kart$weight)
+sd_weight
+```
+
+**What these tell us about variation in character weights:**
+
+The weight attribute shows considerable variation:
+
+- Range: 2.5 to 4.5 (a spread of 2.0 units)
+- IQR: Approximately 1.1, indicating moderate spread in the middle 50% of characters
+- Standard deviation: Approximately 0.7, showing that weights typically vary by about 0.7 units from the mean
+- The distribution appears to be somewhat bimodal, with characters clustering around lighter weights (2.5-3.0) and heavier weights (4.0-4.5)
+
+### 4. Character Comparison
+
+```{r}
+#| eval: true
+# Characters with highest and lowest acceleration
+mario_kart[which.max(mario_kart$acceleration), ]
+mario_kart[which.min(mario_kart$acceleration), ]
+
+# Characters with above-average handling
+mean_handling <- mean(mario_kart$handling)
+mario_kart[mario_kart$handling > mean_handling, ]
+
+# Characters with both speed and weight above 4.0
+mario_kart[mario_kart$speed > 4.0 & mario_kart$weight > 4.0, ]
+```
+
+**Results:**
+
+- Toad has the highest acceleration (4.4)
+- Bowser has the lowest acceleration (2.8)
+- Characters with above-average handling: Peach, Yoshi, Toad, Koopa Troopa, Princess Daisy
+- Characters with both speed and weight above 4.0: Bowser, Wario, Donkey Kong, Waluigi
+
+### 5. Advanced Challenge
+
+This is an interesting question as it requires you to think through the idea of what it means to be "closest to average" in all stats -- hopefully many of you will see that it is a question about spread. In general, we want to find the character with the smallest deviation from the average across all attributes.
+
+**Our approach**:
+
+- First, we calculated each character's overall mean across all attributes (`overall_mean`)
+- Then, we found the global average of all attributes across all characters (`overall_avg`)
+- Next, we calculated how far each character's average is from this global average (`deviation`)
+- Finally, we selected the character with the smallest deviation as the most "well-rounded"
+
+**Why use deviation?**:
+
+- Deviation measures how far a value is from a reference point (in this case, the global average)
+- A small deviation indicates a character whose stats are close to the average
+- This aligns with our interpretation of "well-rounded" as being balanced and close to average
+- Using `which.min()` finds the character with the smallest deviation, identifying our most balanced character
+
+
+```{r}
+#| eval: true
+# Calculate mean of all attributes for each character
+mario_kart$overall_mean <- rowMeans(mario_kart[, c("weight", "speed", "acceleration",
+                                                  "handling", "traction", "drift_rating")])
+
+# Find the most "well-rounded" character
+# First calculate the overall average across all characters and attributes
+overall_avg <- mean(unlist(mario_kart[, c("weight", "speed", "acceleration",
+                                         "handling", "traction", "drift_rating")]))
+
+# Then find the character closest to this average
+mario_kart$deviation <- abs(mario_kart$overall_mean - overall_avg)
+well_rounded <- mario_kart[which.min(mario_kart$deviation), ]
+well_rounded
+```
+
+
+**Answer**: The most "well-rounded" character is `r well_rounded$character` with an overall mean of `r round(well_rounded$overall_mean, 2)`.
+
+#### Alternative!
+
+There isn't just one approach to this question! Another way to look at it is to, instead of calculating the deviation from the global average, calculate the sum of squared deviations from the average stats. This will give us a sense of how far each character's stats are from the average across all attributes.
+
+```{r}
+avg_stats <- colMeans(mario_kart[, -1])
+
+# Calculate squared deviations for each character
+deviations <- mario_kart |>
+  mutate(total_ss = (weight - avg_stats["weight"])^2 + 
+                    (speed - avg_stats["speed"])^2 +
+                    (acceleration - avg_stats["acceleration"])^2 +
+                    (handling - avg_stats["handling"])^2 +
+                    (traction - avg_stats["traction"])^2 +
+                    (drift_rating - avg_stats["drift_rating"])^2) |>
+  arrange(total_ss)
+deviations
+```
+
+**Answer**: In this case, Mario is the most "well-rounded" character, with the smallest sum of squared deviations from the average stats.
+
+**Mario vs. Luigi Comparison Report:**
+
+```{r}
+# Compare Mario and Luigi
+mario <- mario_kart[mario_kart$character == "Mario", ]
+luigi <- mario_kart[mario_kart$character == "Luigi", ]
+```
+Mario and Luigi have similar stats, but with some notable differences:
+
+- **Weight**: Mario (`r mario$weight`) is slightly heavier than Luigi (`r luigi$weight`)
+- **Speed**: Mario (`r mario$speed`) is slightly faster than Luigi (`r luigi$speed`)
+- **Acceleration**: Luigi (`r luigi$acceleration`) has better acceleration than Mario (`r mario$acceleration`)
+- **Handling**: Luigi (`r luigi$handling`) has better handling than Mario (`r mario$handling`)
+- **Traction**: Luigi (`r luigi$traction`) has better traction than Mario (`r mario$traction`)
+- **Drift Rating**: Mario (`r mario$drift_rating`) has a better drift rating than Luigi (`r luigi$drift_rating`)
+
+Overall, Luigi tends to have better control stats (acceleration, handling, traction), while Mario has slightly better speed and drift capabilities.
+
+
+```markdown
+Mario and Luigi have similar stats, but with some notable differences:
+
+- **Weight**: Mario (`{{r}} mario$weight`) is slightly heavier than Luigi (`{{r}} luigi$weight`)
+- **Speed**: Mario (`{{r}} mario$speed`) is slightly faster than Luigi (`{{r}} luigi$speed`)
+- **Acceleration**: Luigi (`{{r}} luigi$acceleration`) has better acceleration than Mario (`{{r}} mario$acceleration`)
+- **Handling**: Luigi (`{{r}} luigi$handling`) has better handling than Mario (`{{r}} mario$handling`)
+- **Traction**: Luigi (`{{r}} luigi$traction`) has better traction than Mario (`{{r}} mario$traction`)
+- **Drift Rating**: Mario (`{{r}} mario$drift_rating`) has a better drift rating than Luigi (`{{r}} luigi$drift_rating`)
+
+Overall, Luigi tends to have better control stats (acceleration, handling, traction), while Mario has slightly better speed and drift capabilities.
+```
+
+:::
+:::
 
 
 ## Attribution
