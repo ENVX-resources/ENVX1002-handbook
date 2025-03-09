@@ -5001,14 +5001,25 @@ border-radius: 4px;
   <li><a href="#background-1" id="toc-background-1" class="nav-link" data-scroll-target="#background-1">Background</a></li>
   <li><a href="#hatpc" id="toc-hatpc" class="nav-link" data-scroll-target="#hatpc">HATPC</a></li>
   </ul></li>
+  <li><a href="#answer-to-exercise-2" id="toc-answer-to-exercise-2" class="nav-link" data-scroll-target="#answer-to-exercise-2">Answer to Exercise 2</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis" id="toc-hypothesis" class="nav-link" data-scroll-target="#hypothesis">Hypothesis</a></li>
+  <li><a href="#assumptions-1" id="toc-assumptions-1" class="nav-link" data-scroll-target="#assumptions-1">Assumptions</a></li>
+  <li><a href="#test-statistic-1" id="toc-test-statistic-1" class="nav-link" data-scroll-target="#test-statistic-1">Test statistic</a></li>
+  </ul></li>
   <li><a href="#done" id="toc-done" class="nav-link" data-scroll-target="#done">Done!</a></li>
   <li><a href="#bonus-take-home-exercises" id="toc-bonus-take-home-exercises" class="nav-link" data-scroll-target="#bonus-take-home-exercises">Bonus take home exercises</a>
   <ul class="collapse">
-  <li><a href="#exercise-1-national-rspca-statistics" id="toc-exercise-1-national-rspca-statistics" class="nav-link" data-scroll-target="#exercise-1-national-rspca-statistics">Exercise 1: National RSPCA statistics</a></li>
+  <li><a href="#exercise-1-national-rspca-statistics" id="toc-exercise-1-national-rspca-statistics" class="nav-link" data-scroll-target="#exercise-1-national-rspca-statistics">Exercise 1: National RSPCA statistics</a>
+  <ul class="collapse">
+  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
+  </ul></li>
   <li><a href="#exercise-2-uc-berkeley-admissions" id="toc-exercise-2-uc-berkeley-admissions" class="nav-link" data-scroll-target="#exercise-2-uc-berkeley-admissions">Exercise 2: UC Berkeley Admissions</a>
   <ul class="collapse">
   <li><a href="#admissions-by-department" id="toc-admissions-by-department" class="nav-link" data-scroll-target="#admissions-by-department">2.1 Admissions by department</a></li>
+  <li><a href="#solution-1" id="toc-solution-1" class="nav-link" data-scroll-target="#solution-1">Solution</a></li>
   <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2.2</a></li>
+  <li><a href="#solution-2" id="toc-solution-2" class="nav-link" data-scroll-target="#solution-2">Solution</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -5266,6 +5277,32 @@ Click here to view interpretation
 <p>Take your time, and when you are ready, check your answers with your demonstrators.</p>
 </section>
 </section>
+<section id="answer-to-exercise-2" class="level2" style="color:green;">
+<h2 style="color:green;" class="anchored" data-anchor-id="answer-to-exercise-2">Answer to Exercise 2</h2>
+<section id="hypothesis" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="hypothesis">Hypothesis</h3>
+<p><strong>H<sub>0</sub></strong>: There is no significant difference between the observed and the expected use of different shell species by hermit crabs.</p>
+<p><strong>H<sub>1</sub></strong>: There is a significant difference between the observed and the expected use of different shell species by hermit crabs.</p>
+</section>
+<section id="assumptions-1" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="assumptions-1">Assumptions</h3>
+<p>To check whether the expected frequencies are greater than 5, we can either perform the calculation manually or check the output of the <code>chisq.test()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(crabs)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>fit<span class="sc">$</span>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>From the output, we can see that all expected frequencies are greater than 5. The other assumption where no cell has expected frequencies less than 1 is also satisfied.</p>
+</section>
+<section id="test-statistic-1" class="level3">
+<h3 class="anchored" data-anchor-id="test-statistic-1">Test statistic</h3>
+<p>If you have not already done so, perform the chi-squared test using the <code>chisq.test()</code> function in R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(crabs)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We reject the null hypothesis as the p-value is less than 0.05 and conclude that there is a significant difference between the observed and the expected use of different shell species by hermit crabs (<span class="math inline">\(\chi^2 = 45.5, d.f. = 2, p &lt; 0.01\)</span>).</p>
+</section>
+</section>
 <section id="done" class="level2">
 <h2 class="anchored" data-anchor-id="done">Done!</h2>
 <p>This is the end of the lab. Remember to save your work, render your document and ask your demonstrators for feedback if you are unsure about your answers.</p>
@@ -5277,8 +5314,45 @@ Click here to view interpretation
 <p>The RSPCA releases statistics on the number of animals they receive, reclaim and rehome <a href="https://www.rspca.org.au/about/annual-statistics/">every year</a>. In the 2023-24 financial year, the RSPCA received 17468 dogs, 26704 cats, and 37497 other animals. The “other” category includes horses, small animals, livestock and wildlife.</p>
 <p>Using the HATPC framework, test whether these animals were received in equal proportions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>received <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">17468</span>, <span class="dv">26704</span>, <span class="dv">37497</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>received <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">17468</span>, <span class="dv">26704</span>, <span class="dv">37497</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="solution" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="solution">Solution</h3>
+<ul>
+<li>Hypothesis</li>
+</ul>
+<blockquote class="blockquote">
+<p>H<sub>0</sub> : There is no significant difference between the observed and the expected number of animals received from each category</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>H<sub>1</sub> : There is a significant difference betwwen the observed and the expected number of animals received from each category</p>
+</blockquote>
+<ul>
+<li>Assumptions</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>expected_received <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">sum</span>(received)<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>expected_received</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<ol type="1">
+<li>No cell has expected frequencies less than 1 and 2) No more than 20% of cells have expected frequencies less than 5 so the assumptions are met</li>
+</ol>
+</blockquote>
+<ul>
+<li>Test (statistic)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(received)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>P-value &gt; p &lt; 0.05, so we reject the null hypothesis</p></li>
+<li><p>Conclusion</p></li>
+</ul>
+<blockquote class="blockquote">
+<p>There is a significant difference betwwen the observed and the expected number of animals received from each category</p>
+</blockquote>
+</section>
 </section>
 <section id="exercise-2-uc-berkeley-admissions" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-2-uc-berkeley-admissions">Exercise 2: UC Berkeley Admissions</h2>
@@ -5287,22 +5361,112 @@ Click here to view interpretation
 <h3 class="anchored" data-anchor-id="admissions-by-department">2.1 Admissions by department</h3>
 <p>Did every department at UC Berkeley admit students in equal proportions?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dept_admissions <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">601</span>, <span class="dv">370</span>, <span class="dv">322</span>, <span class="dv">269</span>, <span class="dv">147</span>, <span class="dv">46</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dept_admissions <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">601</span>, <span class="dv">370</span>, <span class="dv">322</span>, <span class="dv">269</span>, <span class="dv">147</span>, <span class="dv">46</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="solution-1" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="solution-1">Solution</h3>
+<ul>
+<li>Hypothesis</li>
+</ul>
+<blockquote class="blockquote">
+<p>H<sub>0</sub>:There is no significant difference between the expected and observed number of students admitted by each department</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>H<sub>1</sub>: There is a significant difference between the expected and observed number of students admitted by each department</p>
+</blockquote>
+<ul>
+<li>Assumptions</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">sum</span>(dept_admissions)<span class="sc">*</span><span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<ol type="1">
+<li>No cell has expected frequencies less than 1 and 2) No more than 20% of cells have expected frequencies less than 5 so the assumptions are met</li>
+</ol>
+</blockquote>
+<ul>
+<li>Test (statistic)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(dept_admissions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>P-value</li>
+</ul>
+<blockquote class="blockquote">
+<p>p &lt; 0.05, so we reject the null hypothesis</p>
+</blockquote>
+<ul>
+<li>Conclusion</li>
+</ul>
+<blockquote class="blockquote">
+<p>There is a significant difference between the expected and observed number of students admitted by each department</p>
+</blockquote>
 </section>
 <section id="section" class="level3">
 <h3 class="anchored" data-anchor-id="section">2.2</h3>
 <p>Are male and female students admitted and rejected in the same proportion?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">as.table</span>( <span class="co">#Make a table with values for each row</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">admitted =</span> <span class="fu">c</span>(<span class="dv">1198</span>, <span class="dv">557</span>),</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">rejected =</span> <span class="fu">c</span>(<span class="dv">1493</span>, <span class="dv">1278</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(gender) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>) <span class="co">#Add column names to table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">as.table</span>( <span class="co">#Make a table with values for each row</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rbind</span>(</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">admitted =</span> <span class="fu">c</span>(<span class="dv">1198</span>, <span class="dv">557</span>),</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">rejected =</span> <span class="fu">c</span>(<span class="dv">1493</span>, <span class="dv">1278</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(gender) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>) <span class="co">#Add column names to table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="solution-2" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="solution-2">Solution</h3>
+<p>Can make a mosaic plot to look at what the data looks like</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Hypothesis</li>
+</ul>
+<blockquote class="blockquote">
+<p>H<sub>0</sub>:There is no significant difference between the expected and observed number of students admitted or rejected by gender</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>H<sub>1</sub>:There is a significant difference between the expected and observed number of students admitted or rejected by gender</p>
+</blockquote>
+<ul>
+<li>Assumptions</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Fit the chisq test to be able to call up the expected</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>fit_gender <span class="ot">&lt;-</span><span class="fu">chisq.test</span>(gender)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>fit_gender<span class="sc">$</span>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<ol type="1">
+<li>No cell has expected frequencies less than 1 and 2) No more than 20% of cells have expected frequencies less than 5 so the assumptions are met</li>
+</ol>
+</blockquote>
+<ul>
+<li>Test (statistic)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#call up the test we ran above</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>fit_gender</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>P-value</li>
+</ul>
+<blockquote class="blockquote">
+<p>p &lt; 0.05, so we reject the null hypothesis</p>
+</blockquote>
+<ul>
+<li>Conclusion</li>
+</ul>
+<blockquote class="blockquote">
+<p>There is a significant difference between the expected and observed number of students admitted or rejected by gender</p>
+</blockquote>
 
 
 </section>

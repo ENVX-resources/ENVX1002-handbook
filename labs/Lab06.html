@@ -5001,16 +5001,43 @@ border-radius: 4px;
   <li><a href="#background-1" id="toc-background-1" class="nav-link" data-scroll-target="#background-1">Background</a></li>
   <li><a href="#instructions-1" id="toc-instructions-1" class="nav-link" data-scroll-target="#instructions-1">Instructions</a></li>
   </ul></li>
+  <li><a href="#answer-2" id="toc-answer-2" class="nav-link" data-scroll-target="#answer-2">Answer 2</a>
+  <ul class="collapse">
+  <li><a href="#data-exploration-1" id="toc-data-exploration-1" class="nav-link" data-scroll-target="#data-exploration-1">Data exploration</a></li>
+  <li><a href="#hypothesis-1" id="toc-hypothesis-1" class="nav-link" data-scroll-target="#hypothesis-1">Hypothesis</a></li>
+  <li><a href="#assumptions-1" id="toc-assumptions-1" class="nav-link" data-scroll-target="#assumptions-1">Assumptions</a></li>
+  <li><a href="#test-statistic-1" id="toc-test-statistic-1" class="nav-link" data-scroll-target="#test-statistic-1">Test statistic</a></li>
+  <li><a href="#p-value-1" id="toc-p-value-1" class="nav-link" data-scroll-target="#p-value-1">P-value</a></li>
+  <li><a href="#conclusion-1" id="toc-conclusion-1" class="nav-link" data-scroll-target="#conclusion-1">Conclusion</a></li>
+  </ul></li>
   <li><a href="#exercise-3-turbidity" id="toc-exercise-3-turbidity" class="nav-link" data-scroll-target="#exercise-3-turbidity">Exercise 3: turbidity</a>
   <ul class="collapse">
   <li><a href="#background-2" id="toc-background-2" class="nav-link" data-scroll-target="#background-2">Background</a></li>
   <li><a href="#instructions-2" id="toc-instructions-2" class="nav-link" data-scroll-target="#instructions-2">Instructions</a></li>
   </ul></li>
+  <li><a href="#answer-3" id="toc-answer-3" class="nav-link" data-scroll-target="#answer-3">Answer 3</a>
+  <ul class="collapse">
+  <li><a href="#data-exploration-2" id="toc-data-exploration-2" class="nav-link" data-scroll-target="#data-exploration-2">Data exploration</a></li>
+  <li><a href="#hypothesis-2" id="toc-hypothesis-2" class="nav-link" data-scroll-target="#hypothesis-2">Hypothesis</a></li>
+  <li><a href="#assumptions-2" id="toc-assumptions-2" class="nav-link" data-scroll-target="#assumptions-2">Assumptions</a></li>
+  <li><a href="#test-statistic-2" id="toc-test-statistic-2" class="nav-link" data-scroll-target="#test-statistic-2">Test statistic</a></li>
+  <li><a href="#p-value-2" id="toc-p-value-2" class="nav-link" data-scroll-target="#p-value-2">P-value</a></li>
+  <li><a href="#conclusion-2" id="toc-conclusion-2" class="nav-link" data-scroll-target="#conclusion-2">Conclusion</a></li>
+  </ul></li>
   <li><a href="#bonus-take-home-exercises" id="toc-bonus-take-home-exercises" class="nav-link" data-scroll-target="#bonus-take-home-exercises">Bonus take home exercises</a>
   <ul class="collapse">
-  <li><a href="#exercise-1-tooth-growth" id="toc-exercise-1-tooth-growth" class="nav-link" data-scroll-target="#exercise-1-tooth-growth">Exercise 1: Tooth growth</a></li>
-  <li><a href="#exercise-2-adelie-penguin-bill-length" id="toc-exercise-2-adelie-penguin-bill-length" class="nav-link" data-scroll-target="#exercise-2-adelie-penguin-bill-length">Exercise 2: Adelie penguin bill length</a></li>
-  <li><a href="#exercise-3-penguin-body-mass" id="toc-exercise-3-penguin-body-mass" class="nav-link" data-scroll-target="#exercise-3-penguin-body-mass">Exercise 3: Penguin body mass</a></li>
+  <li><a href="#exercise-1-tooth-growth" id="toc-exercise-1-tooth-growth" class="nav-link" data-scroll-target="#exercise-1-tooth-growth">Exercise 1: Tooth growth</a>
+  <ul class="collapse">
+  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
+  </ul></li>
+  <li><a href="#exercise-2-adelie-penguin-bill-length" id="toc-exercise-2-adelie-penguin-bill-length" class="nav-link" data-scroll-target="#exercise-2-adelie-penguin-bill-length">Exercise 2: Adelie penguin bill length</a>
+  <ul class="collapse">
+  <li><a href="#solution-1" id="toc-solution-1" class="nav-link" data-scroll-target="#solution-1">Solution</a></li>
+  </ul></li>
+  <li><a href="#exercise-3-penguin-body-mass" id="toc-exercise-3-penguin-body-mass" class="nav-link" data-scroll-target="#exercise-3-penguin-body-mass">Exercise 3: Penguin body mass</a>
+  <ul class="collapse">
+  <li><a href="#solution-2" id="toc-solution-2" class="nav-link" data-scroll-target="#solution-2">Solution</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Lab06.pdf"><i class="bi bi-file-pdf"></i>Typst</a></li></ul></div></nav>
@@ -5271,6 +5298,63 @@ mean in group A mean in group B
 </div>
 </section>
 </section>
+<section id="answer-2" class="level2" style="color:green;">
+<h2 style="color:green;" class="anchored" data-anchor-id="answer-2">Answer 2</h2>
+<section id="data-exploration-1" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="data-exploration-1">Data exploration</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Boxplot</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tidy_plant, <span class="fu">aes</span>(<span class="at">x =</span> Treatment, <span class="at">y =</span> Height)) <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The boxplot shows no unusual observations.</p>
+</section>
+<section id="hypothesis-1" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="hypothesis-1">Hypothesis</h3>
+<p><span class="math display">\[H_0: \mu_{\text{treated}} = \mu_{\text{control}}\]</span> <span class="math display">\[H_1: \mu_{\text{treated}} \neq \mu_{\text{control}}\]</span></p>
+<p>where <span class="math inline">\(\mu_{\text{treated}}\)</span> and <span class="math inline">\(\mu_{\text{control}}\)</span> are the mean increses in height of the treated and control plants, respectively.</p>
+</section>
+<section id="assumptions-1" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="assumptions-1">Assumptions</h3>
+<section id="normality-1" class="level4" style="color:green;">
+<h4 style="color:green;" class="anchored" data-anchor-id="normality-1">Normality</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#qqplots</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tidy_plant, <span class="fu">aes</span>(<span class="at">sample =</span> Height)) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The QQ-plots show that the data are normally distributed, but there are some outliers worth checking. A formal test for normality will give us a better idea of whether the assumption is met.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># perform test on groups</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(tidy_plant<span class="sc">$</span>Height, tidy_plant<span class="sc">$</span>Treatment, shapiro.test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The Shapiro-Wilk test indicates that the data are normally distributed.</p>
+</section>
+<section id="homogeneity-of-variance-1" class="level4" style="color:green;">
+<h4 style="color:green;" class="anchored" data-anchor-id="homogeneity-of-variance-1">Homogeneity of variance</h4>
+<p>There is <strong>no need</strong> to test for homogeneity of variance in a paired <em>t</em>-test!</p>
+</section>
+</section>
+<section id="test-statistic-1" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="test-statistic-1">Test statistic</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(tidy_plant<span class="sc">$</span>Height[tidy_plant<span class="sc">$</span>Treatment <span class="sc">==</span> <span class="st">&quot;Treated&quot;</span>],</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  tidy_plant<span class="sc">$</span>Height[tidy_plant<span class="sc">$</span>Treatment <span class="sc">==</span> <span class="st">&quot;Control&quot;</span>],</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">paired =</span> <span class="cn">TRUE</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="p-value-1" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="p-value-1">P-value</h3>
+<p>The p-value is 0.03 which is less than 0.05, so we reject the null hypothesis that the mean increase in height of the treated and control plants is equal.</p>
+</section>
+<section id="conclusion-1" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="conclusion-1">Conclusion</h3>
+<p>The mean increase in height of the treated plants is significantly different from that of the control plants (<span class="math inline">\(t = 2.5\)</span>, <span class="math inline">\(df = 9\)</span>, <span class="math inline">\(p = 0.03\)</span>).</p>
+</section>
+</section>
 <section id="exercise-3-turbidity" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-3-turbidity">Exercise 3: turbidity</h2>
 <section id="background-2" class="level3">
@@ -5282,16 +5366,107 @@ mean in group A mean in group B
 <p>Now we consider further examples of a two-sample <em>t</em>-test, but where the assumption of equal variance and normality may not be met for the raw data. Sometimes after applying a data transformation the analysis can proceed assuming equal variances – but always check after a data transformation.</p>
 <p>The data can be read with the code below:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>turbidity <span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">&quot;data/Turbidity.csv&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>turbidity <span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">&quot;data/Turbidity.csv&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>For data transformation, you may need to create a new variable in your dataset to store the transformed data. For example, to create a new variable <code>TurbLog10</code> that stores the log<sub>10</sub> transformed turbidity values, you can use the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>turbidity<span class="sc">$</span>TurbLog10 <span class="ot">&lt;-</span> <span class="fu">log10</span>(turbidity<span class="sc">$</span>Turbidity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>turbidity<span class="sc">$</span>TurbLog10 <span class="ot">&lt;-</span> <span class="fu">log10</span>(turbidity<span class="sc">$</span>Turbidity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To interpret the results for your conclusions, you may need to back-transform the mean and/or confidence interval values. To back transform log<sub>10</sub> data you use:</p>
 <p><span class="math display">\[10^{\text{mean or CI}}\]</span></p>
 <p>To back-transform natural log, log<sub>e</sub>, you use:</p>
 <p><span class="math display">\[e^{\text{mean or CI}}\]</span></p>
+</section>
+</section>
+<section id="answer-3" class="level2" style="color:green;">
+<h2 style="color:green;" class="anchored" data-anchor-id="answer-3">Answer 3</h2>
+<section id="data-exploration-2" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="data-exploration-2">Data exploration</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Read in data</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>turbidity <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/Turbidity.csv&quot;</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Make boxplot</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(turbidity, <span class="fu">aes</span>(<span class="at">x =</span> Time, <span class="at">y =</span> Turbidity)) <span class="sc">+</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The boxplot shows skewing of the data, and outliers, a strong indication that the data will have issues meeting the assumption of normality. It is also likely that the variances are not equal as the boxplot shows different spreads.</p>
+</section>
+<section id="hypothesis-2" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="hypothesis-2">Hypothesis</h3>
+<p><span class="math display">\[H_0: \mu_{\text{before}} = \mu_{\text{after}}\]</span> <span class="math display">\[H_1: \mu_{\text{before}} \neq \mu_{\text{after}}\]</span></p>
+<p>where <span class="math inline">\(\mu_{\text{before}}\)</span> and <span class="math inline">\(\mu_{\text{after}}\)</span> are the mean turbidity values before and after the new filtering process was installed.</p>
+</section>
+<section id="assumptions-2" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="assumptions-2">Assumptions</h3>
+<section id="normality-part-1" class="level4" style="color:green;">
+<h4 style="color:green;" class="anchored" data-anchor-id="normality-part-1">Normality: part 1</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#qqplots</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(turbidity, <span class="fu">aes</span>(<span class="at">sample =</span> Turbidity)) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The QQ-plots show that the data are not normally distributed. Transformation of the data is required – there is no need to look at the equal variances just yet.</p>
+</section>
+<section id="transform-data" class="level4" style="color:green;">
+<h4 style="color:green;" class="anchored" data-anchor-id="transform-data">Transform data</h4>
+<p>We will use the natural log transformation to normalise the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>turbidity<span class="sc">$</span>TurbLog10 <span class="ot">&lt;-</span> <span class="fu">log10</span>(turbidity<span class="sc">$</span>Turbidity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="normality-part-2" class="level4" style="color:green;">
+<h4 style="color:green;" class="anchored" data-anchor-id="normality-part-2">Normality: part 2</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(turbidity, <span class="fu">aes</span>(<span class="at">sample =</span> TurbLog10)) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The QQ-plots show that the data look better. We can now perform a Shapiro-Wilk test to confirm this.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(turbidity<span class="sc">$</span>TurbLog10, turbidity<span class="sc">$</span>Time, shapiro.test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The Shapiro-Wilk test indicates that the data are normally distributed.</p>
+</section>
+<section id="homogeneity-of-variance-2" class="level4" style="color:green;">
+<h4 style="color:green;" class="anchored" data-anchor-id="homogeneity-of-variance-2">Homogeneity of variance</h4>
+<p>We check the assumption of equal variance after the transformation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bartlett.test</span>(TurbLog10 <span class="sc">~</span> Time, <span class="at">data =</span> turbidity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The Bartlett’s test indicates that the variances are equal. We can now perform the <em>t</em>-test on the transformed data.</p>
+</section>
+</section>
+<section id="test-statistic-2" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="test-statistic-2">Test statistic</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(TurbLog10 <span class="sc">~</span> Time, <span class="at">data =</span> turbidity, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="p-value-2" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="p-value-2">P-value</h3>
+<p>The p-value is 0.007, which is less than 0.05, so we reject the null hypothesis that the mean turbidity values before and after the new filtering process was installed are equal.</p>
+</section>
+<section id="conclusion-2" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="conclusion-2">Conclusion</h3>
+<p>We want to make a biological conclusion based on the results. To do this, we need to back-transform the mean difference and the confidence intervals so that the units are in NTU, not log<sub>10</sub> NTU.</p>
+<section id="mean-difference" class="level4" style="color:green;">
+<h4 style="color:green;" class="anchored" data-anchor-id="mean-difference">Mean difference</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">^</span>(<span class="fl">1.514274</span> <span class="sc">-</span> <span class="fl">0.683656</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="lower-and-upper-ci" class="level4" style="color:green;">
+<h4 style="color:green;" class="anchored" data-anchor-id="lower-and-upper-ci">Lower and upper CI</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">^</span>(<span class="fl">0.359140</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">^</span>(<span class="fl">1.302095</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The mean turbidity values before and after the new filtering process was installed are significantly different (<span class="math inline">\(t = -3.7\)</span>, <span class="math inline">\(df = 17\)</span>, <span class="math inline">\(p = 0.007\)</span>). The new filtering process has effectively reduced turbidity by 7 NTU on average. We are 95% confident that the new filtering process will reduce water turbidity by between 2.3 and 20 NTU.</p>
+</section>
 </section>
 </section>
 <section id="bonus-take-home-exercises" class="level1">
@@ -5313,41 +5488,215 @@ mean in group A mean in group B
 <li><p>dose = mg/day gieven to the guinea pigs</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ToothGrowth)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ToothGrowth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ToothGrowth)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ToothGrowth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Using the HATPC framework, test whether the type of supplent affects tooth length.</p>
+<section id="solution" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="solution">Solution</h3>
+<ol type="1">
+<li>Hypothesis</li>
+</ol>
+<blockquote class="blockquote">
+<p>H<sub>0</sub>: <span class="math inline">\(\mu_{OJ}\)</span> = <span class="math inline">\(\mu_{VC}\)</span></p>
+</blockquote>
+<blockquote class="blockquote">
+<p>H<sub>1</sub>: <span class="math inline">\(\mu_{OJ}\)</span> <span class="math inline">\(\neq\)</span> <span class="math inline">\(\mu_{VC}\)</span></p>
+</blockquote>
+<ol start="2" type="1">
+<li>Assumptions</li>
+</ol>
+<p>Normality</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># qqplot</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ToothGrowth, <span class="fu">aes</span>(<span class="at">sample =</span> len)) <span class="sc">+</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>supp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>The data appear to be normally distribute, as most of the dots follow the line</p>
+</blockquote>
+<p>Homogeneity of variance</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Boxplots</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ToothGrowth, <span class="fu">aes</span>(<span class="at">x =</span> supp, <span class="at">y =</span> len))<span class="sc">+</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Barttlet test</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bartlett.test</span>(len<span class="sc">~</span>supp, <span class="at">data =</span> ToothGrowth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>The two groups have equal variance</p>
+</blockquote>
+<ol start="3" type="1">
+<li>Test statistic</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(len<span class="sc">~</span>supp, <span class="at">var.equal =</span> <span class="cn">TRUE</span>, <span class="at">data =</span> ToothGrowth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="1">
+<li>P-value</li>
+</ol>
+<blockquote class="blockquote">
+<p>Since the p-value &gt; 0.05, we retain the null hypothesis</p>
+</blockquote>
+<ol start="5" type="1">
+<li>Conclusion</li>
+</ol>
+<blockquote class="blockquote">
+<p>The mean tooth length was the same for each treatment group. The type of supplement does not have a significant effect on guinea pig tooth length</p>
+</blockquote>
+</section>
 </section>
 <section id="exercise-2-adelie-penguin-bill-length" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-2-adelie-penguin-bill-length">Exercise 2: Adelie penguin bill length</h2>
 <p>For this exercise, we will be using a subset of the palmer penguins dataset.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>adelie <span class="ot">&lt;-</span>penguins<span class="sc">%&gt;%</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">&quot;Adelie&quot;</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()<span class="sc">%&gt;%</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">droplevels</span>()</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(adelie)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>adelie <span class="ot">&lt;-</span>penguins<span class="sc">%&gt;%</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">&quot;Adelie&quot;</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()<span class="sc">%&gt;%</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">droplevels</span>()</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(adelie)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Using the HATPC framework, test whether male and female penguins have the same length bill</p>
+<section id="solution-1" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="solution-1">Solution</h3>
+<ol type="1">
+<li>Hypothesis</li>
+</ol>
+<blockquote class="blockquote">
+<p>H<sub>0</sub>: <span class="math inline">\(\mu_{f bill length}\)</span> = <span class="math inline">\(\mu_{m bill length}\)</span></p>
+</blockquote>
+<blockquote class="blockquote">
+<p>H<sub>1</sub>: <span class="math inline">\(\mu_{f bill length}\)</span> <span class="math inline">\(\neq\)</span> <span class="math inline">\(\mu_{m bill length}\)</span></p>
+</blockquote>
+<ol start="2" type="1">
+<li>Assumptions</li>
+</ol>
+<p>Normality</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># qqplot</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(adelie, <span class="fu">aes</span>(<span class="at">sample =</span> bill_length_mm))<span class="sc">+</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>()<span class="sc">+</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()<span class="sc">+</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#shapiro.test</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(adelie<span class="sc">$</span>bill_length_mm, adelie<span class="sc">$</span>sex, shapiro.test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>The two groups appear to be normally distributed, both according to the qqplot and the shapiro test</p>
+</blockquote>
+<p>Homogeneity of variance</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#boxplot</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(adelie, <span class="fu">aes</span>(<span class="at">x =</span> sex, <span class="at">y =</span> bill_length_mm))<span class="sc">+</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#barttlet test</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bartlett.test</span>(bill_length_mm<span class="sc">~</span>sex, <span class="at">data =</span> adelie)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>The two groups have equal variance</p>
+</blockquote>
+<ol start="3" type="1">
+<li>Test (statistic)</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bill_length_mm<span class="sc">~</span>sex, <span class="at">var.equal =</span> <span class="cn">TRUE</span>,<span class="at">data =</span> adelie)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="1">
+<li>P-value</li>
+</ol>
+<blockquote class="blockquote">
+<p>Since p&lt; 0.05, we reject the null hypothesis</p>
+</blockquote>
+<ol start="5" type="1">
+<li>Conclusion</li>
+</ol>
+<blockquote class="blockquote">
+<p>Male and female adelie penguins have different mean bill legths. Males have longer beaks than females</p>
+</blockquote>
+</section>
 </section>
 <section id="exercise-3-penguin-body-mass" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-3-penguin-body-mass">Exercise 3: Penguin body mass</h2>
 <p>For this exercise, we will use a subset of the palmer penguins data set again. This time, we will be comparing two different penguin species.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>penguins2<span class="ot">&lt;-</span> penguins<span class="sc">%&gt;%</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">!=</span> <span class="st">&quot;Adelie&quot;</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()<span class="sc">%&gt;%</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">droplevels</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>penguins2<span class="ot">&lt;-</span> penguins<span class="sc">%&gt;%</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">!=</span> <span class="st">&quot;Adelie&quot;</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()<span class="sc">%&gt;%</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">droplevels</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Using the HATPC framework, test whether chinstrap and gentoo penguins have different body masses.</p>
+<section id="solution-2" class="level3" style="color:green;">
+<h3 style="color:green;" class="anchored" data-anchor-id="solution-2">Solution</h3>
+<ol type="1">
+<li>Hypothesis</li>
+</ol>
+<blockquote class="blockquote">
+<p>H<sub>0</sub>: <span class="math inline">\(\mu_{chinstrap}\)</span> = <span class="math inline">\(\mu_{gentoo}\)</span></p>
+</blockquote>
+<blockquote class="blockquote">
+<p>H<sub>1</sub>: <span class="math inline">\(\mu_{chinstrap}\)</span> <span class="math inline">\(\neq\)</span> <span class="math inline">\(\mu_{gentoo}\)</span></p>
+</blockquote>
+<ol start="2" type="1">
+<li>Assumptions</li>
+</ol>
+<p>Normality</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co">#qqplot</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins2, <span class="fu">aes</span>(<span class="at">sample =</span> body_mass_g))<span class="sc">+</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>()<span class="sc">+</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()<span class="sc">+</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#shapiro test</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(penguins2<span class="sc">$</span>body_mass_g, penguins2<span class="sc">$</span>species, shapiro.test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>The data appear to be normally distributed. The point in the qq plot follow the line pretty closely, and the shapiro tests also indicate a normal distribution</p>
+</blockquote>
+<p>Homogeneity of variance</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barttlettest</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bartlett.test</span>(penguins2<span class="sc">$</span>body_mass_g<span class="sc">~</span>penguins2<span class="sc">$</span>species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>According to the BArttlet test, the two samples do not have equal variances</p>
+</blockquote>
+<ol start="3" type="1">
+<li>Test (statistic)</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(body_mass_g<span class="sc">~</span>species, <span class="at">var.equal =</span> <span class="cn">FALSE</span>, <span class="at">data =</span> penguins2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="1">
+<li>P-value</li>
+</ol>
+<blockquote class="blockquote">
+<p>Since p&gt;0.05, we reject the null hypothesis</p>
+</blockquote>
+<ol start="5" type="1">
+<li>Conclusion</li>
+</ol>
+<blockquote class="blockquote">
+<p>Chinstrap and gentoo penguins have different mean body masses. Gentoo pneguins are heavier than chinstrap penguins on average.</p>
+</blockquote>
 
 
+</section>
 </section>
 </section>
 
