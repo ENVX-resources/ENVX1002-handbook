@@ -1,5 +1,5 @@
 ---
-title: Lab 04 -- Sampling distributions
+title: Lab 04 -- Central limit theorem
 embed-resources: true
 ---
 
