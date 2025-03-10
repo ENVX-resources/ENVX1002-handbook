@@ -16,6 +16,7 @@ website:
     style: docked
     collapse-level: 2
     contents:
+      - 000-rguide.qmd
       - 001-intro.qmd
       - "---"
       - section: "**📕 Module 1**"
@@ -68,5 +69,5 @@ execute:
 
 profile:
   default:
-    # - exercise
-    - solution
+    - exercise
+    # - solution
