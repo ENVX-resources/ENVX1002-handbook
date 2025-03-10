@@ -2,7 +2,6 @@
 title: "A brief R guide for surviving ENVX1002"
 author: Geoffrey Mazue
 date: today
-format: typst
 ---
 
 *This is your R guide to survive ENVX1002. This document was designed to help you with (some of) the most common R-related issues faced by past students. The goal was to make this document as succinct as possible to avoid overloading you with a ton of code and nonessential details/explanations. Pay close attention to the notes and tips that will help you write nicer code. The topics covered are available in the "On this page" section on the right side of the screen.*
