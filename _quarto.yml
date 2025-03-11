@@ -16,7 +16,6 @@ website:
     style: docked
     collapse-level: 2
     contents:
-      - 000-rguide.qmd
       - 001-intro.qmd
       - "---"
       - section: "**📕 Module 1**"
@@ -28,6 +27,7 @@ website:
       - "---"
       - section: "**🖥️ Computer labs**"
         contents:
+          - 000-rguide.qmd
           - href: labs/Lab01.qmd
             target: _blank
           - href: labs/Lab02.qmd
