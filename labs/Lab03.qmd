@@ -402,10 +402,8 @@ To quantify the shape of the water temperature distribution, we can calculate sk
 # Calculate skewness and kurtosis for water temperature
 skewness_value <- skewness(pie_crab$water_temp)
 kurtosis_value <- kurtosis(pie_crab$water_temp)
-
-# Print the values
-cat("Skewness of water temperature:", skewness_value, "\n")
-cat("Kurtosis of water temperature:", kurtosis_value, "\n")
+skewness_value
+kurtosis_value
 ```
 
 **Interpreting these values:**
@@ -418,7 +416,7 @@ cat("Kurtosis of water temperature:", kurtosis_value, "\n")
 
 - **Kurtosis** measures the "tailedness" of the distribution:
 
-  - 3 = normal distribution (in the `moments` package, this is sometimes normalized to 0)
+  - 3 = normal distribution (in the `moments` package, this is sometimes normalised to 0)
   - More than, > 3 = leptokurtic (heavy-tailed, more outliers)
   - Less than, < 3 = platykurtic (light-tailed, fewer outliers)
 
@@ -579,6 +577,12 @@ ggplot(hbr_maples, aes(x = stem_length)) +
     x = "Stem Length (mm)",
     y = "Count"
   )
+
+hbr_maples |>
+  select(watershed, stem_length) |>
+  group_by(watershed) |>
+  summarise(median = median(stem_length, na.rm = TRUE))
+
 ```
 
 The `facet_wrap()` function creates separate panels for each value of the specified variable. This allows us to compare distributions across groups.
@@ -591,7 +595,10 @@ How do stem lengths differ between watersheds? Which watershed shows more variab
 ::: {.content-visible when-profile="solution"}
 ::: {.callout-warning}
 ## Answer 6
-TBC
+
+
+
+Based on the histograms, median stem lengths are higher in W1 compared to the Reference watershed. This is evident based on the skewness of the distributions, with W1 showing a more right-skewed distribution compared to the Reference watershed. This suggests that seedlings in W1 tend to have longer stems on average.
 :::
 :::
 
@@ -638,19 +645,9 @@ Is there a relationship between stem length and leaf area? Does this relationshi
 ::: {.content-visible when-profile="solution"}
 ::: {.callout-warning}
 ## Answer 7
-Based on the scatterplot examining the relationship between stem length and leaf area:
+Yes, there is a positive relationship between stem length and leaf area. As stem length increases, leaf area tends to increase as well, although the relationship is highly variable because we can see that the points are spread out along the trend lines. 
 
-- **Relationship existence**: Yes, there is a clear positive relationship between stem length and leaf area. As stem length increases, leaf area tends to increase as well. This suggests that larger seedlings generally have both longer stems and larger leaves.
-
-- **Differences between watersheds**: The relationship does differ between watersheds. The trend lines for each watershed have different slopes, indicating that the rate at which leaf area increases with stem length varies. Watershed 6 appears to have a steeper slope than Watershed 1, suggesting that for each unit increase in stem length, seedlings in Watershed 6 gain more leaf area than those in Watershed 1.
-
-- **Ecological explanation**: These differences could be explained by several ecological factors:
-  1. **Resource availability**: Watershed 6 may have more favorable growing conditions (e.g., better soil nutrients, more water, or optimal light conditions) that allow seedlings to allocate more resources to leaf production relative to stem growth.
-  2. **Adaptation to local conditions**: Seedlings in different watersheds may have adapted different growth strategies in response to local environmental pressures.
-  3. **Competition**: Different levels of competition in each watershed might influence how seedlings allocate resources between stem and leaf growth.
-  4. **Genetic differences**: There could be genetic differences between maple populations in different watersheds that influence their growth patterns.
-
-These findings highlight the importance of considering environmental context when studying plant growth relationships, as the same species can show different growth patterns in different habitats.
+The relationship appears to be similar between watersheds as the trend lines are parallel, although the W1 watershed generally shows that stem lengths are longer for a given leaf area compared to the Reference watershed. 
 :::
 :::
 
