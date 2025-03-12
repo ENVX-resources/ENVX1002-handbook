@@ -133,23 +133,29 @@ length(unique(pie_crab$site))
 length(unique(pie_crab$name))
 ```
 
-We can convert these character variables to factors using the `factor()` function:
+We can convert these character variables to factors using the `factor()` or `as.factor()` functions:
 
 ```{r}
 # Convert site and name to factors
 pie_crab$site <- factor(pie_crab$site)
 pie_crab$name <- factor(pie_crab$name)
 
+# Alternatively, use the as.factor() function:
+# pie_crab$site <- as.factor(pie_crab$site)
+# pie_crab$name <- as.factor(pie_crab$name)
+# We have intentionally commented out (#) the code to avoid running it
+
 # Check the structure again to confirm the conversion
 str(pie_crab)
 ```
+
 
 Notice how we've converted the specific variables to factors and used the assignment operator `<-` to update the dataset. This is a common pattern in R, where we update the dataset in place. The output of `str()` now shows these variables as factors with their levels (unique values) listed.
 
 Converting to factors is important because:
 
 1. It makes R treat the data appropriately in statistical analyses
-2. It can make visualizations more informative
+2. It can make visualisations more informative
 3. It improves memory efficiency for large datasets
 
 
@@ -657,7 +663,7 @@ These exercises are designed for you to practice the visualisation techniques we
 
 ### Basic visualisation practice
 
-1. Create a histogram of the `water_temp` variable in the crabs dataset. Calculate and interpret its skewness and kurtosis.
+1. Create a histogram of the `air_temp` variable in the crabs dataset. Calculate and interpret its skewness and kurtosis.
 2. Create boxplots comparing the `leaf_dry_mass` between watersheds in the maples dataset. What do you observe?
 3. Create a scatterplot examining the relationship between `stem_dry_mass` and `leaf_dry_mass` in the maples dataset, with points coloured by watershed.
 
