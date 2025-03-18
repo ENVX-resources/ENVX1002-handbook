@@ -77,7 +77,7 @@ library(tidyverse) # needed for ggplot2
 
 # create a histogram of the data
 ggplot(male, aes(x = heights)) +
-  geom_histogram(binwidth = 10)
+  geom_histogram(binwidth = 10, fill = "lightblue", color = "black")
 
 # now do the same for females
 
@@ -92,7 +92,7 @@ f_mean <- mean(female$heights)
 f_sd <- sd(female$heights)
 
 ggplot(female, aes(x = heights)) +
-  geom_histogram(binwidth = 10)
+  geom_histogram(binwidth = 10, fill = "lightblue", color = "black")
 
 ```
 
@@ -163,7 +163,7 @@ sample10 # prints the 10 simulated values (you may not want this with the 10K si
 mean(sample10)
 sd(sample10)
 ggplot(data.frame(heights = sample10), aes(x = heights)) +
-  geom_histogram(binwidth = 10)
+  geom_histogram(binwidth = 10, fill = "lightblue", color = "black")
 ```
 
 iii) Find the probability $P(X \ge 180)$ for each of the simulations and also the exact value. What do you notice in the difference between each of the simulations and the exact probability? An example is given below for the 10 simulations above and the exact probability:
@@ -197,9 +197,8 @@ mean100 <- mean(sample100)
 sd100 <- sd(sample100)
 hist100 <- ggplot(data.frame(heights = sample100), aes(x = heights)) +
   geom_histogram(binwidth = 5, fill = "lightblue", color = "black") +
-  ggtitle("Histogram for n = 100") +
-  theme_minimal()
-print(hist100)
+  ggtitle("Histogram for n = 100")
+hist100
 prob100 <- length(which(sample100 >= 180)) / 100
 
 # Sample size = 1000
@@ -208,9 +207,8 @@ mean1000 <- mean(sample1000)
 sd1000 <- sd(sample1000)
 hist1000 <- ggplot(data.frame(heights = sample1000), aes(x = heights)) +
   geom_histogram(binwidth = 3, fill = "lightblue", color = "black") +
-  ggtitle("Histogram for n = 1000") +
-  theme_minimal()
-print(hist1000)
+  ggtitle("Histogram for n = 1000")
+hist1000
 prob1000 <- length(which(sample1000 >= 180)) / 1000
 
 # Sample size = 10000
@@ -219,9 +217,8 @@ mean10000 <- mean(sample10000)
 sd10000 <- sd(sample10000)
 hist10000 <- ggplot(data.frame(heights = sample10000), aes(x = heights)) +
   geom_histogram(binwidth = 2, fill = "lightblue", color = "black") +
-  ggtitle("Histogram for n = 10000") +
-  theme_minimal()
-print(hist10000)
+  ggtitle("Histogram for n = 10000")
+hist10000
 prob10000 <- length(which(sample10000 >= 180)) / 10000
 
 # Exact probability
@@ -541,8 +538,7 @@ ggplot() +
     title = "Probability of being as tall as Dharshani (210 cm)",
     x = "Height (cm)",
     y = "Probability density"
-  ) +
-  theme_minimal()
+  )
 ```
 
 The probability of finding an Australian woman of her height is close to zero i.e. `r round(p_dharshani, 10)`. This means it would be extremely rare to find an Australian woman as tall as Dharshani (210 cm) in the general population.
