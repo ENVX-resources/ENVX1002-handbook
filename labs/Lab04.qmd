@@ -100,11 +100,44 @@ ggplot(female, aes(x = heights)) +
 :::
 
 
-5. Discuss with your neighbour and class which model (distribution function) do you think would fit the data
+5. Discuss with your neighbour and class why the normal distribution is a good model for height data. Is it a good model for all data?
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer
+
+The normal distribution is a good model for height data because it is symmetric and unimodal, which is consistent with the shape of the data. However, it may not be a good model for all data, especially if the data is skewed or multimodal. In such cases, other distributions may be more appropriate (you will learn about some of these in later weeks, or in other units in second-year).
+
+:::
+:::
+
 
 6. How does your class compare to the Australian statistics. For this we will look at the mean and standard deviation of measured heights for men and women aged 18 - 24 from the ABS for 1995 see [page 13 of the pdf](https://www.ausstats.abs.gov.au/Ausstats/subscriber.nsf/Lookup/CA25687100069892CA256889001F4A36/$File/43590_1995.pdf)
 
 **Note** that both reported and measured heights are provided and (not surprisingly) reported heights are bigger that the measured heights. What do you think the reason for this is?
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer
+
+Looking at the ABS statistics, our class can be compared to the Australian averages for 18-24 year olds. The ABS data shows that in 1995, Australian males aged 18-24 had a measured mean height of 178.4 cm (SD = 6.6 cm), while females had a measured mean height of 163.9 cm (SD = 6.6 cm).
+
+Regarding the note:
+
+The data shows a consistent pattern where reported heights are higher than measured heights across all age groups. For 18-24 year olds, males overestimated their height by an average of 1.6 cm, while females overestimated by 1.0 cm on average.
+
+The likely reasons people report taller heights than their measured heights include:
+- Social desirability bias (taller height is often perceived as more desirable)
+- Genuinely believing they are taller than they actually are
+- Measuring themselves with shoes on
+- Rounding up to the nearest whole number
+- Measuring at a time of day when they're tallest (people are typically taller in the morning)
+
+Interestingly, the difference between reported and measured heights increases with age, with the largest discrepancies among those 65 and over (3.8 cm for men and 3.9 cm for women). This could be due to age-related height loss that people may not be aware of or acknowledge.
+
+
+:::
+:::
 
 # Simulating height distribution
 
@@ -542,7 +575,8 @@ ggplot(NULL, aes(c(-3, 3))) +
 ```
 
 Around `r round(percentage_between, 1)`% of Australian women are between Madison and Dharshani's heights.
-
+:::
+:::
 
 v) If 80% of Australian women are above a certain height, what is that height?
 
