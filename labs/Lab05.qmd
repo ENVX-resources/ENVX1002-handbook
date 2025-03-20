@@ -26,7 +26,7 @@ pacman::p_load(tidyverse, readxl)
 You can download the data
 
 1) From module 5 in Canvas
-2) [ENVX1002_Data5.xlsx](data/ENVX1002_Data5.xlsx) if you are viewing the html file from Github <https://Github.com/envx-resources>
+2) [ENVX1002_Data5.xlsx](data/ENVX1002_Data5.xlsx) if you are viewing the html file from Github https://Github.com/envx-resources
 
 
 ## Create a new project  
