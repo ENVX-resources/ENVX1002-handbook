@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ttest1 – ENVX1002 Handbook</title>
+<title>One-sample t-test – ENVX1002 Handbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -180,13 +180,13 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text"><strong>📕 Module 1</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module01/01-intro_statistical_programming.html" class="sidebar-item-text sidebar-link">
@@ -226,13 +226,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text"><strong>📘 Module 3</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module03/040-describing_relationships.html" class="sidebar-item-text sidebar-link">
@@ -262,13 +262,13 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
  <span class="menu-text"><strong>🖥️ Computer labs</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../000-rguide.html" class="sidebar-item-text sidebar-link">
@@ -349,6 +349,17 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text"><strong>📝 Quarto report guide</strong></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -359,9 +370,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#one-sample-t-test" id="toc-one-sample-t-test" class="nav-link active" data-scroll-target="#one-sample-t-test">One-sample <span class="math inline">\(t\)</span>-test</a>
-  <ul class="collapse">
-  <li><a href="#confidence-intervals-for-mu" id="toc-confidence-intervals-for-mu" class="nav-link" data-scroll-target="#confidence-intervals-for-mu">Confidence intervals for <span class="math inline">\(\mu\)</span></a></li>
+  <li><a href="#confidence-intervals-for-mu" id="toc-confidence-intervals-for-mu" class="nav-link active" data-scroll-target="#confidence-intervals-for-mu">Confidence intervals for <span class="math inline">\(\mu\)</span></a></li>
   <li><a href="#confidence-interval-for-mu-when-sigma-is-known-and-data-is-normally-distributed" id="toc-confidence-interval-for-mu-when-sigma-is-known-and-data-is-normally-distributed" class="nav-link" data-scroll-target="#confidence-interval-for-mu-when-sigma-is-known-and-data-is-normally-distributed">Confidence interval for <span class="math inline">\(\mu\)</span> (when <span class="math inline">\(\sigma\)</span> is known and data is normally distributed)</a></li>
   <li><a href="#confidence-interval-for-mu-when-sigma-is-not-known-and-data-is-normally-distributed" id="toc-confidence-interval-for-mu-when-sigma-is-not-known-and-data-is-normally-distributed" class="nav-link" data-scroll-target="#confidence-interval-for-mu-when-sigma-is-not-known-and-data-is-normally-distributed">Confidence interval for <span class="math inline">\(\mu\)</span> (when <span class="math inline">\(\sigma\)</span> is <strong>NOT</strong> known and data is normally distributed)</a>
   <ul class="collapse">
@@ -392,18 +401,31 @@ window.Quarto = {
   </ul></li>
   <li><a href="#steps-in-hypothesis-testing-via-a-confidence-interval" id="toc-steps-in-hypothesis-testing-via-a-confidence-interval" class="nav-link" data-scroll-target="#steps-in-hypothesis-testing-via-a-confidence-interval">Steps in Hypothesis Testing (via a Confidence Interval)</a></li>
   <li><a href="#one-sample-t-test-with-data-transformation" id="toc-one-sample-t-test-with-data-transformation" class="nav-link" data-scroll-target="#one-sample-t-test-with-data-transformation">One-Sample t-Test with Data Transformation</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module02/01-ttest1.html"><strong>📗 Module 2</strong></a></li><li class="breadcrumb-item"><a href="../module02/01-ttest1.html">One-sample <span class="math inline">\(t\)</span>-test</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module02/01-ttest1.html"><strong>📗 Module 2</strong></a></li><li class="breadcrumb-item"><a href="../module02/01-ttest1.html">One-sample <span class="math inline">\(t\)</span>-test</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">One-sample <span class="math inline">\(t\)</span>-test</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="one-sample-t-test" class="level1">
-<h1>One-sample <span class="math inline">\(t\)</span>-test</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <section id="confidence-intervals-for-mu" class="level2">
 <h2 class="anchored" data-anchor-id="confidence-intervals-for-mu">Confidence intervals for <span class="math inline">\(\mu\)</span></h2>
 <p>Confidence intervals (CI) are also known as “confidence limits”. Most commonly we generate a confidence interval (CI) for <span class="math inline">\(\mu\)</span> (the population mean) but you may also see CI’s for the population variance <span class="math inline">\(\sigma\)</span>, or for the population probability <span class="math inline">\(p\)</span> in literature.</p>
@@ -419,12 +441,18 @@ window.Quarto = {
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.025</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.959964</code></pre>
+</div>
 </div>
 <ul>
 <li>If <span class="math inline">\(P(Z \le b) = 0.975\)</span> then looking up 0.975 in R or the body of the standard normal table we find <span class="math inline">\(b \approx 1.960\)</span>.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.725</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.725</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5977601</code></pre>
+</div>
 </div>
 <p>So <span class="math inline">\(P(-1.960 \le Z \le 1.960) = 0.95\)</span>, or the values ± 1.960 capture the middle 95% of the Z distribution.</p>
 <p>Therefore we capture the middle 95% of the <span class="math inline">\(\bar y\)</span>’s if</p>
@@ -437,7 +465,10 @@ window.Quarto = {
 <p><span class="math inline">\(\text{95 % CI} = \bar{y} \pm z_{0.025} \times s.e.\)</span></p>
 <p>where <span class="math inline">\(z^{0.025}\)</span> is a critical value from the standard normal distribution (also known as the z distribution). 2.5% of data lies to the right of <span class="math inline">\(z^{0.025}\)</span>. Equivalently, 97.5% of data lies to the left of <span class="math inline">\(z^{0.025}\)</span>. To find this value, you would look up a cumulative probability of 0.975 in the standard normal table or use the formula =NORMINV(0.975,0,1) to find it in Excel. As we have seen above in R we can use the function qnorm(0.975)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.959964</code></pre>
+</div>
 </div>
 <p>For 90% or 99% confidence intervals, the only element of the CI formula that changes is the z critical value that is being used. So a <span class="math inline">\(\text{95 % CI} = \bar{y} \pm z_{0.05} \times s.e.\)</span> and a <span class="math inline">\(\text{99 % CI} = \bar{y} \pm z_{0.01} \times s.e.\)</span><br>
 ### Interpreting the Confidence Interval for <span class="math inline">\(\mu\)</span></p>
@@ -452,14 +483,17 @@ window.Quarto = {
 <p><span class="math inline">\(0.403 \pm 1.96 \times \sqrt{\frac{0.1}{6}} = 0.403 \pm 0.080 = (0.323, 0.483)\)</span></p>
 <p>We can say that we are 95% confident that the (population) mean concentration is somewhere in the range 0.323 to 0.483 <span class="math inline">\(\mu g/L\)</span>, although the best single estimate is 0.403 <span class="math inline">\(\mu g/L\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.48</span>, <span class="fl">0.25</span>, <span class="fl">0.29</span>, <span class="fl">0.51</span>, <span class="fl">0.49</span>, <span class="fl">0.40</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">mean</span>(y)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> sigma<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>ci <span class="ot">&lt;-</span> mu <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span>z<span class="sc">*</span>se</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>ci</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.48</span>, <span class="fl">0.25</span>, <span class="fl">0.29</span>, <span class="fl">0.51</span>, <span class="fl">0.49</span>, <span class="fl">0.40</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">mean</span>(y)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> sigma<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>ci <span class="ot">&lt;-</span> mu <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="sc">*</span>z<span class="sc">*</span>se</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>ci</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3233181 0.4833485</code></pre>
+</div>
 </div>
 </section>
 <section id="confidence-interval-for-mu-when-sigma-is-not-known-and-data-is-normally-distributed" class="level2">
@@ -490,8 +524,14 @@ window.Quarto = {
 <p><span class="math inline">\(\text{95 % CI} = \bar{y} \pm t^{\alpha/2}_{n-1} \times s.e.(\bar y)\)</span></p>
 <p>Here <span class="math inline">\(\alpha\)</span> is the level of significance (or the probability of being incorrect in our estimation that we are willing to bear). For a 95% confidence interval, the corresponding level of significance is 5% (usually expressed in decimal format as 0.05). Also <span class="math inline">\(n-1\)</span> is the degrees of freedom. For example, the critical value <span class="math inline">\(t^{\alpha/2}_{n-1}\)</span> (or more simply t^{0.025}_{24}) is equal to 2.064.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">24</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.063899</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.063899</code></pre>
+</div>
 </div>
 <p>Note that s.e., s.e.(<span class="math inline">\(\bar y\)</span>) and s.e.m. are all equivalent expressions for the standard error of the mean. You will see them used interchangeably among scientists and the literature they write. Remember that the s.e. in the more common case when <span class="math inline">\(\sigma\)</span> is unknown is calculated as <span class="math inline">\(\frac{s}{\sqrt(n)}\)</span>.</p>
 </section>
@@ -571,29 +611,49 @@ window.Quarto = {
 <p><strong>Question:</strong> Can we assume this data follows a normal distribution?</p>
 <p>#q: use ggplot to draw histogram, boxplot and qqnormal plot of the data</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>bcc_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"BloodCellCount.csv"</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(BloodCellCount)) <span class="sc">+</span> </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">12</span>) <span class="sc">+</span> </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Histogram of blood cell counts"</span>, <span class="at">x=</span><span class="st">"Number of blood cells"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(BloodCellCount)) <span class="sc">+</span> </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Boxplot of blood cell counts"</span>, <span class="at">x=</span><span class="st">"Number of blood cells"</span>, <span class="at">y=</span><span class="st">""</span>)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(<span class="at">sample=</span>BloodCellCount)) <span class="sc">+</span> </span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> </span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"QQ plot of blood cells"</span>, <span class="at">x=</span><span class="st">"Theoretical quantiles"</span>, <span class="at">y=</span><span class="st">"Sample quantiles"</span>)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, p3, <span class="at">ncol=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>bcc_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"BloodCellCount.csv"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(BloodCellCount)) <span class="sc">+</span> </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">12</span>) <span class="sc">+</span> </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Histogram of blood cell counts"</span>, <span class="at">x=</span><span class="st">"Number of blood cells"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(BloodCellCount)) <span class="sc">+</span> </span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Boxplot of blood cell counts"</span>, <span class="at">x=</span><span class="st">"Number of blood cells"</span>, <span class="at">y=</span><span class="st">""</span>)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(<span class="at">sample=</span>BloodCellCount)) <span class="sc">+</span> </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> </span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"QQ plot of blood cells"</span>, <span class="at">x=</span><span class="st">"Theoretical quantiles"</span>, <span class="at">y=</span><span class="st">"Sample quantiles"</span>)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, p3, <span class="at">ncol=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01-ttest1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(bcc_df<span class="sc">$</span>BloodCellCount)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(bcc_df<span class="sc">$</span>BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(bcc_df<span class="sc">$</span>BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.529368</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(bcc_df<span class="sc">$</span>BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.292761</code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(bcc_df<span class="sc">$</span>BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(bcc_df<span class="sc">$</span>BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  bcc_df$BloodCellCount
+W = 0.96042, p-value = 6.607e-09</code></pre>
+</div>
 </div>
 <p>Observations:</p>
 <ul>
@@ -609,102 +669,182 @@ window.Quarto = {
 <p>Question: Is there any transformation we can perform (that is fit a mathematical function to the data) where the data (on the transformed scale) will approximately follow a normal distribution?</p>
 <p><em>A. Square Root Transformation</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>bcc_df<span class="sc">$</span>sqrt_BloodCellCount <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(bcc_df<span class="sc">$</span>BloodCellCount)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(sqrt_BloodCellCount)) <span class="sc">+</span> </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">12</span>) <span class="sc">+</span> </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Histogram of blood cell counts"</span>, <span class="at">x=</span><span class="st">"Transformed Number of blood cells"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(sqrt_BloodCellCount)) <span class="sc">+</span> </span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Boxplot of blood cell counts"</span>, <span class="at">x=</span><span class="st">"Transformed Number of blood cells"</span>, <span class="at">y=</span><span class="st">""</span>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(<span class="at">sample=</span>sqrt_BloodCellCount)) <span class="sc">+</span> </span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> </span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"QQ plot of blood cells"</span>, <span class="at">x=</span><span class="st">"Theoretical quantiles"</span>, <span class="at">y=</span><span class="st">"Sample quantiles"</span>)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, p3, <span class="at">ncol=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>bcc_df<span class="sc">$</span>sqrt_BloodCellCount <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(bcc_df<span class="sc">$</span>BloodCellCount)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(sqrt_BloodCellCount)) <span class="sc">+</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">12</span>) <span class="sc">+</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Histogram of blood cell counts"</span>, <span class="at">x=</span><span class="st">"Transformed Number of blood cells"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(sqrt_BloodCellCount)) <span class="sc">+</span> </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Boxplot of blood cell counts"</span>, <span class="at">x=</span><span class="st">"Transformed Number of blood cells"</span>, <span class="at">y=</span><span class="st">""</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(<span class="at">sample=</span>sqrt_BloodCellCount)) <span class="sc">+</span> </span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> </span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"QQ plot of blood cells"</span>, <span class="at">x=</span><span class="st">"Theoretical quantiles"</span>, <span class="at">y=</span><span class="st">"Sample quantiles"</span>)</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, p3, <span class="at">ncol=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01-ttest1_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(bcc_df<span class="sc">$</span>sqrt_BloodCellCount)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(bcc_df<span class="sc">$</span>sqrt_BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(bcc_df<span class="sc">$</span>sqrt_BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.1373212</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(bcc_df<span class="sc">$</span>sqrt_BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.854581</code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(bcc_df<span class="sc">$</span>sqrt_BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(bcc_df<span class="sc">$</span>sqrt_BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  bcc_df$sqrt_BloodCellCount
+W = 0.97117, p-value = 4.13e-07</code></pre>
+</div>
 </div>
 <p>In spite of the fact that the Shapiro Wilks test shows this distribution is significantly different to normal the normal probability plot shows a sufficiently linear match and the histogram appears symmetric. The distribution is symmetric, transformation successful.The test is significant, but the Q-Q plot and histogram look good. The skewness and kurtosis values are close to zero.</p>
 <p><strong>Note:</strong> The Shapiro Wilks Test is very sensitive to large sample sizes, i.e.&nbsp;n &gt; 50. In this case we use the Q-Q plot and histogram to assess normality.</p>
 <p><em>A. Log Transformation</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>bcc_df<span class="sc">$</span>log_BloodCellCount <span class="ot">&lt;-</span> <span class="fu">log</span>(bcc_df<span class="sc">$</span>BloodCellCount)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(log_BloodCellCount)) <span class="sc">+</span> </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">12</span>) <span class="sc">+</span> </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Histogram of blood cell counts"</span>, <span class="at">x=</span><span class="st">"Transformed Number of blood cells"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(log_BloodCellCount)) <span class="sc">+</span> </span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Boxplot of blood cell counts"</span>, <span class="at">x=</span><span class="st">"Transformed Number of blood cells"</span>, <span class="at">y=</span><span class="st">""</span>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(<span class="at">sample=</span>log_BloodCellCount)) <span class="sc">+</span> </span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> </span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"QQ plot of blood cells"</span>, <span class="at">x=</span><span class="st">"Theoretical quantiles"</span>, <span class="at">y=</span><span class="st">"Sample quantiles"</span>)</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, p3, <span class="at">ncol=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>bcc_df<span class="sc">$</span>log_BloodCellCount <span class="ot">&lt;-</span> <span class="fu">log</span>(bcc_df<span class="sc">$</span>BloodCellCount)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(log_BloodCellCount)) <span class="sc">+</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">12</span>) <span class="sc">+</span> </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Histogram of blood cell counts"</span>, <span class="at">x=</span><span class="st">"Transformed Number of blood cells"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(log_BloodCellCount)) <span class="sc">+</span> </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Boxplot of blood cell counts"</span>, <span class="at">x=</span><span class="st">"Transformed Number of blood cells"</span>, <span class="at">y=</span><span class="st">""</span>)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(bcc_df, <span class="fu">aes</span>(<span class="at">sample=</span>log_BloodCellCount)) <span class="sc">+</span> </span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> </span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"QQ plot of blood cells"</span>, <span class="at">x=</span><span class="st">"Theoretical quantiles"</span>, <span class="at">y=</span><span class="st">"Sample quantiles"</span>)</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, p3, <span class="at">ncol=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01-ttest1_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(bcc_df<span class="sc">$</span>log_BloodCellCount)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(bcc_df<span class="sc">$</span>log_BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(bcc_df<span class="sc">$</span>log_BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.8655114</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(bcc_df<span class="sc">$</span>log_BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.684001</code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(bcc_df<span class="sc">$</span>log_BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(bcc_df<span class="sc">$</span>log_BloodCellCount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  bcc_df$log_BloodCellCount
+W = 0.92515, p-value = 3.025e-13</code></pre>
+</div>
 </div>
 <p>Transformation is <strong>TOO STRONG</strong> - outlier(s) on left hand tail.</p>
 <p><strong>Example 2:</strong> Tetrachlorobenzene levels (TcCB, ppb) in 100 soil samples</p>
 <p>Note: We have seen previously that the distribution of this data is HIGHLY POSITIVELY skewed. Data is stored in the file TcCB.csv.</p>
 <p><em>A. Square root transformation</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tccb_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"TcCB.csv"</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>tccb_df<span class="sc">$</span>sqrt_TcCB_ppb <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(tccb_df<span class="sc">$</span>TcCB_ppb)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tccb_df, <span class="fu">aes</span>(sqrt_TcCB_ppb)) <span class="sc">+</span> </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">12</span>) <span class="sc">+</span> </span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Histogram of TcCB concentration (ppb)"</span>, <span class="at">x=</span><span class="st">"Transformed TcCB"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tccb_df, <span class="fu">aes</span>(sqrt_TcCB_ppb)) <span class="sc">+</span> </span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Boxplot of TcCB concentration (ppb)"</span>, <span class="at">x=</span><span class="st">"Transformed TcCB"</span>, <span class="at">y=</span><span class="st">""</span>)</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tccb_df, <span class="fu">aes</span>(<span class="at">sample=</span>sqrt_TcCB_ppb)) <span class="sc">+</span> </span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> </span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"QQ plot of TcCB concentration (ppb)"</span>, <span class="at">x=</span><span class="st">"Theoretical quantiles"</span>, <span class="at">y=</span><span class="st">"Sample quantiles"</span>)</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, p3, <span class="at">ncol=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>tccb_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"TcCB.csv"</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>tccb_df<span class="sc">$</span>sqrt_TcCB_ppb <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(tccb_df<span class="sc">$</span>TcCB_ppb)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tccb_df, <span class="fu">aes</span>(sqrt_TcCB_ppb)) <span class="sc">+</span> </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">12</span>) <span class="sc">+</span> </span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Histogram of TcCB concentration (ppb)"</span>, <span class="at">x=</span><span class="st">"Transformed TcCB"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tccb_df, <span class="fu">aes</span>(sqrt_TcCB_ppb)) <span class="sc">+</span> </span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Boxplot of TcCB concentration (ppb)"</span>, <span class="at">x=</span><span class="st">"Transformed TcCB"</span>, <span class="at">y=</span><span class="st">""</span>)</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tccb_df, <span class="fu">aes</span>(<span class="at">sample=</span>sqrt_TcCB_ppb)) <span class="sc">+</span> </span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> </span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"QQ plot of TcCB concentration (ppb)"</span>, <span class="at">x=</span><span class="st">"Theoretical quantiles"</span>, <span class="at">y=</span><span class="st">"Sample quantiles"</span>)</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, p3, <span class="at">ncol=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01-ttest1_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(tccb_df<span class="sc">$</span>sqrt_TcCB_ppb)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(tccb_df<span class="sc">$</span>sqrt_TcCB_ppb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(tccb_df<span class="sc">$</span>sqrt_TcCB_ppb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.691321</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(tccb_df<span class="sc">$</span>sqrt_TcCB_ppb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13.53575</code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(tccb_df<span class="sc">$</span>sqrt_TcCB_ppb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(tccb_df<span class="sc">$</span>sqrt_TcCB_ppb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  tccb_df$sqrt_TcCB_ppb
+W = 0.76119, p-value = 1.869e-11</code></pre>
+</div>
 </div>
 <p>Transformation not powerful enough - still Positively Skewed</p>
 <p><em>A. Log transformation</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>tccb_df<span class="sc">$</span>log_TcCB_ppb <span class="ot">&lt;-</span> <span class="fu">log</span>(tccb_df<span class="sc">$</span>TcCB_ppb)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tccb_df, <span class="fu">aes</span>(log_TcCB_ppb)) <span class="sc">+</span> </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">12</span>) <span class="sc">+</span> </span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Histogram of TcCB concentration (ppb)"</span>, <span class="at">x=</span><span class="st">"Transformed TcCB"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tccb_df, <span class="fu">aes</span>(log_TcCB_ppb)) <span class="sc">+</span> </span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Boxplot of TcCB concentration (ppb)"</span>, <span class="at">x=</span><span class="st">"Transformed TcCB"</span>, <span class="at">y=</span><span class="st">""</span>)</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tccb_df, <span class="fu">aes</span>(<span class="at">sample=</span>log_TcCB_ppb)) <span class="sc">+</span> </span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> </span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"QQ plot of TcCB concentration (ppb)"</span>, <span class="at">x=</span><span class="st">"Theoretical quantiles"</span>, <span class="at">y=</span><span class="st">"Sample quantiles"</span>)</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, p3, <span class="at">ncol=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>tccb_df<span class="sc">$</span>log_TcCB_ppb <span class="ot">&lt;-</span> <span class="fu">log</span>(tccb_df<span class="sc">$</span>TcCB_ppb)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tccb_df, <span class="fu">aes</span>(log_TcCB_ppb)) <span class="sc">+</span> </span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">12</span>) <span class="sc">+</span> </span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Histogram of TcCB concentration (ppb)"</span>, <span class="at">x=</span><span class="st">"Transformed TcCB"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tccb_df, <span class="fu">aes</span>(log_TcCB_ppb)) <span class="sc">+</span> </span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Boxplot of TcCB concentration (ppb)"</span>, <span class="at">x=</span><span class="st">"Transformed TcCB"</span>, <span class="at">y=</span><span class="st">""</span>)</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tccb_df, <span class="fu">aes</span>(<span class="at">sample=</span>log_TcCB_ppb)) <span class="sc">+</span> </span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> </span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"QQ plot of TcCB concentration (ppb)"</span>, <span class="at">x=</span><span class="st">"Theoretical quantiles"</span>, <span class="at">y=</span><span class="st">"Sample quantiles"</span>)</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, p3, <span class="at">ncol=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01-ttest1_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(tccb_df<span class="sc">$</span>log_TcCB_ppb)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(tccb_df<span class="sc">$</span>log_TcCB_ppb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(tccb_df<span class="sc">$</span>log_TcCB_ppb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.02521078</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(tccb_df<span class="sc">$</span>log_TcCB_ppb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.449717</code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(tccb_df<span class="sc">$</span>log_TcCB_ppb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(tccb_df<span class="sc">$</span>log_TcCB_ppb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  tccb_df$log_TcCB_ppb
+W = 0.99555, p-value = 0.9868</code></pre>
+</div>
 </div>
 <p>Transformation successful - symmetric distribution</p>
 <section id="the-natural-log-log_e-transformation" class="level3">
@@ -824,18 +964,25 @@ window.Quarto = {
 <p>To test this claim, a single sample of effluent discharge was taken and found to be 0.4 <span class="math inline">\(\mu g/l\)</span>. Does the data support their claim?</p>
 <p>We want to see how likely it is to get an observation of 0.4 <span class="math inline">\(\mu g/l\)</span>, or something even more extreme. By more extreme, we mean &gt; 0.4 <span class="math inline">\(\mu g/l\)</span>, or &lt; 0.2 <span class="math inline">\(\mu g/l\)</span> (i.e.&nbsp;more than 0.1 <span class="math inline">\(\mu g/l\)</span> away from <span class="math inline">\(\mu = 0.3\)</span>, in either direction). This probability is represented in the sketch below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="fl">0.3</span><span class="dv">-4</span><span class="sc">*</span><span class="fl">0.1</span>, <span class="fl">0.3</span><span class="sc">+</span><span class="dv">4</span><span class="sc">*</span><span class="fl">0.1</span>)), <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">0.3</span>, <span class="at">sd =</span> <span class="fl">0.1</span>), <span class="at">geom =</span> <span class="st">"area"</span>, <span class="at">fill =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">0.3</span>, <span class="at">sd=</span><span class="fl">0.1</span>), </span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.3</span><span class="dv">-4</span><span class="sc">*</span><span class="fl">0.1</span>, <span class="fl">0.2</span>), <span class="at">geom =</span> <span class="st">"area"</span>, </span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">0.3</span>, <span class="at">sd=</span><span class="fl">0.1</span>), </span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.3</span><span class="sc">+</span><span class="dv">4</span><span class="sc">*</span><span class="fl">0.1</span>, <span class="fl">0.4</span>), <span class="at">geom =</span> <span class="st">"area"</span>, </span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"x"</span>) <span class="sc">+</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="fu">expression</span>(<span class="fu">N</span>(<span class="fl">0.3</span>,<span class="fl">0.1</span><span class="sc">^</span><span class="dv">2</span>)<span class="sc">~</span>pdf)) <span class="sc">+</span></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="fl">0.3</span><span class="dv">-4</span><span class="sc">*</span><span class="fl">0.1</span>, <span class="fl">0.3</span><span class="sc">+</span><span class="dv">4</span><span class="sc">*</span><span class="fl">0.1</span>)), <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">0.3</span>, <span class="at">sd =</span> <span class="fl">0.1</span>), <span class="at">geom =</span> <span class="st">"area"</span>, <span class="at">fill =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">0.3</span>, <span class="at">sd=</span><span class="fl">0.1</span>), </span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.3</span><span class="dv">-4</span><span class="sc">*</span><span class="fl">0.1</span>, <span class="fl">0.2</span>), <span class="at">geom =</span> <span class="st">"area"</span>, </span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">0.3</span>, <span class="at">sd=</span><span class="fl">0.1</span>), </span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.3</span><span class="sc">+</span><span class="dv">4</span><span class="sc">*</span><span class="fl">0.1</span>, <span class="fl">0.4</span>), <span class="at">geom =</span> <span class="st">"area"</span>, </span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"x"</span>) <span class="sc">+</span></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="fu">expression</span>(<span class="fu">N</span>(<span class="fl">0.3</span>,<span class="fl">0.1</span><span class="sc">^</span><span class="dv">2</span>)<span class="sc">~</span>pdf)) <span class="sc">+</span></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01-ttest1_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>So the probability of this event is</p>
 <p><span class="math inline">\(P(Y&lt;0.2 \text{ or } Y&gt;0.4)\)</span> <span class="math inline">\(=\left( Z&lt;\frac{0.2-0.3}{0.1} \text{ or } Z&gt;\frac{0.4-0.3}{0.1} \right)\)</span> <span class="math inline">\(=P(Z&lt;-1 \text{ or } Z&gt;1)\)</span> <span class="math inline">\(=2 \times P(Z&lt;-1)\)</span> <span class="math inline">\(=2 \times 0.1587 = 0.3174\)</span></p>
@@ -844,18 +991,25 @@ window.Quarto = {
 <p>Suppose now that the toxic substance concentration was 0.5 <span class="math inline">\(\mu g/l\)</span>. What is the conclusion now?</p>
 <p>We now need the probability of &gt; 0.5 <span class="math inline">\(\mu g/l\)</span>, or &lt; 0.1 <span class="math inline">\(\mu g/l\)</span>. This is represented in the sketch below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="fl">0.3</span><span class="dv">-4</span><span class="sc">*</span><span class="fl">0.1</span>, <span class="fl">0.3</span><span class="sc">+</span><span class="dv">4</span><span class="sc">*</span><span class="fl">0.1</span>)), <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">0.3</span>, <span class="at">sd =</span> <span class="fl">0.1</span>), <span class="at">geom =</span> <span class="st">"area"</span>, <span class="at">fill =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">0.3</span>, <span class="at">sd=</span><span class="fl">0.1</span>), </span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.3</span><span class="dv">-4</span><span class="sc">*</span><span class="fl">0.1</span>, <span class="fl">0.1</span>), <span class="at">geom =</span> <span class="st">"area"</span>, </span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">0.3</span>, <span class="at">sd=</span><span class="fl">0.1</span>), </span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.3</span><span class="sc">+</span><span class="dv">4</span><span class="sc">*</span><span class="fl">0.1</span>, <span class="fl">0.5</span>), <span class="at">geom =</span> <span class="st">"area"</span>, </span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"x"</span>) <span class="sc">+</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="fu">expression</span>(<span class="fu">N</span>(<span class="fl">0.3</span>,<span class="fl">0.1</span><span class="sc">^</span><span class="dv">2</span>)<span class="sc">~</span>pdf)) <span class="sc">+</span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="fl">0.3</span><span class="dv">-4</span><span class="sc">*</span><span class="fl">0.1</span>, <span class="fl">0.3</span><span class="sc">+</span><span class="dv">4</span><span class="sc">*</span><span class="fl">0.1</span>)), <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">0.3</span>, <span class="at">sd =</span> <span class="fl">0.1</span>), <span class="at">geom =</span> <span class="st">"area"</span>, <span class="at">fill =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">0.3</span>, <span class="at">sd=</span><span class="fl">0.1</span>), </span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.3</span><span class="dv">-4</span><span class="sc">*</span><span class="fl">0.1</span>, <span class="fl">0.1</span>), <span class="at">geom =</span> <span class="st">"area"</span>, </span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">0.3</span>, <span class="at">sd=</span><span class="fl">0.1</span>), </span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.3</span><span class="sc">+</span><span class="dv">4</span><span class="sc">*</span><span class="fl">0.1</span>, <span class="fl">0.5</span>), <span class="at">geom =</span> <span class="st">"area"</span>, </span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"x"</span>) <span class="sc">+</span></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="fu">expression</span>(<span class="fu">N</span>(<span class="fl">0.3</span>,<span class="fl">0.1</span><span class="sc">^</span><span class="dv">2</span>)<span class="sc">~</span>pdf)) <span class="sc">+</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01-ttest1_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>So the probability of this event is</p>
 <p><span class="math inline">\(P(Y&lt;0.1 \text{ or } Y&gt;0.5)\)</span> <span class="math inline">\(=\left( Z&lt;\frac{0.1-0.3}{0.1} \text{ or } Z&gt;\frac{0.5-0.3}{0.1} \right)\)</span> <span class="math inline">\(=P(Z&lt;-2 \text{ or } Z&gt;2)\)</span> <span class="math inline">\(=2 \times P(Z&lt;-2)\)</span> <span class="math inline">\(=2 \times 0.0228 = 0.0456\)</span></p>
@@ -874,7 +1028,10 @@ window.Quarto = {
 <p><span class="math inline">\(P=P(\bar{y} \le 0.197 \text{ or } \bar{y} \ge 0.403)\)</span><br>
 <span class="math inline">\(=P(Z \le -2.53 \text{ or } Z \ge 2.53)\)</span> <span class="math inline">\(=2 \times P(Z \le -2.53)\)</span> <span class="math inline">\(=2 \times 0.0057=0.011\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">2.53</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">2.53</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.01140625</code></pre>
+</div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -912,13 +1069,29 @@ window.Quarto = {
 <span class="math inline">\(=P(T_5 \le -2.29 \text{ or } T_5 \ge 2.29)\)</span> <span class="math inline">\(=2 \times P(T_5 \le -2.29)\)</span> <span class="math inline">\(=2 \times 0.035=0.071\)</span></p>
 <p>We can look -2.29 up in the “old school” t-tables or we can use the <code>pt</code> function in R to calculate P.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">pt</span>(<span class="sc">-</span><span class="fl">2.29</span>,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">pt</span>(<span class="sc">-</span><span class="fl">2.29</span>,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.07064936</code></pre>
+</div>
 </div>
 <p>This time, the P-value is greater than 0.05, so we cannot reject <span class="math inline">\(H_0\)</span>. We can say that the data are consistent with the mean concentration of the toxic substance being 0.3 <span class="math inline">\(\mu g/l\)</span>.</p>
 <p>Rather than calculate the probabilities by hand, we can use R’s <code>t.test</code> command to run the test:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>toxic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.48</span>, <span class="fl">0.25</span>, <span class="fl">0.29</span>, <span class="fl">0.51</span>, <span class="fl">0.49</span>, <span class="fl">0.40</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(toxic, <span class="at">mu =</span> <span class="fl">0.3</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>toxic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.48</span>, <span class="fl">0.25</span>, <span class="fl">0.29</span>, <span class="fl">0.51</span>, <span class="fl">0.49</span>, <span class="fl">0.40</span>)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(toxic, <span class="at">mu =</span> <span class="fl">0.3</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  toxic
+t = 2.2891, df = 5, p-value = 0.07073
+alternative hypothesis: true mean is not equal to 0.3
+95 percent confidence interval:
+ 0.2872928 0.5193739
+sample estimates:
+mean of x 
+0.4033333 </code></pre>
+</div>
 </div>
 <p>From the output we can see that we can see that</p>
 <p>t = 2.2891; df = 5; p-value = 0.07073</p>
@@ -949,8 +1122,21 @@ window.Quarto = {
 <li>Write a biological conclusion.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>toxic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.48</span>, <span class="fl">0.25</span>, <span class="fl">0.29</span>, <span class="fl">0.51</span>, <span class="fl">0.49</span>, <span class="fl">0.40</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(toxic, <span class="at">mu =</span> <span class="fl">0.3</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>toxic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.48</span>, <span class="fl">0.25</span>, <span class="fl">0.29</span>, <span class="fl">0.51</span>, <span class="fl">0.49</span>, <span class="fl">0.40</span>)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(toxic, <span class="at">mu =</span> <span class="fl">0.3</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  toxic
+t = 2.2891, df = 5, p-value = 0.07073
+alternative hypothesis: true mean is not equal to 0.3
+95 percent confidence interval:
+ 0.2872928 0.5193739
+sample estimates:
+mean of x 
+0.4033333 </code></pre>
+</div>
 </div>
 <p>We can see that the 95% confidence intervals are also provided in the R output above and that our hypothesised mean of 0.3 <span class="math inline">\(\mu g/l\)</span> is contained within (between) the CI’s.</p>
 <p>We conclude that the true mean toxic substance concentration does not differ significantly from 0.3 <span class="math inline">\(\mu g/l\)</span>, and that we are 95% confident that this unknown true mean value lies within the range 0.2873 to 0.5194 <span class="math inline">\(\mu g/l\)</span>.</p>
@@ -973,45 +1159,90 @@ window.Quarto = {
 <p><strong>Solution</strong></p>
 <p>We wish to perform a one-sample t-test to test the null hypothesis <span class="math inline">\(H_0: \mu = 500\)</span> <span class="math inline">\(\mu g/l\)</span>. However to do this we need to be able to assume the data follows a normal distribution. A quick summary of the raw data shows that the data is skewed to the right (see boxplot below, also the mean of 855.9 <span class="math inline">\(\mu g/l\)</span> is greater than the median of 800 <span class="math inline">\(\mu g/l\)</span>) and we also see the typical “smiley” shape of the points on the qq normal plot. We also find that the skewness value of 1.10 is positive and greater than one. The Shapiro-Wilks normality test indicates non-normality at the 5% significance level (as the p-value &lt; 0.05).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>tn <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"TN_Wallacia.csv"</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tn<span class="sc">$</span>TN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>tn <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"TN_Wallacia.csv"</span>)</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tn<span class="sc">$</span>TN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  310.0   610.0   800.0   855.9  1020.0  2130.0 </code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(tn<span class="sc">$</span>TN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(tn<span class="sc">$</span>TN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.078249</code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(tn<span class="sc">$</span>TN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(tn<span class="sc">$</span>TN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  tn$TN
+W = 0.92582, p-value = 0.04293</code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tn, <span class="fu">aes</span>(<span class="at">sample =</span> TN)) <span class="sc">+</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> <span class="co"># This adds the QQ plot points</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span> <span class="co"># This adds the QQ line</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Normal Q-Q Plot"</span>) <span class="sc">+</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tn, <span class="fu">aes</span>(<span class="at">sample =</span> TN)) <span class="sc">+</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> <span class="co"># This adds the QQ plot points</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span> <span class="co"># This adds the QQ line</span></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Normal Q-Q Plot"</span>) <span class="sc">+</span></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01-ttest1_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tn, <span class="fu">aes</span>(<span class="at">x=</span>TN)) <span class="sc">+</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tn, <span class="fu">aes</span>(<span class="at">x=</span>TN)) <span class="sc">+</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01-ttest1_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <p><strong>Transform data</strong></p>
 <p>A log (base 10) transformation on the raw data was performed as suggested.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>tn<span class="sc">$</span>log10_TN <span class="ot">&lt;-</span> <span class="fu">log10</span>(tn<span class="sc">$</span>TN)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(tn<span class="sc">$</span>log10_TN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>tn<span class="sc">$</span>log10_TN <span class="ot">&lt;-</span> <span class="fu">log10</span>(tn<span class="sc">$</span>TN)</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(tn<span class="sc">$</span>log10_TN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.886528</code></pre>
+</div>
 </div>
 <p>We can use the mean of this transformed data i.e.&nbsp;the mean transformed TN value (= 2.886528) to find the estimated geometric mean (GM) of the phosphorus levels. The <span class="math inline">\(GM = 10^2.886528 = 770.066\)</span> <span class="math inline">\(\mu g/l\)</span>. This is an indication of a typical phosphorus reading. Note how this is lower than the arithmetic mean.</p>
 <p><strong>Recall</strong> from earlier that when a log-transformation is used, the back-transformed mean is known as the geometric mean (as opposed to the ordinary arithmetic mean). This measure is commonly used in describing environmental data, as in many cases data are highly positively skewed. Like the median, the geometric mean is less sensitive (or more robust) to these outlying values.</p>
 <p>Again before proceeding with the t-test or obtaining a t-based CI, we need to perform a normal probability test on the log-transformed values, TP to test whether these log values can be assumed to follow a normal distribution.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tn, <span class="fu">aes</span>(<span class="at">sample =</span> log10_TN)) <span class="sc">+</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> <span class="co"># This adds the QQ plot points</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span> <span class="co"># This adds the QQ line</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Normal Q-Q Plot"</span>) <span class="sc">+</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tn, <span class="fu">aes</span>(<span class="at">sample =</span> log10_TN)) <span class="sc">+</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span> <span class="co"># This adds the QQ plot points</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span> <span class="co"># This adds the QQ line</span></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Normal Q-Q Plot"</span>) <span class="sc">+</span></span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01-ttest1_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(tn<span class="sc">$</span>log10_TN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(tn<span class="sc">$</span>log10_TN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  tn$log10_TN
+W = 0.97279, p-value = 0.6375</code></pre>
+</div>
 </div>
 <p>Based on the qq-normal plot and the Shapiro Wilks test (p&gt;0.05), we can assume that the transformation has been successful.</p>
 <p>We perform the t test on the log scale (using the newly generated data) where our null and alternate hypotheses are in effect:</p>
@@ -1024,14 +1255,26 @@ window.Quarto = {
 <p><span class="math inline">\(t=\frac{\bar{y} \text{ (of log10 data)}-\log_{10}(500)}{s \text{ (of log10 data)}/\sqrt{n}}\)</span> and <span class="math inline">\(df = n-1\)</span>.</p>
 <p>Let’s test this in R</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(tn<span class="sc">$</span>log10_TN, <span class="at">mu =</span> <span class="fu">log10</span>(<span class="dv">500</span>), <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(tn<span class="sc">$</span>log10_TN, <span class="at">mu =</span> <span class="fu">log10</span>(<span class="dv">500</span>), <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  tn$log10_TN
+t = 4.8768, df = 28, p-value = 3.884e-05
+alternative hypothesis: true mean is not equal to 2.69897
+95 percent confidence interval:
+ 2.807748 2.965309
+sample estimates:
+mean of x 
+ 2.886528 </code></pre>
+</div>
 </div>
 <p>The P-value of &lt;0.001 indicates that we should reject <span class="math inline">\(H_0\)</span>. R also produces the CI (2.807748, 2.965309) with its t-test output. Confirming the rejection of <span class="math inline">\(H_0\)</span> is the fact that the test mean of 2.69897 (<span class="math inline">\(log_{10}500\)</span>) lies outside (and below) these confidence limits. Therefore we can conclude that the (population) geometric mean phosphorus concentration is significantly higher than 500 <span class="math inline">\(\mu g/l\)</span> and is therefore exceeding the water quality target.</p>
 <p>To obtain the 95% confidence interval for the geometric mean, we need to back transform both limits of the CI given by R (above) which are on the <span class="math inline">\(\log_{10}\)</span> scale. The 95% CI for the mean TN is 2.807748 to 2.965309. So the 95% CI for the geometric mean phosphorus level is <span class="math inline">\(10^{2.807748}\)</span> to <span class="math inline">\(10^{2.965309}\)</span>.</p>
 <p>So the 95% CI for the geometric mean phosphorus level is 642.31 to 923.23 <span class="math inline">\(\mu g/l\)</span>. The best estimate of the true geometric mean is 770.066 <span class="math inline">\(\mu g/l\)</span>. However, the true value may be in the range 642.31 to 923.23 <span class="math inline">\(\mu g/l\)</span> with 95% certainty.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

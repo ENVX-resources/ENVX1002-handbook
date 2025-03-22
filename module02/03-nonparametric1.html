@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>nonparametric1 – ENVX1002 Handbook</title>
+<title>Chi-squared tests – ENVX1002 Handbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -146,13 +146,13 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text"><strong>📕 Module 1</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module01/01-intro_statistical_programming.html" class="sidebar-item-text sidebar-link">
@@ -192,13 +192,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text"><strong>📘 Module 3</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../module03/040-describing_relationships.html" class="sidebar-item-text sidebar-link">
@@ -228,13 +228,13 @@ window.Quarto = {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
  <span class="menu-text"><strong>🖥️ Computer labs</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../000-rguide.html" class="sidebar-item-text sidebar-link">
@@ -315,6 +315,17 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text"><strong>📝 Quarto report guide</strong></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -325,9 +336,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#chi-squared-tests" id="toc-chi-squared-tests" class="nav-link active" data-scroll-target="#chi-squared-tests">Chi-squared tests</a>
-  <ul class="collapse">
-  <li><a href="#notes-on-the-chi2-distribution" id="toc-notes-on-the-chi2-distribution" class="nav-link" data-scroll-target="#notes-on-the-chi2-distribution">Notes on the <span class="math inline">\(\chi^2\)</span> Distribution</a></li>
+  <li><a href="#notes-on-the-chi2-distribution" id="toc-notes-on-the-chi2-distribution" class="nav-link active" data-scroll-target="#notes-on-the-chi2-distribution">Notes on the <span class="math inline">\(\chi^2\)</span> Distribution</a></li>
   <li><a href="#testing-agreement-of-frequency-data-with-expectation-models" id="toc-testing-agreement-of-frequency-data-with-expectation-models" class="nav-link" data-scroll-target="#testing-agreement-of-frequency-data-with-expectation-models">Testing Agreement of Frequency Data with Expectation Models</a>
   <ul class="collapse">
   <li><a href="#steps-in-chi-squared-tests-of-agreement" id="toc-steps-in-chi-squared-tests-of-agreement" class="nav-link" data-scroll-target="#steps-in-chi-squared-tests-of-agreement">Steps in Chi-Squared Tests of Agreement</a></li>
@@ -339,18 +348,31 @@ window.Quarto = {
   <li><a href="#example-2-x-2-contingency-table" id="toc-example-2-x-2-contingency-table" class="nav-link" data-scroll-target="#example-2-x-2-contingency-table">Example: (2 x 2) Contingency Table</a></li>
   <li><a href="#example-4-x-3-contingency-table" id="toc-example-4-x-3-contingency-table" class="nav-link" data-scroll-target="#example-4-x-3-contingency-table">Example: (4 x 3) Contingency Table</a></li>
   </ul></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module02/01-ttest1.html"><strong>📗 Module 2</strong></a></li><li class="breadcrumb-item"><a href="../module02/03-nonparametric1.html">Chi-squared tests</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../module02/01-ttest1.html"><strong>📗 Module 2</strong></a></li><li class="breadcrumb-item"><a href="../module02/03-nonparametric1.html">Chi-squared tests</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Chi-squared tests</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="chi-squared-tests" class="level1">
-<h1>Chi-squared tests</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <p>The chi-squared distribution (where chi is pronounced ‘ky’) is a very widely used distribution in statistics. Its symbol is <span class="math inline">\(\chi^2\)</span>. It has MANY applications. Here we will consider only two of these applications – tests of agreement with expected outcomes, and contingency tables.</p>
 <section id="notes-on-the-chi2-distribution" class="level2">
 <h2 class="anchored" data-anchor-id="notes-on-the-chi2-distribution">Notes on the <span class="math inline">\(\chi^2\)</span> Distribution</h2>
@@ -741,7 +763,6 @@ H_1: p_1 \neq p_2
 </table>
 
 
-</section>
 </section>
 </section>
 
