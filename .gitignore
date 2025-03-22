@@ -51,6 +51,7 @@ _site/
 # Project specific
 # ---------------
 _solution/
+_tutorials/
 
 # Cline
 # -----
