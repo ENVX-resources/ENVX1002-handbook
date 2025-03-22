@@ -1,5 +1,8 @@
-# One-sample $t$-test
-
+---
+title: "One-sample $t$-test"
+execute:
+  output: true
+---
 ```{r setup}
 #| include: false
 if (!require("pacman")) install.packages("pacman")

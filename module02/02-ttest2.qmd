@@ -1,5 +1,7 @@
 ---
-title: Two-sample $t$-test
+title: "Two-sample $t$-test"
+execute:
+  output: true
 ---
 
 ```{r setup}

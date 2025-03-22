@@ -1,4 +1,8 @@
-# Chi-squared tests
+---
+title: "Chi-squared tests"
+execute:
+  output: true
+---
 
 ```{r setup}
 #| include: false
