@@ -1,0 +1,112 @@
+---
+title: Tables
+execute: 
+  output: true
+code-fold: false
+draft: true
+---
+
+## Data
+
+Let's use the built-in `mtcars` dataset to create a summary that we'll progressively format:
+
+```{r}
+#| message: false
+#| code-fold: false
+
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+
+# Create a detailed car summary
+data(mtcars)
+
+car_summary <- mtcars %>%
+  group_by(cyl) %>%
+  summarise(
+    count = n(),
+    mpg = mean(mpg),
+    hp = mean(hp),
+    wt = mean(wt),
+    disp = mean(disp)
+  )
+```
+
+## Basic Table
+
+The `kable()` function from the `knitr` package is the main tool for creating tables in Quarto:
+
+```{r}
+kable(car_summary)
+```
+
+## Changing column names
+
+We can edit column names them using the `col.names` parameter:
+
+```{r}
+kable(car_summary,
+  col.names = c("Cylinders", "Count", "MPG", "Horsepower", "Weight", "Displacement")
+)
+```
+
+## Decimal places
+
+The `digits` parameter controls the number of decimal places for each column. You can specify a vector of integers to set different precisions for each column:
+
+```{r}
+kable(car_summary,
+  col.names = c("Cylinders", "Count", "MPG", "Horsepower", "Weight", "Displacement"),
+  digits = c(0, 0, 1, 0, 2, 0) # Different precision for each column
+)
+```
+
+## Grouping
+
+Now we can group related columns together using the `add_header_above()` function. The way it works is that you use numbers to indicate how many columns you want to group together, and then you provide the name of the group. In the example below, we don't group the first two columns, but we group the next four into two groups of two and give them the names "Performance" and "Size":
+
+```{r}
+grp_car_summary <-
+  kable(car_summary,
+    col.names = c("Cylinders", "Count", "MPG", "Horsepower", "Weight", "Displacement"),
+    digits = c(0, 0, 1, 0, 2, 0)
+  ) %>%
+  kable_styling(full_width = FALSE) %>%
+  add_header_above(c(" " = 2, "Performance" = 2, "Size" = 2))
+
+grp_car_summary
+```
+
+
+
+## Table captions
+
+The easiest table captions is to simply type out the caption above thet table in the main text. Just make sure to number the table appropriately. 
+
+````markdown
+
+Table 1: A summary of the `mtcars` dataset, grouped by the number of cylinders. The table shows the count of cars, average miles per gallon (MPG), horsepower, weight, and displacement.
+
+```{{r}}
+kable(car_summary)
+```
+````
+
+If you want more control over the caption and automate the numbering, Quarto has a [comprehensive system](https://quarto.org/docs/authoring/figures.html) for figure captions in general. For tables, you need to set the `label` and a `tbl-cap` parameters in the chunk options. The `label` is used to reference the table in the text ans **must** be prefixed by a `"tbl-*" string. The `tbl-cap` is the caption itself.
+
+````markdown
+```{{r}}
+#| label: tbl-mtcars-summary
+#| tbl-cap: A summary of the `mtcars` dataset, grouped by the number of cylinders. The table shows the count of cars, average miles per gallon (MPG), horsepower, weight, and displacement.
+
+grp_car_summary
+```
+````
+
+```{r}
+#| echo: false
+#| label: tbl-mtcars-summary
+#| tbl-cap: A summary of the `mtcars` dataset, grouped by the number of cylinders. The table shows the count of cars, average miles per gallon (MPG), horsepower, weight, and displacement.
+
+grp_car_summary
+```

@@ -1,0 +1,19 @@
+---
+title: Getting started
+draft: true
+---
+
+This guide is here to help you navigate the technical aspects of report writing in Quarto. It is a work-in-progress and so will likely contain bad writing, typos and jokes so *terrible* you might roll your eyes and see the back of your skull. Suggestions for improvement are welcome.
+
+## Using this guide
+
+The guide is divided into sections, each of which covers a different aspect of report writing. The sections (so far) are:
+
+- [Figures](01g-figures.qmd): How to create and format figures in Quarto.
+- [Tables](02g-tables.qmd): How to create and format tables in Quarto.
+- [Code](03g-code.qmd): How to create and control the display of code and outputs in Quarto.
+- [References](04g-references.qmd): How to create and format references in Quarto.
+
+A popular category of questions relate to the creation and formatting of plots in **`ggplot2`**. This is a large topic, and so will not be included in this guide (not yet, anyway). Instead, refer to the [`ggplot2` book](https://ggplot2-book.org/) for a comprehensive guide to creating and formatting plots in R. Searching on Google or Stack Overflow for specific questions is also a good idea. 
+
+Ok, click on the links above (or on the left menu) to view the relevant section.
