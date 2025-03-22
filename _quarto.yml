@@ -14,7 +14,7 @@ website:
         href:  "#"
   sidebar: 
     style: docked
-    collapse-level: 2
+    collapse-level: 1
     contents:
       - 001-intro.qmd
       - "---"
