@@ -19,7 +19,7 @@ Read this handbook before, or *after* each lecture to better understand certain 
 
 To begin, we strongly suggest that you read our [introduction](/001-intro.qmd) chapter (which will align with Week 1 Lectures) to get an overview of why ENVX1002 is important for your degree and includes some introductory statistical concepts.
 
-::: {.callout-note collapse="true"}
+::: {.callout-note}
 ## Acknowledgements
 
 We would like to acknowledge the work of previous generations of teaching staff who created the bulk of the teaching material within this manual. In particular, the work of:
@@ -30,7 +30,7 @@ We would like to acknowledge the work of previous generations of teaching staff 
 - Prof. Thomas Bishop
 :::
 
-::: {.callout-tip collapse="true"}
+::: {.callout-tip}
 ## License
 This handbook is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 :::
