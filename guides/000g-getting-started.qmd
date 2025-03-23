@@ -3,7 +3,9 @@ title: Getting started
 draft: true
 ---
 
-This guide is here to help you navigate the technical aspects of report writing in Quarto. It is a work-in-progress and so will likely contain bad writing, typos and jokes so *terrible* you might roll your eyes and see the back of your skull. Suggestions for improvement are welcome.
+This guide is here to help you navigate the technical aspects of report writing in Quarto. It is a work-in-progress. It will likely contain bad writing, typos and terrible jokes (you might find yourself rolling your eyes and see the back of your skull). 
+
+Suggestions for improvement are welcome.
 
 ## Using this guide
 

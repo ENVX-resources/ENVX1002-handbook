@@ -3,7 +3,7 @@ title: Tables
 execute: 
   output: true
 code-fold: false
-draft: true
+draft: false
 ---
 
 ## Data
@@ -63,9 +63,17 @@ kable(car_summary,
 
 ## Grouping
 
-Now we can group related columns together using the `add_header_above()` function. The way it works is that you use numbers to indicate how many columns you want to group together, and then you provide the name of the group. In the example below, we don't group the first two columns, but we group the next four into two groups of two and give them the names "Performance" and "Size":
+Now we can group related columns together using the `add_header_above()` function from kableExtra. This function creates a row above your table headers that spans multiple columns. To use it:
+
+1. Create a named vector where each name is the group header text
+2. Each value indicates how many columns that group should span
+3. Use `" "` for columns you don't want to group (they'll show blank in the header row)
+
+In the example below, we leave the first two columns ungrouped (with `" " = 2`), group "MPG" and "Horsepower" under "Performance" (`"Performance" = 2`), and group "Weight" and "Displacement" under "Size" (`"Size" = 2`):
 
 ```{r}
+#| source-line-numbers: "4"
+
 grp_car_summary <-
   kable(car_summary,
     col.names = c("Cylinders", "Count", "MPG", "Horsepower", "Weight", "Displacement"),
@@ -76,7 +84,6 @@ grp_car_summary <-
 
 grp_car_summary
 ```
-
 
 
 ## Table captions

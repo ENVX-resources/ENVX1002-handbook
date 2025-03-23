@@ -1,0 +1,121 @@
+---
+title: FAQ
+execute:
+  output: false
+draft: false
+---
+## Frequently asked questions (FAQ)
+
+### How do I make good looking tables in Quarto?
+
+This depends on the size of your data. If you have a relatively small table in mind, the easiest is to manually create it. RStudio's visual mode allows you to visually create and edit tables. Otherwise, the [markdown tables generator](https://www.tablesgenerator.com/markdown_tables) is also a great visual too.
+
+In R, you can use the `kable` function, which is part of the `knitr` package. Because of this you can either use:
+
+```{r}
+#| message: false
+library(knitr)
+kable(head(iris))
+```
+or, a more compact version:
+
+```{r}
+#| message: false
+
+knitr::kable(head(iris))
+```
+
+You may want to improve the appearrance of your table, so the `kableExtra` package is a great option. It allows you to add borders, colors, and other formatting options. You can install it with the following command. Once you load it you can do things like change the column title names and add borders:
+
+```{r}
+#| message: false
+library(tidyverse)
+library(kableExtra)
+kable(head(iris), col.names = c("Sepal Length", "Sepal Width", "Petal Length", "Petal Width", "Species")) %>%
+  add_header_above(c("Sepal" = 2, "Petal" = 2, " " = 1))
+  
+```
+
+### I need to caption my tables and figures, how do I do that?
+
+At this point, we are fine with typing captions manually. Table captions are placed above the table, while figure captions are placed below the figure. 
+
+````markdown
+Table 1: The first six rows of the iris dataset.
+
+```{{r}}
+kable(head(iris))
+```
+
+````
+
+
+A more automated way is to make use of Quarto's `label`, `fig-cap` and `tbl-cap` options. You **must** make sure that the label has the prefix `fig-` or `tbl-` to indicate that it is a figure or table, respectively. For example below can produce a figure with a caption:
+
+```{{r}}
+#| label: fig-myfig
+#| fig-cap: "This is a figure caption"
+
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point() 
+```
+And below is a table with a caption:
+
+```{{r}}
+#| label: tbl-mytable
+#| tbl-cap: "This is a table caption"
+
+kable(head(iris))
+```
+Be aware that the options will cover all figures or tables in the code chunk. If you want to have different captions for different figures or tables, you will need to create separate code chunks for each figure or table.
+
+### How do I hide code output? 
+
+First, understand that there are several types of code output. The most common are:
+
+- **Messages**: These are messages that are printed to the console. They inform you of someting.
+- **Warnings**: These are also printed to the console but you know they are warnings because the word is in the text somewhere.
+- **Results**: Whatever output a function produces, this is the result. For example, if you run `1 + 1`, the result is `2`.
+- **Figures**: These are the plots. Yes, you can hide them. We won't ask why.
+
+You need to understand what you want to hide to know how to hide it! Hiding code output can be done in each code chunk using chunk options.
+
+```{{r}}
+library(tidyverse)
+```
+The above will output a whole bunch of messages.
+
+```{{r}}
+#| message: false
+library(tidyverse)
+```
+The above will not output any messages, and makes your document cleaner.
+
+**Warnings** are easy to identify and hide because they almost always begin with`"Warning:" ...`. You can hide them with the `warning` chunk option. For example:
+
+```{{r}}
+#| warning: false
+as.numeric(c("1", "2", "abc", "3"))
+```
+The above code will usually produce a warning (as `"abc"` cannot be converted to a number and is thus replaced with `NA`). The warning will not be printed to the console if you set the `warning` chunk option to `false`.
+
+To hide either results or figures, you use the `output` chunk option. For example:
+
+```{r}
+#| output: false
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point()
+```
+
+Even though the code above produces a figure, it will not be printed to the console. 
+
+Altogether, there are a number of execution options that you can use to control the output of your code chunks. To summarise (taken from [Quarto documentation](https://quarto.org/docs/computations/execution-options.html):
+
+- **eval**: Evaluate the code chunk (if false, just echos the code into the output).
+- **echo**: Include the source code in output.
+- **output**: Include the results of executing the code in the output (true, false, or asis to indicate that the output is raw markdown and should not have any of Quarto's standard enclosing markdown).
+- **warning**: Include warnings in the output.
+- **error**: Include errors in the output (note that this implies that errors executing code will not halt processing of the document).
+- **include**: Catch all for preventing any output (code or results) from being included (e.g. include: false suppresses all output from the code block). However, code will still be run. 
+
+### 
