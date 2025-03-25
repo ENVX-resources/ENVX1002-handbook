@@ -129,7 +129,7 @@ milk <- read_excel("data/ENVX1002_Data5.xlsx", sheet = "Milk")
 
 :::
 
-It is always good practice to look at the data first to make sure you have the correct data, it loaded in correctly and know what the names of the columns are. This can be done by typing the name of the data ```Milk``` or for large datasets, use ```str()``` to show the first 6 lines:
+It is always good practice to look at the data first to make sure you have the correct data, it loaded in correctly and know what the names of the columns are. This can be done by typing the name of the data ```Milk``` or for large datasets, use ```head()``` to show the first 6 lines. You can also use ```str()``` to look at the strucutre of the data.
 
 ```{r}
 
@@ -625,9 +625,13 @@ library(palmerpenguins)
 
 ### 2.1 Chinstrap
 ```{r}
+#Data cleaning and subsetting for exercise
+#Copy as is!
+
+library(tidyverse)
 chinstrap <-  penguins%>%
-  filter(species == "Chinstrap")%>%
-  na.omit()
+  filter(species == "Chinstrap")%>% #subset to only include chinstrap penguins
+  na.omit() #exclude missing data
 
 ```
 ::: {.content-visible when-profile="solution"}
@@ -645,8 +649,6 @@ chinstrap <-  penguins%>%
 3. Check assumptions (normal)
 
 ```{r}
-#Load library
-library(tidyverse)
 #qqplot
 ggplot(chinstrap, aes(sample = body_mass_g))+
   geom_qq()+
@@ -686,9 +688,12 @@ t.test(chinstrap$body_mass_g, mu = 4000)
 
 ### 2.2 Gentoo
 ```{r}
+#Data cleaning and subsetting for exercise
+#Copy as is!
+
 gentoo <-penguins%>%
-  filter(species == "Gentoo")%>%
-  na.omit() 
+  filter(species == "Gentoo")%>% # Subset to only include this species
+  na.omit() # exclude missing data
 ```
 
 ::: {.content-visible when-profile="solution"}
