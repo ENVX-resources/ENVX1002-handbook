@@ -1,1 +1,56 @@
 /* css styles */
+
+/* Make code output font smaller */
+body div.cell-output,
+body div.sourceCode {
+  font-size: 0.9em !important;
+}
+
+/* Target all pre elements inside code cells */
+/* div.cell pre,
+div.sourceCode pre {
+  font-size: 0.85em !important;
+  line-height: 1.4;
+} */
+
+/* Target specific output types */
+div.cell-output-stdout pre code,
+div.cell-output-stderr pre code,
+div.sourceCode pre code {
+  font-size: 0.9em !important;
+  line-height: 1.4;
+}
+
+/* Ensure table outputs in cells are also smaller */
+div.cell-output table {
+  font-size: 0.9em !important;
+}
+
+/* Target R output specifically */
+.cell-output-display {
+  font-size: 0.9em !important;
+}
+
+/* Override theme styles for both light and dark modes */
+[data-theme="light"] div.cell pre,
+[data-theme="dark"] div.cell pre {
+  font-size: 0.9em !important;
+}
+
+/* Target code blocks directly */
+pre.highlight {
+  font-size: 0.9em !important;
+}
+
+/* Target Quarto's output classes specifically */
+.quarto-figure,
+.figure-caption,
+.code-with-copy {
+  font-size: 0.9em !important;
+}
+
+/* change colour of cell-output */
+.cell-output {
+  background-color: #fff7ee;
+  border-radius: 4px;
+}

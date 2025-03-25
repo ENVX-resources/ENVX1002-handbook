@@ -143,7 +143,7 @@ levelplot(CornP ~ InorgP + OrgP, data = Corn
           , col.regions = viridis(100))
 ```
 
-The level plot shows us the x (InorgP) and y variable (OrgP), with the colour scale representing the z variable, which in this case is Phosphorous being taken up by the corn (cornP). From the plot we can see that with higher levels of orgP and inorgP in the soil, the Phosphorous content in the corn is generally higher.
+The level plot shows us the x (InorgP) and y variable (OrgP), with the colour scale representing the z variable, which in this case is Phosphorous being taken up by the corn (cornP). From the plot we can see that with higher levels of OrgP and InorgP in the soil, the Phosphorous content in the corn is generally higher.
 
 It is clear that the 3-D surface plot does not have colours everywhere, but this relates of course to the underlying data. In this case we don't have continuous data in both directions, so the response (the colour) is only plotted where we have input variables.
 
@@ -848,7 +848,7 @@ Use the template below to test the hypotheses for each exercise.
 
 3.  Check assumptions
 
-4.  P value and model fit
+4.  P-value and model fit
 
     a)   Is the model significant?
 
@@ -886,7 +886,8 @@ housing<- housing%>%
 
 str(housing)
 ```
-Looking at the correlation matrix and teh plots, it looks like bedroom number has a very weak relationship to Price, and it is fairly correlated to room number. I will leave it out of the model to try to keep all the variables independent from each other. Everything ele will go in the model though.
+
+Looking at the correlation matrix and the plots, it looks like the average number of bedrooms for a house in the area (`bedroom_no`) is fairly correlated to the average number of rooms for a house in the area (`room_no`). Additionally, `bedroom_no` has a very weak relationship to Price, so I will leave it out of the model to try to keep all the variables independent from each other. Everything else will go in the model.
 
 ```{r}
 pairs(housing)
@@ -907,9 +908,10 @@ par(mfrow = c(2,2))
 plot(housing_mlr)
 par(mfrow = c(1,1))
 ```
-> Assumptions are beautiful and prefect. Relaationship is linear, data is normally distributed, there is no fanning in the scale-location plot, and the residuals vs leverage doesn't even show the Cook's distance line.
 
-4.  P value and model fit
+> Assumptions are beautiful and prefect. Relationship is linear, data is normally distributed, there is no fanning in the scale-location plot, and the residuals vs leverage doesn't even show the Cook's distance line.
+
+4.  P-value and model fit
 
 ```{r}
 summary(housing_mlr)
@@ -917,7 +919,7 @@ summary(housing_mlr)
 
     a)   Is the model significant? Yes, the f tests shows p < 0.05
 
-    b)   Are the predictors significant? All the predictors are significant, with p values < 0.05
+    b)   Are the predictors significant? All the predictors are significant, with p-values < 0.05
 
     c)   How good is the model fit? The model has an excellent fit. The R^2^ = 0.9179, which indicates that the model explains ~92% of the variation in the data.
 
@@ -925,7 +927,7 @@ summary(housing_mlr)
 
 >  The F-test indicated our model is significant (P < 0.05), allowing us to reject the null hypothesis and conclude at least one of our partial regression coefficients has a slope not equal to 0. 
 
-> Our t-test upon each of our partial regression coefficients supports this, as area income, area house age, room number and area population all have p values below 0.05.
+> Our t-test upon each of our partial regression coefficients supports this, as area income, area house age, room number and area population all have p-values below 0.05.
 
 > The fit of the model is excellent, with ~92% of the variation explained by our model.
 
@@ -962,7 +964,7 @@ energy_numeric <- energy%>%
 pairs(energy_numeric)
 round(cor(energy_numeric),3)
 ```
-> Not too much correlation between independent variables, but appliances used has a very weak relationship with energy consumption. I'm going to leave it out of my model.
+> Not too much correlation between independent variables, but `appliances_used` has a very weak relationship with `energy_consumption`. I'm going to leave it out of my model.
 
 2.  Fit the model
 ```{r}
@@ -975,9 +977,9 @@ par(mfrow = c(2,2))
 plot(energy_lm)
 par(mfrow = c(1,1))
 ```
-> All the assumptions look fine. The points are starting to veer off the line at the edges of the qqplot, but I'm not worried about it.
+> All the assumptions look fine. The points are starting to veer off the line at the edges of the QQ plot, but I'm not worried about it.
 
-4.  P value and model fit
+4.  P-value and model fit
 
 ```{r}
 summary(energy_lm)
@@ -992,7 +994,7 @@ summary(energy_lm)
 5.  Conclusions
 >  The F-test indicated our model is significant (P < 0.05), allowing us to reject the null hypothesis and conclude at least one of our partial regression coefficients has a slope not equal to 0. 
 
-> Our t-test upon each of our partial regression coefficients supports this, as area income, area house age, room number and area population all have p values below 0.05.
+> Our t-test upon each of our partial regression coefficients supports this, as area income, area house age, room number and area population all have p-values below 0.05.
 
 > The fit of the model is good, with 65% of the variation explained by our model.
 
@@ -1022,7 +1024,7 @@ str(sales)
 pairs(sales)
 round(cor(sales),3)
 ```
-> The first variable is just the row id, so I'm going to ignore it. All the independent variables look like they have a relationship wiht the target variable, though the relationship with newspaper ad budget is rather weak. There aren't any particularly strong correlations between the budgets, so I will include all of them in my model.
+> The first variable is just the row ID, so I'm going to ignore it. All the independent variables look like they have a relationship with the target variable, though the relationship with `newspaper_ad_budget` is rather weak. There aren't any particularly strong correlations between the budgets, so I will include all of them in my model.
 
 2.  Fit the model
 ```{r}
@@ -1036,26 +1038,26 @@ par(mfrow = c(2,2))
 plot(sales_mlr)
 par(mfrow = c(1,1))
 ```
-> All the assumptions look fine. Teh residualsvs fitted plot is a bit smooshed, but the line is relatively straight, so I'm not worried about it.
+> All the assumptions look fine. The residuals vs fitted plot is a bit squished, but the line is relatively straight, so I'm not worried about it.
 
-4.  P value and model fit
+4.  P-value and model fit
 ```{r}
 summary(sales_mlr)
 ```
 
 
-    a)   Is the model significant? yes, the f-test shows p< 0.05
+    a)   Is the model significant? Yes, the F-test shows p< 0.05.
 
-    b)   Are the predictors significant? the tv and radio ad budgets are both significant, but the neewspaper ad budget was not significant (p = 0.86)
+    b)   Are the predictors significant? The tv and radio ad budgets are both significant, but the newspaper ad budget was not significant (p = 0.86)
 
     c)   How good is the model fit? The model has an excellent fit with an adjusted R^2^ of 0.8956
 
 5.  Conclusions
 >  The F-test indicated our model is significant (P < 0.05), allowing us to reject the null hypothesis and conclude at least one of our partial regression coefficients has a slope not equal to 0. 
 
-> Our t-test upon each of our partial regression coefficients supports this, as tv ad budget and radio ad budget both have p values below 0.05. However, newspaper ad budget was not a significant predictor, with p = 0.86.
+> Our t-test upon each of our partial regression coefficients supports this, as `tv_ad_budget` and `radio_ad_budget` both have p-values below 0.05. However, `newspaper_ad_budget` was not a significant predictor, with p = 0.86.
 
-> The fit of the model is excellent, with ~90% of the variation explained by our model. Since the newspaper ad budget was not significant, we could try running the model again without this variable, to see if it imporves the fit.
+> The fit of the model is excellent, with ~90% of the variation explained by our model. Since the `newspaper_ad_budget` was not significant, we could try running the model again without this variable, to see if it imporves the fit.
 
 ------
 :::

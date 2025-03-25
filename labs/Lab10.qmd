@@ -1,5 +1,5 @@
 ---
-title: "Lab 10 - Linear Functions"
+title: "Lab 10 -- Linear functions"
 embed-resources: true
 resources:
   - data/ENVX1002_wk10_practical_data_Regression.xlsx
@@ -551,7 +551,7 @@ Use the template below to test the hypotheses for each exercise.
 
 4.  Check assumptions
 
-5.  P value and model fit
+5.  P-value and model fit
 
     a)   Is the model significant?
 
@@ -563,7 +563,7 @@ Use the template below to test the hypotheses for each exercise.
 
 ## Exercise 1: Cars stopping distance
 
-Use the cars dataset from last week to test if speed (mph) is a predictor of stopping distance (fft).
+Use the `cars` dataset from last week to test if `speed` (mph) is a predictor of `dist` (stopping distance, fft).
 
 ```{r}
 head(cars)
@@ -607,7 +607,7 @@ plot(cars_lm)
 -   Residuals vs Leverage: No points occurring at top right or bottom right corners outside the dotted red lines. A couple of points are close, but not outside, so all is good.
 
 
-5.  P value and model fit
+5.  P-value and model fit
 ```{r}
 summary(cars_lm)
 ```
@@ -628,7 +628,7 @@ Speed is a statistically significant predictor of stoppingdistance. The model ac
 
 ## Exercise 2: Penguins
 
-Use the palmer penguins dataset to test if flipper length is a significant predictor of bill length.
+Use the palmer penguins dataset to test if `flipper_length` is a significant predictor of `bill_length`.
 ```{r}
 #Load libraries
 library(palmerpenguins)
@@ -678,7 +678,7 @@ plot(penguin_model)
 -   Scale-Location: Points evenly scattered, no fanning.
 -   Residuals vs Leverage: No points occurring at top right or bottom right corners outside the dotted red lines.
 
-5.  P value and model fit
+5.  P-value and model fit
 ```{r}
 summary(penguin_model)
 ```
@@ -697,7 +697,7 @@ summary(penguin_model)
 :::
 
 ## Exercise 3: Old Faithful Geyser Data
-Using the inbuilt faithful dataset, test whether waiting time is a significant predictor of eruption time.
+Using the inbuilt `faithful` dataset, test whether waiting time (`waiting`) is a significant predictor of eruption time (`eruption`).
 
 ```{r}
 head(faithful)
@@ -739,7 +739,7 @@ plot(faithful_lm)
 -   Scale-Location: Points evenly scattered, no fanning.
 -   Residuals vs Leverage: No points occurring at top right or bottom right corners outside the dotted red lines.
 
-5.  P value and model fit
+5.  P-value and model fit
 ```{r}
 summary(faithful_lm)
 ```

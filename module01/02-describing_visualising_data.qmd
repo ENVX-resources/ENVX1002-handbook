@@ -1,0 +1,234 @@
+---
+title: Describing and Visualising Data
+draft: true
+---
+
+```{r setup}
+#| include: false
+#| message: false
+#| warning: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, lterdatasampler)
+
+# Explicitly load the datasets
+data("pie_crab", "hbr_maples", package = "lterdatasampler")
+```
+
+## Overview
+
+This chapter introduces fundamental data visualisation techniques using the grammar of graphics approach through `ggplot2`. We'll use real ecological data to create and customise informative plots while building on the statistical concepts from the previous chapter.
+
+## Data Introduction
+
+We'll work with two datasets from the Long Term Ecological Research (LTER) Network:
+
+1. **Fiddler Crabs** (`pie_crab`): Body size measurements of fiddler crabs, collected to study population characteristics.
+2. **Sugar Maples** (`hbr_maples`): Tree growth measurements under different environmental conditions.
+
+## Grammar of Graphics with ggplot2
+
+The `ggplot2` package uses a layered approach to building plots:
+1. Data: The dataset we're visualising
+2. Aesthetics: How variables map to visual elements
+3. Geometries: The type of plot we want to create
+4. Additional layers: Labels, themes, and customisation
+
+## Core Plot Types
+
+### Histograms: Understanding Distributions
+
+Let's examine the distribution of crab carapace widths:
+
+```{r}
+# Basic histogram
+ggplot(pie_crab, aes(x = size)) +
+  geom_histogram(bins = 30) +
+  labs(
+    x = "Carapace Width (mm)",
+    y = "Count",
+    title = "Distribution of Fiddler Crab Sizes"
+  )
+
+# Add mean line to connect with previous chapter
+ggplot(pie_crab, aes(x = size)) +
+  geom_histogram(bins = 30) +
+  geom_vline(aes(xintercept = mean(size, na.rm = TRUE)),
+    color = "red", linetype = "dashed"
+  ) +
+  labs(
+    x = "Carapace Width (mm)",
+    y = "Count",
+    title = "Fiddler Crab Sizes with Mean"
+  )
+```
+
+### Boxplots: Visualising Summary Statistics
+
+Boxplots directly show the summary statistics we learned previously:
+
+```{r}
+# Basic boxplot
+ggplot(pie_crab, aes(x = site, y = size)) +
+  geom_boxplot() +
+  labs(
+    x = "Site",
+    y = "Carapace Width (mm)",
+    title = "Fiddler Crab Sizes by Site"
+  )
+
+# Compare sites with different colors
+ggplot(pie_crab, aes(x = site, y = size, fill = site)) +
+  geom_boxplot() +
+  labs(
+    x = "Site",
+    y = "Carapace Width (mm)",
+    title = "Fiddler Crab Sizes by Site"
+  )
+```
+
+### Bar Plots: Summarising Groups
+
+Let's look at crab counts across sites:
+
+```{r}
+# Simple count
+ggplot(pie_crab, aes(x = site)) +
+  geom_bar() +
+  labs(
+    x = "Site",
+    y = "Count",
+    title = "Number of Crabs per Site"
+  )
+
+# Mean size by site with error bars
+pie_crab %>%
+  group_by(site) %>%
+  summarise(
+    mean_width = mean(size, na.rm = TRUE),
+    se = sd(size, na.rm = TRUE) / sqrt(n())
+  ) %>%
+  ggplot(aes(x = site, y = mean_width)) +
+  geom_col() +
+  geom_errorbar(
+    aes(
+      ymin = mean_width - se,
+      ymax = mean_width + se
+    ),
+    width = 0.2
+  ) +
+  labs(
+    x = "Site",
+    y = "Mean Carapace Width (mm)",
+    title = "Average Crab Size by Site"
+  )
+```
+
+### Scatterplots: Exploring Relationships
+
+Examine maple growth patterns:
+
+```{r}
+# Basic scatterplot
+ggplot(hbr_maples, aes(x = year, y = stem_length)) +
+  geom_point() +
+  labs(
+    x = "Year",
+    y = "Stem Length (cm)",
+    title = "Sugar Maple Growth Over Time"
+  )
+
+# Add trend line and group by treatment
+ggplot(hbr_maples, aes(
+  x = year, y = stem_length,
+  color = watershed
+)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(
+    x = "Year",
+    y = "Stem Length (cm)",
+    title = "Sugar Maple Growth by Watershed"
+  )
+```
+
+## Essential Plot Modifications
+
+### Clear Labels and Titles
+
+```{r}
+ggplot(pie_crab, aes(x = site, y = size)) +
+  geom_boxplot() +
+  labs(
+    x = "Collection Site",
+    y = "Carapace Width (mm)",
+    title = "Fiddler Crab Size Distribution",
+    subtitle = "Comparing sizes across collection sites",
+    caption = "Data: PIE LTER"
+  )
+```
+
+### Appropriate Colours
+
+```{r}
+# Using colour-blind friendly palette
+ggplot(pie_crab, aes(
+  x = site, y = size,
+  fill = site
+)) +
+  geom_boxplot() +
+  scale_fill_brewer(palette = "Set2") +
+  labs(
+    x = "Collection Site",
+    y = "Carapace Width (mm)",
+    title = "Fiddler Crab Sizes by Site (with colour)"
+  )
+```
+
+### Scale Adjustments
+
+```{r}
+# Adjust axis limits and breaks
+ggplot(hbr_maples, aes(
+  x = year, y = stem_length,
+  color = watershed
+)) +
+  geom_point() +
+  scale_y_continuous(
+    limits = c(0, max(hbr_maples$stem_length, na.rm = TRUE)),
+    breaks = seq(0, max(hbr_maples$stem_length, na.rm = TRUE), by = 50)
+  ) +
+  labs(
+    x = "Year",
+    y = "Stem Length (cm)"
+  )
+```
+
+### Theme Customisation
+
+```{r}
+# Using minimal theme with customisation
+ggplot(pie_crab, aes(x = site, y = size)) +
+  geom_boxplot() +
+  labs(
+    x = "Collection Site",
+    y = "Carapace Width (mm)",
+    title = "Fiddler Crab Size Distribution"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text = element_text(size = 10),
+    axis.title = element_text(size = 12),
+    plot.title = element_text(size = 14, face = "bold"),
+    legend.position = "bottom"
+  )
+```
+
+## Summary
+
+We've learned how to:
+- Create four fundamental plot types using `ggplot2`
+- Connect visualisations to statistical concepts
+- Customise plots for clarity and impact
+- Present ecological data effectively
+
+These visualisation skills help us communicate patterns and relationships in biological data.

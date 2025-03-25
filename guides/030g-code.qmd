@@ -1,0 +1,213 @@
+---
+title: Code
+execute: 
+  output: true
+code-fold: true
+draft: true
+---
+
+Quarto's superpower is *combining* data with text in one document. This is a major advantage over traditional methods that require copying and pasting into Word or PDF because it allows you to complete entire reports in a single document. To achieve this, you need to understand how Quarto works with code and how to control the code input and output in your documents. 
+
+## Code chunks 
+**Code chunks are the heart of Quarto.** These are blocks of code that, when Quarto is rendering the document, will be run and the output inserted immediately into the document. A code chunk looks like this:
+
+```{{r}}
+```
+
+The code chunk is basically a markup that is made of two parts:
+
+1. The opening and closing triple backticks (```) that tell Quarto where the code starts and ends.
+2. The language of the code (e.g., `r`, `python`, `bash`, etc.) that tells Quarto what kind of code it is, encapsulated in curly braces `{}` after the opening backticks.
+
+Anything that you put into a code chunk, Quarto will assume is code and try to run it. **In ENVX1002 we use code chunks to produce figures and tables, which are common components of scientific reports.**
+
+## Running (executing) code
+When you render a Quarto document, it will run all the code chunks in the document and insert the output into the document. This is called **executing** the code. For example, if you have a code chunk that looks like below:
+
+```{{r}}
+1 + 1
+```
+
+Quarto shows both the **input** (the code you wrote) and the **output** (the result of running the code):
+```{r}
+#| echo: true
+#| code-fold: false
+1 + 1
+```
+
+This is great! But as far as reports go, if all code *input* and *output* are shown, then the report will be very long and hard to read. In fact, just because your report is written in QUarto does not mean it should look like a programming tutorial. It should instead look like any other scientific report, with the code hidden away and only the results shown.
+
+Luckily Quarto has a few options for controlling code input and output in the final document.
+
+## Controlling output
+
+### The ENVX1002 approach: Code folding
+
+In ENVX1002, we want the best of both worlds:
+- Reports that look professional (like they came from Word)
+- Code that's accessible when needed (for marking and reproducibility)
+
+The solution? **Code folding!** Instead of completely hiding code with `echo: false`, we use `code-fold: true`. This means:
+- Code is hidden by default (keeping your report clean)
+- Readers can reveal the code by clicking a button (useful for marking!)
+- Your report stays reproducible without looking like a programming tutorial
+
+### Types of output to control
+
+When working with R code, there are several types of output you might want to manage:
+
+1. **Code input** (the code itself)
+   - Use `code-fold: true` to hide but keep accessible
+   - Use `echo: false` when you really want it gone
+2. **Results** (numerical output)
+3. **Messages** (information from packages)
+4. **Warnings** (potential problems)
+5. **Errors** (actual problems)
+
+You can control all of these using chunk options that start with `#|`. Here's how:
+
+### Common scenarios in report writing
+
+Let's look at some typical situations you'll encounter when writing a report:
+
+#### Scenario 1: Loading packages
+
+When loading packages, you typically want to hide everything (code and messages):
+
+```{{r}}
+#| include: false
+library(tidyverse)
+library(readxl)
+```
+
+#### Scenario 2: Reading data
+
+For data reading and exploration, use code folding:
+
+```{{r}}
+#| code-fold: true
+#| message: false
+data <- mtcars
+glimpse(data)  # Show structure of the data
+```
+
+#### Scenario 3: Creating a figure
+
+For figures, fold the code but always show the figure:
+
+```{{r}}
+#| code-fold: true
+#| message: false
+#| warning: false
+ggplot(mtcars, aes(mpg, wt)) +
+  geom_point() +
+  theme_minimal() +
+  labs(title = "Car Weight vs Fuel Efficiency")
+```
+
+#### Scenario 4: Statistical analysis
+
+For key statistics, consider showing the code:
+
+```{{r}}
+#| code-fold: false
+t.test(mtcars$mpg ~ mtcars$am)
+```
+
+### Best practices for reports
+
+Here are some guidelines for what to show/hide in your reports:
+
+1. **Always hide completely** (`include: false`):
+   - Package loading code and messages
+   - Initial data reading
+   - Setup steps
+
+2. **Usually fold** (`code-fold: true`):
+   - Data preparation steps
+   - Figure creation code
+   - Most analyses
+
+3. **Consider showing** (`code-fold: false`):
+   - Key statistical analyses
+   - Important data transformations
+   - Methods that need explanation
+
+### Setting up default options
+
+For a professional report, use these YAML settings:
+
+````
+---
+title: "My Scientific Report"
+execute:
+  code-fold: true    # Hide code by default but keep it accessible
+  message: false     # Hide package messages
+  warning: false     # Hide warnings unless important
+---
+````
+
+### Progressive example: Cleaning up a report
+
+Let's see how to progressively clean up a section of a report:
+
+#### Step 1: Initial code (too messy for a final report)
+
+```{{r}}
+#| eval: false
+# Load packages
+library(tidyverse)
+library(readxl)
+
+# Read data
+data <- read_excel("raw_data.xlsx")
+
+# Clean data
+clean_data <- data %>%
+  filter(!is.na(temperature)) %>%
+  mutate(date = as.Date(date))
+
+# Create plot
+ggplot(clean_data, aes(date, temperature)) +
+  geom_point() +
+  geom_smooth() +
+  theme_minimal()
+
+# Run analysis
+model <- lm(temperature ~ date, data = clean_data)
+summary(model)
+```
+
+#### Step 2: Clean version for the report
+
+```{{r}}
+#| include: false
+# Hide setup completely
+library(tidyverse)
+library(readxl)
+data <- read_excel("raw_data.xlsx")
+```
+
+```{{r}}
+#| code-fold: true
+#| message: false
+#| warning: false
+# Data preparation and plot with folded code
+clean_data <- data %>%
+  filter(!is.na(temperature)) %>%
+  mutate(date = as.Date(date))
+
+ggplot(clean_data, aes(date, temperature)) +
+  geom_point() +
+  geom_smooth() +
+  theme_minimal()
+```
+
+```{{r}}
+#| code-fold: false
+# Show important analysis code
+model <- lm(temperature ~ date, data = clean_data)
+summary(model)
+```
+
+Remember: A good scientific report should look professional and focus on your findings. The code should be there when needed, but it shouldn't steal the show from your scientific narrative!

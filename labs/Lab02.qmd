@@ -3,12 +3,13 @@ title: Lab 02 -- Statistical programming
 embed-resources: true
 resources:
   - data/soil.xlsx
+  - data/mario_kart.csv
 ---
 
 ```{r setup}
 #| include: false
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load(tidyverse, readxl, modeest)
+pacman::p_load(tidyverse, readxl, modeest, lubridate)
 ```
 
 ::: {.callout-tip}
@@ -28,7 +29,6 @@ Please create a new Quarto document in your project folder to practice R code an
 
 The following packages are required for this practical:
 
-- `pacman` -- a package for managing the loading of other packages (among other awesome features)
 - `tidyverse` -- a collection of R packages designed for data science
 - `readxl` -- a package for reading Excel files
 - `modeest` -- a package for estimating the mode of a distribution
@@ -37,9 +37,11 @@ The following packages are required for this practical:
 If you have not already installed these packages, you can do so by adding the following code into a code chunk in your Quarto document:
 
 ```{r}
-#| eval: false
-if (!require("pacman")) install.packages("pacman")
-pacman::p_load(tidyverse, readxl, modeest)
+#| eval: true
+library(tidyverse)
+library(readxl)
+library(modeest)
+library(lubridate)
 ```
 
 Finally, please download the data file used in this lab here: [soil.xlsx](data/soil.xlsx).
@@ -50,17 +52,17 @@ This exercise encourages students to discuss academic integrity, and in particul
 
 If you are interested in more information on Academic Integrity at the University of Sydney, see the following link: [Academic Integrity](https://www.sydney.edu.au/students/academic-integrity.html). Also ensure you have completed the Academic Honesty Education Module (AHEM). This must be complete before your first assessment is due (next week for ENVX1002). 
 
-## Exercise 1: Setting up
+## Exercise 1: Setting up (walk-through)
 
 ### Getting Started - Important!
 
 Before starting each lab session, you will need to create a new Quarto document to work on the exercises. Follow these steps to set up your lab environment:
 
 1. **Open RStudio Project**
-   - Locate your RStudio project file (`.Rproj`) in your lab folder. This was set up in Lab 01.
-   - Either:
-     a. Open RStudio and use File > Open Project to navigate to your `.Rproj` file
-     b. Double-click the `.Rproj` file directly from your file explorer
+   - Any of the following should work:
+     a. In RStudio, click on the project name in the top-right corner and select your project from a recent list. (It might already be open, otherwise it would show "Project: (None)")
+     b. In RStudio, use File > Open Project to navigate to your `.Rproj` file
+     c. Double-click the `.Rproj` file directly from your file explorer
 
 ::: {.column-margin}
 Your project name should appear in the top-right corner of RStudio.
@@ -71,6 +73,7 @@ Your project name should appear in the top-right corner of RStudio.
    - Give your document a meaningful name (e.g., `Lab 2 Exercises`), leave other options as default and click "Create"
 
 3. **Save and Render Your Document**
+   - **You must save your document now.** This acts as a simple check to see that you are working in an environment that is not restricted.
    - Click File > Save or press Ctrl+S (Windows) / Cmd+S (Mac)
    - Name it something meaningful like `lab02_practice.qmd`
    - Click the "Render" button in the editor toolbar to generate the HTML output
@@ -79,7 +82,82 @@ Your project name should appear in the top-right corner of RStudio.
 If you encounter any issues, please ask your demonstrator for help.
 :::
 
-## Exercise 2: water quality
+### Follow our lead
+
+::: callout-important
+We've created this section to make sure you don't get lost during the lab. Remember to read "A brief R guide for surviving ENVX1002" available in the Tool Kit section on Canvas for a better understanding of how to use R in this course.
+:::
+
+
+#### Two golden rules
+
+1. Text are formatted in Markdown (like this text)
+2. Code must be written inside code chunks 
+
+A code chunk is what makes your document "dynamic" as it can execute code and perform all sorts of tasks. 
+
+To create a code chunk:
+
+- **Quick way**: Use keyboard shortcuts
+  - Windows/Linux: `Ctrl + Alt + I`
+  - Mac: `Cmd + Option + I`
+- **Manual way**: Type three backticks followed by {r}, then end with three backticks
+
+Here's what a code chunk looks like:
+
+```{{r}}
+mean(c(1, 2, 3))
+```
+Note: the "fence" that we use (the three backticks plus the `{r}`) will only be visible in Source view. Your demonstrator will show you how to switch between Source and Preview views.
+
+
+#### Understanding Functions
+
+This is a function:
+
+```{r}
+# Input → Process → Output
+mean(c(2, 4, 6)) # Takes numbers, calculates average, returns 4
+```
+
+You can recognise it because it has:
+
+- A name (`mean`)
+- Parentheses `()` to hold input data
+- Input data inside the parentheses (e.g., `c(2, 4, 6)`)
+
+A function will almost always return an output, which you can use in your code. In this case, the output is `4`. Functions are the reason why we can do so much with R -- they are like actions that someobe else has written for us to use so that we can complete our tasks with minimal programming.
+
+Let's look at three common functions for central tendency, but at the same time look at what it means to run functions on data we often call "objects":
+
+1. `mean()`: 
+   ```{r}
+# Create a vector of numbers and store it in an object called "scores"
+scores <- c(85, 92, 78, 95, 8)
+# Calculate the mean of the scores
+mean(scores)
+   ```
+
+2. `median()`: 
+   ```{r}
+heights <- c(160, 165, 168, 170, 185)
+median(heights)
+   ```
+
+3. `mode()`:
+   ```{r}
+votes <- c("yes", "no", "yes", "maybe", "yes")
+mfv(votes)
+   ```
+
+Remember: Every function needs:
+
+- Parentheses `()` to work
+- Input data (inside the parentheses)
+- Sometimes extra options (like `na.rm = TRUE` to handle missing values)
+
+
+## Exercise 2: Water quality
 
 Sulphate (SO~4~) is a key indicator in water quality monitoring and can be used to assess environmental impacts from industry and agriculture. In this exercise, we will explore a dataset of SO~4~ concentrations (mg/kg) in water samples.
 
@@ -98,11 +176,27 @@ Try writing and running the code chunks in your own Quarto document to see their
 When we load data into R for the first time, it is important to check what it looks like (and whether it loaded correctly). The `str()` function is a good way to quickly inspect the data:
 
 ```{r inspect-data}
-#| output: false
 str(so4)
 ```
 
-**What does the output of `str()` tell us about the data?** You may want to look at the documentation `?str` or search online for more information, but ask your demonstrator if you're still unsure about why we use this function.
+::: {.callout-tip}
+## Question 1
+**What does the output of `str()` tell us about the data?** You may want to look at the documentation `?str` or search online for more information, but ask your demonstrator if you're still unsure about why we use this function. Relate this to the data you are working with.
+:::
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer 1
+The `str()` function provides a concise summary of the data frame structure. It tells us the number of observations (rows) and variables (columns), as well as the data type of each variable. This is useful for understanding the data we are working with. For this particular dataset, we see that it contains 30 observations of one variable, `SO4`, which is a numeric variable inside a `tibble` object. All this can be inferred from the output of `str()`:
+
+```{r}
+#| echo: false
+#| output: true
+str(so4)
+```
+
+:::
+:::
 
 Since the data is a data frame object, we have a good idea of what functions we can use to explore it.
 Let's examine the first few rows of our data:
@@ -113,7 +207,7 @@ head(so4)
 ```
 
 
-Let's calculate some basic descriptive statistics:
+Let's calculate some basic descriptive statistics. Read the code and try to understand every part of it, including the text in `#`.
 
 ```{r basic-stats}
 #| message: false
@@ -128,7 +222,10 @@ iqr_so4 <- IQR(so4$SO4)
 var_so4 <- var(so4$SO4)
 sd_so4 <- sd(so4$SO4)
 ```
-When reporting statistics in a scientific document, there are two approaches we could take:
+
+### Reporting your data
+
+When reporting statistics in a Quarto document, there are two approaches we could take:
 
 #### 1. Basic R output:
 ```{r}
@@ -152,18 +249,16 @@ Using inline R code (approach 2) has several advantages:
 
 To create inline R code, use backticks with r, like this:
 
+```markdown
+The mean SO~4~ concentration in our samples is `{{r}} round(mean_so4, 2)` mg/kg...
 ```
-The mean SO~4~ concentration in our samples is `r round(mean_so4, 2)` mg/kg
-```
+
 Try to recreate the report above in your Quarto document, or use other objects like `mode_so4` and `var_so4` in your report.
 
 
+## Exercise 3: Using MS Excel
 
-## Exercise 3: using MS Excel
-
-
-
-## Exercise 3: using MS Excel
+Why use Excel when you have R? Well, Excel is an ubiquitous tool in many industries and can be a useful complement to R for quick data exploration and analysis. Sometimes it may even be easier to use Excel for simple tasks. 
 
 Let's calculate the same statistics using Excel to compare approaches. First:
 
@@ -194,7 +289,8 @@ For example, to calculate the mean:
 
 ![Using the `=AVERAGE()` formula in Excel. Note that this screenshot demonstrates the selection of a specific range of data.](images/excel-mean-formula.png)
 
-::: {style="color: blue"}
+::: {.callout-tip}
+## Question 2
 Calculate these statistics for the SO~4~ data in Excel:
 
 - For central tendency:
@@ -211,7 +307,15 @@ Calculate these statistics for the SO~4~ data in Excel:
 Write notes on how you used these formulas if necessary. You may also want to compare the results with those obtained in R and write down your thoughts on the efficiency and ease of use for each method.
 :::
 
-## Exercise 4: soil data
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer 2
+This exercise should be straightforward. Ask your demonstrator if you encounter any issues.
+:::
+:::
+
+
+## Exercise 4: Soil data
 
 In agricultural science, soil characteristics are essential for understanding soil health and fertility. The `soil` sheet in the `soil.xlsx` file contains data on soil properties at different depths, as well as lithology and land use information.
 
@@ -230,7 +334,17 @@ str(soil)
 head(soil)
 ```
 
-[What do you notice about the data structure that is different from the SO~4~ data?]{style="color: blue"}
+::: {.callout-tip}
+## Question 3
+**What do you notice about the data structure that is different from the SO~4~ data?** How does this affect the way we subset the data?
+:::
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer 3
+From `str()` we can observe that the `soil` data frame contains multiple columns, each representing a different soil property. This means we can subset the data based on different variables, such as clay content, electrical conductivity, lithology, and land use. The `head()` function shows the first few rows of the data, which can help us understand the data structure and content.
+:::
+:::
 
 The `soil` data frame contains the following columns:
   
@@ -260,8 +374,13 @@ Combined with functions, the `$` operator can be used to calculate statistics on
 
 ```{r}
 # Calculate the mean clay content at 0 cm depth
-mean(soil$clay0)
+mean_clay0 <- mean(soil$clay0)
+mean_clay0
 ```
+
+::: {.column-margin}
+Notice how we saved the result of the `mean()` function in a new object `mean_clay0`. This is useful for storing results and using them later in your code (e.g. for inline reporting). However, it means that the result will not be displayed in the console unless you explicitly print it by typing `mean_clay0` again in a new line.
+:::
 
 ::: {.callout-note}
 The `$` operator is particularly useful when you want to:
@@ -296,27 +415,91 @@ soil[soil$clay0 > 40, ]
 soil[soil$clay60 > 30 & soil$ec0 < 0.5, ]
 ```
 
-::: {style="color: blue"}
+::: {.callout-tip}
+## Question 4
 **Practice**: Subset the data to find samples where:
 
 - clay content at 0cm depth is less than 50%
-- electrical conductivity at 60cm depth is greater than 1.5
-- clay content at 0cm is less than 20% OR pH at 60cm is greater than 6.5
+- electrical conductivity at 60cm depth is between 25 and 30, inclusive
+- clay content at 0cm is less than 10% OR electrical conductivity at 60cm is greater than 25
 :::
 
-## Exercise 5: soil statistics
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer 4
+
+Clay content at 0cm depth is less than 50%
+
+```{r}
+soil[soil$clay0 < 50, ]
+```
+
+Electrical conductivity at 60cm depth is between 25 and 30, inclusive
+
+```{r}
+soil[soil$ec60 >= 25 & soil$ec60 <= 30, ]
+```
+
+Clay content at 0cm is less than 10% OR electrical conductivity at 60cm is greater than 25
+
+```{r}
+soil[soil$clay0 < 10 | soil$ec60 > 25, ]
+```
+:::
+:::
+
+## Exercise 5: Soil statistics
 
 We will continue to work on the soil dataset and practice calculating some basic summary statistics.
 
-::: {style="color: blue"}
+::: {.callout-tip}
+## Question 5
 1. Calculate the mean, median, and mode for clay content at 0cm depth
 2. Calculate the range, IQR, variance, and standard deviation for electrical conductivity at 60cm depth
 3. Report these statistics in your Quarto document using inline R code
 :::
 
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer 5
+Notice how in all the calculations, we used the `na.rm = TRUE` argument to handle missing values. This is important when calculating statistics to avoid errors.
+
+1. Calculate the mean, median, and mode for clay content at 60cm depth
+
+```{r}
+mean_clay0 <- mean(soil$clay60, na.rm = TRUE)
+mean_clay0
+median_clay0 <- median(soil$clay60, na.rm = TRUE)
+median_clay0
+mode_clay0 <- mfv(soil$clay60, na.rm = TRUE)[1]
+mode_clay0
+```
+
+2. Calculate the range, IQR, variance, and standard deviation for electrical conductivity at 60cm depth
+
+```{r}
+range_ec60 <- range(soil$ec60, na.rm = TRUE)
+range_ec60
+iqr_ec60 <- IQR(soil$ec60, na.rm = TRUE)
+iqr_ec60
+var_ec60 <- var(soil$ec60, na.rm = TRUE)
+var_ec60
+sd_ec60 <- sd(soil$ec60, na.rm = TRUE)
+sd_ec60
+```
+
+3. Report these statistics in your Quarto document using inline R code
+
+```markdown
+The mean clay content at 60cm depth is `{{r}} round(mean_clay0, 2)`%, with a median of `{{r}} round(median_clay0, 2)`% and a mode of `{{r}} mode_clay0`%. The range of electrical conductivity at 60cm depth is `{{r}} range_ec60[1]` to `{{r}} range_ec60[2]`, with an IQR of `{{r}} iqr_ec60`, variance of `{{r}} var_ec60`, and standard deviation of `{{r}} sd_ec60`.
+```
+:::
+:::
+
+
 ## Done!
 
-This is the end of Lab 02. Remember to save your Quarto document and submit it to Canvas when you're done. If you have any questions, feel free to ask your demonstrator for help.
+This is the end of Lab 02. Remember to save your Quarto document ~~and submit it to Canvas~~ when you're done. If you have any questions, feel free to ask your demonstrator for help.
 
 ## Bonus: Take-home exercises
 
@@ -324,7 +507,7 @@ Take-home exercises are optional but recommended for further practice. You can c
 
 ### Exercise 5: Mario Kart statistics
 
-We're not going to go too much about the game -- but here is a dataset of character attributes from the popular game.
+We're not going to go too much about the game -- but here is a dataset of character attributes from the popular Mario Kart.
 
 Download it here: [mario_kart.csv](data/mario_kart.csv)
 
@@ -340,7 +523,7 @@ The dataset contains the following variables:
 - `traction`: Grip on different surfaces (1-5 scale)
 - `drift_rating`: Skill at power-sliding around corners (1-5 scale)
 
-::: {style="color: blue"}
+
 Complete the following exercises using both R and Excel:
 
 1. **Data Import and Inspection**
@@ -376,8 +559,205 @@ Complete the following exercises using both R and Excel:
    - Who is the most "well-rounded" character (closest to average in all stats)?
    - Create a report comparing Mario and Luigi's stats using inline R code
 
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer - Mario Kart Exercise
+
+### 1. Data Import and Inspection
+
+```{r}
+#| eval: true
+# Load the data
+mario_kart <- read_csv("data/mario_kart.csv")
+
+# Examine structure
+str(mario_kart)
+
+# View first few rows
+head(mario_kart)
+```
+
+**Observations about the data:**
+
+- The dataset contains 12 characters with 7 variables
+- All attributes except 'character' are numeric values on rating scales
+- Character names are stored as strings
+- The data appears to be clean with no missing values
+- Attributes are rated on scales that appear to range from approximately 2.5 to 4.5
+
+### 2. Central Tendency for Speed Attribute
+
+```{r}
+#| eval: true
+# Calculate mean speed
+mean_speed <- mean(mario_kart$speed)
+mean_speed
+
+# Calculate median speed
+median_speed <- median(mario_kart$speed)
+median_speed
+
+# Calculate mode of speed
+mode_speed <- mfv(mario_kart$speed)[1]
+mode_speed
+```
+
+**Which measure best represents the "typical" speed rating?**
+
+The median (4.1) is likely the best representation of the typical speed rating because:
+
+- It's not influenced by extreme values like the mean
+- The data shows a slight negative skew (more characters with higher speeds)
+- The median gives us the middle value that divides the characters evenly
+
+### 3. Spread Analysis for Weight Attribute
+
+```{r}
+#| eval: true
+# Calculate range
+range_weight <- range(mario_kart$weight)
+range_weight
+
+# Calculate IQR
+iqr_weight <- IQR(mario_kart$weight)
+iqr_weight
+
+# Calculate variance
+var_weight <- var(mario_kart$weight)
+var_weight
+
+# Calculate standard deviation
+sd_weight <- sd(mario_kart$weight)
+sd_weight
+```
+
+**What these tell us about variation in character weights:**
+
+The weight attribute shows considerable variation:
+
+- Range: 2.5 to 4.5 (a spread of 2.0 units)
+- IQR: Approximately 1.1, indicating moderate spread in the middle 50% of characters
+- Standard deviation: Approximately 0.7, showing that weights typically vary by about 0.7 units from the mean
+- The distribution appears to be somewhat bimodal, with characters clustering around lighter weights (2.5-3.0) and heavier weights (4.0-4.5)
+
+### 4. Character Comparison
+
+```{r}
+#| eval: true
+# Characters with highest and lowest acceleration
+mario_kart[which.max(mario_kart$acceleration), ]
+mario_kart[which.min(mario_kart$acceleration), ]
+
+# Characters with above-average handling
+mean_handling <- mean(mario_kart$handling)
+mario_kart[mario_kart$handling > mean_handling, ]
+
+# Characters with both speed and weight above 4.0
+mario_kart[mario_kart$speed > 4.0 & mario_kart$weight > 4.0, ]
+```
+
+**Results:**
+
+- Toad has the highest acceleration (4.4)
+- Bowser has the lowest acceleration (2.8)
+- Characters with above-average handling: Peach, Yoshi, Toad, Koopa Troopa, Princess Daisy
+- Characters with both speed and weight above 4.0: Bowser, Wario, Donkey Kong, Waluigi
+
+### 5. Advanced Challenge
+
+This is an interesting question as it requires you to think through the idea of what it means to be "closest to average" in all stats -- hopefully many of you will see that it is a question about spread. In general, we want to find the character with the smallest deviation from the average across all attributes.
+
+**Our approach**:
+
+- First, we calculated each character's overall mean across all attributes (`overall_mean`)
+- Then, we found the global average of all attributes across all characters (`overall_avg`)
+- Next, we calculated how far each character's average is from this global average (`deviation`)
+- Finally, we selected the character with the smallest deviation as the most "well-rounded"
+
+**Why use deviation?**:
+
+- Deviation measures how far a value is from a reference point (in this case, the global average)
+- A small deviation indicates a character whose stats are close to the average
+- This aligns with our interpretation of "well-rounded" as being balanced and close to average
+- Using `which.min()` finds the character with the smallest deviation, identifying our most balanced character
+
+
+```{r}
+#| eval: true
+# Calculate mean of all attributes for each character
+mario_kart$overall_mean <- rowMeans(mario_kart[, c("weight", "speed", "acceleration",
+                                                  "handling", "traction", "drift_rating")])
+
+# Find the most "well-rounded" character
+# First calculate the overall average across all characters and attributes
+overall_avg <- mean(unlist(mario_kart[, c("weight", "speed", "acceleration",
+                                         "handling", "traction", "drift_rating")]))
+
+# Then find the character closest to this average
+mario_kart$deviation <- abs(mario_kart$overall_mean - overall_avg)
+well_rounded <- mario_kart[which.min(mario_kart$deviation), ]
+well_rounded
+```
+
+
+**Answer**: The most "well-rounded" character is `r well_rounded$character` with an overall mean of `r round(well_rounded$overall_mean, 2)`.
+
+#### Alternative!
+
+There isn't just one approach to this question! Another way to look at it is to, instead of calculating the deviation from the global average, calculate the sum of squared deviations from the average stats. This will give us a sense of how far each character's stats are from the average across all attributes.
+
+```{r}
+avg_stats <- colMeans(mario_kart[, -1])
+
+# Calculate squared deviations for each character
+deviations <- mario_kart |>
+  mutate(total_ss = (weight - avg_stats["weight"])^2 + 
+                    (speed - avg_stats["speed"])^2 +
+                    (acceleration - avg_stats["acceleration"])^2 +
+                    (handling - avg_stats["handling"])^2 +
+                    (traction - avg_stats["traction"])^2 +
+                    (drift_rating - avg_stats["drift_rating"])^2) |>
+  arrange(total_ss)
+deviations
+```
+
+**Answer**: In this case, Mario is the most "well-rounded" character, with the smallest sum of squared deviations from the average stats.
+
+**Mario vs. Luigi Comparison Report:**
+
+```{r}
+# Compare Mario and Luigi
+mario <- mario_kart[mario_kart$character == "Mario", ]
+luigi <- mario_kart[mario_kart$character == "Luigi", ]
+```
+Mario and Luigi have similar stats, but with some notable differences:
+
+- **Weight**: Mario (`r mario$weight`) is slightly heavier than Luigi (`r luigi$weight`)
+- **Speed**: Mario (`r mario$speed`) is slightly faster than Luigi (`r luigi$speed`)
+- **Acceleration**: Luigi (`r luigi$acceleration`) has better acceleration than Mario (`r mario$acceleration`)
+- **Handling**: Luigi (`r luigi$handling`) has better handling than Mario (`r mario$handling`)
+- **Traction**: Luigi (`r luigi$traction`) has better traction than Mario (`r mario$traction`)
+- **Drift Rating**: Mario (`r mario$drift_rating`) has a better drift rating than Luigi (`r luigi$drift_rating`)
+
+Overall, Luigi tends to have better control stats (acceleration, handling, traction), while Mario has slightly better speed and drift capabilities.
+
+
+```markdown
+Mario and Luigi have similar stats, but with some notable differences:
+
+- **Weight**: Mario (`{{r}} mario$weight`) is slightly heavier than Luigi (`{{r}} luigi$weight`)
+- **Speed**: Mario (`{{r}} mario$speed`) is slightly faster than Luigi (`{{r}} luigi$speed`)
+- **Acceleration**: Luigi (`{{r}} luigi$acceleration`) has better acceleration than Mario (`{{r}} mario$acceleration`)
+- **Handling**: Luigi (`{{r}} luigi$handling`) has better handling than Mario (`{{r}} mario$handling`)
+- **Traction**: Luigi (`{{r}} luigi$traction`) has better traction than Mario (`{{r}} mario$traction`)
+- **Drift Rating**: Mario (`{{r}} mario$drift_rating`) has a better drift rating than Luigi (`{{r}} luigi$drift_rating`)
+
+Overall, Luigi tends to have better control stats (acceleration, handling, traction), while Mario has slightly better speed and drift capabilities.
+```
 
 :::
+:::
+
 
 ## Attribution
 

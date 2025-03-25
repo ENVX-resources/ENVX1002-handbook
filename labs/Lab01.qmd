@@ -31,7 +31,6 @@ At the end of this practical students should be able to:
 
 At the beginning of the next few weeks we will be doing some short activities before getting into the stats to help you foster a sense of belonging, learn more about your peers, and help better prepare you for your studies. This week we will start with a simple introduction, but before we do this, we would like to acknowledge those who were here before us:
 
-
 > *We would like to acknowledge and pay respect to the traditional owners of the land on which we meet; the Gadigal people of the Eora Nation. It is upon their ancestral lands that the University of Sydney is built. As we share our own knowledge, teaching, learning and research practices within this university may we also pay respect to the knowledge embedded forever within the Aboriginal Custodianship of Country.*
 
 To learn more about why we do Acknowledgement of Country, and the difference to Welcome to Country, see the following page: [Welcome and Acknowledgement](https://www.sydney.edu.au/about-us/vision-and-values/our-aboriginal-and-torres-strait-islander-community/kinship-module/learning-module/welcome-and-acknowledgement.html).
@@ -113,10 +112,6 @@ ENVX1002/
 └── data/           # Store your datasets here
 ```
 
-::: column-margin
-Always keep your raw data separate from your analysis files. This helps prevent accidental modifications to your original data.
-:::
-
 To create the data folder, any of the following works:
 
 1. In RStudio's Files pane (bottom-right), click "New Folder", then name it "data"
@@ -142,6 +137,12 @@ Quarto documents combine code, text, and output in one file, making your analysi
 - Work with multiple programming languages (including R)
 - Generate high-quality output in various formats (HTML, PDF, Word)
 
+Here are some examples of documents that have been created using Quarto:
+
+- [CVs (curriculum vitae) and resumes](https://github.com/schochastics/quarto-cv) in PDF
+- [Research papers](https://quarto-journals.github.io/elsevier/) for major academic journals
+- And more -- check the [Quarto gallery](https://quarto.org/gallery/)
+
 ### Creating your first Quarto document
 
 1. In RStudio, click File → New File → Quarto Document
@@ -153,6 +154,8 @@ To render your document:
 
 1. Click the "Render" button (blue arrow) in the editor toolbar
 2. The HTML output will automatically open in your default browser
+
+**If you are rendering your document for the first time, it will fail.** Look out for a yellow box at the top of your source text that prompts you to install the `rmarkdown` package. Install it (by clicking on the install link), wait for the installation to complete, and then render your document again.
 
 #### Basic markdown formatting
 
@@ -171,11 +174,9 @@ Markdown is a simple way to format text that's easy to read and write. The synta
 
 #### Code chunks
 
-Code chunks in Quarto start with ` ```{r} ` and end with ` ``` `:
-
-::: column-margin
 Code chunks are where you write and execute R code. They keep your code separate from your text while showing both the code and its output.
-:::
+
+Code chunks in Quarto start with ` ```{r} ` and end with ` ``` `:
 
 ```{r}
 #| echo: fenced
@@ -190,16 +191,21 @@ You can control chunk behavior with options:
 - `warning: false` - Hide warning messages
 - `message: false` - Hide messages
 
-```{r}
+For example:
+
+````
+```{{r}}
 #| warning: false
 #| message: false
 
 10 / 5
 ```
+````
+**Quarto does not run code by default. You need to put R code in code chunks to run them. This is a safety feature to prevent accidental code execution, as well as a means to control the output.**
 
 ### Basic R operations
 
-Now that we have our environment set up, let's try some basic R operations:
+Now that we have our environment set up, let's try some basic R operations. **Don't forget to use code chunks to evaluate the code below**.
 
 ::: column-margin
 R uses standard mathematical operators. Remember that `^` means "to the power of" and `*` means multiplication.
@@ -242,16 +248,23 @@ You only need to install a package once, but you need to load it every time you 
 ```{r}
 #| eval: false
 # Install a single package
-install.packages("readr")
+install.packages("readr") # DO NOT PUT THIS IN YOUR QUARTO DOCUMENT
 
 # Install multiple packages at once
-install.packages(c("readr", "readxl"))
+install.packages(c("readr", "readxl")) # DO NOT PUT THIS IN YOUR QUARTO DOCUMENT
 ```
 
 2. Using the RStudio interface:
    - Tools → Install Packages...
    - Type the package name
    - Click "Install"
+
+**Do not include `install.packages()` in your Quarto document.** This particular function is meant to be run in the R console. Including it in your document causes numerous issues, plus why would you want to install a package every time you render your document?
+
+![Don't install packages in your Quarto document!](images/dont-do-this.png)
+
+![Install packages in the console only. Do it once, and you don't need to do it again.](images/install-packages.png)
+
 
 ::: {.callout-important}
 You only need to install a package once on your computer. However, you'll need to load it each time you start a new R session.
@@ -261,9 +274,7 @@ You only need to install a package once on your computer. However, you'll need t
 
 To use a package in your R session, you need to load it using the `library()` function:
 
-::: column-margin
-The `pacman` package is a helpful tool that combines installing and loading packages in one step.
-:::
+Below, we load the `readr` and `readxl` packages because we need to use the `read_csv()` and `read_excel()` functions to import data and these functions are part of these packages.
 
 ```{r}
 #| eval: true
@@ -272,39 +283,29 @@ library(readr)
 library(readxl)
 ```
 
-A more efficient way to handle package management is using the `pacman` package. You can read more about it [here](https://trinker.github.io/pacman/vignettes/Introduction_to_pacman.html).
+::: column-margin
+#### Optional: `pacman`
+A more efficient way to handle package management is using the `pacman` package. You can read more about it [here](https://trinker.github.io/pacman/vignettes/Introduction_to_pacman.html). **Please do not use `pacman` unless you have read the documentation and are comfortable with it!**
 
 ```{r}
 #| eval: false
-# Install pacman if not already installed
-if (!require("pacman")) install.packages("pacman")
-
 # Load multiple packages at once
 pacman::p_load(readr, readxl)
 ```
+:::
 
 ::: {.callout-note}
 The `::` operator in R allows you to use a function from a package without loading the entire package. For example, `readr::read_csv()` uses the `read_csv` function from the `readr` package.
 :::
 
-
 ## Exercise 4: importing data
 
 Now that we understand R packages, let's use some specific ones for importing data. We'll use:
+
 - `readr` for importing CSV files
 - `readxl` for importing Excel files
 
-::: column-margin
-CSV files are simple text files that can be opened by many programs. Excel files are more complex but can store multiple sheets and formatting.
-:::
-
-First, make sure these packages are installed and loaded:
-
-```{r}
-# Install and load required packages
-if (!require("pacman")) install.packages("pacman")
-pacman::p_load(readr, readxl)
-```
+Note: CSV files are simple text files that can be opened by many programs. Excel files are more complex but can store multiple sheets and formatting. When Excel opens a CSV file, it treats it like a spreadsheet.
 
 ### Example data files
 
@@ -317,25 +318,77 @@ Save these files in your project's `data` folder before proceeding.
 
 ### Understanding file paths
 
-Before we import data, it's important to understand how R finds your files using file paths:
+Finding and using files on your computer is a bit like giving directions to your house. Let's break down how R finds your files in a way that's easy to understand:
 
 ::: column-margin
-Using relative paths makes your code more portable - it will work on any computer that has the same project structure.
+Think of your project folder as your home base. Relative paths are like giving directions from there: "Go to the kitchen, then the fridge."
 :::
 
-- **Absolute paths** start from the root of your system (e.g., `/Users/yourname/Documents/data.csv` on Mac/Linux or `C:/Users/yourname/Documents/data.csv` on Windows)
-- **Relative paths** start from your current working directory (e.g., `data/data.csv`)
+#### What are file paths?
 
-When working in an R project:
+A file path is simply the address of a file on your computer, telling R exactly where to find it. There are two types of file paths:
 
-- The project folder becomes your working directory
-- Use relative paths to make your code more portable
-- Organise files in subdirectories (like 'data/', 'scripts/', 'output/')
+1. **Absolute paths** are like complete postal addresses:
+   - They start from the very root of your computer
+   - They work anywhere but are specific to YOUR computer
+   - Examples: 
+     - Windows: `C:/Users/YourName/Documents/ENVX1002/data/student_scores.csv`
+     - Mac/Linux: `/Users/YourName/Documents/ENVX1002/data/student_scores.csv`
 
-You can check your working directory with:
+2. **Relative paths** are like giving directions from where you are now:
+   - They start from your project folder (where your .Rproj file is)
+   - Much shorter and more convenient
+   - Example: `data/student_scores.csv` (meaning "look in the data folder, then find student_scores.csv")
+
+#### The working directory concept
+
+Your **working directory** is simply the folder R considers as "here" right now:
+
+- When you open an R project, R automatically sets the working directory to that project's folder
+- All relative paths are based on this location
+- You can check your current location with `getwd()` ("get working directory")
+
 ```{r}
-getwd() # Shows your current working directory
+# This shows your current "location" in the computer
+getwd()
 ```
+
+#### How to use paths in practice
+
+If your project structure looks like this:
+```
+ENVX1002/
+├── ENVX1002.Rproj
+├── data/
+│   ├── student_scores.csv
+│   └── weather_data.xlsx
+├── images/
+│   └── quokka.png
+└── reports/
+  └── lab_report.qmd
+```
+
+Then from any R code in your project:
+
+- To access student_scores.csv: use `"data/student_scores.csv"`
+- To access weather_data.xlsx: use `"data/weather_data.xlsx"`
+- To access quokka.png: use `"images/quokka.png"`
+
+It is important to repeat that this works because you created a project in RStudio. If you were to run the same code outside of RStudio it would not work.
+
+#### Troubleshooting file paths
+
+If R can't find your file, try these steps:
+
+1. Check the spelling and capitalisation (R is case-sensitive!)
+2. Make sure the file is actually in the location you think it is
+3. Use `list.files("data")` to see all files in your data folder
+4. If using an absolute path, double-check it's correct for your computer
+
+
+::: {.callout-important}
+When sharing your code with others or moving your project to a different computer, relative paths (like `"data/file.csv"`) will still work, but absolute paths (that include your username and specific computer folders) will break. This is why we recommend always using relative paths in your R projects!
+:::
 
 ### Importing CSV files
 
@@ -360,6 +413,7 @@ summary(student_data)
 
 ::: {.callout-tip}
 Always try to use relative paths within your R project. This makes your code:
+
 - More portable (works on different computers)
 - Easier to share with others
 - Less likely to break when files move

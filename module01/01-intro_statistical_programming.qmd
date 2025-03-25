@@ -1,0 +1,305 @@
+
+---
+title: Introduction to Statistical Programming
+execute:
+  output: true
+---
+```{r setup}
+#| include: false
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse, lterdatasampler)
+
+# Ensure data is loaded correctly
+data("and_vertebrates", "ntl_icecover", package = "lterdatasampler")
+```
+
+::: callout-note
+This section will not teach you the basics of R and RStudio. If you need that, please refer to [A brief R guide for surviving ENVX1002](https://canvas.sydney.edu.au/courses/64771/pages/r-guide-envx1002). *You will need to be logged into Canvas to access this link.*
+:::
+
+## Data Introduction
+
+While we are all not ecologists, we will be working with two datasets from the Long Term Ecological Research (LTER) Network:
+
+1. **Salamander Counts** (`and_vertebrates`): Data from the Andrews Forest LTER site tracking salamander populations across different streams.
+2. **Lake Ice Duration** (`ntl_icecover`): Records from the North Temperate Lakes LTER site measuring annual ice cover duration.
+
+
+Load the data to get started:
+
+```{r}
+pacman::p_load(lterdatasampler)
+
+# load the data
+data("and_vertebrates", "ntl_icecover")
+```
+
+These are very large datasets -- but don't be intimidated! The point is to show you that statistical programming can handle big data, and it will all make sense as we go along.
+
+### Metadata
+Statistical analysis starts by exploring the data’s structure. Sometimes, datasets include metadata—context that helps explain the data.
+
+For the data that we are using today, metadata is available in the documentation. Use `?and_vertebrates` and `?ntl_icecover` to access it.
+
+```r
+?and_vertebrates
+?ntl_icecover
+```
+### Understanding Data Structure
+The `str()` function shows us the types of variables and how the data is "arranged":
+
+```{r}
+str(and_vertebrates)
+```
+
+There is also `glimpse()`, which requires you to load the `tidyverse` package:
+
+```{r}
+pacman::p_load(tidyverse)
+glimpse(and_vertebrates)
+```
+
+You will soon realise that there are many ways to "skin a cat" in R -- that is, there are multiple ways to achieve the same outcome. You can pick any method as long as you are comfortable with it. 
+
+In general, the outputs from `str()` and `glimpse()` can seem overwhelming at first. This is completely normal, especially when you're new to data exploration. Take your time, and don't worry if it doesn't all make sense immediately -- it will come with practice.
+
+
+### Previewing the Data
+
+The `head()` function shows us the first few rows of a dataset:
+
+```{r}
+head(and_vertebrates)
+```
+
+While `tail()` shows the last few rows:
+
+```{r}
+tail(ntl_icecover)
+```
+
+### Quick Statistical Overview
+
+The `summary()` function provides a statistical overview of your data, adapting its output based on variable types (numerical, categorical, etc.). This means that it can be useful for some datasets but not for others.
+
+```{r}
+summary(and_vertebrates)
+summary(ntl_icecover)
+```
+
+## Summary Statistics
+
+### Mean: central tendency
+
+The arithmetic mean is often our first step in understanding typical values in data.
+
+Mathematically, the mean ($\bar{x}$) is calculated as the sum of all values ($x_i$) divided by the number of values ($n$):
+
+$$
+\bar{x} = \frac{\sum_{i=1}^{n} x_i}{n}
+$$
+
+For example, consider the following set of salamander weights (in grams): 2, 3, 5, 7, and 8. The mean weight is:
+
+$$
+\bar{x} = \frac{2 + 3 + 5 + 7 + 8}{5} = \frac{25}{5} = 5
+$$
+
+In simpler terms, the mean is what you get if you add up all the numbers and then divide by how many numbers you added. It's a way to find the "average" value.
+
+In R, we can calculate the mean using the `mean()` function. Note that we used the `$` operator to access the specific variables in the dataset. It will make sense once you start typing the code as RStudio will provide you with suggestions. 
+
+```{r}
+# Calculate mean salamander weight
+mean(and_vertebrates$weight_g, na.rm = TRUE)
+
+# Calculate mean ice duration
+mean(ntl_icecover$ice_duration, na.rm = TRUE)
+```
+
+Missing values are called `NA` in R. The `na.rm = TRUE` argument tells R to ignore these missing values when calculating the mean. If you don't include this argument, R will return `NA` as the mean as mathematically, you can't do calculations with unknown values.
+
+```{r}
+# This will return NA
+mean(and_vertebrates$weight_g)
+```
+
+### Median: a "robust" central measure
+
+The median is the middle value when all numbers are arranged in order, like finding the middle person if everyone lined up by height. This makes it especially good at representing "typical" values when there are some extreme measurements in your data.
+
+For example, let's take these salamander weights (in grams): 2, 3, 5, 7, 20
+To find the median:
+
+1. Arrange in order: 2, 3, 5, 7, 20
+2. Find the middle number: 5
+
+Even though there's one unusually large salamander (20g), the median (5g) still represents a typical salamander weight. Compare this to the mean:
+
+(2 + 3 + 5 + 7 + 20) ÷ 5 = 7.4g
+
+The mean is pulled higher by the unusually large salamander, making it less representative of a typical salamander in this case. This is why we say the median is "robust" - it's not easily influenced by extreme values or outliers.
+
+For datasets with an even number of values, we take the average of the two middle numbers. For example, with weights 2, 3, 5, 7:
+
+1. Arrange in order: 2, 3, 5, 7
+2. Find the middle pair: 3 and 5
+3. Calculate their average: (3 + 5) ÷ 2 = 4
+
+This robustness proves particularly valuable in data where extreme values are common:
+
+- House prices in a neighborhood (a few mansion prices won't skew the "typical" house value)
+- Animal body sizes (a few giants won't affect the "typical" size)
+- Stream depths (a few very deep pools won't change the "typical" depth)
+
+Let's look at our full salamander data:
+
+```{r}
+# Median ice_duration
+median(ntl_icecover$ice_duration, na.rm = TRUE)
+
+# Compare with mean
+mean(ntl_icecover$ice_duration, na.rm = TRUE)
+```
+
+
+From the above you can see that both values are close indicating that the data is not skewed by extreme values. We will learn more about how this relates to statistics and data distributions in the next few chapters.
+
+
+### Mode: Most frequent value
+
+The mode represents the most frequently occurring value within a dataset, making it especially valuable for understanding the most common category or value in a dataset, whereas the mean and median are more suitable for continuous numerical data.
+
+For example, consider these salamander counts in different sections of a stream:
+2, 3, 2, 4, 2, 1, 3
+
+To find the mode:
+1. Count how often each value appears:
+   - 1 appears once
+   - 2 appears three times
+   - 3 appears twice
+   - 4 appears once
+2. The mode is 2 because it appears most frequently (three times)
+
+Some datasets can have multiple modes:
+
+- If we had: 2, 3, 2, 4, 3, 1, 3
+- Both 2 and 3 appear three times
+- This dataset would be "bimodal" (having two modes)
+
+While the mode is useful for discrete data like species counts, R lacks a built-in function for it. We *could* write one, but we'll use existing packages instead. It is good practice to find out if a package exists before writing your own function since you are (probably) not in this unit to become a software developer.
+
+A Google search should lead you to multiple packages that can calculate the mode, we'll just use the `modeest` package for now. Note that the function used is called `mlv()` (Maximum Likelihood Value):
+
+```{r}
+pacman::p_load(modeest)
+ml <- mlv(and_vertebrates$weight_g, method = "shorth", na.rm = TRUE)
+```
+
+Now that we know that the modal weight in grams is 2, we can use this information to understand the distribution of salamander weights in the dataset.
+
+## Measures of Spread
+
+### Range
+
+The range helps us understand the full scope of variation in their measurements. For salamanders, this might reveal the difference between the smallest juvenile and largest adult:
+
+```{r}
+# Range of salamander weights
+range(and_vertebrates$weight_g, na.rm = TRUE)
+
+# Alternative using min and max
+min(and_vertebrates$weight_g, na.rm = TRUE)
+max(and_vertebrates$weight_g, na.rm = TRUE)
+```
+
+The range provides a basic understanding of data spread, showing the total span of values. It's useful for a quick look at the extent of variation in data. However, the range doesn't tell us **how** the values are distributed within that span. To understand this, we need more advanced measures like variance and standard deviation.
+
+### Variance and standard deviation
+
+Variance and standard deviation help us understand how spread out our data is from the mean. Think of them as measuring how much values typically "deviate" or differ from the average.
+
+#### Variance
+Variance measures the average squared distance of each value from the mean. Let's break this down with a simple example using salamander weights (in grams): 2, 3, 5, 7, 8
+
+1. Calculate the mean: (2 + 3 + 5 + 7 + 8) ÷ 5 = 5
+2. Find how far each value is from the mean:
+   - 2 is 3 below the mean: (2 - 5) = -3
+   - 3 is 2 below the mean: (3 - 5) = -2
+   - 5 equals the mean: (5 - 5) = 0
+   - 7 is 2 above the mean: (7 - 5) = 2
+   - 8 is 3 above the mean: (8 - 5) = 3
+3. Square these differences (this makes all values positive):
+   - (-3)² = 9
+   - (-2)² = 4
+   - 0² = 0
+   - 2² = 4
+   - 3² = 9
+4. Calculate the average of these squared differences:
+   (9 + 4 + 0 + 4 + 9) ÷ 5 = 5.2
+
+The variance in this case is 5.2 (square grams). This squared unit is a bit awkward - imagine trying to explain that salamanders vary by "5.2 square grams" from the mean! This is one of the main reasons we use standard deviation instead of variance.
+
+#### Standard Deviation
+The standard deviation is simply the square root of the variance. We often prefer it because:
+- It's in the same units as our original data (grams instead of square grams)
+- It's easier to interpret in relation to the mean
+
+For our example:
+- Variance = 5.2
+- Standard deviation = √5.2 ≈ 2.28 grams
+
+This means that salamander weights typically vary by about 2.28 grams above or below the mean.
+
+Let's calculate these for our full salamander dataset:
+
+```{r}
+# Variance in salamander weights
+var(and_vertebrates$weight_g, na.rm = TRUE)
+
+# Standard deviation (square root of variance)
+sd(and_vertebrates$weight_g, na.rm = TRUE)
+```
+
+The mean, standard deviation, and variance are key for understanding data variability and underpin many statistical tests/models. Expect to see them often in research.
+
+### Interquartile range (IQR)
+
+The Interquartile Range (IQR) is a robust measure of spread that tells us the range where the middle 50% of our data falls. It's calculated as the difference between the 75th percentile (Q3) and the 25th percentile (Q1).
+
+To understand IQR, let's first understand quartiles using a simple example with salamander weights (in grams): 2, 2, 3, 4, 5, 5, 6, 8, 10
+
+1. First, arrange the data in order (already done above)
+2. Find the median (Q2) - it's 5
+3. Split the data into two halves:
+   - Lower half: 2, 2, 3, 4
+   - Upper half: 5, 6, 8, 10
+4. Find Q1 (median of lower half) = 2.5
+5. Find Q3 (median of upper half) = 7
+6. Calculate IQR = Q3 - Q1 = 7 - 2.5 = 4.5
+
+The IQR tells us that the middle 50% of salamander weights vary by 4.5 grams. This is particularly useful because:
+
+- It's not affected by extreme values (very large or small salamanders)
+- It gives us a sense of "typical" variation in the population
+- It helps identify outliers: values below Q1 - 1.5×IQR or above Q3 + 1.5×IQR are often considered outliers
+
+The IQR is particularly useful in studies where we want to focus on typical variations while excluding extreme values. For lake ice duration, this helps us understand normal annual patterns whilst excluding unusually warm or cold years:
+
+```{r}
+# IQR for ice duration
+IQR(ntl_icecover$ice_duration, na.rm = TRUE)
+
+# Get quartiles (handling missing values)
+quantile(ntl_icecover$ice_duration, na.rm = TRUE)
+```
+
+Looking at the quartiles:
+
+- Q1 (25th percentile): 25% of ice durations are below this value
+- Q2 (50th percentile/median): The middle ice duration
+- Q3 (75th percentile): 75% of ice durations are below this value
+- IQR = Q3 - Q1: The range where the middle 50% of ice durations fall
+
+This information helps us understand the typical variation in ice duration while being less sensitive to extreme weather events that might produce unusually long or short ice cover periods.
+

@@ -51,6 +51,7 @@ _site/
 # Project specific
 # ---------------
 _solution/
+_tutorials/
 
 # Cline
 # -----
@@ -62,3 +63,7 @@ memory-bank/
 # -----------
 # macOS
 .DS_Store
+
+.roomodes
+
+.roo/

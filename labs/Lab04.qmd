@@ -1,5 +1,5 @@
 ---
-title: Lab 04 -- Sampling distributions
+title: Lab 04 -- Central limit theorem
 embed-resources: true
 ---
 
@@ -32,43 +32,112 @@ Link to data is below:
 # R commands for normal distribution
 
 - **Probability density function:** $f(x)$ = $dnorm(x,\mu,\sigma)$
-- **Cumulative probabilities:** $F(x) = P(X \le x)$ = $pnorm(x,\mu,\sigma)$
-- **Interval probabilities:** $P(a \le X \le b)$ = $pnorm(b,\mu,\sigma) - pnorm(a,\mu,\sigma)$
-- **Inverse probabilities:** Find $x$ such that $P(X \le x) = q qnorm(q,\mu,\sigma)$
-- **Generate normal random numbers:** $rnorm(n,\mu,\sigma)$
 
+Here are the main R functions we'll use to work with normal distributions:
 
+- **Probability density function (height of the curve at x):**  
+  $f(x) =$`dnorm(x, mean, sd)` 
+
+- **Cumulative probability (area under curve up to x):**  
+  $F(x) = P(X \leq x) =$`pnorm(x, mean, sd)` 
+
+- **Interval probability (area between two points):**  
+  $P(a \leq X \leq b) =$`pnorm(upper, mean, sd) - pnorm(lower, mean, sd)`
+
+- **Finding values for given probabilities:**  
+  $P(X \le x) =$`qnorm(probability, mean, sd)`
+
+- **Generate random values from a normal distribution:**  
+  `rnorm(n, mean, sd)`
 
 # Normal distribution
 
 ## Exercise 1 - Class activity - How tall is ENVX1002??
 
-1. Set up a new **PROJECT** for Lab 4 and create a quarto document called `Lab_4.qmd` and save it in your project directory.
+1. Make sure you have an existing or new project for Lab 4 and create a quarto document called `Lab_4.qmd` (suggestion). Save it in your project directory.
 
-2. Record the height of all male and female students in the class up on the board (we will try to provide a tape if you are unsure about your height)
+2. This is an anonymous exercise. Your demonstrator will create a google sheet (or similar) for you to enter your height and sex (M or F only so that the data is easy to analyse). 
 
-3. Enter the data into r, for example:
+3. Once all data is collected, manually enter the data into R or export the data as a .csv to be read into R, for example:
 
 ```{r, echo = TRUE}
-female_height <- c(176, 180, 187, 168)
-male_height <- c(175, 183, 163, 190)
+female <- data.frame(heights = c(176, 180, 187, 168, 160, 170))
+male <- data.frame(heights = c(175, 183, 163, 190, 179))
+
 ```
 
-4. Calculate the mean and standard deviation using R and graph the distribution for both genders, for example
+4. Calculate the mean and standard deviation using R and graph the distribution for both genders, for example:
 
 ```{r}
-f_mean <- mean(female_height)
-f_sd <- sd(female_height)
-hist(female_height)
+# calculate the mean and standard deviation of males
+m_mean <- mean(male$heights)
+m_sd <- sd(male$heights)
+
+library(tidyverse) # needed for ggplot2
+
+# create a histogram of the data
+ggplot(male, aes(x = heights)) +
+  geom_histogram(binwidth = 10, fill = "lightblue", color = "black")
+
+# now do the same for females
+
 ```
 
-5. Discuss with your neighbour or post on the zoom chat, which model (distribution function) do you think would fit the data
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer 
 
-6. How does your class compare to the Australian statistics. For this we will look at the mean and standard deviation of measured heights for men and women aged 18 - 24 from the ABS for 1995 see page 13 of 
+```{r}
+f_mean <- mean(female$heights)
+f_sd <- sd(female$heights)
 
-<https://www.ausstats.abs.gov.au/Ausstats/subscriber.nsf/Lookup/CA25687100069892CA256889001F4A36/$File/43590_1995.pdf> 
+ggplot(female, aes(x = heights)) +
+  geom_histogram(binwidth = 10, fill = "lightblue", color = "black")
 
-**Note** that both reported and measured heights are provided and not surprisingly reported heights are bigger that the measured :o) 
+```
+
+:::
+:::
+
+
+5. Discuss with your neighbour and class why the normal distribution is a good model for height data. Is it a good model for all data?
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer
+
+The normal distribution is a good model for height data because it is symmetric and unimodal, which is consistent with the shape of the data. However, it may not be a good model for all data, especially if the data is skewed or multimodal. In such cases, other distributions may be more appropriate (you will learn about some of these in later weeks, or in other units in second-year).
+
+:::
+:::
+
+
+6. How does your class compare to the Australian statistics. For this we will look at the mean and standard deviation of measured heights for men and women aged 18 - 24 from the ABS for 1995 see [page 13 of the pdf](https://www.ausstats.abs.gov.au/Ausstats/subscriber.nsf/Lookup/CA25687100069892CA256889001F4A36/$File/43590_1995.pdf)
+
+**Note** that both reported and measured heights are provided and (not surprisingly) reported heights are bigger that the measured heights. What do you think the reason for this is?
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer
+
+Looking at the ABS statistics, our class can be compared to the Australian averages for 18-24 year olds. The ABS data shows that in 1995, Australian males aged 18-24 had a measured mean height of 178.4 cm (SD = 6.6 cm), while females had a measured mean height of 163.9 cm (SD = 6.6 cm).
+
+Regarding the note:
+
+The data shows a consistent pattern where reported heights are higher than measured heights across all age groups. For 18-24 year olds, males overestimated their height by an average of 1.6 cm, while females overestimated by 1.0 cm on average.
+
+The likely reasons people report taller heights than their measured heights include:
+- Social desirability bias (taller height is often perceived as more desirable)
+- Genuinely believing they are taller than they actually are
+- Measuring themselves with shoes on
+- Rounding up to the nearest whole number
+- Measuring at a time of day when they're tallest (people are typically taller in the morning)
+
+Interestingly, the difference between reported and measured heights increases with age, with the largest discrepancies among those 65 and over (3.8 cm for men and 3.9 cm for women). This could be due to age-related height loss that people may not be aware of or acknowledge.
+
+
+:::
+:::
 
 # Simulating height distribution
 
@@ -93,7 +162,8 @@ sample10 <- rnorm(10, 163.9, 6.6) # generates a random sample of size 10 from N(
 sample10 # prints the 10 simulated values (you may not want this with the 10K simulations!!)
 mean(sample10)
 sd(sample10)
-hist(sample10)
+ggplot(data.frame(heights = sample10), aes(x = heights)) +
+  geom_histogram(binwidth = 10, fill = "lightblue", color = "black")
 ```
 
 iii) Find the probability $P(X \ge 180)$ for each of the simulations and also the exact value. What do you notice in the difference between each of the simulations and the exact probability? An example is given below for the 10 simulations above and the exact probability:
@@ -111,6 +181,61 @@ pnorm(180, 163.9, 6.6, lower.tail = FALSE)
 ```{r}
 length(which(sample10 >= 180)) / 10 ## simulated p for sample size 10
 ```
+
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answers
+
+```{r}
+# Using female height stats: mean=163.9, sd=6.6 for 18-24 year olds
+set.seed(123) # For reproducibility
+
+# Sample size = 100
+sample100 <- rnorm(100, 163.9, 6.6)
+mean100 <- mean(sample100)
+sd100 <- sd(sample100)
+hist100 <- ggplot(data.frame(heights = sample100), aes(x = heights)) +
+  geom_histogram(binwidth = 5, fill = "lightblue", color = "black") +
+  ggtitle("Histogram for n = 100")
+hist100
+prob100 <- length(which(sample100 >= 180)) / 100
+
+# Sample size = 1000
+sample1000 <- rnorm(1000, 163.9, 6.6)
+mean1000 <- mean(sample1000)
+sd1000 <- sd(sample1000)
+hist1000 <- ggplot(data.frame(heights = sample1000), aes(x = heights)) +
+  geom_histogram(binwidth = 3, fill = "lightblue", color = "black") +
+  ggtitle("Histogram for n = 1000")
+hist1000
+prob1000 <- length(which(sample1000 >= 180)) / 1000
+
+# Sample size = 10000
+sample10000 <- rnorm(10000, 163.9, 6.6)
+mean10000 <- mean(sample10000)
+sd10000 <- sd(sample10000)
+hist10000 <- ggplot(data.frame(heights = sample10000), aes(x = heights)) +
+  geom_histogram(binwidth = 2, fill = "lightblue", color = "black") +
+  ggtitle("Histogram for n = 10000")
+hist10000
+prob10000 <- length(which(sample10000 >= 180)) / 10000
+
+# Exact probability
+exact_prob <- 1 - pnorm(180, 163.9, 6.6)
+
+# Summary table of results
+results <- data.frame(
+  Sample_Size = c(10, 100, 1000, 10000),
+  Mean = round(c(mean(sample10), mean100, mean1000, mean10000), 2),
+  SD = round(c(sd(sample10), sd100, sd1000, sd10000), 2)
+)
+knitr::kable(results)
+```
+
+The shape of the histogram becomes more normal as the sample size increases. The probability of $P(X \ge 180)$ becomes closer to the exact probability as the sample size increases.
+:::
+:::
 
 # Sampling distributions
 
@@ -146,7 +271,7 @@ section of the PDF report: The reports can be found at the following link:
 
 - Could the data be normally distributed?
 
-iii) Create a histogram and boxplot of the milk fat data. Is the data `Normally distributed`? 
+iii) Create a histogram and boxplot of the milk fat data. Is the data "normally distributed"? 
 
 ```{r}
 require(ggplot2)
@@ -168,6 +293,22 @@ v) In Australia, full cream milk has greater than 3.2% milk fat content. What pe
 ```{r}
 ## Your turn
 ```
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer
+
+```{r}
+# count how many cows have milkfat >= 3.2
+fullcream_n <- length(milkfat$Milkfat[milkfat$Milkfat >= 3.2])
+
+# calculate the percentage
+fullcream_n / nrow(milkfat) * 100
+```
+
+All cows in the data set are yielding full cream milk, so the percentage is 100%.
+:::
+:::
 
 ### Part 2
 
@@ -214,21 +355,130 @@ v) For a sample of 10 cows (randomly sampled), what is the probability that the 
 
 Hint: First find the distribution of the sample mean $\overline{X}$. Then find $P(\overline{X}>4.2)$
 
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answers
+
+```{r}
+# Graph showing probability of fat content > 4.5%
+ggplot(data.frame(x = c(4.16 - 4 * 0.3, 4.16 + 4 * 0.3)), aes(x = x)) +
+  stat_function(
+    fun = dnorm, args = list(mean = 4.16, sd = 0.30),
+    geom = "area", fill = "white"
+  ) +
+  stat_function(
+    fun = dnorm, args = list(mean = 4.16, sd = 0.30),
+    xlim = c(4.5, 4.16 + 4 * 0.3), geom = "area", fill = "red"
+  ) +
+  xlab("x") +
+  ylab(expression(N(4.16, 0.30^2) ~ pdf))
+
+# Calculate the probability
+1 - pnorm(4.5, 4.16, 0.30)
+# Or alternatively
+pnorm(4.5, 4.16, 0.30, lower.tail = FALSE)
+```
+:::
+:::
+
+v. What is the probability that the sample mean milk fat content is greater than 4.2%?
+
+```{r}
+# For a sample of 10 cows, we need to find P(X_bar > 4.2)
+# Mean of X_bar = population mean = 4.16
+# Standard error of X_bar = population sd / sqrt(n) = 0.30 / sqrt(10)
+
+# Calculate the standard error
+se <- 0.30 / sqrt(10)
+
+# Calculate the probability
+pnorm(4.2, 4.16, se, lower.tail = FALSE)
+
+# Visualization
+ggplot(data.frame(x = c(4.16 - 4 * se, 4.16 + 4 * se)), aes(x = x)) +
+  stat_function(
+    fun = dnorm, args = list(mean = 4.16, sd = se),
+    geom = "area", fill = "white"
+  ) +
+  stat_function(
+    fun = dnorm, args = list(mean = 4.16, sd = se),
+    xlim = c(4.2, 4.16 + 4 * se), geom = "area", fill = "blue"
+  ) +
+  xlab("Sample mean milk fat content") +
+  ylab("Probability density") +
+  ggtitle("Distribution of sample mean (n=10)")
+```
+
 # Standard Error of the mean
 
 ## Exercise 3 - Skin cancer
 
 A dermatologist investigating a certain type of skin cancer induced the cancer in nine rats and then treated them with a new experimental drug. For each rat she recorded the number of hours until remission of the cancer. The rats had a mean remission time of 400 hours and a standard deviation of 30 hours. From this data, calculate the standard error of the mean.
 
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer
+
+```{r} 
+# Given information
+n <- 9  # sample size (number of rats)
+mean_remission <- 400  # mean remission time in hours
+sd_remission <- 30  # standard deviation in hours
+
+# Calculate standard error of the mean
+se_mean <- sd_remission / sqrt(n)
+se_mean
+```
+
+:::
+:::
+
+
 ## Exercise 4 - Soil carbon
 
 An initial soil carbon survey of a farm based on 12 observations found that the sample mean $\overline{X}$ was 1.2% and the standard deviation s was 0.4%. How many observations would be needed to estimate the mean carbon value with a standard error of 0.1%?
 
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer
+
+```{r}
+# Given information
+s <- 0.4  # sample standard deviation in %
+se_desired <- 0.1  # desired standard error in %
+
+# Use the standard error formula: SE = s/sqrt(n)
+# Rearrange to solve for n: n = (s/SE)^2
+n_needed <- (s/se_desired)^2
+
+# Round up to the nearest whole number (can't have fractional observations)
+n_needed_rounded <- ceiling(n_needed)
+n_needed_rounded
+```
+:::
+:::
+
 ## Exercise 5 - What's in the media - looming state election
 
-An article was published in the Sydney Morning Herald on Saturday 20.3.2010 about statistics related to opinion polls. Read it and find the sentences related to (i) populations versus samples (ii) standard error formula (iv) the effect of sample size on standard errors.
+An article was published in the Sydney Morning Herald on Saturday 20.3.2010 about statistics related to opinion polls. Read it and find the sentences related to (i) populations versus samples (ii) standard error formula (iii) the effect of sample size on standard errors.
 
 <http://www.smh.com.au/national/demystifying-the-dark-art-of-polling-20100319-qmai.html>
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer
+From the article:
+
+The article in the Sydney Morning Herald discusses several statistical concepts:
+
+(i) Populations vs samples: The article explains polling as market research that collects data from a representative sample (typically 1400 people) rather than surveying the entire population (13.5 million voters nationally).
+
+(ii) Standard error formula: While not explicitly showing the formula, the article explains that to halve the margin of error, you need to quadruple the sample size - reflecting the inverse square root relationship between sample size and margin of error.
+
+(iii) Effect of sample size: The article demonstrates this relationship with examples: a sample of 1400 people yields a margin of error of ±2.6%, while Newspoll's smaller sample of 1150 has a higher margin of error of 3%.
+
+:::
+:::
 
 ## Exercise 6 - Extra practice
 
@@ -265,6 +515,74 @@ ggplot() +
 
 iii) Dharshani Sivalingam is the tallest netball player in the world. How tall is Dharshani? <https://en.wikipedia.org/wiki/Tharjini_Sivalingam> What is the probability of finding an Australian woman of Dharshani's height?
 
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer
+
+Dharshani is 210cm tall. We want to find P(X > 210).
+
+```{r}
+# Calculate the probability of a woman being as tall as Dharshani (210 cm)
+p_dharshani <- 1 - pnorm(210, 161.8, 6)
+p_dharshani  # This shows the probability is 6.661338e-16, which is essentially zero
+
+# Visualize this extremely small probability
+ggplot() +
+  stat_function(
+    fun = dnorm, args = list(mean = 161.8, sd = 6),
+    geom = "line", xlim = c(140, 210)
+  ) +
+  geom_vline(xintercept = 210, color = "red", linetype = "dashed") +
+  annotate("text", x = 205, y = 0.01, label = "210 cm", color = "red") +
+  labs(
+    title = "Probability of being as tall as Dharshani (210 cm)",
+    x = "Height (cm)",
+    y = "Probability density"
+  )
+```
+
+The probability of finding an Australian woman of her height is close to zero i.e. `r round(p_dharshani, 10)`. This means it would be extremely rare to find an Australian woman as tall as Dharshani (210 cm) in the general population.
+
+:::
+:::
+
+
 iv) Madison Brown is one of the the shortest Australian International players. How tall is Madision? <https://en.wikipedia.org/wiki/Madison_Browne> What percentage of Australian women are between Madison and Dharshani's heights?
 
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer
+Madison Robinson is 168 cm tall.
+
+```{r}
+p_between <- pnorm(210, 161.8, 6) - pnorm(168, 161.8, 6)
+p_between
+
+# Convert to percentage
+percentage_between <- p_between * 100
+
+# Visualize this probability
+ggplot(NULL, aes(c(-3, 3))) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 161.8, sd = 6), fill = "red", xlim = c(161, 161.8 + 4 * 6)) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 161.8, sd = 6), fill = "white", xlim = c(168, 161)) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 161.8, sd = 6), fill = "white", xlim = c(161.8 + 4 * 6, 210)) +
+  xlab("x") +
+  ylab(expression(N(161.8, 6^2) ~ pdf)) 
+```
+
+Around `r round(percentage_between, 1)`% of Australian women are between Madison and Dharshani's heights.
+:::
+:::
+
 v) If 80% of Australian women are above a certain height, what is that height?
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer
+
+```{r}
+qnorm(0.2,161.8,6)
+```
+
+:::
+:::
