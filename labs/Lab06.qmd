@@ -28,6 +28,7 @@ pacman::p_load(tidyverse, car)
 
 ## Before you begin
 
+::: {style="color:red;"}
 ### Turn off GitHub Copilot
 
 **It is quite important that you go through this lab without using GitHub Copilot.** 
@@ -38,6 +39,9 @@ It is a great tool, but it can lead to dependency on AI assistance rather than d
 2. Type "Copilot" and select "GitHub Copilot: Enable Copilot" to disable it (make sure the checkbox is unchecked).
 
 You can also disable it in the Settings by going to Tools > Global Options > GitHub Copilot and unchecking the "Enable GitHub Copilot" option.
+
+![Disable GitHub Copilot. Click to enlarge.](images/disable-copilot.jpeg){.lightbox}
+:::
 
 ### Your Quarto document
 
