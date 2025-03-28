@@ -28,6 +28,19 @@ pacman::p_load(tidyverse, car)
 
 ## Before you begin
 
+### Turn off GitHub Copilot
+
+**It is quite important that you go through this lab without using GitHub Copilot.** 
+
+It is a great tool, but it can lead to dependency on AI assistance rather than developing your statistical reasoning skills. Turn it on again after the lab if you want to use it for other projects. GitHub Copilot is also not allowed in the mid-semester exam (where you will be required to apply statistics in R, under exam conditions). To turn off GitHub Copilot:
+
+1. Open the Command Palette (Ctrl+Shift+P or Cmd+Shift+P on Mac)
+2. Type "Copilot" and select "GitHub Copilot: Enable Copilot" to disable it (make sure the checkbox is unchecked).
+
+You can also disable it in the Settings by going to Tools > Global Options > GitHub Copilot and unchecking the "Enable GitHub Copilot" option.
+
+### Your Quarto document
+
 Create your Quarto document and save it as `Lab-06.Rmd` or similar. The following data files are required:
 
 1)  [Barley.csv](data/Barley.csv)
@@ -41,7 +54,7 @@ install.packages(c("tidyverse", "car"),
   repo = "https://cloud.r-project.org")
 ```
 
-Finally, try to complete today's lab exercises in pairs and try out [pair programming](https://en.wikipedia.org/wiki/Pair_programming), where one person writes the code and the other person reviews each line as it is written. You can swap roles every 10 minutes or so. This is a great way to learn from each other and to improve your coding skills.
+Finally, try to complete today's lab exercises in pairs and try out [pair programming](https://en.wikipedia.org/wiki/Pair_programming), where one person writes the code and the other person reviews each line as it is written. You can swap roles every 10 minutes or so. Showing someone how you code is an excellent way to learn, and you will be surprised how much you can learn from each other. 
 
 ## Exercise 1: barley (walk-through)
 
