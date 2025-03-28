@@ -4984,7 +4984,11 @@ border-radius: 4px;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#before-you-begin" id="toc-before-you-begin" class="nav-link active" data-scroll-target="#before-you-begin">Before you begin</a></li>
+  <li><a href="#before-you-begin" id="toc-before-you-begin" class="nav-link active" data-scroll-target="#before-you-begin">Before you begin</a>
+  <ul class="collapse">
+  <li><a href="#turn-off-github-copilot" id="toc-turn-off-github-copilot" class="nav-link" data-scroll-target="#turn-off-github-copilot">Turn off GitHub Copilot</a></li>
+  <li><a href="#your-quarto-document" id="toc-your-quarto-document" class="nav-link" data-scroll-target="#your-quarto-document">Your Quarto document</a></li>
+  </ul></li>
   <li><a href="#exercise-1-barley-walk-through" id="toc-exercise-1-barley-walk-through" class="nav-link" data-scroll-target="#exercise-1-barley-walk-through">Exercise 1: barley (walk-through)</a>
   <ul class="collapse">
   <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
@@ -5052,6 +5056,18 @@ Learning outcomes
 </div>
 <section id="before-you-begin" class="level2">
 <h2 class="anchored" data-anchor-id="before-you-begin">Before you begin</h2>
+<section id="turn-off-github-copilot" class="level3">
+<h3 class="anchored" data-anchor-id="turn-off-github-copilot">Turn off GitHub Copilot</h3>
+<p><strong>It is quite important that you go through this lab without using GitHub Copilot.</strong></p>
+<p>It is a great tool, but it can lead to dependency on AI assistance rather than developing your statistical reasoning skills. Turn it on again after the lab if you want to use it for other projects. GitHub Copilot is also not allowed in the mid-semester exam (where you will be required to apply statistics in R, under exam conditions). To turn off GitHub Copilot:</p>
+<ol type="1">
+<li>Open the Command Palette (Ctrl+Shift+P or Cmd+Shift+P on Mac)</li>
+<li>Type “Copilot” and select “GitHub Copilot: Enable Copilot” to disable it (make sure the checkbox is unchecked).</li>
+</ol>
+<p>You can also disable it in the Settings by going to Tools &gt; Global Options &gt; GitHub Copilot and unchecking the “Enable GitHub Copilot” option.</p>
+</section>
+<section id="your-quarto-document" class="level3">
+<h3 class="anchored" data-anchor-id="your-quarto-document">Your Quarto document</h3>
 <p>Create your Quarto document and save it as <code>Lab-06.Rmd</code> or similar. The following data files are required:</p>
 <ol type="1">
 <li><a href="data/Barley.csv">Barley.csv</a></li>
@@ -5061,7 +5077,8 @@ Learning outcomes
 <p>The following external packages are used in this lab. Install them if you have not done so already.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;car&quot;</span>), </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">repo =</span> <span class="st">&quot;https://cloud.r-project.org&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Finally, try to complete today’s lab exercises in pairs and try out <a href="https://en.wikipedia.org/wiki/Pair_programming">pair programming</a>, where one person writes the code and the other person reviews each line as it is written. You can swap roles every 10 minutes or so. This is a great way to learn from each other and to improve your coding skills.</p>
+<p>Finally, try to complete today’s lab exercises in pairs and try out <a href="https://en.wikipedia.org/wiki/Pair_programming">pair programming</a>, where one person writes the code and the other person reviews each line as it is written. You can swap roles every 10 minutes or so. Showing someone how you code is an excellent way to learn, and you will be surprised how much you can learn from each other.</p>
+</section>
 </section>
 <section id="exercise-1-barley-walk-through" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="exercise-1-barley-walk-through">Exercise 1: barley (walk-through)</h2>
