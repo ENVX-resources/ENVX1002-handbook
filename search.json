@@ -1520,7 +1520,7 @@
     "href": "labs/Lab06.html#exercise-1-tooth-growth",
     "title": "Lab 06 – Two-sample t-test",
     "section": "Exercise 1: Tooth growth",
-    "text": "Exercise 1: Tooth growth\nTooth GRowth is an inbuilt dataset that shows the effect of vitamin c in Guinea pig tooth growth. It has three variables:\n\nlen = tooth length\nsupp = type of supplement (Orange juice or ascorbic acid)\ndose = mg/day gieven to the guinea pigs\n\n\nhead(ToothGrowth)\nstr(ToothGrowth)\n\nUsing the HATPC framework, test whether the type of supplent affects tooth length.",
+    "text": "Exercise 1: Tooth growth\nTooth GRowth is an inbuilt dataset that shows the effect of vitamin c in Guinea pig tooth growth. It has three variables:\n\nlen = tooth length\nsupp = type of supplement (Orange juice or ascorbic acid)\ndose = mg/day given to the guinea pigs\n\n\nhead(ToothGrowth)\nstr(ToothGrowth)\n\nUsing the HATPC framework, test whether the type of supplent affects tooth length.",
     "crumbs": [
       "**🖥️ Computer labs**",
       "Lab 06 -- Two-sample *t*-test"
