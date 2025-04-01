@@ -1,5 +1,5 @@
 ---
-title: Lab 9 -- Describing relationships
+title: Lab 09 -- Describing relationships
 embed-resources: true
 resources:
   - data/ENVX1002_practical_data_Regression.xlsx
