@@ -1,5 +1,5 @@
 ---
-title: Lab 07 -- Chi-squared test
+title: Lab 07 -- Non-parametric tests & Chi-squared tests
 embed-resources: true
 ---
 
@@ -12,6 +12,7 @@ pacman::p_load(tidyverse, mosaic)
 ::: callout-tip
 ## Learning Outcomes
 
+-   Learn to use R to perform a Wilcoxon signed-rank test and a Mann-Whitney U test.
 -   Learn to use R to calculate a chi-squared test for:
     -   Test of proportions
     -   Test of independence
@@ -22,7 +23,94 @@ pacman::p_load(tidyverse, mosaic)
 
 Create your Quarto document and save it as `Lab-07.qmd` or similar. There are no data files to download for this lab.
 
-## Quick introduction
+## Quick introduction to non-parametric tests
+
+Non-parametric tests are statistical tests that do not assume a specific distribution for the data. They are often used when the assumptions of parametric tests (such as normality) are not met. Non-parametric tests are also useful when dealing with ordinal data or when the sample size is small.
+
+The two non-parametric tests we will cover in this lab are:
+1.  Wilcoxon signed-rank test - used to compare one sample to a known value or to compare two related samples, matched samples, or repeated measurements on a single sample to assess whether their population mean ranks differ (similar to a one sample t-test or paired t-test).
+2.  Mann-Whitney U test - used to compare two independent samples to assess whether their population distributions differ (similar to a two sample t-test.
+
+## Exercise 1: dog pain (walk-through)
+
+### Background
+
+A study measures dogs' pain using the Glasgow CMPS-SF scale before and after medication. 
+
+```{r}
+before <- c(7, 6, 8, 5, 9, 7, 6, 8, 7, 5)
+after  <-  c(4, 5, 6, 3, 7, 5, 4, 6, 5, 3)
+
+## create a data frame
+pain <- data.frame(
+  dog_ID = 1:length(before),
+  before = before,
+  after = after,
+  diff = after - before
+)
+```
+
+## EDA
+
+```{r}
+library(ggpubr)
+# Create a comparative boxplot of the before and after pain scores
+pain_long <- pivot_longer(pain, cols = c(before, after), 
+                          names_to = "time", values_to = "score")
+
+ggboxplot(pain_long, x = "time", y = "score",
+          color = "time", palette = c("#00AFBB", "#E7B800"),
+          add = "jitter") +
+ labs(title = "Pain Scores Before and After Medication",
+       x = "Time", y = "Pain Score")
+```
+It looks like the pain scores are lower after medication. But we need to test this statistically.
+
+## Hypothesis (H)
+
+The null hypothesis is that there is no difference in pain scores before and after treatment. The alternative hypothesis is that there is a difference in pain scores before and after treatment.
+
+## Assumptions (A)
+
+```{r}
+ggqqplot(pain$diff, main = "QQ-Plot of Differences"
+         , ylab = "Differences")
+
+```
+
+We can see that the pain scores are not normally distributed, they are highly kurtotic (you can try `shapiro.test` on the difference).
+
+The Wilcoxon signed-rank test is a non-parametric test that does not assume normality, so we can use it to compare the pain scores before and after treatment.
+
+The assumptions of the Wilcoxon signed-rank test are:
+1.  In this case the data are paired (i.e., the same subjects are measured before and after treatment).
+2.  The differences between the paired observations are continuous/ordinal and symmetric about the median (looking at the boxplots, this is the case).
+
+## Test (T)
+
+```{r}
+# Perform the Wilcoxon signed-rank test
+wilcox.test(pain$before, pain$after, paired = TRUE)
+```
+
+The output shows the test statistic (V) and the p-value. The test statistic is the sum of the ranks of the positive differences (after - before). The p-value is the probability of observing a test statistic as extreme as the one obtained, assuming that the null hypothesis is true.
+
+We also see that the test is Wilcoxon signed rank test with continuity correction. This is because the test is based on ranks, and the continuity correction is applied to adjust for the fact that we are using a discrete distribution to approximate a continuous distribution.
+
+## P-value (P)
+
+We can see that the p-value is less than 0.05, so we reject the null hypothesis and conclude that there is a significant difference in pain scores before and after treatment. 
+
+## Conclusion (C)
+
+Given that the p-value is significant (P<0.05) and looking at the output of the boxplot, we can conclude that the pain scores are significantly lower after treatment. 
+
+## Excercise
+
+Now analyse the data with a paired t-test. What do you find? Key is to compare the p-values. if you notice the p-value in the t-test is smaller, this indicates that the t-test is more powerful than the Wilcoxon signed-rank test. This is because the t-test assumes normality, and in this case, the data is not normally distributed. So you are more likely to make a type I error (reject the null hypothesis when it is true) with the t-test than with the Wilcoxon signed-rank test.
+
+
+## Quick introduction to chi-squared tests
 
 The chi-square test is used to compare the *observed* distribution to an *expected* distribution, in a situation where we have **two or more categories** in a discrete data. In other words, it compares multiple observed proportions to expected probabilities.
 
@@ -34,7 +122,7 @@ where $O_i$ is the observed frequency, $E_i$ is the expected frequency for each 
 
 For more information about the technique, consult your lecture slides and tutorial 7.
 
-## Exercise 1: wild tulips (walk-through)
+## Exercise 2: wild tulips (walk-through)
 
 ### Background
 
