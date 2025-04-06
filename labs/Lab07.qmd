@@ -109,7 +109,6 @@ Given that the p-value is significant (P<0.05) and looking at the output of the 
 
 Now analyse the data with a paired t-test. What do you find? Key is to compare the p-values. if you notice the p-value in the t-test is smaller, this indicates that the t-test is more powerful than the Wilcoxon signed-rank test. This is because the t-test assumes normality, and in this case, the data is not normally distributed. So you are more likely to make a type I error (reject the null hypothesis when it is true) with the t-test than with the Wilcoxon signed-rank test.
 
-
 ## Quick introduction to chi-squared tests
 
 The chi-square test is used to compare the *observed* distribution to an *expected* distribution, in a situation where we have **two or more categories** in a discrete data. In other words, it compares multiple observed proportions to expected probabilities.
