@@ -1,6 +1,9 @@
 ---
 title: Lab 07 -- Non-parametric tests & Chi-squared tests
 embed-resources: true
+toc-depth: 2
+execute: 
+  cache: true
 ---
 
 ```{r setup}
@@ -8,6 +11,7 @@ embed-resources: true
 if (!require("pacman")) install.packages("pacman")
 pacman::p_load(tidyverse, mosaic)
 ```
+
 
 ::: callout-tip
 ## Learning Outcomes
@@ -29,7 +33,6 @@ Non-parametric tests are statistical tests that do not assume a specific distrib
 
 The two non-parametric tests we will cover in this lab are:
 1.  Wilcoxon signed-rank test - used to compare one sample to a known value or to compare two related samples, matched samples, or repeated measurements on a single sample to assess whether their population mean ranks differ (similar to a one sample t-test or paired t-test).
-2.  Mann-Whitney U test - used to compare two independent samples to assess whether their population distributions differ (similar to a two sample t-test.
 
 ## Exercise 1: dog pain (walk-through)
 
@@ -50,7 +53,7 @@ pain <- data.frame(
 )
 ```
 
-## EDA
+### EDA
 
 ```{r}
 library(ggpubr)
@@ -66,11 +69,11 @@ ggboxplot(pain_long, x = "time", y = "score",
 ```
 It looks like the pain scores are lower after medication. But we need to test this statistically.
 
-## Hypothesis (H)
+### Hypothesis (H)
 
 The null hypothesis is that there is no difference in pain scores before and after treatment. The alternative hypothesis is that there is a difference in pain scores before and after treatment.
 
-## Assumptions (A)
+### Assumptions (A)
 
 ```{r}
 ggqqplot(pain$diff, main = "QQ-Plot of Differences"
@@ -86,7 +89,7 @@ The assumptions of the Wilcoxon signed-rank test are:
 1.  In this case the data are paired (i.e., the same subjects are measured before and after treatment).
 2.  The differences between the paired observations are continuous/ordinal and symmetric about the median (looking at the boxplots, this is the case).
 
-## Test (T)
+### Test (T)
 
 ```{r}
 # Perform the Wilcoxon signed-rank test
@@ -97,33 +100,35 @@ The output shows the test statistic (V) and the p-value. The test statistic is t
 
 We also see that the test is Wilcoxon signed rank test with continuity correction. This is because the test is based on ranks, and the continuity correction is applied to adjust for the fact that we are using a discrete distribution to approximate a continuous distribution.
 
-## P-value (P)
+### P-value (P)
 
 We can see that the p-value is less than 0.05, so we reject the null hypothesis and conclude that there is a significant difference in pain scores before and after treatment. 
 
-## Conclusion (C)
+### Conclusion (C)
 
 Given that the p-value is significant (P<0.05) and looking at the output of the boxplot, we can conclude that the pain scores are significantly lower after treatment. 
 
-## Excercise
+### Comparison
 
-Now analyse the data with a paired t-test. What do you find? Key is to compare the p-values. if you notice the p-value in the t-test is smaller, this indicates that the t-test is more powerful than the Wilcoxon signed-rank test. This is because the t-test assumes normality, and in this case, the data is not normally distributed. So you are more likely to make a type I error (reject the null hypothesis when it is true) with the t-test than with the Wilcoxon signed-rank test.
+Now analyse the data with a paired t-test. What do you find? Key is to compare the p-values. If you notice the p-value in the t-test is smaller, this indicates that the t-test is more powerful than the Wilcoxon signed-rank test. This is because the t-test assumes normality, and in this case, the data is not normally distributed. So you are more likely to make a type I error (reject the null hypothesis when it is true) with the t-test than with the Wilcoxon signed-rank test.
 
-## Quick introduction to chi-squared tests
+## Exercise 2: Chi-squared tests
 
-The chi-square test is used to compare the *observed* distribution to an *expected* distribution, in a situation where we have **two or more categories** in a discrete data. In other words, it compares multiple observed proportions to expected probabilities.
+### Quick introduction
+
+The chi-square test is used to compare the *observed* distribution to an *expected* distribution, in a situation where we have **two or more categories** in discrete data. In other words, it compares multiple observed proportions to expected probabilities.
 
 The formula is:
 
 $$\chi^2 = \sum_{i=1}^{k}\frac{(O_i - E_i)^2}{E_i}$$
 
-where $O_i$ is the observed frequency, $E_i$ is the expected frequency for each categorym and $k$ is the number of categories.
+where $O_i$ is the observed frequency, $E_i$ is the expected frequency for each category, and $k$ is the number of categories.
 
 For more information about the technique, consult your lecture slides and tutorial 7.
 
-## Exercise 2: wild tulips (walk-through)
+### Wild tulips (walk-through)
 
-### Background
+#### Background
 
 Suppose we collected wild tulips and found that 81 were red, 50 were yellow and 27 were white. Are these colours equally common?
 
@@ -135,7 +140,7 @@ The data is below.
 tulip <- c(81, 50, 27)
 ```
 
-### Instructions
+#### Instructions
 
 Utilise the **HATPC** process and test the hypothesis that the proportion of flower colours of tulips are equally common, assuming that the samples are independent. We can explore the data as we check the assumptions of the test.
 
@@ -155,7 +160,7 @@ HATPC:
 **The level of significance is usually set at 0.05.** This value is generally accepted in the scientific community and is also linked to Type 2 errors, where choosing a lower significance increases the likelihood of failing to reject the null hypothesis when it is false.
 :::
 
-### Hypotheses
+#### Hypotheses
 
 What are the null hypothesis and alternative hypotheses?
 
@@ -168,7 +173,7 @@ What are the null hypothesis and alternative hypotheses?
 
 </details>
 
-### Assumptions
+#### Assumptions
 
 Recall that the assumptions of the $\chi^2$ test are:
 
@@ -182,7 +187,7 @@ In the case that the above assumptions are violated then the probability of a ty
 To calculate expected frequencies, we first calculate the total number of tulips and then divide by the number of categories.
 
 ```{r}
-expected <- rep(sum(tulip) * 1 / 3, 3) #rep function replicated the value we're calculating inside the brackets
+expected <- rep(sum(tulip) * 1 / 3, 3) #rep function replicates the value we're calculating inside the brackets
 expected
 
 ```
@@ -197,7 +202,7 @@ Yes, as expected frequencies \> 5.
 
 </details>
 
-### Test statistic
+#### Test statistic
 
 The `chisq.test()` function in R is used to calculate the chi-squared test.
 
@@ -208,13 +213,13 @@ res
 
 ```
 
-Note that we coud check our assumptions post-analysis by checking the expected frequencies stored in the `expected` object of the output:
+Note that we could check our assumptions post-analysis by checking the expected frequencies stored in the `expected` object of the output:
 
 ```{r}
 res$expected
 ```
 
-### P-value
+#### P-value
 
 Write down how you should report the critical value, p-value and df in a scientific paper?
 
@@ -226,7 +231,7 @@ $\chi^2 = 27.9, d.f. =2, p < 0.01$
 
 </details>
 
-### Conclusions
+#### Conclusions
 
 Based on the p-value, do we accept or reject the null hypothesis?
 
@@ -248,7 +253,7 @@ There is a significant difference in the proportion of flower colours of tulips 
 
 </details>
 
-## Exercise 2: hermit crabs
+## Exercise 3: hermit crabs
 
 ### Background
 
@@ -299,7 +304,7 @@ There are also differences in the number of empty shells in the different shell 
 
 </details>
 
-### HATPC
+### HATPC Analysis
 
 Now it is your turn to test the hypothesis that the three shell species are equally preferred by hermit crabs. Follow the HATPC process with the following questions in mind (but you don't have to answer them individually):
 
@@ -309,29 +314,19 @@ Now it is your turn to test the hypothesis that the three shell species are equa
 4.  Based on the p-value, do we accept or reject the null hypothesis?
 5.  Write a scientific (biological) conclusion based on the outcome.
 
-Use the markdown structure below to answer the questions (if you wish):
-
-``` md
-## Exercise 2: hermit crabs
-### Hypothesis
-### Assumptions
-### Test statistic
-### P-value
-### Conclusions
-```
-
 Take your time, and when you are ready, check your answers with your demonstrators.
 
 ::: {.content-visible when-profile="solution"}
-## Answer to Exercise 2 {style="color:green;"}
+::: {.callout-warning}
+## Answer to Exercise 3
 
-### Hypothesis {style="color:green;"}
+### Hypothesis
 
 **H~0~**: There is no significant difference between the observed and the expected use of different shell species by hermit crabs.
 
 **H~1~**: There is a significant difference between the observed and the expected use of different shell species by hermit crabs.
 
-### Assumptions {style="color:green;"}
+### Assumptions
 
 To check whether the expected frequencies are greater than 5, we can either perform the calculation manually or check the output of the `chisq.test()` function.
 
@@ -353,14 +348,166 @@ fit
 
 We reject the null hypothesis as the p-value is less than 0.05 and conclude that there is a significant difference between the observed and the expected use of different shell species by hermit crabs ($\chi^2 = 45.5, d.f. = 2, p < 0.01$).
 :::
+:::
 
-## Done!
 
-This is the end of the lab. Remember to save your work, render your document and ask your demonstrators for feedback if you are unsure about your answers.
+## Exercise 4: pregnancies
 
-# Bonus take home exercises
+### Quick introduction
 
-## Exercise 1: National RSPCA statistics
+The Mann-Whitney U test (also called the Wilcoxon rank-sum test) is a non-parametric alternative to the independent samples t-test. It's used to compare two independent groups when the data doesn't meet the assumptions for a t-test, particularly when:
+
+- The data is not normally distributed
+- The sample sizes are small
+- The data is ordinal rather than continuous
+
+The test works by ranking all observations from both groups together, then comparing the sum of ranks between the two groups. If there's a significant difference in these rank sums, it suggests that the distributions of the two groups differ.
+
+### Background
+
+In a medical study, researchers measured the permeability constants of the human chorioamnion (a placental membrane) between different gestational ages. They collected samples from:
+
+- Term pregnancies (x): pregnancies at full term (around 40 weeks)
+- Early pregnancies (y): pregnancies between 12 to 26 weeks gestational age
+
+The researchers wanted to test if the permeability of the membrane is greater at term compared to earlier in pregnancy. Higher permeability might indicate changes in the membrane's function as pregnancy progresses.
+
+```{r}
+# Permeability constants at term (x)
+term <- c(0.80, 0.83, 1.89, 1.04, 1.45, 1.38, 1.91, 1.64, 0.73, 1.46)
+
+# Permeability constants at 12-26 weeks (y)
+early <- c(1.15, 0.88, 0.90, 0.74, 1.21)
+
+# Create a data frame for visualisation
+placenta <- data.frame(
+  permeability = c(term, early),
+  group = factor(c(rep("Term", length(term)), rep("Early", length(early))))
+)
+```
+
+### EDA
+
+Let's visualise the data using boxplots to see if there are visible differences between the two groups:
+
+```{r}
+# Create a comparative boxplot
+ggplot(placenta, aes(x = group, y = permeability, fill = group)) +
+  geom_boxplot() +
+  geom_jitter(width = 0.2, alpha = 0.6) +
+  labs(title = "Placental Membrane Permeability by Gestational Age",
+       x = "Pregnancy Stage", 
+       y = "Permeability Constant") +
+  theme_minimal()
+```
+
+Also, let's check if the data is normally distributed using QQ plots:
+
+```{r}
+# QQ plots for both groups
+par(mfrow = c(1, 2))
+qqnorm(term, main = "QQ Plot for Term Pregnancies")
+qqline(term)
+qqnorm(early, main = "QQ Plot for Early Pregnancies")
+qqline(early)
+```
+
+### Hypothesis (H)
+
+Based on the research question, we can formulate the following hypotheses:
+
+- **H₀**: The permeability of the membrane at term is not greater than the permeability at earlier stages (12-26 weeks).
+- **H₁**: The permeability of the membrane at term is greater than the permeability at earlier stages (12-26 weeks).
+
+Note that this is a one-sided test, as we're specifically interested in whether the permeability is *greater* at term, not just whether it differs.
+
+### Assumptions (A)
+
+The Mann-Whitney U test has the following assumptions:
+
+1. The observations from both groups are independent of each other.
+2. The observations are ordinal (i.e., can be ranked).
+3. The distributions of both populations have the same shape (though this is relaxed for large samples).
+
+From our EDA, we can see that:
+
+- The sample sizes are small (10 for term and 5 for early pregnancies).
+- The QQ plots suggest that normality might be questionable, especially with such small sample sizes.
+- The observations are certainly independent as they come from different individuals.
+
+Given these observations, the Mann-Whitney U test is an appropriate choice over a t-test. Note that we may run a formal test for normality (e.g., Shapiro-Wilk test) if we wanted to be thorough, but the QQ plots already suggest that normality is *not* a strong assumption here and the Mann-Whitney U test is robust to deviations from normality. Even if the data were normally distributed, the Mann-Whitney U test would still be valid -- just *less* [powerful](https://en.wikipedia.org/wiki/Power_(statistics)) than a t-test (i.e., it would have a higher chance of making a type II error, or an error of failing to reject the null hypothesis when it is false).
+
+### Test (T)
+
+We'll use the `wilcox.test()` function to perform the Mann-Whitney U test. Since we're interested in whether the permeability is greater at term, we'll use a one-sided alternative hypothesis:
+
+```{r}
+# Perform the Mann-Whitney U test
+wilcox.test(term, early, alternative = "greater")
+```
+
+We can also use the large-sample approximation method (without continuity correction) as described by Hollander & Wolfe:
+
+```{r}
+# Mann-Whitney U test with large sample approximation
+wilcox.test(term, early, alternative = "greater",
+            exact = FALSE, correct = FALSE)
+```
+
+### P-value (P)
+
+The p-value from the test is 0.1914, which is greater than our significance level of 0.05.
+
+### Conclusion (C)
+
+Based on the results of the Mann-Whitney U test, we fail to reject the null hypothesis. There is insufficient evidence to conclude that the permeability of the human chorioamnion is greater at term compared to earlier in pregnancy (12-26 weeks).
+
+Despite what we might observe visually in the boxplots, the statistical test doesn't support the claim of higher permeability at term. This could be due to several factors:
+
+1. Small sample sizes (only 10 term and 5 early samples)
+2. High variability within the term group
+3. The actual biological relationship might be more complex than our simple hypothesis
+
+::: callout-tip
+## Question 1
+Why might researchers choose a Mann-Whitney U test over a t-test in this situation? Consider both the sample size and what you observed in the QQ plots.
+:::
+
+::: callout-tip
+## Question 2
+What does the value "W = 31" in the test output represent? What information does it give us about the comparison between the two groups?
+:::
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer to Exercise 4
+
+### Question 1
+Researchers might choose the Mann-Whitney U test over a t-test for several reasons:
+
+1. The sample sizes are small (10 and 5), which makes it difficult to reliably assess normality.
+2. The QQ plots show potential deviations from normality, especially for the term pregnancy group.
+3. The Mann-Whitney U test doesn't assume normality, making it more robust for small or non-normal samples.
+4. When dealing with biological measurements that might have outliers or skewed distributions, non-parametric tests often provide more reliable results.
+
+### Question 2
+The value "W = 31" represents the sum of ranks for the first group (term) after all observations from both groups are ranked together. 
+
+In the Mann-Whitney U test:
+
+- All observations from both groups are combined and ranked from lowest to highest
+- The test statistic W is the sum of ranks assigned to the first group
+- If the first group tends to have higher values, W will be larger than expected under the null hypothesis
+- If the first group tends to have lower values, W will be smaller than expected
+
+In this case, W = 31 wasn't extreme enough to reject the null hypothesis, suggesting that the distribution of permeability values isn't significantly higher in term pregnancies compared to early pregnancies.
+:::
+:::
+
+
+## Bonus take home exercises
+
+### Exercise 1: National RSPCA statistics
 
 The RSPCA releases statistics on the number of animals they receive, reclaim and rehome [every year](https://www.rspca.org.au/about/annual-statistics/). In the 2023-24 financial year, the RSPCA received 17468 dogs, 26704 cats, and 37497 other animals. The "other" category includes horses, small animals, livestock and wildlife.
 
@@ -371,41 +518,44 @@ received <- c(17468, 26704, 37497)
 ```
 
 ::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+::: {.callout-warning}
+## Solution to Exercise 1: National RSPCA statistics
 
--   Hypothesis 
+### Hypothesis 
 
-> H~0~ : There is no significant difference between the observed and the expected number of animals received from each category
+H~0~ : There is no significant difference between the observed and the expected number of animals received from each category
 
-> H~1~ : There is a significant difference betwwen the observed and the expected number of animals received from each category
+H~1~ : There is a significant difference between the observed and the expected number of animals received from each category
 
--   Assumptions
+### Assumptions
 
 ```{r}
 expected_received <- rep(sum(received)*1/3, 3)
 expected_received
 ```
 
-> 1)  No cell has expected frequencies less than 1 and 2) No more than 20% of cells have expected frequencies less than 5 so the assumptions are met
+1) No cell has expected frequencies less than 1 and 2) No more than 20% of cells have expected frequencies less than 5 so the assumptions are met
 
--   Test (statistic)
+### Test (statistic)
 
 ```{r}
 chisq.test(received)
 ```
 
--   P-value \> p \< 0.05, so we reject the null hypothesis
+### P-value 
+p < 0.05, so we reject the null hypothesis
 
--   Conclusion
+### Conclusion
 
-> There is a significant difference betwwen the observed and the expected number of animals received from each category
+There is a significant difference between the observed and the expected number of animals received from each category
+:::
 :::
 
-## Exercise 2: UC Berkeley Admissions
+### Exercise 2: UC Berkeley Admissions
 
 For the two exercises we're going to use simplified versions of the inbuilt dataset 'UCBAdmissions', which has data on student admissions for Berkeley. The dataset shows how many students were rejected and admitted to the university by both department and gender.
 
-### 2.1 Admissions by department
+#### 2.1 Admissions by department
 
 Did every department at UC Berkeley admit students in equal proportions?
 
@@ -414,39 +564,42 @@ dept_admissions <- c(601, 370, 322, 269, 147, 46)
 ```
 
 ::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+::: {.callout-warning}
+## Solution to Exercise 2.1: Admissions by department
 
--   Hypothesis
+### Hypothesis
 
-> H~0~:There is no significant difference between the expected and observed number of students admitted by each department 
+H~0~: There is no significant difference between the expected and observed number of students admitted by each department 
 
-> H~1~: There is a significant difference between the expected and observed number of students admitted by each department
+H~1~: There is a significant difference between the expected and observed number of students admitted by each department
 
--   Assumptions
+### Assumptions
 
 ```{r}
 rep(sum(dept_admissions)*1/6, 6)
 ```
 
-> 1)  No cell has expected frequencies less than 1 and 2) No more than 20% of cells have expected frequencies less than 5 so the assumptions are met
+1) No cell has expected frequencies less than 1 and 2) No more than 20% of cells have expected frequencies less than 5 so the assumptions are met
 
--   Test (statistic)
+### Test (statistic)
 
 ```{r}
 chisq.test(dept_admissions)
 ```
 
--   P-value
+### P-value
 
-> p < 0.05, so we reject the null hypothesis
+p < 0.05, so we reject the null hypothesis
 
--   Conclusion 
+### Conclusion 
 
-> There is a significant difference between the expected and observed number of students admitted by each department
-
+There is a significant difference between the expected and observed number of students admitted by each department
+:::
 :::
 
-### 2.2
+
+#### 2.2 Gender differences in admissions
+
 Are male and female students admitted and rejected in the same proportion?
 
 ```{r}
@@ -461,42 +614,40 @@ colnames(gender) <- c("Male", "Female") #Add column names to table
 ```
 
 ::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+::: {.callout-warning}
+## Solution to Exercise 2.2: Gender differences in admissions
 
-Can make a mosaic plot to look at what the data looks like
+### Hypothesis
+
+H~0~: There is no significant difference between the expected and observed number of students admitted or rejected by gender
+
+H~1~: There is a significant difference between the expected and observed number of students admitted or rejected by gender
+
+### Assumptions
 
 ```{r}
-mosaicplot(gender)
-```
-
--   Hypothesis
-
-> H~0~:There is no significant difference between the expected and observed number of students admitted or rejected by gender
-
-> H~1~:There is a significant difference between the expected and observed number of students admitted or rejected by gender
-
--   Assumptions
-```{r}
-
-#Fit the chisq test to be able to call up the expected
-fit_gender <-chisq.test(gender)
-
+# Fit the chisq test to be able to call up the expected
+fit_gender <- chisq.test(gender)
 fit_gender$expected
 ```
-> 1)  No cell has expected frequencies less than 1 and 2) No more than 20% of cells have expected frequencies less than 5 so the assumptions are met
 
--   Test (statistic)
+1) No cell has expected frequencies less than 1 and 2) No more than 20% of cells have expected frequencies less than 5 so the assumptions are met
+
+### Test (statistic)
+
 ```{r}
-#call up the test we ran above
+# Call up the test we ran above
 fit_gender
 ```
 
--   P-value
+### P-value
 
-> p < 0.05, so we reject the null hypothesis
+p < 0.05, so we reject the null hypothesis
 
--   Conclusion
+### Conclusion
 
-> There is a significant difference between the expected and observed number of students admitted or rejected by gender
-
+There is a significant difference between the expected and observed number of students admitted or rejected by gender
 :::
+:::
+
+
