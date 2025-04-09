@@ -1,6 +1,8 @@
 ---
 title: Describing and Visualising Data
-draft: true
+draft: false
+execute:
+  output: true
 ---
 
 ```{r setup}
@@ -27,29 +29,44 @@ We'll work with two datasets from the Long Term Ecological Research (LTER) Netwo
 
 ## Grammar of Graphics with ggplot2
 
-The `ggplot2` package uses a layered approach to building plots:
-1. Data: The dataset we're visualising
-2. Aesthetics: How variables map to visual elements
-3. Geometries: The type of plot we want to create
-4. Additional layers: Labels, themes, and customisation
+The `ggplot2` package uses a layered approach to "paint a canvas" one component at a time:
 
-## Core Plot Types
+1. **Data**: The dataset we're visualising
+2. **Aesthetics**: How variables map to visual elements (what goes on which axis)
+3. **Geometries**: The type of plot that best shows your data patterns
+4. **Additional layers**: Labels, themes, and customisation for clear communication
 
-### Histograms: Understanding Distributions
+::: {.callout-tip}
+## Building Plots Step by Step
+Just like writing field methods, build your plots systematically:
 
-Let's examine the distribution of crab carapace widths:
+1. Start with data (`ggplot(data)`)
+2. Map variables (`aes(x = var1, y = var2)`)
+3. Add plot type (`geom_*()`)
+4. Enhance with labels and themes
+:::
+
+## Core plot types
+
+### Histograms: to understand distributions
+
+Histograms help us see patterns in measurements, like how animal sizes or plant heights are distributed in a population.
 
 ```{r}
-# Basic histogram
+# Step 1: Start with our data and map size to x-axis
 ggplot(pie_crab, aes(x = size)) +
+  # Step 2: Create histogram with 30 bins for detailed view
+  # More bins = more detail, but might show random variation
+  # Fewer bins = smoother pattern, but might miss important details
   geom_histogram(bins = 30) +
+  # Step 3: Add clear labels for scientific communication
   labs(
     x = "Carapace Width (mm)",
     y = "Count",
     title = "Distribution of Fiddler Crab Sizes"
   )
 
-# Add mean line to connect with previous chapter
+# Add mean line
 ggplot(pie_crab, aes(x = size)) +
   geom_histogram(bins = 30) +
   geom_vline(aes(xintercept = mean(size, na.rm = TRUE)),
@@ -62,12 +79,15 @@ ggplot(pie_crab, aes(x = size)) +
   )
 ```
 
-### Boxplots: Visualising Summary Statistics
+### Boxplots: Comparing Groups
 
-Boxplots directly show the summary statistics we learned previously:
+Think of a boxplot like a summary of crab sizes at each beach site - just as you might summarize different areas in an ecological survey. Each box tells a story about the crabs living there.
+
+Let's build this plot step by step:
 
 ```{r}
-# Basic boxplot
+# First, let's make a simple comparison between sites
+# Just like comparing different study areas in the field
 ggplot(pie_crab, aes(x = site, y = size)) +
   geom_boxplot() +
   labs(
@@ -76,7 +96,8 @@ ggplot(pie_crab, aes(x = site, y = size)) +
     title = "Fiddler Crab Sizes by Site"
   )
 
-# Compare sites with different colors
+# Now let's make it easier to see differences
+# by adding colors - like marking different study zones
 ggplot(pie_crab, aes(x = site, y = size, fill = site)) +
   geom_boxplot() +
   labs(
@@ -86,29 +107,43 @@ ggplot(pie_crab, aes(x = site, y = size, fill = site)) +
   )
 ```
 
-### Bar Plots: Summarising Groups
+The box in the middle shows where most of your crabs are (like finding the most common sizes in your sample). The line in the middle is the typical size for that site. This helps us quickly see if crabs are generally larger at some sites than others - just like you might find different sized plants in different parts of a forest.
+```
 
-Let's look at crab counts across sites:
+### Bar Plots: Counting and Comparing
+
+Bar plots help us answer questions like "How many samples did we collect?" or "What's the typical size at each site?" - common questions in field surveys.
+
+First, let's count how many crabs we found at each site:
 
 ```{r}
-# Simple count
+# Count crabs at each site (like tallying field observations)
 ggplot(pie_crab, aes(x = site)) +
-  geom_bar() +
+  geom_bar() +  # geom_bar automatically counts for us
   labs(
     x = "Site",
-    y = "Count",
+    y = "Number of Crabs",
     title = "Number of Crabs per Site"
   )
+```
 
-# Mean size by site with error bars
+Now, let's look at the typical size of crabs at each site. Just like you might measure trees or plants in different areas to see where they grow best:
+
+```{r}
+# Calculate average size for each site
+# Think of this like summarizing field measurements
 pie_crab %>%
+  # Organize data by site
   group_by(site) %>%
+  # Calculate the average and its reliability
   summarise(
-    mean_width = mean(size, na.rm = TRUE),
-    se = sd(size, na.rm = TRUE) / sqrt(n())
+    mean_width = mean(size, na.rm = TRUE), # average size
+    se = sd(size, na.rm = TRUE) / sqrt(n()) # how reliable is our average?
   ) %>%
+  # Create the plot
   ggplot(aes(x = site, y = mean_width)) +
-  geom_col() +
+  geom_col() + # make the bars
+  # Add error bars to show reliability
   geom_errorbar(
     aes(
       ymin = mean_width - se,
@@ -118,9 +153,12 @@ pie_crab %>%
   ) +
   labs(
     x = "Site",
-    y = "Mean Carapace Width (mm)",
-    title = "Average Crab Size by Site"
+    y = "Average Carapace Width (mm)",
+    title = "Typical Crab Size at Each Site"
   )
+```
+
+The height of each bar shows the average size, and the black lines (error bars) tell us how confident we are about that average - just like you might be more confident about your findings when you have more samples.
 ```
 
 ### Scatterplots: Exploring Relationships
@@ -223,12 +261,3 @@ ggplot(pie_crab, aes(x = site, y = size)) +
   )
 ```
 
-## Summary
-
-We've learned how to:
-- Create four fundamental plot types using `ggplot2`
-- Connect visualisations to statistical concepts
-- Customise plots for clarity and impact
-- Present ecological data effectively
-
-These visualisation skills help us communicate patterns and relationships in biological data.
