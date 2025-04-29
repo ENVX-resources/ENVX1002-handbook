@@ -235,8 +235,8 @@ d) You can now fit the model in R using the `lm()` function. Remember to tell R 
 
 ```{r}
 # Run your model
-## yield = response variable (x)
-## fert = predictor variable (y)
+## yield = response variable (y)
+## fert = predictor variable (x)
 model.lm <- lm(yield ~ fert)
 
 # Obtain model summary - In here you can obtain the model parameters
