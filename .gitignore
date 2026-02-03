@@ -67,3 +67,5 @@ memory-bank/
 .roomodes
 
 .roo/
+
+**/*.quarto_ipynb

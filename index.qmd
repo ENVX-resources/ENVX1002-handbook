@@ -9,7 +9,7 @@ date-format: YYYY
 
 ## Quick links
 
-- [ENVX1002 Unit page](https://www.sydney.edu.au/units/ENVX1002) -- check assessment weights, due dates, and other important information
+- [ENVX1002 Unit outline](https://www.sydney.edu.au/units/ENVX1002/2026-S1C-ND-CC) -- check assessment weights, due dates, and other important information
 - [Canvas](https://canvas.sydney.edu.au) -- the main hub
 - [Ed discussion forum](https://edstem.org/au/dashboard) -- ask questions, share resources, and get help
 
