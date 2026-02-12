@@ -1,8 +1,10 @@
 ---
 title: "Lab 12 - Non-linear models"
-embded-resources: true
+embed-resources: true
 resources:
   - data/east_creek.csv
+execute:
+  output: true
 ---
 
 ```{r setup}
@@ -119,8 +121,9 @@ cubic polynomial.
 
 a)  which line corresponds to which model?
 
-```{r LoadData, echo = F}
-
+```{r LoadData}
+#| echo: false
+#| output: true
 soil <- read.csv("data/east_creek.csv", header = T)
 
 soil.lin <- lm(yield ~ ph, data = soil)
