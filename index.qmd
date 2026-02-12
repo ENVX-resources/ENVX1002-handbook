@@ -9,9 +9,9 @@ date-format: YYYY
 
 ## Quick links
 
-- [ENVX1002 Unit outline](https://www.sydney.edu.au/units/ENVX1002/2026-S1C-ND-CC) -- check assessment weights, due dates, and other important information
-- [Canvas](https://canvas.sydney.edu.au) -- the main hub
-- [Ed discussion forum](https://edstem.org/au/dashboard) -- ask questions, share resources, and get help
+- [ENVX1002 Unit page](https://www.sydney.edu.au/units/ENVX1002/2026-S1C-ND-CC) -- check assessment weights, due dates, and other important information
+- [Canvas](https://canvas.sydney.edu.au/courses/71839) -- the main hub
+- [Ed discussion forum](https://edstem.org/au/courses/31798/discussion) -- ask questions, share resources, and get help
 
 ## How to use this handbook
 
@@ -24,7 +24,7 @@ To begin, we strongly suggest that you read our [introduction](/001-intro.qmd) c
 
 We would like to acknowledge the work of previous generations of teaching staff who created the bulk of the teaching material within this manual. In particular, the work of:
 
-- Assoc. Prof. Mick O’Neill
+- Assoc. Prof. Mick O'Neill
 - Dr. Kathryn Aufflick
 - Assoc. Prof. Peter Thomson
 - Prof. Thomas Bishop
