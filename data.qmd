@@ -1,0 +1,63 @@
+---
+title: Lab datasets
+resources:
+  - labs/data/*
+---
+
+Download data files used in the computer labs. Click any filename to download.
+
+## Lab 01 – Introduction to R
+
+- [student_scores.csv](labs/data/student_scores.csv)
+- [weather_data.xlsx](labs/data/weather_data.xlsx)
+
+## Lab 02 – Data Visualisation
+
+- [soil.xlsx](labs/data/soil.xlsx)
+- [mario_kart.csv](labs/data/mario_kart.csv)
+
+## Lab 03 – Normal Distribution
+
+- [pie_crab.csv](labs/data/pie_crab.csv)
+- [hbr_maples.csv](labs/data/hbr_maples.csv)
+
+## Lab 04 – Confidence Intervals
+
+- [ENVX1002_Data4.xlsx](labs/data/ENVX1002_Data4.xlsx)
+
+## Lab 05 – Hypothesis Testing
+
+- [ENVX1002_Data5.xlsx](labs/data/ENVX1002_Data5.xlsx)
+
+## Lab 06 – One-way ANOVA
+
+- [Barley.csv](labs/data/Barley.csv)
+- [Plant_growth.csv](labs/data/Plant_growth.csv)
+- [Turbidity.csv](labs/data/Turbidity.csv)
+
+## Lab 07 – Two-way ANOVA
+
+No external data files — data is provided inline in the lab.
+
+## Lab 08 – Revision
+
+No exercises in this lab.
+
+## Lab 09 – Simple Linear Regression
+
+- [ENVX1002_practical_data_Regression.xlsx](labs/data/ENVX1002_practical_data_Regression.xlsx)
+
+## Lab 10 – Multiple Linear Regression
+
+- [ENVX1002_wk10_practical_data_Regression.xlsx](labs/data/ENVX1002_wk10_practical_data_Regression.xlsx)
+
+## Lab 11 – Model Selection
+
+- [ENVX1002_practical_wk11_data_Regression.xlsx](labs/data/ENVX1002_practical_wk11_data_Regression.xlsx)
+- [Housing.csv](labs/data/Housing.csv)
+- [energy_data.csv](labs/data/energy_data.csv)
+- [Advertising_Budget_and_Sales.csv](labs/data/Advertising_Budget_and_Sales.csv)
+
+## Lab 12 – Non-linear Models
+
+- [east_creek.csv](labs/data/east_creek.csv)
