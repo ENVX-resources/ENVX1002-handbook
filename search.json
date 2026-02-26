@@ -297,7 +297,7 @@
     "href": "labs/Lab11.html#before-you-begin",
     "title": "Lab 11 - Multiple Linear Regression",
     "section": "Before you begin",
-    "text": "Before you begin\nCreate your Quarto document and save it as Lab-11.Rmd or similar. The following data files are required:\n\nENVX1002_wk11_practical_data_Regression.xlsx\n\nLast week you explored simple linear regression and assessed the output of your models.\nThis week we will build upon this and venture into multiple linear regression.\nBefore you begin, ensure you have a project set up in your desired folder. Then open up a fresh R markdown and save the file within this folder.\nDon’t forget to save as you go!",
+    "text": "Before you begin\nCreate your Quarto document and save it as Lab-11.Rmd or similar. The following data files are required:\n\nENVX1002_practical_wk11_data_Regression.xlsx\n\nLast week you explored simple linear regression and assessed the output of your models.\nThis week we will build upon this and venture into multiple linear regression.\nBefore you begin, ensure you have a project set up in your desired folder. Then open up a fresh R markdown and save the file within this folder.\nDon’t forget to save as you go!",
     "crumbs": [
       "**🖥️ Computer labs**",
       "Lab 11 - Multiple Linear Regression"
