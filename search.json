@@ -843,6 +843,86 @@
     ]
   },
   {
+    "objectID": "001-intro.html",
+    "href": "001-intro.html",
+    "title": "Introduction to statistics",
+    "section": "",
+    "text": "Welcome to ENVX1002! This unit introduces you to essential statistical methods that will help you understand and analyse data, regardless of your field of study. Whether you’re studying environmental science, agriculture, veterinary science, or any other discipline, the skills you’ll learn here will help you make sense of data and draw meaningful conclusions from it.\n\n\nBy the end of this unit, you will be able to:\n\nUnderstand different types of data and when to use them\nUse R and Excel for basic data analysis\nApply appropriate statistical methods to answer research questions\nCreate clear visualisations of your findings\nInterpret and communicate statistical results confidently\n\nThe above are, of course, simplified for your convenience. The actual learning objectives are more detailed and you can find them in the unit outline.\n\n\n\nENVX1002 is about learning to use statistical and computing methods to answer quantitative questions. It combines three key elements:\n\nApplied statistics: Tools and methods to analyse data\nData analysis: Practical skills to process and understand information\nResearch methods: Approaches to answer scientific questions\n\n\n\n\nStatistics bridges data analysis and scientific research\n\n\n\n\n\nThe University of Sydney has a strong research tradition, and throughout your degree, you’ll have opportunities to engage with research in your chosen field. This unit will equip you with the fundamental skills needed to understand and conduct research, regardless of your specific area of study.\n\n\n\nThe research cycle: from question formulation through data collection, analysis, and communication of results which (often) leads to more questions, and iterations thereof\n\n\n\n\nStatistics plays a vital role in modern research by providing rigorous methods to analyse and interpret data. In research, we use statistics to explore patterns in our data, from simple summaries to complex relationships between variables. For example, astronomers used statistical analysis to discover thousands of planets around other stars by detecting tiny, regular dips in star brightness - sometimes as small as 0.01%! Without statistics to separate these tiny signals from random variations in brightness, we would never have found these distant worlds.\nThese analytical methods go beyond just describing data - they give us the power to draw reliable conclusions. Using techniques like hypothesis testing, we can determine if observed differences between groups are truly meaningful or just due to chance. Perhaps most importantly, we can quantify our uncertainty. Rather than simply claiming “Treatment A works better than Treatment B,” we can state precisely how confident we are in our findings.\nMost importantly, these methods enable discoveries that change the world. From measuring the impact of renewable energy breakthroughs to tracking the recovery of endangered species, data analysis replaces guesswork with evidence-based confidence. This approach helps us tackle our planet’s biggest challenges.\n\n\n\n\n\n\nData comes in various forms. Understanding these different types helps us choose the right analysis methods:\n\nContinuous data (measurements on a continuous scale)\n\nHeight measurements\nTemperature readings\nWeight measurements\n\nDiscrete data (counts or whole numbers)\n\nNumber of items in a sample\nFrequency of events\nPopulation counts\n\nCategorical data\n\nYes/no responses\nClassifications (A, B, C)\nTypes or categories\n\n\n\n\n\nIn research, we often study samples to understand larger populations:\n\nA population includes all possible cases (e.g., all students at the university)\nA sample is a subset we actually measure (e.g., 100 randomly selected students)\n\n\n\n\nA sample of n = 20 units (v) taken from a population of N = 1,000 (O)\n\n\n\n\n\nWhen scientists measure things in nature, they never get exactly the same result twice. For example, if you measure a tree’s height several times, each measurement will be slightly different. This is called natural variability.\nIn science, we expect and plan for this variation. It happens because the natural world isn’t perfectly uniform - trees in a forest grow to different heights, temperatures change throughout the day, and no two soil samples are identical. Even our measuring tools add some variation to our results.\nStatistics gives us ways to work with this natural variation. It helps us understand what’s normal variation and what might signal a real difference that needs our attention. This understanding is essential for making reliable scientific conclusions.\n\n\n\n\n\n\nDon’t worry if you’ve never programmed before! We’ll start with the basics and build your skills gradually. You’ll learn to import and organize data, calculate summary statistics, create informative graphs, and perform statistical tests.\n\n\n\nExcel will complement your R skills by helping you organize data, create simple summaries, perform basic calculations, and prepare data for analysis.\n\n\n\n\nIn general, you can get help through:\n\nFace-to-face (lectures, tutorials, labs)\nEmail consultations\nEd Discussion forum (public or private posts)\nDrop-in sessions (Floris will organise these and announce them on Ed)\n\nRemember to ask questions early - we’re here to help you succeed.\n\n\n\nIn the coming weeks, we’ll work with real datasets and learn practical statistical methods that you can apply to data. The first step is to get comfortable with R and Excel, so make sure you’re ready to dive in…",
+    "crumbs": [
+      "Introduction to statistics"
+    ]
+  },
+  {
+    "objectID": "001-intro.html#learning-objectives",
+    "href": "001-intro.html#learning-objectives",
+    "title": "Introduction to statistics",
+    "section": "",
+    "text": "By the end of this unit, you will be able to:\n\nUnderstand different types of data and when to use them\nUse R and Excel for basic data analysis\nApply appropriate statistical methods to answer research questions\nCreate clear visualisations of your findings\nInterpret and communicate statistical results confidently\n\nThe above are, of course, simplified for your convenience. The actual learning objectives are more detailed and you can find them in the unit outline.",
+    "crumbs": [
+      "Introduction to statistics"
+    ]
+  },
+  {
+    "objectID": "001-intro.html#what-is-envx1002",
+    "href": "001-intro.html#what-is-envx1002",
+    "title": "Introduction to statistics",
+    "section": "",
+    "text": "ENVX1002 is about learning to use statistical and computing methods to answer quantitative questions. It combines three key elements:\n\nApplied statistics: Tools and methods to analyse data\nData analysis: Practical skills to process and understand information\nResearch methods: Approaches to answer scientific questions\n\n\n\n\nStatistics bridges data analysis and scientific research",
+    "crumbs": [
+      "Introduction to statistics"
+    ]
+  },
+  {
+    "objectID": "001-intro.html#introduction-to-research",
+    "href": "001-intro.html#introduction-to-research",
+    "title": "Introduction to statistics",
+    "section": "",
+    "text": "The University of Sydney has a strong research tradition, and throughout your degree, you’ll have opportunities to engage with research in your chosen field. This unit will equip you with the fundamental skills needed to understand and conduct research, regardless of your specific area of study.\n\n\n\nThe research cycle: from question formulation through data collection, analysis, and communication of results which (often) leads to more questions, and iterations thereof\n\n\n\n\nStatistics plays a vital role in modern research by providing rigorous methods to analyse and interpret data. In research, we use statistics to explore patterns in our data, from simple summaries to complex relationships between variables. For example, astronomers used statistical analysis to discover thousands of planets around other stars by detecting tiny, regular dips in star brightness - sometimes as small as 0.01%! Without statistics to separate these tiny signals from random variations in brightness, we would never have found these distant worlds.\nThese analytical methods go beyond just describing data - they give us the power to draw reliable conclusions. Using techniques like hypothesis testing, we can determine if observed differences between groups are truly meaningful or just due to chance. Perhaps most importantly, we can quantify our uncertainty. Rather than simply claiming “Treatment A works better than Treatment B,” we can state precisely how confident we are in our findings.\nMost importantly, these methods enable discoveries that change the world. From measuring the impact of renewable energy breakthroughs to tracking the recovery of endangered species, data analysis replaces guesswork with evidence-based confidence. This approach helps us tackle our planet’s biggest challenges.",
+    "crumbs": [
+      "Introduction to statistics"
+    ]
+  },
+  {
+    "objectID": "001-intro.html#understanding-data",
+    "href": "001-intro.html#understanding-data",
+    "title": "Introduction to statistics",
+    "section": "",
+    "text": "Data comes in various forms. Understanding these different types helps us choose the right analysis methods:\n\nContinuous data (measurements on a continuous scale)\n\nHeight measurements\nTemperature readings\nWeight measurements\n\nDiscrete data (counts or whole numbers)\n\nNumber of items in a sample\nFrequency of events\nPopulation counts\n\nCategorical data\n\nYes/no responses\nClassifications (A, B, C)\nTypes or categories\n\n\n\n\n\nIn research, we often study samples to understand larger populations:\n\nA population includes all possible cases (e.g., all students at the university)\nA sample is a subset we actually measure (e.g., 100 randomly selected students)\n\n\n\n\nA sample of n = 20 units (v) taken from a population of N = 1,000 (O)\n\n\n\n\n\nWhen scientists measure things in nature, they never get exactly the same result twice. For example, if you measure a tree’s height several times, each measurement will be slightly different. This is called natural variability.\nIn science, we expect and plan for this variation. It happens because the natural world isn’t perfectly uniform - trees in a forest grow to different heights, temperatures change throughout the day, and no two soil samples are identical. Even our measuring tools add some variation to our results.\nStatistics gives us ways to work with this natural variation. It helps us understand what’s normal variation and what might signal a real difference that needs our attention. This understanding is essential for making reliable scientific conclusions.",
+    "crumbs": [
+      "Introduction to statistics"
+    ]
+  },
+  {
+    "objectID": "001-intro.html#tools-well-use",
+    "href": "001-intro.html#tools-well-use",
+    "title": "Introduction to statistics",
+    "section": "",
+    "text": "Don’t worry if you’ve never programmed before! We’ll start with the basics and build your skills gradually. You’ll learn to import and organize data, calculate summary statistics, create informative graphs, and perform statistical tests.\n\n\n\nExcel will complement your R skills by helping you organize data, create simple summaries, perform basic calculations, and prepare data for analysis.",
+    "crumbs": [
+      "Introduction to statistics"
+    ]
+  },
+  {
+    "objectID": "001-intro.html#getting-help",
+    "href": "001-intro.html#getting-help",
+    "title": "Introduction to statistics",
+    "section": "",
+    "text": "In general, you can get help through:\n\nFace-to-face (lectures, tutorials, labs)\nEmail consultations\nEd Discussion forum (public or private posts)\nDrop-in sessions (Floris will organise these and announce them on Ed)\n\nRemember to ask questions early - we’re here to help you succeed.",
+    "crumbs": [
+      "Introduction to statistics"
+    ]
+  },
+  {
+    "objectID": "001-intro.html#whats-next",
+    "href": "001-intro.html#whats-next",
+    "title": "Introduction to statistics",
+    "section": "",
+    "text": "In the coming weeks, we’ll work with real datasets and learn practical statistical methods that you can apply to data. The first step is to get comfortable with R and Excel, so make sure you’re ready to dive in…",
+    "crumbs": [
+      "Introduction to statistics"
+    ]
+  },
+  {
     "objectID": "000-rguide.html",
     "href": "000-rguide.html",
     "title": "A brief R guide for surviving ENVX1002",
@@ -1063,83 +1143,133 @@
     ]
   },
   {
-    "objectID": "001-intro.html",
-    "href": "001-intro.html",
-    "title": "Introduction to statistics",
+    "objectID": "data.html",
+    "href": "data.html",
+    "title": "Lab datasets",
     "section": "",
-    "text": "Welcome to ENVX1002! This unit introduces you to essential statistical methods that will help you understand and analyse data, regardless of your field of study. Whether you’re studying environmental science, agriculture, veterinary science, or any other discipline, the skills you’ll learn here will help you make sense of data and draw meaningful conclusions from it.\n\n\nBy the end of this unit, you will be able to:\n\nUnderstand different types of data and when to use them\nUse R and Excel for basic data analysis\nApply appropriate statistical methods to answer research questions\nCreate clear visualisations of your findings\nInterpret and communicate statistical results confidently\n\nThe above are, of course, simplified for your convenience. The actual learning objectives are more detailed and you can find them in the unit outline.\n\n\n\nENVX1002 is about learning to use statistical and computing methods to answer quantitative questions. It combines three key elements:\n\nApplied statistics: Tools and methods to analyse data\nData analysis: Practical skills to process and understand information\nResearch methods: Approaches to answer scientific questions\n\n\n\n\nStatistics bridges data analysis and scientific research\n\n\n\n\n\nThe University of Sydney has a strong research tradition, and throughout your degree, you’ll have opportunities to engage with research in your chosen field. This unit will equip you with the fundamental skills needed to understand and conduct research, regardless of your specific area of study.\n\n\n\nThe research cycle: from question formulation through data collection, analysis, and communication of results which (often) leads to more questions, and iterations thereof\n\n\n\n\nStatistics plays a vital role in modern research by providing rigorous methods to analyse and interpret data. In research, we use statistics to explore patterns in our data, from simple summaries to complex relationships between variables. For example, astronomers used statistical analysis to discover thousands of planets around other stars by detecting tiny, regular dips in star brightness - sometimes as small as 0.01%! Without statistics to separate these tiny signals from random variations in brightness, we would never have found these distant worlds.\nThese analytical methods go beyond just describing data - they give us the power to draw reliable conclusions. Using techniques like hypothesis testing, we can determine if observed differences between groups are truly meaningful or just due to chance. Perhaps most importantly, we can quantify our uncertainty. Rather than simply claiming “Treatment A works better than Treatment B,” we can state precisely how confident we are in our findings.\nMost importantly, these methods enable discoveries that change the world. From measuring the impact of renewable energy breakthroughs to tracking the recovery of endangered species, data analysis replaces guesswork with evidence-based confidence. This approach helps us tackle our planet’s biggest challenges.\n\n\n\n\n\n\nData comes in various forms. Understanding these different types helps us choose the right analysis methods:\n\nContinuous data (measurements on a continuous scale)\n\nHeight measurements\nTemperature readings\nWeight measurements\n\nDiscrete data (counts or whole numbers)\n\nNumber of items in a sample\nFrequency of events\nPopulation counts\n\nCategorical data\n\nYes/no responses\nClassifications (A, B, C)\nTypes or categories\n\n\n\n\n\nIn research, we often study samples to understand larger populations:\n\nA population includes all possible cases (e.g., all students at the university)\nA sample is a subset we actually measure (e.g., 100 randomly selected students)\n\n\n\n\nA sample of n = 20 units (v) taken from a population of N = 1,000 (O)\n\n\n\n\n\nWhen scientists measure things in nature, they never get exactly the same result twice. For example, if you measure a tree’s height several times, each measurement will be slightly different. This is called natural variability.\nIn science, we expect and plan for this variation. It happens because the natural world isn’t perfectly uniform - trees in a forest grow to different heights, temperatures change throughout the day, and no two soil samples are identical. Even our measuring tools add some variation to our results.\nStatistics gives us ways to work with this natural variation. It helps us understand what’s normal variation and what might signal a real difference that needs our attention. This understanding is essential for making reliable scientific conclusions.\n\n\n\n\n\n\nDon’t worry if you’ve never programmed before! We’ll start with the basics and build your skills gradually. You’ll learn to import and organize data, calculate summary statistics, create informative graphs, and perform statistical tests.\n\n\n\nExcel will complement your R skills by helping you organize data, create simple summaries, perform basic calculations, and prepare data for analysis.\n\n\n\n\nIn general, you can get help through:\n\nFace-to-face (lectures, tutorials, labs)\nEmail consultations\nEd Discussion forum (public or private posts)\nDrop-in sessions (Floris will organise these and announce them on Ed)\n\nRemember to ask questions early - we’re here to help you succeed.\n\n\n\nIn the coming weeks, we’ll work with real datasets and learn practical statistical methods that you can apply to data. The first step is to get comfortable with R and Excel, so make sure you’re ready to dive in…",
+    "text": "Download data files used in the computer labs. Click any filename to download.",
     "crumbs": [
-      "Introduction to statistics"
+      "Lab datasets"
     ]
   },
   {
-    "objectID": "001-intro.html#learning-objectives",
-    "href": "001-intro.html#learning-objectives",
-    "title": "Introduction to statistics",
-    "section": "",
-    "text": "By the end of this unit, you will be able to:\n\nUnderstand different types of data and when to use them\nUse R and Excel for basic data analysis\nApply appropriate statistical methods to answer research questions\nCreate clear visualisations of your findings\nInterpret and communicate statistical results confidently\n\nThe above are, of course, simplified for your convenience. The actual learning objectives are more detailed and you can find them in the unit outline.",
+    "objectID": "data.html#lab-01-introduction-to-r",
+    "href": "data.html#lab-01-introduction-to-r",
+    "title": "Lab datasets",
+    "section": "Lab 01 – Introduction to R",
+    "text": "Lab 01 – Introduction to R\n\nstudent_scores.csv\nweather_data.xlsx",
     "crumbs": [
-      "Introduction to statistics"
+      "Lab datasets"
     ]
   },
   {
-    "objectID": "001-intro.html#what-is-envx1002",
-    "href": "001-intro.html#what-is-envx1002",
-    "title": "Introduction to statistics",
-    "section": "",
-    "text": "ENVX1002 is about learning to use statistical and computing methods to answer quantitative questions. It combines three key elements:\n\nApplied statistics: Tools and methods to analyse data\nData analysis: Practical skills to process and understand information\nResearch methods: Approaches to answer scientific questions\n\n\n\n\nStatistics bridges data analysis and scientific research",
+    "objectID": "data.html#lab-02-data-visualisation",
+    "href": "data.html#lab-02-data-visualisation",
+    "title": "Lab datasets",
+    "section": "Lab 02 – Data Visualisation",
+    "text": "Lab 02 – Data Visualisation\n\nsoil.xlsx\nmario_kart.csv",
     "crumbs": [
-      "Introduction to statistics"
+      "Lab datasets"
     ]
   },
   {
-    "objectID": "001-intro.html#introduction-to-research",
-    "href": "001-intro.html#introduction-to-research",
-    "title": "Introduction to statistics",
-    "section": "",
-    "text": "The University of Sydney has a strong research tradition, and throughout your degree, you’ll have opportunities to engage with research in your chosen field. This unit will equip you with the fundamental skills needed to understand and conduct research, regardless of your specific area of study.\n\n\n\nThe research cycle: from question formulation through data collection, analysis, and communication of results which (often) leads to more questions, and iterations thereof\n\n\n\n\nStatistics plays a vital role in modern research by providing rigorous methods to analyse and interpret data. In research, we use statistics to explore patterns in our data, from simple summaries to complex relationships between variables. For example, astronomers used statistical analysis to discover thousands of planets around other stars by detecting tiny, regular dips in star brightness - sometimes as small as 0.01%! Without statistics to separate these tiny signals from random variations in brightness, we would never have found these distant worlds.\nThese analytical methods go beyond just describing data - they give us the power to draw reliable conclusions. Using techniques like hypothesis testing, we can determine if observed differences between groups are truly meaningful or just due to chance. Perhaps most importantly, we can quantify our uncertainty. Rather than simply claiming “Treatment A works better than Treatment B,” we can state precisely how confident we are in our findings.\nMost importantly, these methods enable discoveries that change the world. From measuring the impact of renewable energy breakthroughs to tracking the recovery of endangered species, data analysis replaces guesswork with evidence-based confidence. This approach helps us tackle our planet’s biggest challenges.",
+    "objectID": "data.html#lab-03-normal-distribution",
+    "href": "data.html#lab-03-normal-distribution",
+    "title": "Lab datasets",
+    "section": "Lab 03 – Normal Distribution",
+    "text": "Lab 03 – Normal Distribution\n\npie_crab.csv\nhbr_maples.csv",
     "crumbs": [
-      "Introduction to statistics"
+      "Lab datasets"
     ]
   },
   {
-    "objectID": "001-intro.html#understanding-data",
-    "href": "001-intro.html#understanding-data",
-    "title": "Introduction to statistics",
-    "section": "",
-    "text": "Data comes in various forms. Understanding these different types helps us choose the right analysis methods:\n\nContinuous data (measurements on a continuous scale)\n\nHeight measurements\nTemperature readings\nWeight measurements\n\nDiscrete data (counts or whole numbers)\n\nNumber of items in a sample\nFrequency of events\nPopulation counts\n\nCategorical data\n\nYes/no responses\nClassifications (A, B, C)\nTypes or categories\n\n\n\n\n\nIn research, we often study samples to understand larger populations:\n\nA population includes all possible cases (e.g., all students at the university)\nA sample is a subset we actually measure (e.g., 100 randomly selected students)\n\n\n\n\nA sample of n = 20 units (v) taken from a population of N = 1,000 (O)\n\n\n\n\n\nWhen scientists measure things in nature, they never get exactly the same result twice. For example, if you measure a tree’s height several times, each measurement will be slightly different. This is called natural variability.\nIn science, we expect and plan for this variation. It happens because the natural world isn’t perfectly uniform - trees in a forest grow to different heights, temperatures change throughout the day, and no two soil samples are identical. Even our measuring tools add some variation to our results.\nStatistics gives us ways to work with this natural variation. It helps us understand what’s normal variation and what might signal a real difference that needs our attention. This understanding is essential for making reliable scientific conclusions.",
+    "objectID": "data.html#lab-04-confidence-intervals",
+    "href": "data.html#lab-04-confidence-intervals",
+    "title": "Lab datasets",
+    "section": "Lab 04 – Confidence Intervals",
+    "text": "Lab 04 – Confidence Intervals\n\nENVX1002_Data4.xlsx",
     "crumbs": [
-      "Introduction to statistics"
+      "Lab datasets"
     ]
   },
   {
-    "objectID": "001-intro.html#tools-well-use",
-    "href": "001-intro.html#tools-well-use",
-    "title": "Introduction to statistics",
-    "section": "",
-    "text": "Don’t worry if you’ve never programmed before! We’ll start with the basics and build your skills gradually. You’ll learn to import and organize data, calculate summary statistics, create informative graphs, and perform statistical tests.\n\n\n\nExcel will complement your R skills by helping you organize data, create simple summaries, perform basic calculations, and prepare data for analysis.",
+    "objectID": "data.html#lab-05-hypothesis-testing",
+    "href": "data.html#lab-05-hypothesis-testing",
+    "title": "Lab datasets",
+    "section": "Lab 05 – Hypothesis Testing",
+    "text": "Lab 05 – Hypothesis Testing\n\nENVX1002_Data5.xlsx",
     "crumbs": [
-      "Introduction to statistics"
+      "Lab datasets"
     ]
   },
   {
-    "objectID": "001-intro.html#getting-help",
-    "href": "001-intro.html#getting-help",
-    "title": "Introduction to statistics",
-    "section": "",
-    "text": "In general, you can get help through:\n\nFace-to-face (lectures, tutorials, labs)\nEmail consultations\nEd Discussion forum (public or private posts)\nDrop-in sessions (Floris will organise these and announce them on Ed)\n\nRemember to ask questions early - we’re here to help you succeed.",
+    "objectID": "data.html#lab-06-one-way-anova",
+    "href": "data.html#lab-06-one-way-anova",
+    "title": "Lab datasets",
+    "section": "Lab 06 – One-way ANOVA",
+    "text": "Lab 06 – One-way ANOVA\n\nBarley.csv\nPlant_growth.csv\nTurbidity.csv",
     "crumbs": [
-      "Introduction to statistics"
+      "Lab datasets"
     ]
   },
   {
-    "objectID": "001-intro.html#whats-next",
-    "href": "001-intro.html#whats-next",
-    "title": "Introduction to statistics",
-    "section": "",
-    "text": "In the coming weeks, we’ll work with real datasets and learn practical statistical methods that you can apply to data. The first step is to get comfortable with R and Excel, so make sure you’re ready to dive in…",
+    "objectID": "data.html#lab-07-two-way-anova",
+    "href": "data.html#lab-07-two-way-anova",
+    "title": "Lab datasets",
+    "section": "Lab 07 – Two-way ANOVA",
+    "text": "Lab 07 – Two-way ANOVA\nNo external data files — data is provided inline in the lab.",
     "crumbs": [
-      "Introduction to statistics"
+      "Lab datasets"
+    ]
+  },
+  {
+    "objectID": "data.html#lab-08-revision",
+    "href": "data.html#lab-08-revision",
+    "title": "Lab datasets",
+    "section": "Lab 08 – Revision",
+    "text": "Lab 08 – Revision\nNo exercises in this lab.",
+    "crumbs": [
+      "Lab datasets"
+    ]
+  },
+  {
+    "objectID": "data.html#lab-09-simple-linear-regression",
+    "href": "data.html#lab-09-simple-linear-regression",
+    "title": "Lab datasets",
+    "section": "Lab 09 – Simple Linear Regression",
+    "text": "Lab 09 – Simple Linear Regression\n\nENVX1002_practical_data_Regression.xlsx",
+    "crumbs": [
+      "Lab datasets"
+    ]
+  },
+  {
+    "objectID": "data.html#lab-10-multiple-linear-regression",
+    "href": "data.html#lab-10-multiple-linear-regression",
+    "title": "Lab datasets",
+    "section": "Lab 10 – Multiple Linear Regression",
+    "text": "Lab 10 – Multiple Linear Regression\n\nENVX1002_wk10_practical_data_Regression.xlsx",
+    "crumbs": [
+      "Lab datasets"
+    ]
+  },
+  {
+    "objectID": "data.html#lab-11-model-selection",
+    "href": "data.html#lab-11-model-selection",
+    "title": "Lab datasets",
+    "section": "Lab 11 – Model Selection",
+    "text": "Lab 11 – Model Selection\n\nENVX1002_practical_wk11_data_Regression.xlsx\nHousing.csv\nenergy_data.csv\nAdvertising_Budget_and_Sales.csv",
+    "crumbs": [
+      "Lab datasets"
+    ]
+  },
+  {
+    "objectID": "data.html#lab-12-non-linear-models",
+    "href": "data.html#lab-12-non-linear-models",
+    "title": "Lab datasets",
+    "section": "Lab 12 – Non-linear Models",
+    "text": "Lab 12 – Non-linear Models\n\neast_creek.csv",
+    "crumbs": [
+      "Lab datasets"
     ]
   },
   {
