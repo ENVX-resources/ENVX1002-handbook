@@ -4,13 +4,13 @@ title: Lab solutions
 
 Lab worksheets with answers included.
 
-- [Lab 02 -- Statistical programming](labs/Lab02.qmd)
-- [Lab 03 -- Exploring and visualising data](labs/Lab03.qmd)
-- [Lab 04 -- Central limit theorem](labs/Lab04.qmd)
-- [Lab 05 -- Hypothesis testing](labs/Lab05.qmd)
-- [Lab 06 -- Two-sample *t*-test](labs/Lab06.qmd)
-- [Lab 07 -- Non-parametric tests & Chi-squared tests](labs/Lab07.qmd)
-- [Lab 09 -- Describing relationships](labs/Lab09.qmd)
-- [Lab 10 -- Linear functions](labs/Lab10.qmd)
-- [Lab 11 -- Multiple Linear Regression](labs/Lab11.qmd)
-- [Lab 12 -- Non-linear models](labs/Lab12.qmd)
+- [Lab 02 -- Statistical programming](solutions/labs/Lab02.html)
+- [Lab 03 -- Exploring and visualising data](solutions/labs/Lab03.html)
+- [Lab 04 -- Central limit theorem](solutions/labs/Lab04.html)
+- [Lab 05 -- Hypothesis testing](solutions/labs/Lab05.html)
+- [Lab 06 -- Two-sample *t*-test](solutions/labs/Lab06.html)
+- [Lab 07 -- Non-parametric tests & Chi-squared tests](solutions/labs/Lab07.html)
+- [Lab 09 -- Describing relationships](solutions/labs/Lab09.html)
+- [Lab 10 -- Linear functions](solutions/labs/Lab10.html)
+- [Lab 11 -- Multiple Linear Regression](solutions/labs/Lab11.html)
+- [Lab 12 -- Non-linear models](solutions/labs/Lab12.html)

@@ -1,7 +1,7 @@
 project:
   output-dir: _site
-  render:
-    - "!solutions.qmd"
+  post-render:
+    - bash _build-solutions.sh
 
 execute:
   output: false
