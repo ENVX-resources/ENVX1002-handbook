@@ -4,5 +4,6 @@
 quarto render --profile solution
 mkdir -p _site/solutions/labs
 cp _solution/labs/Lab*.html _site/solutions/labs/
+cp _solution/labs/Lab*.pdf _site/solutions/labs/
 cp -r _solution/labs/data _site/solutions/labs/ 2>/dev/null || true
 cp -r _solution/labs/images _site/solutions/labs/ 2>/dev/null || true
