@@ -53,6 +53,7 @@ website:
           - href: labs/Lab12.qmd
             target: _blank
       - data.qmd
+      - solutions.qmd
       - section: "**📝 Quarto report guide**"
         contents: guides/*
 format:
