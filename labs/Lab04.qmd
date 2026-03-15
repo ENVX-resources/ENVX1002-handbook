@@ -11,21 +11,22 @@ pacman::p_load(tidyverse, readxl)
 
 # Facing challenges
 
-Project 1 is due in week 5 and for many of you this may be your first university assignment; some may be nervous, while others may be more relaxed. Your demonstrators will use the start of this practical to discuss how you may be feeling for this first assessment and share ways you might want to approach and prepare for the assessment.  
+Project 1 is due in week 5 and for many of you this may be your first university assignment; some may be nervous, while others may be more relaxed. Your demonstrators will use the start of this practical to discuss how you may be feeling for this first assessment and share ways you might want to approach and prepare for the assessment.
 
 This is the last reflective activity for now, thank you all for contributing so far and we hope you have found some benefit in the activities. Now for some probability!
 
 ::: {.callout-tip}
 # Learning outcomes
 
-At the end of this computer practical, students should be able to: 
+At the end of this computer practical, students should be able to:
 
-- calculate tail, interval and inverse probabilities associated with the Normal distribution 
+- calculate tail, interval and inverse probabilities associated with the Normal distribution
 - calculate probabilities associated sampling distribution of the sample mean by using simulation in R and using R commands.
 :::
 
 Link to data is below:
 
+- [heights.csv](data/heights.csv)
 - [ENVX1002_Data4.xlsx](data/ENVX1002_Data4.xlsx)
 - Alternatively download from Canvas
 
@@ -35,49 +36,49 @@ Link to data is below:
 
 Here are the main R functions we'll use to work with normal distributions:
 
-- **Probability density function (height of the curve at x):**  
-  $f(x) =$`dnorm(x, mean, sd)` 
+- **Probability density function (height of the curve at x):**
+  $f(x) =$`dnorm(x, mean, sd)`
 
-- **Cumulative probability (area under curve up to x):**  
-  $F(x) = P(X \leq x) =$`pnorm(x, mean, sd)` 
+- **Cumulative probability (area under curve up to x):**
+  $F(x) = P(X \leq x) =$`pnorm(x, mean, sd)`
 
-- **Interval probability (area between two points):**  
+- **Interval probability (area between two points):**
   $P(a \leq X \leq b) =$`pnorm(upper, mean, sd) - pnorm(lower, mean, sd)`
 
-- **Finding values for given probabilities:**  
+- **Finding values for given probabilities:**
   $P(X \le x) =$`qnorm(probability, mean, sd)`
 
-- **Generate random values from a normal distribution:**  
+- **Generate random values from a normal distribution:**
   `rnorm(n, mean, sd)`
 
 # Normal distribution
 
-## Exercise 1 - Class activity - How tall is ENVX1002??
+## Exercise 1 - How tall is ENVX1002?
 
 1. Make sure you have an existing or new project for Lab 4 and create a quarto document called `Lab_4.qmd` (suggestion). Save it in your project directory.
 
-2. This is an anonymous exercise. Your demonstrator will create a google sheet (or similar) for you to enter your height and sex (M or F only so that the data is easy to analyse). 
-
-3. Once all data is collected, manually enter the data into R or export the data as a .csv to be read into R, for example:
-
-```{r, echo = TRUE}
-female <- data.frame(heights = c(176, 180, 187, 168, 160, 170))
-male <- data.frame(heights = c(175, 183, 163, 190, 179))
-
-```
-
-4. Calculate the mean and standard deviation using R and graph the distribution for both genders, for example:
+2. During the lecture, we collected height data from the class. The data is available as a CSV file. Import it into R:
 
 ```{r}
-# calculate the mean and standard deviation of males
-m_mean <- mean(male$heights)
-m_sd <- sd(male$heights)
+heights <- read.csv("data/heights.csv")
+```
 
-library(tidyverse) # needed for ggplot2
+3. Separate the data by sex and calculate the mean and standard deviation for each group. Graph the distribution for both genders, for example:
+
+```{r}
+male <- heights |> filter(sex == "M")
+female <- heights |> filter(sex == "F")
+
+# calculate the mean and standard deviation of males
+m_mean <- mean(male$height)
+m_sd <- sd(male$height)
+m_mean
+m_sd
 
 # create a histogram of the data
-ggplot(male, aes(x = heights)) +
-  geom_histogram(binwidth = 10, fill = "lightblue", color = "black")
+ggplot(male, aes(x = height)) +
+  geom_histogram(binwidth = 5, fill = "lightblue", color = "black") +
+  labs(x = "Height (cm)", y = "Frequency", title = "Male heights")
 
 # now do the same for females
 
@@ -85,22 +86,24 @@ ggplot(male, aes(x = heights)) +
 
 ::: {.content-visible when-profile="solution"}
 ::: {.callout-warning}
-## Answer 
+## Answer
 
 ```{r}
-f_mean <- mean(female$heights)
-f_sd <- sd(female$heights)
+f_mean <- mean(female$height)
+f_sd <- sd(female$height)
+f_mean
+f_sd
 
-ggplot(female, aes(x = heights)) +
-  geom_histogram(binwidth = 10, fill = "lightblue", color = "black")
-
+ggplot(female, aes(x = height)) +
+  geom_histogram(binwidth = 5, fill = "lightblue", color = "black") +
+  labs(x = "Height (cm)", y = "Frequency", title = "Female heights")
 ```
 
 :::
 :::
 
 
-5. Discuss with your neighbour and class why the normal distribution is a good model for height data. Is it a good model for all data?
+4. Discuss with your neighbour and class why the normal distribution is a good model for height data. Is it a good model for all data?
 
 ::: {.content-visible when-profile="solution"}
 ::: {.callout-warning}
@@ -112,136 +115,94 @@ The normal distribution is a good model for height data because it is symmetric 
 :::
 
 
-6. How does your class compare to the Australian statistics. For this we will look at the mean and standard deviation of measured heights for men and women aged 18 - 24 from the ABS for 1995 see [page 13 of the pdf](https://www.ausstats.abs.gov.au/Ausstats/subscriber.nsf/Lookup/CA25687100069892CA256889001F4A36/$File/43590_1995.pdf)
+5. How does your class compare to the Australian statistics? According to the Australian Bureau of Statistics (1995), measured heights for Australians aged 18-24 were:
 
-**Note** that both reported and measured heights are provided and (not surprisingly) reported heights are bigger that the measured heights. What do you think the reason for this is?
+| | Mean (cm) | SD (cm) |
+|---|---|---|
+| Males | 178.4 | 6.6 |
+| Females | 163.9 | 6.6 |
+
+**Note** that both reported and measured heights were collected. Reported heights were consistently higher than measured heights -- males overestimated by ~1.6 cm and females by ~1.0 cm on average. What do you think the reason for this is?
 
 ::: {.content-visible when-profile="solution"}
 ::: {.callout-warning}
 ## Answer
 
-Looking at the ABS statistics, our class can be compared to the Australian averages for 18-24 year olds. The ABS data shows that in 1995, Australian males aged 18-24 had a measured mean height of 178.4 cm (SD = 6.6 cm), while females had a measured mean height of 163.9 cm (SD = 6.6 cm).
-
-Regarding the note:
-
-The data shows a consistent pattern where reported heights are higher than measured heights across all age groups. For 18-24 year olds, males overestimated their height by an average of 1.6 cm, while females overestimated by 1.0 cm on average.
-
 The likely reasons people report taller heights than their measured heights include:
+
 - Social desirability bias (taller height is often perceived as more desirable)
 - Genuinely believing they are taller than they actually are
 - Measuring themselves with shoes on
 - Rounding up to the nearest whole number
 - Measuring at a time of day when they're tallest (people are typically taller in the morning)
 
-Interestingly, the difference between reported and measured heights increases with age, with the largest discrepancies among those 65 and over (3.8 cm for men and 3.9 cm for women). This could be due to age-related height loss that people may not be aware of or acknowledge.
-
-
 :::
 :::
 
-# Simulating height distribution
+## Seeing the Central Limit Theorem in action
 
-Using the ABS stats on female and male heights from the previous exercise:
+The Central Limit Theorem (CLT) tells us that when we take many samples from *any* population and calculate their means, those means will be approximately normally distributed -- even if the original population is not normal.
 
-i) Use R to simulate samples of female **or** male heights for 10, 100, 1000, 10000 simulations and report the mean and standard deviation and draw a histogram for each. 
-
-ii) Discuss with your neighbour what happens to the shape of the histogram as your number of simulations increases. An example is given below for 10 simulations of female height. You can make a table in excel to record your observations by hand using the headings:
-
-
-| Sample size | Mean | SD | Shape of histogram |
-| ----------- | ---- | -- | ------------------ |
-| 10          |
-| 100         | 
-| 1000        |
-| 10000       |
-
+6. Run the following code to see this in action. We simulate 1000 sample means (each from a sample of size 30) from two very different populations: a normal distribution (like our height data) and a skewed distribution (like rainfall data).
 
 ```{r}
-set.seed(1) # means that we all generate the same set of random numbers so we can compare
-sample10 <- rnorm(10, 163.9, 6.6) # generates a random sample of size 10 from N(163.9,6.6^2)
-sample10 # prints the 10 simulated values (you may not want this with the 10K simulations!!)
-mean(sample10)
-sd(sample10)
-ggplot(data.frame(heights = sample10), aes(x = heights)) +
-  geom_histogram(binwidth = 10, fill = "lightblue", color = "black")
-```
+set.seed(123)
+# Simulate sampling distributions for two populations
+# Population 1: Normal (like our height data)
+# Population 2: Skewed (exponential, like rainfall)
+normal_means <- replicate(1000, mean(rnorm(30, mean = 170, sd = 10)))
+skewed_means <- replicate(1000, mean(rexp(30, rate = 0.1)))
 
-iii) Find the probability $P(X \ge 180)$ for each of the simulations and also the exact value. What do you notice in the difference between each of the simulations and the exact probability? An example is given below for the 10 simulations above and the exact probability:
-
-**Actual probability**
-
-```{r}
-1 - pnorm(180, 163.9, 6.6)
-## OR
-pnorm(180, 163.9, 6.6, lower.tail = FALSE)
-```
-
-**Simulated probability**
-
-```{r}
-length(which(sample10 >= 180)) / 10 ## simulated p for sample size 10
-```
-
-
-::: {.content-visible when-profile="solution"}
-::: {.callout-warning}
-## Answers
-
-```{r}
-# Using female height stats: mean=163.9, sd=6.6 for 18-24 year olds
-set.seed(123) # For reproducibility
-
-# Sample size = 100
-sample100 <- rnorm(100, 163.9, 6.6)
-mean100 <- mean(sample100)
-sd100 <- sd(sample100)
-hist100 <- ggplot(data.frame(heights = sample100), aes(x = heights)) +
-  geom_histogram(binwidth = 5, fill = "lightblue", color = "black") +
-  ggtitle("Histogram for n = 100")
-hist100
-prob100 <- length(which(sample100 >= 180)) / 100
-
-# Sample size = 1000
-sample1000 <- rnorm(1000, 163.9, 6.6)
-mean1000 <- mean(sample1000)
-sd1000 <- sd(sample1000)
-hist1000 <- ggplot(data.frame(heights = sample1000), aes(x = heights)) +
-  geom_histogram(binwidth = 3, fill = "lightblue", color = "black") +
-  ggtitle("Histogram for n = 1000")
-hist1000
-prob1000 <- length(which(sample1000 >= 180)) / 1000
-
-# Sample size = 10000
-sample10000 <- rnorm(10000, 163.9, 6.6)
-mean10000 <- mean(sample10000)
-sd10000 <- sd(sample10000)
-hist10000 <- ggplot(data.frame(heights = sample10000), aes(x = heights)) +
-  geom_histogram(binwidth = 2, fill = "lightblue", color = "black") +
-  ggtitle("Histogram for n = 10000")
-hist10000
-prob10000 <- length(which(sample10000 >= 180)) / 10000
-
-# Exact probability
-exact_prob <- 1 - pnorm(180, 163.9, 6.6)
-
-# Summary table of results
-results <- data.frame(
-  Sample_Size = c(10, 100, 1000, 10000),
-  Mean = round(c(mean(sample10), mean100, mean1000, mean10000), 2),
-  SD = round(c(sd(sample10), sd100, sd1000, sd10000), 2)
+# Combine for plotting
+sim_data <- data.frame(
+  sample_mean = c(normal_means, skewed_means),
+  population = rep(c("Normal population", "Skewed population"), each = 1000)
 )
-knitr::kable(results)
+
+ggplot(sim_data, aes(x = sample_mean)) +
+  geom_histogram(bins = 30, fill = "steelblue", colour = "white") +
+  facet_wrap(~population, scales = "free") +
+  labs(x = "Sample Mean", y = "Frequency",
+       title = "Sampling distributions of the mean (n = 30)")
 ```
 
-The shape of the histogram becomes more normal as the sample size increases. The probability of $P(X \ge 180)$ becomes closer to the exact probability as the sample size increases.
-:::
-:::
+Discuss with your neighbour: What do you notice about the shape of both sampling distributions? What does this tell us about the Central Limit Theorem?
+
+7. Now let's confirm this with our own height data. First, generate a single sample of 30 heights and calculate its mean:
+
+```{r}
+# Step 1: Generate ONE sample of 30 heights and calculate the mean
+one_sample <- rnorm(30, mean = m_mean, sd = m_sd)
+mean(one_sample)
+```
+
+Now use `replicate()` to do this 1000 times and plot the result:
+
+```{r}
+# Step 2: Now do it 1000 times using replicate()
+sample_means <- replicate(1000, mean(rnorm(30, mean = m_mean, sd = m_sd)))
+
+# Plot the distribution of sample means
+ggplot(data.frame(sample_mean = sample_means), aes(x = sample_mean)) +
+  geom_histogram(bins = 30, fill = "lightblue", colour = "white") +
+  labs(x = "Sample Mean Height (cm)", y = "Frequency",
+       title = "Distribution of 1000 sample means (n = 30)")
+```
+
+Finally, compare the simulated probability to the exact probability. What proportion of sample means exceed 180 cm?
+
+```{r}
+# Compare: what proportion of sample means exceed 180?
+sum(sample_means > 180) / 1000  # simulated
+pnorm(180, mean = m_mean, sd = m_sd / sqrt(30), lower.tail = FALSE)  # exact
+```
+
+The simulated and exact probabilities should be close -- this is the CLT at work!
+
 
 # Sampling distributions
 
 ## Exercise 2 - Milkfat example
-
-### Part 1
 
 The milkfat content in milk (in %) for 120 cows are presented in the worksheet called ENVX1002_Data4.xlsx. Copy the file into your project directory and:
 
@@ -260,18 +221,11 @@ ii) Calculate the summary statistics of Milkfat (mean, median and sd)
 mean(milkfat$Milkfat)
 ```
 
-- What type of cows could they be? Compare your data to the table in the following link:
-
-<https://lactalis.com.au/info-center/different-breeds-of-cows/>
-
-- What state could they be from? Check some of the recent Milk Production reports from Dairy Australia. The data can be found in the Average Milkfat & Protein (%)
-section of the PDF report: The reports can be found at the following link: 
-
-<https://www.dairyaustralia.com.au/resource-repository/2020/09/25/milk-production-report>
+Based on the mean milkfat of ~4.2%, these are likely **Jersey cows** -- a breed known for high milkfat content compared to the more common Holstein-Friesian (~3.5%).
 
 - Could the data be normally distributed?
 
-iii) Create a histogram and boxplot of the milk fat data. Is the data "normally distributed"? 
+iii) Create a histogram and boxplot of the milk fat data. Is the data "normally distributed"?
 
 ```{r}
 require(ggplot2)
@@ -310,14 +264,9 @@ All cows in the data set are yielding full cream milk, so the percentage is 100%
 :::
 :::
 
-### Part 2
+Let $X$ represent the milk fat content for the population of this breed of cows. Assuming the population is normal, use the sample mean and standard deviation from the previous question as estimates of the population parameters. So $X\sim (\mu =..., \sigma^2 = ...)$.
 
-Let $X$ represent the milk fat content for the population of this breed of cows.
-
-i) Assuming the population is normal, use the sample mean and standard deviation from the previous question as estimates of the population parameters.
-So $X\sim (\mu =..., \sigma^2 = ...)$.
-
-ii) Draw a picture of the curve representing $X$. The below example uses ggplot2 to draw the curve for $N(4.16,0.30^2)$. 
+vi) Draw a picture of the curve representing $X$. The below example uses ggplot2 to draw the curve for $N(4.16,0.30^2)$.
 
 ```{r}
 library(ggplot2)
@@ -327,7 +276,7 @@ ggplot(data.frame(x = c(4.16 - 4 * 0.3, 4.16 + 4 * 0.3)), aes(x = x)) +
   ylab(expression(N(4.16, 0.30^2) ~ pdf))
 ```
 
-iii) What is the probability that 1 cow has a fat content less than 4%? We will adapt the ggplot command above a picture of this probability and then use R to find the probability.
+vii) What is the probability that 1 cow has a fat content less than 4%? We will adapt the ggplot command above a picture of this probability and then use R to find the probability.
 
 Hint: You may need to use the `stat_function` command to draw the curve and then use the `pnorm` command to find the probability.
 
@@ -349,15 +298,11 @@ ggplot(data.frame(x = c(4.16 - 4 * 0.3, 4.16 + 4 * 0.3)), aes(x = x)) +
 pnorm(4, 4.16, 0.30)
 ```
 
-iv) What is the probability that 1 cow (randomly sampled) has a fat content greater than 4.5%? Try and adapt the ggplots above to draw a picture of this probability and then use R to find the probability.
-
-v) For a sample of 10 cows (randomly sampled), what is the probability that the sample mean milk fat content is greater than 4.2%? 
-
-Hint: First find the distribution of the sample mean $\overline{X}$. Then find $P(\overline{X}>4.2)$
+viii) What is the probability that 1 cow (randomly sampled) has a fat content greater than 4.5%? Try and adapt the ggplots above to draw a picture of this probability and then use R to find the probability.
 
 ::: {.content-visible when-profile="solution"}
 ::: {.callout-warning}
-## Answers
+## Answer
 
 ```{r}
 # Graph showing probability of fat content > 4.5%
@@ -381,7 +326,26 @@ pnorm(4.5, 4.16, 0.30, lower.tail = FALSE)
 :::
 :::
 
-v. What is the probability that the sample mean milk fat content is greater than 4.2%?
+ix) What milkfat percentage is exceeded by 95% of cows?
+
+Hint: If 95% of cows *exceed* a value, then 5% are *below* it -- we're looking for the 5th percentile.
+
+::: {.content-visible when-profile="solution"}
+::: {.callout-warning}
+## Answer
+
+```{r}
+# 95% of cows exceed this value, so we want the 5th percentile
+qnorm(0.05, mean = 4.16, sd = 0.30)
+```
+
+We use `qnorm(0.05, ...)` because if 95% of cows exceed a value, then 5% are below it -- we're looking for the 5th percentile.
+:::
+:::
+
+x) For a sample of 10 cows (randomly sampled), what is the probability that the sample mean milk fat content is greater than 4.2%?
+
+Hint: First find the distribution of the sample mean $\overline{X}$. Then find $P(\overline{X}>4.2)$
 
 ```{r}
 # For a sample of 10 cows, we need to find P(X_bar > 4.2)
@@ -419,7 +383,7 @@ A dermatologist investigating a certain type of skin cancer induced the cancer i
 ::: {.callout-warning}
 ## Answer
 
-```{r} 
+```{r}
 # Given information
 n <- 9  # sample size (number of rats)
 mean_remission <- 400  # mean remission time in hours
@@ -457,6 +421,10 @@ n_needed_rounded
 ```
 :::
 :::
+
+# Take-home exercises
+
+The following exercises are for you to complete in your own time. They provide additional practice with the concepts covered in this lab.
 
 ## Exercise 5 - What's in the media - looming state election
 
@@ -567,7 +535,7 @@ ggplot(NULL, aes(c(-3, 3))) +
   geom_area(stat = "function", fun = dnorm, args = list(mean = 161.8, sd = 6), fill = "white", xlim = c(168, 161)) +
   geom_area(stat = "function", fun = dnorm, args = list(mean = 161.8, sd = 6), fill = "white", xlim = c(161.8 + 4 * 6, 210)) +
   xlab("x") +
-  ylab(expression(N(161.8, 6^2) ~ pdf)) 
+  ylab(expression(N(161.8, 6^2) ~ pdf))
 ```
 
 Around `r round(percentage_between, 1)`% of Australian women are between Madison and Dharshani's heights.
