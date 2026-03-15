@@ -1,6 +1,9 @@
 ---
 title: Lab 04 -- Central limit theorem
 embed-resources: true
+knitr:
+  opts_chunk:
+    dev: png
 ---
 
 ```{r setup}
