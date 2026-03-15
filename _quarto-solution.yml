@@ -1,5 +1,8 @@
 project:
   output-dir: _solution
+  render:
+    - "labs/*.qmd"
+    - "solutions.qmd"
   # post-render:
   #   - quarto render --profile exercise
 execute: 
