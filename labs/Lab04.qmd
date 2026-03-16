@@ -192,6 +192,12 @@ ggplot(data.frame(sample_mean = sample_means), aes(x = sample_mean)) +
        title = "Distribution of 1000 sample means (n = 30)")
 ```
 
+The sampling distribution of the mean has its own standard deviation, called the **standard error** (SE). It tells us how much the sample mean varies from sample to sample:
+
+$$SE = \frac{\sigma}{\sqrt{n}}$$
+
+Notice that as the sample size $n$ increases, the SE decreases -- larger samples give more precise estimates of the population mean. We use the SE in place of the standard deviation when calculating probabilities for the sample mean.
+
 Finally, compare the simulated probability to the exact probability. What proportion of sample means exceed 180 cm?
 
 ```{r}
@@ -348,7 +354,7 @@ We use `qnorm(0.05, ...)` because if 95% of cows exceed a value, then 5% are bel
 
 x) For a sample of 10 cows (randomly sampled), what is the probability that the sample mean milk fat content is greater than 4.2%?
 
-Hint: First find the distribution of the sample mean $\overline{X}$. Then find $P(\overline{X}>4.2)$
+Hint: First find the distribution of the sample mean $\overline{X}$. You will need the standard error (SE) -- see [Seeing the Central Limit Theorem in action] if you need a refresher. Then find $P(\overline{X}>4.2)$
 
 ```{r}
 # For a sample of 10 cows, we need to find P(X_bar > 4.2)
@@ -377,6 +383,8 @@ ggplot(data.frame(x = c(4.16 - 4 * se, 4.16 + 4 * se)), aes(x = x)) +
 ```
 
 # Standard Error of the mean
+
+The following exercises give you practice calculating and interpreting the standard error. Recall from [Seeing the Central Limit Theorem in action] that $SE = \sigma / \sqrt{n}$.
 
 ## Exercise 3 - Skin cancer
 
