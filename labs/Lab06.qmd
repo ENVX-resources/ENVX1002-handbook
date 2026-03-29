@@ -45,7 +45,7 @@ You can also disable it in the Settings by going to Tools > Global Options > Git
 
 ### Your Quarto document
 
-Create your Quarto document and save it as `Lab-06.Rmd` or similar. The following data files are required:
+Create your Quarto document and save it as `Lab-06.Qmd` or similar. The following data files are required:
 
 1)  [Barley.csv](data/Barley.csv)
 2)  [Plant_growth.csv](data/Plant_growth.csv)
@@ -181,7 +181,7 @@ qqline(barley$Yield[barley$Variety == "B"])
 
 #### Homogeneity of variance
 
-From the boxplot, we can see that there is some indication that the variances are not equal. We can test this assumption using Bartlett's test or Levene's test; here we will just use Bartlett's test.
+From the boxplot, we can see that there is some indication that the variances are not equal. We can test this assumption using a F-test, Bartlett's test or Levene's test; here we will just use Bartlett's test (look up the different tests for equal variance and pros and cons of each).
 
 ```{r}
 #| output: true
