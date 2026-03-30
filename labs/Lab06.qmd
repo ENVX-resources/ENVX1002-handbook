@@ -4,7 +4,7 @@ embed-resources: true
 resources:
   - data/Barley.csv
   - data/Plant_growth.csv
-  - data/Turbidity.csv
+  - data/water_quality.csv
 ---
 
 ```{r setup}
@@ -49,7 +49,7 @@ Create your Quarto document and save it as `Lab-06.Qmd` or similar. The followin
 
 1)  [Barley.csv](data/Barley.csv)
 2)  [Plant_growth.csv](data/Plant_growth.csv)
-3)  [Turbidity.csv](data/Turbidity.csv)
+3)  [water_quality.csv](data/water_quality.csv)
 
 The following external packages are used in this lab. Install them if you have not done so already.
 
@@ -329,13 +329,13 @@ Now we consider further examples of a two-sample *t*-test, but where the assumpt
 The data can be read with the code below:
 
 ``` {r}
-turbidity <-read_csv("data/Turbidity.csv")
+water_quality <- read_csv("data/water_quality.csv")
 ```
 
 For data transformation, you may need to create a new variable in your dataset to store the transformed data. For example, to create a new variable `TurbLog10` that stores the log~10~ transformed turbidity values, you can use the following code:
 
 ``` {r}
-turbidity$TurbLog10 <- log10(turbidity$Turbidity)
+water_quality$TurbLog10 <- log10(water_quality$Turbidity)
 ```
 
 To interpret the results for your conclusions, you may need to back-transform the mean and/or confidence interval values. To back transform log~10~ data you use:
@@ -353,10 +353,10 @@ $$e^{\text{mean or CI}}$$
 
 ```{r}
 #Read in data
-turbidity <- read_csv("data/Turbidity.csv")
+water_quality <- read_csv("data/water_quality.csv")
 
 #Make boxplot
-ggplot(turbidity, aes(x = Time, y = Turbidity)) +
+ggplot(water_quality, aes(x = Time, y = Turbidity)) +
   geom_boxplot()
 ```
 
@@ -374,7 +374,7 @@ where $\mu_{\text{before}}$ and $\mu_{\text{after}}$ are the mean turbidity valu
 
 ```{r}
 #qqplots
-ggplot(turbidity, aes(sample = Turbidity)) +
+ggplot(water_quality, aes(sample = Turbidity)) +
   stat_qq() +
   stat_qq_line() +
   facet_wrap(~Time)
@@ -387,13 +387,13 @@ The QQ-plots show that the data are not normally distributed. Transformation of 
 We will use the natural log transformation to normalise the data.
 
 ```{r}
-turbidity$TurbLog10 <- log10(turbidity$Turbidity)
+water_quality$TurbLog10 <- log10(water_quality$Turbidity)
 ```
 
 #### Normality: part 2 {style="color:green;"}
 
 ```{r}
-ggplot(turbidity, aes(sample = TurbLog10)) +
+ggplot(water_quality, aes(sample = TurbLog10)) +
   stat_qq() +
   stat_qq_line() +
   facet_wrap(~Time)
@@ -402,7 +402,7 @@ ggplot(turbidity, aes(sample = TurbLog10)) +
 The QQ-plots show that the data look better. We can now perform a Shapiro-Wilk test to confirm this.
 
 ```{r}
-tapply(turbidity$TurbLog10, turbidity$Time, shapiro.test)
+tapply(water_quality$TurbLog10, water_quality$Time, shapiro.test)
 ```
 
 The Shapiro-Wilk test indicates that the data are normally distributed.
@@ -412,7 +412,7 @@ The Shapiro-Wilk test indicates that the data are normally distributed.
 We check the assumption of equal variance after the transformation.
 
 ```{r}
-bartlett.test(TurbLog10 ~ Time, data = turbidity)
+bartlett.test(TurbLog10 ~ Time, data = water_quality)
 ```
 
 The Bartlett's test indicates that the variances are equal. We can now perform the *t*-test on the transformed data.
@@ -420,7 +420,7 @@ The Bartlett's test indicates that the variances are equal. We can now perform t
 ### Test statistic {style="color:green;"}
 
 ```{r}
-t.test(TurbLog10 ~ Time, data = turbidity, var.equal = TRUE)
+t.test(TurbLog10 ~ Time, data = water_quality, var.equal = TRUE)
 ```
 
 ### P-value {style="color:green;"}

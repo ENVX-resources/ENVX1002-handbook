@@ -33,7 +33,7 @@ Download data files used in the computer labs. Click any filename to download.
 
 - [Barley.csv](labs/data/Barley.csv)
 - [Plant_growth.csv](labs/data/Plant_growth.csv)
-- [Turbidity.csv](labs/data/Turbidity.csv)
+- [water_quality.csv](labs/data/water_quality.csv)
 
 ## Lab 07 – Two-way ANOVA
 
