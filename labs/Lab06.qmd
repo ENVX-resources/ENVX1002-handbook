@@ -183,6 +183,9 @@ qqline(barley$Yield[barley$Variety == "B"])
 
 From the boxplot, we can see that there is some indication that the variances are not equal. We can test this assumption using a F-test, Bartlett's test or Levene's test; here we will just use Bartlett's test (look up the different tests for equal variance and pros and cons of each).
 
+$H_0: \text{Variance is equal across all groups}$
+$H_1: \text{Variance is NOT equal across all groups}$
+
 ```{r}
 #| output: true
 
@@ -221,7 +224,7 @@ In a test of a particular treatment aimed at inducing growth, 20 plants were gro
 
 ### Instructions
 
-Here, we have two samples, and the samples are paired as it is a before-after experiment. So we’d like to conduct a paired *t*-test.
+Here, we have two samples, and the samples are paired as it is a before-after experiment (the data are NOT independent). So we’d like to conduct a paired *t*-test.
 
 For paired *t*-tests the analysis is performed as a 1-sample *t*-test on the difference between each pair so the only assumption is the normality assumption.
 
@@ -233,13 +236,15 @@ Copy the structure below and perform your analysis in your document.
 ### Hypothesis
 ### Assumptions
 #### Normality
-#### Homogeneity of variance
+#### Homogeneity of variance (if required)
 ### Test statistic
 ### P-value
 ### Conclusion
 ```
 
-Note that the data is *not* tidy. The code below will convert the data to the long format and assign it to `tidy_plant`.
+Note 1. The data is *not* tidy. The code below will convert the data to the long format and assign it to `tidy_plant` which can be useful for ggplot.
+Note 2. The data are paired so we look at the difference when testing hypotheses.
+Note 3. We cannot perform a paired t.test on data in long format - this is to ensure the data remains "tied/paired" i.e. Floris before heart rate doesn't get mixed up with Liana's after heart rate. 
 
 ```{r}
 plant_growth <- readr::read_csv("data/Plant_growth.csv")
@@ -248,11 +253,6 @@ tidy_plant <- plant_growth %>%
   pivot_longer(cols = c(Treated, Control), names_to = "Treatment", values_to = "Height")
 ```
 
-You may also need to perform a Shapiro-Wilk test to check for normality. To do this for each group, you can use the `tapply()` function.
-
-``` {r}
-tapply(tidy_plant$Height, tidy_plant$Treatment, shapiro.test)
-```
 
 ::: {.content-visible when-profile="solution"}
 ## Answer 2 {style="color:green;"}
@@ -279,17 +279,17 @@ where $\mu_{\text{treated}}$ and $\mu_{\text{control}}$ are the mean increses in
 
 ```{r}
 #qqplots
-ggplot(tidy_plant, aes(sample = Height)) +
+plant_growth$Diff <- plant_growth$Treated - plant_growth$Control
+ggplot(plant_growth, aes(sample = Diff)) +
   stat_qq() +
-  stat_qq_line() +
-  facet_wrap(~Treatment)
+  stat_qq_line() 
 ```
 
-The QQ-plots show that the data are normally distributed, but there are some outliers worth checking. A formal test for normality will give us a better idea of whether the assumption is met.
+The QQ-plots show that the data are normally distributed, but there are some outliers worth checking and the dataset is small. A formal test for normality will give us a better idea of whether the assumption is met.
 
 ```{r}
 # perform test on groups
-tapply(tidy_plant$Height, tidy_plant$Treatment, shapiro.test)
+shapiro.test(plant_growth$Diff)
 ```
 
 The Shapiro-Wilk test indicates that the data are normally distributed.
@@ -300,9 +300,11 @@ There is **no need** to test for homogeneity of variance in a paired *t*-test!
 
 ### Test statistic {style="color:green;"}
 
+**Remember** you must indicate paired = TRUE!!
+
 ```{r}
-t.test(tidy_plant$Height[tidy_plant$Treatment == "Treated"],
-  tidy_plant$Height[tidy_plant$Treatment == "Control"],
+t.test(plant_growth$Treated,
+  plant_growth$Control,
   paired = TRUE
 )
 ```
@@ -410,6 +412,9 @@ The Shapiro-Wilk test indicates that the data are normally distributed.
 #### Homogeneity of variance {style="color:green;"}
 
 We check the assumption of equal variance after the transformation.
+
+$H_0: \text{Variance is equal across all groups}$
+$H_1: \text{Variance is NOT equal across all groups}$
 
 ```{r}
 bartlett.test(TurbLog10 ~ Time, data = water_quality)
