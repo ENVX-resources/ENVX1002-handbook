@@ -68,7 +68,11 @@ format:
     code-overflow: wrap
 
 execute:
-  freeze: auto
+  freeze: true
+
+knitr:
+  opts_chunk:
+    dev: "png"
 
 profile:
   default:
