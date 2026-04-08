@@ -18,7 +18,7 @@ pacman::p_load(tidyverse, mosaic)
 
 -   Learn to use R to perform a Wilcoxon signed-rank test and a Mann-Whitney U test.
 -   Learn to use R to calculate a chi-squared test for:
-    -   Test of proportions
+    -   Test of goodness of fit
     -   Test of independence
 -   Learn how to interpret statistical output.
 :::
@@ -32,13 +32,17 @@ Create your Quarto document and save it as `Lab-07.qmd` or similar. There are no
 Non-parametric tests are statistical tests that do not assume a specific distribution for the data. They are often used when the assumptions of parametric tests (such as normality) are not met. Non-parametric tests are also useful when dealing with ordinal data or when the sample size is small.
 
 The two non-parametric tests we will cover in this lab are:
-1.  Wilcoxon signed-rank test - used to compare one sample to a known value or to compare two related samples, matched samples, or repeated measurements on a single sample to assess whether their population mean ranks differ (similar to a one sample t-test or paired t-test).
+
+1. Wilcoxon signed-rank test - used to compare one sample to a known value or to compare two related samples, matched samples, or repeated measurements on a single sample to assess whether their population mean ranks differ (similar to a one sample t-test or paired t-test).
+2. Chi-squared test - used to compare observed frequencies to expected frequencies in categorical data. There are two types of chi-squared tests:
+    - Test of goodness of fit: tests whether the observed frequencies of a single categorical variable match expected frequencies based on a specific distribution.
+    - Test of independence: tests whether there is an association between two categorical variables.
 
 ## Exercise 1: dog pain (walk-through)
 
 ### Background
 
-A study measures dogs' pain using the Glasgow CMPS-SF scale before and after medication. 
+A study measures dogs' pain using the Glasgow CMPS-SF scale before and after medication. Note that this is ordinal data i.e. pain scale from 0 - 24
 
 ```{r}
 before <- c(7, 6, 8, 5, 9, 7, 6, 8, 7, 5)
@@ -59,7 +63,7 @@ pain <- data.frame(
 library(ggpubr)
 # Create a comparative boxplot of the before and after pain scores
 pain_long <- pivot_longer(pain, cols = c(before, after), 
-                          names_to = "time", values_to = "score")
+                          names_to = "time", values_to = "score") ## Pivot longer is a nice command to get data into tidy format for use in ggplot
 
 ggboxplot(pain_long, x = "time", y = "score",
           color = "time", palette = c("#00AFBB", "#E7B800"),
@@ -67,11 +71,14 @@ ggboxplot(pain_long, x = "time", y = "score",
  labs(title = "Pain Scores Before and After Medication",
        x = "Time", y = "Pain Score")
 ```
-It looks like the pain scores are lower after medication. But we need to test this statistically.
+It looks like the median pain scores are lower after medication. But we need to test this statistically.
 
 ### Hypothesis (H)
 
-The null hypothesis is that there is no difference in pain scores before and after treatment. The alternative hypothesis is that there is a difference in pain scores before and after treatment.
+When in doubt write out the hypothesis in full:
+
+- The null hypothesis is that there is no difference in pain scores before and after treatment. 
+- The alternative hypothesis is that there is a difference in pain scores before and after treatment.
 
 ### Assumptions (A)
 
@@ -87,9 +94,11 @@ The Wilcoxon signed-rank test is a non-parametric test that does not assume norm
 
 The assumptions of the Wilcoxon signed-rank test are:
 1.  In this case the data are paired (i.e., the same subjects are measured before and after treatment).
-2.  The differences between the paired observations are continuous/ordinal and symmetric about the median (looking at the boxplots, this is the case).
+2.  The differences between the paired observations are continuous/ordinal and are reasonably symmetric about the median (looking at the boxplots, this is the case). Note that these tests are reasonably robust to some outliers.
 
 ### Test (T)
+
+Note that just like a paired t-test we need to specify the data as below - this is in an effort to ensure the data ties are not lost!
 
 ```{r}
 # Perform the Wilcoxon signed-rank test
@@ -106,7 +115,7 @@ We can see that the p-value is less than 0.05, so we reject the null hypothesis 
 
 ### Conclusion (C)
 
-Given that the p-value is significant (P<0.05) and looking at the output of the boxplot, we can conclude that the pain scores are significantly lower after treatment. 
+Given that the p-value is significant (P<0.05) and looking at the output of the boxplot, we can conclude that the pain scores are significantly lower after treatment. It worked!!
 
 ### Comparison
 
