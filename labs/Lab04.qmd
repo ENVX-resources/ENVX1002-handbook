@@ -480,11 +480,11 @@ ii) What is the probability of finding an Australian woman of this height or tal
 ggplot() +
   stat_function(
     fun = dnorm, args = list(mean = 161.8, sd = 6),
-    geom = "area", fill = "white", xlim = c(180, 161.8 + 4 * 6)
+    geom = "area", fill = "white", xlim = c(180, 200)
   ) +
   stat_function(
     fun = dnorm, args = list(mean = 161.8, sd = 6),
-    geom = "area", fill = "red", xlim = c(161.8 + 4 * 6, 189)
+    geom = "area", fill = "red", xlim = c(189, 200)
   ) +
   xlab("x") +
   ylab(expression(N(161.8, 6^2) ~ pdf)) +
