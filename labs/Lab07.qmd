@@ -29,7 +29,7 @@ Create your Quarto document and save it as `Lab-07.qmd` or similar. There are no
 
 ## Quick introduction to non-parametric tests
 
-Non-parametric tests are statistical tests that do not assume a specific distribution for the data. They are often used when assumptions are uncertain or when a more robust, rank-based comparison is preferred. For example, Non-parametric tests useful when dealing with ordinal data or when the sample size is small.
+Non-parametric tests are statistical tests that do not assume a specific distribution for the data. They are often used when assumptions are uncertain or when a more robust, rank-based comparison is preferred. For example, non-parametric tests are useful when dealing with ordinal data or when the sample size is small.
 
 The two non-parametric tests we will cover in this lab are:
 
@@ -81,15 +81,15 @@ The key issue is that pain scores are ordinal (ranked), not continuous measureme
 
 The assumptions of the Wilcoxon signed-rank test are:
 1.  In this case the data are paired (i.e., the same subjects are measured before and after treatment).
-2.  The differences between the paired observations are continuous/ordinal and are reasonably symmetric about the median. Note that these tests are reasonably robust to some outliers.
+2.  the differences can be meaningfully ordered and are approximately symmetric about the median. Note that these tests are reasonably robust to some outliers.
 
-So a histogram on the difference in scores for each pairs is good in this case
+So a histogram on the difference in scores for each pairs is good in this case.
 
 ```{r}
 ggplot(pain, aes(x = diff)) +
   geom_histogram(binwidth = 1)
 ```
-We can see that the pain scores are reasonably symmetrical
+We can see that the pain scores are reasonably symmetrical.
 
 ### Test (T)
 
@@ -110,7 +110,7 @@ We can see that the p-value is less than 0.05, so we reject the null hypothesis 
 
 ### Conclusion (C)
 
-Given that the p-value is significant (P<0.05) and looking at the output of the boxplot, we can conclude that the pain scores are significantly lower after treatment. Our treatment worked!!
+Given that the p-value is significant (p < 0.05) and looking at the output of the boxplot, we can conclude that the pain scores are significantly lower after treatment. This suggests the treatment reduced pain scores!
 
 ### So can we use a Normal t-test?
 
@@ -144,7 +144,7 @@ For more information about the technique, consult your lecture slides and tutori
 
 Suppose we collected wild tulips and found that 81 were red, 50 were yellow and 27 were white. Are these colours equally common?
 
-**The expected proportion would be 1/3 for each of the colour.** Therefore, we want to test if the observed proportions are significantly different from the expected proportions.
+**The expected proportion would be 1/3 for each colour.** Therefore, we want to test if the observed proportions are significantly different from the expected proportions.
 
 The data is below.
 
@@ -169,7 +169,7 @@ HATPC:
 ::: callout-note
 ## Level of significance
 
-**The level of significance is usually set at 0.05.** The significance level is commonly set at 0.05. Using a smaller significance level makes it harder to reject the null hypothesis, which can reduce false positives but may increase the chance of missing a real effect.
+**The level of significance is usually set at 0.05.** Using a smaller significance level makes it harder to reject the null hypothesis, which can reduce false positives but may increase the chance of missing a real effect.
 :::
 
 #### Hypotheses
@@ -240,7 +240,7 @@ Write down how you should report the critical value, p-value and df in a scienti
 
 <summary>Click here to view answer</summary>
 
-$\chi^2 = 27.9, df =2, p < 0.01$
+$\chi^2 = 27.9, df = 2, p < 0.01$
 
 </details>
 
@@ -262,7 +262,7 @@ Now write a scientific (biological) conclusion based on the outcome.
 
 <summary>Click here to view answer</summary>
 
-There is a significant difference in the proportion of flower colours of tulips ($\chi^2 = 27.9, df =2, p < 0.01$).
+There is a significant difference in the proportion of flower colours of tulips ($\chi^2 = 27.9, df = 2, p < 0.01$).
 
 </details>
 
@@ -448,7 +448,7 @@ From our EDA, we can see that:
 - Given the small sample sizes and potential deviations from normality, a rank-based test such as the Mann–Whitney U test provides a more robust comparison than a t-test.
 - The observations are certainly independent as they come from different individuals.
 
-Given these observations, the Mann-Whitney U test is an appropriate choice over a t-test. Note that we may run a formal test for normality (e.g., Shapiro-Wilk test) if we wanted to be thorough, but the QQ plots already suggest that normality is *not* a strong assumption here and the Mann-Whitney U test is robust to deviations from normality. If the assumptions of the t-test are satisfied, it is generally preferred because it is more powerful. The Mann–Whitney test remains a valid alternative but may be less efficient.(https://en.wikipedia.org/wiki/Power_(statistics)) than a t-test (i.e., it would have a higher chance of making a type II error, or an error of failing to reject the null hypothesis when it is false).
+Given these observations, the Mann-Whitney U test is an appropriate choice over a t-test. Note that we may run a formal test for normality (e.g., Shapiro-Wilk test) if we wanted to be thorough. With such small sample sizes, QQ plots are difficult to interpret, so we rely more on robust methods. If the assumptions of the t-test are satisfied, it is generally preferred because it is more powerful. The Mann–Whitney test remains a valid alternative but mmay be less efficient than a t-test (i.e., it may have a higher chance of failing to detect a real effect - https://en.wikipedia.org/wiki/Power_(statistics)).
 
 ### Test (T)
 
