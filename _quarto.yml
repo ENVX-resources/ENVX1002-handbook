@@ -1,8 +1,6 @@
 project:
   type: website
-  render: 
-    - "*.qmd"
-    - "!*.md"
+
 
 website:
   title: "ENVX1002 Handbook"
@@ -68,7 +66,7 @@ format:
     code-overflow: wrap
 
 execute:
-  freeze: auto
+  freeze: false
 
 knitr:
   opts_chunk:
