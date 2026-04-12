@@ -68,7 +68,7 @@ format:
     code-overflow: wrap
 
 execute:
-  freeze: auto
+  freeze: false
 
 knitr:
   opts_chunk:
