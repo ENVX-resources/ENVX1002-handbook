@@ -448,7 +448,7 @@ From our EDA, we can see that:
 - Given the small sample sizes and potential deviations from normality, a rank-based test such as the Mann–Whitney U test provides a more robust comparison than a t-test.
 - The observations are certainly independent as they come from different individuals.
 
-Given these observations, the Mann-Whitney U test is an appropriate choice over a t-test. Note that we may run a formal test for normality (e.g., Shapiro-Wilk test) if we wanted to be thorough. With such small sample sizes, QQ plots are difficult to interpret, so we rely more on robust methods. If the assumptions of the t-test are satisfied, it is generally preferred because it is more powerful. The Mann–Whitney test remains a valid alternative but mmay be less efficient than a t-test (i.e., it may have a higher chance of failing to detect a real effect - https://en.wikipedia.org/wiki/Power_(statistics)).
+Given these observations, the Mann-Whitney U test is an appropriate choice over a t-test. Note that we may run a formal test for normality (e.g., Shapiro-Wilk test) if we wanted to be thorough. With such small sample sizes, QQ plots are difficult to interpret, so we rely more on robust methods. If the assumptions of the t-test are satisfied, it is generally preferred because it is more powerful. The Mann–Whitney test remains a valid alternative but may be less efficient than a t-test (i.e., it may have a higher chance of failing to detect a real effect - https://en.wikipedia.org/wiki/Power_(statistics)).
 
 ### Test (T)
 
