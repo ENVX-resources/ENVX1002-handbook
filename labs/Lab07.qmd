@@ -345,6 +345,7 @@ Take your time, and when you are ready, check your answers with your demonstrato
 To check whether the expected frequencies are greater than 5, we can either perform the calculation manually or check the output of the `chisq.test()` function.
 
 ```{r}
+#| output: true
 fit <- chisq.test(crabs)
 fit$expected
 ```
@@ -356,6 +357,7 @@ From the output, we can see that all expected frequencies are greater than 5. Th
 If you have not already done so, perform the chi-squared test using the `chisq.test()` function in R.
 
 ```{r}
+#| output: true
 fit <- chisq.test(crabs)
 fit
 ```
@@ -543,6 +545,7 @@ H~1~ : There is a significant difference between the observed and the expected n
 ### Assumptions
 
 ```{r}
+#| output: true
 expected_received <- rep(sum(received)*1/3, 3)
 expected_received
 ```
@@ -552,6 +555,7 @@ expected_received
 ### Test (statistic)
 
 ```{r}
+#| output: true
 chisq.test(received)
 ```
 
@@ -589,6 +593,7 @@ H~1~: There is a significant difference between the expected and observed number
 ### Assumptions
 
 ```{r}
+#| output: true
 rep(sum(dept_admissions)*1/6, 6)
 ```
 
@@ -597,6 +602,7 @@ rep(sum(dept_admissions)*1/6, 6)
 ### Test (statistic)
 
 ```{r}
+#| output: true
 chisq.test(dept_admissions)
 ```
 
@@ -639,6 +645,7 @@ H~1~: There is a significant difference between the expected and observed number
 ### Assumptions
 
 ```{r}
+#| output: true
 # Fit the chisq test to be able to call up the expected
 fit_gender <- chisq.test(gender)
 fit_gender$expected
@@ -649,6 +656,7 @@ fit_gender$expected
 ### Test (statistic)
 
 ```{r}
+#| output: true
 # Call up the test we ran above
 fit_gender
 ```
