@@ -449,9 +449,9 @@ We want to make a biological conclusion based on the results. To do this, we nee
 10^(1.302095)
 ```
 
-The mean turbidity values before and after the new filtering process was installed are significantly different ($t = -3.7$, $df = 17$, $p = 0.007$). The new filtering process has effectively reduced turbidity by 7 times on average. We are 95% confident that the new filtering process will reduce water turbidity by between 2.3 and 20 NTU.
+The mean turbidity values before and after the new filtering process was installed are significantly different ($t = -3.7$, $df = 17$, $p = 0.007$). The new filtering process has effectively a 6.77-fold reduction in turbidity. We are 95% confident that the new filtering process will reduce water turbidity by between 2.3 and 20 fold.
 
-Wait! Why 7 times? Recall the log law: log10(A) - log10(B) = log10(A/B)
+Wait! Why 6.77 times? Recall the log law: log10(A) - log10(B) = log10(A/B)
 
 So the difference in the logged means: 1.514274 - 0.683656 = log10(A/B)
 
