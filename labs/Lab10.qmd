@@ -93,8 +93,8 @@ After checking the correlations and scatterplot, we need to fit the model using 
 
 ```{r}
 # Run your model
-## yield = response variable (x)
-## fert = predictor variable (y)
+## yield = response variable (y)
+## fert = predictor variable (x)
 model.lm <- lm(yield ~ fert)
 ```
 
@@ -203,7 +203,7 @@ Make a scatter plot of the data.
 plot(Percent ~ Toxin, data = Peanuts)
 
 #Alternate syntax:
-#plot(Peanuts$Percent, Peanuts$Toxin)
+#plot(Peanuts$Toxin, Peanuts$Percent)
 ```
 
 a)  Describe the relationship between the two variables.

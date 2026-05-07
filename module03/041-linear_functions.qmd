@@ -19,8 +19,8 @@ Often in a scientific experiment, we collect data for a response variable ($y$) 
 
 Some interchangeable terms:
 
-- $y$ -- independent variable, response variable, target, outcome, etc.
-- $x$ -- dependent variable, predictor variable, feature, input etc.
+- $y$ -- dependent variable, response variable, target, outcome, etc.
+- $x$ -- independent variable, predictor variable, feature, input etc.
 
 There are several reasons why we would 'model' or 'create a model' for the data we have collected:
 
