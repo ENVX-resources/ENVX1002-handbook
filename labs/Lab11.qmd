@@ -81,8 +81,9 @@ round(cor(Corn),3)
 
 a)  What do the results of the correlation matrix tell you?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -90,13 +91,14 @@ a)  What do the results of the correlation matrix tell you?
 
 -----
 :::
-
+::::
 b)  Based on the correlation matrix, if we were to fit a single predictor model involving EITHER InorgP OR OrgP, then which model would be more successful?
 
 |           (Hint, the *r*^2^ is exactly that for a single predictor regression, the square of the correlation, *r*).
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -104,7 +106,7 @@ b)  Based on the correlation matrix, if we were to fit a single predictor model 
 
 -----
 :::
-
+::::
 The pairs plot creates scatterplots between each possible pair of variables. Like a single scatterplot the pairs plot allows us to visually observe any trends.
 
 c)  Observing the pairs plot below, do you see any strong trends? How well does this link to your correlation matrix?
@@ -113,8 +115,9 @@ c)  Observing the pairs plot below, do you see any strong trends? How well does 
 pairs(Corn)
 ```
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -122,12 +125,12 @@ pairs(Corn)
 
 -----
 :::
-
+::::
 <br>
 
 #### Simple 3-D plot
 
-Unlike a simple plot we can creat for a simple linear regression, it is a bit more complex to visualise a model with more predictors. One way we can visualise the relationship is with a 3-D plot, which can be made using the function `levelplot()` in lattice.
+Unlike a simple plot we can create for a simple linear regression, it is a bit more complex to visualise a model with more predictors. One way we can visualise the relationship is with a 3-D plot, which can be made using the function `levelplot()` in lattice.
 
 Here we plot the OrgP and InorgP in the axes and the levels in the plot are CornP.
 
@@ -176,8 +179,9 @@ par(mfrow=c(2,2))
 plot(MLR.Corn)
 ```
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -187,7 +191,7 @@ Interpretation of the assumptions is quite subjective and often comes down to ti
 
 -----
 :::
-
+::::
 <br>
 
 ### 1.4 Model output
@@ -200,8 +204,9 @@ a)  Incorporating the partial regression coefficient estimates, what is the mode
 summary(MLR.Corn)
 ```
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -209,7 +214,7 @@ summary(MLR.Corn)
 
 -----
 :::
-
+::::
 <br>
 
 Simple linear regression allowed us to describe the relationship incorporating our regression coefficient estimate. We would interpret it as follows:
@@ -228,8 +233,9 @@ Applied to our model, if we wanted to describe the relationship between InorgP a
 
 b)  Given the above, how would you interpret the relationship between OrgP and CornP?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -237,7 +243,7 @@ b)  Given the above, how would you interpret the relationship between OrgP and C
 
 -----
 :::
-
+::::
 <br>
 
 ### 1.5 Is the model useful?
@@ -270,8 +276,9 @@ Now it is your turn:
 
 a)  Looking at the `summary()` output, is our overall model significant?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -279,10 +286,12 @@ a)  Looking at the `summary()` output, is our overall model significant?
 
 -----
 :::
+::::
 b) Which independent variable is a significant predictor of corn yield?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -290,16 +299,16 @@ b) Which independent variable is a significant predictor of corn yield?
 
 -----
 :::
-
-
+::::
 <br>
 
 ### 1.6 How good is the model?
 
 a) How much of the variation in CornP content is explained by the two independent variables?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -307,11 +316,12 @@ a) How much of the variation in CornP content is explained by the two independen
 
 -----
 :::
-
+::::
 b) Run the model again but this time with *only* the significant independent variable. How do the model performance criteria (r^2^-adj, P-values, Residual Standard Error) change?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -319,7 +329,7 @@ b) Run the model again but this time with *only* the significant independent var
 
 -----
 :::
-
+::::
 <br>
 
 ### 1.7 Our conclusions
@@ -332,8 +342,9 @@ Remember the scientific conclusion then relates our findings back to the context
 
 a) What would our statistical conclusion be?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -349,11 +360,12 @@ Furthermore this fit could be improved by the removal of the OrgP predictor with
 
 -----
 :::
-
+::::
 b)  What would our Scientific conclusion be?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -363,14 +375,14 @@ Inorganic phosphorous is a significant predictor of phosphorous content in corn 
 
 -----
 :::
-
+::::
 <br>
 
 ## Exercise 2: Water quality
 
 Data: *Microbes* spreadsheet
 
-This exercise will use data from the [NOAA Fisheries data portal](https://www.webapps.nwfsc.noaa.gov/apex/parrdata/inventory/datasets). The dataset contains the results of microbial study of Pudget Sound, an estuary in Seattle, U.S.A.
+This exercise will use data from the [NOAA Fisheries data portal](https://www.webapps.nwfsc.noaa.gov/apex/parrdata/inventory/datasets). The dataset contains the results of microbial study of Puget Sound, an estuary in Seattle, U.S.A.
 
 The dataset contains the following variables:
 
@@ -412,8 +424,9 @@ cor(mic)
 pairs(mic)
 ```
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
   
@@ -425,7 +438,7 @@ There are also some correlations between independent variables, but they are not
 
 -----
 :::
-
+::::
 <br>
 
 ### 2.2 Fit the model
@@ -460,8 +473,9 @@ par(mfrow=c(2,2))
 plot(mic.lm)
 ```
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -475,7 +489,7 @@ You are welcome to investigate this further, but for the sake of our example, we
 
 -----
 :::
-
+::::
 <br>
 
 ### 2.4 Model output
@@ -488,8 +502,9 @@ summary(mic.lm)
 
 a)  Incorporating the partial regression coefficient estimates, what is the equation for this model?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -497,11 +512,12 @@ a)  Incorporating the partial regression coefficient estimates, what is the equa
 
 -----
 :::
-
+::::
 b)  Like you did in Exercise 1.4, how would you interpret the relationship between total_bacteria and water_temp?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -509,46 +525,49 @@ b)  Like you did in Exercise 1.4, how would you interpret the relationship betwe
 
 -----
 :::
-
+::::
 <br>
 
 ### 2.5 Is the model useful?
 
 a)  Observing the P-value of the F-statistic in the summary, can we say our model is significant?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 
 -----
 
-**a)** The P-value for the F-statistic is 1.318e-10, which is smaller than 0.05. We therefore reject the null hypothesis and can say our model is indeed significant as at least one of our predictors are significant. 
+**a)** The P-value for the F-statistic is 1.318e-10, which is smaller than 0.05. We therefore reject the null hypothesis and can say our model is indeed significant as at least one of our predictors is significant.
 
 -----
 :::
-
+::::
 b)  Are any predictors significant?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
-**b)** Yes; as the P-value for N03 is 0.00268 (P < 0.05), we can reject the null hypothesis that the true partial regression slope for this variable is not zero.  
+**b)** Yes; as the P-value for NO3 is 0.00268 (P < 0.05), we can reject the null hypothesis that the true partial regression slope for this variable is equal to zero.
 
-Water_temp and carbon_L_h are not significant predictors (P > 0.05), i.e. as we cannot reject the null hypothesis that the true partial regression slope of each is non-zero.
+Water_temp and carbon_L_h are not significant predictors (P > 0.05), i.e. we cannot reject the null hypothesis that the true partial regression slope of each is equal to zero.
 
 -----
 :::
-
+::::
 <br>
 
 ### 2.6 How good is the model?
 
 a)  How much of the variation in total bacteria is explained by the three independent variables?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -558,11 +577,12 @@ The model accounts for 59.1% of variation in total bacteria counts.
 
 -----
 :::
-
+::::
 b)  Run the model again but this time excluding the variable with the largest P-value. How do the model performance criteria (r^2^-adj, P-values, Residual Standard Error) change?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -572,22 +592,23 @@ After removing carbon_L_h, the r^2^-adj has decreased (r^2^-adj = 0.5868) and Re
 
 From this, we can see the model has not been improved by eliminating the predictor.
   
------
-:::
-
 ```{r, eval=T}
 summary(lm(total_bacteria ~ water_temp + NO3, data = mic))
 
 ```
 
+-----
+:::
+::::
 <br>
 
 ### 2.7 Conclusions
 
 a)  What would the statistical conclusion be for this model?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -597,29 +618,30 @@ a)  What would the statistical conclusion be for this model?
 
 Our t-test upon each of our partial regression coefficients supports this, as the P-value for NO3 was 0.003, smaller than 0.05 and we can therefore reject the null hypothesis that this coefficient is equal to 0. In contrast, the P-value for water_temp and carbon_L_h were greater than 0.05 (P = 0.095 and 0.216, respectively), and so we fail to reject the null hypothesis, concluding water_temp and carbon_L_h were not significant predictors within this model.
 
-The fit of this model is moderate, with a residual standard error of 250500 and an r^2^ = 0.5913. 
+The fit of this model is moderate, with a residual standard error of 250500 and an r^2^-adj = 0.5913.
 
 Note: remember residual standard error is on the same scale as the response variable, so although it is a huge number, it is not as large when we think of the scale.  
 
-Furthermore this fit was not substantially improved by the removal of the water_temp predictor within the model (r^2^-adj = 0.587).
+Furthermore this fit was not substantially improved by the removal of the carbon_L_h predictor within the model (r^2^-adj = 0.587).
 
 -----
 :::
-
+::::
 b)  What would our scientific conclusion be?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
 **b)** Scientific conclusion: 
   
-  Nitrate is a significant predictor of total bacteria count in (P < 0.05), whereas water temperature and Carbon production rate were not is not in this case (P > 0.05). The model accounts for 59.1% of variation in the bacteria counts measured in water samples collected from Puget Sound. 
+  Nitrate is a significant predictor of total bacteria count in these Puget Sound water samples (P < 0.05), whereas water temperature and carbon production rate are not significant in this model (P > 0.05). The model accounts for 59.1% of variation in the bacteria counts measured in water samples collected from Puget Sound.
 
 -----
 :::
-
+::::
 <br>
 
 ## Exercise 3: Dippers
@@ -652,8 +674,9 @@ Now it is your turn to work through the steps as above. What other factors are i
 
 a)  Read in the data from today's Excel sheet, the corresponding sheet name is "Dippers"
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -667,7 +690,7 @@ Dippers <- read_xlsx("data/ENVX1002_practical_wk11_data_Regression.xlsx"
 
 -----
 :::
-
+::::
 b)  Investigate a correlation matrix and pairs plot of the dataset, are there signs of a relationship between breeding pair density and other independent variables?
 
 ```{r, eval=T}
@@ -676,8 +699,9 @@ pairs(Dippers)
 cor(Dippers)
 ```
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
   
@@ -685,7 +709,7 @@ cor(Dippers)
 
 -----
 :::
-
+::::
 c)  Let's investigate further. Run the model incorporating all of our predictors, but before looking at our model output, are the assumptions ok?
 
 ```{r , eval=T}
@@ -698,8 +722,9 @@ plot(dipper.lm)
 
 ```
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
   
@@ -717,13 +742,14 @@ We can continue to interpreting the output!
 
 -----
 :::
-
+::::
 <br>
 
 Once you are happy assumptions are good, you can interpret the model output using `summary()`.
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -734,11 +760,12 @@ summary(dipper.lm)
 
 -----
 :::
-
+::::
 d)  What is the equation for our model, incorporating our partial regression coefficients?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
   
@@ -746,35 +773,38 @@ d)  What is the equation for our model, incorporating our partial regression coe
 
 -----
 :::
-
+::::
 e)  Based on the F-statistic output, is the model significant? How can we tell? Is it different to the significance of LogCadd this time?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
   
 **e)** The F-test statistic tells us whether our overall model is significant, which in this case it is (P = 1.971e-05). This time, unlike when we only used LogCadd as the predictor, our P-value from the F-Statistic is now different to the P-value of LogCadd (P = 0.16674).  
 
-As our P - value for the model is < 0.05, we can reject the null hypothesis and conclude our model is significant and at least one of our partial regression slopes are non-zero. 
+As our P-value for the model is < 0.05, we can reject the null hypothesis and conclude our model is significant and at least one of our partial regression slopes are non-zero.
 
 -----
 :::
-
+::::
 f)  Is LogCadd still a significant predictor of Dipper breeding pair density?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
   
-**f)** Unlike last week, the P-value for LogCadd is now greater than 0.05 (P = 0.16674), and so we fail to reject the null hypothesis that the partial regression slope is equal to zero.  We can therefore say LogCadd not a significant predictor of Dipper breeding pair density. 
+**f)** Unlike last week, the P-value for LogCadd is now greater than 0.05 (P = 0.16674), and so we fail to reject the null hypothesis that the partial regression slope is equal to zero.  We can therefore say LogCadd is not a significant predictor of Dipper breeding pair density.
 
 -----
 :::
-
+::::
 g)  What are the significant predictors of this model?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
   
@@ -782,11 +812,12 @@ g)  What are the significant predictors of this model?
 
 -----
 :::
-
+::::
 h)  How good is the fit of our model?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -799,11 +830,12 @@ Our residual SE is a low value, and relative to the range of Br_Dens (min = 2.9,
 
 -----
 :::
-
+::::
 i)  What might we do to improve the model fit?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
   
@@ -811,18 +843,19 @@ i)  What might we do to improve the model fit?
 
 -----
 :::
-
+::::
 j)  What statistical and scientific conclusions can we make from this model output?
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
   
-**j) ** 
+**j)**
 Statistical:
 
-As the F-test statistic is less than 0.05, we can reject the null hypothesis that all partial regression coefficients are equal to zero. Furthermore, LogStone was the only significant predictor (P < 0.05) and therefore we can only reject the null for this predictor.   
+As the P-value for the F-test is less than 0.05, we can reject the null hypothesis that all partial regression coefficients are equal to zero. Furthermore, LogStone was the only significant predictor (P < 0.05) and therefore we can only reject the null for this predictor.
 
 The model fit is good, with an r^2^-adjusted value of 0.7281 and Residual standard error of 0.7753.  
 
@@ -834,7 +867,7 @@ The significance of Stonefly larvae over Caddis fly larvae, and the positive rel
 
 -----
 :::
-
+::::
 <br>
 
 Another week of linear models done! Great work fitting Multiple Linear Regression! Next week we break away and explore non-linear functions.
@@ -865,8 +898,9 @@ Data:
 
 This exercise will use a dataset from [kaggle](https://www.kaggle.com/datasets/vikramamin/housing-linear-regression)to explore the variables affecting house prices.
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -909,7 +943,7 @@ plot(housing_mlr)
 par(mfrow = c(1,1))
 ```
 
-> Assumptions are beautiful and prefect. Relationship is linear, data is normally distributed, there is no fanning in the scale-location plot, and the residuals vs leverage doesn't even show the Cook's distance line.
+> Assumptions are beautiful and perfect. Relationship is linear, data is normally distributed, there is no fanning in the scale-location plot, and the residuals vs leverage doesn't even show the Cook's distance line.
 
 4.  P-value and model fit
 
@@ -933,7 +967,7 @@ summary(housing_mlr)
 
 --------
 :::
-
+::::
 ## Exercise 2: Energy use
 
 Data:
@@ -942,8 +976,9 @@ Data:
 
 Use the dataset from [kaggle](https://www.kaggle.com/datasets/govindaramsriram/energy-consumption-dataset-linear-regression) to explore which variables affect energy consumption.
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -987,19 +1022,20 @@ summary(energy_lm)
 
     a)   Is the model significant? yes, the f-test shows p< 0.05
 
-    b)   Are the predictors significant? yes, the t tests for theindividual predictors all have p < 0.05
+    b)   Are the predictors significant? yes, the t tests for the individual predictors all have p < 0.05
 
     c)   How good is the model fit? The model has a decent fit, with an adjusted R^2^ of 0.65
 
 5.  Conclusions
 >  The F-test indicated our model is significant (P < 0.05), allowing us to reject the null hypothesis and conclude at least one of our partial regression coefficients has a slope not equal to 0. 
 
-> Our t-test upon each of our partial regression coefficients supports this, as area income, area house age, room number and area population all have p-values below 0.05.
+> Our t-test upon each of our partial regression coefficients supports this, as square footage and occupant number both have p-values below 0.05.
 
 > The fit of the model is good, with 65% of the variation explained by our model.
 
 -------
 :::
+::::
 ## Exercise 3: Sales vs advertising budget
 
 Data:
@@ -1008,8 +1044,9 @@ Data:
 
 Use the dataset from [kaggle](https://www.kaggle.com/datasets/yasserh/advertising-sales-dataset) to explore how different advertising budgets affect sales. 
 
-::: {.content-visible when-profile="solution"}
-### Solution {style="color:green;"}
+:::: {.content-visible when-profile="solution"}
+::: {style="color:green;"}
+**Solution**
 
 -----
 
@@ -1057,11 +1094,11 @@ summary(sales_mlr)
 
 > Our t-test upon each of our partial regression coefficients supports this, as `tv_ad_budget` and `radio_ad_budget` both have p-values below 0.05. However, `newspaper_ad_budget` was not a significant predictor, with p = 0.86.
 
-> The fit of the model is excellent, with ~90% of the variation explained by our model. Since the `newspaper_ad_budget` was not significant, we could try running the model again without this variable, to see if it imporves the fit.
+> The fit of the model is excellent, with ~90% of the variation explained by our model. Since the `newspaper_ad_budget` was not significant, we could try running the model again without this variable, to see if it improves the fit.
 
 ------
 :::
-
+::::
 <br> <br> <!--The code below reduces white space at the end of the output doc-->
 
 ::: {.tocify-extend-page data-unique="tocify-extend-page" style="height: 0;"}
