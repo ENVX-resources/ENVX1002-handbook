@@ -62,7 +62,7 @@ compared to polynomials?
 |-------------------------------------------|-----------------------------|
 | Parameters hard to interpret | Parameters interpretable in terms of biological and environmental processes |
 | Can be fitted with analytical or numerical methods | Fitting parameters can be difficult as use numerical methods which rely on good initial estimates of parameters |
-| Hypothesis testing and estimating R^2^ straightforward | Hypothesis testing and estimating R^2^ is a bit more difficult – not absence of R^2^ in R output |
+| Hypothesis testing and estimating adjusted R^2^ are straightforward | Hypothesis testing and estimating R^2^ is a bit more difficult – note the absence of R^2^ in R output |
 | Difficult to model horizontal asymptotes | Can accommodate horizontal asymptotes |
 | Only polynomials of even order restricted to positive values | Constrained to positive values |
 
@@ -116,14 +116,16 @@ This exercise does not require you to read in any data, but rather focus
 on interpreting the model output and comparing the models.
 
 The figure below shows the raw observations of yield plotted against pH
-with three models fitted; a linear model, quadratic polynomial and a
-cubic polynomial.
+with three models fitted in separate panels; a linear model, quadratic
+polynomial and a cubic polynomial.
 
 a)  which line corresponds to which model?
 
 ```{r LoadData}
 #| echo: false
 #| output: true
+#| fig-height: 9
+#| fig-width: 6
 soil <- read.csv("data/east_creek.csv", header = T)
 
 soil.lin <- lm(yield ~ ph, data = soil)
@@ -137,12 +139,18 @@ pred.quad <- predict(soil.quad, list(ph = ph.new))
 pred.cub <- predict(soil.cub, list(ph = ph.new))
 pred.lin <- predict(soil.lin, list(ph = ph.new))
 
-# Adds model fit to existing plots
-plot(soil$ph, soil$yield, xlab = "pH", ylab = "Yield (t/Ha)")
-lines(ph.new, pred.quad, col = "red")
-lines(ph.new, pred.lin, col = "blue")
-lines(ph.new, pred.cub)
+old_par <- par(mfrow = c(3, 1), mar = c(4, 4, 1, 1))
 
+plot_model <- function(pred, col = "black") {
+  plot(soil$ph, soil$yield, xlab = "pH", ylab = "Yield (t/Ha)")
+  lines(ph.new, pred, col = col, lwd = 2)
+}
+
+plot_model(pred.quad, col = "red")
+plot_model(pred.lin, col = "blue")
+plot_model(pred.cub)
+
+par(old_par)
 
 ```
 
@@ -174,12 +182,16 @@ values of the predictor the line could also appear to be straight.
 :::
 
 b)  based on the output from the 3 models below, which model fits the
-    data best? Note: no hypothesis testing yet, just how well the model
-    fits the data (R^2^).
+    data best?
+
+::: {.column-margin}
+Note: no hypothesis testing yet, just how well the model fits the
+data (adjusted R^2^).
+:::
 
 <!-- -->
 
-1.  Linear model:
+#### 1.  Linear model:
 
 ```{r , echo = F}
 
@@ -187,7 +199,7 @@ summary(soil.lin)
 
 ```
 
-2.  Quadratic model:
+#### 2.  Quadratic model:
 
 ```{r , echo = F}
 
@@ -195,7 +207,7 @@ summary(soil.quad)
 
 ```
 
-3.  Cubic model:
+#### 3.  Cubic model:
 
 ```{r , echo = F}
 
@@ -208,15 +220,15 @@ summary(soil.cub)
 
 ------------------------------------------------------------------------
 
-**b)** The R^2^ assesses how well the model fits the data. The best
-model based on this metric is the cubic polynomial (R^2^ = 0.255), then
-the quadratic polynomial (R^2^ = 0.231) and finally the linear model
-(R^2^ = 0.00016).
+**b)** The adjusted R^2^ assesses how well the model fits the data while
+accounting for the number of predictors. The best model based on this
+metric is the cubic polynomial (adjusted R^2^ = 0.234), then the
+quadratic polynomial (adjusted R^2^ = 0.217) and finally the linear model
+(adjusted R^2^ = -0.0091).
 
-It should be noted that this does not consider the model complexity
-(i.e. aiming for the most parsimonious model - the one with least
-predictors). For example, is the extra complexity of the cubic
-polynomial worth an increase in R^2^ of 0.024? Formal hypothesis testing
+It should be noted that adjusted R^2^ does not replace formal hypothesis
+testing. For example, is the extra complexity of the cubic polynomial
+worth an increase in adjusted R^2^ of 0.018? Formal hypothesis testing
 can address this question.
 
 ------------------------------------------------------------------------
@@ -310,14 +322,14 @@ lin.mod <- lm(yield ~ fert)
 summary(lin.mod)
 ```
 
-a)  What is the model fit like in this model?
+a)  Using adjusted R^2^, what is the model fit like in this model?
 
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
 ------------------------------------------------------------------------
 
-**a)** Our model fit is ok, with R^2^ of 0.6344.
+**a)** Our model fit is ok, with adjusted R^2^ of 0.4515.
 
 ------------------------------------------------------------------------
 :::
@@ -337,15 +349,15 @@ summary(quad.mod)
 
 ```
 
-b)  What is the fit like for our quadratic model? is it better than our
-    linear model?
+b)  Using adjusted R^2^, what is the fit like for our quadratic model?
+    Is it better than our linear model?
 
 ::: {.content-visible when-profile="solution"}
 ### Solution {style="color:green;"}
 
 ------------------------------------------------------------------------
 
-**b)** Our model fit even better, with R^2^ of 0.9993.
+**b)** Our model fit even better, with adjusted R^2^ of 0.9980.
 
 ------------------------------------------------------------------------
 :::
@@ -849,4 +861,3 @@ That's it for Module 3! Great work exploring non-linear models!
 Thank you all (students and demonstrators!) for your hard work and
 enthusiasm throughout this Module. Good luck with Project 3 and the
 final exam!
-
